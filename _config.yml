@@ -80,4 +80,4 @@ theme: landscape
 deploy:
   type: git
   repo: git@github.com:blakeyang/blakeyang.github.io.git
-  branch: gh-pages
+  branch: master
