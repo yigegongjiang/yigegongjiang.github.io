@@ -8,7 +8,7 @@ subtitle: 如果旅行方向一致，我愿为同行的你背负行囊
 description: iOS
 keywords:
 author: Blake yang
-language:
+language: zh-Hans
 timezone:
 
 # URL
@@ -73,7 +73,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
