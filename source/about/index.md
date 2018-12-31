@@ -1,5 +1,5 @@
 ---
-title: about
+title: 一个工匠
 date: 2018-10-16 13:32:11
 type: "about"
 ---
