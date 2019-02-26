@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<meta name="google-site-verification" content="hEkkdHoBZXdN-chbhMtLxz6orIp7_P0lfW61l88LlIw" />
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="计算机原理,内存分配,内存分区,比特,字节,指针,指针的指针,32位,64位,内存条,4G,8G" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一行代码引发的思考 int a = 5;  问1:变量a在内存的哪里？问2:数字5在内存的哪里？问3:int的字节大小是多少？如果a=12345后，字节大小变不变？问4:代码里面print(“%d”, a)，为什么可以输出5，a是怎么找到5的？问5:内存到底在哪里？问6:总内存有多大？问7:总内存的大小是怎么确定的？ 各位能回答上面的7问吗？ 由底往上来解析，一步一步揭开洋葱的外衣，真相终究会大白">
+<meta name="keywords" content="计算机原理,内存分配,内存分区,比特,字节,指针,指针的指针,32位,64位,内存条,4G,8G">
+<meta property="og:type" content="article">
+<meta property="og:title" content="内存分配详解-由底到高">
+<meta property="og:url" content="http://yoursite.com/2019/02/26/内存分配详解-由底到高/index.html">
+<meta property="og:site_name" content="一个工匠">
+<meta property="og:description" content="一行代码引发的思考 int a = 5;  问1:变量a在内存的哪里？问2:数字5在内存的哪里？问3:int的字节大小是多少？如果a=12345后，字节大小变不变？问4:代码里面print(“%d”, a)，为什么可以输出5，a是怎么找到5的？问5:内存到底在哪里？问6:总内存有多大？问7:总内存的大小是怎么确定的？ 各位能回答上面的7问吗？ 由底往上来解析，一步一步揭开洋葱的外衣，真相终究会大白">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-02-26T13:29:38.402Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="内存分配详解-由底到高">
+<meta name="twitter:description" content="一行代码引发的思考 int a = 5;  问1:变量a在内存的哪里？问2:数字5在内存的哪里？问3:int的字节大小是多少？如果a=12345后，字节大小变不变？问4:代码里面print(“%d”, a)，为什么可以输出5，a是怎么找到5的？问5:内存到底在哪里？问6:总内存有多大？问7:总内存的大小是怎么确定的？ 各位能回答上面的7问吗？ 由底往上来解析，一步一步揭开洋葱的外衣，真相终究会大白">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/02/26/内存分配详解-由底到高/"/>
+
+
+
+
+
+  <title>内存分配详解-由底到高 | 一个工匠</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-127664410-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一个工匠</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">跋山涉水，走心为匠。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/26/内存分配详解-由底到高/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="one.gongjiang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个工匠">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">内存分配详解-由底到高</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-26T19:04:53+08:00">
+                2019-02-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/02/26/内存分配详解-由底到高/" class="leancloud_visitors" data-flag-title="内存分配详解-由底到高">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="一行代码引发的思考"><a href="#一行代码引发的思考" class="headerlink" title="一行代码引发的思考"></a>一行代码引发的思考</h3><blockquote>
+<p>int a = 5;</p>
+</blockquote>
+<p>问1:变量a在内存的哪里？<br>问2:数字5在内存的哪里？<br>问3:int的字节大小是多少？如果a=12345后，字节大小变不变？<br>问4:代码里面print(“%d”, a)，为什么可以输出5，a是怎么找到5的？<br>问5:内存到底在哪里？<br>问6:总内存有多大？<br>问7:总内存的大小是怎么确定的？</p>
+<p>各位能回答上面的7问吗？</p>
+<p>由底往上来解析，一步一步揭开洋葱的外衣，真相终究会大白于天下！</p>
+<a id="more"></a>
+<h3 id="字节与比特"><a href="#字节与比特" class="headerlink" title="字节与比特"></a>字节与比特</h3><p>比特这玩意，说好理解，马上能理解。说难理解，那肯定还是需要一翻思考总结的。<br><code>比特是计算机存储的最小存储单元</code>。我们认知到的数字<code>3</code>，在计算机的存储里（硬盘或者内存）的结构是这样的：<code>00000011</code>。是的，也就是我们理解的二进制。<br>所以这个数字<code>3</code>是由8位组成的。每位有<code>0</code>和<code>1</code>两种变化。<br>恐怖的是，比特存储，是计算机的基石。我们在互联网上通行的一切，如图片、音视频、文字，甚至各位的博客、App、电子书等等，能想到的能通过互联网传输的一切，都是比特存储。<br>举个例子，我们看的一张图片，在磁盘上的存储，或许就是这样子：<code>0101011101010101010111101011110101010101100***(省略100000000个)***1010100111010101</code>。<br>所以，祝各位每年的<code>1024节</code>快乐，因为我们的努力，世界才如此缤纷多彩 ：)</p>
+<p>1字节(byte)=8比特(bit)<br>我们刚才说到的数字<code>3</code>，就是一个字节，在磁盘上就是<code>00000011</code>。（为了便于理解，实际可能是<code>00000000 00000011</code>，或者<code>00000000 00000000 00000000 00000011</code>）。<br><code>1字节=8比特</code>，这个是定死的，开始就是这么玩的，也会永远的玩下去。</p>
+<p>1KB = 1024B（2的10次方）<br>1MB = 1024KB（2的10次方）<br>1GB = 1024MB（2的10次方）<br>这里大家不要迷惑，为什么是2的10次方，而不是3的10次方，也不是2的15次方。<br>“就是这么规定的，爱玩不玩！”</p>
+<p>具体怎么定的这个规则，肯定有原因，肯定也能查到历史。具体各位在自行查看中外文档吧，查到了也请告知。</p>
+<h3 id="计算机基础与位的进化史"><a href="#计算机基础与位的进化史" class="headerlink" title="计算机基础与位的进化史"></a>计算机基础与<code>位</code>的进化史</h3><p>这里说计算机/手机的两个层面，一个是内存条，一个是CPU。</p>
+<h4 id="内存条"><a href="#内存条" class="headerlink" title="内存条"></a>内存条</h4><p>实实在在的东西，有4GB、8GB、16GB等大小，长条形的带黑边的玩意，实体店网店都能买到，笔记本的小一些，台式机的大一些，有各种型号。手机的内存条是出厂固定在里面的，不好弄。<br>插到计算机的主板上面就能使用了。如果电脑开机的时候出现<code>滴滴滴</code>的声音，就把内存条拔出来檫檫，有很大概率能好。<br><strong>内存条硬性决定了我们可用的最大内存。</strong></p>
+<h4 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h4><p><strong>CPU软件决定了我们可用的最大内存。</strong><br>CPU决定我们的操作系统是<code>32位</code>还是<code>64位</code>（甚至8位，16位等）。<br>这里的<code>32位</code>和<code>64位</code>，指的是<code>内存地址</code>的<code>位</code>大小。</p>
+<p>内存条是硬件存储设备。它随随便便就能支持8GB的数据存储。各位知道8GB是多大吗？8GB = 8G * 1024M * 1024K * 1024Byte，也就是<code>8589934592</code>Byte(字节)。<br>再恐怖点，1Byte=8Bit，Bit才是最小存储单元，所以真实存储是：<code>8589934592 * 8</code>即<code>68719476736</code>Bit（比特）。</p>
+<p>逆过来分析：<br>这么大的比特数据，在内存条是按照8Bit一组排列的。<br>每8Bit形成一个小房间。所以8GB的内存条里面，有<code>68719476736 / 8</code>个房间。<br>计算机操作系统可以通过<code>定向寻址</code>的方案，直接找到每个房间。形象来说，就是每个房间都有一个<code>内存地址</code>,系统通过<code>内存地址</code>就可以一瞬间biu～一下就到那个房间，房间里面有8个小人(8Bit)。</p>
+<p><code>内存地址</code>是关键，他是什么东西？<br>就是刚才我们说到的<code>32位</code>和<code>64位</code>CPU。如果CPU是32位，那么<code>内存地址</code>最小为：<code>00000000 00000000 00000000 00000000</code>，最大为：<code>11111111 11111111 11111111 11111111</code>。64位就<code>00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000</code>和<code>11111111 11111111 11111111 11111111 11111111 11111111 11111111 11111111</code>。<br>对于32位CPU来说，这最小和最大之间，有多少个呢？因为每个Bit有<code>0</code>和<code>1</code>两个选择，所以总共有2的32次方个。每一个都一一对应内存条里面的一个房间，所以最多可以对应<code>2*2*2*2(32个2相乘)=4294967296</code>个房间。<br>每个房间是8Bit即1Byte(字节)，也就是总房间大小为:<code>4294967296Byte</code>，也就是<code>4294967296Byte/1024K/1024M/1024G = 4GB</code>。<br><strong>真相开始大白了，对于32位CPU的操作系统，最大的内存地址也就是：<code>11111111 11111111 11111111 11111111</code>。也就是最多只能找到<code>2*2*2*2(32个2相乘)=4294967296</code>个房间。也就是最大内存查找范围只有<code>4294967296Byte/1024K/1024M/1024G = 4GB</code>。</strong></p>
+<p>原理分析完了，各位就知道一个现象了：<br>当年win7系统，明明买了8G的内存条，到<code>我到电脑</code>里面一看，只有4G不到。其余到4G不见了。<br>其实不是不见了，它还在那里，只是操作系统因为CPU到32位限制，读取不了更多到内存空间了。</p>
+<h4 id="初步总结"><a href="#初步总结" class="headerlink" title="初步总结"></a>初步总结</h4><p>32位的CPU操作系统，只能读取4G的内存空间，内存条有更多空间也读取不了了。本质原因在于<code>内存地址</code>，就是每个存储字节(房间)的<code>内存地址</code>(房间号)。<br>因为<code>内存地址</code>只有32位，<code>11111111 11111111 11111111 11111111</code>是<code>内存地址</code>的最大值，也就是最大门牌号。<br>如果我们把最大门牌号变大，那操作系统肯定能够读取到更多到房间。<br><code>64位</code>CPU到最大<code>内存地址</code>是：<code>11111111 11111111 11111111 11111111 11111111 11111111 11111111 11111111</code>，即<code>18446744073709551616</code>，这代表有<code>18446744073709551616</code>个房间，也就是<code>18446744073709551616Byte/1024K/1024M/1024G = 17179869184GB</code>。恐怖不恐怖？但是目前综合技术限制，我们更多使用的是8G内存、16G内存和32G内存，更大到商用的，我没听过了。<br>所以win7系统，明明放了8G内存条，只能使用4G的解决方案就是：重装系统，装64位的。</p>
+<h3 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h3><p>万物皆为C。即C语言。<br>后面孩子孙子辈的语言，尽管百花齐放，终究逃离不了指针。这是计算机发展史上的根基。</p>
+<p>指针是什么？我理解的指针，就是存储一段数据，这个数据是什么？是<code>内存地址</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int main(int argc, char *argv[]) &#123;</span><br><span class="line">    int a = 5;</span><br><span class="line">    int *p = &amp;a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码中，如何通过p找到5？</p>
+<p>5是int类型的数据，所以在32位的内存条中这样存储：<code>00000000 00000000 00000000 00000101</code>。它占据4个房间。<br>a是什么？a是给我们程序员看的。代码跑起来后，a代表的就是5的<code>内存地址</code>，所以a就是连续的4个房间的内存地址，第一个房间的<code>内存地址</code>是：<code>00000000 00000000 11111111 11111111</code>(我假设的)。后面三个房间分别二进制+1。通过第一个房间，就可以连续的找到5这个存储数据。<br>p呢，指向a的指针，所以系统在内存里面存储了<code>00000000 00000000 11111111 11111111</code>这个二进制数据，也就是把a的<code>内存地址</code>给存了下来。同时这个二进制数据也有自己的连续房间号内存地址：<code>00000000 11111111 11111111 11111111</code>(我假设的）。这个地址，就是p啦。<br>p如何找到5？就是p通过存储的a的内存地址，找到了5的第一个房间号，都找到房间号了，肯定也就找到5这个存储数据了。</p>
+<h3 id="指针的指针"><a href="#指针的指针" class="headerlink" title="指针的指针"></a>指针的指针</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int main(int argc, char *argv[]) &#123;</span><br><span class="line">    int a = 5;</span><br><span class="line">    int *p = &amp;a;</span><br><span class="line">    int **pp = &amp;p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>各位看，这里又创建了指向p指针的指针。啥意思？就还是指针。只不过这个指针，指向的不是5这个数据，还是另一个指针。那<code>int ***ppp = &amp;pp</code>呢？还是一样的，还是指针，这个指针指向pp的内存地址。</p>
+<p>所以这个时候，系统在内存里面存储了<code>00000000 11111111 11111111 11111111</code>这个二进制数据，也就是把p的<code>内存地址</code>给存了下来。同时这个二进制数据也有自己的连续房间号内存地址：<code>00001111 11111111 11111111 11111111</code>(我假设的）。这个地址，就是pp啦。</p>
+<p>指针的指针的指针的指针，也还是一样的逻辑。<code>int **********pppppppppp = &amp;ppppppppp</code>。</p>
+<h3 id="内存分配"><a href="#内存分配" class="headerlink" title="内存分配"></a>内存分配</h3><p>各位看到了，内存分配的本质，就是<code>内存地址</code>的存储和调用。<br>每一个变量，在程序运行后，就不存在了，存在的是这个变量所对应的<code>内存地址</code>。我们通过<code>内存地址</code>找到对应的数据，或者通过<code>内存地址</code>找到上一个<code>内存地址</code>，并最终找到对应的数据。<br>总内存条很大，所以里面分了几个大区。如堆栈等，还有高低位的限制。总体来说，内存是按照一定的顺序进行存储的。<br>我们使用的那些字面量啊或者对象啊啥的，就是一块存储区域。操作系统（栈）或者我们自己（堆）在内存区里面创建了这个数据并存储了下来。因为数据存储在房间里，所以每个数据都有一串连续的房间号（内存地址）。<br>在指针的逻辑里面，我们赋值等操作的时候，就是把这个内存地址，不断的放在另一个内存区域里面进行记录，然后读取的时候一环一环的就读取到了最终存储房间。</p>
+<h3 id="内存分区"><a href="#内存分区" class="headerlink" title="内存分区"></a>内存分区</h3><p>内存分区有多种，如堆、栈、静态区、全局区、代码区等。上面的理解了，这些都只是外部包装，虽然他们本身很复杂，但是理解起来会简单的多了。因为我也只是理解，就不夸夸其谈了。自行Google。</p>
+<hr>
+<p>C绝对是计算机语言的开荒基石。<br>熟练C的程序员，大脑里就有一片星辰大海。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/计算机原理/" rel="tag"># 计算机原理</a>
+          
+            <a href="/tags/C/" rel="tag"># C</a>
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/Node-js/" rel="tag"># Node.js</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/24/努力和天赋/" rel="next" title="努力和天赋">
+                <i class="fa fa-chevron-left"></i> 努力和天赋
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MDMxNy8xNjg0NA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">one.gongjiang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一行代码引发的思考"><span class="nav-number">1.</span> <span class="nav-text">一行代码引发的思考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字节与比特"><span class="nav-number">2.</span> <span class="nav-text">字节与比特</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机基础与位的进化史"><span class="nav-number">3.</span> <span class="nav-text">计算机基础与位的进化史</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#内存条"><span class="nav-number">3.1.</span> <span class="nav-text">内存条</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CPU"><span class="nav-number">3.2.</span> <span class="nav-text">CPU</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#初步总结"><span class="nav-number">3.3.</span> <span class="nav-text">初步总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指针"><span class="nav-number">4.</span> <span class="nav-text">指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指针的指针"><span class="nav-number">5.</span> <span class="nav-text">指针的指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存分配"><span class="nav-number">6.</span> <span class="nav-text">内存分配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存分区"><span class="nav-number">7.</span> <span class="nav-text">内存分区</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">one.gongjiang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">跋山涉水，走心为匠。</div>
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("oHjfMM9k9T2jeMok17mpOHMR-gzGzoHsz", "I3KhlA47qVktyVynx12yk3ot");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
