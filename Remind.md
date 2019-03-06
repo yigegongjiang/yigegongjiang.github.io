@@ -21,3 +21,4 @@ hexo new 'title'
 * Python
 * Node.js
 * 网络
+* 计算机原理
