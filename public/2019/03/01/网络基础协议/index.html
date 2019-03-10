@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="名词汇总网络分层 物理层 Mac层（链路层） 网络层 传输层 应用层  相关分层协议 物理层 网线、交叉线   Mac层（链路层） 交换机、ARP&amp;lt;通过IP找主机Mac地址&amp;gt;、RARP&amp;lt;通过主机Mac地址找IP&amp;gt;、VLAN   网络层 路由器、ICMP&amp;lt;ping使用的主协议&amp;gt;，IP   传输层 TCP、UDP、其他   应用层 HTTP、HTTPS(SSL)、R">
+<meta name="description" content="互联网规则 互联网本质，就是数据在一定的协议基础上，在多台主机之间，进行数据的流动共享。 网络传输协议非常多，不是简简单单的HTTP/HTTPS协议，我们App看的直播就有RTMP、私有UDP协议、DNS(+CDN加速)等等。 数据在网络上基于二进制包进行传输，传输规则基于7层网络协议，4/5层网络协议便于理解 数据包在传输过程中几个关键不可缺少的字段：端口、MAC地址、IP地址。可以没有应用层的">
 <meta name="keywords" content="网络协议、Get、Post、路由器、交换机、HTTPS、RTMP、TCP、UDP、SSL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="网络基础协议">
 <meta property="og:url" content="http://yoursite.com/2019/03/01/网络基础协议/index.html">
 <meta property="og:site_name" content="一个工匠">
-<meta property="og:description" content="名词汇总网络分层 物理层 Mac层（链路层） 网络层 传输层 应用层  相关分层协议 物理层 网线、交叉线   Mac层（链路层） 交换机、ARP&amp;lt;通过IP找主机Mac地址&amp;gt;、RARP&amp;lt;通过主机Mac地址找IP&amp;gt;、VLAN   网络层 路由器、ICMP&amp;lt;ping使用的主协议&amp;gt;，IP   传输层 TCP、UDP、其他   应用层 HTTP、HTTPS(SSL)、R">
+<meta property="og:description" content="互联网规则 互联网本质，就是数据在一定的协议基础上，在多台主机之间，进行数据的流动共享。 网络传输协议非常多，不是简简单单的HTTP/HTTPS协议，我们App看的直播就有RTMP、私有UDP协议、DNS(+CDN加速)等等。 数据在网络上基于二进制包进行传输，传输规则基于7层网络协议，4/5层网络协议便于理解 数据包在传输过程中几个关键不可缺少的字段：端口、MAC地址、IP地址。可以没有应用层的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-06T04:14:09.375Z">
+<meta property="og:updated_time" content="2019-03-10T11:25:25.764Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络基础协议">
-<meta name="twitter:description" content="名词汇总网络分层 物理层 Mac层（链路层） 网络层 传输层 应用层  相关分层协议 物理层 网线、交叉线   Mac层（链路层） 交换机、ARP&amp;lt;通过IP找主机Mac地址&amp;gt;、RARP&amp;lt;通过主机Mac地址找IP&amp;gt;、VLAN   网络层 路由器、ICMP&amp;lt;ping使用的主协议&amp;gt;，IP   传输层 TCP、UDP、其他   应用层 HTTP、HTTPS(SSL)、R">
+<meta name="twitter:description" content="互联网规则 互联网本质，就是数据在一定的协议基础上，在多台主机之间，进行数据的流动共享。 网络传输协议非常多，不是简简单单的HTTP/HTTPS协议，我们App看的直播就有RTMP、私有UDP协议、DNS(+CDN加速)等等。 数据在网络上基于二进制包进行传输，传输规则基于7层网络协议，4/5层网络协议便于理解 数据包在传输过程中几个关键不可缺少的字段：端口、MAC地址、IP地址。可以没有应用层的">
 
 
 
@@ -381,16 +381,44 @@
       
 
       
-        <h2 id="名词汇总"><a href="#名词汇总" class="headerlink" title="名词汇总"></a>名词汇总</h2><h3 id="网络分层"><a href="#网络分层" class="headerlink" title="网络分层"></a>网络分层</h3><ol>
+        <h3 id="互联网规则"><a href="#互联网规则" class="headerlink" title="互联网规则"></a>互联网规则</h3><ol>
+<li>互联网本质，就是数据在一定的协议基础上，在多台主机之间，进行数据的流动共享。</li>
+<li>网络传输协议非常多，不是简简单单的HTTP/HTTPS协议，我们App看的直播就有RTMP、私有UDP协议、DNS(+CDN加速)等等。</li>
+<li>数据在网络上基于二进制包进行传输，传输规则基于7层网络协议，4/5层网络协议便于理解</li>
+<li>数据包在传输过程中几个关键不可缺少的字段：端口、MAC地址、IP地址。可以没有应用层的HTTP等协议，但是绝对不可能没有网络层、Mac层和物理层。没有这三层，数据是不可能找到对应接收方的，甚至这个数据包都出不了你的电脑端口。可以没有应用层等，如ping一个主机使用的ICMP就是网络层协议，就没有应用层。</li>
+</ol>
+<h3 id="HTTP-HTTPS规则"><a href="#HTTP-HTTPS规则" class="headerlink" title="HTTP/HTTPS规则"></a>HTTP/HTTPS规则</h3><ol>
+<li>HTTP协议是无状态的协议，所以需要Session、Cookie</li>
+<li>HTTP的三次握手，并不是C-S之间有一条网络管道进行连接，而是两端各自维护相应的状态，当双方状态都处于runing的时候，代表双方连接建立</li>
+<li>HTTPS的公私钥认证，很多情况下只发生一次，公私钥认证的用途仅仅是为C-S之间的后续通讯建立对称密钥。后续的网络请求不出问题是不会重新公私钥认证的。因为服务器会在第一次公私钥认证的时候，生成Session ID，该Session ID指向对称密钥并保存。客户端一般也会保存这个Session ID和对称密钥，后面客户端提交Session ID到服务器就可以建立起来安全通信。HTTP1.0就可以支持keep alive，多个网络请求可以复用建立的连接，这个时候更加不需要公私钥认证了。</li>
+<li>HTTPS的公私钥认证，生成的对称密钥是由C生成一个随机数、S生成一个随机数、C再生成一个随机数这三个数完成的。公私钥认证的开始，是没有加密的，因为客户端还没有拿到公钥。所以前两个随机数是可以抓包拿到的，但是第三个随机数是C通过公钥加密传输的，所以第三个随机数的安全传输才是整个安全机制的重点。（前两个随机数被串改了也没关系，因为C和S的随机数不一样了，生成的对称密钥也不一样，后面的数据传输加解密过程中，就无法完成校验了）</li>
+</ol>
+<a id="more"></a>
+<h3 id="网络分层"><a href="#网络分层" class="headerlink" title="网络分层"></a>网络分层</h3><h5 id="五层分"><a href="#五层分" class="headerlink" title="五层分"></a>五层分</h5><ol>
 <li>物理层</li>
 <li>Mac层（链路层）</li>
 <li>网络层</li>
 <li>传输层</li>
 <li>应用层</li>
 </ol>
+<h5 id="四层分"><a href="#四层分" class="headerlink" title="四层分"></a>四层分</h5><ol>
+<li>网络接口层</li>
+<li>网络层</li>
+<li>传输层</li>
+<li>应用层</li>
+</ol>
+<h5 id="七层分"><a href="#七层分" class="headerlink" title="七层分"></a>七层分</h5><ol>
+<li>物理层</li>
+<li>Mac层（链路层）</li>
+<li>网络层</li>
+<li>传输层</li>
+<li>会话层</li>
+<li>表达层</li>
+<li>应用层</li>
+</ol>
 <h3 id="相关分层协议"><a href="#相关分层协议" class="headerlink" title="相关分层协议"></a>相关分层协议</h3><ol>
 <li>物理层<ul>
-<li>网线、交叉线</li>
+<li>网线、光纤、交叉线、集线器（HUB，就是现在电商网站上买的那些USB扩展口）</li>
 </ul>
 </li>
 <li>Mac层（链路层）<ul>
@@ -405,16 +433,22 @@
 <li>TCP、UDP、其他</li>
 </ul>
 </li>
+<li>会话层<ul>
+<li>SSL/TLS&lt;部分&gt;</li>
+</ul>
+</li>
+<li>表达层<ul>
+<li>SSL/TLS&lt;部分&gt;</li>
+</ul>
+</li>
 <li>应用层<ul>
-<li>HTTP、HTTPS(SSL)、RTMP、DNS(HTTPDNS)、DHCP（自动获取ip地址协议）</li>
+<li>HTTP、HTTPS、FTP、RTMP、DNS(HTTPDNS)、DHCP（自动获取ip地址协议）</li>
 </ul>
 </li>
 </ol>
-<a id="more"></a>
 <blockquote>
-<p>大纲如下<br>逐步更新，更新时间未知<br>：）</p>
+<p>大纲如下<br>逐步更新，更新时间未知  </p>
 </blockquote>
-<h3 id="互联网本质"><a href="#互联网本质" class="headerlink" title="互联网本质"></a>互联网本质</h3><p>互联网本质，就是数据在一定的协议基础上，在多台主机之间，进行数据的流动共享。</p>
 <h3 id="数据是怎么通过协议进行传输的"><a href="#数据是怎么通过协议进行传输的" class="headerlink" title="数据是怎么通过协议进行传输的"></a>数据是怎么通过协议进行传输的</h3><ol>
 <li>等待更新</li>
 <li>等待更新</li>
@@ -624,7 +658,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#名词汇总"><span class="nav-number">1.</span> <span class="nav-text">名词汇总</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#网络分层"><span class="nav-number">1.1.</span> <span class="nav-text">网络分层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关分层协议"><span class="nav-number">1.2.</span> <span class="nav-text">相关分层协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#互联网本质"><span class="nav-number">1.3.</span> <span class="nav-text">互联网本质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据是怎么通过协议进行传输的"><span class="nav-number">1.4.</span> <span class="nav-text">数据是怎么通过协议进行传输的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络分层在数据传输过程中的具体体现"><span class="nav-number">1.5.</span> <span class="nav-text">网络分层在数据传输过程中的具体体现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据是怎么在协议的基础上保持安全的"><span class="nav-number">1.6.</span> <span class="nav-text">数据是怎么在协议的基础上保持安全的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#我们如何访问到Baidu-com的"><span class="nav-number">1.7.</span> <span class="nav-text">我们如何访问到Baidu.com的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直播是如何贴近我们生活的"><span class="nav-number">1.8.</span> <span class="nav-text">直播是如何贴近我们生活的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络资源加速是如何实现的"><span class="nav-number">1.9.</span> <span class="nav-text">网络资源加速是如何实现的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移动端HTTPS网络请求的优化方案"><span class="nav-number">1.10.</span> <span class="nav-text">移动端HTTPS网络请求的优化方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结语"><span class="nav-number">1.11.</span> <span class="nav-text">结语</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#互联网规则"><span class="nav-number">1.</span> <span class="nav-text">互联网规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP-HTTPS规则"><span class="nav-number">2.</span> <span class="nav-text">HTTP/HTTPS规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络分层"><span class="nav-number">3.</span> <span class="nav-text">网络分层</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#五层分"><span class="nav-number">3.0.1.</span> <span class="nav-text">五层分</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#四层分"><span class="nav-number">3.0.2.</span> <span class="nav-text">四层分</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#七层分"><span class="nav-number">3.0.3.</span> <span class="nav-text">七层分</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关分层协议"><span class="nav-number">4.</span> <span class="nav-text">相关分层协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据是怎么通过协议进行传输的"><span class="nav-number">5.</span> <span class="nav-text">数据是怎么通过协议进行传输的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络分层在数据传输过程中的具体体现"><span class="nav-number">6.</span> <span class="nav-text">网络分层在数据传输过程中的具体体现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据是怎么在协议的基础上保持安全的"><span class="nav-number">7.</span> <span class="nav-text">数据是怎么在协议的基础上保持安全的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#我们如何访问到Baidu-com的"><span class="nav-number">8.</span> <span class="nav-text">我们如何访问到Baidu.com的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直播是如何贴近我们生活的"><span class="nav-number">9.</span> <span class="nav-text">直播是如何贴近我们生活的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络资源加速是如何实现的"><span class="nav-number">10.</span> <span class="nav-text">网络资源加速是如何实现的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移动端HTTPS网络请求的优化方案"><span class="nav-number">11.</span> <span class="nav-text">移动端HTTPS网络请求的优化方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结语"><span class="nav-number">12.</span> <span class="nav-text">结语</span></a></li></ol></div>
             
 
           </div>
