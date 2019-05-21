@@ -1,9 +1,10 @@
 ```
-hexo c
+hexo clean
 hexo g
 hexo s
 hexo d
 
+hexo 
 hexo new 'title'
 ```
 

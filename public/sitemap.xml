@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/03/28/%E6%88%91%E5%BF%83%E9%87%8C%E4%B8%80%E7%9B%B4%E6%9C%89%E4%B8%80%E4%B8%AA%E5%BF%B5%E6%83%B3/</loc>
+    
+    <lastmod>2019-05-21T05:14:39.069Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/02/24/%E5%8A%AA%E5%8A%9B%E5%92%8C%E5%A4%A9%E8%B5%8B/</loc>
+    
+    <lastmod>2019-05-21T05:14:11.711Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/03/01/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E5%8D%8F%E8%AE%AE/</loc>
     
     <lastmod>2019-03-10T11:25:25.764Z</lastmod>
@@ -19,13 +33,6 @@
     <loc>http://yoursite.com/2018/11/24/Block%E9%97%AD%E5%8C%85%E7%AE%80%E6%9F%A5%E8%AE%B0%E5%BD%95/</loc>
     
     <lastmod>2019-03-06T13:29:00.228Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/02/24/%E5%8A%AA%E5%8A%9B%E5%92%8C%E5%A4%A9%E8%B5%8B/</loc>
-    
-    <lastmod>2019-03-06T05:20:56.577Z</lastmod>
     
   </url>
   
@@ -86,14 +93,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/tags/index.html</loc>
+    <loc>http://yoursite.com/categories/index.html</loc>
     
     <lastmod>2018-12-17T14:49:37.848Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/categories/index.html</loc>
+    <loc>http://yoursite.com/tags/index.html</loc>
     
     <lastmod>2018-12-17T14:49:37.848Z</lastmod>
     
