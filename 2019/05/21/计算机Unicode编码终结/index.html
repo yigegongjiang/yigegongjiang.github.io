@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="努力,天赋" />
+  <meta name="keywords" content="Unicode,计算机编码,计算机内存编码,磁盘数据存储编码,UTF,字符编码" />
 
 
 
@@ -79,20 +79,18 @@
 
 
 
-<meta name="description" content="今天，在公司卫生间里面，看到了这个“每天努力0.01”和“每天懈怠0.01”一年后的差距，颇为感触。不过我不是因为这两个差距的比较产生心里的鸡汤，而是引发了一些关于努力的思考。什么算是努力？好人一定要好报吗？">
-<meta name="keywords" content="努力,天赋">
+<meta name="description" content="开局三把西瓜刀：1.代码多年不识字符集和编码，是有过错的。2.一天到晚说“Unicode编码”，自己的误区大了。3.没有认知字符、字节、字符集、编码的区别并以讹传讹，就是万恶了。from “一个工匠”  假设你已经查阅了很多关于Unicode、UTF8等之间的关系，并且有了很好的认知。毕竟这博客太低微了，能找到并打开这个链接，那肯定都是看过十几个其他博文的解读了。本篇博文重点描述编码认知过程中的">
+<meta name="keywords" content="Unicode,计算机编码,计算机内存编码,磁盘数据存储编码,UTF,字符编码">
 <meta property="og:type" content="article">
-<meta property="og:title" content="努力和天赋">
-<meta property="og:url" content="http://yoursite.com/2019/02/24/努力和天赋/index.html">
+<meta property="og:title" content="计算机Unicode编码终结">
+<meta property="og:url" content="http://yoursite.com/2019/05/21/计算机Unicode编码终结/index.html">
 <meta property="og:site_name" content="一个工匠">
-<meta property="og:description" content="今天，在公司卫生间里面，看到了这个“每天努力0.01”和“每天懈怠0.01”一年后的差距，颇为感触。不过我不是因为这两个差距的比较产生心里的鸡汤，而是引发了一些关于努力的思考。什么算是努力？好人一定要好报吗？">
+<meta property="og:description" content="开局三把西瓜刀：1.代码多年不识字符集和编码，是有过错的。2.一天到晚说“Unicode编码”，自己的误区大了。3.没有认知字符、字节、字符集、编码的区别并以讹传讹，就是万恶了。from “一个工匠”  假设你已经查阅了很多关于Unicode、UTF8等之间的关系，并且有了很好的认知。毕竟这博客太低微了，能找到并打开这个链接，那肯定都是看过十几个其他博文的解读了。本篇博文重点描述编码认知过程中的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/努力和天赋.JPG">
-<meta property="og:updated_time" content="2019-05-21T05:14:11.711Z">
+<meta property="og:updated_time" content="2019-05-21T08:56:22.613Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="努力和天赋">
-<meta name="twitter:description" content="今天，在公司卫生间里面，看到了这个“每天努力0.01”和“每天懈怠0.01”一年后的差距，颇为感触。不过我不是因为这两个差距的比较产生心里的鸡汤，而是引发了一些关于努力的思考。什么算是努力？好人一定要好报吗？">
-<meta name="twitter:image" content="http://yoursite.com/images/努力和天赋.JPG">
+<meta name="twitter:title" content="计算机Unicode编码终结">
+<meta name="twitter:description" content="开局三把西瓜刀：1.代码多年不识字符集和编码，是有过错的。2.一天到晚说“Unicode编码”，自己的误区大了。3.没有认知字符、字节、字符集、编码的区别并以讹传讹，就是万恶了。from “一个工匠”  假设你已经查阅了很多关于Unicode、UTF8等之间的关系，并且有了很好的认知。毕竟这博客太低微了，能找到并打开这个链接，那肯定都是看过十几个其他博文的解读了。本篇博文重点描述编码认知过程中的">
 
 
 
@@ -122,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/24/努力和天赋/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/05/21/计算机Unicode编码终结/"/>
 
 
 
 
 
-  <title>努力和天赋 | 一个工匠</title>
+  <title>计算机Unicode编码终结 | 一个工匠</title>
   
 
 
@@ -273,7 +271,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/24/努力和天赋/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/21/计算机Unicode编码终结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="one.gongjiang">
@@ -290,7 +288,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">努力和天赋</h2>
+          <h2 class="post-title" itemprop="name headline">计算机Unicode编码终结</h2>
         
 
         <div class="post-meta">
@@ -302,8 +300,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-24T18:43:21+08:00">
-                2019-02-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-21T13:47:16+08:00">
+                2019-05-21
               </time>
             
 
@@ -325,8 +323,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/观点/" itemprop="url" rel="index">
-                    <span itemprop="name">观点</span>
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
                   </a>
                 </span>
 
@@ -343,8 +341,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/02/24/努力和天赋/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/24/努力和天赋/" itemprop="commentCount"></span>
+                <a href="/2019/05/21/计算机Unicode编码终结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/21/计算机Unicode编码终结/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -352,7 +350,7 @@
 
           
           
-             <span id="/2019/02/24/努力和天赋/" class="leancloud_visitors" data-flag-title="努力和天赋">
+             <span id="/2019/05/21/计算机Unicode编码终结/" class="leancloud_visitors" data-flag-title="计算机Unicode编码终结">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -383,29 +381,24 @@
       
 
       
-        <p>今天，在公司卫生间里面，看到了这个“每天努力0.01”和“每天懈怠0.01”一年后的差距，颇为感触。<br>不过我不是因为这两个差距的比较产生心里的鸡汤，而是引发了一些关于努力的思考。<br>什么算是努力？好人一定要好报吗？</p>
+        <blockquote>
+<p>开局三把西瓜刀：<br>1.代码多年不识字符集和编码，是有过错的。<br>2.一天到晚说“Unicode编码”，自己的误区大了。<br>3.没有认知字符、字节、字符集、编码的区别并以讹传讹，就是万恶了。<br>from “一个工匠”</p>
+</blockquote>
+<p>假设你已经查阅了很多关于Unicode、UTF8等之间的关系，并且有了很好的认知。毕竟这博客太低微了，能找到并打开这个链接，那肯定都是看过十几个其他博文的解读了。<br>本篇博文<strong>重点描述编码认知过程中的几个坑点</strong>，这个很重要。</p>
 <a id="more"></a>
-<p>我看到的差距如下图所示：<br><img src="/images/努力和天赋.JPG" alt=""></p>
-<p>首先，我产生了下面几点思考：</p>
+<h3 id="ASCII和Unicode的关系"><a href="#ASCII和Unicode的关系" class="headerlink" title="ASCII和Unicode的关系"></a>ASCII和Unicode的关系</h3><p>就当作父子关系吧。这最好理解。<br>虽然ASCII是大学计算机教科书入门知识点，如果不联系上编码和Unicode，还是不好理解的。知道有这个东西在，但是怎么玩的却不是很清楚。<br><strong>ASCII是字符集。什么是字符集？就是一个映射表。</strong><br>你现在看到的所有abcd或者汉字或者泰文或者emoji，你要有一个认知，不要认为他们独一无二！他们只是图形，你要把它们理解为符号。而你随手那么一画，也能弄出来一个符号。因为计算机，只认识0和1，计算机没有思维，它不理解我们眼中汉字的博大精深。ASCII把一个位置，标记了一个符号含义。这个位置就是<strong>码位</strong>，这个符号，就是我们看到的abcd。计算机只认识码位，应用层根据码位从Ascii映射符号。如果你自定义了一个字符集，把相同的码位定位为刚才你随手画的那个符号，又有什么关系呢？因为这个码位到底代表什么，是应用层的事情了，而我们切换字体，是不是也有异曲同工之妙？<br><strong>ASCII主要是制定了规则。</strong>这样整个美国人民都可以根据码位对应一样的符号，就能统一的显示单词语句了。<br>好景不长，计算机发展太快，ASCII本身有缺陷，只有256个字符，中国几十万汉子，那是ASCII能表示的了？更何况还有韩国，印度等等。<br>这个时候Unicode出来了。<strong>Unicode干嘛的？啥也没干除了一件事，就是继续制定规则。</strong>这个规则很大，涵盖了所有的字符，并且还在不断增加。这样，不管是汉字，还是泰文，都能通过Unicode找到一个映射的码位。有了统一的规则，世界就能连起来了嘛，因为索引10000代表一个符号，10001又代表一个符号，而他们代表的符号，是全球统一的，所有应用层都能根据这个码位显示一样的符号。<br>所以ASCII和Unicode是什么关系？ASCII是第一个让人们可以通过计算机交流的字符集合。Unicode不是第二个，Unicode没出来之前，中国还自己做了GBK字符集。但是Unicode是最全的一个，<strong>兼容了ASCII，但是比ASCII多了太多的码位。所以说，ASCII和Unicode是父子关系，父亲开拓了疆土，儿子做大了企业。</strong><br>而他们之所以能全球统一，是大势所趋。但他们不是唯一的，你行你也可以搞一个，制定属于自己的一套字符集，你就能弄出来绝对的秘文（虽然是明文，但是码位和符号映射只有你知道，那也就是秘文了）。</p>
+<h3 id="UTF-8，UTF-16，UTF-32"><a href="#UTF-8，UTF-16，UTF-32" class="headerlink" title="UTF-8，UTF-16，UTF-32"></a>UTF-8，UTF-16，UTF-32</h3><p>这三个，叫做字符编码。切记，上面的ASCII和Unicode是字符集，已经介绍了用途。这三个UTF是字符编码，<strong>他们是编码！！！</strong>。<br><strong>字符编码存在的意义，依托于字符集。有了字符集，才有字符编码。</strong><br>因为我们知道了码位，才知道对应的字符，而码位我们可以形象的理解为索引。码位是需要0和1表示的，码位是计算机沟通的途径。<br>码位，怎么形成对应的0和1串，就是编码。<br>其中，这三个UTF编码最为出名。<br>这三个UTF对同一个码位有不同的表示形式。具体各位通过其他博文已经了解到了，多写无意，我就不做搬运工了。<br>但是我们得知道：</p>
 <ol>
-<li>每天的0.01，在365年后的差距计算里面，为什么是累乘？而不是累加或者其他计算方式？</li>
-<li>比较两者的差距，是否应该用除法表示他们之间的倍数？这样对于比较差距是否合理？</li>
-<li>什么才算是努力？努力必然和方式、时间、付出、天赋等因素相互参杂，而努力后的结果是否可以评判一个人的努力程度？</li>
-<li>一个人在某方面的成功，和努力的关联有多大？</li>
+<li>UTF-8占用空间最小，但是解析速度低，因为不能按序解析字节，UTF-8对字节大小是变化非常大的。</li>
+<li>UTF-16占用空间中等，解析速度快。因为更多的码位用2个字节表示，字节大小基本固定（少部分字符通过4个字节表示），解析非常快。</li>
+<li>UTF-32占用空间最大，解析速度最快。一个码位用4个字节表示，字节大小全部固定，解析非常快。</li>
 </ol>
-<h3 id="不要被鸡汤迷失了方向"><a href="#不要被鸡汤迷失了方向" class="headerlink" title="不要被鸡汤迷失了方向"></a>不要被鸡汤迷失了方向</h3><p>努力，可以上升到一个民族的方向。中国民族努力奋斗这么多年，在世界上有声望，没有入侵和战乱，大大部分国民吃喝满足。这是几代中国人民共同努力的结果。<br>努力，也是每个人应该准守的人生基本原则。不努力的人才，苟活有何意义？很多人虚度时光，你也无需指责，他的人生里没有你，你何须指手画脚？</p>
-<p>但是图中的努力，有些误导人。为什么365天的0.01努力，不是加法，而是乘法？<br>为了鸡汤而可以制造的假象就迷惑人了。<code>1.01*365/0.99*365</code>，也就是<code>1.02020202</code>这样子，远远没有<code>1480</code>这么大。</p>
-<p>所以我想说，这个鸡汤太过分了，努力固然重要，但是绝没有天地距离这么夸张。努力和结果，有“方式、时间、付出、天赋”等条件约束，不是简单的两个字。</p>
-<h3 id="何为努力？"><a href="#何为努力？" class="headerlink" title="何为努力？"></a>何为努力？</h3><p>万事皆有方式，如学习方式、工作方式。如果你在努力的过程中脑子里昏昏的始终没有清晰过，那你的努力只能是虚度时光并假装自己在辛苦，你欺骗了别人，也欺骗了自己。<br>这样的努力是廉价可耻的，当然我们局外人没有权利指责，那或许是你刻意制造的生活呢？</p>
-<p>努力，需要方法。找到一个适合自己的有效果的方法，就已经是走了大捷径，跑了快速道。而且这个方法可以便随你各个方面，时间上或许就是一生。<br>没有方法在努力的人，始终在埋冤，在怨天尤人，说自己累，不相信技巧。<br>有方法在努力的人，都说这个方法好，努力原来有捷径可走。<br>方法不是固定的，每个人都会有自己的方法，我们都要找到它。<br>比如：与人沟通会增加见识产生灵感获得额外消息，站在巨人的肩膀上会走的更快更高，寻找合适的资源工具可以节省大量的时间等。</p>
-<h3 id="努力一定有好的回报？"><a href="#努力一定有好的回报？" class="headerlink" title="努力一定有好的回报？"></a>努力一定有好的回报？</h3><p>是的。努力一定有好的回报。</p>
-<p>你的努力，一定会在潜移默化里改变你一些什么，最直接等影响或许就是你成功了，财富自由，家庭辛福。<br>但是努力，绝对不会让你登上人生巅峰，这个是一定要摆正好的心态问题。<br>人，努力到一个点后，就开始怀疑自己了。为什么我的努力没有达到我的预期？我耗费了自己这么多的精力，却没有达到我想要的，我死了算了。<br>这个时候，一定要摆正心态，是不是你的目标太高了，以至于你的努力弥补不了这个高度的空白，需要<code>天赋</code>来支撑了。</p>
-<p>天赋这玩意就很奇妙了，不管你同意不同意这个观点，它就摆在那里，甚至是真真实实的摆在那里。<br>某个方向的天赋可以让你脑壳在这个方向上高速运转，得天独厚的优越感。<br>从小时候和你一起学习的同学，到长大后和你一起工作的同事，甚至很多你认识的创业老板们，我们大家都会见过或者听过有一些有天赋的朋友。<br>如果你把那些人的卓越，当作努力，那不是对自己付出的努力的唾弃和践踏吗？不要不尊重自己，那就是人家的天赋，可惜不在你身上而已。</p>
-<p>摆正好心态，努力过好自己的一生，就是对自己的不辜负，对自己生命的尊重。<br>如果你是某个方向的天赋，请一定继续努力，用这个天赋，帮助更多需要帮助的人。<br>如果你没有那个天赋，请一定继续努力，在这个方向上超过更多人，首先让自己和家人幸福，有条件了一定帮助更多需要帮助的人。</p>
-<h3 id="努力-PK-天赋"><a href="#努力-PK-天赋" class="headerlink" title="努力 PK 天赋"></a>努力 PK 天赋</h3><p>某个方向上的天赋人才，没有想象的那么多，金字塔的顶端就那么大。<br>你自认为有天赋的那些同学或者朋友，或许仅仅是努力的方式比你好一些，努力的时间比你多一些。人家比你更努力。<br>不要低估了自己的努力，也不要高估了周围人的天赋。</p>
-<p>天赋决定了你的上限，<br>努力决定了你的下限。</p>
+<h3 id="Unicode和Unicode编码"><a href="#Unicode和Unicode编码" class="headerlink" title="Unicode和Unicode编码"></a>Unicode和Unicode编码</h3><p>对于“Unicode编码”，听到不是一次两次了，不理解Unicode之前，我也是这么叫它的。<br>但是我们通过ASCII和Unicode的说明，我们已经了解到，Unicode根本不是编码，Unicode是一个字符集。<br>Unicode是大而全的字符集，因为时代的需要，做到了全球化。<br>你想有自己的字符集，你也行。<br><strong>Unicode并没有对码位做存储等说明，即没有任何字节说明，仅仅描述了码位和字符的映射关系。</strong><br>所以：<strong>Unicode不是编码，Unicode是字符集，和编码没有关系，他们不在一个维度。</strong></p>
+<h3 id="Unicode和UTF-8的关系"><a href="#Unicode和UTF-8的关系" class="headerlink" title="Unicode和UTF-8的关系"></a>Unicode和UTF-8的关系</h3><p><strong>Unicode描述了码位和字符的对应关系，UTF描述了码位的计算机存储方案。</strong><br>这样码位就能够通过晶体管进行计算、存储、传输了。<br>所以Unicode和UTF-8有什么关系？他们本身没有什么关系，他们是负责解决两个问题的方案，不再一个维度。就是上面说的，“Unicode编码”是错误的叫法。<br>Unicode制定了规则，UTF-8按照自己的方案执行了规则，UTF-16、UTF-32也是一样。UTF是为了把码位通过不同的形式，进行传输，这样就可以信息交换了。</p>
+<h3 id="内存字符编码，网络传输字符编码，磁盘字符编码"><a href="#内存字符编码，网络传输字符编码，磁盘字符编码" class="headerlink" title="内存字符编码，网络传输字符编码，磁盘字符编码"></a>内存字符编码，网络传输字符编码，磁盘字符编码</h3><p>通过上面三个UTF的编码说明，可以得出，空间最小的是UTF-8编码。<br>所以毋庸置疑，网络传输，磁盘存储，都是用的是UTF-8编码。占用空间小，对于网络和磁盘来说，比什么都重要。1M或者2M的数据，感觉无所谓，那么100G呢？UTF-8很可能一下子就能节省80%的空间。<br>但是内存里面通过什么编码？<br>很多人就疑惑了，啥？内存里面也需要编码？<br>理解一下，计算机执行所有数据，都是指令和数据的交替。计算机认识啥？认识符号吗？不可能的。<br>计算机只认识码位。<br>计算机在哪里执行指令和运算数据？内存啊！<br>我们在显示器上面看到的这些文字，是怎么显示的？其实应用层读取到的仅仅是码位，应用层通过码位根据映射表进行符号显示的。<br>显示器实时读取内存缓冲区里面的数据，然后根据数据显示界面。内存缓冲区里面肯定只能是码位的二进制啊！<br>所以，内存里面的码位数据，也是需要编码的。<br>很多博文说，内存里面使用的是“Unicode编码”。这是非常错误的。<br>一来，Unicode不是编码，<br>二来，Unicode编码长什么样？至少写到现在，我不知道码位是如何通过“Unicode编码”来实现。<br><strong>内存使用的是UTF-16编码！PC、Mac、Linux都是这样处理的</strong><br>因为UTF-8解析慢，UTF-32空间大，而内存里面一段时间需要处理的码位并不会非常大，不会有几百兆数量级。<br>所以内存编码，采用UTF-16，通过空间换取时间。UTF-16空间大小也适中，解析速度快，非常理想。（除了UTF，还有其他编码，但是UTF更有统一性和跨平台性）</p>
+<h3 id="编码与字节关系"><a href="#编码与字节关系" class="headerlink" title="编码与字节关系"></a>编码与字节关系</h3><p><strong>编码，即码位通过二进制表现的方式。</strong><br>一个字符，码位可能是10000，那么通过UTF-8，UTF-16，UTF-32，获取其他编码方式，生成的二进制都是不一样的。<br>二进制不一样，相应的字节也就不一样。<br>所以这也就是常说的，<br>通过UTF-8编码，一个字符(码位)是1个字节、或者2个字节、或者3个字节、或者4个字节，因为UTF-8变字节存储。<br>通过UTF-16编码，一个字符(码位)是2个字节、或者4个字节，因为UTF-16按照整数编码方便解析，2个字节已经可以处理90%多的码位了。<br>通过UTF-32，每个字符(码位)都是4个字节。</p>
 <hr>
-<p>最近听到一个可怕的消息，<br>你的努力方式，也是由你的基因决定的。<br>从你出生的那刻起，95%的命运已经确定了。<br>我不看鸡汤就是因为幸存者法则，<br>但是没想到命是这么的严酷。<br>加油努力吧，不然就是一个废人了！</p>
+<p>因为自身见识面的浅薄，对于很多大的事件，不能自己产生客观的观点与评价。</p>
 
       
     </div>
@@ -423,7 +416,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Life/" rel="tag"># Life</a>
+            <a href="/tags/计算机原理/" rel="tag"># 计算机原理</a>
           
         </div>
       
@@ -436,8 +429,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/23/洗牙/" rel="next" title="洗牙">
-                <i class="fa fa-chevron-left"></i> 洗牙
+              <a href="/2019/03/28/我心里一直有一个念想/" rel="next" title="我心里一直有一个念想">
+                <i class="fa fa-chevron-left"></i> 我心里一直有一个念想
               </a>
             
           </div>
@@ -445,10 +438,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/26/内存分配详解-由底到高/" rel="prev" title="内存分配详解-由底到高">
-                内存分配详解-由底到高 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -589,7 +578,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#不要被鸡汤迷失了方向"><span class="nav-number">1.</span> <span class="nav-text">不要被鸡汤迷失了方向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#何为努力？"><span class="nav-number">2.</span> <span class="nav-text">何为努力？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#努力一定有好的回报？"><span class="nav-number">3.</span> <span class="nav-text">努力一定有好的回报？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#努力-PK-天赋"><span class="nav-number">4.</span> <span class="nav-text">努力 PK 天赋</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ASCII和Unicode的关系"><span class="nav-number">1.</span> <span class="nav-text">ASCII和Unicode的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UTF-8，UTF-16，UTF-32"><span class="nav-number">2.</span> <span class="nav-text">UTF-8，UTF-16，UTF-32</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Unicode和Unicode编码"><span class="nav-number">3.</span> <span class="nav-text">Unicode和Unicode编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Unicode和UTF-8的关系"><span class="nav-number">4.</span> <span class="nav-text">Unicode和UTF-8的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存字符编码，网络传输字符编码，磁盘字符编码"><span class="nav-number">5.</span> <span class="nav-text">内存字符编码，网络传输字符编码，磁盘字符编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编码与字节关系"><span class="nav-number">6.</span> <span class="nav-text">编码与字节关系</span></a></li></ol></div>
             
 
           </div>
