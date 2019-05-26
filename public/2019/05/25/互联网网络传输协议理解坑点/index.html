@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="内存管理、内存释放、ARC、ARC内存原理" />
+  <meta name="keywords" content="网络,计算机原理,HTTP,HTTPS,TCP,UDP,Socket,套接字,IP,NAT" />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="iOS的内存管理，绝对是很多很多iOSer人的误区。因为最近几年的iOS开发人员，都没有经历过MRC年代了。MRC年代的内存总是不好管理，所以ARC帮我们做了很多事情。ARC做了很多事情让内存管理更加精准优秀外，却使得iOS开发人员不知道内存是怎么管理的了。真正的内存管理，一定需要回到MRC下面去理解，根本思想是：谁创建、谁释放、谁引用、谁释放。内存释放的唯一途径是：引用计数=0自动释放池仅仅做了">
-<meta name="keywords" content="内存管理、内存释放、ARC、ARC内存原理">
+<meta name="description" content="写技术分析点费事费力，尤其配图，牺牲太大。我也就是一个懒人，都是文字说明，毕竟文字的穿透力还是更强些的。 备注：网络协议博大精深，是整个互联网的根基。不是伟大的工程师，都不敢妄语，更何况我这小虾。我写的有错的，希望看到的人留言指正，我会随时更正。 理解网络协议，怎么才算初步入门？网络分层是什么样的？你能说明7层和5层网络模型，并且能够闭着眼睛说出这些分层名字和对应的协议名称。TCP的三次握手，是怎">
+<meta name="keywords" content="网络,计算机原理,HTTP,HTTPS,TCP,UDP,Socket,套接字,IP,NAT">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS内存原理">
-<meta property="og:url" content="http://yoursite.com/2019/01/06/iOS内存原理/index.html">
+<meta property="og:title" content="互联网网络传输协议理解坑点">
+<meta property="og:url" content="http://yoursite.com/2019/05/25/互联网网络传输协议理解坑点/index.html">
 <meta property="og:site_name" content="一个工匠">
-<meta property="og:description" content="iOS的内存管理，绝对是很多很多iOSer人的误区。因为最近几年的iOS开发人员，都没有经历过MRC年代了。MRC年代的内存总是不好管理，所以ARC帮我们做了很多事情。ARC做了很多事情让内存管理更加精准优秀外，却使得iOS开发人员不知道内存是怎么管理的了。真正的内存管理，一定需要回到MRC下面去理解，根本思想是：谁创建、谁释放、谁引用、谁释放。内存释放的唯一途径是：引用计数=0自动释放池仅仅做了">
+<meta property="og:description" content="写技术分析点费事费力，尤其配图，牺牲太大。我也就是一个懒人，都是文字说明，毕竟文字的穿透力还是更强些的。 备注：网络协议博大精深，是整个互联网的根基。不是伟大的工程师，都不敢妄语，更何况我这小虾。我写的有错的，希望看到的人留言指正，我会随时更正。 理解网络协议，怎么才算初步入门？网络分层是什么样的？你能说明7层和5层网络模型，并且能够闭着眼睛说出这些分层名字和对应的协议名称。TCP的三次握手，是怎">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-06T03:42:40.360Z">
+<meta property="og:updated_time" content="2019-05-26T14:05:20.520Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS内存原理">
-<meta name="twitter:description" content="iOS的内存管理，绝对是很多很多iOSer人的误区。因为最近几年的iOS开发人员，都没有经历过MRC年代了。MRC年代的内存总是不好管理，所以ARC帮我们做了很多事情。ARC做了很多事情让内存管理更加精准优秀外，却使得iOS开发人员不知道内存是怎么管理的了。真正的内存管理，一定需要回到MRC下面去理解，根本思想是：谁创建、谁释放、谁引用、谁释放。内存释放的唯一途径是：引用计数=0自动释放池仅仅做了">
+<meta name="twitter:title" content="互联网网络传输协议理解坑点">
+<meta name="twitter:description" content="写技术分析点费事费力，尤其配图，牺牲太大。我也就是一个懒人，都是文字说明，毕竟文字的穿透力还是更强些的。 备注：网络协议博大精深，是整个互联网的根基。不是伟大的工程师，都不敢妄语，更何况我这小虾。我写的有错的，希望看到的人留言指正，我会随时更正。 理解网络协议，怎么才算初步入门？网络分层是什么样的？你能说明7层和5层网络模型，并且能够闭着眼睛说出这些分层名字和对应的协议名称。TCP的三次握手，是怎">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/01/06/iOS内存原理/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/05/25/互联网网络传输协议理解坑点/"/>
 
 
 
 
 
-  <title>iOS内存原理 | 一个工匠</title>
+  <title>互联网网络传输协议理解坑点 | 一个工匠</title>
   
 
 
@@ -271,7 +271,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/06/iOS内存原理/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/25/互联网网络传输协议理解坑点/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="one.gongjiang">
@@ -288,7 +288,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">iOS内存原理</h2>
+          <h2 class="post-title" itemprop="name headline">互联网网络传输协议理解坑点</h2>
         
 
         <div class="post-meta">
@@ -300,8 +300,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-06T11:30:48+08:00">
-                2019-01-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-25T19:53:48+08:00">
+                2019-05-25
               </time>
             
 
@@ -341,8 +341,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/01/06/iOS内存原理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/06/iOS内存原理/" itemprop="commentCount"></span>
+                <a href="/2019/05/25/互联网网络传输协议理解坑点/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/25/互联网网络传输协议理解坑点/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -350,7 +350,7 @@
 
           
           
-             <span id="/2019/01/06/iOS内存原理/" class="leancloud_visitors" data-flag-title="iOS内存原理">
+             <span id="/2019/05/25/互联网网络传输协议理解坑点/" class="leancloud_visitors" data-flag-title="互联网网络传输协议理解坑点">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -381,8 +381,15 @@
       
 
       
-        <p>iOS的内存管理，绝对是很多很多iOSer人的误区。<br>因为最近几年的iOS开发人员，都没有经历过MRC年代了。<br>MRC年代的内存总是不好管理，所以ARC帮我们做了很多事情。ARC做了很多事情让内存管理更加精准优秀外，却使得iOS开发人员不知道内存是怎么管理的了。<br>真正的内存管理，一定需要回到MRC下面去理解，根本思想是：<strong>谁创建、谁释放、谁引用、谁释放</strong>。<br><strong>内存释放的唯一途径是：引用计数=0</strong><br>自动释放池仅仅做了“谁创建谁释放”里面的一部分。<br><strong>ARC帮我们做了“谁创建、谁释放、谁引用、谁释放”四个部分。</strong><br><strong>ARC帮我们写了很多管理内存的代码，包括autolease、retain、release等。如果不理解MRC下面他们的含义，是不可能理解iOS内存管理的。</strong><br><strong>网络上面大多介绍的autolease、autoleasepool、autoleasepoolpage，只是自动释放池部分，只是iOS内存管理的一个面。</strong><br>内存不是绝对安全释放的，还牵涉到内存区，如果字符串定义到了堆区，释放是及时的，定义到了栈区和常量区，就不那么及时了（虽然引用计数=0，代码也不能在调用，但是真实内存还在）。</p>
-
+        <p>写技术分析点费事费力，尤其配图，牺牲太大。我也就是一个懒人，都是文字说明，毕竟文字的穿透力还是更强些的。</p>
+<p>备注：网络协议博大精深，是整个互联网的根基。不是伟大的工程师，都不敢妄语，更何况我这小虾。我写的有错的，希望看到的人留言指正，我会随时更正。</p>
+<h4 id="理解网络协议，怎么才算初步入门？"><a href="#理解网络协议，怎么才算初步入门？" class="headerlink" title="理解网络协议，怎么才算初步入门？"></a>理解网络协议，怎么才算初步入门？</h4><p>网络分层是什么样的？你能说明7层和5层网络模型，并且能够闭着眼睛说出这些分层名字和对应的协议名称。<br>TCP的三次握手，是怎么进行的？你能说明三次消息通话的流程，并且知道客户端在第二次握手的时候已经确定连接并且可以发送数据。<br>TCP三次握手的时候，有没有网络层参与？你能说明不仅仅有参与，并且理解网络分层的真实含义。知道可以有下层没上层，但是决定不可能有上层没下层。<br>TCP和UDP相比，有哪些特性？你能说明通道连接、丢包控制、流量控制、顺序控制、拥堵控制五个关键词，并且知道其中或者全部的简单原理。<br>传输层、网络层、Mac层各自填补了哪些重要信息？你能说明端口、ip、mac地址，并且知道他们为什么是非缺不可的原因。<br>HTTP和TCP的关系？你能说明他们是巴基斯坦和卡巴斯基的关系，并且听说过他们二者之间的Socket纽扣。<br>IP的用途和原理？你能说明根据DNS解析IP的过程及原理，知道公网IP和私有IP的联系，知道网络号、主机号、子网掩码，听说及了解IP在网络传输过程中的重要性。<br>如果上面问题，你能回答到后面解释的部分，那也就是初步入门了。因为你知道网络这一块浅显层面上是怎么玩的了。</p>
+<a id="more"></a>
+<h4 id="理解网络协议，怎么才算基本入门？"><a href="#理解网络协议，怎么才算基本入门？" class="headerlink" title="理解网络协议，怎么才算基本入门？"></a>理解网络协议，怎么才算基本入门？</h4><p>知道一个网络请求的生命周期，从DNS多层解析拿到IP地址，到申请套接字，到三次握手连接套接字通道，到网络五层协议分层原理，到网卡进行二进制包传输，到网卡发出光信号传输数据，到集线器进行以太网数据传输，到交换机进行以太网数据传输，到路由器根据IP地址进行跨子网数据传输，到中继器进行光信号的增强防止波形消耗，到经历多个路由器节点的NAT规则，到防火墙根据包的包头进行的各种控制处理，到服务器的网卡收到数据包，到服务器的五层协议数据解析，到服务器套接字，到数据缓冲区，到应用程序处理，然后一个大折回通过网络返回用户请求数据。</p>
+<p>上面每一个知识点，都是一个学科了，一个产业链，甚至一个专家可能需要多年进行研究的点。</p>
+<p>如果上面流程，你能清晰的或者近似清晰的在大脑里描述出来，那就是基本入门了。精通算不上，能够和别人简单的撕逼就差不多了。<br>这时你已经能够通过网络知识，分析或者解决一些网络问题了。</p>
+<h4 id="理解网络协议，怎么才算正式入门？"><a href="#理解网络协议，怎么才算正式入门？" class="headerlink" title="理解网络协议，怎么才算正式入门？"></a>理解网络协议，怎么才算正式入门？</h4><p>说实话，网络协议博大精深，自我感觉我还没有正式入门。So，我也不知道。因为我不知道后面还有多少路要走，所以我不知道正式入门的门槛在哪。</p>
+<h4 id="TCP和UDP到底是什么关系？"><a href="#TCP和UDP到底是什么关系？" class="headerlink" title="TCP和UDP到底是什么关系？"></a>TCP和UDP到底是什么关系？</h4><h4 id="HTTP-S和TCP又是什么关系？"><a href="#HTTP-S和TCP又是什么关系？" class="headerlink" title="HTTP/S和TCP又是什么关系？"></a>HTTP/S和TCP又是什么关系？</h4><h4 id="套接字是什么东西？"><a href="#套接字是什么东西？" class="headerlink" title="套接字是什么东西？"></a>套接字是什么东西？</h4><h4 id="IM里面的Socket通信指的是什么？"><a href="#IM里面的Socket通信指的是什么？" class="headerlink" title="IM里面的Socket通信指的是什么？"></a>IM里面的Socket通信指的是什么？</h4>
       
     </div>
     
@@ -399,7 +406,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/iOS/" rel="tag"># iOS</a>
+            <a href="/tags/计算机原理/" rel="tag"># 计算机原理</a>
+          
+            <a href="/tags/网络/" rel="tag"># 网络</a>
           
         </div>
       
@@ -412,8 +421,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/31/游戏人生/" rel="next" title="游戏人生">
-                <i class="fa fa-chevron-left"></i> 游戏人生
+              <a href="/2019/05/21/计算机Unicode编码终结/" rel="next" title="计算机Unicode编码终结">
+                <i class="fa fa-chevron-left"></i> 计算机Unicode编码终结
               </a>
             
           </div>
@@ -421,10 +430,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/15/RAC-Api-Summer/" rel="prev" title="RAC-Api-Summer">
-                RAC-Api-Summer <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -479,8 +484,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -546,6 +560,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#理解网络协议，怎么才算初步入门？"><span class="nav-number">1.</span> <span class="nav-text">理解网络协议，怎么才算初步入门？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#理解网络协议，怎么才算基本入门？"><span class="nav-number">2.</span> <span class="nav-text">理解网络协议，怎么才算基本入门？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#理解网络协议，怎么才算正式入门？"><span class="nav-number">3.</span> <span class="nav-text">理解网络协议，怎么才算正式入门？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP和UDP到底是什么关系？"><span class="nav-number">4.</span> <span class="nav-text">TCP和UDP到底是什么关系？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP-S和TCP又是什么关系？"><span class="nav-number">5.</span> <span class="nav-text">HTTP/S和TCP又是什么关系？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#套接字是什么东西？"><span class="nav-number">6.</span> <span class="nav-text">套接字是什么东西？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IM里面的Socket通信指的是什么？"><span class="nav-number">7.</span> <span class="nav-text">IM里面的Socket通信指的是什么？</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
