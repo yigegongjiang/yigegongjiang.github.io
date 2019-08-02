@@ -72,16 +72,6 @@ pagination_dir: page
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
-Plugins:
-- hexo-generator-baidu-sitemap
-- hexo-generator-sitemap
-
-# 自动生成sitemap
-sitemap:
-  path: sitemap.xml
-baidusitemap:
-  path: baidusitemap.xml
-
 ## Themes: https://hexo.io/themes/
 theme: next
 
@@ -91,3 +81,7 @@ deploy:
   type: git
   repo: https://github.com/yigegongjiang/yigegongjiang.github.io.git
   branch: master
+
+# 自动生成sitemap
+sitemap:
+  path: sitemap.xml
