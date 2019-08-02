@@ -6,12 +6,12 @@
 
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
-<meta name="google-site-verification" content="hEkkdHoBZXdN-chbhMtLxz6orIp7_P0lfW61l88LlIw" />
+<meta name="google-site-verification" content="hEkkdHoBZXdN-chbhMtLxz6orIp7_P0lfW61l88LlIw">
 
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="事件驱动,Runloop,Runtime,Event loop,协程,多并发" />
+  <meta name="keywords" content="事件驱动,Runloop,Runtime,Event loop,协程,多并发">
 
 
 
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/08/谈谈事件驱动/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/11/08/谈谈事件驱动/">
 
 
 
@@ -163,7 +163,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">一个工匠</span>
         <span class="logo-line-after"><i></i></span>
@@ -193,7 +193,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -203,7 +203,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -213,7 +213,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -223,7 +223,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -233,7 +233,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -275,7 +275,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="one.gongjiang">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -311,7 +311,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -384,6 +384,7 @@
         <p><code>事件驱动</code>这个技术方案，可以说实实在在影响了这些年编程界的技术方向。最实际的受用者应该就是<code>异步编程</code>了，如I/O。</p>
 <p>我所认知到的语言，都是事件驱动的使用者，受益者，推动者。</p>
 <a id="more"></a>
+
 <p>很多朋友可能更多的停留在精通官方API阶段，还没有更深层次的认知计算机原理，不晓得代码是怎么工作的。我不精通官方API，计算机原理也认知浅薄，但在自己认知的语言范围内了解了一些。我感到庆幸，希望和大家分享。</p>
 <h3 id="事件驱动的形象描述"><a href="#事件驱动的形象描述" class="headerlink" title="事件驱动的形象描述"></a><code>事件驱动</code>的形象描述</h3><p>A和家人去外婆家取了个号。A一直在门口等着，是阻塞。A出去玩一会，门分钟去外婆家门口看看到了自己号没有，是监听。A去一个衣服店看衣服去了，到了自己号的时候，收到外婆家发的短信消息后直接去外婆家，是回调。</p>
 <p>上面这个例子，变种极多也千篇一律。串行并行、同步异步、阻塞非阻塞都可以用。我们用这个例子来说<code>事件驱动</code>。</p>
@@ -395,14 +396,21 @@
 <p>所以A接受到的事件是多个并且不确定的。</p>
 <p><code>Life is thread</code>，我们把A比作一个线程。A能够及时响应各家店面发来的消息，原因就是线程里面有一个<code>while (true):{pass;}</code>这样的循环。依靠CPU这个超强大脑控制器，只要有事件需要通知到线程，线程里面的这个while循环就会获取到并及时处理。</p>
 <p>所以<code>事件驱动</code>的本质是：<strong>一方及时发出事件，通过CPU时间片实时轮转事件循环队列并告知到while循环以通知到另一方，另一方及时响应事件。</strong></p>
-<h3 id="iOS中的使用"><a href="#iOS中的使用" class="headerlink" title="iOS中的使用"></a>iOS中的使用</h3><h5 id="Runloop"><a href="#Runloop" class="headerlink" title="Runloop"></a><code>Runloop</code></h5><p><code>Runloop</code>可以说把<code>事件驱动</code>利用到了极致。你能想象，如果没有<code>Runloop</code>，你就真的不能使用iPhone手机了！<br><code>Runloop</code>依托于线程。我们手势点击一个按钮，就是在操作主线程里的<code>Runloop</code>。<br><code>Runloop</code>通过<code>事件驱动</code>在以下8种状态下实时循环切换，用于省电的同时又能够及时处理用户界面反馈。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">typedef CF_OPTIONS(CFOptionFlags, CFRunLoopActivity) &#123;</span><br><span class="line">    kCFRunLoopEntry         = (1UL &lt;&lt; 0), // 即将进入Loop</span><br><span class="line">    kCFRunLoopBeforeTimers  = (1UL &lt;&lt; 1), // 即将处理 Timer</span><br><span class="line">    kCFRunLoopBeforeSources = (1UL &lt;&lt; 2), // 即将处理 Source</span><br><span class="line">    kCFRunLoopBeforeWaiting = (1UL &lt;&lt; 5), // 即将进入休眠</span><br><span class="line">    kCFRunLoopAfterWaiting  = (1UL &lt;&lt; 6), // 刚从休眠中唤醒</span><br><span class="line">    kCFRunLoopExit          = (1UL &lt;&lt; 7), // 即将退出Loop</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h5 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h5><p>我们通过IOS里的<code>Block</code>闭包，可以在异步执行一串功能逻辑代码后接着处理闭包里的活。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)someMethodThatTakesABlock:(returnType (^nullability)(parameterTypes))blockName;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[someObject someMethodThatTakesABlock:^returnType (parameters) &#123;...&#125;];</span><br></pre></td></tr></table></figure>
-<h5 id="还有其他非常多的使用，如通知等"><a href="#还有其他非常多的使用，如通知等" class="headerlink" title="还有其他非常多的使用，如通知等"></a>还有其他非常多的使用，如通知等</h5><h3 id="Python中的使用"><a href="#Python中的使用" class="headerlink" title="Python中的使用"></a>Python中的使用</h3><p>Python近些年才完全开发完优秀的<code>协程</code>并开放使用。使得Python上<code>多并发</code>成为事实上的可能。这里的多，不是之前的几十几百，是上十万。</p>
-<h5 id="Event-loop-协程"><a href="#Event-loop-协程" class="headerlink" title="Event_loop+协程"></a><code>Event_loop</code>+<code>协程</code></h5><p>Python里面使用多线程其实并不怎么爽，本身就是耗资源的语言，多线程切换更加雪上加霜了。通过协程，妥妥的解决了上十万的并发。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import asyncio</span><br><span class="line">async def test(i):</span><br><span class="line">	print(&quot;test_1&quot;,i)</span><br><span class="line">	await asyncio.sleep(1)</span><br><span class="line">	print(&quot;test_2&quot;,i)</span><br><span class="line">loop=asyncio.get_event_loop()</span><br><span class="line">tasks=[test(i) for i in range(5)]</span><br><span class="line">loop.run_until_complete(asyncio.wait(tasks))</span><br><span class="line">loop.close()</span><br></pre></td></tr></table></figure></p>
-<h5 id="aiohttp"><a href="#aiohttp" class="headerlink" title="aiohttp"></a><code>aiohttp</code></h5><p>网络访问上的多并发，对<code>协程</code>的进一步封装。</p>
-<h3 id="Node-js中的使用"><a href="#Node-js中的使用" class="headerlink" title="Node.js中的使用"></a>Node.js中的使用</h3><h5 id="Event-loop事件循环"><a href="#Event-loop事件循环" class="headerlink" title="Event_loop事件循环"></a><code>Event_loop</code>事件循环</h5><p>这个就没得说了，彻彻底底依靠<code>事件驱动</code>起家的语言。基于<code>javascript</code>和<code>V8</code>引擎起来的Node.js，就是完完全全的单线程语言。<br>可是要知道，Node.js就是以单线程中使用事件驱动处理高IO闻名世界的。<br>你可以想象一下，一个Node.js搭建的后台，每秒上千上万的并发，都是单线程在处理吗？<br>Java就是一个用户一个请求一个线程（又名<code>线程驱动</code>），服务器资源耗费真的大。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var fs = require(&quot;fs&quot;);</span><br><span class="line">var debug = require(&apos;debug&apos;)(&apos;example1&apos;);</span><br><span class="line"></span><br><span class="line">debug(&quot;begin&quot;);</span><br><span class="line"></span><br><span class="line">fs.readFile(&apos;package.json&apos;,&apos;utf-8&apos;,function(err,data)&#123;</span><br><span class="line">    if(err)  </span><br><span class="line">        debug(err);</span><br><span class="line">    else</span><br><span class="line">        debug(&quot;get file content&quot;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">setTimeout(function()&#123;</span><br><span class="line">    debug(&quot;timeout2&quot;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">debug(&apos;end&apos;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="iOS中的使用"><a href="#iOS中的使用" class="headerlink" title="iOS中的使用"></a>iOS中的使用</h3><h5 id="Runloop"><a href="#Runloop" class="headerlink" title="Runloop"></a><code>Runloop</code></h5><p><code>Runloop</code>可以说把<code>事件驱动</code>利用到了极致。你能想象，如果没有<code>Runloop</code>，你就真的不能使用iPhone手机了！<br><code>Runloop</code>依托于线程。我们手势点击一个按钮，就是在操作主线程里的<code>Runloop</code>。<br><code>Runloop</code>通过<code>事件驱动</code>在以下8种状态下实时循环切换，用于省电的同时又能够及时处理用户界面反馈。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">typedef CF_OPTIONS(CFOptionFlags, CFRunLoopActivity) &#123;</span><br><span class="line">    kCFRunLoopEntry         = (1UL &lt;&lt; 0), // 即将进入Loop</span><br><span class="line">    kCFRunLoopBeforeTimers  = (1UL &lt;&lt; 1), // 即将处理 Timer</span><br><span class="line">    kCFRunLoopBeforeSources = (1UL &lt;&lt; 2), // 即将处理 Source</span><br><span class="line">    kCFRunLoopBeforeWaiting = (1UL &lt;&lt; 5), // 即将进入休眠</span><br><span class="line">    kCFRunLoopAfterWaiting  = (1UL &lt;&lt; 6), // 刚从休眠中唤醒</span><br><span class="line">    kCFRunLoopExit          = (1UL &lt;&lt; 7), // 即将退出Loop</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
+<h5 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h5><p>我们通过IOS里的<code>Block</code>闭包，可以在异步执行一串功能逻辑代码后接着处理闭包里的活。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)someMethodThatTakesABlock:(returnType (^nullability)(parameterTypes))blockName;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[someObject someMethodThatTakesABlock:^returnType (parameters) &#123;...&#125;];</span><br></pre></td></tr></table></figure>
+
+<h5 id="还有其他非常多的使用，如通知等"><a href="#还有其他非常多的使用，如通知等" class="headerlink" title="还有其他非常多的使用，如通知等"></a>还有其他非常多的使用，如通知等</h5><h3 id="Python中的使用"><a href="#Python中的使用" class="headerlink" title="Python中的使用"></a>Python中的使用</h3><p>Python近些年才完全开发完优秀的<code>协程</code>并开放使用。使得Python上<code>多并发</code>成为事实上的可能。这里的多，不是之前的几十几百，是上十万。</p>
+<h5 id="Event-loop-协程"><a href="#Event-loop-协程" class="headerlink" title="Event_loop+协程"></a><code>Event_loop</code>+<code>协程</code></h5><p>Python里面使用多线程其实并不怎么爽，本身就是耗资源的语言，多线程切换更加雪上加霜了。通过协程，妥妥的解决了上十万的并发。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import asyncio</span><br><span class="line">async def test(i):</span><br><span class="line">	print(&quot;test_1&quot;,i)</span><br><span class="line">	await asyncio.sleep(1)</span><br><span class="line">	print(&quot;test_2&quot;,i)</span><br><span class="line">loop=asyncio.get_event_loop()</span><br><span class="line">tasks=[test(i) for i in range(5)]</span><br><span class="line">loop.run_until_complete(asyncio.wait(tasks))</span><br><span class="line">loop.close()</span><br></pre></td></tr></table></figure>
+
+<h5 id="aiohttp"><a href="#aiohttp" class="headerlink" title="aiohttp"></a><code>aiohttp</code></h5><p>网络访问上的多并发，对<code>协程</code>的进一步封装。</p>
+<h3 id="Node-js中的使用"><a href="#Node-js中的使用" class="headerlink" title="Node.js中的使用"></a>Node.js中的使用</h3><h5 id="Event-loop事件循环"><a href="#Event-loop事件循环" class="headerlink" title="Event_loop事件循环"></a><code>Event_loop</code>事件循环</h5><p>这个就没得说了，彻彻底底依靠<code>事件驱动</code>起家的语言。基于<code>javascript</code>和<code>V8</code>引擎起来的Node.js，就是完完全全的单线程语言。<br>可是要知道，Node.js就是以单线程中使用事件驱动处理高IO闻名世界的。<br>你可以想象一下，一个Node.js搭建的后台，每秒上千上万的并发，都是单线程在处理吗？<br>Java就是一个用户一个请求一个线程（又名<code>线程驱动</code>），服务器资源耗费真的大。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var fs = require(&quot;fs&quot;);</span><br><span class="line">var debug = require(&apos;debug&apos;)(&apos;example1&apos;);</span><br><span class="line"></span><br><span class="line">debug(&quot;begin&quot;);</span><br><span class="line"></span><br><span class="line">fs.readFile(&apos;package.json&apos;,&apos;utf-8&apos;,function(err,data)&#123;</span><br><span class="line">    if(err)  </span><br><span class="line">        debug(err);</span><br><span class="line">    else</span><br><span class="line">        debug(&quot;get file content&quot;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">setTimeout(function()&#123;</span><br><span class="line">    debug(&quot;timeout2&quot;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">debug(&apos;end&apos;);</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -589,7 +597,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件驱动的形象描述"><span class="nav-number">1.</span> <span class="nav-text">事件驱动的形象描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iOS中的使用"><span class="nav-number">2.</span> <span class="nav-text">iOS中的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Runloop"><span class="nav-number">2.0.1.</span> <span class="nav-text">Runloop</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#闭包"><span class="nav-number">2.0.2.</span> <span class="nav-text">闭包</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#还有其他非常多的使用，如通知等"><span class="nav-number">2.0.3.</span> <span class="nav-text">还有其他非常多的使用，如通知等</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python中的使用"><span class="nav-number">3.</span> <span class="nav-text">Python中的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Event-loop-协程"><span class="nav-number">3.0.1.</span> <span class="nav-text">Event_loop+协程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#aiohttp"><span class="nav-number">3.0.2.</span> <span class="nav-text">aiohttp</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Node-js中的使用"><span class="nav-number">4.</span> <span class="nav-text">Node.js中的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Event-loop事件循环"><span class="nav-number">4.0.1.</span> <span class="nav-text">Event_loop事件循环</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件驱动的形象描述"><span class="nav-number">1.</span> <span class="nav-text">事件驱动的形象描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iOS中的使用"><span class="nav-number">2.</span> <span class="nav-text">iOS中的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Runloop"><span class="nav-number">2.0.1.</span> <span class="nav-text">Runloop</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#闭包"><span class="nav-number">2.0.2.</span> <span class="nav-text">闭包</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#还有其他非常多的使用，如通知等"><span class="nav-number">2.0.3.</span> <span class="nav-text">还有其他非常多的使用，如通知等</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#Python中的使用"><span class="nav-number">3.</span> <span class="nav-text">Python中的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Event-loop-协程"><span class="nav-number">3.0.1.</span> <span class="nav-text">Event_loop+协程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#aiohttp"><span class="nav-number">3.0.2.</span> <span class="nav-text">aiohttp</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Node-js中的使用"><span class="nav-number">4.</span> <span class="nav-text">Node.js中的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Event-loop事件循环"><span class="nav-number">4.0.1.</span> <span class="nav-text">Event_loop事件循环</span></a></li></ol></li></div>
             
 
           </div>
