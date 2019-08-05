@@ -271,6 +271,161 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2019/01/06/iOS内存原理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="one.gongjiang@gmail.com">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个工匠">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/06/iOS内存原理/" itemprop="url">iOS内存原理</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-06T11:30:48+08:00">
+                2019-01-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/06/iOS内存原理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/06/iOS内存原理/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>iOS的内存管理，绝对是很多很多iOSer人的误区。<br>因为最近几年的iOS开发人员，都没有经历过MRC年代了。<br>MRC年代的内存总是不好管理，所以ARC帮我们做了很多事情。ARC做了很多事情让内存管理更加精准优秀外，却使得iOS开发人员不知道内存是怎么管理的了。<br>真正的内存管理，一定需要回到MRC下面去理解，根本思想是：<strong>谁创建、谁释放、谁引用、谁管理</strong>。<br><strong>内存释放的唯一途径是：引用计数=0</strong><br>自动释放池仅仅做了“谁创建谁释放”里面的一部分。<br><strong>ARC帮我们做了“谁创建、谁释放、谁引用、谁管理”四个部分。</strong><br><strong>ARC帮我们写了很多管理内存的代码，包括autolease、retain、release等。如果不理解MRC下面他们的含义，是不可能理解iOS内存管理的。</strong><br><strong>网络上面大多介绍的autolease、autoleasepool、autoleasepoolpage，只是自动释放池部分，只是iOS内存管理的一个面。</strong></p>
+<p>在ARC下，我们虽然不需要写retain和release，不代表他们不存在了。只是编译器帮我们自动添加了，并且在合适的时间添加的。只有编译器也不行，在运行时也会进行内存的控制。在编译和运行时两方的协调控制下，才做到了引用计数及时=0，也只有计数=0，内存才正确释放。</p>
+<p>ARC内存不是绝对安全释放的，还牵涉到内存区，如果字符串定义到了堆区，释放是及时的，定义到了栈区和常量区，就不那么及时了（虽然引用计数=0，代码也不能在调用，但是真实内存还在）。<br>而且很可能还会因为代码原因导致引用计数永远不可能为0，常见的就是循环引用，如Block的双向强引用，NSTimer的双向强引用等等，这里都需要特别的破环。解决双向引用的问题，核心在于破环，只要有一个缺口，内存不可能不释放。</p>
+<p>深入理解<strong>自己生成的对象，自己持有、非自己生成的对象，自己也能持有、不再需要自己持有的对象需要释放、非自己持有的对象无法释放</strong>，就能深入理解iOS的内存管理。<br>强烈推荐《Objective-C高级编程》，网上所有说明几乎均处于此。与其不断的翻阅二手说明书，弄的自己眼花缭乱，不如拿着原版，仔细啃食。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2018/12/31/游戏人生/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1097,7 +1252,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
