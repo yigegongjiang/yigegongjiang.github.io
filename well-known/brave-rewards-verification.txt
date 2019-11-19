@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: yigegongjiang.com
+Token: 86e766dc48c5c890017c539a433a1eff2c60f48dfa628ad0d8a4a13a59216c8f
