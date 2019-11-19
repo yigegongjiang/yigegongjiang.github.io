@@ -1,132 +1,79 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next mist use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html lang="zh-Hans">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="google-site-verification" content="hEkkdHoBZXdN-chbhMtLxz6orIp7_P0lfW61l88LlIw">
+<meta name="generator" content="Hexo 4.0.0">
+
+<meta name="google-site-verification" content="hEkkdHoBZXdN-chbhMtLxz6orIp7_P0lfW61l88LlIw" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="一个工匠" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
 
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="CPU,晶圆,光刻,内存,晶体管">
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="如果你能看到这篇文章，我想你一定查阅了很多相关资料了。如果你是对CPU的制作有一些模糊，或者希望通过其他博文来验证你的想法，那么下面一些认知或许对你有一些帮助。大到宇宙飞船，小到PC、手机、冰箱，无一没有芯片的影子。各位一定都对芯片有很多认知了，我们不需要多做说明，总之，没有芯片，就没有新社会吧。集成电路的创造，说第三次工业革命，反对的人应该不会多吧。 集成电路的制作理解一：硅=&amp;gt;晶圆原材">
-<meta name="keywords" content="CPU,晶圆,光刻,内存,晶体管">
-<meta property="og:type" content="article">
-<meta property="og:title" content="CPU的制作">
-<meta property="og:url" content="https://www.yigegongjiang.com/2019/04/11/CPU的制作/index.html">
-<meta property="og:site_name" content="一个工匠">
-<meta property="og:description" content="如果你能看到这篇文章，我想你一定查阅了很多相关资料了。如果你是对CPU的制作有一些模糊，或者希望通过其他博文来验证你的想法，那么下面一些认知或许对你有一些帮助。大到宇宙飞船，小到PC、手机、冰箱，无一没有芯片的影子。各位一定都对芯片有很多认知了，我们不需要多做说明，总之，没有芯片，就没有新社会吧。集成电路的创造，说第三次工业革命，反对的人应该不会多吧。 集成电路的制作理解一：硅=&amp;gt;晶圆原材">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://www.yigegongjiang.com/images/%E6%99%B6%E5%9C%86.jpg">
-<meta property="og:updated_time" content="2019-08-06T08:17:20.890Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CPU的制作">
-<meta name="twitter:description" content="如果你能看到这篇文章，我想你一定查阅了很多相关资料了。如果你是对CPU的制作有一些模糊，或者希望通过其他博文来验证你的想法，那么下面一些认知或许对你有一些帮助。大到宇宙飞船，小到PC、手机、冰箱，无一没有芯片的影子。各位一定都对芯片有很多认知了，我们不需要多做说明，总之，没有芯片，就没有新社会吧。集成电路的创造，说第三次工业革命，反对的人应该不会多吧。 集成电路的制作理解一：硅=&amp;gt;晶圆原材">
-<meta name="twitter:image" content="https://www.yigegongjiang.com/images/%E6%99%B6%E5%9C%86.jpg">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Mist',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
     algolia: {
-      applicationID: '',
+      appID: '',
       apiKey: '',
       indexName: '',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    sidebarPadding: 40
   };
 </script>
 
+  <meta name="description" content="如果你能看到这篇文章，我想你一定查阅了很多相关资料了。如果你是对CPU的制作有一些模糊，或者希望通过其他博文来验证你的想法，那么下面一些认知或许对你有一些帮助。大到宇宙飞船，小到PC、手机、冰箱，无一没有芯片的影子。各位一定都对芯片有很多认知了，我们不需要多做说明，总之，没有芯片，就没有新社会吧。集成电路的创造，说第三次工业革命，反对的人应该不会多吧。 集成电路的制作理解一：硅=&amp;gt;晶圆原材">
+<meta name="keywords" content="CPU,晶圆,光刻,内存,晶体管">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CPU的制作">
+<meta property="og:url" content="https:&#x2F;&#x2F;www.yigegongjiang.com&#x2F;2019&#x2F;04&#x2F;11&#x2F;CPU%E7%9A%84%E5%88%B6%E4%BD%9C&#x2F;index.html">
+<meta property="og:site_name" content="一个工匠">
+<meta property="og:description" content="如果你能看到这篇文章，我想你一定查阅了很多相关资料了。如果你是对CPU的制作有一些模糊，或者希望通过其他博文来验证你的想法，那么下面一些认知或许对你有一些帮助。大到宇宙飞船，小到PC、手机、冰箱，无一没有芯片的影子。各位一定都对芯片有很多认知了，我们不需要多做说明，总之，没有芯片，就没有新社会吧。集成电路的创造，说第三次工业革命，反对的人应该不会多吧。 集成电路的制作理解一：硅=&amp;gt;晶圆原材">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.yigegongjiang.com&#x2F;images&#x2F;%E6%99%B6%E5%9C%86.jpg">
+<meta property="og:updated_time" content="2019-08-06T08:17:20.890Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;www.yigegongjiang.com&#x2F;images&#x2F;%E6%99%B6%E5%9C%86.jpg">
+
+<link rel="canonical" href="https://www.yigegongjiang.com/2019/04/11/CPU%E7%9A%84%E5%88%B6%E4%BD%9C/">
 
 
-  <link rel="canonical" href="https://www.yigegongjiang.com/2019/04/11/CPU的制作/">
-
-
-
-
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
 
   <title>CPU的制作 | 一个工匠</title>
   
@@ -134,234 +81,178 @@
 
 
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-127664410-1', 'auto');
-  ga('send', 'pageview');
-</script>
 
 
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
 
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
 
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">一个工匠</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
         <h1 class="site-subtitle" itemprop="description">跋山涉水，走心为匠。</h1>
       
   </div>
 
   <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
   </div>
 </div>
 
+
 <nav class="site-nav">
   
-
-  
-    <ul id="menu" class="menu">
-      
-        
+  <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
-        </li>
-      
-        
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
-          </a>
-        </li>
-      
-        
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
-          </a>
-        </li>
-      
-        
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
         <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
-            
-            关于
-          </a>
-        </li>
-      
 
-      
-    </ul>
-  
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
 
-  
+  </li>
+  </ul>
+
 </nav>
-
-
- </div>
+</div>
     </header>
 
-    <main id="main" class="main">
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content">
+          
+
+          <div class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
-
-  
-
+  <div class="posts-expand">
+      
   
   
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2019/04/11/CPU的制作/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2019/04/11/CPU%E7%9A%84%E5%88%B6%E4%BD%9C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="one.gongjiang@gmail.com">
-      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="one.gongjiang@gmail.com">
+      <meta itemprop="description" content="跋山涉水，走心为匠。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="一个工匠">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">CPU的制作</h2>
-        
+        <h2 class="post-title" itemprop="name headline">
+          CPU的制作
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-11T20:14:43+08:00">
-                2019-04-11
-              </time>
-            
+              <span class="post-meta-item-text">Posted on</span>
 
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
+              <time title="Created: 2019-04-11 20:14:43" itemprop="dateCreated datePublished" datetime="2019-04-11T20:14:43+08:00">2019-04-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-08-06 16:17:20" itemprop="dateModified" datetime="2019-08-06T16:17:20+08:00">2019-08-06</time>
+              </span>
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index">
                     <span itemprop="name">技术</span>
                   </a>
                 </span>
-
-                
-                
-              
             </span>
-          
 
           
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/04/11/CPU的制作/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/11/CPU的制作/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2019/04/11/CPU%E7%9A%84%E5%88%B6%E4%BD%9C/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/04/11/CPU%E7%9A%84%E5%88%B6%E4%BD%9C/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -369,10 +260,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        <p><img src="/images/%E6%99%B6%E5%9C%86.jpg" alt></p>
+        <p><img src="/images/%E6%99%B6%E5%9C%86.jpg" alt=""></p>
 <p>如果你能看到这篇文章，我想你一定查阅了很多相关资料了。<br>如果你是对CPU的制作有一些模糊，或者希望通过其他博文来验证你的想法，那么下面一些认知或许对你有一些帮助。<br>大到宇宙飞船，小到PC、手机、冰箱，无一没有芯片的影子。<br>各位一定都对芯片有很多认知了，我们不需要多做说明，总之，没有芯片，就没有新社会吧。集成电路的创造，说第三次工业革命，反对的人应该不会多吧。</p>
 <h3 id="集成电路的制作"><a href="#集成电路的制作" class="headerlink" title="集成电路的制作"></a>集成电路的制作</h3><h4 id="理解一：硅-gt-晶圆"><a href="#理解一：硅-gt-晶圆" class="headerlink" title="理解一：硅=&gt;晶圆"></a>理解一：硅=&gt;晶圆</h4><p>原材料首当其冲的是高纯度硅。通过把高纯度的硅融化，用一个引子伸入容器，不断的让硅附着生长在引子上面。我们可以想象明矾的制作过程。<br>引子不断的往上提，最后一个很重的圆柱形硅淀就形成了。<br>这个圆柱形直径有10厘米+。<br>然后通过机器切割，从上往下，切割一个豁口或者一个边，这个豁口或者边，是为了客户进行晶圆制作的时候辨认方向用的。因为最终晶圆不是100%利用的，这个豁口或者边，是肯定不会用到的。<br>然后，对整个圆柱形硅切割成晶圆。每个晶圆对直径也还是10厘米+，但是厚度只有3毫米左右。这样的一片片晶圆，就是后面集成电路的原材料了。<br>所以，<strong>晶圆其实是很大的一个圆盘，比普通人的一张脸，还是要大一些的</strong>。</p>
 <a id="more"></a>
@@ -387,228 +275,144 @@
 <hr>
 <p>一个人的思维，决定了一个人的高度。<br>一举一动，笑或者哭，走或者跳，都是通过大脑发出指令，身体才能够执行。<br>哪些主观行动，是不通过人的思维控制的呢？神经反射之类的我们除外，它不属于主观行动。<br>一个人如何学习，如何赚钱，如何理财，如何钱生钱命转命。都是他的思维驱动他的行动的。<br>所以，努力的提升思维吧！<br>很多人说的，努力比不上选择，其实努力很廉价的。人只要主观愿意，随时可以很努力。你努力了，更多的人可以比你更努力。努力决定的仅仅是下限！<br>思维的提升，才能有效的不让努力白费，才能更好的实现人生价值。<br>都是行人。</p>
 
-      
     </div>
+
     
     
     
 
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/计算机原理/" rel="tag"># 计算机原理</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/03/28/我心里一直有一个念想/" rel="next" title="我心里一直有一个念想">
-                <i class="fa fa-chevron-left"></i> 我心里一直有一个念想
-              </a>
-            
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/" rel="tag"># 计算机原理</a>
           </div>
 
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/21/计算机Unicode编码终结/" rel="prev" title="计算机Unicode编码终结">
-                计算机Unicode编码终结 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-
-  
-    <div class="comments" id="comments">
-    </div>
-  
-
-
-
-        </div>
         
-          
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/03/28/%E6%88%91%E5%BF%83%E9%87%8C%E4%B8%80%E7%9B%B4%E6%9C%89%E4%B8%80%E4%B8%AA%E5%BF%B5%E6%83%B3/" rel="next" title="我心里一直有一个念想">
+                  <i class="fa fa-chevron-left"></i> 我心里一直有一个念想
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2019/05/21/%E8%AE%A1%E7%AE%97%E6%9C%BAUnicode%E7%BC%96%E7%A0%81%E7%BB%88%E7%BB%93/" rel="prev" title="计算机Unicode编码终结">
+                  计算机Unicode编码终结 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
+  
+  
+
   </div>
 
-  <aside id="sidebar" class="sidebar">
-    
+
+          </div>
+          
+    <div class="comments" id="comments"></div>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
     <div class="sidebar-inner">
 
-      
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
 
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">one.gongjiang@gmail.com</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">18</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-6982021533088600",
-          enable_page_level_ads: true
-     });
-</script>
-        </div>
-      </section>
-
-      
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#集成电路的制作"><span class="nav-number">1.</span> <span class="nav-text">集成电路的制作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#理解一：硅-gt-晶圆"><span class="nav-number">1.1.</span> <span class="nav-text">理解一：硅=&gt;晶圆</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#理解二：晶圆光刻腐蚀"><span class="nav-number">1.2.</span> <span class="nav-text">理解二：晶圆光刻腐蚀</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#理解三：晶体管数量"><span class="nav-number">1.3.</span> <span class="nav-text">理解三：晶体管数量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#理解四：晶圆良率"><span class="nav-number">1.4.</span> <span class="nav-text">理解四：晶圆良率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#理解五：晶体管数量为什么目前保持300亿多一些，再也上不去了"><span class="nav-number">1.5.</span> <span class="nav-text">理解五：晶体管数量为什么目前保持300亿多一些，再也上不去了</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#理解六：内存是不是也有很多晶体管？"><span class="nav-number">1.6.</span> <span class="nav-text">理解六：内存是不是也有很多晶体管？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#理解七：手机都比电脑还强劲了感觉，手机为什么那么小？手机里面有CPU吗？"><span class="nav-number">1.7.</span> <span class="nav-text">理解七：手机都比电脑还强劲了感觉，手机为什么那么小？手机里面有CPU吗？</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#集成电路的制作"><span class="nav-number">1.</span> <span class="nav-text">集成电路的制作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#理解一：硅-gt-晶圆"><span class="nav-number">1.1.</span> <span class="nav-text">理解一：硅=&gt;晶圆</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#理解二：晶圆光刻腐蚀"><span class="nav-number">1.2.</span> <span class="nav-text">理解二：晶圆光刻腐蚀</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#理解三：晶体管数量"><span class="nav-number">1.3.</span> <span class="nav-text">理解三：晶体管数量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#理解四：晶圆良率"><span class="nav-number">1.4.</span> <span class="nav-text">理解四：晶圆良率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#理解五：晶体管数量为什么目前保持300亿多一些，再也上不去了"><span class="nav-number">1.5.</span> <span class="nav-text">理解五：晶体管数量为什么目前保持300亿多一些，再也上不去了</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#理解六：内存是不是也有很多晶体管？"><span class="nav-number">1.6.</span> <span class="nav-text">理解六：内存是不是也有很多晶体管？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#理解七：手机都比电脑还强劲了感觉，手机为什么那么小？手机里面有CPU吗？"><span class="nav-number">1.7.</span> <span class="nav-text">理解七：手机都比电脑还强劲了感觉，手机为什么那么小？手机里面有CPU吗？</span></a></li></ol></li></ol></div>
+      </div>
       <!--/noindex-->
-      
 
-      
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">one.gongjiang@gmail.com</p>
+  <div class="site-description" itemprop="description">跋山涉水，走心为匠。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+
+
+
+      </div>
 
     </div>
   </aside>
+  <div id="sidebar-dimmer"></div>
 
 
-        
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">one.gongjiang@gmail.com</span>
-
-  
 </div>
-
-
-  <div class="powered-by">跋山涉水，走心为匠。</div>
-
-
-
-
-
-
-
+  <div class="powered-by">
+    跋山涉水，走心为匠。 By Hexo.
+  </div>
 
         
+
+
+
+
+
 
 
 
@@ -619,178 +423,65 @@
         
       </div>
     </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
   </div>
 
   
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(item => {
+    return GUEST.includes(item);
+  });
+  new Valine({
+    el: '#comments',
+    verify: true,
+    notify: true,
+    appId: 'gzcoXMhRjVA5qlkjOWugEMrG-MdYXbMMI',
+    appKey: 'zHkhf61tDwyPJtTRCnzOLiWn',
+    placeholder: "跋山涉水，走心为匠。",
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn',
+    path: location.pathname,
+    recordIP: false,
+    serverURLs: ''
+  });
+}, window.Valine);
 </script>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-  
-  <script type="text/javascript">
-    var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item=>{
-      return GUEST.indexOf(item)>-1;
-    });
-    new Valine({
-        el: '#comments' ,
-        verify: true,
-        notify: true,
-        appId: 'gzcoXMhRjVA5qlkjOWugEMrG-MdYXbMMI',
-        appKey: 'zHkhf61tDwyPJtTRCnzOLiWn',
-        placeholder: '跋山涉水，走心为匠。',
-        avatar:'mm',
-        guest_info:guest,
-        pageSize:'10' || 10,
-    });
-  </script>
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
 
 </body>
 </html>

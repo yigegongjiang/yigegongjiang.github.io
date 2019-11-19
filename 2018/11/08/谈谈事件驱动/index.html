@@ -1,130 +1,77 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next mist use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html lang="zh-Hans">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="google-site-verification" content="hEkkdHoBZXdN-chbhMtLxz6orIp7_P0lfW61l88LlIw">
+<meta name="generator" content="Hexo 4.0.0">
+
+<meta name="google-site-verification" content="hEkkdHoBZXdN-chbhMtLxz6orIp7_P0lfW61l88LlIw" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="一个工匠" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
 
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="事件驱动,Runloop,Runtime,Event loop,协程,多并发">
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="事件驱动这个技术方案，可以说实实在在影响了这些年编程界的技术方向。最实际的受用者应该就是异步编程了，如I/O。 我所认知到的语言，都是事件驱动的使用者，受益者，推动者。">
-<meta name="keywords" content="事件驱动,Runloop,Runtime,Event loop,协程,多并发">
-<meta property="og:type" content="article">
-<meta property="og:title" content="谈谈事件驱动">
-<meta property="og:url" content="https://www.yigegongjiang.com/2018/11/08/谈谈事件驱动/index.html">
-<meta property="og:site_name" content="一个工匠">
-<meta property="og:description" content="事件驱动这个技术方案，可以说实实在在影响了这些年编程界的技术方向。最实际的受用者应该就是异步编程了，如I/O。 我所认知到的语言，都是事件驱动的使用者，受益者，推动者。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-26T13:28:31.433Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="谈谈事件驱动">
-<meta name="twitter:description" content="事件驱动这个技术方案，可以说实实在在影响了这些年编程界的技术方向。最实际的受用者应该就是异步编程了，如I/O。 我所认知到的语言，都是事件驱动的使用者，受益者，推动者。">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Mist',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
     algolia: {
-      applicationID: '',
+      appID: '',
       apiKey: '',
       indexName: '',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    sidebarPadding: 40
   };
 </script>
 
+  <meta name="description" content="事件驱动这个技术方案，可以说实实在在影响了这些年编程界的技术方向。最实际的受用者应该就是异步编程了，如I&#x2F;O。 我所认知到的语言，都是事件驱动的使用者，受益者，推动者。">
+<meta name="keywords" content="事件驱动,Runloop,Runtime,Event loop,协程,多并发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="谈谈事件驱动">
+<meta property="og:url" content="https:&#x2F;&#x2F;www.yigegongjiang.com&#x2F;2018&#x2F;11&#x2F;08&#x2F;%E8%B0%88%E8%B0%88%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8&#x2F;index.html">
+<meta property="og:site_name" content="一个工匠">
+<meta property="og:description" content="事件驱动这个技术方案，可以说实实在在影响了这些年编程界的技术方向。最实际的受用者应该就是异步编程了，如I&#x2F;O。 我所认知到的语言，都是事件驱动的使用者，受益者，推动者。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-02-26T13:28:31.433Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://www.yigegongjiang.com/2018/11/08/%E8%B0%88%E8%B0%88%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8/">
 
 
-  <link rel="canonical" href="https://www.yigegongjiang.com/2018/11/08/谈谈事件驱动/">
-
-
-
-
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
 
   <title>谈谈事件驱动 | 一个工匠</title>
   
@@ -132,242 +79,183 @@
 
 
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-127664410-1', 'auto');
-  ga('send', 'pageview');
-</script>
 
 
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
 
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
 
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">一个工匠</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
         <h1 class="site-subtitle" itemprop="description">跋山涉水，走心为匠。</h1>
       
   </div>
 
   <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
   </div>
 </div>
 
+
 <nav class="site-nav">
   
-
-  
-    <ul id="menu" class="menu">
-      
-        
+  <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
-        </li>
-      
-        
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
-          </a>
-        </li>
-      
-        
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
-          </a>
-        </li>
-      
-        
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
         <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
-            
-            关于
-          </a>
-        </li>
-      
 
-      
-    </ul>
-  
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
 
-  
+  </li>
+  </ul>
+
 </nav>
-
-
- </div>
+</div>
     </header>
 
-    <main id="main" class="main">
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content">
+          
+
+          <div class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
-
-  
-
+  <div class="posts-expand">
+      
   
   
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2018/11/08/谈谈事件驱动/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2018/11/08/%E8%B0%88%E8%B0%88%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="one.gongjiang@gmail.com">
-      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="one.gongjiang@gmail.com">
+      <meta itemprop="description" content="跋山涉水，走心为匠。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="一个工匠">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">谈谈事件驱动</h2>
-        
+        <h2 class="post-title" itemprop="name headline">
+          谈谈事件驱动
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-08T15:10:08+08:00">
-                2018-11-08
-              </time>
-            
+              <span class="post-meta-item-text">Posted on</span>
 
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
+              <time title="Created: 2018-11-08 15:10:08" itemprop="dateCreated datePublished" datetime="2018-11-08T15:10:08+08:00">2018-11-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-02-26 21:28:31" itemprop="dateModified" datetime="2019-02-26T21:28:31+08:00">2019-02-26</time>
+              </span>
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index">
                     <span itemprop="name">技术</span>
                   </a>
                 </span>
-
-                
-                
-              
             </span>
-          
 
           
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/11/08/谈谈事件驱动/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/08/谈谈事件驱动/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2018/11/08/%E8%B0%88%E8%B0%88%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2018/11/08/%E8%B0%88%E8%B0%88%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
-      
 
       
         <p><code>事件驱动</code>这个技术方案，可以说实实在在影响了这些年编程界的技术方向。最实际的受用者应该就是<code>异步编程</code>了，如I/O。</p>
@@ -387,245 +275,155 @@
 <p>所以<code>事件驱动</code>的本质是：<strong>一方及时发出事件，通过CPU时间片实时轮转事件循环队列并告知到while循环以通知到另一方，另一方及时响应事件。</strong></p>
 <h3 id="iOS中的使用"><a href="#iOS中的使用" class="headerlink" title="iOS中的使用"></a>iOS中的使用</h3><h5 id="Runloop"><a href="#Runloop" class="headerlink" title="Runloop"></a><code>Runloop</code></h5><p><code>Runloop</code>可以说把<code>事件驱动</code>利用到了极致。你能想象，如果没有<code>Runloop</code>，你就真的不能使用iPhone手机了！<br><code>Runloop</code>依托于线程。我们手势点击一个按钮，就是在操作主线程里的<code>Runloop</code>。<br><code>Runloop</code>通过<code>事件驱动</code>在以下8种状态下实时循环切换，用于省电的同时又能够及时处理用户界面反馈。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">typedef CF_OPTIONS(CFOptionFlags, CFRunLoopActivity) &#123;</span><br><span class="line">    kCFRunLoopEntry         = (1UL &lt;&lt; 0), // 即将进入Loop</span><br><span class="line">    kCFRunLoopBeforeTimers  = (1UL &lt;&lt; 1), // 即将处理 Timer</span><br><span class="line">    kCFRunLoopBeforeSources = (1UL &lt;&lt; 2), // 即将处理 Source</span><br><span class="line">    kCFRunLoopBeforeWaiting = (1UL &lt;&lt; 5), // 即将进入休眠</span><br><span class="line">    kCFRunLoopAfterWaiting  = (1UL &lt;&lt; 6), // 刚从休眠中唤醒</span><br><span class="line">    kCFRunLoopExit          = (1UL &lt;&lt; 7), // 即将退出Loop</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
 <h5 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h5><p>我们通过IOS里的<code>Block</code>闭包，可以在异步执行一串功能逻辑代码后接着处理闭包里的活。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)someMethodThatTakesABlock:(returnType (^nullability)(parameterTypes))blockName;</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[someObject someMethodThatTakesABlock:^returnType (parameters) &#123;...&#125;];</span><br></pre></td></tr></table></figure>
-
 <h5 id="还有其他非常多的使用，如通知等"><a href="#还有其他非常多的使用，如通知等" class="headerlink" title="还有其他非常多的使用，如通知等"></a>还有其他非常多的使用，如通知等</h5><h3 id="Python中的使用"><a href="#Python中的使用" class="headerlink" title="Python中的使用"></a>Python中的使用</h3><p>Python近些年才完全开发完优秀的<code>协程</code>并开放使用。使得Python上<code>多并发</code>成为事实上的可能。这里的多，不是之前的几十几百，是上十万。</p>
 <h5 id="Event-loop-协程"><a href="#Event-loop-协程" class="headerlink" title="Event_loop+协程"></a><code>Event_loop</code>+<code>协程</code></h5><p>Python里面使用多线程其实并不怎么爽，本身就是耗资源的语言，多线程切换更加雪上加霜了。通过协程，妥妥的解决了上十万的并发。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import asyncio</span><br><span class="line">async def test(i):</span><br><span class="line">	print(&quot;test_1&quot;,i)</span><br><span class="line">	await asyncio.sleep(1)</span><br><span class="line">	print(&quot;test_2&quot;,i)</span><br><span class="line">loop=asyncio.get_event_loop()</span><br><span class="line">tasks=[test(i) for i in range(5)]</span><br><span class="line">loop.run_until_complete(asyncio.wait(tasks))</span><br><span class="line">loop.close()</span><br></pre></td></tr></table></figure>
-
 <h5 id="aiohttp"><a href="#aiohttp" class="headerlink" title="aiohttp"></a><code>aiohttp</code></h5><p>网络访问上的多并发，对<code>协程</code>的进一步封装。</p>
 <h3 id="Node-js中的使用"><a href="#Node-js中的使用" class="headerlink" title="Node.js中的使用"></a>Node.js中的使用</h3><h5 id="Event-loop事件循环"><a href="#Event-loop事件循环" class="headerlink" title="Event_loop事件循环"></a><code>Event_loop</code>事件循环</h5><p>这个就没得说了，彻彻底底依靠<code>事件驱动</code>起家的语言。基于<code>javascript</code>和<code>V8</code>引擎起来的Node.js，就是完完全全的单线程语言。<br>可是要知道，Node.js就是以单线程中使用事件驱动处理高IO闻名世界的。<br>你可以想象一下，一个Node.js搭建的后台，每秒上千上万的并发，都是单线程在处理吗？<br>Java就是一个用户一个请求一个线程（又名<code>线程驱动</code>），服务器资源耗费真的大。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var fs = require(&quot;fs&quot;);</span><br><span class="line">var debug = require(&apos;debug&apos;)(&apos;example1&apos;);</span><br><span class="line"></span><br><span class="line">debug(&quot;begin&quot;);</span><br><span class="line"></span><br><span class="line">fs.readFile(&apos;package.json&apos;,&apos;utf-8&apos;,function(err,data)&#123;</span><br><span class="line">    if(err)  </span><br><span class="line">        debug(err);</span><br><span class="line">    else</span><br><span class="line">        debug(&quot;get file content&quot;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">setTimeout(function()&#123;</span><br><span class="line">    debug(&quot;timeout2&quot;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">debug(&apos;end&apos;);</span><br></pre></td></tr></table></figure>
-      
     </div>
+
     
     
     
 
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/iOS/" rel="tag"># iOS</a>
-          
-            <a href="/tags/Python/" rel="tag"># Python</a>
-          
-            <a href="/tags/Node-js/" rel="tag"># Node.js</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/10/31/折腾/" rel="next" title="折腾">
-                <i class="fa fa-chevron-left"></i> 折腾
-              </a>
-            
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/iOS/" rel="tag"># iOS</a>
+              <a href="/tags/Python/" rel="tag"># Python</a>
+              <a href="/tags/Node-js/" rel="tag"># Node.js</a>
           </div>
 
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/24/Block闭包简查记录/" rel="prev" title="Block闭包简查记录">
-                Block闭包简查记录 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-
-  
-    <div class="comments" id="comments">
-    </div>
-  
-
-
-
-        </div>
         
-          
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2018/10/31/%E6%8A%98%E8%85%BE/" rel="next" title="折腾">
+                  <i class="fa fa-chevron-left"></i> 折腾
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2018/11/24/Block%E9%97%AD%E5%8C%85%E7%AE%80%E6%9F%A5%E8%AE%B0%E5%BD%95/" rel="prev" title="Block闭包简查记录">
+                  Block闭包简查记录 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
+  
+  
+
   </div>
 
-  <aside id="sidebar" class="sidebar">
-    
+
+          </div>
+          
+    <div class="comments" id="comments"></div>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
     <div class="sidebar-inner">
 
-      
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
 
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">one.gongjiang@gmail.com</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">18</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-6982021533088600",
-          enable_page_level_ads: true
-     });
-</script>
-        </div>
-      </section>
-
-      
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件驱动的形象描述"><span class="nav-number">1.</span> <span class="nav-text">事件驱动的形象描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iOS中的使用"><span class="nav-number">2.</span> <span class="nav-text">iOS中的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Runloop"><span class="nav-number">2.0.1.</span> <span class="nav-text">Runloop</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#闭包"><span class="nav-number">2.0.2.</span> <span class="nav-text">闭包</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#还有其他非常多的使用，如通知等"><span class="nav-number">2.0.3.</span> <span class="nav-text">还有其他非常多的使用，如通知等</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#Python中的使用"><span class="nav-number">3.</span> <span class="nav-text">Python中的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Event-loop-协程"><span class="nav-number">3.0.1.</span> <span class="nav-text">Event_loop+协程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#aiohttp"><span class="nav-number">3.0.2.</span> <span class="nav-text">aiohttp</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Node-js中的使用"><span class="nav-number">4.</span> <span class="nav-text">Node.js中的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Event-loop事件循环"><span class="nav-number">4.0.1.</span> <span class="nav-text">Event_loop事件循环</span></a></li></ol></li></div>
-            
-
-          </div>
-        </section>
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件驱动的形象描述"><span class="nav-number">1.</span> <span class="nav-text">事件驱动的形象描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iOS中的使用"><span class="nav-number">2.</span> <span class="nav-text">iOS中的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Runloop"><span class="nav-number">2.0.1.</span> <span class="nav-text">Runloop</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#闭包"><span class="nav-number">2.0.2.</span> <span class="nav-text">闭包</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#还有其他非常多的使用，如通知等"><span class="nav-number">2.0.3.</span> <span class="nav-text">还有其他非常多的使用，如通知等</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python中的使用"><span class="nav-number">3.</span> <span class="nav-text">Python中的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Event-loop-协程"><span class="nav-number">3.0.1.</span> <span class="nav-text">Event_loop+协程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#aiohttp"><span class="nav-number">3.0.2.</span> <span class="nav-text">aiohttp</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Node-js中的使用"><span class="nav-number">4.</span> <span class="nav-text">Node.js中的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Event-loop事件循环"><span class="nav-number">4.0.1.</span> <span class="nav-text">Event_loop事件循环</span></a></li></ol></li></ol></li></ol></div>
+      </div>
       <!--/noindex-->
-      
 
-      
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">one.gongjiang@gmail.com</p>
+  <div class="site-description" itemprop="description">跋山涉水，走心为匠。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+
+
+
+      </div>
 
     </div>
   </aside>
+  <div id="sidebar-dimmer"></div>
 
 
-        
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">one.gongjiang@gmail.com</span>
-
-  
 </div>
-
-
-  <div class="powered-by">跋山涉水，走心为匠。</div>
-
-
-
-
-
-
-
+  <div class="powered-by">
+    跋山涉水，走心为匠。 By Hexo.
+  </div>
 
         
+
+
+
+
+
 
 
 
@@ -636,178 +434,65 @@
         
       </div>
     </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
   </div>
 
   
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(item => {
+    return GUEST.includes(item);
+  });
+  new Valine({
+    el: '#comments',
+    verify: true,
+    notify: true,
+    appId: 'gzcoXMhRjVA5qlkjOWugEMrG-MdYXbMMI',
+    appKey: 'zHkhf61tDwyPJtTRCnzOLiWn',
+    placeholder: "跋山涉水，走心为匠。",
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn',
+    path: location.pathname,
+    recordIP: false,
+    serverURLs: ''
+  });
+}, window.Valine);
 </script>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-  
-  <script type="text/javascript">
-    var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item=>{
-      return GUEST.indexOf(item)>-1;
-    });
-    new Valine({
-        el: '#comments' ,
-        verify: true,
-        notify: true,
-        appId: 'gzcoXMhRjVA5qlkjOWugEMrG-MdYXbMMI',
-        appKey: 'zHkhf61tDwyPJtTRCnzOLiWn',
-        placeholder: '跋山涉水，走心为匠。',
-        avatar:'mm',
-        guest_info:guest,
-        pageSize:'10' || 10,
-    });
-  </script>
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
 
 </body>
 </html>
