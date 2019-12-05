@@ -231,7 +231,6 @@ test4.name2 = "t"
 test4.arr1.append(1)
 test4.arr2.append(1)
 test4 = Person2()
-
 ```
 
 ___
