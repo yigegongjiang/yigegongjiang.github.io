@@ -67,7 +67,7 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;www.yigegongjiang.com&#x2F;images&#x2F;swift_struct_class_%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E4%BA%92%E5%B5%8C2.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;www.yigegongjiang.com&#x2F;images&#x2F;swift_struct_class_%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E4%BA%92%E5%B5%8C3.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;www.yigegongjiang.com&#x2F;images&#x2F;swift_struct_class_%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E4%BA%92%E5%B5%8C4.png">
-<meta property="og:updated_time" content="2019-12-23T13:59:41.205Z">
+<meta property="og:updated_time" content="2019-12-23T14:33:32.984Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;www.yigegongjiang.com&#x2F;images&#x2F;swift_struct_class_%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B.png">
 
@@ -385,6 +385,8 @@
 <p>这里如果对Int8值类型的变量赋值过大，首先编译就过不了了，超过Int8的存储空间了嘛。<br>值类型的空间大小，在编译时就已经确定，这是毋庸置疑的。<br>那String是如何做到的呢？<br>打印一下上面代码中的str大小，看看到底是多大：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">var str &#x3D; &quot;Hello&quot;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">print(MemoryLayout.stride(ofValue: str))    &#x2F;&#x2F; 16</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">str.append(&quot;Hello...Hello&quot;) &#x2F;&#x2F; 有1000个Hello</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">print(MemoryLayout.stride(ofValue: str))    &#x2F;&#x2F; 16</span></pre></td></tr></table></figure>
 <p>可以发现，str的内存大小，没有变化过…<br>这也说明了，String的确是值类型的，它真的可以存储非常非常多的字符。<br>我在查看了“<a href="https://www.cnblogs.com/mjios/" target="_blank" rel="noopener">M了个J</a>”大神的博客后，依然无解，因为他把答案公布在了两小时的汇编视频中，而我没有去看。<br>这里把大神的博客放下，希望有心人能去窥探一下。<br><a href="https://www.cnblogs.com/mjios/p/11799136.html" target="_blank" rel="noopener">https://www.cnblogs.com/mjios/p/11799136.html</a></p>
+<hr>
+<p>朋友对我说，抽象是一名程序员核心的能力。很多时候，我越发觉得这句话说的对！</p>
 
     </div>
 
