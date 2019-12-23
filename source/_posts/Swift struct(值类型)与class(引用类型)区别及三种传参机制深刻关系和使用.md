@@ -240,7 +240,84 @@ assert(person == someOne)
 而通过equal来比较，就变成了上面的值类型的字节码比较，Hello的二进制存储都是一样的，他们就相等了。
 
 ### 0X0 值类型和引用类型在花式传参过程中的异同
+> 如果不能把值传参、地址传参和引用传参与类对象联系起来，也无法理解不同传参下对象的使用和struct、class的应用场景。
 
+为什么三种传参方式对struct和class的理解如此重要？其实他们本不重要，只是附带品。但是因为很多很多人对他们认知是错误的，所以才变得重要起来。
+毕竟，错误的理论，总不能推导出来正确的知识。
+首先，我们需要确定一个知识点，**值传参**、**引用传参**、**地址传参**和**值类型**、**引用类型**相比，虽然也有**值**和**引用**的区分，但他们不是包含的关系，即不是值类型对应值传参。
+值类型和引用类型是数据存在的方式，三种传参方式，是数据传递的方式。他们是对数据两个层面的操作控制。
+所以，我们总共有6种情况需要分析：值类型下的值传参、引用传参、地址传参，引用类型下的值传参、引用传参、地址传参。
+说明：因为引用传参很多语言默认都没有实现，如Java、Objective-C、Swift等等,所以需要通过C++模拟。
+##### 值类型下的值传参、引用传参、地址传参
+```
+// 值类型的值传参
+// Swift struct版本
+struct Person: Equatable {
+    var name: String
+    var age: UInt8
+} 
+ 
+var person = Person(name: "Gongjiang", age: 20)
+person.name = "Hello"
+ 
+var someOne = person
+someOne.name = "Robot"
+someOne = Person(name: "SomeOne", age: 18)
+```
+```
+// 值类型的地址传参
+// Swift class版本
+class Person {
+    var name: String
+    var age: UInt8
+    init(name: String, age: UInt8) {
+        self.name = name
+        self.age = age
+    }
+}
+ 
+var person = Person(name: "Gongjiang", age: 20)
+person.name = "Hello"
+ 
+func change(someOne: inout Person) {
+    someOne.name = "Robot"
+    someOne = Person(name: "SomeOne", age: 18)
+}
+ 
+change(someOne: &person)
+```
+```
+// 值类型的引用传参
+// C++ 版本
+void change(int & param2){
+    param2++;
+    param2 = 100;
+}
+ 
+int param1 = 20;
+change(param1);
+```
+上面的内存分布如图：
+![](/images/swift_struct_class_值类型的三种传参.png)
+
+我们分析一下值类型下的三种传参，
+1. 值传参，就是行参对象原封不动的获取了实参对象的**数据拷贝**。两个对象之间不再有任何关联，对行参对象的内部修改(someOne.name = "Robot")和自身修改(someOne = Person(name: "SomeOne", age: 18))，都不会更改另一个对象的任何数据。如上图所示，person对象没有任何修改。
+2. 地址传参，就是行参对象原封不动的获取了实参对象的**地址拷贝**。所以行参实际存储的是实参的内存地址拷贝。那么通过内存地址对数据的内部修改(someOne.name = "Robot")都会影响到原对象，毕竟对象只有一个。但是行参自身修改(someOne = Person(name: "SomeOne", age: 18))，却不会影响到原对象，因为行参是实参的地址拷贝，自身数据的改变就是改变了拷贝的那份内存地址，不会影响到实参。**所以地址传参，本质还是值传参，仅仅多了一个通过内存地址修改原数据的途径。**
+3. 引用传参，分析起来其实最简单的。那就是，行参仅仅是实参的一个别名(alias)。行参存储的依旧是实参的内存地址拷贝，但是对行参所有的操作，都会通过**间接寻址**的方式直接操作实参。注意，是所有操作，因为行参仅仅是实参的别名。所以我们看到，引用传参里面，行参不仅可以修改原对象数据，还可以更换原对象。
+
+##### 引用类型的引用传参
+这个基本就是很多人误区的地方。引用类型的引用传参，很多语言都没有实现，如Java、Objective-C、Swift等等。下面用C++做示例：
+```
+//引用传递
+void change2(int & param2){
+    param2++;
+}
+
+int param1 = 20;
+change2(param1);
+```
+上面的内存分布如图：
+![](/images/swift_struct_class_类型的三种传参.png)
 ### 0X0 值语义和引用语义的联动性
 
 ### 0X0 值类型和引用类型的抽象层级差异
