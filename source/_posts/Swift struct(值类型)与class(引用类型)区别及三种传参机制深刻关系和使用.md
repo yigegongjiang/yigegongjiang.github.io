@@ -632,3 +632,7 @@ print(MemoryLayout.stride(ofValue: str))    // 16
 我在查看了“[M了个J](https://www.cnblogs.com/mjios/)”大神的博客后，依然无解，因为他把答案公布在了两小时的汇编视频中，而我没有去看。
 这里把大神的博客放下，希望有心人能去窥探一下。
 [https://www.cnblogs.com/mjios/p/11799136.html](https://www.cnblogs.com/mjios/p/11799136.html)
+
+___
+
+朋友对我说，抽象是一名程序员核心的能力。很多时候，我越发觉得这句话说的对！
