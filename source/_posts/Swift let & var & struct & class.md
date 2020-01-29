@@ -18,7 +18,6 @@ struct Person1 {
     let name1: String = "name1"
     var name2: String = "name2"
 }
-
 class Person2 {
     let name1: String = "name1"
     var name2: String = "name2"
@@ -34,17 +33,17 @@ let test1 = Person1()
 test1.name1 = "t"
 test1.name2 = "t"
 test1 = Person1()
-
+ 
 var test2 = Person1()
 test2.name1 = "t"
 test2.name2 = "t"
 test2 = Person1()
-
+ 
 let test3 = Person2()
 test3.name1 = "t"
 test3.name2 = "t"
 test3 = Person2()
-
+ 
 var test4 = Person2()
 test4.name1 = "t"
 test4.name2 = "t"
@@ -210,21 +209,21 @@ test1.name2 = "t"
 test1.arr1.append(1)
 test1.arr2.append(1)
 test1 = Person1()
-
+ 
 var test2 = Person1()
 test2.name1 = "t"
 test2.name2 = "t"
 test2.arr1.append(1)
 test2.arr2.append(1)
 test2 = Person1()
-
+ 
 let test3 = Person2()
 test3.name1 = "t"
 test3.name2 = "t"
 test3.arr1.append(1)
 test3.arr2.append(1)
 test3 = Person2()
-
+ 
 var test4 = Person2()
 test4.name1 = "t"
 test4.name2 = "t"
