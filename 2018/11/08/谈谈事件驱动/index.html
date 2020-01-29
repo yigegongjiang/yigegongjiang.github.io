@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.0.0">
+<meta name="generator" content="Hexo 4.2.0">
 
 <meta name="google-site-verification" content="hEkkdHoBZXdN-chbhMtLxz6orIp7_P0lfW61l88LlIw" />
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
@@ -24,7 +24,7 @@
     hostname: new URL('https://www.yigegongjiang.com').hostname,
     root: '/',
     scheme: 'Mist',
-    version: '7.6.0',
+    version: '7.7.0',
     exturl: false,
     sidebar: {"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},
     copycode: {"enable":true,"show_result":true,"style":"mac"},
@@ -50,14 +50,20 @@
 
 <script data-ad-client="ca-pub-6982021533088600" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <meta name="description" content="事件驱动这个技术方案，可以说实实在在影响了这些年编程界的技术方向。最实际的受用者应该就是异步编程了，如I&#x2F;O。 我所认知到的语言，都是事件驱动的使用者，受益者，推动者。">
-<meta name="keywords" content="事件驱动,Runloop,Runtime,Event loop,协程,多并发">
 <meta property="og:type" content="article">
 <meta property="og:title" content="谈谈事件驱动">
-<meta property="og:url" content="https:&#x2F;&#x2F;www.yigegongjiang.com&#x2F;2018&#x2F;11&#x2F;08&#x2F;%E8%B0%88%E8%B0%88%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8&#x2F;index.html">
+<meta property="og:url" content="https://www.yigegongjiang.com/2018/11/08/%E8%B0%88%E8%B0%88%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8/index.html">
 <meta property="og:site_name" content="一个工匠">
 <meta property="og:description" content="事件驱动这个技术方案，可以说实实在在影响了这些年编程界的技术方向。最实际的受用者应该就是异步编程了，如I&#x2F;O。 我所认知到的语言，都是事件驱动的使用者，受益者，推动者。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-08T12:08:07.577Z">
+<meta property="article:published_time" content="2018-11-08T07:10:08.000Z">
+<meta property="article:modified_time" content="2020-01-08T12:08:07.577Z">
+<meta property="article:author" content="one.gongjiang@gmail.com">
+<meta property="article:tag" content="事件驱动">
+<meta property="article:tag" content="Runloop">
+<meta property="article:tag" content="Runtime">
+<meta property="article:tag" content="Event loop">
+<meta property="article:tag" content="协程">
+<meta property="article:tag" content="多并发">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://www.yigegongjiang.com/2018/11/08/%E8%B0%88%E8%B0%88%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8/">
@@ -236,7 +242,7 @@
       </span>
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2018/11/08/%E8%B0%88%E8%B0%88%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8/#comments" itemprop="discussionUrl">
+    <a title="valine" href="/2018/11/08/%E8%B0%88%E8%B0%88%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8/#valine-comments" itemprop="discussionUrl">
       <span class="post-comments-count valine-comment-count" data-xid="/2018/11/08/%E8%B0%88%E8%B0%88%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -268,16 +274,16 @@
 <p><code>Life is thread</code>，我们把A比作一个线程。A能够及时响应各家店面发来的消息，原因就是线程里面有一个<code>while (true):{pass;}</code>这样的循环。依靠CPU这个超强大脑控制器，只要有事件需要通知到线程，线程里面的这个while循环就会获取到并及时处理。</p>
 <p>所以<code>事件驱动</code>的本质是：<strong>一方及时发出事件，通过CPU时间片实时轮转事件循环队列并告知到while循环以通知到另一方，另一方及时响应事件。</strong></p>
 <h3 id="iOS中的使用"><a href="#iOS中的使用" class="headerlink" title="iOS中的使用"></a>iOS中的使用</h3><h5 id="Runloop"><a href="#Runloop" class="headerlink" title="Runloop"></a><code>Runloop</code></h5><p><code>Runloop</code>可以说把<code>事件驱动</code>利用到了极致。你能想象，如果没有<code>Runloop</code>，你就真的不能使用iPhone手机了！<br><code>Runloop</code>依托于线程。我们手势点击一个按钮，就是在操作主线程里的<code>Runloop</code>。<br><code>Runloop</code>通过<code>事件驱动</code>在以下8种状态下实时循环切换，用于省电的同时又能够及时处理用户界面反馈。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">typedef CF_OPTIONS(CFOptionFlags, CFRunLoopActivity) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    kCFRunLoopEntry         &#x3D; (1UL &lt;&lt; 0), &#x2F;&#x2F; 即将进入Loop</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    kCFRunLoopBeforeTimers  &#x3D; (1UL &lt;&lt; 1), &#x2F;&#x2F; 即将处理 Timer</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    kCFRunLoopBeforeSources &#x3D; (1UL &lt;&lt; 2), &#x2F;&#x2F; 即将处理 Source</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    kCFRunLoopBeforeWaiting &#x3D; (1UL &lt;&lt; 5), &#x2F;&#x2F; 即将进入休眠</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    kCFRunLoopAfterWaiting  &#x3D; (1UL &lt;&lt; 6), &#x2F;&#x2F; 刚从休眠中唤醒</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    kCFRunLoopExit          &#x3D; (1UL &lt;&lt; 7), &#x2F;&#x2F; 即将退出Loop</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">&#125;;</span></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">typedef CF_OPTIONS(CFOptionFlags, CFRunLoopActivity) &#123;</span><br><span class="line">    kCFRunLoopEntry         &#x3D; (1UL &lt;&lt; 0), &#x2F;&#x2F; 即将进入Loop</span><br><span class="line">    kCFRunLoopBeforeTimers  &#x3D; (1UL &lt;&lt; 1), &#x2F;&#x2F; 即将处理 Timer</span><br><span class="line">    kCFRunLoopBeforeSources &#x3D; (1UL &lt;&lt; 2), &#x2F;&#x2F; 即将处理 Source</span><br><span class="line">    kCFRunLoopBeforeWaiting &#x3D; (1UL &lt;&lt; 5), &#x2F;&#x2F; 即将进入休眠</span><br><span class="line">    kCFRunLoopAfterWaiting  &#x3D; (1UL &lt;&lt; 6), &#x2F;&#x2F; 刚从休眠中唤醒</span><br><span class="line">    kCFRunLoopExit          &#x3D; (1UL &lt;&lt; 7), &#x2F;&#x2F; 即将退出Loop</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h5 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h5><p>我们通过IOS里的<code>Block</code>闭包，可以在异步执行一串功能逻辑代码后接着处理闭包里的活。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">- (void)someMethodThatTakesABlock:(returnType (^nullability)(parameterTypes))blockName;</span></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">[someObject someMethodThatTakesABlock:^returnType (parameters) &#123;...&#125;];</span></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)someMethodThatTakesABlock:(returnType (^nullability)(parameterTypes))blockName;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[someObject someMethodThatTakesABlock:^returnType (parameters) &#123;...&#125;];</span><br></pre></td></tr></table></figure>
 <h5 id="还有其他非常多的使用，如通知等"><a href="#还有其他非常多的使用，如通知等" class="headerlink" title="还有其他非常多的使用，如通知等"></a>还有其他非常多的使用，如通知等</h5><h3 id="Python中的使用"><a href="#Python中的使用" class="headerlink" title="Python中的使用"></a>Python中的使用</h3><p>Python近些年才完全开发完优秀的<code>协程</code>并开放使用。使得Python上<code>多并发</code>成为事实上的可能。这里的多，不是之前的几十几百，是上十万。</p>
 <h5 id="Event-loop-协程"><a href="#Event-loop-协程" class="headerlink" title="Event_loop+协程"></a><code>Event_loop</code>+<code>协程</code></h5><p>Python里面使用多线程其实并不怎么爽，本身就是耗资源的语言，多线程切换更加雪上加霜了。通过协程，妥妥的解决了上十万的并发。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">import asyncio</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">async def test(i):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">	print(&quot;test_1&quot;,i)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">	await asyncio.sleep(1)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">	print(&quot;test_2&quot;,i)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">loop&#x3D;asyncio.get_event_loop()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">tasks&#x3D;[test(i) for i in range(5)]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">loop.run_until_complete(asyncio.wait(tasks))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">loop.close()</span></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import asyncio</span><br><span class="line">async def test(i):</span><br><span class="line">	print(&quot;test_1&quot;,i)</span><br><span class="line">	await asyncio.sleep(1)</span><br><span class="line">	print(&quot;test_2&quot;,i)</span><br><span class="line">loop&#x3D;asyncio.get_event_loop()</span><br><span class="line">tasks&#x3D;[test(i) for i in range(5)]</span><br><span class="line">loop.run_until_complete(asyncio.wait(tasks))</span><br><span class="line">loop.close()</span><br></pre></td></tr></table></figure>
 <h5 id="aiohttp"><a href="#aiohttp" class="headerlink" title="aiohttp"></a><code>aiohttp</code></h5><p>网络访问上的多并发，对<code>协程</code>的进一步封装。</p>
 <h3 id="Node-js中的使用"><a href="#Node-js中的使用" class="headerlink" title="Node.js中的使用"></a>Node.js中的使用</h3><h5 id="Event-loop事件循环"><a href="#Event-loop事件循环" class="headerlink" title="Event_loop事件循环"></a><code>Event_loop</code>事件循环</h5><p>这个就没得说了，彻彻底底依靠<code>事件驱动</code>起家的语言。基于<code>javascript</code>和<code>V8</code>引擎起来的Node.js，就是完完全全的单线程语言。<br>可是要知道，Node.js就是以单线程中使用事件驱动处理高IO闻名世界的。<br>你可以想象一下，一个Node.js搭建的后台，每秒上千上万的并发，都是单线程在处理吗？<br>Java就是一个用户一个请求一个线程（又名<code>线程驱动</code>），服务器资源耗费真的大。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">var fs &#x3D; require(&quot;fs&quot;);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">var debug &#x3D; require(&#39;debug&#39;)(&#39;example1&#39;);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">debug(&quot;begin&quot;);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">fs.readFile(&#39;package.json&#39;,&#39;utf-8&#39;,function(err,data)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    if(err)  </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">        debug(err);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    else</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">        debug(&quot;get file content&quot;);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">&#125;);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">setTimeout(function()&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">    debug(&quot;timeout2&quot;);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">&#125;);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">debug(&#39;end&#39;);</span></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var fs &#x3D; require(&quot;fs&quot;);</span><br><span class="line">var debug &#x3D; require(&#39;debug&#39;)(&#39;example1&#39;);</span><br><span class="line"></span><br><span class="line">debug(&quot;begin&quot;);</span><br><span class="line"></span><br><span class="line">fs.readFile(&#39;package.json&#39;,&#39;utf-8&#39;,function(err,data)&#123;</span><br><span class="line">    if(err)  </span><br><span class="line">        debug(err);</span><br><span class="line">    else</span><br><span class="line">        debug(&quot;get file content&quot;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">setTimeout(function()&#123;</span><br><span class="line">    debug(&quot;timeout2&quot;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">debug(&#39;end&#39;);</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -446,9 +452,19 @@
   <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
-<script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
   <script>
 var pjax = new Pjax({
   selectors: [
@@ -487,7 +503,7 @@ window.addEventListener('pjax:success', () => {
       script.async = false;
     }
     if (element.getAttribute('pjax') !== null) {
-      element.setAttribute('pjax', '');
+      script.setAttribute('pjax', '');
     }
     if (code !== '') {
       script.appendChild(document.createTextNode(code));
@@ -499,6 +515,7 @@ window.addEventListener('pjax:success', () => {
   if (CONFIG.motion.enable) {
     NexT.motion.integrator
       .init()
+      .add(NexT.motion.middleWares.subMenu)
       .add(NexT.motion.middleWares.postList)
       .bootstrap();
   }

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.0.0">
+<meta name="generator" content="Hexo 4.2.0">
 
 <meta name="google-site-verification" content="hEkkdHoBZXdN-chbhMtLxz6orIp7_P0lfW61l88LlIw" />
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
@@ -24,7 +24,7 @@
     hostname: new URL('https://www.yigegongjiang.com').hostname,
     root: '/',
     scheme: 'Mist',
-    version: '7.6.0',
+    version: '7.7.0',
     exturl: false,
     sidebar: {"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},
     copycode: {"enable":true,"show_result":true,"style":"mac"},
@@ -50,14 +50,15 @@
 
 <script data-ad-client="ca-pub-6982021533088600" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <meta name="description" content="好久没有写博客了，猛的一下打字，久旱逢甘霖，突破九重天。 开始的CSDN博，到后面私有博，现在的静态博。虽然都挺方便的，但是变迁中感觉自己原来越懒了，要啥维护，就静态的！ 最近几年，养精蓄锐全是瞎扯，不过在我身上发生的一些事情，倒是值得简要回味一下。">
-<meta name="keywords" content="Life">
 <meta property="og:type" content="article">
 <meta property="og:title" content="老博新开 祭首">
-<meta property="og:url" content="https:&#x2F;&#x2F;www.yigegongjiang.com&#x2F;2018&#x2F;10&#x2F;15&#x2F;%E8%80%81%E5%8D%9A%E6%96%B0%E5%BC%80&#x2F;index.html">
+<meta property="og:url" content="https://www.yigegongjiang.com/2018/10/15/%E8%80%81%E5%8D%9A%E6%96%B0%E5%BC%80/index.html">
 <meta property="og:site_name" content="一个工匠">
 <meta property="og:description" content="好久没有写博客了，猛的一下打字，久旱逢甘霖，突破九重天。 开始的CSDN博，到后面私有博，现在的静态博。虽然都挺方便的，但是变迁中感觉自己原来越懒了，要啥维护，就静态的！ 最近几年，养精蓄锐全是瞎扯，不过在我身上发生的一些事情，倒是值得简要回味一下。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-08T12:08:07.576Z">
+<meta property="article:published_time" content="2018-10-15T13:54:03.000Z">
+<meta property="article:modified_time" content="2020-01-08T12:08:07.576Z">
+<meta property="article:author" content="one.gongjiang@gmail.com">
+<meta property="article:tag" content="Life">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://www.yigegongjiang.com/2018/10/15/%E8%80%81%E5%8D%9A%E6%96%B0%E5%BC%80/">
@@ -236,7 +237,7 @@
       </span>
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2018/10/15/%E8%80%81%E5%8D%9A%E6%96%B0%E5%BC%80/#comments" itemprop="discussionUrl">
+    <a title="valine" href="/2018/10/15/%E8%80%81%E5%8D%9A%E6%96%B0%E5%BC%80/#valine-comments" itemprop="discussionUrl">
       <span class="post-comments-count valine-comment-count" data-xid="/2018/10/15/%E8%80%81%E5%8D%9A%E6%96%B0%E5%BC%80/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -433,9 +434,19 @@
   <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
-<script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
   <script>
 var pjax = new Pjax({
   selectors: [
@@ -474,7 +485,7 @@ window.addEventListener('pjax:success', () => {
       script.async = false;
     }
     if (element.getAttribute('pjax') !== null) {
-      element.setAttribute('pjax', '');
+      script.setAttribute('pjax', '');
     }
     if (code !== '') {
       script.appendChild(document.createTextNode(code));
@@ -486,6 +497,7 @@ window.addEventListener('pjax:success', () => {
   if (CONFIG.motion.enable) {
     NexT.motion.integrator
       .init()
+      .add(NexT.motion.middleWares.subMenu)
       .add(NexT.motion.middleWares.postList)
       .bootstrap();
   }

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.0.0">
+<meta name="generator" content="Hexo 4.2.0">
 
 <meta name="google-site-verification" content="hEkkdHoBZXdN-chbhMtLxz6orIp7_P0lfW61l88LlIw" />
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
@@ -24,7 +24,7 @@
     hostname: new URL('https://www.yigegongjiang.com').hostname,
     root: '/',
     scheme: 'Mist',
-    version: '7.6.0',
+    version: '7.7.0',
     exturl: false,
     sidebar: {"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},
     copycode: {"enable":true,"show_result":true,"style":"mac"},
@@ -50,13 +50,19 @@
 
 <script data-ad-client="ca-pub-6982021533088600" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <meta name="description" content="跋山涉水，走心为匠。IT,互联网,网络,开发,硬件,生活,移动互联网">
-<meta name="keywords" content="IT,互联网,网络,开发,硬件,生活,移动互联网">
 <meta property="og:type" content="website">
 <meta property="og:title" content="一个工匠">
-<meta property="og:url" content="https:&#x2F;&#x2F;www.yigegongjiang.com&#x2F;archives&#x2F;2019&#x2F;01&#x2F;index.html">
+<meta property="og:url" content="https://www.yigegongjiang.com/archives/2019/01/index.html">
 <meta property="og:site_name" content="一个工匠">
 <meta property="og:description" content="跋山涉水，走心为匠。IT,互联网,网络,开发,硬件,生活,移动互联网">
-<meta property="og:locale" content="zh-Hans">
+<meta property="article:author" content="one.gongjiang@gmail.com">
+<meta property="article:tag" content="IT">
+<meta property="article:tag" content="互联网">
+<meta property="article:tag" content="网络">
+<meta property="article:tag" content="开发">
+<meta property="article:tag" content="硬件">
+<meta property="article:tag" content="生活">
+<meta property="article:tag" content="移动互联网">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://www.yigegongjiang.com/archives/2019/01/">
@@ -378,9 +384,19 @@
   <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
-<script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
   <script>
 var pjax = new Pjax({
   selectors: [
@@ -419,7 +435,7 @@ window.addEventListener('pjax:success', () => {
       script.async = false;
     }
     if (element.getAttribute('pjax') !== null) {
-      element.setAttribute('pjax', '');
+      script.setAttribute('pjax', '');
     }
     if (code !== '') {
       script.appendChild(document.createTextNode(code));
@@ -431,6 +447,7 @@ window.addEventListener('pjax:success', () => {
   if (CONFIG.motion.enable) {
     NexT.motion.integrator
       .init()
+      .add(NexT.motion.middleWares.subMenu)
       .add(NexT.motion.middleWares.postList)
       .bootstrap();
   }

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.0.0">
+<meta name="generator" content="Hexo 4.2.0">
 
 <meta name="google-site-verification" content="hEkkdHoBZXdN-chbhMtLxz6orIp7_P0lfW61l88LlIw" />
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
@@ -24,7 +24,7 @@
     hostname: new URL('https://www.yigegongjiang.com').hostname,
     root: '/',
     scheme: 'Mist',
-    version: '7.6.0',
+    version: '7.7.0',
     exturl: false,
     sidebar: {"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},
     copycode: {"enable":true,"show_result":true,"style":"mac"},
@@ -50,14 +50,26 @@
 
 <script data-ad-client="ca-pub-6982021533088600" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <meta name="description" content="一行代码引发的思考 int a &#x3D; 5;  问1:变量a在内存的哪里？问2:数字5在内存的哪里？问3:int的字节大小是多少？如果a&#x3D;12345后，字节大小变不变？问4:代码里面print(“%d”, a)，为什么可以输出5，a是怎么找到5的？问5:内存到底在哪里？问6:总内存有多大？问7:总内存的大小是怎么确定的？ 各位能回答上面的7问吗？ 由底往上来解析，一步一步揭开洋葱的外衣，真相终究会大白">
-<meta name="keywords" content="计算机原理,内存分配,内存分区,比特,字节,指针,指针的指针,32位,64位,内存条,4G,8G">
 <meta property="og:type" content="article">
 <meta property="og:title" content="内存分配详解-由底到高">
-<meta property="og:url" content="https:&#x2F;&#x2F;www.yigegongjiang.com&#x2F;2019&#x2F;02&#x2F;26&#x2F;%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E8%AF%A6%E8%A7%A3-%E7%94%B1%E5%BA%95%E5%88%B0%E9%AB%98&#x2F;index.html">
+<meta property="og:url" content="https://www.yigegongjiang.com/2019/02/26/%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E8%AF%A6%E8%A7%A3-%E7%94%B1%E5%BA%95%E5%88%B0%E9%AB%98/index.html">
 <meta property="og:site_name" content="一个工匠">
 <meta property="og:description" content="一行代码引发的思考 int a &#x3D; 5;  问1:变量a在内存的哪里？问2:数字5在内存的哪里？问3:int的字节大小是多少？如果a&#x3D;12345后，字节大小变不变？问4:代码里面print(“%d”, a)，为什么可以输出5，a是怎么找到5的？问5:内存到底在哪里？问6:总内存有多大？问7:总内存的大小是怎么确定的？ 各位能回答上面的7问吗？ 由底往上来解析，一步一步揭开洋葱的外衣，真相终究会大白">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-08T12:08:07.572Z">
+<meta property="article:published_time" content="2019-02-26T11:04:53.000Z">
+<meta property="article:modified_time" content="2020-01-08T12:08:07.572Z">
+<meta property="article:author" content="one.gongjiang@gmail.com">
+<meta property="article:tag" content="计算机原理">
+<meta property="article:tag" content="内存分配">
+<meta property="article:tag" content="内存分区">
+<meta property="article:tag" content="比特">
+<meta property="article:tag" content="字节">
+<meta property="article:tag" content="指针">
+<meta property="article:tag" content="指针的指针">
+<meta property="article:tag" content="32位">
+<meta property="article:tag" content="64位">
+<meta property="article:tag" content="内存条">
+<meta property="article:tag" content="4G">
+<meta property="article:tag" content="8G">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://www.yigegongjiang.com/2019/02/26/%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E8%AF%A6%E8%A7%A3-%E7%94%B1%E5%BA%95%E5%88%B0%E9%AB%98/">
@@ -236,7 +248,7 @@
       </span>
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2019/02/26/%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E8%AF%A6%E8%A7%A3-%E7%94%B1%E5%BA%95%E5%88%B0%E9%AB%98/#comments" itemprop="discussionUrl">
+    <a title="valine" href="/2019/02/26/%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E8%AF%A6%E8%A7%A3-%E7%94%B1%E5%BA%95%E5%88%B0%E9%AB%98/#valine-comments" itemprop="discussionUrl">
       <span class="post-comments-count valine-comment-count" data-xid="/2019/02/26/%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E8%AF%A6%E8%A7%A3-%E7%94%B1%E5%BA%95%E5%88%B0%E9%AB%98/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -277,11 +289,11 @@
 <h4 id="初步总结"><a href="#初步总结" class="headerlink" title="初步总结"></a>初步总结</h4><p>原理分析完了，各位就知道一个现象了：<br>当年win7系统，明明买了8G的内存条，到<code>我到电脑</code>里面一看，只有4G不到。其余到4G不见了。<br>其实不是不见了，它还在那里，只是地址总线只有32条，导致读取不了更多到内存空间了。</p>
 <h3 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h3><p>万物皆为C。即C语言。<br>后面孩子孙子辈的语言，尽管百花齐放，终究逃离不了指针。这是计算机发展史上的根基。</p>
 <p>指针是什么？我理解的指针，就是存储一段数据，这个数据是什么？是<code>内存地址</code>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">int main(int argc, char *argv[]) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    int a &#x3D; 5;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    int *p &#x3D; &amp;a;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int main(int argc, char *argv[]) &#123;</span><br><span class="line">    int a &#x3D; 5;</span><br><span class="line">    int *p &#x3D; &amp;a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>上面代码中，如何通过p找到5？</p>
 <p>5是int类型的数据，所以在32位的内存条中这样存储：<code>00000000 00000000 00000000 00000101</code>。它占据4个房间。<br>a是什么？a是给我们程序员看的。代码编译后，目标文件进行分段存储。a是符号，就是5的<code>内存地址</code>，所以a就是连续的4个房间的首个内存地址，第一个房间的<code>内存地址</code>是：<code>00000000 00000000 11111111 11111111</code>(我假设的)。后面三个房间分别二进制+1。通过第一个房间，就可以连续的找到<code>5</code>这个存储数据。<br>p呢，指向a的指针，所以系统在内存里面存储了<code>00000000 00000000 11111111 11111111</code>这个二进制数据，也就是把a的<code>内存地址</code>给存了下来。同时这个二进制数据也有自己的连续房间号内存地址：<code>00000000 11111111 11111111 11111111</code>(我假设的）。这个地址，就是p啦。<br>p如何找到5？就是p通过存储的a的内存地址，找到了<code>5</code>的第一个房间号，都找到房间号了，肯定也就找到5这个存储数据了。<br>那为什么p刚好找到4个房间，而不是找到6个或者10个房间呢？int *p，这个就是关键，指针也是有数据类型的，p指针是int类型，大小也只有4字节。</p>
-<h3 id="指针的指针"><a href="#指针的指针" class="headerlink" title="指针的指针"></a>指针的指针</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">int main(int argc, char *argv[]) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    int a &#x3D; 5;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    int *p &#x3D; &amp;a;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    int **pp &#x3D; &amp;p;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+<h3 id="指针的指针"><a href="#指针的指针" class="headerlink" title="指针的指针"></a>指针的指针</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int main(int argc, char *argv[]) &#123;</span><br><span class="line">    int a &#x3D; 5;</span><br><span class="line">    int *p &#x3D; &amp;a;</span><br><span class="line">    int **pp &#x3D; &amp;p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>各位看，这里又创建了指向p指针的指针。啥意思？就还是指针。只不过这个指针，指向的不是5这个数据，还是另一个指针。那<code>int ***ppp = &amp;pp</code>呢？还是一样的，还是指针，这个指针指向pp的内存地址。</p>
 <p>所以这个时候，系统在内存里面存储了<code>00000000 11111111 11111111 11111111</code>这个二进制数据，也就是把p的<code>内存地址</code>给存了下来。同时这个二进制数据也有自己的连续房间号内存地址：<code>00001111 11111111 11111111 11111111</code>(我假设的）。这个地址，就是pp啦。</p>
@@ -461,9 +473,19 @@
   <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
-<script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
   <script>
 var pjax = new Pjax({
   selectors: [
@@ -502,7 +524,7 @@ window.addEventListener('pjax:success', () => {
       script.async = false;
     }
     if (element.getAttribute('pjax') !== null) {
-      element.setAttribute('pjax', '');
+      script.setAttribute('pjax', '');
     }
     if (code !== '') {
       script.appendChild(document.createTextNode(code));
@@ -514,6 +536,7 @@ window.addEventListener('pjax:success', () => {
   if (CONFIG.motion.enable) {
     NexT.motion.integrator
       .init()
+      .add(NexT.motion.middleWares.subMenu)
       .add(NexT.motion.middleWares.postList)
       .bootstrap();
   }

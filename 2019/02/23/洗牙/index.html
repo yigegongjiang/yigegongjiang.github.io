@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.0.0">
+<meta name="generator" content="Hexo 4.2.0">
 
 <meta name="google-site-verification" content="hEkkdHoBZXdN-chbhMtLxz6orIp7_P0lfW61l88LlIw" />
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
@@ -24,7 +24,7 @@
     hostname: new URL('https://www.yigegongjiang.com').hostname,
     root: '/',
     scheme: 'Mist',
-    version: '7.6.0',
+    version: '7.7.0',
     exturl: false,
     sidebar: {"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},
     copycode: {"enable":true,"show_result":true,"style":"mac"},
@@ -50,14 +50,15 @@
 
 <script data-ad-client="ca-pub-6982021533088600" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <meta name="description" content="今天去社区一个牙科诊所洗牙了。 现在已经洗牙归来，本来不是什么天大的个人事情需要在博客里面说一遍。但是我忍不住自己的喜悦，所以一定想要推荐没有洗牙习惯的朋友，一定要去一次。这是脱胎换骨的体验。">
-<meta name="keywords" content="Life">
 <meta property="og:type" content="article">
 <meta property="og:title" content="洗牙">
-<meta property="og:url" content="https:&#x2F;&#x2F;www.yigegongjiang.com&#x2F;2019&#x2F;02&#x2F;23&#x2F;%E6%B4%97%E7%89%99&#x2F;index.html">
+<meta property="og:url" content="https://www.yigegongjiang.com/2019/02/23/%E6%B4%97%E7%89%99/index.html">
 <meta property="og:site_name" content="一个工匠">
 <meta property="og:description" content="今天去社区一个牙科诊所洗牙了。 现在已经洗牙归来，本来不是什么天大的个人事情需要在博客里面说一遍。但是我忍不住自己的喜悦，所以一定想要推荐没有洗牙习惯的朋友，一定要去一次。这是脱胎换骨的体验。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-08T12:08:07.574Z">
+<meta property="article:published_time" content="2019-02-23T10:14:59.000Z">
+<meta property="article:modified_time" content="2020-01-08T12:08:07.574Z">
+<meta property="article:author" content="one.gongjiang@gmail.com">
+<meta property="article:tag" content="Life">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://www.yigegongjiang.com/2019/02/23/%E6%B4%97%E7%89%99/">
@@ -236,7 +237,7 @@
       </span>
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2019/02/23/%E6%B4%97%E7%89%99/#comments" itemprop="discussionUrl">
+    <a title="valine" href="/2019/02/23/%E6%B4%97%E7%89%99/#valine-comments" itemprop="discussionUrl">
       <span class="post-comments-count valine-comment-count" data-xid="/2019/02/23/%E6%B4%97%E7%89%99/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -428,9 +429,19 @@
   <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
-<script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
   <script>
 var pjax = new Pjax({
   selectors: [
@@ -469,7 +480,7 @@ window.addEventListener('pjax:success', () => {
       script.async = false;
     }
     if (element.getAttribute('pjax') !== null) {
-      element.setAttribute('pjax', '');
+      script.setAttribute('pjax', '');
     }
     if (code !== '') {
       script.appendChild(document.createTextNode(code));
@@ -481,6 +492,7 @@ window.addEventListener('pjax:success', () => {
   if (CONFIG.motion.enable) {
     NexT.motion.integrator
       .init()
+      .add(NexT.motion.middleWares.subMenu)
       .add(NexT.motion.middleWares.postList)
       .bootstrap();
   }

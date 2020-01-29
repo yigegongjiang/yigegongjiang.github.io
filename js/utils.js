@@ -135,20 +135,18 @@ NexT.utils = {
     var readingProgressBar = document.querySelector('.reading-progress-bar');
     // For init back to top in sidebar if page was scrolled after page refresh.
     window.addEventListener('scroll', () => {
-      var scrollPercent;
       if (backToTop || readingProgressBar) {
         var docHeight = document.querySelector('.container').offsetHeight;
         var winHeight = window.innerHeight;
         var contentVisibilityHeight = docHeight > winHeight ? docHeight - winHeight : document.body.scrollHeight - winHeight;
-        var scrollPercentRounded = Math.round(100 * window.scrollY / contentVisibilityHeight);
-        scrollPercent = Math.min(scrollPercentRounded, 100) + '%';
-      }
-      if (backToTop) {
-        backToTop.classList.toggle('back-to-top-on', window.scrollY > THRESHOLD);
-        backToTop.querySelector('span').innerText = scrollPercent;
-      }
-      if (readingProgressBar) {
-        readingProgressBar.style.width = scrollPercent;
+        var scrollPercent = Math.min(100 * window.scrollY / contentVisibilityHeight, 100);
+        if (backToTop) {
+          backToTop.classList.toggle('back-to-top-on', window.scrollY > THRESHOLD);
+          backToTop.querySelector('span').innerText = Math.round(scrollPercent) + '%';
+        }
+        if (readingProgressBar) {
+          readingProgressBar.style.width = scrollPercent.toFixed(2) + '%';
+        }
       }
     });
 
@@ -196,12 +194,11 @@ NexT.utils = {
 
   registerCanIUseTag: function() {
     // Get responsive height passed from iframe.
-    window.addEventListener('message', event => {
-      var data = event.data;
-      if ((typeof data === 'string') && (data.indexOf('ciu_embed') > -1)) {
+    window.addEventListener('message', ({ data }) => {
+      if ((typeof data === 'string') && data.includes('ciu_embed')) {
         var featureID = data.split(':')[1];
         var height = data.split(':')[2];
-        document.querySelector(`iframe[data-feature=${featureID}]`).style.height = parseInt(height, 10) + 'px';
+        document.querySelector(`iframe[data-feature=${featureID}]`).style.height = parseInt(height, 10) + 5 + 'px';
       }
     }, false);
   },
