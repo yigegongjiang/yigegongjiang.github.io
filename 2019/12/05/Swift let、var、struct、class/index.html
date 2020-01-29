@@ -51,8 +51,8 @@
   <meta name="description" content="0x01 问题描述和表现对于let和var，struct和class，分成两类来说，很多人比较容易理解。let：不可变，var：可变，struct：栈空间，class：堆空间。当我想要确认他们的原理的时候，截止发文为止，我没有在中文互联网上搜索到相关信息。所以我把他们的原理写在下面。 下面的示例，你能够理清楚多少？ 1struct Person1 &amp;#123;2    let name1: Str">
 <meta name="keywords" content="Swift">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Swift let &amp; var &amp; struct &amp; class">
-<meta property="og:url" content="https:&#x2F;&#x2F;www.yigegongjiang.com&#x2F;2019&#x2F;12&#x2F;05&#x2F;Swift%20let%20&amp;%20var%20&amp;%20struct%20&amp;%20class&#x2F;index.html">
+<meta property="og:title" content="Swift let、var、struct、class">
+<meta property="og:url" content="https:&#x2F;&#x2F;www.yigegongjiang.com&#x2F;2019&#x2F;12&#x2F;05&#x2F;Swift%20let%E3%80%81var%E3%80%81struct%E3%80%81class&#x2F;index.html">
 <meta property="og:site_name" content="一个工匠">
 <meta property="og:description" content="0x01 问题描述和表现对于let和var，struct和class，分成两类来说，很多人比较容易理解。let：不可变，var：可变，struct：栈空间，class：堆空间。当我想要确认他们的原理的时候，截止发文为止，我没有在中文互联网上搜索到相关信息。所以我把他们的原理写在下面。 下面的示例，你能够理清楚多少？ 1struct Person1 &amp;#123;2    let name1: Str">
 <meta property="og:locale" content="zh-Hans">
@@ -60,11 +60,11 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;www.yigegongjiang.com&#x2F;images&#x2F;swift_let_var_2.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;www.yigegongjiang.com&#x2F;images&#x2F;swift_let_var_3.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;www.yigegongjiang.com&#x2F;images&#x2F;swift_let_var_4.png">
-<meta property="og:updated_time" content="2020-01-29T13:55:18.005Z">
+<meta property="og:updated_time" content="2020-01-29T13:57:59.531Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;www.yigegongjiang.com&#x2F;images&#x2F;swift_let_var_1.png">
 
-<link rel="canonical" href="https://www.yigegongjiang.com/2019/12/05/Swift%20let%20&%20var%20&%20struct%20&%20class/">
+<link rel="canonical" href="https://www.yigegongjiang.com/2019/12/05/Swift%20let%E3%80%81var%E3%80%81struct%E3%80%81class/">
 
 
 <script id="page-configurations">
@@ -76,7 +76,7 @@
   };
 </script>
 
-  <title>Swift let & var & struct & class | 一个工匠</title>
+  <title>Swift let、var、struct、class | 一个工匠</title>
   
 
 
@@ -194,7 +194,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2019/12/05/Swift%20let%20&%20var%20&%20struct%20&%20class/">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2019/12/05/Swift%20let%E3%80%81var%E3%80%81struct%E3%80%81class/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -207,7 +207,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          Swift let & var & struct & class
+          Swift let、var、struct、class
         </h2>
 
         <div class="post-meta">
@@ -240,8 +240,8 @@
       </span>
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2019/12/05/Swift%20let%20&%20var%20&%20struct%20&%20class/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/12/05/Swift%20let%20&%20var%20&%20struct%20&%20class/" itemprop="commentCount"></span>
+    <a title="valine" href="/2019/12/05/Swift%20let%E3%80%81var%E3%80%81struct%E3%80%81class/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/12/05/Swift%20let%E3%80%81var%E3%80%81struct%E3%80%81class/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -571,7 +571,7 @@ window.addEventListener('pjax:success', () => {
       quicklink({
         timeout: 3000,
         priority: true,
-        ignores: [uri => uri.includes('#'),uri => uri == 'https://www.yigegongjiang.com/2019/12/05/Swift%20let%20&%20var%20&%20struct%20&%20class/',]
+        ignores: [uri => uri.includes('#'),uri => uri == 'https://www.yigegongjiang.com/2019/12/05/Swift%20let%E3%80%81var%E3%80%81struct%E3%80%81class/',]
       });
       });
   </script>
