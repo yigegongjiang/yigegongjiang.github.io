@@ -13,7 +13,7 @@ window.addEventListener('DOMContentLoaded', () => {
     isXml = false;
   }
   const path = CONFIG.root + searchPath;
-  const input = document.getElementById('search-input');
+  const input = document.querySelector('.search-input');
   const resultContent = document.getElementById('search-result');
 
   // Ref: https://github.com/ForbesLindesay/unescape-html
@@ -42,10 +42,7 @@ window.addEventListener('DOMContentLoaded', () => {
       word = word.toLowerCase();
     }
     while ((position = text.indexOf(word, startPosition)) > -1) {
-      index.push({
-        position: position,
-        word    : word
-      });
+      index.push({ position, word });
       startPosition = position + wordLen;
     }
     return index;
@@ -62,8 +59,8 @@ window.addEventListener('DOMContentLoaded', () => {
         searchTextCountInSlice++;
       }
       hits.push({
-        position: position,
-        length  : word.length
+        position,
+        length: word.length
       });
       let wordEnd = position + word.length;
 
@@ -81,9 +78,9 @@ window.addEventListener('DOMContentLoaded', () => {
       }
     }
     return {
-      hits           : hits,
-      start          : start,
-      end            : end,
+      hits,
+      start,
+      end,
       searchTextCount: searchTextCountInSlice
     };
   };
@@ -201,10 +198,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
           resultItem += '</li>';
           resultItems.push({
-            item           : resultItem,
-            searchTextCount: searchTextCount,
-            hitCount       : hitCount,
-            id             : resultItems.length
+            item: resultItem,
+            id  : resultItems.length,
+            hitCount,
+            searchTextCount
           });
         }
       });
@@ -264,7 +261,7 @@ window.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = 'hidden';
     document.querySelector('.search-pop-overlay').style.display = 'block';
     document.querySelector('.popup').style.display = 'block';
-    document.getElementById('search-input').focus();
+    document.querySelector('.search-input').focus();
   };
 
   // Search function
@@ -286,12 +283,10 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   // Handle and trigger popup window
-  document.querySelector('.popup-trigger').addEventListener('click', () => {
-    if (isfetched === false) {
-      searchFunc();
-    } else {
-      proceedSearch();
-    }
+  document.querySelectorAll('.popup-trigger').forEach(element => {
+    element.addEventListener('click', () => {
+      isfetched ? proceedSearch() : searchFunc();
+    });
   });
 
   // Monitor main search box
@@ -305,7 +300,7 @@ window.addEventListener('DOMContentLoaded', () => {
   document.querySelector('.popup-btn-close').addEventListener('click', onPopupClose);
   window.addEventListener('pjax:success', onPopupClose);
   window.addEventListener('keyup', event => {
-    if (event.which === 27) {
+    if (event.key === 'Escape') {
       onPopupClose();
     }
   });
