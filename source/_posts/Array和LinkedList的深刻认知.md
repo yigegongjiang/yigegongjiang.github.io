@@ -8,8 +8,7 @@ tags:
 keywords: Array,Linked,Linked List,数组,链表,C,Swift,iOS,计算机,计算机原理
 ---
 
-![](/images/arrayvslinkedlist.png)
-
+![arrayvslinkedlist.png](https://s2.ax1x.com/2020/03/11/8EnoZR.png)
 
 谈数据结构的时候，到底在谈论什么？本质上就是谈论两个东西，分别是**数组(Array)**和**链表(Linked List)**。
 
@@ -19,7 +18,7 @@ keywords: Array,Linked,Linked List,数组,链表,C,Swift,iOS,计算机,计算机
 
 <!-- more -->
 
-![](/images/xianxingjiegou.jpg)
+![xianxingjiegou.jpg](https://s2.ax1x.com/2020/03/11/8EnTd1.jpg)
 
 因为我们要使用数据了，所以数据的逻辑形态非常多，这就像应用层协议一样，为了方便我们使用互联网进行数据传输，会有非常多的协议准则。但是数据传输最终只能形成二进制携带ip和port通过信号传输，所以我们最终处理数据逻辑结构的物理结构只有两个，那就是数组和链表，而很多逻辑结构如完全二叉树、队列等，也都可以同时用数组和链表同时表示。
 

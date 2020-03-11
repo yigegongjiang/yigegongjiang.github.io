@@ -54,7 +54,7 @@ test4 = Person2()
 
 上面的代码会报错，你知道的。但是你知道会是什么样的报错吗？
 
-![](/images/swift_let_var_1.png)
+![swift_let_var_1](https://s2.ax1x.com/2020/03/11/8EMydA.png)
 如上图所示，
 同样的let对象变量(test1/test3)，struct和class有不同的错误。
 同样的struct，let和var也有不同的错误。
@@ -92,7 +92,7 @@ const int * const age4 = &temp;
 ```
 
 这四个常量age的存储，如下图所示：
-![](/images/swift_let_var_2.png)
+![swift_let_var_2](https://s2.ax1x.com/2020/03/11/8EQ9oR.png)
 
 对于age1，我们就不能通过**age1 = 0;**这样的语句修改值了。
 对于age2，因为const标记的是值，所以***age2 = 0;**是不行的，会报错。但是我们可以通过**age2 = &other;**这样的语句修改age2对应的指针值。
@@ -135,7 +135,7 @@ int age = 10;
 
 对于class，我们都是非常熟悉的了，毕竟面向对象编程这么久，也无需多言。属性是var，那么就是完全可变的。如果是let，那么回到上一个论题。
 而struct，就毕竟陌生了。我们看下面的代码截图：
-![](/images/swift_let_var_3.png)
+![swift_let_var_3](https://s2.ax1x.com/2020/03/11/8EQpw9.png)
 我们发现，在struct里面，不管属性是let还是var，方法（内部函数）都是无法直接修改该属性的。如代码行10和13行所示。
 如果我们需要修改内部属性，需要在方法前面加上**mutating**关键字。这在class里面是不存在的，说明struct相比class，属性约束要强一些。
 当然，我们看代码16行，对于let属性，**mutating**也无能为力，这个和class倒是一样的。毕竟let本身就是完全不可变的。
@@ -145,7 +145,7 @@ int age = 10;
 ## 0x04 一个蹊跷点
 
 这里给大家看一个蹊跷的地方，如下图所示：
-![](/images/swift_let_var_4.png)
+![swift_let_var_4](https://s2.ax1x.com/2020/03/11/8EQSeJ.png)
 上面的代码，编译和运行都不会有问题。
 我们来分析一下问题点：
 1. 对于Person1内部来说，var修饰的name2属性，是不能随便改变的。如果要改变，必须要通过func前面添加mutating来实现。本质上这是一种内部约束。
