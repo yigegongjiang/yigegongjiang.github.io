@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+
+<meta name="google-site-verification" content="hEkkdHoBZXdN-chbhMtLxz6orIp7_P0lfW61l88LlIw" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.yigegongjiang.com","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="运行时(Runtime)本身是一个非常普通的概念，每个编程语言都会有运行时，非iOS Objective-C特有。概念上理解，运行时，就是程序执行的过程，每个编程语言，只有运行后执行特定的任务才有价值，所以每个编程语言，都有运行时。而Objective-C的Runtime显然不仅仅是程序执行过程这么简单，它一举将基于面向过程的语言C而实现的面向对象的语言Objective-C变成了动态语言。为什么">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Objective-C 和 Runtime 深刻理解">
+<meta property="og:url" content="https://www.yigegongjiang.com/2020/04/08/Objective-C%20%E5%92%8C%20Runtime%20%E6%B7%B1%E5%88%BB%E7%90%86%E8%A7%A3/index.html">
+<meta property="og:site_name" content="一个工匠">
+<meta property="og:description" content="运行时(Runtime)本身是一个非常普通的概念，每个编程语言都会有运行时，非iOS Objective-C特有。概念上理解，运行时，就是程序执行的过程，每个编程语言，只有运行后执行特定的任务才有价值，所以每个编程语言，都有运行时。而Objective-C的Runtime显然不仅仅是程序执行过程这么简单，它一举将基于面向过程的语言C而实现的面向对象的语言Objective-C变成了动态语言。为什么">
+<meta property="article:published_time" content="2020-04-08T10:43:31.445Z">
+<meta property="article:modified_time" content="2020-04-08T14:37:31.588Z">
+<meta property="article:author" content="one.gongjiang@gmail.com">
+<meta property="article:tag" content="Runtime">
+<meta property="article:tag" content="Objective-C Runtime">
+<meta property="article:tag" content=" OC Runtime">
+<meta property="article:tag" content=" 结构体">
+<meta property="article:tag" content=" 指针">
+<meta property="article:tag" content=" 运行时">
+<meta property="article:tag" content=" 运行时库">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://www.yigegongjiang.com/2020/04/08/Objective-C%20%E5%92%8C%20Runtime%20%E6%B7%B1%E5%88%BB%E7%90%86%E8%A7%A3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>Objective-C 和 Runtime 深刻理解 | 一个工匠</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一个工匠</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">跋山涉水，走心为匠。</h1>
+      
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags<span class="badge">8</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories<span class="badge">4</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives<span class="badge">30</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2020/04/08/Objective-C%20%E5%92%8C%20Runtime%20%E6%B7%B1%E5%88%BB%E7%90%86%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="one.gongjiang@gmail.com">
+      <meta itemprop="description" content="跋山涉水，走心为匠。IT,互联网,网络,开发,硬件,生活,移动互联网">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个工匠">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          Objective-C 和 Runtime 深刻理解
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-04-08 18:43:31" itemprop="dateCreated datePublished" datetime="2020-04-08T18:43:31+08:00">2020-04-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/04/08/Objective-C%20%E5%92%8C%20Runtime%20%E6%B7%B1%E5%88%BB%E7%90%86%E8%A7%A3/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/08/Objective-C%20%E5%92%8C%20Runtime%20%E6%B7%B1%E5%88%BB%E7%90%86%E8%A7%A3/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><strong>运行时(Runtime)</strong>本身是一个非常普通的概念，每个编程语言都会有运行时，非iOS Objective-C特有。<br>概念上理解，<strong>运行时，就是程序执行的过程</strong>，每个编程语言，只有运行后执行特定的任务才有价值，所以每个编程语言，都有运行时。<br>而Objective-C的Runtime显然不仅仅是程序执行过程这么简单，它一举将基于<strong>面向过程的语言C</strong>而实现的<strong>面向对象的语言Objective-C</strong>变成了<strong>动态语言</strong>。<br>为什么Objective-C的Runtime有些难理解，因为运行时从概念上理解非常简单，但是Java、Python、C它们的运行时都是不一样的，运行时期间可以做很多事情，所以运行时理解起来还是比较抽象和高阶。<br>如果把Runtime改名为<strong>OCDR</strong>（Objective-C Dynamic Resolution，即<strong>Objective-C动态决议</strong>），剥离运行时和运行时库的概念，那么很多人都会轻松掌握Objective-C Runtime的核心。而Objective-C Runtime本质上的确就在践行<strong>动态决议</strong>这么一个过程。</p>
+<a id="more"></a>
+
+<p>Objective-C Runtime使得函数调用变成了动态消息传递，并且可以在执行过程中对Object进行增删改查，所以更准确的说，Runtime使得Objective-C变成了动态语言。</p>
+<h4 id="动态语言分析"><a href="#动态语言分析" class="headerlink" title="动态语言分析"></a>动态语言分析</h4><p>首先理解一下各类语言的一个区分分界，那就是<strong>动态语言</strong>和<strong>静态语言</strong>的区分（非动态类型语言和静态类型语言）。</p>
+<h5 id="静态语言"><a href="#静态语言" class="headerlink" title="静态语言"></a>静态语言</h5><p>静态语言比较容易理解，我们通过高级语言写好的代码，经过预处理、编译、汇编、链接后，就形成了机器码（二进制文件）。这个时候，函数名、变量名都保存在符号表中，并拥有对应的虚拟地址。而我们调用一个函数，就是通过机器码调用的，汇编示例如：’call 0X12345678’，这里call代表函数调用，0X12345678代表函数的虚拟地址。<br>这个机器码执行的过程中，PC指令寄存器会不断的记录下一行将要执行的指令，然后不停的执行下去(延伸一个知识点，如果下一行指令不再内存中，操作系统会发现页缺失，然后从硬盘中将对应缺失页的指令拷贝到对应的真实内存中，然后继续执行)。<br>这里我们可以发现，我们通过高级语言写好的函数，在编译后，就已经不可改变了。程序执行后，CPU内部的运算单元、控制单元、数据单元，就有条不紊的按照机器码执行就好了。<br>那么如果我们想改变一个函数的实现呢？比如本身调用的A函数，运行期间想调用B函数，有办法实现吗？对于静态语言来说，不行！<br>那么如果我们想改变一个对象的结构体呢？对于静态语言来说，不行！<br>所以静态语言，对于函数的定义，在编译期就必须是明确的，如果找不到函数的实现，就会编译错误。<br>举例来说，如C语言。</p>
+<h5 id="动态语言"><a href="#动态语言" class="headerlink" title="动态语言"></a>动态语言</h5><p>动态语言相比静态语言，也比较容易理解了，在运行时代码可以根据某些条件改变自身结构，如函数的调用，自定义类的生成和对象的创建等。那这样的语言就是动态语言。<br>举例来说，如Objective-C语言。</p>
+<h5 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h5><p>C是静态的，Objective-C是动态的，而Objective-C是基于C实现的。那Objective-C是如何基于C实现动态特性的呢？</p>
+<p>C有它的运行时，不过程序执行过程中，CPU完全掌控机器码执行流程，所以C的运行时不能多样化，基本上就是按照程序员写的代码执行顺序执行。这也是C快的原因，因为CPU直接执行，不用考虑那么多复杂的情况。</p>
+<p>那Python如何实现动态的呢？Python也有它的运行时，不过说来巧妙，它不是编译性语言，不会像C一样打包成机器码直接执行。Python是解释性语言，代码执行到哪一行，就即时编译该行形成机器码执行，所以Python非常容易实现动态，只要代码运行过程中适当的添加if语句对将要执行的对象进行替换，就能很好的实现动态，鸭子Duck模型也就来源于此。</p>
+<p>那Objective-C呢？Objective-C和C一样是编译性语言，项目打包后会经过编译链接等处理变成机器码。<br>Objective-C实现动态就要运行时了，因为在运行时做了很多操作，以至于很多人叫它“运行时系统”。<br>之所以前面说Objective-C的Runtime应该改名为”Objective-C Dynamic Resolution，Objective-C动态决议”，就是因为Objective-C的Runtime主要实现的两个点都更加符合“动态决议”这个命名：</p>
+<ol>
+<li>通过objc_msgsend(a_object,a_object_method,xx)这个中间者函数，动态解析被调用的函数。</li>
+<li>通过指针、数组的指针、链表指针、全局数据，间接操作函数列表、属性列表等，动态的对Object进行增删改查。</li>
+</ol>
+<h4 id="Objective-C-Runtime-函数调用动态性"><a href="#Objective-C-Runtime-函数调用动态性" class="headerlink" title="Objective-C Runtime 函数调用动态性"></a>Objective-C Runtime 函数调用动态性</h4><p>之所以很多人说Objective-C的函数调用并非函数调用，而是消息传递，其原因就是Objective-C的函数调用很不一样。<br>在C中，我们调用一个函数，会这样写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Node *head &#x3D; NULL;</span><br><span class="line">...生成链表...</span><br><span class="line">reverseLinkList(&amp;head);&#x2F;&#x2F; 反转链表</span><br></pre></td></tr></table></figure>
+<p>这里，reverseLinkList函数的调用，在汇编里面为：call 0x12345678，其中0x12345678就是reverseLinkList这个符号名的虚拟地址。<br>这里我们可以发现，reverseLinkList函数的虚拟地址在编译的时候就已经定下来了，后期无法做到动态性。<br>再来看一下Objective-C的实现，因为Objective-C是面向对象的语言，所以我们调用对象的一个方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Person p &#x3D; Person.new;</span><br><span class="line">[p realAge];</span><br></pre></td></tr></table></figure>
+<p>这里，[p realAge]这个函数的调用，p有自己的虚拟地址，realAge函数也有自己的虚拟地址，但是在汇编之前，该函数已经被编译成了这样：<br>objc_msgsend(p, realAge)。<br>如此，Objective-C通过objc_msgsend这个完全汇编写成的中间函数，在函数内部通过<strong>运行时库</strong>对p进行superclass和isa的访问，乃至最后实现三次动态函数转发操作。<br>所以Objective-C实现消息传递，就是依靠objc_msgsend这个中间函数来实现，如果objc_msgsend的虚拟地址为0x87654321，那么[p realAge]函数被执行的时候，实际汇编为：call 0x87654321。</p>
+<p>上面说完了objc_msgsend这个中间函数完成动态解析的操作，那它是如何进行superclass和isa的访问，又是如何访问属性和方法列表的呢？</p>
+<h4 id="Objective-C面向对象的本质：C的struct（结构体）"><a href="#Objective-C面向对象的本质：C的struct（结构体）" class="headerlink" title="Objective-C面向对象的本质：C的struct（结构体）"></a>Objective-C面向对象的本质：C的struct（结构体）</h4><p>通过Runtime源码，我们可以发现，Objective-C里面一切皆对象，乃至UILabel、NSTimer等。而这些对象是以什么样的数据结构存在呢？<br>都是struct（结构体）!我们的成员变量，成员属性，方法等，都保存在结构体里面。<br>所以这里我们可以深刻理解一下，为什么说Objective-C是C的超集，<strong>因为面向对象的Objective-C语言完全就是依靠面向过程的C语言发展起来的，乃至于我们写的面向对象的代码，最后都会变成面向过程的执行流程</strong>。<br>我们可以查看苹果公开的runtime.h文件，都是面向过程的函数调用。如：</p>
+<blockquote>
+<p>objc_setAssObjective-CiatedObject(id _Nonnull object, const void * _Nonnull key, id _Nullable value, objc_AssObjective-CiationPolicy policy)</p>
+</blockquote>
+<p>你看，这完全就是面向过程的编程。</p>
+<p>因为struct是我们对象的存储结构，所以我们可以通过<em>class_getProperty(Class _Nullable cls, const char * _Nonnull name)</em>等库函数直接对struct内部保存的数据进行访问。<br>比如我们要访问a_object的a_object_method方法，那么就要通过a_object_struct，根据superclass找到类A_struct，然后遍历A_struct里面的methods数组，找到a_object_method方法并执行。</p>
+<p>struct结构体在编译后就已经确定，那如何做到动态性如增加方法呢？struct的实现是C和C++混编的，但大体逻辑不变，都是通过指针实现的。<br>比如说，struct里面有一个方法的数组指针，那么我们动态添加方法的时候，只要通过这个数组指针就可以添加到对应的方法数组中，这样就完全不会改变struct的结构(甚至如果数组需要扩容，也和struct没有任何关系)。</p>
+<p>因为struct在编译后就已经确定，所以能做动态性的方案不外乎这几点：</p>
+<ol>
+<li><strong>通过数组指针，如方法列表等</strong></li>
+<li><strong>通过链表指针，如NSNotification等</strong></li>
+<li><strong>通过全局对象，如关联对象等</strong></li>
+</ol>
+<p>所以指针才是C和Objective-C最终执行的终极形态，不断通过指针间接的对数据区进行增删改查。<br>而<strong>Objective-C的Runtime就是不断通过指针对struct结构体进行增删改查数据处理来实现动态特性</strong>。</p>
+<h4 id="Objective-C-Runtime-总结"><a href="#Objective-C-Runtime-总结" class="headerlink" title="Objective-C Runtime 总结"></a>Objective-C Runtime 总结</h4><p>Objective-C Runtime用的最多的是objc_msgsend，所有的函数调用都会通过这个消息传递完成。<br>编译成机器码的函数调用，本身无法实现动态性，通过objc_msgsend这个中间层巧妙的实现了。<br>而objc_msgsend的汇编执行又得反过来操作运行时库，又回到了对象的struct结构体上面。<br><strong>Objective-C Runtime本质就是通过指针操作struct的增删改查来实现Objective-C的动态特性</strong>。</p>
+<p>C语言中一切皆指针，基于C发展起来的Objective-C，也是一样。<br>而指针也是中间层思想的体现。本身无法直接操作的数据，通过指针这个中间层，间接的对数据进行操作。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/iOS/" rel="tag"># iOS</a>
+              <a href="/tags/C/" rel="tag"># C</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/09/%E6%97%A9%E8%B5%B7%E6%89%93%E5%8D%A1%E8%AE%A1%E5%88%92ing/" rel="prev" title="早起打卡计划ing">
+      <i class="fa fa-chevron-left"></i> 早起打卡计划ing
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#动态语言分析"><span class="nav-number">1.</span> <span class="nav-text">动态语言分析</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#静态语言"><span class="nav-number">1.1.</span> <span class="nav-text">静态语言</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#动态语言"><span class="nav-number">1.2.</span> <span class="nav-text">动态语言</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分析"><span class="nav-number">1.3.</span> <span class="nav-text">分析</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Objective-C-Runtime-函数调用动态性"><span class="nav-number">2.</span> <span class="nav-text">Objective-C Runtime 函数调用动态性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Objective-C面向对象的本质：C的struct（结构体）"><span class="nav-number">3.</span> <span class="nav-text">Objective-C面向对象的本质：C的struct（结构体）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Objective-C-Runtime-总结"><span class="nav-number">4.</span> <span class="nav-text">Objective-C Runtime 总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">one.gongjiang@gmail.com</p>
+  <div class="site-description" itemprop="description">跋山涉水，走心为匠。IT,互联网,网络,开发,硬件,生活,移动互联网</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">one.gongjiang@gmail.com</span>
+</div>
+  <div class="powered-by">
+    跋山涉水，走心为匠。 By Hexo.
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      script.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout : 3000,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri == 'https://www.yigegongjiang.com/2020/04/08/Objective-C%20%E5%92%8C%20Runtime%20%E6%B7%B1%E5%88%BB%E7%90%86%E8%A7%A3/',]
+      });
+      });
+  </script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : true,
+      notify     : true,
+      appId      : 'gzcoXMhRjVA5qlkjOWugEMrG-MdYXbMMI',
+      appKey     : 'zHkhf61tDwyPJtTRCnzOLiWn',
+      placeholder: "跋山涉水，走心为匠。(网络限制，外网可加载评论)",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+    </div>
+</body>
+</html>
