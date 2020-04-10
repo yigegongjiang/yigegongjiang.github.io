@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="一个工匠">
 <meta property="og:description" content="运行时(Runtime)本身是一个非常普通的概念，每个编程语言都会有运行时，非iOS Objective-C特有。概念上理解，运行时，就是程序执行的过程，每个编程语言，只有运行后执行特定的任务才有价值，所以每个编程语言，都有运行时。而Objective-C的Runtime显然不仅仅是程序执行过程这么简单，它一举将基于面向过程的语言C而实现的面向对象的语言Objective-C变成了动态语言。为什么">
 <meta property="article:published_time" content="2020-04-08T10:43:31.445Z">
-<meta property="article:modified_time" content="2020-04-10T13:35:49.723Z">
+<meta property="article:modified_time" content="2020-04-10T13:39:43.217Z">
 <meta property="article:author" content="one.gongjiang@gmail.com">
 <meta property="article:tag" content="Runtime">
 <meta property="article:tag" content="Objective-C Runtime">
@@ -274,7 +274,7 @@
 <h4 id="延伸"><a href="#延伸" class="headerlink" title="延伸"></a>延伸</h4><p>神话Runtime的结果就是越发觉得自己的无知和不知所以。<br>Runtime是啥？从编译上来看，Runtime不是和我们项目一起打包成ipa包的，那Runtime还能是啥？<br><strong>Runtime说的直白点，仅仅是个动态库而已，也叫运行时库</strong>。<br>它和我们项目里面使用的自行编译或者三方编译的动态库一样，也需要在应用启动后加载到进程中（Runtime和系统framework一样，属于系统动态库）。</p>
 <p>iOS和Mac使用的可执行文件是Mach-o，与Linux的ELF和Window的PE一样，都是基于COFF格式扩展的。<br>所以Mach-o可执行文件的运行流程和ELF等都大差不差，当然具体到细节有一些差异。但总体都是差不多的，比如segment和section、section head、内存分区等，都一样。</p>
 <p>应用启动后，首先操作系统通过fork开辟进程，开启用户态后，然后加载Mach-o head。head里面有很多重要信息，如Magic Number(Mach-o通过0xfeedface/0xfeedfacf表示32/64位，ELF则有’E’’L’’F’标记、32/64位、版本、大小端等)、版本、支持CPU、文件类型等。</p>
-<p>然后找到Load Commands区，这里面有几个重要的信息，其中有三个为<strong>Segment(通过Segment将相同读取及可执行权限的section汇总到一起)</strong>，<strong>Dyld</strong>，<strong>Dylib</strong>。<br>通过Segment可以找到具体执行的指令和数据的Section，和ELF里面的section head(段表)类似。应用启动的开始还没有到那一步，应该还有一些重要的信息没有完成，其中一个就是动态库的符号解析和重定位。<br>PC指令寄存器首先指向了Dyld(动态链接器)，将Dyld运行起来后，开始将所有动态库复制到内存（已经在内存的无需重复加入，如系统库）。<br>所有项目里面所有用到的动态库，都会在这个时候拷贝到内存里面，一个都不会少。像一般项目，系统库都会有200-500个动态库要添加，因为已经在内存，所以不会耗费时间（手机重启后打开的第一个应用，会比较耗时，就是因为很多系统库都不在内存中）。<br>Dyld将所有需要的动态库拷贝到内存后，Runtime库也就拷贝好了。所以<strong>这是Runtime第一次展示的时机</strong>。而它第二次展示，就要等很多准备操作之后了。</p>
+<p>然后找到Load Commands区，这里面有几个重要的信息，其中有三个为<strong>Segment(通过Segment将相同读取及可执行权限的section汇总到一起)</strong>，<strong>Dyld</strong>，<strong>Dylib</strong>。<br>通过Segment可以找到具体执行的指令和数据的Section，和ELF里面的section head(段表)类似。应用启动的时候还没有到执行Segment那一步，还有一些重要的信息没有完成，其中一个就是动态库的符号解析和重定位。<br>PC指令寄存器首先指向了Dyld(动态链接器)，将Dyld运行起来后，开始将所有动态库复制到内存（已经在内存的无需重复加入，如系统库）。<br>所有项目里面所有用到的动态库，都会在这个时候拷贝到内存里面，一个都不会少。像一般项目，系统库都会有200-500个动态库要添加，因为已经在内存，所以不会耗费时间（手机重启后打开的第一个应用，会比较耗时，就是因为很多系统库都不在内存中）。<br>Dyld将所有需要的动态库拷贝到内存后，Runtime库也就拷贝好了。所以<strong>这是Runtime第一次展示的时机</strong>。而它第二次展示，就要等很多准备操作之后了。</p>
 <p>因为iOS在4.3系统之后，升级了虚拟地址方案，采用了动态虚拟地址，就是每个应用程序启动后，起始地址都是动态的。那么已经编译好的Mach-0就需要重新修正指令地址了。<br>这里的指令地址修复，分为两个环节，一个是本身Mach-0内部的地址修复，如函数调用、数据使用。这个就是Rebase阶段，总体是I/O耗时，但没有太多复杂的。</p>
 <p>第二个环节是对动态库对引用修正。因为对动态库的使用本身就是地址为0，需要在应用启动后重定位的，所以动态虚拟地址和动态库重定位在第二个环节就一套带走了。<br>这里有个特殊点，就是动态库也是程序，同样包含指令和数据。所有应用程序对动态库的指令都是共享的，如函数调用，但是对数据都是私有的，需要应用程序自己处理。<br>第二个环节里面，会把所有需要修正的数据全部修正掉，而函数调用，则是真正运行到这行指令的时候，才能修正。没有运行之前，仅仅做了一层映射，并没有真正处理。<br>这个映射就是动态库的数据和指令的映射，是一个section保存在Data区，因为这个区的数据可读写。这个映射就是got section。<br>而第二个环节，也就是Bind阶段，更多的是CPU操作。</p>
 <p>Rebase和Bind过后，<strong>又到了Runtime大显身手的时候了</strong>，PC指令寄存器指向了Runtime的指令位置，开始进行class的遍历、method的遍历、load的执行等等操作。</p>
