@@ -1,5 +1,5 @@
 ---
-title: Objective-C 和 Runtime 深刻理解
+title: Objective-C 和 Runtime 关系理解
 date: 2020-04-08 18:43:31 08:00
 categories:
 - 技术
