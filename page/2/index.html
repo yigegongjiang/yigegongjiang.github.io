@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -15,19 +15,20 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.yigegongjiang.com","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"www.yigegongjiang.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="跋山涉水，走心为匠。IT,互联网,网络,开发,硬件,生活,移动互联网">
+  <meta name="description" content="跋山涉水，走心为匠。而时间，却真的不多了。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="一个工匠">
 <meta property="og:url" content="https://www.yigegongjiang.com/page/2/index.html">
 <meta property="og:site_name" content="一个工匠">
-<meta property="og:description" content="跋山涉水，走心为匠。IT,互联网,网络,开发,硬件,生活,移动互联网">
+<meta property="og:description" content="跋山涉水，走心为匠。而时间，却真的不多了。">
+<meta property="og:locale" content="en_US">
 <meta property="article:author" content="one.gongjiang@gmail.com">
 <meta property="article:tag" content="IT">
 <meta property="article:tag" content="互联网">
@@ -46,7 +47,8 @@
   CONFIG.page = {
     sidebar: "",
     isHome : true,
-    isPost : false
+    isPost : false,
+    lang   : 'en'
   };
 </script>
 
@@ -99,15 +101,12 @@
 
   <div class="site-meta">
 
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">一个工匠</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-        <h1 class="site-subtitle" itemprop="description">跋山涉水，走心为匠。</h1>
-      
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">一个工匠</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">跋山涉水，走心为匠。</p>
   </div>
 
   <div class="site-nav-right">
@@ -117,37 +116,41 @@
 </div>
 
 
+
+
 <nav class="site-nav">
-  
-  <ul id="menu" class="menu">
+  <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+    <a href="/" rel="section"><i class="home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags<span class="badge">8</span></a>
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags<span class="badge">8</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories<span class="badge">3</span></a>
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">3</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives<span class="badge">31</span></a>
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">31</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>About</a>
 
   </li>
   </ul>
-
 </nav>
+
+
+
+
 </div>
     </header>
 
@@ -164,20 +167,18 @@
         <div class="content-wrap">
           
 
-          <div class="content">
+          <div class="content index posts-expand">
             
-
-  <div class="posts-expand">
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2019/12/09/%E9%80%83%E7%A6%BB%E4%BF%A1%E7%94%A8%E5%8D%A1%E5%92%8C%E8%8A%B1%E5%91%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="https://s1.ax1x.com/2020/05/05/Yi9cuQ.gif">
       <meta itemprop="name" content="one.gongjiang@gmail.com">
-      <meta itemprop="description" content="跋山涉水，走心为匠。IT,互联网,网络,开发,硬件,生活,移动互联网">
+      <meta itemprop="description" content="跋山涉水，走心为匠。而时间，却真的不多了。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -192,7 +193,7 @@
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
@@ -200,7 +201,7 @@
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -209,18 +210,6 @@
             </span>
 
           
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2019/12/09/%E9%80%83%E7%A6%BB%E4%BF%A1%E7%94%A8%E5%8D%A1%E5%92%8C%E8%8A%B1%E5%91%97/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/12/09/%E9%80%83%E7%A6%BB%E4%BF%A1%E7%94%A8%E5%8D%A1%E5%92%8C%E8%8A%B1%E5%91%97/" itemprop="commentCount"></span>
-    </a>
-  </span>
   
   
 
@@ -250,16 +239,16 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2019/12/05/Swift%20let%E3%80%81var%E3%80%81struct%E3%80%81class/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="https://s1.ax1x.com/2020/05/05/Yi9cuQ.gif">
       <meta itemprop="name" content="one.gongjiang@gmail.com">
-      <meta itemprop="description" content="跋山涉水，走心为匠。IT,互联网,网络,开发,硬件,生活,移动互联网">
+      <meta itemprop="description" content="跋山涉水，走心为匠。而时间，却真的不多了。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -274,7 +263,7 @@
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
@@ -282,7 +271,7 @@
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -291,18 +280,6 @@
             </span>
 
           
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2019/12/05/Swift%20let%E3%80%81var%E3%80%81struct%E3%80%81class/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/12/05/Swift%20let%E3%80%81var%E3%80%81struct%E3%80%81class/" itemprop="commentCount"></span>
-    </a>
-  </span>
   
   
 
@@ -342,16 +319,16 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2019/11/25/%E7%BD%91%E8%81%9A%E4%BA%BA%E7%9A%84%E5%8A%9B%E9%87%8F-%E7%BD%91%E6%98%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="https://s1.ax1x.com/2020/05/05/Yi9cuQ.gif">
       <meta itemprop="name" content="one.gongjiang@gmail.com">
-      <meta itemprop="description" content="跋山涉水，走心为匠。IT,互联网,网络,开发,硬件,生活,移动互联网">
+      <meta itemprop="description" content="跋山涉水，走心为匠。而时间，却真的不多了。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -366,7 +343,7 @@
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
@@ -374,7 +351,7 @@
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -383,18 +360,6 @@
             </span>
 
           
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2019/11/25/%E7%BD%91%E8%81%9A%E4%BA%BA%E7%9A%84%E5%8A%9B%E9%87%8F-%E7%BD%91%E6%98%93/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/11/25/%E7%BD%91%E8%81%9A%E4%BA%BA%E7%9A%84%E5%8A%9B%E9%87%8F-%E7%BD%91%E6%98%93/" itemprop="commentCount"></span>
-    </a>
-  </span>
   
   
 
@@ -432,16 +397,16 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2019/10/05/%E5%96%9D%E9%85%92%E8%AF%AF%E4%BA%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="https://s1.ax1x.com/2020/05/05/Yi9cuQ.gif">
       <meta itemprop="name" content="one.gongjiang@gmail.com">
-      <meta itemprop="description" content="跋山涉水，走心为匠。IT,互联网,网络,开发,硬件,生活,移动互联网">
+      <meta itemprop="description" content="跋山涉水，走心为匠。而时间，却真的不多了。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -456,7 +421,7 @@
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
@@ -464,7 +429,7 @@
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -473,18 +438,6 @@
             </span>
 
           
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2019/10/05/%E5%96%9D%E9%85%92%E8%AF%AF%E4%BA%8B/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/05/%E5%96%9D%E9%85%92%E8%AF%AF%E4%BA%8B/" itemprop="commentCount"></span>
-    </a>
-  </span>
   
   
 
@@ -522,16 +475,16 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2019/08/15/HKong/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="https://s1.ax1x.com/2020/05/05/Yi9cuQ.gif">
       <meta itemprop="name" content="one.gongjiang@gmail.com">
-      <meta itemprop="description" content="跋山涉水，走心为匠。IT,互联网,网络,开发,硬件,生活,移动互联网">
+      <meta itemprop="description" content="跋山涉水，走心为匠。而时间，却真的不多了。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -546,7 +499,7 @@
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
@@ -554,7 +507,7 @@
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -563,18 +516,6 @@
             </span>
 
           
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2019/08/15/HKong/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/08/15/HKong/" itemprop="commentCount"></span>
-    </a>
-  </span>
   
   
 
@@ -611,16 +552,16 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2019/08/05/%E8%83%A1%E8%AF%B4%E5%85%AB%E9%81%93%E4%B9%8B%E4%BA%91%E6%9C%8D%E5%8A%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="https://s1.ax1x.com/2020/05/05/Yi9cuQ.gif">
       <meta itemprop="name" content="one.gongjiang@gmail.com">
-      <meta itemprop="description" content="跋山涉水，走心为匠。IT,互联网,网络,开发,硬件,生活,移动互联网">
+      <meta itemprop="description" content="跋山涉水，走心为匠。而时间，却真的不多了。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -635,7 +576,7 @@
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
@@ -643,7 +584,7 @@
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -652,18 +593,6 @@
             </span>
 
           
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2019/08/05/%E8%83%A1%E8%AF%B4%E5%85%AB%E9%81%93%E4%B9%8B%E4%BA%91%E6%9C%8D%E5%8A%A1/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/08/05/%E8%83%A1%E8%AF%B4%E5%85%AB%E9%81%93%E4%B9%8B%E4%BA%91%E6%9C%8D%E5%8A%A1/" itemprop="commentCount"></span>
-    </a>
-  </span>
   
   
 
@@ -700,16 +629,16 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2019/05/25/%E4%BA%92%E8%81%94%E7%BD%91%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE%E7%90%86%E8%A7%A3%E5%9D%91%E7%82%B9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="https://s1.ax1x.com/2020/05/05/Yi9cuQ.gif">
       <meta itemprop="name" content="one.gongjiang@gmail.com">
-      <meta itemprop="description" content="跋山涉水，走心为匠。IT,互联网,网络,开发,硬件,生活,移动互联网">
+      <meta itemprop="description" content="跋山涉水，走心为匠。而时间，却真的不多了。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -724,7 +653,7 @@
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
@@ -732,7 +661,7 @@
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -741,18 +670,6 @@
             </span>
 
           
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2019/05/25/%E4%BA%92%E8%81%94%E7%BD%91%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE%E7%90%86%E8%A7%A3%E5%9D%91%E7%82%B9/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/05/25/%E4%BA%92%E8%81%94%E7%BD%91%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE%E7%90%86%E8%A7%A3%E5%9D%91%E7%82%B9/" itemprop="commentCount"></span>
-    </a>
-  </span>
   
   
 
@@ -792,16 +709,16 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2019/05/21/%E8%AE%A1%E7%AE%97%E6%9C%BAUnicode%E7%BC%96%E7%A0%81%E7%BB%88%E7%BB%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="https://s1.ax1x.com/2020/05/05/Yi9cuQ.gif">
       <meta itemprop="name" content="one.gongjiang@gmail.com">
-      <meta itemprop="description" content="跋山涉水，走心为匠。IT,互联网,网络,开发,硬件,生活,移动互联网">
+      <meta itemprop="description" content="跋山涉水，走心为匠。而时间，却真的不多了。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -816,7 +733,7 @@
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
@@ -824,7 +741,7 @@
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -833,18 +750,6 @@
             </span>
 
           
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2019/05/21/%E8%AE%A1%E7%AE%97%E6%9C%BAUnicode%E7%BC%96%E7%A0%81%E7%BB%88%E7%BB%93/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/05/21/%E8%AE%A1%E7%AE%97%E6%9C%BAUnicode%E7%BC%96%E7%A0%81%E7%BB%88%E7%BB%93/" itemprop="commentCount"></span>
-    </a>
-  </span>
   
   
 
@@ -883,16 +788,16 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2019/04/11/CPU%E7%9A%84%E5%88%B6%E4%BD%9C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="https://s1.ax1x.com/2020/05/05/Yi9cuQ.gif">
       <meta itemprop="name" content="one.gongjiang@gmail.com">
-      <meta itemprop="description" content="跋山涉水，走心为匠。IT,互联网,网络,开发,硬件,生活,移动互联网">
+      <meta itemprop="description" content="跋山涉水，走心为匠。而时间，却真的不多了。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -907,7 +812,7 @@
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
@@ -915,7 +820,7 @@
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -924,18 +829,6 @@
             </span>
 
           
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2019/04/11/CPU%E7%9A%84%E5%88%B6%E4%BD%9C/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/04/11/CPU%E7%9A%84%E5%88%B6%E4%BD%9C/" itemprop="commentCount"></span>
-    </a>
-  </span>
   
   
 
@@ -973,16 +866,16 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2019/03/28/%E6%88%91%E5%BF%83%E9%87%8C%E4%B8%80%E7%9B%B4%E6%9C%89%E4%B8%80%E4%B8%AA%E5%BF%B5%E6%83%B3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="https://s1.ax1x.com/2020/05/05/Yi9cuQ.gif">
       <meta itemprop="name" content="one.gongjiang@gmail.com">
-      <meta itemprop="description" content="跋山涉水，走心为匠。IT,互联网,网络,开发,硬件,生活,移动互联网">
+      <meta itemprop="description" content="跋山涉水，走心为匠。而时间，却真的不多了。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -997,7 +890,7 @@
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
@@ -1005,7 +898,7 @@
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1014,18 +907,6 @@
             </span>
 
           
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2019/03/28/%E6%88%91%E5%BF%83%E9%87%8C%E4%B8%80%E7%9B%B4%E6%9C%89%E4%B8%80%E4%B8%AA%E5%BF%B5%E6%83%B3/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/03/28/%E6%88%91%E5%BF%83%E9%87%8C%E4%B8%80%E7%9B%B4%E6%9C%89%E4%B8%80%E4%B8%AA%E5%BF%B5%E6%83%B3/" itemprop="commentCount"></span>
-    </a>
-  </span>
   
   
 
@@ -1062,7 +943,6 @@
   
   
 
-  </div>
 
   
   <nav class="pagination">
@@ -1124,8 +1004,10 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="one.gongjiang@gmail.com"
+      src="https://s1.ax1x.com/2020/05/05/Yi9cuQ.gif">
   <p class="site-author-name" itemprop="name">one.gongjiang@gmail.com</p>
-  <div class="site-description" itemprop="description">跋山涉水，走心为匠。IT,互联网,网络,开发,硬件,生活,移动互联网</div>
+  <div class="site-description" itemprop="description">跋山涉水，走心为匠。而时间，却真的不多了。</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -1167,18 +1049,17 @@
       <div class="footer-inner">
         
 
+        
+
 <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">one.gongjiang@gmail.com</span>
+  <span class="author" itemprop="copyrightHolder">one.gongjiang@gmail.com 版权所有，转载请注明来源。</span>
 </div>
-  <div class="powered-by">
-    跋山涉水，走心为匠。 By Hexo.
-  </div>
 
         
 
@@ -1206,7 +1087,7 @@
 <script src="/js/motion.js"></script>
 
 
-<script src="/js/schemes/muse.js"></script>
+<script src="/js/schemes/pisces.js"></script>
 
 
 <script src="/js/next-boot.js"></script>
@@ -1218,6 +1099,7 @@ var pjax = new Pjax({
     '#page-configurations',
     '.content-wrap',
     '.post-toc-wrap',
+    '.languages',
     '#pjax'
   ],
   switches: {
@@ -1229,7 +1111,7 @@ var pjax = new Pjax({
 });
 
 window.addEventListener('pjax:success', () => {
-  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
     var code = element.text || element.textContent || element.innerHTML || '';
     var parent = element.parentNode;
     parent.removeChild(element);
@@ -1248,8 +1130,8 @@ window.addEventListener('pjax:success', () => {
       // Force synchronous loading of peripheral JS.
       script.async = false;
     }
-    if (element.getAttribute('pjax') !== null) {
-      script.setAttribute('pjax', '');
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
     }
     if (code !== '') {
       script.appendChild(document.createTextNode(code));
@@ -1298,7 +1180,7 @@ window.addEventListener('pjax:success', () => {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri == 'https://www.yigegongjiang.com/page/2/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://www.yigegongjiang.com/page/2/',]
       });
       });
   </script>
@@ -1308,7 +1190,7 @@ window.addEventListener('pjax:success', () => {
 NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
   NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
     var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
+    var guest = 'nick,mail';
     guest = guest.split(',').filter(item => {
       return GUEST.includes(item);
     });
@@ -1318,12 +1200,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : true,
       appId      : 'gzcoXMhRjVA5qlkjOWugEMrG-MdYXbMMI',
       appKey     : 'zHkhf61tDwyPJtTRCnzOLiWn',
-      placeholder: "跋山涉水，走心为匠。(网络限制，外网可加载评论)",
+      placeholder: "跋山涉水，走心为匠。",
       avatar     : 'mm',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : false,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : false,
       serverURLs : ''

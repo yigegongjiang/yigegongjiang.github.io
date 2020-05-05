@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -15,22 +15,23 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.yigegongjiang.com","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"www.yigegongjiang.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="不管在哪门开发语言中，多线程都是绕不过去的开发方式。多线程本身也不是开发语言的一部分，只是开发语言会对多线程进行语言级别的包装。多线程属于计算机原理的一部分。每个应用都需要操作系统分配一个进程后才能在进程中执行，为了实现并发效果，才有了多进程方案。而进程切换开销太大，这才有了多线程方案。乃至于多线程也是有不小的内存和CPU开销，后面的协程才开始起家。但是协程已经不属于计算机的范畴，协程是单线程的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="多线程的难点在哪里">
-<meta property="og:url" content="https://www.yigegongjiang.com/2020/05/04/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E9%9A%BE%E7%82%B9%E5%9C%A8%E5%93%AA%E9%87%8C/index.html">
+<meta property="og:url" content="https://www.yigegongjiang.com/2020/05/05/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E9%9A%BE%E7%82%B9%E5%9C%A8%E5%93%AA%E9%87%8C/index.html">
 <meta property="og:site_name" content="一个工匠">
 <meta property="og:description" content="不管在哪门开发语言中，多线程都是绕不过去的开发方式。多线程本身也不是开发语言的一部分，只是开发语言会对多线程进行语言级别的包装。多线程属于计算机原理的一部分。每个应用都需要操作系统分配一个进程后才能在进程中执行，为了实现并发效果，才有了多进程方案。而进程切换开销太大，这才有了多线程方案。乃至于多线程也是有不小的内存和CPU开销，后面的协程才开始起家。但是协程已经不属于计算机的范畴，协程是单线程的">
-<meta property="og:image" content="https://s1.ax1x.com/2020/05/04/Y9S3ex.jpg">
-<meta property="article:published_time" content="2020-05-03T23:15:57.800Z">
-<meta property="article:modified_time" content="2020-05-04T10:09:55.847Z">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s1.ax1x.com/2020/05/05/YPXxOI.png">
+<meta property="article:published_time" content="2020-05-05T02:01:43.904Z">
+<meta property="article:modified_time" content="2020-05-05T03:25:51.332Z">
 <meta property="article:author" content="one.gongjiang@gmail.com">
 <meta property="article:tag" content="多线程">
 <meta property="article:tag" content=" 队列">
@@ -42,9 +43,9 @@
 <meta property="article:tag" content=" 算法">
 <meta property="article:tag" content=" 数据结构">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s1.ax1x.com/2020/05/04/Y9S3ex.jpg">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/05/05/YPXxOI.png">
 
-<link rel="canonical" href="https://www.yigegongjiang.com/2020/05/04/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E9%9A%BE%E7%82%B9%E5%9C%A8%E5%93%AA%E9%87%8C/">
+<link rel="canonical" href="https://www.yigegongjiang.com/2020/05/05/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E9%9A%BE%E7%82%B9%E5%9C%A8%E5%93%AA%E9%87%8C/">
 
 
 <script id="page-configurations">
@@ -52,7 +53,8 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : true
+    isPost : true,
+    lang   : 'en'
   };
 </script>
 
@@ -105,15 +107,12 @@
 
   <div class="site-meta">
 
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">一个工匠</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-        <h1 class="site-subtitle" itemprop="description">跋山涉水，走心为匠。</h1>
-      
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">一个工匠</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">跋山涉水，走心为匠。</p>
   </div>
 
   <div class="site-nav-right">
@@ -123,37 +122,41 @@
 </div>
 
 
+
+
 <nav class="site-nav">
-  
-  <ul id="menu" class="menu">
+  <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+    <a href="/" rel="section"><i class="home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags<span class="badge">8</span></a>
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags<span class="badge">8</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories<span class="badge">3</span></a>
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">3</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives<span class="badge">31</span></a>
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">31</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>About</a>
 
   </li>
   </ul>
-
 </nav>
+
+
+
+
 </div>
     </header>
 
@@ -170,42 +173,41 @@
         <div class="content-wrap">
           
 
-          <div class="content">
+          <div class="content post posts-expand">
             
 
-  <div class="posts-expand">
-      
+    
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2020/05/04/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E9%9A%BE%E7%82%B9%E5%9C%A8%E5%93%AA%E9%87%8C/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2020/05/05/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E9%9A%BE%E7%82%B9%E5%9C%A8%E5%93%AA%E9%87%8C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="https://s1.ax1x.com/2020/05/05/Yi9cuQ.gif">
       <meta itemprop="name" content="one.gongjiang@gmail.com">
-      <meta itemprop="description" content="跋山涉水，走心为匠。IT,互联网,网络,开发,硬件,生活,移动互联网">
+      <meta itemprop="description" content="跋山涉水，走心为匠。而时间，却真的不多了。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="一个工匠">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
+        <h1 class="post-title" itemprop="name headline">
           多线程的难点在哪里
-        </h2>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2020-05-04 07:15:57" itemprop="dateCreated datePublished" datetime="2020-05-04T07:15:57+08:00">2020-05-04</time>
+              <time title="Created: 2020-05-05 10:01:43" itemprop="dateCreated datePublished" datetime="2020-05-05T10:01:43+08:00">2020-05-05</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -218,12 +220,12 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2020/05/04/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E9%9A%BE%E7%82%B9%E5%9C%A8%E5%93%AA%E9%87%8C/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/05/04/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E9%9A%BE%E7%82%B9%E5%9C%A8%E5%93%AA%E9%87%8C/" itemprop="commentCount"></span>
+    <a title="valine" href="/2020/05/05/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E9%9A%BE%E7%82%B9%E5%9C%A8%E5%93%AA%E9%87%8C/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/05/05/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E9%9A%BE%E7%82%B9%E5%9C%A8%E5%93%AA%E9%87%8C/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -238,7 +240,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><img src="https://s1.ax1x.com/2020/05/04/Y9S3ex.jpg" alt="mutable_thread.jpg"></p>
+        <p><img src="https://s1.ax1x.com/2020/05/05/YPXxOI.png" alt="mutable_thread.jpg"></p>
 <p>不管在哪门开发语言中，多线程都是绕不过去的开发方式。多线程本身也不是开发语言的一部分，只是开发语言会对多线程进行语言级别的包装。<br>多线程属于计算机原理的一部分。每个应用都需要操作系统分配一个进程后才能在进程中执行，为了实现并发效果，才有了多进程方案。而进程切换开销太大，这才有了多线程方案。乃至于多线程也是有不小的内存和CPU开销，后面的协程才开始起家。<br>但是协程已经不属于计算机的范畴，协程是单线程的，需要语言级别实现的。有些语言并没有实现协程，也只能使用多线程的方案对CPU资源进行深一步的榨干。</p>
 <p>像iOS开发里面，每个应用都是独立的沙盒，官方并没有提供多进程的方案(操作系统级别肯定要支持)，也没有提供协程方案，如果想更有效的利用CPU资源，只能从多线程上面入手。</p>
 <p>iOS里面多线程虽然理解起来有点绕，尤其任务和队列嵌套的时候。但只要多使用几次并加以过程分析，多线程的使用也就能很好的过关了。因为GCD本身已经对多线程有了非常棒对封装，只要不自己作死，串型队列和同步任务一起处理的时候小心一些，就不会出现队列等待导致死锁。即使死锁了，像这样的系统中断性问题，也很容易排查和处理。</p>
@@ -253,7 +255,7 @@
 <p>Pthreads是完全C开发的，相关函数调用感觉会非常小巧，感受一下，如<code>pthread_create(x ...)</code>，<code>pthread_exit(NULL)</code>这样。我一直很喜欢这种面向过程式的函数调用开发方式，显然这样的函数也是和面向对象格格不入的。<br>NSThread是对Pthreads的OC封装，方便使用了一些。但是他们两个都需要自行管理线程生命周期。既然已经面向对象开发，连内存都可以自动释放了，我们还是应该使用更加一体化的多线程方式，那就是GCD和NSOperation。</p>
 <p>NSOperation将多线程的面向对象更加具体化，在处理比较复杂和大型的多线程场景下，非常适用，因为代码理解性和可读性非常高。<br>其实，iOS开发人员使用的基本都是GCD，无出其右。因为工作场景下，GCD完全可以完成多线程任务了，性能也足够好，使用又方便，代码简短易懂。如果不是复杂和大型的多线程场景，基本也不会去用NSOperation。<br><strong>而且GCD还有一个大杀器，那就是线程安全锁</strong>。<strong>GCD将多线程操作和线程安全都涵盖了</strong>，我们可以很方便的使用<code>dispatch_barrier_async</code>写出读写锁，也可以使用<code>dispatch_semaphore</code>写出二元和多元信号量锁。<br>可以说，使用GCD，把多线程开发的大部分问题一套带走了。当然还有一个没有带走的，就是上面提到的“数据结构和算法”。</p>
 <p>很多人对GCD理解困难，其实是被三个方面困住了。<strong>一个是不理解队列这种数据结构</strong>，<strong>一个是不理解任务这种执行方式</strong>，<strong>一个是不写代码进行测试和分析执行过程</strong>。</p>
-<h5 id="同步任务和异步任务"><a href="#同步任务和异步任务" class="headerlink" title="同步任务和异步任务"></a>同步任务和异步任务</h5><p><strong>一个任务是同步还是异步，是依靠线程的。因为我们函数执行过程中，只可能在一个线程里面执行。如果是同步任务，那么不可能换线程，如果是异步任务，那么必须要换线程。</strong><br>函数执行是一个函数调用执行栈空间，通过rbp和rsp两个寄存器不断上下移动栈指针位置来实现的。而一个函数调用执行栈就专属于一个线程。<br><strong>如果是同步任务，只能在当前函数调用栈执行，所以开启不了新线程。</strong><br><strong>如果是异步任务，必须要脱离当前函数调用栈，必须要开启新线程。(不开启新线程也可以，就是协程方案。但是OC不支持协程，所以只能开启新线程。)</strong></p>
+<h4 id="同步任务和异步任务"><a href="#同步任务和异步任务" class="headerlink" title="同步任务和异步任务"></a>同步任务和异步任务</h4><p><strong>一个任务是同步还是异步，是依靠线程的。因为我们函数执行过程中，只可能在一个线程里面执行。如果是同步任务，那么不可能换线程，如果是异步任务，那么必须要换线程。</strong><br>函数执行是一个函数调用执行栈空间，通过rbp和rsp两个寄存器不断上下移动栈指针位置来实现的。而一个函数调用执行栈就专属于一个线程。<br><strong>如果是同步任务，只能在当前函数调用栈执行，所以开启不了新线程。</strong><br><strong>如果是异步任务，必须要脱离当前函数调用栈，必须要开启新线程。(不开启新线程也可以，就是协程方案。但是OC不支持协程，所以只能开启新线程。)</strong></p>
 <p><strong>同步任务要点</strong>：</p>
 <ol>
 <li>同步任务立刻被放入队尾（但是不一定立刻执行，因为队列里面可能已经有任务X和Y，则必须等X和Y出队[如果是同步任务还必须执行完]后才能执行被放入队尾的同步任务）。</li>
@@ -266,7 +268,7 @@
 <li>异步任务因为肯定会开启新线程，所以后续代码立刻执行。</li>
 <li>具备开启新线程能力，而且一定要开启。但是开启线程数量由队列决定。异步任务被调用的时候在A线程，执行一定不在A线程。</li>
 </ol>
-<h5 id="串行队列和并发队列"><a href="#串行队列和并发队列" class="headerlink" title="串行队列和并发队列"></a>串行队列和并发队列</h5><p>队列(Queue)是非常基本的数据结构，基于数组或者链表这两种物理结构实现。队列它的特点就是：外部数据从队尾入队，内部数据从队头出队。<br>比如这个队列：<code>队尾-&gt;A-&gt;B-&gt;C-&gt;队头</code>，如果现在加入外部数据<code>D</code>，那么D只能添加在A的后面，想插队添加到指定index是不可能的。而如果内部数据想被删除，只能先删除C，然后才能继续删除B和A。想插队删除元素，也不可能。</p>
+<h4 id="串行队列和并发队列"><a href="#串行队列和并发队列" class="headerlink" title="串行队列和并发队列"></a>串行队列和并发队列</h4><p>队列(Queue)是非常基本的数据结构，基于数组或者链表这两种物理结构实现。队列它的特点就是：外部数据从队尾入队，内部数据从队头出队。<br>比如这个队列：<code>队尾-&gt;A-&gt;B-&gt;C-&gt;队头</code>，如果现在加入外部数据<code>D</code>，那么D只能添加在A的后面，想插队添加到指定index是不可能的。而如果内部数据想被删除，只能先删除C，然后才能继续删除B和A。想插队删除元素，也不可能。</p>
 <p><strong>串行队列要点</strong>：</p>
 <ol>
 <li>允许开启线程，最多开启1个线程，是否开启线程由任务决定。</li>
@@ -304,7 +306,7 @@
 </li>
 </ol>
 <p>上面的结果都只是一小部分。因为任务可能会有多个同步和异步穿插，所以整体执行过程会更复杂(如A同步+B异步+C同步+D异步等)。但只要记住上面同步异步及串行并发的要点部分，整体抽丝剥茧来分析，过程并不难理解。</p>
-<h5 id="多写测试代码多分析"><a href="#多写测试代码多分析" class="headerlink" title="多写测试代码多分析"></a>多写测试代码多分析</h5><p>多写一些测试代码并分析过程，GCD的内容很快就能理解。<br>多写一些串行队列嵌套同步任务，很容易出现死锁，很快就能根据上面的几个要点分析出来死锁原因。<br>所以<strong>死锁和主队列没多大关系，只要是串行队列嵌套同步任务，都可能出现死锁</strong>。<br><strong>主队列就是串行队列的特殊形式，因为主队列比串行队列更严苛，主队列不能开启新线程，只能在主线程运行，这就是主队列的要点，其他和串行队列一致</strong>。</p>
+<h4 id="多写测试代码多分析"><a href="#多写测试代码多分析" class="headerlink" title="多写测试代码多分析"></a>多写测试代码多分析</h4><p>多写一些测试代码并分析过程，GCD的内容很快就能理解。<br>多写一些串行队列嵌套同步任务，很容易出现死锁，很快就能根据上面的几个要点分析出来死锁原因。<br>所以<strong>死锁和主队列没多大关系，只要是串行队列嵌套同步任务，都可能出现死锁</strong>。<br><strong>主队列就是串行队列的特殊形式，因为主队列比串行队列更严苛，主队列不能开启新线程，只能在主线程运行，这就是主队列的要点，其他和串行队列一致</strong>。</p>
 <p>比如下面这个多线程代码分析：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 被外界业务调用的函数</span><br><span class="line">- (void)test &#123;</span><br><span class="line">    &#x2F;*</span><br><span class="line">     ...</span><br><span class="line">     这里有业务代码执行，标记这块区域为X，此时X执行代码所在线程我们假设为thread_1。（thread_1也就是当前test函数被执行所在的线程。）</span><br><span class="line">     ...</span><br><span class="line">     *&#x2F;</span><br><span class="line">    dispatch_queue_t queue &#x3D; dispatch_queue_create(&quot;&quot;, DISPATCH_QUEUE_SERIAL);</span><br><span class="line">    dispatch_async(dispatch_get_global_queue(0, 0), ^&#123;</span><br><span class="line">        &#x2F;&#x2F; C</span><br><span class="line">        dispatch_sync(queue, ^&#123;</span><br><span class="line">            [NSThread sleepForTimeInterval:1];</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    &#x2F;&#x2F; B</span><br><span class="line">    dispatch_async(queue, ^&#123;</span><br><span class="line">        [NSThread sleepForTimeInterval:2];</span><br><span class="line">    &#125;);</span><br><span class="line">    &#x2F;&#x2F; A</span><br><span class="line">    dispatch_sync(queue, ^&#123;</span><br><span class="line">        [NSThread sleepForTimeInterval:2];</span><br><span class="line">    &#125;);</span><br><span class="line">    &#x2F;*</span><br><span class="line">     ...</span><br><span class="line">     这里有业务代码执行，标记这块区域为Y，此时Y执行代码一定也在thread_1线程</span><br><span class="line">     ...</span><br><span class="line">     *&#x2F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>它的执行流程是：<code>X_thread1-&gt;(C-&gt;1s)_thread1-&gt;(B-&gt;2s-&gt;C-&gt;2s)_thread1-&gt;Y_thread1</code>。<br>分析：C被异步加入到串行队列里面，所以这个时候队列里面已经有C。因为C是异步加入的，所以B代码也会立刻执行并被立刻加入串行队列。但是B没有办法执行，因为C需要1s才能执行完成。当1s过后，B才能出队并执行。所以代码会在B处停3s然后才能将A加入队列并执行。</p>
@@ -315,9 +317,9 @@
 <p>上面，我们多个异步线程操作_number成员变量，分别进行10000次增减1，最后结果不是0。这就是多线程的一个坑。<br>出现上面的原因就是，<code>self-&gt;_number = self-&gt;_number + 1;</code>这行代码不是原子的。<br>你可能会觉得，那这样的等号赋值可能有问题，那<code>++self-&gt;_number;</code>这样的方式进行增1操作会不会正常？<br>结果就是，一样不正常。不正常的原因，依旧因为<code>++self-&gt;_number;</code>这行代码也不是原子的。<br>那什么是原子的操作？<br><strong>一条CPU执行的一个单指令，就是原子的</strong>。<code>++</code>、<code>--</code>这样的高级语言，在汇编后都会被编译成好几个操作指令。当计算机把操作指令执行了一半的时候，另一个线程也会开始执行，这个时候前一个线程就会被系统调度打断，去执行下一个线程的指令。所以，数据这个时候就产生了紊乱，导致<code>++</code>、<code>--</code>操作完全乱套了。</p>
 <p>问题已经讲述清楚了，那该怎么解决呢？就是要手动制造原子性。一个操作指令是原子的，但是我们不可能把高级语言写出操作指令的形式，那样就回到汇编时代了。所以我们需要在外部制造更大的原子性区域，在这个区域里面，同一时间只能有一个线程操作。这样，就不会出现区域里面的代码执行一半转而另一个线程闯进来了。</p>
 <p><strong>原子性是有粒度大小的，如果粒度过大，则多线程间接变成单线程。如果粒度过小，则可能不足以保障原子性</strong>。<br>下面举例分析：</p>
-<h5 id="粒度过大："><a href="#粒度过大：" class="headerlink" title="粒度过大："></a>粒度过大：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">- (void)test &#123;</span><br><span class="line">    _number &#x3D; 0;</span><br><span class="line">    dispatch_queue_t queue &#x3D; dispatch_queue_create(&quot;&quot;, DISPATCH_QUEUE_CONCURRENT);</span><br><span class="line">    dispatch_group_t group &#x3D; dispatch_group_create();</span><br><span class="line">    for (int i &#x3D; 0; i &lt; 10000; ++i) &#123;</span><br><span class="line">        dispatch_group_async(group, queue, ^&#123;</span><br><span class="line">            @synchronized (self) &#123;&#x2F;&#x2F; 这里为了测试方便，使用了self，开发过程中不要这么用，应该维持一个私有对象用来做标记</span><br><span class="line">                [self add];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; 10000; ++i) &#123;</span><br><span class="line">        dispatch_group_async(group, queue, ^&#123;</span><br><span class="line">            @synchronized (self) &#123;</span><br><span class="line">                [self sub];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    dispatch_group_notify(group, queue, ^&#123;</span><br><span class="line">        printf(&quot;the _number is %d\n&quot;, self-&gt;_number);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)add &#123;</span><br><span class="line">    &#x2F;*</span><br><span class="line">     ...</span><br><span class="line">     这里有很多代码逻辑，预计1000行</span><br><span class="line">     ...</span><br><span class="line">     *&#x2F;</span><br><span class="line">    ++_number;</span><br><span class="line">    &#x2F;*</span><br><span class="line">    ...</span><br><span class="line">    这里有很多代码逻辑，预计1000行</span><br><span class="line">    ...</span><br><span class="line">    *&#x2F;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)sub &#123;</span><br><span class="line">    &#x2F;*</span><br><span class="line">     ...</span><br><span class="line">     这里有很多代码逻辑，预计1000行</span><br><span class="line">     ...</span><br><span class="line">     *&#x2F;</span><br><span class="line">    --_number;</span><br><span class="line">    &#x2F;*</span><br><span class="line">    ...</span><br><span class="line">    这里有很多代码逻辑，预计1000行</span><br><span class="line">    ...</span><br><span class="line">    *&#x2F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="粒度过大："><a href="#粒度过大：" class="headerlink" title="粒度过大："></a>粒度过大：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">- (void)test &#123;</span><br><span class="line">    _number &#x3D; 0;</span><br><span class="line">    dispatch_queue_t queue &#x3D; dispatch_queue_create(&quot;&quot;, DISPATCH_QUEUE_CONCURRENT);</span><br><span class="line">    dispatch_group_t group &#x3D; dispatch_group_create();</span><br><span class="line">    for (int i &#x3D; 0; i &lt; 10000; ++i) &#123;</span><br><span class="line">        dispatch_group_async(group, queue, ^&#123;</span><br><span class="line">            @synchronized (self) &#123;&#x2F;&#x2F; 这里为了测试方便，使用了self，开发过程中不要这么用，应该维持一个私有对象用来做标记</span><br><span class="line">                [self add];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; 10000; ++i) &#123;</span><br><span class="line">        dispatch_group_async(group, queue, ^&#123;</span><br><span class="line">            @synchronized (self) &#123;</span><br><span class="line">                [self sub];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    dispatch_group_notify(group, queue, ^&#123;</span><br><span class="line">        printf(&quot;the _number is %d\n&quot;, self-&gt;_number);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)add &#123;</span><br><span class="line">    &#x2F;*</span><br><span class="line">     ...</span><br><span class="line">     这里有很多代码逻辑，预计1000行</span><br><span class="line">     ...</span><br><span class="line">     *&#x2F;</span><br><span class="line">    ++_number;</span><br><span class="line">    &#x2F;*</span><br><span class="line">    ...</span><br><span class="line">    这里有很多代码逻辑，预计1000行</span><br><span class="line">    ...</span><br><span class="line">    *&#x2F;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)sub &#123;</span><br><span class="line">    &#x2F;*</span><br><span class="line">     ...</span><br><span class="line">     这里有很多代码逻辑，预计1000行</span><br><span class="line">     ...</span><br><span class="line">     *&#x2F;</span><br><span class="line">    --_number;</span><br><span class="line">    &#x2F;*</span><br><span class="line">    ...</span><br><span class="line">    这里有很多代码逻辑，预计1000行</span><br><span class="line">    ...</span><br><span class="line">    *&#x2F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上面我们的多线程操作主要是add和sub两个函数，业务处理也都在这两个函数里面。但是我们在调用add和sub函数的时候，通过synchronized锁临时添加了原子性区域，这就导致add和sub里面的2000多行代码，同一时间只能一条线程执行，变成了单线程操作。多线程形同实亡。</p>
-<h5 id="粒度过小："><a href="#粒度过小：" class="headerlink" title="粒度过小："></a>粒度过小：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">@property (atomic) int num;</span><br><span class="line"></span><br><span class="line">- (void)test &#123;</span><br><span class="line">    self.num &#x3D; 0;</span><br><span class="line">    dispatch_queue_t queue &#x3D; dispatch_queue_create(&quot;&quot;, DISPATCH_QUEUE_CONCURRENT);</span><br><span class="line">    dispatch_group_t group &#x3D; dispatch_group_create();</span><br><span class="line">    for (int i &#x3D; 0; i &lt; 10000; ++i) &#123;</span><br><span class="line">        dispatch_group_async(group, queue, ^&#123;</span><br><span class="line">            ++self.num;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; 10000; ++i) &#123;</span><br><span class="line">        dispatch_group_async(group, queue, ^&#123;</span><br><span class="line">            --self.num;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    dispatch_group_notify(group, queue, ^&#123;</span><br><span class="line">        printf(&quot;the _number is %d\n&quot;, self.num);&#x2F;&#x2F; 依旧不为0</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="粒度过小："><a href="#粒度过小：" class="headerlink" title="粒度过小："></a>粒度过小：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">@property (atomic) int num;</span><br><span class="line"></span><br><span class="line">- (void)test &#123;</span><br><span class="line">    self.num &#x3D; 0;</span><br><span class="line">    dispatch_queue_t queue &#x3D; dispatch_queue_create(&quot;&quot;, DISPATCH_QUEUE_CONCURRENT);</span><br><span class="line">    dispatch_group_t group &#x3D; dispatch_group_create();</span><br><span class="line">    for (int i &#x3D; 0; i &lt; 10000; ++i) &#123;</span><br><span class="line">        dispatch_group_async(group, queue, ^&#123;</span><br><span class="line">            ++self.num;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; 10000; ++i) &#123;</span><br><span class="line">        dispatch_group_async(group, queue, ^&#123;</span><br><span class="line">            --self.num;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    dispatch_group_notify(group, queue, ^&#123;</span><br><span class="line">        printf(&quot;the _number is %d\n&quot;, self.num);&#x2F;&#x2F; 依旧不为0</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>我们定义了一个原子性(atomic)的num变量，但是最后打印的num依旧不为0。原因就是num虽然已经在set和get方法里面添加了synchronized锁，但这个锁只能保障num变量在读和取的时候是原子性的。如果两个线程同时读，这个时候两个线程获取到的值是一样的，但是一个线程增1，一个线程减1，最后两个线程原子性调用set方法赋值。显然，num的值这个时候就以最后调用set方法的线程值为准，不在准确了。<br>这个时候就是原子性粒度过小，导致虽然添加了锁，但依旧值不准确。</p>
 <p>所以为了多线程处理能力最大化(足够榨干CPU资源)，也为了数据依旧稳定和准确，原子性的粒度需要考量一个合适的区域。</p>
 <h3 id="多线程数据处理之锁"><a href="#多线程数据处理之锁" class="headerlink" title="多线程数据处理之锁"></a>多线程数据处理之锁</h3><p>原子性粒度考量完成后，下面就是如何保障这个原子性区域的问题了。上面我们简化说明都使用了synchronized锁，但是多线程本身还有其他各种锁，synchronized只是其中使用最方便但是效率也最低的一种。<br>iOS下锁比较好理解，因为不像JAVA，iOS下锁就那么多，下面根据多线程锁机制来分析。</p>
@@ -373,9 +375,9 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/iOS/" rel="tag"># iOS</a>
-              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/" rel="tag"># 计算机原理</a>
               <a href="/tags/C/" rel="tag"># C</a>
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/" rel="tag"># 计算机原理</a>
+              <a href="/tags/iOS/" rel="tag"># iOS</a>
           </div>
 
         
@@ -396,7 +398,6 @@
   
   
 
-  </div>
 
 
           </div>
@@ -448,14 +449,16 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#GCD-线程操作的理解"><span class="nav-number">1.</span> <span class="nav-text">GCD 线程操作的理解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#同步任务和异步任务"><span class="nav-number">1.0.1.</span> <span class="nav-text">同步任务和异步任务</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#串行队列和并发队列"><span class="nav-number">1.0.2.</span> <span class="nav-text">串行队列和并发队列</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多写测试代码多分析"><span class="nav-number">1.0.3.</span> <span class="nav-text">多写测试代码多分析</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多线程数据处理之原子性粒度"><span class="nav-number">2.</span> <span class="nav-text">多线程数据处理之原子性粒度</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#粒度过大："><span class="nav-number">2.0.1.</span> <span class="nav-text">粒度过大：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#粒度过小："><span class="nav-number">2.0.2.</span> <span class="nav-text">粒度过小：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多线程数据处理之锁"><span class="nav-number">3.</span> <span class="nav-text">多线程数据处理之锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多线程数据安全总结"><span class="nav-number">4.</span> <span class="nav-text">多线程数据安全总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多线程下数据结构和算法的重要性"><span class="nav-number">5.</span> <span class="nav-text">多线程下数据结构和算法的重要性</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#GCD-线程操作的理解"><span class="nav-number">1.</span> <span class="nav-text">GCD 线程操作的理解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#同步任务和异步任务"><span class="nav-number">1.1.</span> <span class="nav-text">同步任务和异步任务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#串行队列和并发队列"><span class="nav-number">1.2.</span> <span class="nav-text">串行队列和并发队列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多写测试代码多分析"><span class="nav-number">1.3.</span> <span class="nav-text">多写测试代码多分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多线程数据处理之原子性粒度"><span class="nav-number">2.</span> <span class="nav-text">多线程数据处理之原子性粒度</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#粒度过大："><span class="nav-number">2.1.</span> <span class="nav-text">粒度过大：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#粒度过小："><span class="nav-number">2.2.</span> <span class="nav-text">粒度过小：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多线程数据处理之锁"><span class="nav-number">3.</span> <span class="nav-text">多线程数据处理之锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多线程数据安全总结"><span class="nav-number">4.</span> <span class="nav-text">多线程数据安全总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多线程下数据结构和算法的重要性"><span class="nav-number">5.</span> <span class="nav-text">多线程下数据结构和算法的重要性</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="one.gongjiang@gmail.com"
+      src="https://s1.ax1x.com/2020/05/05/Yi9cuQ.gif">
   <p class="site-author-name" itemprop="name">one.gongjiang@gmail.com</p>
-  <div class="site-description" itemprop="description">跋山涉水，走心为匠。IT,互联网,网络,开发,硬件,生活,移动互联网</div>
+  <div class="site-description" itemprop="description">跋山涉水，走心为匠。而时间，却真的不多了。</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -497,18 +500,17 @@
       <div class="footer-inner">
         
 
+        
+
 <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">one.gongjiang@gmail.com</span>
+  <span class="author" itemprop="copyrightHolder">one.gongjiang@gmail.com 版权所有，转载请注明来源。</span>
 </div>
-  <div class="powered-by">
-    跋山涉水，走心为匠。 By Hexo.
-  </div>
 
         
 
@@ -536,7 +538,7 @@
 <script src="/js/motion.js"></script>
 
 
-<script src="/js/schemes/muse.js"></script>
+<script src="/js/schemes/pisces.js"></script>
 
 
 <script src="/js/next-boot.js"></script>
@@ -548,6 +550,7 @@ var pjax = new Pjax({
     '#page-configurations',
     '.content-wrap',
     '.post-toc-wrap',
+    '.languages',
     '#pjax'
   ],
   switches: {
@@ -559,7 +562,7 @@ var pjax = new Pjax({
 });
 
 window.addEventListener('pjax:success', () => {
-  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
     var code = element.text || element.textContent || element.innerHTML || '';
     var parent = element.parentNode;
     parent.removeChild(element);
@@ -578,8 +581,8 @@ window.addEventListener('pjax:success', () => {
       // Force synchronous loading of peripheral JS.
       script.async = false;
     }
-    if (element.getAttribute('pjax') !== null) {
-      script.setAttribute('pjax', '');
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
     }
     if (code !== '') {
       script.appendChild(document.createTextNode(code));
@@ -628,7 +631,7 @@ window.addEventListener('pjax:success', () => {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri == 'https://www.yigegongjiang.com/2020/05/04/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E9%9A%BE%E7%82%B9%E5%9C%A8%E5%93%AA%E9%87%8C/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://www.yigegongjiang.com/2020/05/05/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E9%9A%BE%E7%82%B9%E5%9C%A8%E5%93%AA%E9%87%8C/',]
       });
       });
   </script>
@@ -638,7 +641,7 @@ window.addEventListener('pjax:success', () => {
 NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
   NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
     var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
+    var guest = 'nick,mail';
     guest = guest.split(',').filter(item => {
       return GUEST.includes(item);
     });
@@ -648,12 +651,12 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : true,
       appId      : 'gzcoXMhRjVA5qlkjOWugEMrG-MdYXbMMI',
       appKey     : 'zHkhf61tDwyPJtTRCnzOLiWn',
-      placeholder: "跋山涉水，走心为匠。(网络限制，外网可加载评论)",
+      placeholder: "跋山涉水，走心为匠。",
       avatar     : 'mm',
       meta       : guest,
       pageSize   : '10' || 10,
       visitor    : false,
-      lang       : 'zh-cn' || 'zh-cn',
+      lang       : 'en' || 'zh-cn',
       path       : location.pathname,
       recordIP   : false,
       serverURLs : ''
