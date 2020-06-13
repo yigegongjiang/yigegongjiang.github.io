@@ -137,7 +137,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">34</span></a>
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">35</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -169,6 +169,86 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2019/05/25/%E4%BA%92%E8%81%94%E7%BD%91%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE%E7%90%86%E8%A7%A3%E5%9D%91%E7%82%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s1.ax1x.com/2020/05/05/Yi9cuQ.gif">
+      <meta itemprop="name" content="one.gongjiang@gmail.com">
+      <meta itemprop="description" content="跋山涉水，走心为匠。而时间，却真的不多了。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个工匠">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/25/%E4%BA%92%E8%81%94%E7%BD%91%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE%E7%90%86%E8%A7%A3%E5%9D%91%E7%82%B9/" class="post-title-link" itemprop="url">互联网网络传输协议理解坑点</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-05-25 19:53:48" itemprop="dateCreated datePublished" datetime="2019-05-25T19:53:48+08:00">2019-05-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="https://s2.ax1x.com/2020/03/11/8EMOzT.jpg" alt="tcp_udp"></p>
+<p>配图耗费经历和时间太大，尤其时间。我是懒人，都是文字说明。</p>
+<p>备注1：网络协议博大精深，是整个互联网的根基。本人游于表层，不敢妄语，有错请指正。<br>备注2：本文文字较多，需要花不少时间才能阅读完。但是阅读完和理解不是一回事。如果你都懂，那这就是复习。如果你有些不懂，那我这也仅仅是提供一个入口，还需自行查阅相关技术文档。<br>备注3：以下采用问答形式给予问题说明。问题是真问题，答案却是要点回答，有些不涉及原理，还需自行查阅相关技术文档。</p>
+<p><strong>问：网络分层是什么样的？</strong><br>答：那我们肯定是要闭着眼睛说出详细说出7层和5层网络模型的名字和对应的协议名称的，如网络层，ICMP协议等。理解网络数据交互过程中所有层所做的努力，理解网络分层含义。可以有下层没上层，但是不能有上层没下层。</p>
+<p><strong>问：DNS协议的用途和解析方式是什么样的？</strong><br>答：所有应用层层面的数据，如果需要进行网络传输，必定需要ip地址这个核心参数。没有ip地址的包，是不可能发出去的，都过不了网卡。因为网卡不知道要把这个包传到哪里去。<br>而ip地址人类很难记忆，所以很多服务都是通过域名进行访问。域名是比较方便记忆，但是网络又不认，因为网络无法根据域名进行数据传输，即域名没有定位功能。<br>所以所有的应用层的域名访问，都需要DNS协议解析成ip地址后才能够封包发送，ip有定位功能。如果一个应用层服务直接通过ip地址访问另一个服务，那么是完全不用DNS做一次ip地址解析的。<br>我们的域名是需要从特定的服务商进行购买，在服务商处会进行ip地址的配置。而DNS协议的根据就是层层服务商解析，问根域，返回顶级域，问顶级域，返回权威域，这样通过<code>.com</code>、<code>.cn</code>等不同服务商的判断，最终落实并返回一个确定的ip地址。<br>DNS协议是系统层级的操作，应用层无需关心，系统通过DNS协议拿到ip地址后会给到应用层，然后应用层将ip地址传递到传输层进行网络数据封包。<br>为了效率问题，系统会进行DNS的缓存以加快解析速度，并且还会设置有效期以较少误差。<br>比较例外的是hosts文件。在这里配置的信息具有第一优先级，系统如果在hosts中找到了对应的域名和ip地址的映射，则不再进行DNS请求而直接返回映射数据。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/05/25/%E4%BA%92%E8%81%94%E7%BD%91%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE%E7%90%86%E8%A7%A3%E5%9D%91%E7%82%B9/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -878,82 +958,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2018/12/31/%E6%B8%B8%E6%88%8F%E4%BA%BA%E7%94%9F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://s1.ax1x.com/2020/05/05/Yi9cuQ.gif">
-      <meta itemprop="name" content="one.gongjiang@gmail.com">
-      <meta itemprop="description" content="跋山涉水，走心为匠。而时间，却真的不多了。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一个工匠">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/12/31/%E6%B8%B8%E6%88%8F%E4%BA%BA%E7%94%9F/" class="post-title-link" itemprop="url">游戏人生</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-12-31 17:00:23" itemprop="dateCreated datePublished" datetime="2018-12-31T17:00:23+08:00">2018-12-31</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%A7%82%E7%82%B9/" itemprop="url" rel="index"><span itemprop="name">观点</span></a>
-                </span>
-            </span>
-
-          
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>最近一年，试玩了不少几款游戏。<br>有下载需要付费的，有内购的，也有免费的。有本机的，也有联网的。有养成类的，也有公平平台的。<br>游戏过程是下载了，试玩了，玩了，卸载了。最后连游戏名字也忘了。<br>今天，也是在2018年的最后一天，开始卸载最后一批游戏。游戏这段旅程，在我的生命里，初步结束了。<br>昨晚，我刚在一个游戏里面付费了30元。接着，我杀死了应用，想着这段时间我的游戏生涯。<br>我对于游戏，始终有一条清晰的线，沿着这条线，不迷失。也是这条线，让我知道游戏的本质，看清很low的游戏也日流水过百万的简单操作下的华丽外衣。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/12/31/%E6%B8%B8%E6%88%8F%E4%BA%BA%E7%94%9F/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1025,7 +1029,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
