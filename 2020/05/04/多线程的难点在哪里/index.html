@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.1.1">
 
 <meta name="google-site-verification" content="hEkkdHoBZXdN-chbhMtLxz6orIp7_P0lfW61l88LlIw" />
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
@@ -33,15 +33,9 @@
 <meta property="article:published_time" content="2020-05-03T23:15:57.000Z">
 <meta property="article:modified_time" content="2020-05-06T10:57:39.990Z">
 <meta property="article:author" content="one.gongjiang@gmail.com">
-<meta property="article:tag" content="多线程">
-<meta property="article:tag" content=" 队列">
-<meta property="article:tag" content=" 线程调度">
-<meta property="article:tag" content=" 锁">
-<meta property="article:tag" content=" 互斥锁">
-<meta property="article:tag" content="自旋锁">
-<meta property="article:tag" content=" 递归锁">
-<meta property="article:tag" content=" 算法">
-<meta property="article:tag" content=" 数据结构">
+<meta property="article:tag" content="iOS">
+<meta property="article:tag" content="C">
+<meta property="article:tag" content="计算机原理">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://s1.ax1x.com/2020/05/05/YPXxOI.png">
 
@@ -248,7 +242,7 @@
 <a id="more"></a>
 
 <p>移动端界面开发，要保障不出现重大事故，很大程度上不在于UI。因为UI是寄托于数据展示的，只要数据不出现大问题，UI都是写好的机器代码，基本不会出问题。<br>但如果数据有间歇性的不稳定，那么对于App来说就是一个隐藏的地雷，因为谁也不知道哪个时刻会发生数组越界，或者数据为空。<br>所以，<strong>数据的稳定性和完整性</strong>，非常重要。</p>
-<p>在多线程情况下，我们会操作UI吗？显然不会，多线程更多处理的都是数据。所以多线程难点可以从数据下手。<strong>如果多线程情况下数据的可靠性无法保证，宁愿放弃多线程(FMDB就是一个例子)</strong>。<br>多线程情况下，数据的稳定性和完整性的保障，很复杂吗？其实也并不复杂，因为就两个要素点：<strong>原子性粒度的大小和锁</strong>。<br>原子性粒度的大小，不会太难控，有些编程经验，不会处理的太差。<br>而锁机制翻来覆去就那些，系统能够支持的甚至更少。在Java里面就有很多不同的锁，在iOS里面算来算去就那么几个，还是新瓶装旧酒。</p>
+<p>在多线程情况下，我们会操作UI吗？显然不会，多线程更多处理的都是数据。所以多线程难点可以从数据下手。<strong>如果多线程情况下数据的可靠性无法保证，宁愿放弃多线程(FMDB就是一个例子)**。<br>多线程情况下，数据的稳定性和完整性的保障，很复杂吗？其实也并不复杂，因为就两个要素点：</strong>原子性粒度的大小和锁**。<br>原子性粒度的大小，不会太难控，有些编程经验，不会处理的太差。<br>而锁机制翻来覆去就那些，系统能够支持的甚至更少。在Java里面就有很多不同的锁，在iOS里面算来算去就那么几个，还是新瓶装旧酒。</p>
 <p>那多线程，难点主要在哪里呢？其实还是数据。<strong>难点在于数据的处理！复杂度上的消耗，计算机时间片的消耗。</strong><br><strong>多线程编程，最终考量的其实是数据结构和算法！</strong></p>
 <p>对于上面的诸多观点，下面一一进行分析：</p>
 <h3 id="GCD-线程操作的理解"><a href="#GCD-线程操作的理解" class="headerlink" title="GCD 线程操作的理解"></a>GCD 线程操作的理解</h3><p>iOS下面，官方提供的多线程方案有Pthreads、NSThread、GCD、NSOperation。</p>
@@ -375,9 +369,9 @@
 
       <footer class="post-footer">
           <div class="post-tags">
+              <a href="/tags/iOS/" rel="tag"># iOS</a>
               <a href="/tags/C/" rel="tag"># C</a>
               <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/" rel="tag"># 计算机原理</a>
-              <a href="/tags/iOS/" rel="tag"># iOS</a>
           </div>
 
         
@@ -452,7 +446,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#GCD-线程操作的理解"><span class="nav-number">1.</span> <span class="nav-text">GCD 线程操作的理解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#同步任务和异步任务"><span class="nav-number">1.1.</span> <span class="nav-text">同步任务和异步任务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#串行队列和并发队列"><span class="nav-number">1.2.</span> <span class="nav-text">串行队列和并发队列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多写测试代码多分析"><span class="nav-number">1.3.</span> <span class="nav-text">多写测试代码多分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多线程数据处理之原子性粒度"><span class="nav-number">2.</span> <span class="nav-text">多线程数据处理之原子性粒度</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#粒度过大："><span class="nav-number">2.1.</span> <span class="nav-text">粒度过大：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#粒度过小："><span class="nav-number">2.2.</span> <span class="nav-text">粒度过小：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多线程数据处理之锁"><span class="nav-number">3.</span> <span class="nav-text">多线程数据处理之锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多线程数据安全总结"><span class="nav-number">4.</span> <span class="nav-text">多线程数据安全总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多线程下数据结构和算法的重要性"><span class="nav-number">5.</span> <span class="nav-text">多线程下数据结构和算法的重要性</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#GCD-%E7%BA%BF%E7%A8%8B%E6%93%8D%E4%BD%9C%E7%9A%84%E7%90%86%E8%A7%A3"><span class="nav-number">1.</span> <span class="nav-text">GCD 线程操作的理解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E4%BB%BB%E5%8A%A1%E5%92%8C%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1"><span class="nav-number">1.1.</span> <span class="nav-text">同步任务和异步任务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%B2%E8%A1%8C%E9%98%9F%E5%88%97%E5%92%8C%E5%B9%B6%E5%8F%91%E9%98%9F%E5%88%97"><span class="nav-number">1.2.</span> <span class="nav-text">串行队列和并发队列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E5%86%99%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81%E5%A4%9A%E5%88%86%E6%9E%90"><span class="nav-number">1.3.</span> <span class="nav-text">多写测试代码多分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B9%8B%E5%8E%9F%E5%AD%90%E6%80%A7%E7%B2%92%E5%BA%A6"><span class="nav-number">2.</span> <span class="nav-text">多线程数据处理之原子性粒度</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B2%92%E5%BA%A6%E8%BF%87%E5%A4%A7%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">粒度过大：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B2%92%E5%BA%A6%E8%BF%87%E5%B0%8F%EF%BC%9A"><span class="nav-number">2.2.</span> <span class="nav-text">粒度过小：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B9%8B%E9%94%81"><span class="nav-number">3.</span> <span class="nav-text">多线程数据处理之锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">多线程数据安全总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7"><span class="nav-number">5.</span> <span class="nav-text">多线程下数据结构和算法的重要性</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

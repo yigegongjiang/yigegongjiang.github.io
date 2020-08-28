@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.1.1">
 
 <meta name="google-site-verification" content="hEkkdHoBZXdN-chbhMtLxz6orIp7_P0lfW61l88LlIw" />
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
@@ -30,13 +30,7 @@
 <meta property="og:description" content="跋山涉水，走心为匠。而时间，却真的不多了。">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="one.gongjiang@gmail.com">
-<meta property="article:tag" content="IT">
-<meta property="article:tag" content="互联网">
-<meta property="article:tag" content="网络">
-<meta property="article:tag" content="开发">
-<meta property="article:tag" content="硬件">
-<meta property="article:tag" content="生活">
-<meta property="article:tag" content="移动互联网">
+<meta property="article:tag" content="IT,互联网,网络,开发,硬件,生活,移动互联网">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://www.yigegongjiang.com/">
@@ -379,7 +373,7 @@
 
       
           <p><img src="https://s1.ax1x.com/2020/05/23/YvJNNR.png" alt="tcp_wireshark1.png"></p>
-<p>最近在研究发送/接收缓冲区对Socket性能对影响，朋友发来两篇质量非常高的研究性报告让我看。<br><a href="https://zorrozou.github.io/docs/Socket%E7%BC%93%E5%AD%98%E7%A9%B6%E7%AB%9F%E5%A6%82%E4%BD%95%E5%BD%B1%E5%93%8DTCP%E7%9A%84%E6%80%A7%E8%83%BD.html" target="_blank" rel="noopener">Socket缓存究竟如何影响TCP的性能</a><br><a href="https://plantegg.github.io/2019/09/28/%E5%B0%B1%E6%98%AF%E8%A6%81%E4%BD%A0%E6%87%82TCP--%E6%80%A7%E8%83%BD%E5%92%8C%E5%8F%91%E9%80%81%E6%8E%A5%E6%94%B6Buffer%E7%9A%84%E5%85%B3%E7%B3%BB/" target="_blank" rel="noopener">TCP性能和发送接收窗口、Buffer的关系</a><br>做研究的，都少不了数据。上面文章中“缓冲区对Socket性能分析”的数据非常严谨，我非常佩服。<br>于是我用WireShark分析验证TCP的数据传输流程，过程包含三次握手、滑动窗口数据传输、四次挥手，收益很多。</p>
+<p>最近在研究发送/接收缓冲区对Socket性能对影响，朋友发来两篇质量非常高的研究性报告让我看。<br><a target="_blank" rel="noopener" href="https://zorrozou.github.io/docs/Socket%E7%BC%93%E5%AD%98%E7%A9%B6%E7%AB%9F%E5%A6%82%E4%BD%95%E5%BD%B1%E5%93%8DTCP%E7%9A%84%E6%80%A7%E8%83%BD.html">Socket缓存究竟如何影响TCP的性能</a><br><a target="_blank" rel="noopener" href="https://plantegg.github.io/2019/09/28/%E5%B0%B1%E6%98%AF%E8%A6%81%E4%BD%A0%E6%87%82TCP--%E6%80%A7%E8%83%BD%E5%92%8C%E5%8F%91%E9%80%81%E6%8E%A5%E6%94%B6Buffer%E7%9A%84%E5%85%B3%E7%B3%BB/">TCP性能和发送接收窗口、Buffer的关系</a><br>做研究的，都少不了数据。上面文章中“缓冲区对Socket性能分析”的数据非常严谨，我非常佩服。<br>于是我用WireShark分析验证TCP的数据传输流程，过程包含三次握手、滑动窗口数据传输、四次挥手，收益很多。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/05/13/TCP%20%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/#more" rel="contents">
@@ -615,7 +609,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><strong>运行时(Runtime)</strong>本身是一个非常普通的概念，每个编程语言都会有运行时，非iOS Objective-C特有。<br>概念上理解，<strong>运行时，就是程序执行的过程</strong>，每个编程语言，只有运行后执行特定的任务才有价值，所以每个编程语言，都有运行时。<br>而Objective-C的Runtime显然不仅仅是程序执行过程这么简单，它一举将基于<strong>面向过程的语言C</strong>而实现的<strong>面向对象的语言Objective-C</strong>变成了<strong>动态语言</strong>。<br>为什么Objective-C的Runtime有些难理解，因为运行时从概念上理解非常简单，但是Java、Python、C它们的运行时都是不一样的，运行时期间可以做很多事情，所以运行时理解起来还是比较抽象和高阶。<br>如果把Runtime改名为<strong>OCDR</strong>（Objective-C Dynamic Resolution，即<strong>Objective-C动态决议</strong>），剥离运行时和运行时库的概念，那么很多人都会轻松掌握Objective-C Runtime的核心。而Objective-C Runtime本质上的确就在践行<strong>动态决议</strong>这么一个过程。</p>
+          <p><strong>运行时(Runtime)**本身是一个非常普通的概念，每个编程语言都会有运行时，非iOS Objective-C特有。<br>概念上理解，</strong>运行时，就是程序执行的过程<strong>，每个编程语言，只有运行后执行特定的任务才有价值，所以每个编程语言，都有运行时。<br>而Objective-C的Runtime显然不仅仅是程序执行过程这么简单，它一举将基于</strong>面向过程的语言C<strong>而实现的</strong>面向对象的语言Objective-C<strong>变成了</strong>动态语言<strong>。<br>为什么Objective-C的Runtime有些难理解，因为运行时从概念上理解非常简单，但是Java、Python、C它们的运行时都是不一样的，运行时期间可以做很多事情，所以运行时理解起来还是比较抽象和高阶。<br>如果把Runtime改名为</strong>OCDR<strong>（Objective-C Dynamic Resolution，即</strong>Objective-C动态决议<strong>），剥离运行时和运行时库的概念，那么很多人都会轻松掌握Objective-C Runtime的核心。而Objective-C Runtime本质上的确就在践行</strong>动态决议**这么一个过程。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/04/08/Objective-C%20%E5%92%8C%20Runtime/#more" rel="contents">
