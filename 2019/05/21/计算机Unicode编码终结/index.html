@@ -30,7 +30,7 @@
 <meta property="og:description" content="开局三把西瓜刀：1.代码多年不识字符集和编码，是有过错的。2.一天到晚说“Unicode编码”，自己的误区大了。3.没有认知字符、字节、字符集、编码的区别并以讹传讹，就是万恶了。from “一个工匠”  假设你已经查阅了很多关于Unicode、UTF8等之间的关系，并且有了很好的认知。毕竟这博客太低微了，能找到并打开这个链接，那肯定都是看过十几个其他博文的解读了。本篇博文重点描述编码认知过程中的">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2019-05-21T05:47:16.000Z">
-<meta property="article:modified_time" content="2020-01-08T12:08:07.576Z">
+<meta property="article:modified_time" content="2021-07-24T14:21:31.171Z">
 <meta property="article:author" content="one.gongjiang@gmail.com">
 <meta property="article:tag" content="计算机原理">
 <meta name="twitter:card" content="summary">
@@ -128,12 +128,12 @@
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">3</span></a>
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">4</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">35</span></a>
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">36</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -234,7 +234,7 @@
 <p>开局三把西瓜刀：<br>1.代码多年不识字符集和编码，是有过错的。<br>2.一天到晚说“Unicode编码”，自己的误区大了。<br>3.没有认知字符、字节、字符集、编码的区别并以讹传讹，就是万恶了。<br>from “一个工匠”</p>
 </blockquote>
 <p>假设你已经查阅了很多关于Unicode、UTF8等之间的关系，并且有了很好的认知。毕竟这博客太低微了，能找到并打开这个链接，那肯定都是看过十几个其他博文的解读了。<br>本篇博文<strong>重点描述编码认知过程中的几个坑点</strong>，这个很重要。</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <h3 id="ASCII和Unicode的关系"><a href="#ASCII和Unicode的关系" class="headerlink" title="ASCII和Unicode的关系"></a>ASCII和Unicode的关系</h3><p>就当作父子关系吧。这最好理解。<br>虽然ASCII是大学计算机教科书入门知识点，如果不联系上编码和Unicode，还是不好理解的。知道有这个东西在，但是怎么玩的却不是很清楚。<br><strong>ASCII是字符集。什么是字符集？就是一个映射表。</strong><br>你现在看到的所有abcd或者汉字或者泰文或者emoji，你要有一个认知，不要认为他们独一无二！他们只是图形，你要把它们理解为符号。而你随手那么一画，也能弄出来一个符号。因为计算机，只认识0和1，计算机没有思维，它不理解我们眼中汉字的博大精深。ASCII把一个位置，标记了一个符号含义。这个位置就是<strong>码位</strong>，这个符号，就是我们看到的abcd。计算机只认识码位，应用层根据码位从Ascii映射符号。如果你自定义了一个字符集，把相同的码位定位为刚才你随手画的那个符号，又有什么关系呢？因为这个码位到底代表什么，是应用层的事情了，而我们切换字体，是不是也有异曲同工之妙？<br><strong>ASCII主要是制定了规则。</strong>这样整个美国人民都可以根据码位对应一样的符号，就能统一的显示单词语句了。<br>好景不长，计算机发展太快，ASCII本身有缺陷，只有256个字符，中国几十万汉子，那是ASCII能表示的了？更何况还有韩国，印度等等。<br>这个时候Unicode出来了。<strong>Unicode干嘛的？啥也没干除了一件事，就是继续制定规则。</strong>这个规则很大，涵盖了所有的字符，并且还在不断增加。这样，不管是汉字，还是泰文，都能通过Unicode找到一个映射的码位。有了统一的规则，世界就能连起来了嘛，因为索引10000代表一个符号，10001又代表一个符号，而他们代表的符号，是全球统一的，所有应用层都能根据这个码位显示一样的符号。<br>所以ASCII和Unicode是什么关系？ASCII是第一个让人们可以通过计算机交流的字符集合。Unicode不是第二个，Unicode没出来之前，中国还自己做了GBK字符集。但是Unicode是最全的一个，<strong>兼容了ASCII，但是比ASCII多了太多的码位。所以说，ASCII和Unicode是父子关系，父亲开拓了疆土，儿子做大了企业。</strong><br>而他们之所以能全球统一，是大势所趋。但他们不是唯一的，你行你也可以搞一个，制定属于自己的一套字符集，你就能弄出来绝对的秘文（虽然是明文，但是码位和符号映射只有你知道，那也就是秘文了）。</p>
 <h3 id="UTF-8，UTF-16，UTF-32"><a href="#UTF-8，UTF-16，UTF-32" class="headerlink" title="UTF-8，UTF-16，UTF-32"></a>UTF-8，UTF-16，UTF-32</h3><p>这三个，叫做字符编码。切记，上面的ASCII和Unicode是字符集，已经介绍了用途。这三个UTF是字符编码，<strong>他们是编码！！！</strong>。<br><strong>字符编码存在的意义，依托于字符集。有了字符集，才有字符编码。</strong><br>因为我们知道了码位，才知道对应的字符，而码位我们可以形象的理解为索引。码位是需要0和1表示的，码位是计算机沟通的途径。<br>码位，怎么形成对应的0和1串，就是编码。<br>其中，这三个UTF编码最为出名。<br>这三个UTF对同一个码位有不同的表示形式。具体各位通过其他博文已经了解到了，多写无意，我就不做搬运工了。<br>但是我们得知道：</p>
@@ -350,14 +350,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">35</span>
+          <span class="site-state-item-count">36</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">

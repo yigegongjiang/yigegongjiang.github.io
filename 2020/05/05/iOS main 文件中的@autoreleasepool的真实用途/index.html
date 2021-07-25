@@ -30,7 +30,7 @@
 <meta property="og:description" content="这个问题，在很多年前其实是经历过血腥风雨的。 就是下面的代码，Xcode创建项目的时候，会生成下面的main.mm文件: 12345int main(int argc, char * argv[]) &amp;#123;    @autoreleasepool &amp;#123;        return UIApplicationMain(argc, argv, nil, NSStringFromClass">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-05-05T08:20:56.000Z">
-<meta property="article:modified_time" content="2020-05-09T14:30:52.806Z">
+<meta property="article:modified_time" content="2021-07-24T14:21:31.151Z">
 <meta property="article:author" content="one.gongjiang@gmail.com">
 <meta property="article:tag" content="iOS">
 <meta name="twitter:card" content="summary">
@@ -128,12 +128,12 @@
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">3</span></a>
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">4</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">35</span></a>
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">36</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -232,10 +232,10 @@
       
         <p>这个问题，在很多年前其实是经历过血腥风雨的。</p>
 <p>就是下面的代码，Xcode创建项目的时候，会生成下面的main.mm文件:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int main(int argc, char * argv[]) &#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int main(int argc, char * argv[]) &#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>问题就是，main里面的autoreleasepool是做什么用的？</p>
-<a id="more"></a>
+<span id="more"></span>
 <p>前几年是iOS炙手可热的疯狂年代，面试官们会经常问到这个问题，后来，这个问题后来越来越淡了，因为没有人能回答的好它。<br>甚至于，能回答这个问题的人，都是瞎扯淡，我可以这样确认。</p>
 <p>这个问题，我曾经研究过很久，我把可能的牵强逻辑都灌进去，也无法得出结论。那时我给自己的答案是：<br><strong>我确认这个autoreleasepool没有任何用处，不管别人怎么说，除非拿出实锤，否则我确定它没任何用途。</strong><br><strong>如果这个代码是微软的，我相信这是微软的错误。但是苹果是一家特别的公司，不会恶意强奸用户，所以我相信它有特别的用处，但是我不知道是啥。</strong></p>
 <p>显然，这是一个两面派的答案。一来我相信自己的逻辑判断，二来我相信苹果一定别有用途。</p>
@@ -244,10 +244,10 @@
 <p>我按捺不住自己的复杂心情，又打开了google，想看看最近是不是又有什么新的傻逼讲解出来了。<br>显然，我依旧一无所获。</p>
 <p>那种不死心，很多时候是天生的，我在5月5号，写下文章标题，用来激励自己，这次，一定要找到答案。<br>中间断断续续的，把相关书籍的部分章节重点看看，把OC相关源码重点看看，和同事聊聊聊，一直到今天，5月9号。</p>
 <p>我想看看Xcode创建Mac项目的main文件长啥样，如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Mac app</span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        &#x2F;&#x2F; Setup code that might create autoreleased objects goes here.</span><br><span class="line">    &#125;</span><br><span class="line">    return NSApplicationMain(argc, argv);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// Mac app</span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        // Setup code that might create autoreleased objects goes here.</span><br><span class="line">    &#125;</span><br><span class="line">    return NSApplicationMain(argc, argv);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>反正我立刻就惊了，Mac和iOS的main文件竟然是不一样的。我立刻创建一个iOS项目，如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; iOS app</span><br><span class="line">int main(int argc, char * argv[]) &#123;</span><br><span class="line">    NSString * appDelegateClassName;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        &#x2F;&#x2F; Setup code that might create autoreleased objects goes here.</span><br><span class="line">        appDelegateClassName &#x3D; NSStringFromClass([AppDelegate class]);</span><br><span class="line">    &#125;</span><br><span class="line">    return UIApplicationMain(argc, argv, nil, appDelegateClassName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// iOS app</span><br><span class="line">int main(int argc, char * argv[]) &#123;</span><br><span class="line">    NSString * appDelegateClassName;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        // Setup code that might create autoreleased objects goes here.</span><br><span class="line">        appDelegateClassName = NSStringFromClass([AppDelegate class]);</span><br><span class="line">    &#125;</span><br><span class="line">    return UIApplicationMain(argc, argv, nil, appDelegateClassName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>我当场就笑了。</p>
 <p>不知道Xcode的哪个版本开始就改变了项目的main初始代码，至少，我一直没有注意它。</p>
@@ -352,14 +352,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">35</span>
+          <span class="site-state-item-count">36</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">

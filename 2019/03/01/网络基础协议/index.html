@@ -30,7 +30,7 @@
 <meta property="og:description" content="互联网规则 互联网本质，就是数据在一定的协议基础上，在多台主机之间，进行数据的流动共享。 网络传输协议非常多，不是简简单单的HTTP&#x2F;HTTPS协议，我们App看的直播就有RTMP、私有UDP协议、DNS(+CDN加速)等等。 数据在网络上基于二进制包进行传输，传输规则基于7层网络协议，4&#x2F;5层网络协议便于理解 数据包在传输过程中几个关键不可缺少的字段：端口、MAC地址、IP地址。可以没有应用层的">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2019-03-01T03:47:37.000Z">
-<meta property="article:modified_time" content="2020-01-08T12:08:07.575Z">
+<meta property="article:modified_time" content="2021-07-24T14:21:31.167Z">
 <meta property="article:author" content="one.gongjiang@gmail.com">
 <meta property="article:tag" content="计算机原理">
 <meta property="article:tag" content="网络">
@@ -129,12 +129,12 @@
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">3</span></a>
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">4</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">35</span></a>
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">36</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -243,7 +243,7 @@
 <li>HTTPS的公私钥认证，很多情况下只发生一次，公私钥认证的用途仅仅是为C-S之间的后续通讯建立对称密钥。后续的网络请求不出问题是不会重新公私钥认证的。因为服务器会在第一次公私钥认证的时候，生成Session ID，该Session ID指向对称密钥并保存。客户端一般也会保存这个Session ID和对称密钥，后面客户端提交Session ID到服务器就可以建立起来安全通信。HTTP1.0就可以支持keep alive，多个网络请求可以复用建立的连接，这个时候更加不需要公私钥认证了。</li>
 <li>HTTPS的公私钥认证，生成的对称密钥是由C生成一个随机数、S生成一个随机数、C再生成一个随机数这三个数完成的。公私钥认证的开始，是没有加密的，因为客户端还没有拿到公钥。所以前两个随机数是可以抓包拿到的，但是第三个随机数是C通过公钥加密传输的，所以第三个随机数的安全传输才是整个安全机制的重点。（前两个随机数被串改了也没关系，因为C和S的随机数不一样了，生成的对称密钥也不一样，后面的数据传输加解密过程中，就无法完成校验了）有个重点是，为什么需要3个随机数？而不能直接传输上面的第三次随机数？因为随机数为了确保随机性，而随机性不能完全依靠一方来确定，因为很可能不随机。而3个随机数，已经可以很好的保障最后生成的对称密钥的随机性了。</li>
 </ol>
-<a id="more"></a>
+<span id="more"></span>
 
 <h3 id="网络分层"><a href="#网络分层" class="headerlink" title="网络分层"></a>网络分层</h3><h5 id="五层分"><a href="#五层分" class="headerlink" title="五层分"></a>五层分</h5><ol>
 <li>物理层</li>
@@ -429,14 +429,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">35</span>
+          <span class="site-state-item-count">36</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">

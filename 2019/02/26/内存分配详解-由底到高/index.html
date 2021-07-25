@@ -30,7 +30,7 @@
 <meta property="og:description" content="一行代码引发的思考 int a &#x3D; 5;  问1:变量a在内存的哪里？问2:数字5在内存的哪里？问3:int的字节大小是多少？如果a&#x3D;12345后，字节大小变不变？问4:代码里面print(“%d”, a)，为什么可以输出5，a是怎么找到5的？问5:内存到底在哪里？问6:总内存有多大？问7:总内存的大小是怎么确定的？ 各位能回答上面的7问吗？ 由底往上来解析，一步一步揭开洋葱的外衣，真相终究会大白">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2019-02-26T11:04:53.000Z">
-<meta property="article:modified_time" content="2020-01-08T12:08:07.572Z">
+<meta property="article:modified_time" content="2021-07-24T14:21:31.154Z">
 <meta property="article:author" content="one.gongjiang@gmail.com">
 <meta property="article:tag" content="iOS">
 <meta property="article:tag" content="C">
@@ -132,12 +132,12 @@
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">3</span></a>
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">4</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">35</span></a>
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">36</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -240,7 +240,7 @@
 <p>问1:变量a在内存的哪里？<br>问2:数字5在内存的哪里？<br>问3:int的字节大小是多少？如果a=12345后，字节大小变不变？<br>问4:代码里面print(“%d”, a)，为什么可以输出5，a是怎么找到5的？<br>问5:内存到底在哪里？<br>问6:总内存有多大？<br>问7:总内存的大小是怎么确定的？</p>
 <p>各位能回答上面的7问吗？</p>
 <p>由底往上来解析，一步一步揭开洋葱的外衣，真相终究会大白于天下！</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <h3 id="字节与比特"><a href="#字节与比特" class="headerlink" title="字节与比特"></a>字节与比特</h3><p>比特这玩意，说好理解，马上能理解。说难理解，那肯定还是需要一翻思考总结的。<br><code>比特是计算机存储的最小存储单元</code>。我们认知到的数字<code>3</code>，在计算机的存储里（硬盘或者内存）的结构是这样的：<code>00000011</code>。是的，也就是我们理解的二进制。<br>所以这个数字<code>3</code>是由8位组成的。每位有<code>0</code>和<code>1</code>两种变化。<br>恐怖的是，比特存储，是计算机的基石。我们在互联网上通行的一切，如图片、音视频、文字，甚至各位的博客、App、电子书等等，能想到的能通过互联网传输的一切，都是比特存储。<br>举个例子，我们看的一张图片，在磁盘上的存储，或许就是这样子：<code>0101011101010101010111101011110101010101100***(省略100000000个)***1010100111010101</code>。<br>所以，祝各位每年的<code>1024节</code>快乐，因为我们的努力，世界才如此缤纷多彩 ：)</p>
 <p>1字节(byte)=8比特(bit)<br>我们刚才说到的数字<code>3</code>，就是一个字节，在磁盘上就是<code>00000011</code>。（为了便于理解，实际可能是<code>00000000 00000011</code>，或者<code>00000000 00000000 00000000 00000011</code>）。<br><code>1字节=8比特</code>，这个是定死的，开始就是这么玩的，也会永远的玩下去。</p>
@@ -259,11 +259,11 @@
 <h4 id="初步总结"><a href="#初步总结" class="headerlink" title="初步总结"></a>初步总结</h4><p>原理分析完了，各位就知道一个现象了：<br>当年win7系统，明明买了8G的内存条，到<code>我到电脑</code>里面一看，只有4G不到。其余到4G不见了。<br>其实不是不见了，它还在那里，只是地址总线只有32条，导致读取不了更多到内存空间了。</p>
 <h3 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h3><p>万物皆为C。即C语言。<br>后面孩子孙子辈的语言，尽管百花齐放，终究逃离不了指针。这是计算机发展史上的根基。</p>
 <p>指针是什么？我理解的指针，就是存储一段数据，这个数据是什么？是<code>内存地址</code>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int main(int argc, char *argv[]) &#123;</span><br><span class="line">    int a &#x3D; 5;</span><br><span class="line">    int *p &#x3D; &amp;a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int main(int argc, char *argv[]) &#123;</span><br><span class="line">    int a = 5;</span><br><span class="line">    int *p = &amp;a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>上面代码中，如何通过p找到5？</p>
 <p>5是int类型的数据，所以在32位的内存条中这样存储：<code>00000000 00000000 00000000 00000101</code>。它占据4个房间。<br>a是什么？a是给我们程序员看的。代码编译后，目标文件进行分段存储。a是符号，就是5的<code>内存地址</code>，所以a就是连续的4个房间的首个内存地址，第一个房间的<code>内存地址</code>是：<code>00000000 00000000 11111111 11111111</code>(我假设的)。后面三个房间分别二进制+1。通过第一个房间，就可以连续的找到<code>5</code>这个存储数据。<br>p呢，指向a的指针，所以系统在内存里面存储了<code>00000000 00000000 11111111 11111111</code>这个二进制数据，也就是把a的<code>内存地址</code>给存了下来。同时这个二进制数据也有自己的连续房间号内存地址：<code>00000000 11111111 11111111 11111111</code>(我假设的）。这个地址，就是p啦。<br>p如何找到5？就是p通过存储的a的内存地址，找到了<code>5</code>的第一个房间号，都找到房间号了，肯定也就找到5这个存储数据了。<br>那为什么p刚好找到4个房间，而不是找到6个或者10个房间呢？int *p，这个就是关键，指针也是有数据类型的，p指针是int类型，大小也只有4字节。</p>
-<h3 id="指针的指针"><a href="#指针的指针" class="headerlink" title="指针的指针"></a>指针的指针</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int main(int argc, char *argv[]) &#123;</span><br><span class="line">    int a &#x3D; 5;</span><br><span class="line">    int *p &#x3D; &amp;a;</span><br><span class="line">    int **pp &#x3D; &amp;p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="指针的指针"><a href="#指针的指针" class="headerlink" title="指针的指针"></a>指针的指针</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int main(int argc, char *argv[]) &#123;</span><br><span class="line">    int a = 5;</span><br><span class="line">    int *p = &amp;a;</span><br><span class="line">    int **pp = &amp;p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>各位看，这里又创建了指向p指针的指针。啥意思？就还是指针。只不过这个指针，指向的不是5这个数据，还是另一个指针。那<code>int ***ppp = &amp;pp</code>呢？还是一样的，还是指针，这个指针指向pp的内存地址。</p>
 <p>所以这个时候，系统在内存里面存储了<code>00000000 11111111 11111111 11111111</code>这个二进制数据，也就是把p的<code>内存地址</code>给存了下来。同时这个二进制数据也有自己的连续房间号内存地址：<code>00001111 11111111 11111111 11111111</code>(我假设的）。这个地址，就是pp啦。</p>
@@ -376,14 +376,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">35</span>
+          <span class="site-state-item-count">36</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
