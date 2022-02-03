@@ -46,7 +46,7 @@
 <meta property="og:image" content="https://s1.ax1x.com/2020/05/28/tZCzrD.png">
 <meta property="og:image" content="https://s1.ax1x.com/2020/05/28/te7jRH.png">
 <meta property="article:published_time" content="2020-05-23T08:51:05.000Z">
-<meta property="article:modified_time" content="2021-07-24T14:21:31.153Z">
+<meta property="article:modified_time" content="2021-07-24T14:21:31.000Z">
 <meta property="article:author" content="one.gongjiang@gmail.com">
 <meta property="article:tag" content="网络">
 <meta name="twitter:card" content="summary">
@@ -150,7 +150,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">38</span></a>
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">39</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -317,7 +317,7 @@
 <li>Objective-C进行对象内存初始化的时候，通过Objective-C的函数调用，最终调用到C语言的calloc()函数调用。</li>
 <li>内存分配的大小，是通过”-&gt;”结构体从一个struct拿到的。即调用一个结构体的instanceSize函数。（C++）</li>
 </ol>
-<p>所以，我们在Objective-C里面创建一个对象并进行内存分配，开始的时候调用的是OC运行时，最终是调用了C运行时。我们创建的Objective-C对象本身，在运行时阶段，都是通过struct结构体获取值，所以对象在项目Build后，都转化成C/C++结构代码了。</p>
+<p>所以，我们在Objective-C里面创建一个对象并进行内存分配，开始的时候调用的是OC运行时，最终是调用了C运行时。我们创建的Objective-C对象本身，在运行时阶段，都是通过struct结构体获取值，所以对象在项目Build后，都转化成C&#x2F;C++结构代码了。</p>
 <p>我们在看下下面代码执行流程：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[person setName:@&quot;x&quot;];</span><br></pre></td></tr></table></figure>
 <p>详细调用过程如下：<br><code>[person setName:@&quot;x&quot;]</code>-&gt;<code>objc_msgSend(person,SEL(setName),@&quot;x&quot;)</code>-&gt;汇编代码在运行时阶段查找<code>struct OC_Person&#123;...&#125;</code>结构体中的setName函数的地址p_setName-&gt;<code>call Oxab435c2(p_setName)</code>。</p>
@@ -336,14 +336,14 @@
 <li>Golang需要做一个静态库运行时，链接到执行文件中。因为iOS系统本身只有Objective-C运行时、C运行时、C++运行时，没有Golang运行时。</li>
 <li>Golang原本肯定没有考虑运行在iOS上，所以Golang的运行时对接了Windows和Linux的系统调用。那么现在，Golang的静态库运行时就需要对接iOS的系统调用。</li>
 </ol>
-<p>当上面两个步骤完成，我们就可以通过Golang编写代码并导出framework库，在iOS系统上被执行。<br>我们写出Golang库，肯定还是希望被Objective-C调用，因为Objective-C和C支持混编，而Go有一个库<code>CGo</code>，可以让Go和C连通，所以Objective-C这个时候就可以放心的调用Golang开发的库/框架了。</p>
+<p>当上面两个步骤完成，我们就可以通过Golang编写代码并导出framework库，在iOS系统上被执行。<br>我们写出Golang库，肯定还是希望被Objective-C调用，因为Objective-C和C支持混编，而Go有一个库<code>CGo</code>，可以让Go和C连通，所以Objective-C这个时候就可以放心的调用Golang开发的库&#x2F;框架了。</p>
 <p>下面是Golang在iOS系统上的运行流程图：</p>
 <p><img src="https://s1.ax1x.com/2020/05/28/tVqdIS.png" alt="tVqdIS.png"></p>
-<p>幸运的是，Go开发iOS所需要的库/框架，目前已经有发行版了，即<a target="_blank" rel="noopener" href="https://github.com/golang/mobile">Go Mobile</a>。我测试一下，简单一行代码，在编译后的嵌入动态库中，也有1.5M，原因就是这个动态库中，有Go的静态运行时和CGO静态库。</p>
+<p>幸运的是，Go开发iOS所需要的库&#x2F;框架，目前已经有发行版了，即<a target="_blank" rel="noopener" href="https://github.com/golang/mobile">Go Mobile</a>。我测试一下，简单一行代码，在编译后的嵌入动态库中，也有1.5M，原因就是这个动态库中，有Go的静态运行时和CGO静态库。</p>
 <h5 id="其他高级语言如何编写iOS需要的动态库"><a href="#其他高级语言如何编写iOS需要的动态库" class="headerlink" title="其他高级语言如何编写iOS需要的动态库"></a>其他高级语言如何编写iOS需要的动态库</h5><p>其实不止Go，Node.js也一样可以用来开发iOS的动态库，有这个<a target="_blank" rel="noopener" href="https://github.com/JaneaSystems/nodejs-mobile">Node.js for Mobile Apps</a>。<br>Go和Node.js能够写iOS动态库，那么按照同样的逻辑，其他高级语言也一样可以做这件事，比如，游戏开发中，很多就用Lua来做热更新，Lua代码要被执行，也需要一个Lua的静态运行时嵌入到库中。</p>
 <p>上面说到的，还都是业务功能库，不是UI。那Flutter就是完全依靠Dart语言来做跨平台的混合开发方案。Flutter的库会让iOS App的包体积增加15-25M，就是因为里面有一系列的运行时和相关UI组件库存在。<br>我们通过上面Go的大小可以发现，运行时库本身没有多大，Flutter库比较大的原因，是Flutter通过Dart完全重新实现了自己一套UI框架，所以代码量肯定是巨大的，框架体积自然就增大了。</p>
-<h5 id="限制高级语言的枷锁是什么"><a href="#限制高级语言的枷锁是什么" class="headerlink" title="限制高级语言的枷锁是什么"></a>限制高级语言的枷锁是什么</h5><p>所以我们可以发现，至少在iOS上面，是没有高级语言限制的，只要高级语言有这个运行在iOS系统上的需求，都能实现。<br>而Go如果后期希望像Flutter一样实现UI框架，也一样没有问题。限制它们的，仅仅是业务需求罢了（实际上，对于Go和Node.js的iOS动态库开发，需求不大，所以都是试探性发展，因为C和C++已经足够优秀，用Objective-C来开发本身也够用了）。举例而言，C++是编写稳定后台服务的热门语言，而基于C++的Qt，就可以用来做跨平台的GUI。而Swift初期被用来开发iOS/Mac App，现在也一样可以用作服务器开发。甚至Javascript只是浏览器端的脚步语言，引入V8引擎后，JS已经花开两朵，前端和Node.js后台发展的都非常棒。</p>
-<p>我们也可以认知到，高级语言的存在，只是特定场景的需求。如果当年苹果不开发Objective-C，用Java来开发iOS App，也完全可以的，只是苹果需要一套自己的能够被私有控制的开发体系。<br>语言是用来完成特定场景的工作任务，如果用Objective-C来写服务器的I/O多并发，显然没有Go和Node.js的事件驱动来的吞吐量大。而Objective-C后期能不能实现协程、多进程等特性？当然可以，就是需要不需要而已。<br><strong>限制语言功能及发展的，仅仅是它的业务场景，而不在于语言本身或者操作系统</strong>。</p>
+<h5 id="限制高级语言的枷锁是什么"><a href="#限制高级语言的枷锁是什么" class="headerlink" title="限制高级语言的枷锁是什么"></a>限制高级语言的枷锁是什么</h5><p>所以我们可以发现，至少在iOS上面，是没有高级语言限制的，只要高级语言有这个运行在iOS系统上的需求，都能实现。<br>而Go如果后期希望像Flutter一样实现UI框架，也一样没有问题。限制它们的，仅仅是业务需求罢了（实际上，对于Go和Node.js的iOS动态库开发，需求不大，所以都是试探性发展，因为C和C++已经足够优秀，用Objective-C来开发本身也够用了）。举例而言，C++是编写稳定后台服务的热门语言，而基于C++的Qt，就可以用来做跨平台的GUI。而Swift初期被用来开发iOS&#x2F;Mac App，现在也一样可以用作服务器开发。甚至Javascript只是浏览器端的脚步语言，引入V8引擎后，JS已经花开两朵，前端和Node.js后台发展的都非常棒。</p>
+<p>我们也可以认知到，高级语言的存在，只是特定场景的需求。如果当年苹果不开发Objective-C，用Java来开发iOS App，也完全可以的，只是苹果需要一套自己的能够被私有控制的开发体系。<br>语言是用来完成特定场景的工作任务，如果用Objective-C来写服务器的I&#x2F;O多并发，显然没有Go和Node.js的事件驱动来的吞吐量大。而Objective-C后期能不能实现协程、多进程等特性？当然可以，就是需要不需要而已。<br><strong>限制语言功能及发展的，仅仅是它的业务场景，而不在于语言本身或者操作系统</strong>。</p>
 <h3 id="Core-Foundation-和-Foundation-的区别"><a href="#Core-Foundation-和-Foundation-的区别" class="headerlink" title="Core Foundation 和 Foundation 的区别"></a>Core Foundation 和 Foundation 的区别</h3><p>我们在上面已经研究了语言和框架。框架和库的关系，在文章开头也已经说明。<br>这里就来研究一下Core Foundation和Foundation两个框架的区别和联系。</p>
 <p>Core Foundation是基于C开发的，Foundation是基于Objective-C开发的。但是有一点，Foundation是基于Core Foundation封装并实现了Core Foundation所没有的部分。<br>我们可以用下图来表示Core Foundation和Foundation的关系：</p>
 <p><img src="https://s1.ax1x.com/2020/05/28/tZCYEd.png" alt="tZCYEd.png"></p>
@@ -361,7 +361,7 @@
 <p>显然，大家也发现有些费事。虽然这些转换如果真的要写C代码，那么就必不可少。但是如果使用Core Foundation，那会方便很多。<br>我们刚才说过，Foundation是封装的Core Foundation，苹果开发了一个强大的功能，即<strong>桥接（Bridge）</strong>。通过桥接，可以非常方便的实现C和Objective-C的数据转换，比如下面：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CFMutableDictionaryRef cf_mu_dic = CFDictionaryCreateMutable(kCFAllocatorDefault, 10, &amp;kCFTypeDictionaryKeyCallBacks, &amp;kCFTypeDictionaryValueCallBacks);</span><br><span class="line">NSMutableDictionary *oc_dic = (__bridge_transfer NSMutableDictionary *)(cf_mu_dic);</span><br><span class="line">// CFRelease(cf_mu_dic)；// 注意，这里因为__bridge_transfer缘故，就可以不用执行CFRelease释放内存了。</span><br></pre></td></tr></table></figure>
 <p>对于Core Foundation使用过程中产生的变量，都可以通过桥接的方式，变成Foundation对象。桥接帮我们做了格式转换的同时，也帮我们做了ARC。<br>刚才，我们在执行<code>p = conver(pp)</code>的时候，大家注意，后面使用了C语言的内存释放，即<code>free(p)</code>。Core Foundation本身也有引用计数，但是没有自动计数即ARC。所以Core Foundation的对象释放的时候，需要调用CFRelease，那么在桥接到Foundation后，就可以使用Objective-C的ARC了，非常方便。<br>桥接中的<code>__bridge/__bridge_transfer/__bridge_retain</code>可以很方便的帮我们做对象管理转移操作，我们就不需要手动去释放内存了。</p>
-<p>这里还是要补充一点，基于C语言的Core Foundation之所以能作为Objective-C开发框架，就是上面提到的，只要是高级语言，只要有相关运行时，就可以用来开发组件/库/框架。</p>
+<p>这里还是要补充一点，基于C语言的Core Foundation之所以能作为Objective-C开发框架，就是上面提到的，只要是高级语言，只要有相关运行时，就可以用来开发组件&#x2F;库&#x2F;框架。</p>
 <h3 id="Core-Foundation-和-C-与-Objective-C-的转换"><a href="#Core-Foundation-和-C-与-Objective-C-的转换" class="headerlink" title="Core Foundation 和 C 与 Objective-C 的转换"></a>Core Foundation 和 C 与 Objective-C 的转换</h3><h4 id="桥接（Bridge）"><a href="#桥接（Bridge）" class="headerlink" title="桥接（Bridge）"></a>桥接（Bridge）</h4><p>我们从上面Core Foundation和Foundation之间了解到，通过桥接，可以很好的转换Core Foundation和Foundation对象。<br>桥接做了两件事，一个是<strong>自动引用计数</strong>，一个是<strong>格式转换</strong>。</p>
 <p>我们先说一下格式转换，因为桥接的转换局限性很大。<br>我们上面把C的<code>struct person</code>结构变量转换成Objective-C的<code>Class Person</code>，需要自己写类似于<code>C_Person * conver(Person *p)</code>的转换函数。说明C和Objective-C之间转换本身是不能直接进行的。<br>但是Core Foundation的CFArray、CFString等和Foundation的NSArray和NSString等转换，通过桥接就可以直接转换。这是因为Core Foundation比较特别。Core Foundation是苹果自己写的C代码，所以在桥接的时候，苹果拥有Core Foundation的数据结构和Foundation的对象细节，所以桥接可以自动完成转换工作。<br>而我们自己写的C结构体变量，和Objective-C对象之间，就不能很好转换了，如果我们写了C代码需要和Objective-C进行转换，就必须自己写一个中间层了。<br>这就是桥接对于数据格式转换的局限性，准确来说，桥接对数据格式转换，的确只在Core Foundation里面才有体现，毕竟如上所说，苹果自己知道Core Foundation和Foundation之间的所有细节。<br>这对于我们来说，其实已经完全够用了，因为我们真实业务开发场景，如果需要避免Objective-C的运行时带来的消耗，的确可以通过Core Foundation来编写代码。</p>
 <p>下面再说桥接的另一个大杀器，那就是自动引用计数。<br>Core Foundation在和Foundation进行转换的时候，可以通过<code>__bridge/__bridge_transfer/__bridge_retain</code>进行自动引用计数控制，这个不在细说。<br>这里介绍C和Objective-C之间通过桥接进行引用计数控制。引用计数是针对Objective-C对象来说的，我们看一下Objective-C对象和C之间的转换：</p>
@@ -521,7 +521,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

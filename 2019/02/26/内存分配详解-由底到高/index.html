@@ -22,15 +22,15 @@
     var CONFIG = {"hostname":"www.yigegongjiang.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="一行代码引发的思考 int a &#x3D; 5;  问1:变量a在内存的哪里？问2:数字5在内存的哪里？问3:int的字节大小是多少？如果a&#x3D;12345后，字节大小变不变？问4:代码里面print(“%d”, a)，为什么可以输出5，a是怎么找到5的？问5:内存到底在哪里？问6:总内存有多大？问7:总内存的大小是怎么确定的？ 各位能回答上面的7问吗？ 由底往上来解析，一步一步揭开洋葱的外衣，真相终究会大白">
+  <meta name="description" content="一行代码引发的思考 int a &#x3D; 5;  问1:变量a在内存的哪里？问2:数字5在内存的哪里？问3:int的字节大小是多少？如果a&#x3D;12345后，字节大小变不变？问4:代码里面print(“%d”, a)，为什么可以输出5，a是怎么找到5的？问5:内存到底在哪里？问6:总内存有多大？问7:总内存的大小是怎么确定的？ 各位能回答上面的7问吗？ 由底往上来解析，一步一步揭开洋葱的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="内存分配详解-由底到高">
 <meta property="og:url" content="https://www.yigegongjiang.com/2019/02/26/%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E8%AF%A6%E8%A7%A3-%E7%94%B1%E5%BA%95%E5%88%B0%E9%AB%98/index.html">
 <meta property="og:site_name" content="一个工匠">
-<meta property="og:description" content="一行代码引发的思考 int a &#x3D; 5;  问1:变量a在内存的哪里？问2:数字5在内存的哪里？问3:int的字节大小是多少？如果a&#x3D;12345后，字节大小变不变？问4:代码里面print(“%d”, a)，为什么可以输出5，a是怎么找到5的？问5:内存到底在哪里？问6:总内存有多大？问7:总内存的大小是怎么确定的？ 各位能回答上面的7问吗？ 由底往上来解析，一步一步揭开洋葱的外衣，真相终究会大白">
+<meta property="og:description" content="一行代码引发的思考 int a &#x3D; 5;  问1:变量a在内存的哪里？问2:数字5在内存的哪里？问3:int的字节大小是多少？如果a&#x3D;12345后，字节大小变不变？问4:代码里面print(“%d”, a)，为什么可以输出5，a是怎么找到5的？问5:内存到底在哪里？问6:总内存有多大？问7:总内存的大小是怎么确定的？ 各位能回答上面的7问吗？ 由底往上来解析，一步一步揭开洋葱的">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2019-02-26T11:04:53.000Z">
-<meta property="article:modified_time" content="2021-07-24T14:21:31.154Z">
+<meta property="article:modified_time" content="2021-07-24T14:21:31.000Z">
 <meta property="article:author" content="one.gongjiang@gmail.com">
 <meta property="article:tag" content="iOS">
 <meta property="article:tag" content="C">
@@ -137,7 +137,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">38</span></a>
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">39</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -235,20 +235,20 @@
 
       
         <h3 id="一行代码引发的思考"><a href="#一行代码引发的思考" class="headerlink" title="一行代码引发的思考"></a>一行代码引发的思考</h3><blockquote>
-<p>int a = 5;</p>
+<p>int a &#x3D; 5;</p>
 </blockquote>
-<p>问1:变量a在内存的哪里？<br>问2:数字5在内存的哪里？<br>问3:int的字节大小是多少？如果a=12345后，字节大小变不变？<br>问4:代码里面print(“%d”, a)，为什么可以输出5，a是怎么找到5的？<br>问5:内存到底在哪里？<br>问6:总内存有多大？<br>问7:总内存的大小是怎么确定的？</p>
+<p>问1:变量a在内存的哪里？<br>问2:数字5在内存的哪里？<br>问3:int的字节大小是多少？如果a&#x3D;12345后，字节大小变不变？<br>问4:代码里面print(“%d”, a)，为什么可以输出5，a是怎么找到5的？<br>问5:内存到底在哪里？<br>问6:总内存有多大？<br>问7:总内存的大小是怎么确定的？</p>
 <p>各位能回答上面的7问吗？</p>
 <p>由底往上来解析，一步一步揭开洋葱的外衣，真相终究会大白于天下！</p>
 <span id="more"></span>
 
 <h3 id="字节与比特"><a href="#字节与比特" class="headerlink" title="字节与比特"></a>字节与比特</h3><p>比特这玩意，说好理解，马上能理解。说难理解，那肯定还是需要一翻思考总结的。<br><code>比特是计算机存储的最小存储单元</code>。我们认知到的数字<code>3</code>，在计算机的存储里（硬盘或者内存）的结构是这样的：<code>00000011</code>。是的，也就是我们理解的二进制。<br>所以这个数字<code>3</code>是由8位组成的。每位有<code>0</code>和<code>1</code>两种变化。<br>恐怖的是，比特存储，是计算机的基石。我们在互联网上通行的一切，如图片、音视频、文字，甚至各位的博客、App、电子书等等，能想到的能通过互联网传输的一切，都是比特存储。<br>举个例子，我们看的一张图片，在磁盘上的存储，或许就是这样子：<code>0101011101010101010111101011110101010101100***(省略100000000个)***1010100111010101</code>。<br>所以，祝各位每年的<code>1024节</code>快乐，因为我们的努力，世界才如此缤纷多彩 ：)</p>
-<p>1字节(byte)=8比特(bit)<br>我们刚才说到的数字<code>3</code>，就是一个字节，在磁盘上就是<code>00000011</code>。（为了便于理解，实际可能是<code>00000000 00000011</code>，或者<code>00000000 00000000 00000000 00000011</code>）。<br><code>1字节=8比特</code>，这个是定死的，开始就是这么玩的，也会永远的玩下去。</p>
-<p>1KB = 1024B（2的10次方）<br>1MB = 1024KB（2的10次方）<br>1GB = 1024MB（2的10次方）<br>这里大家不要迷惑，为什么是2的10次方，而不是3的10次方，也不是2的15次方。<br>“就是这么规定的，爱玩不玩！”</p>
+<p>1字节(byte)&#x3D;8比特(bit)<br>我们刚才说到的数字<code>3</code>，就是一个字节，在磁盘上就是<code>00000011</code>。（为了便于理解，实际可能是<code>00000000 00000011</code>，或者<code>00000000 00000000 00000000 00000011</code>）。<br><code>1字节=8比特</code>，这个是定死的，开始就是这么玩的，也会永远的玩下去。</p>
+<p>1KB &#x3D; 1024B（2的10次方）<br>1MB &#x3D; 1024KB（2的10次方）<br>1GB &#x3D; 1024MB（2的10次方）<br>这里大家不要迷惑，为什么是2的10次方，而不是3的10次方，也不是2的15次方。<br>“就是这么规定的，爱玩不玩！”</p>
 <p>具体怎么定的这个规则，肯定有原因，肯定也能查到历史。具体各位在自行查看中外文档吧，查到了也请告知。</p>
-<h3 id="计算机基础与位的进化史"><a href="#计算机基础与位的进化史" class="headerlink" title="计算机基础与位的进化史"></a>计算机基础与位的进化史</h3><p>这里说计算机/手机的两个层面，一个是内存条，一个是CPU。</p>
+<h3 id="计算机基础与位的进化史"><a href="#计算机基础与位的进化史" class="headerlink" title="计算机基础与位的进化史"></a>计算机基础与位的进化史</h3><p>这里说计算机&#x2F;手机的两个层面，一个是内存条，一个是CPU。</p>
 <h4 id="内存条"><a href="#内存条" class="headerlink" title="内存条"></a>内存条</h4><p>实实在在的东西，有4GB、8GB、16GB等大小，长条形的带黑边的玩意，实体店网店都能买到，笔记本的小一些，台式机的大一些，有各种型号。手机的内存条是出厂固定在里面的，不好弄。<br>插到计算机的主板上面就能使用了。如果电脑开机的时候出现<code>滴滴滴</code>的声音，就把内存条拔出来檫檫，有很大概率能好。<br><strong>内存条根本性决定了我们可用的最大内存。</strong>如果内存只有一个G，不管CPU和操作系统怎么高配，也只有一个G的内存能用。</p>
-<p>内存条是硬件存储设备。它随随便便就能支持8GB的数据存储。各位知道8GB是多大吗？8GB = 8G * 1024M * 1024K * 1024Byte，也就是<code>8589934592</code>Byte(字节)。<br>再恐怖点，1Byte=8Bit，Bit才是最小存储单元，所以真实存储是：<code>8589934592 * 8</code>即<code>68719476736</code>Bit（比特）。</p>
+<p>内存条是硬件存储设备。它随随便便就能支持8GB的数据存储。各位知道8GB是多大吗？8GB &#x3D; 8G * 1024M * 1024K * 1024Byte，也就是<code>8589934592</code>Byte(字节)。<br>再恐怖点，1Byte&#x3D;8Bit，Bit才是最小存储单元，所以真实存储是：<code>8589934592 * 8</code>即<code>68719476736</code>Bit（比特）。</p>
 <h4 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h4><p><strong>CPU一定程度上影响了最大内存，但不是根本原因。</strong><br>我们经常说的32位操作系统或者64位操作系统，说的是啥呢？其实说的是CPU里面核心的寄存器！寄存器是由多个<strong>集成电路元件IC</strong>组合成的。CPU上有数据总线的针脚，可以和内存条一一对应。如果CPU的数据总线有32个针脚，并且和内存条上面的32个数据总线针脚一一对应连接，那么就可以一次进行32比特的数据传输，也就是一次4个字节。那数据在CPU和内存双向流动的帮手是谁呢？没错，就是寄存器。所以寄存器也要有一次处理32比特数据的能力，所以这个时候寄存器也是32位的。<br>CPU中的寄存器决定我们的操作系统是<code>32位</code>还是<code>64位</code>（甚至8位，16位等）。这里的<code>32位</code>和<code>64位</code>，指的是寄存器的位数，而非内存地址的长度。因为从上面的分析我们可以看到，寄存器关心的是数据互通，没有和内存地址强制关联。寄存器位数越大，那么一次处理数据的能力越强。比如32位寄存器一次可以处理4字节数据，64位寄存器一次可以处理8字节数据，就是这么一个道理。</p>
 <p>指的是<code>内存地址</code>的<code>位数</code>，因为寄存器存放的有内存地址。</p>
 <h4 id="主板-地址总线"><a href="#主板-地址总线" class="headerlink" title="主板-地址总线"></a>主板-地址总线</h4><p>上面我们说的CPU一定程度上影响最大内存，但不是根本原因。原因就在于，CPU的核心是通过数据总线和内存条进行数据互通。他影响不了<strong>内存空间</strong>，影响的是<strong>数据</strong>。<br>那影响内存空间的是什么？是<strong>地址总线</strong>。<strong>地址总线硬件决定了我们可用的最大内存。</strong><br>在CPU和内存条上，都有两个线，一个是数据总线，一个是地址总线。因为CPU和内存条本质也不是互通的，他们都需要插在主板上面，所以主板是他们沟通的桥梁。<br>主板上面也有数据总线和地址总线，但可以不做分析，他们线的数量可以不一样，只有相互连接的才是有效的，非连接的就是无用的。我们单独分析CPU和内存条的地址总线就可以了。</p>
@@ -376,7 +376,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

@@ -41,7 +41,7 @@
 <meta property="og:image" content="https://s2.ax1x.com/2020/03/11/8EMhQS.png">
 <meta property="og:image" content="https://s2.ax1x.com/2020/03/11/8EMWz8.png">
 <meta property="article:published_time" content="2019-12-19T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-07-24T14:21:31.149Z">
+<meta property="article:modified_time" content="2021-07-24T14:21:31.000Z">
 <meta property="article:author" content="one.gongjiang@gmail.com">
 <meta property="article:tag" content="iOS">
 <meta property="article:tag" content="Swift">
@@ -146,7 +146,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">38</span></a>
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">39</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -250,11 +250,11 @@
 <p>因为编程语言概念上的模糊，下面首先介绍struct和值类型的关系。<br>然后重点说明值类型和引用类型的区别，这是重点，直接解释了struct和class的根本区别。<br>最后加一点小彩蛋，介绍Swift里面struct特性。</p>
 <span id="more"></span>
 
-<h3 id="0X00-struct是什么？好像在哪里见过！struct和值类型是什么关系？"><a href="#0X00-struct是什么？好像在哪里见过！struct和值类型是什么关系？" class="headerlink" title="0X00 struct是什么？好像在哪里见过！struct和值类型是什么关系？"></a>0X00 struct是什么？好像在哪里见过！struct和值类型是什么关系？</h3><p>好久好久之前，是没有class什么事的。那时候C语言活跃于各种应用场景，在上层抽象了汇编的实现，C语言可以用于嵌入式、服务器、驱动等。为什么没有class什么事情？class是类，是OOP（面向对象编程/对象导向编程）的专属。而C语言是过程式语言，没有对象概念，也就没有class什么事情。<br>那时候，都用结构体，也就是struct。如下：</p>
+<h3 id="0X00-struct是什么？好像在哪里见过！struct和值类型是什么关系？"><a href="#0X00-struct是什么？好像在哪里见过！struct和值类型是什么关系？" class="headerlink" title="0X00 struct是什么？好像在哪里见过！struct和值类型是什么关系？"></a>0X00 struct是什么？好像在哪里见过！struct和值类型是什么关系？</h3><p>好久好久之前，是没有class什么事的。那时候C语言活跃于各种应用场景，在上层抽象了汇编的实现，C语言可以用于嵌入式、服务器、驱动等。为什么没有class什么事情？class是类，是OOP（面向对象编程&#x2F;对象导向编程）的专属。而C语言是过程式语言，没有对象概念，也就没有class什么事情。<br>那时候，都用结构体，也就是struct。如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// C语言版本</span><br><span class="line">// 人员结构体，具有姓名和年龄</span><br><span class="line">struct Person &#123;</span><br><span class="line">    char *name;</span><br><span class="line">    int age;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>那时候，这些数据都叫做<strong>值类型</strong>，而struct就是值类型的。值类型是<strong>变量直接包含值</strong>统称，其他的还有基础数据类型，如Int，long，char，bool，以及自定义struct（如上面的Person）。<br>后面大家就知道了，出现了C++/Java/C#等OOP语言，class开始活跃于千万家。更甚之，在某些语言上，值类型已经被淡化了。</p>
+<p>那时候，这些数据都叫做<strong>值类型</strong>，而struct就是值类型的。值类型是<strong>变量直接包含值</strong>统称，其他的还有基础数据类型，如Int，long，char，bool，以及自定义struct（如上面的Person）。<br>后面大家就知道了，出现了C++&#x2F;Java&#x2F;C#等OOP语言，class开始活跃于千万家。更甚之，在某些语言上，值类型已经被淡化了。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// Objective-C版本 .h</span><br><span class="line">@interface Person : NSObject</span><br><span class="line">@property(nonatomic,copy) NSString *name;</span><br><span class="line">@property(nonatomic,assign) NSInteger age;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
-<p>以上为OC的版本，我们会这么描述它：我们创建了一个Person类。他具有名称属性和年龄属性。<br>而且，我们也确定，如果我们新建一个Person对象,如<code>Person *p = Person.new;</code>，那么这个对象一定存放在堆内存。那我们为什么不能把对象创建在栈内存呢？<br>我们可以知道，上面OC创建的是Class，对象存在于堆中。那我们可不可以把对象放在栈上？至少在Objective-C开发过程中，肯定不会想到这个，因为struct/结构体/值类型被淡化了。（Java也是一样，号称纯OOP语言）<br>其实我们可以创建栈上的数据的，如局部变量中的Int、long等，都是在栈上的。说一个少见的，CGRect、CGSize也是在栈上的。源码实现如下：</p>
+<p>以上为OC的版本，我们会这么描述它：我们创建了一个Person类。他具有名称属性和年龄属性。<br>而且，我们也确定，如果我们新建一个Person对象,如<code>Person *p = Person.new;</code>，那么这个对象一定存放在堆内存。那我们为什么不能把对象创建在栈内存呢？<br>我们可以知道，上面OC创建的是Class，对象存在于堆中。那我们可不可以把对象放在栈上？至少在Objective-C开发过程中，肯定不会想到这个，因为struct&#x2F;结构体&#x2F;值类型被淡化了。（Java也是一样，号称纯OOP语言）<br>其实我们可以创建栈上的数据的，如局部变量中的Int、long等，都是在栈上的。说一个少见的，CGRect、CGSize也是在栈上的。源码实现如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">/* Points. */</span><br><span class="line">struct</span><br><span class="line">CGPoint &#123;</span><br><span class="line">    CGFloat x;</span><br><span class="line">    CGFloat y;</span><br><span class="line">&#125;;</span><br><span class="line">typedef struct CG_BOXABLE CGPoint CGPoint;</span><br><span class="line"></span><br><span class="line">/* Sizes. */</span><br><span class="line"></span><br><span class="line">struct CGSize &#123;</span><br><span class="line">    CGFloat width;</span><br><span class="line">    CGFloat height;</span><br><span class="line">&#125;;</span><br><span class="line">typedef struct CG_BOXABLE CGSize CGSize;</span><br><span class="line"></span><br><span class="line">/* Rectangles. */</span><br><span class="line"></span><br><span class="line">struct CGRect &#123;</span><br><span class="line">    CGPoint origin;</span><br><span class="line">    CGSize size;</span><br><span class="line">&#125;;</span><br><span class="line">typedef struct CG_BOXABLE CGRect CGRect;</span><br></pre></td></tr></table></figure>
 <p>其实OC中使用的CGRect等，也就是struct值类型数据。只是我们很少顾及值类型，虽然一直用，但是感知不到他们的存在。<br>直到有一天，Swift也成了苹果开发的官方语言，引入了struct，一大堆开发人员开始迷惑，发生了什么事？我该怎么办？</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// Swift struct版本</span><br><span class="line">struct Person &#123;</span><br><span class="line">	var name: String</span><br><span class="line">	var age: UInt8</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Swift class版本</span><br><span class="line">class Person &#123;</span><br><span class="line">	var name: String</span><br><span class="line">	var age: UInt8</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -285,7 +285,7 @@
 <p>它们的内存图如下：<br><img src="https://s2.ax1x.com/2020/03/11/8EMgit.png" alt="swift_struct_class_值类型相等性"><br>当两个值对象的name都是Hello的时候，两个值对象是相等的。如果someOne的name变成Robot，两个值对象就是不想等的。（如果我们把注释的代码打开，相应注释位置上一行代码删除，会发现两个断言都是可以通过的。）<br>值类型的相等性比较真的非常简单，就是匹配字节码是否一致。只要值对象的所有字节码是一致的，那两个值对象就是相等的。字节码从哪里来？Hello和Robot，计算机不认识的，他们都会变成对应的码值然后转化成二进制存储内存中。所以值类型相等性判断就是查看二进制是否一样。</p>
 <h4 id="引用类型相等性比较"><a href="#引用类型相等性比较" class="headerlink" title="引用类型相等性比较"></a>引用类型相等性比较</h4><p>因为引用变量存储的是引用对象的内存地址。同样一个对象，可能有两个引用变量存储着其地址。<br>所以引用类型的比较，有两个方面，一个是比较存储的内存地址是否一致，另一个是比较内存地址对应的数据是否一致。<br>因为字符串在Swift里面是值类型的，我们用Objective-C里面的NSString来分析。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NSString *str1 = [NSString stringWithFormat:@&quot;%@&quot;, @&quot;Hello&quot;];</span><br><span class="line">NSString *str2 = @&quot;Hello&quot;;</span><br><span class="line"></span><br><span class="line">assert(str1 == str2);   // ERROR</span><br><span class="line">assert([str1 isEqualToString:str2]); // OK</span><br></pre></td></tr></table></figure>
-<p>相应的内存图如下：<br><img src="https://s2.ax1x.com/2020/03/11/8EM6II.png" alt="swift_struct_class_引用类型相等性"><br>因为Objective-C对于字符串的生成比较考究（Objective-C里面，字符串根据创建的形式不同和存储中英文的不同，有常量区、栈区、堆区不同表现形式），我们用上面方式建立两个不同地址的Hello字符串。其中比较相等性，一个是通过**==<strong>，一个是通过</strong>equal**。<br>引用类型的相等性比较，直接通过值类型的==比较的化，比较的是内存地址，显然str1和str2，他们的内存地址不可能一样，所以他们并不相等。<br>而通过equal来比较，就变成了上面的值类型的字节码比较，Hello的二进制存储都是一样的，他们就相等了。</p>
+<p>相应的内存图如下：<br><img src="https://s2.ax1x.com/2020/03/11/8EM6II.png" alt="swift_struct_class_引用类型相等性"><br>因为Objective-C对于字符串的生成比较考究（Objective-C里面，字符串根据创建的形式不同和存储中英文的不同，有常量区、栈区、堆区不同表现形式），我们用上面方式建立两个不同地址的Hello字符串。其中比较相等性，一个是通过**&#x3D;&#x3D;<strong>，一个是通过</strong>equal**。<br>引用类型的相等性比较，直接通过值类型的&#x3D;&#x3D;比较的化，比较的是内存地址，显然str1和str2，他们的内存地址不可能一样，所以他们并不相等。<br>而通过equal来比较，就变成了上面的值类型的字节码比较，Hello的二进制存储都是一样的，他们就相等了。</p>
 <h3 id="0X03-值类型和引用类型在花式传参过程中的异同"><a href="#0X03-值类型和引用类型在花式传参过程中的异同" class="headerlink" title="0X03 值类型和引用类型在花式传参过程中的异同"></a>0X03 值类型和引用类型在花式传参过程中的异同</h3><blockquote>
 <p>如果不能把值传参、地址传参和引用传参与类对象联系起来，也无法理解不同传参下对象的使用和struct、class的应用场景。</p>
 </blockquote>
@@ -297,8 +297,8 @@
 <p>上面的内存分布如图：<br><img src="https://s2.ax1x.com/2020/03/11/8EMDqH.png" alt="swift_struct_class_值类型的三种传参"></p>
 <p>我们分析一下值类型下的三种传参，</p>
 <ol>
-<li>值传参，就是行参对象原封不动的获取了实参对象的<strong>数据拷贝</strong>。两个对象之间不再有任何关联，对行参对象的内部修改(someOne.name = “Robot”)和自身修改(someOne = Person(name: “SomeOne”, age: 18))，都不会更改另一个对象的任何数据。如上图所示，person对象没有任何修改。</li>
-<li>地址传参，就是行参对象原封不动的获取了实参对象的<strong>地址拷贝</strong>。所以行参实际存储的是实参的内存地址拷贝。那么通过内存地址对数据的内部修改(someOne.name = “Robot”)都会影响到原对象，毕竟对象只有一个。但是行参自身修改(someOne = Person(name: “SomeOne”, age: 18))，却不会影响到原对象，因为行参是实参的地址拷贝，自身数据的改变就是改变了拷贝的那份内存地址，不会影响到实参。<strong>所以地址传参，本质还是值传参，因为拷贝了实参的内存地址（而非整个对象数据）</strong>。而通过内存地址修改原数据，这是一种途径，和传参无关，因为内存地址本身就是用来获取和修改数据的。</li>
+<li>值传参，就是行参对象原封不动的获取了实参对象的<strong>数据拷贝</strong>。两个对象之间不再有任何关联，对行参对象的内部修改(someOne.name &#x3D; “Robot”)和自身修改(someOne &#x3D; Person(name: “SomeOne”, age: 18))，都不会更改另一个对象的任何数据。如上图所示，person对象没有任何修改。</li>
+<li>地址传参，就是行参对象原封不动的获取了实参对象的<strong>地址拷贝</strong>。所以行参实际存储的是实参的内存地址拷贝。那么通过内存地址对数据的内部修改(someOne.name &#x3D; “Robot”)都会影响到原对象，毕竟对象只有一个。但是行参自身修改(someOne &#x3D; Person(name: “SomeOne”, age: 18))，却不会影响到原对象，因为行参是实参的地址拷贝，自身数据的改变就是改变了拷贝的那份内存地址，不会影响到实参。<strong>所以地址传参，本质还是值传参，因为拷贝了实参的内存地址（而非整个对象数据）</strong>。而通过内存地址修改原数据，这是一种途径，和传参无关，因为内存地址本身就是用来获取和修改数据的。</li>
 <li>引用传参，分析起来其实最简单的。那就是，行参仅仅是实参的一个别名(alias)。行参存储的依旧是实参的内存地址拷贝，但是对行参所有的操作，都会通过<strong>间接寻址</strong>的方式直接操作实参。注意，是所有操作，因为行参仅仅是实参的别名。所以我们看到，引用传参里面，行参不仅可以修改原对象数据，还可以更换原对象。(这个更换原对象，有两种方式，上图中是其中一种，即在原对象内部修改数据，没有创建新对象。还有一种方式是创建一个全新的对象，然后实参指向新对象，是以新换旧的思想。但是原理都不变，都是行参操作实参直接改变数据。)</li>
 </ol>
 <p>通过上面值类型的三种传参，大家可能已经发现，在Objective-C、Java、Swift里面进行值类型的实参行参赋值的时候，其实<strong>都只是值传参和地址传参，并没有引用传参</strong>。只有个别语言如C++里面才支持引用传参。<br>上面说明的是值类型，那么引用类型的三种传参是否会有一些不同呢？</p>
@@ -335,7 +335,7 @@
 <h3 id="0X05-值类型和引用类型的抽象层级差异"><a href="#0X05-值类型和引用类型的抽象层级差异" class="headerlink" title="0X05 值类型和引用类型的抽象层级差异"></a>0X05 值类型和引用类型的抽象层级差异</h3><p>在文章开头提到的值类型和引用类型的内存模型中，已经明确值类型是直接包含数据，而引用类型是通过内存地址间接操作数据。<br>从内存分布上，我们可以模糊的发现：</p>
 <ol>
 <li><strong>值类型，重在数据，是静态的。</strong>如果一个数据是通过值类型来展示，那么这个数据重在数据的价值。这个数据一定非常重要，而我们可以通过值变量直接获取。</li>
-<li><strong>引用类型，重在如何使用，是动态的。</strong>如果一个数据是通过引用类型来展示，那么这个数据重在如何被使用。这个数据当然也重要，但是我们可以通过指针和引用(别名/间接寻址)变相获取，而指针可以赋值给其他变量，最后可以通过各个变量来获取。</li>
+<li><strong>引用类型，重在如何使用，是动态的。</strong>如果一个数据是通过引用类型来展示，那么这个数据重在如何被使用。这个数据当然也重要，但是我们可以通过指针和引用(别名&#x2F;间接寻址)变相获取，而指针可以赋值给其他变量，最后可以通过各个变量来获取。</li>
 </ol>
 <p>我们可以创建各种面向对象的引用类型(class)，然后实现继承和多态，这是引用类型带来的益处。因为我们可以通过指针和引用轻松的实现多态特征。<br>而对于值类型(struct)，Swift文档里直接说明，struct不允许继承和重载。值类型在编译期间具体类型就已经确定，多态绑定也是不可能，因为其空间大小已经确定，没有空余空间容纳子类型。<br>所以从抽象层级上来观看，引用类型相比值类型，抽象层级更高。</p>
 <p>因为值类型在编译期间空间大小和具体类型已经确定，所以值类型完全就是不依赖内存地址的，这也是为什么值变量直接包含值对象的原因，所以值类型是具有<strong>空间无关性</strong>的。而引用类型存储于堆中，必须通过指针进行访问，显然引用类型和空间是强关联的。<br>而且，值类型的数据在值对象生命周期内是固定的，体现了不可变性，具有<strong>时间无关性</strong>。即使通过地址传参和引用传参，我们可以改变值对象的数据，那也是在原来的存储空间中，用新数据覆盖旧数据，使用了旧数据的存储空间而已。引用类型的改变是一种自我更新，对象上发生状态迁移和属性改变。<br>因为值类型的时间无关性和空间无关性，所以值类型天然具有重数据，对象意识淡薄，更多的体现在属性而非实体。比如我们描述一个Person的struct，更多的体现在用age，sex等抽象属性来描述“20”“男”这样的具体数据（“20”、“男”本身是具体的，age、sex属性则是面向对象层级的抽象描述）。<br>而引用类型与值类型相比是对立面的抽象表达，更多的体现一个实体对象。比如我们描述一个Person的class，更多的体现在男人、女人、好人、坏人这样的实体对象。</p>
@@ -466,7 +466,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

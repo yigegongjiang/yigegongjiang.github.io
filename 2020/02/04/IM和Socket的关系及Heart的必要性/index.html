@@ -22,16 +22,16 @@
     var CONFIG = {"hostname":"www.yigegongjiang.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="很多互联网服务都会开通IM功能，如好友通讯，用户反馈，在线推送等。在微信未盛行，QQ大行其道的年代，IM还属于高深技术，目前已经进入寻常百姓家了。其实IM本身整个技术流程从终端角度来看不是一个难以理解的问题。但因为诸多人对网络协议不了解，所以认为IM难以入门。 首先要说IM是一个什么样的形态，它和HTTP&#x2F;S有什么不同。HTTP解决了端到端通讯的问题，在互联网大放异彩的原因是浏览器的盛行。冲浪需">
+  <meta name="description" content="很多互联网服务都会开通IM功能，如好友通讯，用户反馈，在线推送等。在微信未盛行，QQ大行其道的年代，IM还属于高深技术，目前已经进入寻常百姓家了。其实IM本身整个技术流程从终端角度来看不是一个难以理解的问题。但因为诸多人对网络协议不了解，所以认为IM难以入门。 首先要说IM是一个什么样的形态，它和HTTP&#x2F;S有什么不同。HTTP解决了端到端通讯的问题，在互联网大放异彩的原因是浏览器的盛">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IM和Socket的关系及Heart的必要性">
 <meta property="og:url" content="https://www.yigegongjiang.com/2020/02/04/IM%E5%92%8CSocket%E7%9A%84%E5%85%B3%E7%B3%BB%E5%8F%8AHeart%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7/index.html">
 <meta property="og:site_name" content="一个工匠">
-<meta property="og:description" content="很多互联网服务都会开通IM功能，如好友通讯，用户反馈，在线推送等。在微信未盛行，QQ大行其道的年代，IM还属于高深技术，目前已经进入寻常百姓家了。其实IM本身整个技术流程从终端角度来看不是一个难以理解的问题。但因为诸多人对网络协议不了解，所以认为IM难以入门。 首先要说IM是一个什么样的形态，它和HTTP&#x2F;S有什么不同。HTTP解决了端到端通讯的问题，在互联网大放异彩的原因是浏览器的盛行。冲浪需">
+<meta property="og:description" content="很多互联网服务都会开通IM功能，如好友通讯，用户反馈，在线推送等。在微信未盛行，QQ大行其道的年代，IM还属于高深技术，目前已经进入寻常百姓家了。其实IM本身整个技术流程从终端角度来看不是一个难以理解的问题。但因为诸多人对网络协议不了解，所以认为IM难以入门。 首先要说IM是一个什么样的形态，它和HTTP&#x2F;S有什么不同。HTTP解决了端到端通讯的问题，在互联网大放异彩的原因是浏览器的盛">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://s2.ax1x.com/2020/03/11/8EZsVx.jpg">
 <meta property="article:published_time" content="2020-02-04T08:45:22.000Z">
-<meta property="article:modified_time" content="2021-07-24T14:21:31.146Z">
+<meta property="article:modified_time" content="2021-07-24T14:21:31.000Z">
 <meta property="article:author" content="one.gongjiang@gmail.com">
 <meta property="article:tag" content="计算机原理">
 <meta property="article:tag" content="网络">
@@ -136,7 +136,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">38</span></a>
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">39</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -235,7 +235,7 @@
       
         <p><img src="https://s2.ax1x.com/2020/03/11/8EZsVx.jpg" alt="heart"></p>
 <p>很多互联网服务都会开通IM功能，如好友通讯，用户反馈，在线推送等。在微信未盛行，QQ大行其道的年代，IM还属于高深技术，目前已经进入寻常百姓家了。<br>其实IM本身整个技术流程从终端角度来看不是一个难以理解的问题。但因为诸多人对网络协议不了解，所以认为IM难以入门。</p>
-<p>首先要说IM是一个什么样的形态，它和HTTP/S有什么不同。<br>HTTP解决了端到端通讯的问题，在互联网大放异彩的原因是浏览器的盛行。冲浪需要网络获取服务端资源，HTTP可以使得终端发起网络请求服务端返回资源结果实现资源互通。<br>我们的感知里面，终端发起网络请求，服务端回复网络请求，HTTP使命就完成了。所以很多人对于HTTP的认知是：一次性通讯，每次需要获取信息都要重新发起请求。<br>其实有这样的认知是完全正确的，因为HTTP的确就是这样<strong>设计</strong>的。这里要着重说到设计这个词，因为HTTP就是为了完成一次性通讯这么一个任务。而像HTTP这样的应用层协议还有非常多，比如FTP、RTMP等等。他们都是为了完成特定任务而实现的协议。所有应用层协议都是被设计过的，为了完成特定的使命。</p>
+<p>首先要说IM是一个什么样的形态，它和HTTP&#x2F;S有什么不同。<br>HTTP解决了端到端通讯的问题，在互联网大放异彩的原因是浏览器的盛行。冲浪需要网络获取服务端资源，HTTP可以使得终端发起网络请求服务端返回资源结果实现资源互通。<br>我们的感知里面，终端发起网络请求，服务端回复网络请求，HTTP使命就完成了。所以很多人对于HTTP的认知是：一次性通讯，每次需要获取信息都要重新发起请求。<br>其实有这样的认知是完全正确的，因为HTTP的确就是这样<strong>设计</strong>的。这里要着重说到设计这个词，因为HTTP就是为了完成一次性通讯这么一个任务。而像HTTP这样的应用层协议还有非常多，比如FTP、RTMP等等。他们都是为了完成特定任务而实现的协议。所有应用层协议都是被设计过的，为了完成特定的使命。</p>
 <span id="more"></span>
 <p>但是随着社交关系的复杂，如何实现即时通讯又是摆在眼前的问题。HTTP是一次性通讯，请求返回后，终端和服务端两不相欠，也感知不到对方的存在。<br>如果我们想通过HTTP实现即时通讯，那就需要客户端每隔N秒(比如2s)向服务器发送一个请求，然后服务器返回新消息。这虽然很简陋，但是我就经历过这样的方案设计，我认为，在特定场景、功能、需求的前提下，这样的技术方案设计是完全合理的。<br>HTTP显然不适合大量用户下的即时通讯场景。<strong>在社交网络中，服务端需要在线数据统计，需要消息及时在线推送到终端，需要即使感知到终端连接是否中断好清理服务器资源</strong>，而这些，显然HTTP都无能为力。<br>那如何实现真正的即时通讯呢？真正的即时通讯和HTTP通讯在技术原理层面有哪些区别呢？</p>
 <h4 id="Socket是什么"><a href="#Socket是什么" class="headerlink" title="Socket是什么"></a>Socket是什么</h4><p>很多人都认为Socket是一套协议。其实根本就<strong>没有Socket协议存在</strong>。但是话又说回来，Socket本身的确又有其他两个身份。如果有人非要说Socket是协议，那Socket就有三个身份了。</p>
@@ -251,7 +251,7 @@
 <h4 id="即时通讯IM到底是啥？"><a href="#即时通讯IM到底是啥？" class="headerlink" title="即时通讯IM到底是啥？"></a>即时通讯IM到底是啥？</h4><p>所以即时通讯，就是<strong>编写业务层代码(自己写或者使用WebSocket等应用层协议)，使用UDP或者TCP这样的传输层协议，然后通过Socket套接字确定对方的IP和Port，最后通过Socket库接口双向发送消息</strong>。<br>这也就是IM的本质。<br>HTTP一直都是单向发送消息，比如客户端登陆或者调服务端Api。这都是单向的。<br>其实这个单向是宏观上看的，微观上，客户端请求，服务端返回，这其实也是双向的。<br>但是HTTP因为本身的业务关系，在收到请求后，<strong>发起请求的一方就主动关闭了通道</strong>，即销毁了双方的Socket套接字。所以服务端就没法再发消息给终端了，只能等着下次终端再次发起强求，才能再次返回数据给终端，如此反复。<br>所以HTTP不能做到双向通讯，是由HTTP本身协议特性决定的。<strong>如果HTTP不主动断开，那HTTP也能实现即时通讯实现双向发送消息</strong>。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">！！！HTTP1.0，消息往返后request主动关闭并销毁双方套接字，通道关闭。</span><br><span class="line">！！！HTTP1.1，可以通过开启connection：keepalive，用于保持双方套接字。这个时候，因为通道还在，是可以做即时通讯用途的。</span><br><span class="line">！！！HTTP2.0，在1.1的基础上，在传输层做更大程度优化，如多路复用、数据压缩等。这个时候，还是没有关闭销毁套接字，所以也可以做即时通讯使用。</span><br><span class="line">！！！一般没有人使用HTTP来做即时通讯。但是实际上是可以通过HTTP来实现即时通讯的。</span><br></pre></td></tr></table></figure>
 <p>实际上，WebSocket就是这样实现的。WebSocket和HTTP一样属于应用层协议，WebSocket通过HTTP建立连接，然后不断开通道，继续使用TCP进行双向发送消息。</p>
-<p>话再说回头，WebSocket能作为IM协议使用，其实是WebSocket协议帮我们做了业务层处理操作，如封包、粘包、调用Socket库Api(send()/recv()/connect()等)。<br><strong>如果我们不使用WebSocket，我们就需要自行处理Socket库调用，数据收发，和封包粘包的处理等工作</strong>。</p>
+<p>话再说回头，WebSocket能作为IM协议使用，其实是WebSocket协议帮我们做了业务层处理操作，如封包、粘包、调用Socket库Api(send()&#x2F;recv()&#x2F;connect()等)。<br><strong>如果我们不使用WebSocket，我们就需要自行处理Socket库调用，数据收发，和封包粘包的处理等工作</strong>。</p>
 <p>好在各个平台开发方，都有比较出色等Socket三方库使用，它们就是封装了和Socket库交互的部分，但是封包粘包还是需要我们处理，因为这个时候没有HTTP或者WebSocket这样的业务方了，我们自己就是业务方，所以需要我们自己处理这些业务。</p>
 <h4 id="Heart要解决什么问题"><a href="#Heart要解决什么问题" class="headerlink" title="Heart要解决什么问题"></a>Heart要解决什么问题</h4><p>说到IM，就不能不提心跳了。不管使用TCP、UDP还是WebSocket，心跳都是必不可少的。<br>那么心跳是要解决什么问题呢？<br>其实心跳总结来看，就是要解决IM的一个本质问题：<strong>维系长链接，保持高可用</strong>。</p>
 <p>要分析这个本质，就要先说明IM目前遇到了什么问题。总结来看，如下3点：</p>
@@ -378,7 +378,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
