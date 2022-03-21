@@ -1,5 +1,5 @@
 ---
-title: Swift let、var、struct、class
+title: Swift_let_var_struct_class
 date: 2019-12-05
 categories:
 - 技术
