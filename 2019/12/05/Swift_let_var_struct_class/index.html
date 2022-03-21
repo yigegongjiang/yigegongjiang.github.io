@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.0.0">
+<meta name="generator" content="Hexo 6.1.0">
 
 <meta name="google-site-verification" content="hEkkdHoBZXdN-chbhMtLxz6orIp7_P0lfW61l88LlIw" />
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
@@ -24,8 +24,8 @@
 
   <meta name="description" content="0x01 问题描述和表现对于let和var，struct和class，分成两类来说，很多人比较容易理解。let：不可变，var：可变，struct：栈空间，class：堆空间。当我想要确认他们的原理的时候，截止发文为止，我没有在中文互联网上搜索到相关信息。所以我把他们的原理写在下面。 下面的示例，你能够理清楚多少？ 12345678struct Person1 &amp;#123;    let name">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Swift let、var、struct、class">
-<meta property="og:url" content="https://www.yigegongjiang.com/2019/12/05/Swift%20let%E3%80%81var%E3%80%81struct%E3%80%81class/index.html">
+<meta property="og:title" content="Swift_let_var_struct_class">
+<meta property="og:url" content="https://www.yigegongjiang.com/2019/12/05/Swift_let_var_struct_class/index.html">
 <meta property="og:site_name" content="一个工匠">
 <meta property="og:description" content="0x01 问题描述和表现对于let和var，struct和class，分成两类来说，很多人比较容易理解。let：不可变，var：可变，struct：栈空间，class：堆空间。当我想要确认他们的原理的时候，截止发文为止，我没有在中文互联网上搜索到相关信息。所以我把他们的原理写在下面。 下面的示例，你能够理清楚多少？ 12345678struct Person1 &amp;#123;    let name">
 <meta property="og:locale" content="en_US">
@@ -34,13 +34,13 @@
 <meta property="og:image" content="https://s2.ax1x.com/2020/03/11/8EQpw9.png">
 <meta property="og:image" content="https://s2.ax1x.com/2020/03/11/8EQSeJ.png">
 <meta property="article:published_time" content="2019-12-04T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-07-24T14:21:31.000Z">
+<meta property="article:modified_time" content="2022-03-21T17:04:11.486Z">
 <meta property="article:author" content="one.gongjiang@gmail.com">
 <meta property="article:tag" content="Swift">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://s2.ax1x.com/2020/03/11/8EMydA.png">
 
-<link rel="canonical" href="https://www.yigegongjiang.com/2019/12/05/Swift%20let%E3%80%81var%E3%80%81struct%E3%80%81class/">
+<link rel="canonical" href="https://www.yigegongjiang.com/2019/12/05/Swift_let_var_struct_class/">
 
 
 <script id="page-configurations">
@@ -53,7 +53,7 @@
   };
 </script>
 
-  <title>Swift let、var、struct、class | 一个工匠</title>
+  <title>Swift_let_var_struct_class | 一个工匠</title>
   
 
 
@@ -175,7 +175,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2019/12/05/Swift%20let%E3%80%81var%E3%80%81struct%E3%80%81class/">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2019/12/05/Swift_let_var_struct_class/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://s1.ax1x.com/2020/05/05/Yi9cuQ.gif">
@@ -188,7 +188,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Swift let、var、struct、class
+          Swift_let_var_struct_class
         </h1>
 
         <div class="post-meta">
@@ -219,8 +219,8 @@
       </span>
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2019/12/05/Swift%20let%E3%80%81var%E3%80%81struct%E3%80%81class/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/12/05/Swift%20let%E3%80%81var%E3%80%81struct%E3%80%81class/" itemprop="commentCount"></span>
+    <a title="valine" href="/2019/12/05/Swift_let_var_struct_class/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/12/05/Swift_let_var_struct_class/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -560,7 +560,7 @@ window.addEventListener('pjax:success', () => {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://www.yigegongjiang.com/2019/12/05/Swift%20let%E3%80%81var%E3%80%81struct%E3%80%81class/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://www.yigegongjiang.com/2019/12/05/Swift_let_var_struct_class/',]
       });
       });
   </script>
