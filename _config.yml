@@ -6,7 +6,7 @@
 title: 一个工匠
 subtitle: 跋山涉水，走心为匠。
 description: 跋山涉水，走心为匠。而时间，却真的不多了。
-keywords: IT,互联网,网络,开发,硬件,生活,移动互联网
+keywords: IT,互联网,网络,开发,硬件,生活,移动互联网,程序员,工程师,计算机
 author: one.gongjiang@gmail.com
 language: en
 timezone: Asia/Shanghai
@@ -15,7 +15,8 @@ timezone: Asia/Shanghai
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://www.yigegongjiang.com
 root: /
-permalink: :year/:month/:day/:title/
+# permalink: :year:month:day/:title/
+permalink: :year/:title/
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -82,7 +83,7 @@ meta_generator: true
 date_format: YYYY-MM-DD
 time_format: HH:mm:ss
 ## updated_option supports 'mtime', 'date', 'empty'
-updated_option: 'mtime'
+updated_option: 'empty'
 
 # Pagination
 ## Set per_page to 0 to disable pagination
