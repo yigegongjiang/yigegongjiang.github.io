@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.1.0">
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.10.1","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Current boards are better for light mode to discuss. Dark mode click here -->","order":-2},"utterances":{"text":"Dark mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Core Foundation是被iOSer忽略的一个重要框架。说重要，因为Core Foundation提供了丰富的组件库，这些组件库可以很好的用于开发工作。但之所以被忽略，因为很多开发工作，可以用更友好的Foundation框架替代。Core Foundation有Foundation没有的功能，比如CFDictionary的Key元素无需实现NSCoping协议、CFArray可以不进行对">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从Core Foundation看更大世界">
+<meta property="og:url" content="https://www.yigegongjiang.com/2020/%E4%BB%8ECore%20Foundation%E7%9C%8B%E6%9B%B4%E5%A4%A7%E4%B8%96%E7%95%8C/index.html">
+<meta property="og:site_name" content="一个工匠">
+<meta property="og:description" content="Core Foundation是被iOSer忽略的一个重要框架。说重要，因为Core Foundation提供了丰富的组件库，这些组件库可以很好的用于开发工作。但之所以被忽略，因为很多开发工作，可以用更友好的Foundation框架替代。Core Foundation有Foundation没有的功能，比如CFDictionary的Key元素无需实现NSCoping协议、CFArray可以不进行对">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s1.ax1x.com/2020/05/26/tPJlTK.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/05/26/tiVp28.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/05/26/tiZ2kR.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/05/26/titA6H.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/05/26/tiwf6U.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/05/26/tiyzB8.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/05/28/tVJ2As.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/05/26/ti7UyD.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/05/26/tib9Ej.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/05/28/tVaMQ0.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/05/28/tVhrvT.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/05/28/tVqdIS.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/05/28/tZCYEd.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/05/28/tZPSqe.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/05/28/tZCzrD.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/05/28/te7jRH.png">
+<meta property="article:published_time" content="2020-05-23T08:51:05.000Z">
+<meta property="article:author" content="one.gongjiang@gmail.com">
+<meta property="article:tag" content="网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/05/26/tPJlTK.png">
+
+
+<link rel="canonical" href="https://www.yigegongjiang.com/2020/%E4%BB%8ECore%20Foundation%E7%9C%8B%E6%9B%B4%E5%A4%A7%E4%B8%96%E7%95%8C/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2020/%E4%BB%8ECore%20Foundation%E7%9C%8B%E6%9B%B4%E5%A4%A7%E4%B8%96%E7%95%8C/","path":"2020/从Core Foundation看更大世界/","title":"从Core Foundation看更大世界"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>从Core Foundation看更大世界 | 一个工匠</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">一个工匠</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">跋山涉水，走心为匠。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags<span class="badge">10</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">4</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">43</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user fa-fw"></i>About</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#iOS%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="nav-number">1.</span> <span class="nav-text">iOS开发框架有哪些</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E6%9E%9C%E7%94%A8Go%E6%9D%A5%E5%86%99iOS%E6%A1%86%E6%9E%B6%E4%BC%9A%E6%80%8E%E4%B9%88%E6%A0%B7"><span class="nav-number">2.</span> <span class="nav-text">如果用Go来写iOS框架会怎么样</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#C%E8%AF%AD%E8%A8%80%E6%98%AF%E5%A6%82%E4%BD%95%E8%A2%AB%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%89%A7%E8%A1%8C%E7%9A%84"><span class="nav-number">2.1.</span> <span class="nav-text">C语言是如何被操作系统执行的</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%92%8C%E8%BF%90%E8%A1%8C%E6%97%B6"><span class="nav-number">2.1.1.</span> <span class="nav-text">系统调用和运行时</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B7%A8%E8%BF%87%E8%BF%90%E8%A1%8C%E6%97%B6%E7%9B%B4%E6%8E%A5%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8"><span class="nav-number">2.1.2.</span> <span class="nav-text">跨过运行时直接系统调用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Windows-API%E7%9A%84%E5%AD%98%E5%9C%A8"><span class="nav-number">2.1.3.</span> <span class="nav-text">Windows API的存在</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#C%E8%BF%90%E8%A1%8C%E6%97%B6%E5%92%8CC%E6%A0%87%E5%87%86%E5%BA%93%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">2.1.4.</span> <span class="nav-text">C运行时和C标准库的关系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#C%E8%AF%AD%E8%A8%80%E8%BF%90%E8%A1%8C%E6%80%BB%E7%BB%93"><span class="nav-number">2.1.5.</span> <span class="nav-text">C语言运行总结</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Objective-C%E6%98%AF%E5%A6%82%E4%BD%95%E8%A2%AB%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%89%A7%E8%A1%8C%E7%9A%84"><span class="nav-number">2.2.</span> <span class="nav-text">Objective-C是如何被操作系统执行的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Go%E8%AF%A5%E5%A6%82%E4%BD%95%E8%A2%ABiOS%E7%B3%BB%E7%BB%9F%E6%89%A7%E8%A1%8C"><span class="nav-number">2.3.</span> <span class="nav-text">Go该如何被iOS系统执行</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Go%E9%9D%99%E6%80%81%E5%BA%93%E8%BF%90%E8%A1%8C%E6%97%B6%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7"><span class="nav-number">2.3.1.</span> <span class="nav-text">Go静态库运行时的必要性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E9%AB%98%E7%BA%A7%E8%AF%AD%E8%A8%80%E5%A6%82%E4%BD%95%E7%BC%96%E5%86%99iOS%E9%9C%80%E8%A6%81%E7%9A%84%E5%8A%A8%E6%80%81%E5%BA%93"><span class="nav-number">2.3.2.</span> <span class="nav-text">其他高级语言如何编写iOS需要的动态库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%99%90%E5%88%B6%E9%AB%98%E7%BA%A7%E8%AF%AD%E8%A8%80%E7%9A%84%E6%9E%B7%E9%94%81%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">2.3.3.</span> <span class="nav-text">限制高级语言的枷锁是什么</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Core-Foundation-%E5%92%8C-Foundation-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.</span> <span class="nav-text">Core Foundation 和 Foundation 的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Core-Foundation-%E5%92%8C-C-%E4%B8%8E-Objective-C-%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="nav-number">4.</span> <span class="nav-text">Core Foundation 和 C 与 Objective-C 的转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A1%A5%E6%8E%A5%EF%BC%88Bridge%EF%BC%89"><span class="nav-number">4.1.</span> <span class="nav-text">桥接（Bridge）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E6%A1%A5%E6%8E%A5%E7%BB%99C%E5%92%8CObjective-C%E8%B5%8B%E5%80%BC%E7%9A%84%E9%A3%8E%E9%99%A9"><span class="nav-number">4.2.</span> <span class="nav-text">通过桥接给C和Objective-C赋值的风险</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Core-Foundation%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">5.</span> <span class="nav-text">Core Foundation的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CFRunloop%E4%BB%8B%E7%BB%8D"><span class="nav-number">5.1.</span> <span class="nav-text">CFRunloop介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CFDictionary%E4%BB%8B%E7%BB%8D"><span class="nav-number">5.2.</span> <span class="nav-text">CFDictionary介绍</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="one.gongjiang@gmail.com"
+      src="https://s1.ax1x.com/2020/05/05/Yi9cuQ.gif">
+  <p class="site-author-name" itemprop="name">one.gongjiang@gmail.com</p>
+  <div class="site-description" itemprop="description">跋山涉水，走心为匠。而时间，却真的不多了。</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2020/%E4%BB%8ECore%20Foundation%E7%9C%8B%E6%9B%B4%E5%A4%A7%E4%B8%96%E7%95%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s1.ax1x.com/2020/05/05/Yi9cuQ.gif">
+      <meta itemprop="name" content="one.gongjiang@gmail.com">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个工匠">
+      <meta itemprop="description" content="跋山涉水，走心为匠。而时间，却真的不多了。">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="从Core Foundation看更大世界 | 一个工匠">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          从Core Foundation看更大世界
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-05-23 16:51:05" itemprop="dateCreated datePublished" datetime="2020-05-23T16:51:05+08:00">2020-05-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><img data-src="https://s1.ax1x.com/2020/05/26/tPJlTK.png" alt="tPJlTK.png"></p>
+<p>Core Foundation是被iOSer<strong>忽略</strong>的一个<strong>重要</strong>框架。说重要，因为Core Foundation提供了丰富的组件库，这些组件库可以很好的用于开发工作。<br>但之所以被忽略，因为很多开发工作，可以用更友好的Foundation框架替代。<br>Core Foundation有Foundation没有的功能，比如CFDictionary的Key元素无需实现NSCoping协议、CFArray可以不进行对象引用计数等。反过来，Foundation也有Core Foundation无法胜任的工作，最大的来说就是<strong>自动引用计数</strong>功能。<br>在iOS项目开发过程中，我们可以使用基于C语言的Core Foundation框架写一些业务功能逻辑，甚至有时候非用Core Foundation不可，因为它有Foundation没有的功能。</p>
+<p>Foundation是用Objective-C语言写的，Core Foundation使用C和C++语言写的。我们都知道Objective-C是C的<strong>超集</strong>，所以认为Objective-C和C、C++混编是正常的。<br>那么，什么是超集？Objective-C是动态的面向对象的，C是静态的面向过程的，如何实现这个超集？<br>既然Objective-C可以和C、C++一起使用，那么Golang呢？我们可不可以用Go来做混合开发？</p>
+<p>通过Core Foundation，可以有更大的认知空间。<br>比如各类高级语言在计算机中是如何运行的？Dart(flutter)可以做混合开发，原理是什么？Lua做热更新，它不是C语言也不是Objective-C语言，是怎么被计算机调用执行的？用Node.js写iOS代码，到底行不行？<br>各种风马牛不相及的高级编程语言，是否有各自的边界？</p>
+<span id="more"></span>
+
+<h3 id="iOS开发框架有哪些"><a href="#iOS开发框架有哪些" class="headerlink" title="iOS开发框架有哪些"></a>iOS开发框架有哪些</h3><p>框架是库的更高一层描述，这里的库一般指的是动态库，但说静态库，也完全没有问题。<br>比如，我们要写一个语音识别功能，我们写了1-n个动态库(a.framework、b.framework…)来完成这个功能。在项目最后，客户说只需要一个动态库，我们就把这1-n个动态库组合成1个动态库并命名GJAudioKit.framework，就可以叫GJAudioKit为语音识别框架了。<br>所以框架这个专有名字该怎么解释说明？<br>一来是众多库组合起来的意思。为了一个功能，需要写1-n个库。最后将1-n个库组合成1个库，这个库就叫一个框架。<br>二来框架是一个抽象，是比库更高层级的抽象。不管静态库还是动态库，都是目标文件(.o)的合集。而框架比库的抽象层级更高，表示一个功能、一个业务或者一个模块，比如语音识别框架。</p>
+<p>iOS系统提供了很多框架给我们使用，详见下图：</p>
+<p><img data-src="https://s1.ax1x.com/2020/05/26/tiVp28.png" alt="tiVp28.png"></p>
+<p>我们经常使用的框架都正在图中的分层结构中找到对应的影子。<br>也可以从Xcode的资源文件中查看，如下图：</p>
+<p><img data-src="https://s1.ax1x.com/2020/05/26/tiZ2kR.png" alt="tiZ2kR.png"></p>
+<p>刚才说到框架有1-n个库组成，上图中的SwiftUI.framework框架里面只有一个SwiftUI.h头文件，而Foundation.framework框架里面有近130个头文件。我们可以理解为一个头文件即可单独生成一个动态库。</p>
+<p>框架的理解就到这，值得一提的是，上面列出的框架，都是系统提供的，也都是C、C++、Objective-C写的。我们自己当然也可以开发需要的库或者框架，那么，我们必须要用C族语言开发吗？</p>
+<h3 id="如果用Go来写iOS框架会怎么样"><a href="#如果用Go来写iOS框架会怎么样" class="headerlink" title="如果用Go来写iOS框架会怎么样"></a>如果用Go来写iOS框架会怎么样</h3><p>手机和PC有很多不同，比如PC的硬件都是可以拆卸的，而手机一般都不会拆卸，所有硬件都是集成到一个主板焊死的，我们不能随便更换存储和内存。CPU也不一样，PC有很多种类的CPU支持，可以根据用户是美术生或者喜欢玩游戏而选择不同的产品型号，比如撕裂者等。而手机为了省电，都用的ARM架构CPU。<br>但不管手机和PC如何不同，有一个共同点是计算机发展几十年来不曾改变的，乃至手机和计算器都是一样的原理，那就是他们都依托发展于冯诺伊曼机。</p>
+<p>程序需要执行，不能执行没有任何意义的程序，所以输入输出是必须的。而冯诺伊曼机的程序执行就是执行二进制。</p>
+<p>所以从这点上看，高级语言再怎么变化，最终也跑不了CPU指令集二进制执行这个宿命。</p>
+<p>PC上我们可以跑上千种语言，因为这些语言最终都是二进制。只要语言被编译汇编成能够被执行的指令集，那么这些语言就有被编写和执行的意义，不管是在PC上执行，或者手机或者树莓派上执行。</p>
+<p>所以，Go当然可以在iOS手机上运行，不仅Go，Java、Ruby、Lua、Node.js都可以。那，怎么才能将Go写到iOS程序里面呢？<br>这就要分析C是如何被iOS系统执行的。因为他们都属于高级语言，如果C能够依靠一个逻辑被执行，那么Go按照这个逻辑也就可以执行。</p>
+<h4 id="C语言是如何被操作系统执行的"><a href="#C语言是如何被操作系统执行的" class="headerlink" title="C语言是如何被操作系统执行的"></a>C语言是如何被操作系统执行的</h4><h5 id="系统调用和运行时"><a href="#系统调用和运行时" class="headerlink" title="系统调用和运行时"></a>系统调用和运行时</h5><p>很久很久之前，是用纸带打洞进行编程。那时候CPU直接执行二进制。<br>现在就不行了，因为有操作系统存在了。操作系统是一个大管家，管理着所有的应用程序，通过合理的管理应用程序的内存，进行系统级别的控制。<br>操作系统该如何操作，才能管理应用程序呢？显然，控制了代码，就控制了所有。如果实际运行的代码，都在操作系统的管辖范围内，那么操作系统就想怎么控制就怎么控制了。<br>这个时候，我们就无法绕过操作系统直接让CPU执行我们的二进制了，而是需要让操作系统在中间做一个中间者，我们调用操作系统的接口，操作系统进而让CPU执行进入内核态(内核塌陷)，这个时候我们的代码才算被执行。这个操作系统的接口，就是<strong>系统调用</strong>。<br>操作系统提供了完善的服务，人们都装了主流的几大操作系统。因为我们的代码需要被用户拿去执行才有意义和价值，所以，我们的代码全都需要接受操作系统的控制。<br>所以现在，我们的C语言代码从开发阶段到被执行，是下面这样的：</p>
+<p><img data-src="https://s1.ax1x.com/2020/05/26/titA6H.png" alt="titA6H.png"></p>
+<p>系统调用，都是汇编实现的，并实现了C的接口供用户调用。这里需要说明一点，几大操作系统都是用C语言提供的系统调用接口。不管用户态是什么类型的高级语言，系统调用提供的仅仅是C接口。</p>
+<p>下面是部分系统调用接口，</p>
+<p><img data-src="https://s1.ax1x.com/2020/05/26/tiwf6U.png" alt="tiwf6U.png"></p>
+<p>系统调用接口并不是很多，都是操作系统提供给外界的刚需接口，大约350个左右（不同系统的接口数量不同）。这个时候，C开发人员开发的时候都是调用open用来打开文件，调用brk来申请内存。显然和现实不太一样，我们开发的时候，都用的fopen打开文件，用malloc申请内存。这是为什么呢？</p>
+<p>原因就是直接使用系统调用，非常困难。具体分两点来说：</p>
+<ol>
+<li>系统调用提供的接口都是基础接口，比较生硬且基础。程序员需要的一个很基础功能，可能需要调用好多个系统调用接口才能完成。</li>
+<li>系统调用是操作系统提供的。如果用户用Linux系统的系统调用接口开发了程序A，那么如果想让程序A在Windows系统上运行，那是不可能的，因为两个系统的系统调用接口完全不一样。</li>
+</ol>
+<p>显然，C语言开发者直接进行系统调用，遇到了困难。而中间件可以解决所有困难，如果解决不了，那就再加一个中间件。</p>
+<p>下面是添加了C Runtime Library（运行时）后的调用流程：</p>
+<p><img data-src="https://s1.ax1x.com/2020/05/26/tiyzB8.png" alt="tiyzB8.png"></p>
+<p>运行时是一个中间层，用户写的代码，最终调用的都是运行时接口。这个接口可以专门为C语言提供非常丰富的接口调用，有下面四种情况：</p>
+<ol>
+<li>1个系统调用接口可以为n个运行时接口提供服务，比如malloc和free都使用了brk。</li>
+<li>1个运行时接口可以调用n个系统调用接口，比如w接口，需要x、y、z接口同时提供服务。</li>
+<li>1个运行时接口可以仅调用1个系统调用接口，这个时候是1-1关系。</li>
+<li>1个运行时接口可以不调用系统调用接口，如strcpy，专门的C语言字符串处理函数。</li>
+</ol>
+<p>而且，不同系统提供的系统调用是不同的，但只要改变运行时，不需要修改用户代码，即可适配多平台。而每个系统都需要维护一套语言级别的运行时，这是必要且可行的。</p>
+<p>这样，C运行时作为中间层，极大的提高了开发人员生产力。</p>
+<h5 id="跨过运行时直接系统调用"><a href="#跨过运行时直接系统调用" class="headerlink" title="跨过运行时直接系统调用"></a>跨过运行时直接系统调用</h5><p>这里有一点需要说明，C运行时虽然作为高级语言和系统调用的中间层，但也不一定非要过这个中间层不可。因为操作系统只管理系统调用，而上层如何调用系统调用，是不受约束的。如果有一门语言，完全没有运行时概念，用户代码直接对接系统调用完全没有问题，就是上面说的<strong>系统调用生硬且基础</strong>和<strong>不能跨平台</strong>两个缺点。所以C语言真实调用逻辑如下：</p>
+<p><img data-src="https://s1.ax1x.com/2020/05/28/tVJ2As.png" alt="tVJ2As.png"></p>
+<p>开发人员在编写代码的时候，可以调用C运行时库接口，也可以直接进行系统调用。但还是那句话，这样用的人肯定不多，项目里面可能个别代码会如此实现，但一定是有足够把握才会这么做。</p>
+<h5 id="Windows-API的存在"><a href="#Windows-API的存在" class="headerlink" title="Windows API的存在"></a>Windows API的存在</h5><p>还有一点需要说明，Windows和Linux还有些不一样。Linux的CRT直接进行系统调用，而Windows又加了一层中间层，名叫Window API。这个中间层夹在系统调用和MCRT之间，如下图：</p>
+<p><img data-src="https://s1.ax1x.com/2020/05/26/ti7UyD.png" alt="ti7UyD.png"></p>
+<p>Window API对微软意义重大，作为最出名对商业软件，Window API更好的保障了用户升级带来对兼容性，所以中间层真的很好用。</p>
+<h5 id="C运行时和C标准库的关系"><a href="#C运行时和C标准库的关系" class="headerlink" title="C运行时和C标准库的关系"></a>C运行时和C标准库的关系</h5><p>下面额外补充一点，C语言规范中，出了标准，没有出实现。所以C语言的编译器和相关库版本非常多。<br>因为不同操作系统之间，有相同特性也有不同特性，所以不同操作系统的运行时接口有相同的也有不同的。<br>比如，内存分配，提供的api都是malloc。而windows有图形界面的绘图api，对应的linux就没有体现。<br>于是就把默认提供的api如malloc或者printf等叫做C 标准库。其他各自独有的也并入C运行时库。详见下图：</p>
+<p><img data-src="https://s1.ax1x.com/2020/05/26/tib9Ej.png" alt="tib9Ej.png"></p>
+<p>C的运行时比较特别，主要因为C出了标准，却没有给实现，于是各家为政。所以C的运行时库里面包含了C标准库，还有其他接口如启动函数等。而对于其他高级语言，一般就没有运行时库包含标准库的概念，因为标准库和运行时库也是独立的。比如，Objective-C里面，系统提供了非常多的标准库即框架，这些框架都是动态库形式，但他们不是运行时，有单独的运行时库负责系统调用(OC比较特别，实际为对接C运行时而非系统调用，下面会详细说明)。</p>
+<h5 id="C语言运行总结"><a href="#C语言运行总结" class="headerlink" title="C语言运行总结"></a>C语言运行总结</h5><p>到这里，不知道大家有没有发现秘密，C语言能够被执行，有两个要点：</p>
+<ol>
+<li>系统调用。对外界提供统一的内核塌陷。</li>
+<li>C运行时。提供C程序员开发的接口。</li>
+</ol>
+<p>所以做为高级语言的C语言，能够在计算机和手机甚至嵌入式系统执行，核心就在于<strong>系统调用</strong>。我们编写的代码，在编译汇编链接后，都变成了对运行时的调用，而运行时对<strong>系统调用Api</strong>进行调用。系统调用由操作系统控制，所以操作系统才能严丝合缝的对我们编写的代码进行控制和管理。当然最终执行还是CPU执行指令，只是优先级、内存分配、线程调度等，都是操作系统控制了。</p>
+<p>所以，只要一门高级语言，最终能够通过<strong>L Runtime Library(语言运行时)<strong>进行</strong>系统调用</strong>，那么，该语言就可以在操作系统的控制下，完成指令集的运行。</p>
+<h4 id="Objective-C是如何被操作系统执行的"><a href="#Objective-C是如何被操作系统执行的" class="headerlink" title="Objective-C是如何被操作系统执行的"></a>Objective-C是如何被操作系统执行的</h4><p>上面我们了解了高级语言C语言运行的原理，那么我们紧接着看下Objective-C是如何被运行的。<br>我们都知道，Objective-C是C语言的超集，这个超集该如何理解呢？<br>C是面向过程的静态的，C不是动态化语言（不是完全动态化），因为函数调用在编译时候已经确定。<br>但是基于C语言的Objective-C语言，却是完完全全的动态化语言。Objective-C是面向对象的编译型语言，所有函数的执行都是在运行过程中确定，<strong>超集</strong>是如何做到这些功能的呢？</p>
+<p>C的代码执行我们已经知道，我们写的代码，在编译后都变成C运行时函数调用的二进制。<br>这个C运行时作为中间层，干了一件大事，就是完成对系统调用的隔离和封装。<br><strong>超集</strong>从字面可以理解，是在C的基础上做一些事情。<br>所以，我们可以想一下，如果在一个中间层上面再加一个中间层，在C运行时上面再加一个OC运行时，那么OC运行时是不是就可以做更多的事情？<br>比如，在Objective-C中，代码调用A类的a对象的method_1()函数，那么在运行时，我们希望调用method_2()函数。那么这么一个函数调用的变化，肯定不能依靠系统调用来做，它管内核状态，不管应用层事情。也不能C运行时来做，因为C运行时是C语言特有的功能，不会单独为高级语言Objective-C来做这个事，本身它也做不了，因为它是静态语言，自身都没有动态性。so，肯定有一层单独为Objective-C做了这个事情，这一层，就是OC运行时。</p>
+<p>我们通过OC运行时源码分析一下对象创建的过程。<br>如果我们有一个OC_Person类，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@interface OC_Person : NSObject</span><br><span class="line">@property (nonatomic, copy) NSString *name;</span><br><span class="line">@end</span><br><span class="line">@implementation OC_Person</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p>现在，我们要创建一个对象person，即：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OC_Person *person = [[OC_Person alloc] init];</span><br></pre></td></tr></table></figure>
+<p>详细调用流程图如下：</p>
+<p><img data-src="https://s1.ax1x.com/2020/05/28/tVaMQ0.png" alt="tVaMQ0.png"></p>
+<p>从上面的函数调用链，我们发现有两个关键点：</p>
+<ol>
+<li>Objective-C进行对象内存初始化的时候，通过Objective-C的函数调用，最终调用到C语言的calloc()函数调用。</li>
+<li>内存分配的大小，是通过”-&gt;”结构体从一个struct拿到的。即调用一个结构体的instanceSize函数。（C++）</li>
+</ol>
+<p>所以，我们在Objective-C里面创建一个对象并进行内存分配，开始的时候调用的是OC运行时，最终是调用了C运行时。我们创建的Objective-C对象本身，在运行时阶段，都是通过struct结构体获取值，所以对象在项目Build后，都转化成C&#x2F;C++结构代码了。</p>
+<p>我们在看下下面代码执行流程：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[person setName:@&quot;x&quot;];</span><br></pre></td></tr></table></figure>
+<p>详细调用过程如下：<br><code>[person setName:@&quot;x&quot;]</code>-&gt;<code>objc_msgSend(person,SEL(setName),@&quot;x&quot;)</code>-&gt;汇编代码在运行时阶段查找<code>struct OC_Person&#123;...&#125;</code>结构体中的setName函数的地址p_setName-&gt;<code>call Oxab435c2(p_setName)</code>。</p>
+<p>上面函数调用过程分析如下：</p>
+<ol>
+<li>Objective-C的函数调用，是通过汇编语言编写的objc_msgSend进行的中转。其实objc_msgSend本身就是一个中间层，是动态转发的入口，将函数调用中转到运行时阶段。</li>
+<li>OC运行时阶段进行函数地址的查找，在找到对应的函数地址后，进行地址调用(函数执行)。</li>
+</ol>
+<p>从上面对OC运行时的分析，我们可以看出，说Objective-C是C的超集，其实应该这样理解：<br>Objective-C是高级语言，在代码编译后，会调用OC运行时接口，进行相关操作如对象创建，方法查找等。而OC运行时接口的具体实现，则是依托C运行时实现的。<br>比如，我们创建的Objective-C对象，在编译后，都会转换成struct结构体的形式进行OC运行时调用。再比如，我们创建对象调用OC运行时的alloc接口，在内部，却是调用的C运行时的calloc接口(显然，calloc调用的是系统调用的brk接口)。<br>面向对象是面向开发人员的，OC运行时负责面向对象的Objective-C代码和C运行时之间的沟通。<br>Objective-C的标准库和C就不一样了。C的标准库上面说到，是C运行时的一部分。对于其他高级语言来说，标准库就是单纯为应用层封装的动态库，不属于运行时的一部分了。</p>
+<p>下面是具体的流程图：</p>
+<p><img data-src="https://s1.ax1x.com/2020/05/28/tVhrvT.png" alt="tVhrvT.png"></p>
+<p>我在之前文章中，也有一个Objective-C和运行时库的说明：<a href="https://www.yigegongjiang.com/2020/04/08/Objective-C%20%E5%92%8C%20Runtime/">Objective-C 和 Runtime</a>。</p>
+<h4 id="Go该如何被iOS系统执行"><a href="#Go该如何被iOS系统执行" class="headerlink" title="Go该如何被iOS系统执行"></a>Go该如何被iOS系统执行</h4><p>我们已经分析了C和Objective-C在iOS操作系统上运行的原理。<br>我们可以确定，我们写的代码，只要最终能够对接系统调用并编译成二进制交由操作系统运行，那么我们的代码就能运行。<br>我们写的代码都是高级语言代码，比如我们写的高级语言的函数调用：<code>[OC_Person alloc]</code>，这个函数在编译后我们假设为<code>call Oxa1b2c3</code>，其中<code>Oxa1b2c3</code>是OC运行时的<code>_objc_rootAlloc</code>函数的虚拟地址。<br>在<code>_objc_rootAlloc</code>内部会调用<code>calloc()</code>进行C运行时函数调用，我们假设为<code>call Oxd4e5f6</code>。到此为止，我们自己写的[OC_person alloc]代码，我们知道在代码区里面，那么<code>Oxa1b2c3</code>和<code>Oxd4e5f6</code>这两个运行时的函数在哪里呢？<br>运行时说到底，也是代码。运行时有两种存在形式，一个是动态库，一个是静态库。<br>我们的操作系统都默认有C的动态库运行时。所以我们在Linux A电脑编译出来的ELF执行文件，在Linux B电脑上是可以直接运行的，就是因为C运行时库是用动态库的形式在执行文件启动后进行链接的。不仅仅操作系统，只要是计算机，大差不差都有C的动态库运行时，所以C语言才如此通用。因为只要写了C语言，不出意外到哪里都可以跑起来，除非用了特定系统的api。<br>那如果有一个操作系统，真的没有C的动态库运行时，是不是就不能支持可执行文件了呢？<br>运行时存在两种形式，一种动态库，还有一种静态库。我们在编译可执行文件的时候，可以把运行时打到可执行文件中，这样刚才说到的<code>Oxa1b2c3</code>和<code>Oxd4e5f6</code>运行时函数就打到可执行文件中了，即代码区。这样，及时操作系统没有安装C的动态库运行时，可执行文件一样可以跑起来。只不过，这样的化，可执行文件就会变大，因为包含了静态库运行时的大小。<br>所以Objective-C能够在iOS和Mac上运行，就是因为这两个系统里面，有动态库OC运行时。<br>那Objective-C能不能在安卓手机或者树莓派上面运行呢？因为Objective-C不支持运行时的静态库链接，而安卓和树莓派上没有动态库OC运行时，所以就运行不了Objective-C App了，因为找不到对应的函数调用，即上面说到的<code>Oxa1b2c3</code>和<code>Oxd4e5f6</code>。</p>
+<h5 id="Go静态库运行时的必要性"><a href="#Go静态库运行时的必要性" class="headerlink" title="Go静态库运行时的必要性"></a>Go静态库运行时的必要性</h5><p>所以，Golang该如何在iOS系统上执行？Golang本身是高级语言，肯定有运行时库，分别有动态库和静态库两个版本。因为iOS操作系统本身没有Golang运行时，那么在编写Golang的代码后，在编译链接的时候，把Golang的静态库链接到最终的执行文件中(静态库或者动态库，或者叫框架)，那么这串Golang编写的代码，就能够在iOS系统上完美的运行起来。<br>这个时候，Golang运行时需要做那些事情呢？</p>
+<ol>
+<li>Golang需要做一个静态库运行时，链接到执行文件中。因为iOS系统本身只有Objective-C运行时、C运行时、C++运行时，没有Golang运行时。</li>
+<li>Golang原本肯定没有考虑运行在iOS上，所以Golang的运行时对接了Windows和Linux的系统调用。那么现在，Golang的静态库运行时就需要对接iOS的系统调用。</li>
+</ol>
+<p>当上面两个步骤完成，我们就可以通过Golang编写代码并导出framework库，在iOS系统上被执行。<br>我们写出Golang库，肯定还是希望被Objective-C调用，因为Objective-C和C支持混编，而Go有一个库<code>CGo</code>，可以让Go和C连通，所以Objective-C这个时候就可以放心的调用Golang开发的库&#x2F;框架了。</p>
+<p>下面是Golang在iOS系统上的运行流程图：</p>
+<p><img data-src="https://s1.ax1x.com/2020/05/28/tVqdIS.png" alt="tVqdIS.png"></p>
+<p>幸运的是，Go开发iOS所需要的库&#x2F;框架，目前已经有发行版了，即<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dvbGFuZy9tb2JpbGU=">Go Mobile<i class="fa fa-external-link-alt"></i></span>。我测试一下，简单一行代码，在编译后的嵌入动态库中，也有1.5M，原因就是这个动态库中，有Go的静态运行时和CGO静态库。</p>
+<h5 id="其他高级语言如何编写iOS需要的动态库"><a href="#其他高级语言如何编写iOS需要的动态库" class="headerlink" title="其他高级语言如何编写iOS需要的动态库"></a>其他高级语言如何编写iOS需要的动态库</h5><p>其实不止Go，Node.js也一样可以用来开发iOS的动态库，有这个<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0phbmVhU3lzdGVtcy9ub2RlanMtbW9iaWxl">Node.js for Mobile Apps<i class="fa fa-external-link-alt"></i></span>。<br>Go和Node.js能够写iOS动态库，那么按照同样的逻辑，其他高级语言也一样可以做这件事，比如，游戏开发中，很多就用Lua来做热更新，Lua代码要被执行，也需要一个Lua的静态运行时嵌入到库中。</p>
+<p>上面说到的，还都是业务功能库，不是UI。那Flutter就是完全依靠Dart语言来做跨平台的混合开发方案。Flutter的库会让iOS App的包体积增加15-25M，就是因为里面有一系列的运行时和相关UI组件库存在。<br>我们通过上面Go的大小可以发现，运行时库本身没有多大，Flutter库比较大的原因，是Flutter通过Dart完全重新实现了自己一套UI框架，所以代码量肯定是巨大的，框架体积自然就增大了。</p>
+<h5 id="限制高级语言的枷锁是什么"><a href="#限制高级语言的枷锁是什么" class="headerlink" title="限制高级语言的枷锁是什么"></a>限制高级语言的枷锁是什么</h5><p>所以我们可以发现，至少在iOS上面，是没有高级语言限制的，只要高级语言有这个运行在iOS系统上的需求，都能实现。<br>而Go如果后期希望像Flutter一样实现UI框架，也一样没有问题。限制它们的，仅仅是业务需求罢了（实际上，对于Go和Node.js的iOS动态库开发，需求不大，所以都是试探性发展，因为C和C++已经足够优秀，用Objective-C来开发本身也够用了）。举例而言，C++是编写稳定后台服务的热门语言，而基于C++的Qt，就可以用来做跨平台的GUI。而Swift初期被用来开发iOS&#x2F;Mac App，现在也一样可以用作服务器开发。甚至Javascript只是浏览器端的脚步语言，引入V8引擎后，JS已经花开两朵，前端和Node.js后台发展的都非常棒。</p>
+<p>我们也可以认知到，高级语言的存在，只是特定场景的需求。如果当年苹果不开发Objective-C，用Java来开发iOS App，也完全可以的，只是苹果需要一套自己的能够被私有控制的开发体系。<br>语言是用来完成特定场景的工作任务，如果用Objective-C来写服务器的I&#x2F;O多并发，显然没有Go和Node.js的事件驱动来的吞吐量大。而Objective-C后期能不能实现协程、多进程等特性？当然可以，就是需要不需要而已。<br><strong>限制语言功能及发展的，仅仅是它的业务场景，而不在于语言本身或者操作系统</strong>。</p>
+<h3 id="Core-Foundation-和-Foundation-的区别"><a href="#Core-Foundation-和-Foundation-的区别" class="headerlink" title="Core Foundation 和 Foundation 的区别"></a>Core Foundation 和 Foundation 的区别</h3><p>我们在上面已经研究了语言和框架。框架和库的关系，在文章开头也已经说明。<br>这里就来研究一下Core Foundation和Foundation两个框架的区别和联系。</p>
+<p>Core Foundation是基于C开发的，Foundation是基于Objective-C开发的。但是有一点，Foundation是基于Core Foundation封装并实现了Core Foundation所没有的部分。<br>我们可以用下图来表示Core Foundation和Foundation的关系：</p>
+<p><img data-src="https://s1.ax1x.com/2020/05/28/tZCYEd.png" alt="tZCYEd.png"></p>
+<p>Foundation用Objective-C封装了Core Foundation的C组件，并实现了额外了组件供开发人员使用。而Core Foundation也有一些Foundation没能彻底封装的功能，这些功能是Core Foundation特有的。</p>
+<p>下面可以看一下Foundation和Core Foundation的组件库都有哪些：</p>
+<p><img data-src="https://s1.ax1x.com/2020/05/28/tZPSqe.png" alt="tZPSqe.png"><br><img data-src="https://s1.ax1x.com/2020/05/28/tZCzrD.png" alt="tZCzrD.png"></p>
+<p>从图中，我们可以看到，Foundation的组件是多于Core Foundation的，比如NSBundle在Core Foundation就没有体现。而NSArray就和Core Foundation的CFArray是对应的。反过来，Core Foundation的CFTree和CFBitVector在Foundation里也没有体现，或许是在其他组件中使用到了这两个算法库。</p>
+<p>因为Core Foundation是C实现的，虽然Objective-C能够兼容并调用C，但是和C相互通信并转换，就不那么容易了。<br>其实Objective-C和C直接通信就像Go和C直接通信一样，是高级语言之间的通信。Go有CGO库完成了这个中间层，Objective-C虽然基于C，有得天独厚的优势，但是如果没有官方实现，那还是会出现高级语言之间的代沟。<br>举例来说，现在有下面两个C和Objective-C代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">C:</span><br><span class="line"></span><br><span class="line">typedef struct person&#123;</span><br><span class="line">	int age;</span><br><span class="line">	char *name;</span><br><span class="line">&#125; Person;</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">Objective-C:</span><br><span class="line"></span><br><span class="line">@interface Person : NSObject</span><br><span class="line">@property (nonatomic, copy) NSString *name;</span><br><span class="line">@property (nonatomic, assign) NSUInteger age;</span><br><span class="line">@end</span><br><span class="line">@implementation Person</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p>我们现在创建一个C语言的p变量和Objective-C的pp对象，尝试将他们互通，代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">C:</span><br><span class="line">Person p = (Person *)malloc(sizeof(Person));</span><br><span class="line">p-&gt;age = 10;</span><br><span class="line">p-&gt;name = &quot;GJ&quot;;</span><br><span class="line"></span><br><span class="line">Objective-C:</span><br><span class="line">Person pp = Person.new;</span><br><span class="line">pp.age = 100;</span><br><span class="line">pp.name = @&quot;GJ2&quot;;</span><br><span class="line"></span><br><span class="line">开始通信1：</span><br><span class="line">pp = &lt;Conver&gt;p;</span><br><span class="line">NSLog(@&quot;pp name is %@&quot;, pp.name);</span><br><span class="line"></span><br><span class="line">开始通信2：</span><br><span class="line">p = &lt;Conver&gt;pp;</span><br><span class="line">printf(&quot;p name is %s\n&quot;, p-&gt;name);</span><br></pre></td></tr></table></figure>
+<p>C是面向过程的，Objective-C是面向对象的。上面的p和pp的格式转化，目前来看的确是没有办法完成的。也就是说，缺少<code>&lt;Conver&gt;</code>这个环节。<br>Objective-C本身是可以直接使用C代码的，虽然转化比较困难，但可以在不转化的前提下，直接调用C结构体变量进行使用。但是C却没有办法直接调用Objective-C对象了，所以这个时候可以写一个转换层，来完成这个工作：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Objective-C to C:</span><br><span class="line"></span><br><span class="line">C_Person * conver(Person *p) &#123;</span><br><span class="line">    C_Person *c_p = (C_Person *)malloc(sizeof(C_Person));</span><br><span class="line">    c_p-&gt;age = (int)p.age;</span><br><span class="line">    c_p-&gt;name = [p.name cStringUsingEncoding:NSUTF8StringEncoding];</span><br><span class="line">    return c_p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">使用：</span><br><span class="line"></span><br><span class="line">p = conver(pp);</span><br><span class="line">printf(&quot;p name is %s\n&quot;, p-&gt;name);</span><br><span class="line">free(p);</span><br></pre></td></tr></table></figure>
+<p>我们可以看到，通过这样中转的方式，我们可以将C和Objective-C相互转换并通信。</p>
+<p>显然，大家也发现有些费事。虽然这些转换如果真的要写C代码，那么就必不可少。但是如果使用Core Foundation，那会方便很多。<br>我们刚才说过，Foundation是封装的Core Foundation，苹果开发了一个强大的功能，即<strong>桥接（Bridge）</strong>。通过桥接，可以非常方便的实现C和Objective-C的数据转换，比如下面：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CFMutableDictionaryRef cf_mu_dic = CFDictionaryCreateMutable(kCFAllocatorDefault, 10, &amp;kCFTypeDictionaryKeyCallBacks, &amp;kCFTypeDictionaryValueCallBacks);</span><br><span class="line">NSMutableDictionary *oc_dic = (__bridge_transfer NSMutableDictionary *)(cf_mu_dic);</span><br><span class="line">// CFRelease(cf_mu_dic)；// 注意，这里因为__bridge_transfer缘故，就可以不用执行CFRelease释放内存了。</span><br></pre></td></tr></table></figure>
+<p>对于Core Foundation使用过程中产生的变量，都可以通过桥接的方式，变成Foundation对象。桥接帮我们做了格式转换的同时，也帮我们做了ARC。<br>刚才，我们在执行<code>p = conver(pp)</code>的时候，大家注意，后面使用了C语言的内存释放，即<code>free(p)</code>。Core Foundation本身也有引用计数，但是没有自动计数即ARC。所以Core Foundation的对象释放的时候，需要调用CFRelease，那么在桥接到Foundation后，就可以使用Objective-C的ARC了，非常方便。<br>桥接中的<code>__bridge/__bridge_transfer/__bridge_retain</code>可以很方便的帮我们做对象管理转移操作，我们就不需要手动去释放内存了。</p>
+<p>这里还是要补充一点，基于C语言的Core Foundation之所以能作为Objective-C开发框架，就是上面提到的，只要是高级语言，只要有相关运行时，就可以用来开发组件&#x2F;库&#x2F;框架。</p>
+<h3 id="Core-Foundation-和-C-与-Objective-C-的转换"><a href="#Core-Foundation-和-C-与-Objective-C-的转换" class="headerlink" title="Core Foundation 和 C 与 Objective-C 的转换"></a>Core Foundation 和 C 与 Objective-C 的转换</h3><h4 id="桥接（Bridge）"><a href="#桥接（Bridge）" class="headerlink" title="桥接（Bridge）"></a>桥接（Bridge）</h4><p>我们从上面Core Foundation和Foundation之间了解到，通过桥接，可以很好的转换Core Foundation和Foundation对象。<br>桥接做了两件事，一个是<strong>自动引用计数</strong>，一个是<strong>格式转换</strong>。</p>
+<p>我们先说一下格式转换，因为桥接的转换局限性很大。<br>我们上面把C的<code>struct person</code>结构变量转换成Objective-C的<code>Class Person</code>，需要自己写类似于<code>C_Person * conver(Person *p)</code>的转换函数。说明C和Objective-C之间转换本身是不能直接进行的。<br>但是Core Foundation的CFArray、CFString等和Foundation的NSArray和NSString等转换，通过桥接就可以直接转换。这是因为Core Foundation比较特别。Core Foundation是苹果自己写的C代码，所以在桥接的时候，苹果拥有Core Foundation的数据结构和Foundation的对象细节，所以桥接可以自动完成转换工作。<br>而我们自己写的C结构体变量，和Objective-C对象之间，就不能很好转换了，如果我们写了C代码需要和Objective-C进行转换，就必须自己写一个中间层了。<br>这就是桥接对于数据格式转换的局限性，准确来说，桥接对数据格式转换，的确只在Core Foundation里面才有体现，毕竟如上所说，苹果自己知道Core Foundation和Foundation之间的所有细节。<br>这对于我们来说，其实已经完全够用了，因为我们真实业务开发场景，如果需要避免Objective-C的运行时带来的消耗，的确可以通过Core Foundation来编写代码。</p>
+<p>下面再说桥接的另一个大杀器，那就是自动引用计数。<br>Core Foundation在和Foundation进行转换的时候，可以通过<code>__bridge/__bridge_transfer/__bridge_retain</code>进行自动引用计数控制，这个不在细说。<br>这里介绍C和Objective-C之间通过桥接进行引用计数控制。引用计数是针对Objective-C对象来说的，我们看一下Objective-C对象和C之间的转换：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Person *oc_p1 = Person.new;</span><br><span class="line">oc_p1.name = @&quot;GJ&quot;;</span><br><span class="line">oc_p1.age = 10;</span><br><span class="line"></span><br><span class="line">// 1. 假设这里因为业务代码需要，我们将OC对象转成C指针进行传递</span><br><span class="line">void *c_p = (__bridge void *)(oc_p1);// c_p = 0x0000600003977500</span><br><span class="line">// 2. 程序执行过程中，有各种原因可能会导致oc_p1对象计数-1，比如离开块区域等。这里我们通过置nil进行模拟</span><br><span class="line">oc_p1 = nil;</span><br><span class="line">// 3. 这里需要把之前由C指针存储的指针还原成Objective-C对象</span><br><span class="line">__weak Person *oc_p2 = (__bridge Person *)(c_p);// 这里有&quot;__weak&quot;避免计数影响。因为默认是&quot;__strong&quot;，计数会+1</span><br><span class="line">// 4. 这里使用还原后的Objective-C对象</span><br><span class="line">NSLog(@&quot;%@&quot;, oc_p2.name);</span><br></pre></td></tr></table></figure>
+<p>上面我们使用**__bridge**进行Objective-C和C的强制指针转换，表示不对计数进行任何改变。<br>在代码执行到第3步的时候，就会奔溃。<br>因为第1步前，堆对象的计数为1，第1步没有改变计数，堆对象计数还是1。<br>经过第2步，堆对象不在有引用计数了，所以堆对象就被释放了。<br>在第3步，想要使用C的c_p指针的时候，这个指针所存储的<code>0x0000600003977500</code>堆地址，已经变成野指针了，使用的时候直接会崩溃。</p>
+<p>下面看下**__bridge_retained<strong>和</strong>__bridge_transfer**的作用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Person *oc_p1 = Person.new;</span><br><span class="line">oc_p1.name = @&quot;GJ&quot;;</span><br><span class="line">oc_p1.age = 10;</span><br><span class="line"></span><br><span class="line">// 1. 假设这里因为业务代码需要，我们将OC对象转成C指针进行传递</span><br><span class="line">void *c_p = (__bridge_retained void *)(oc_p1);// c_p = 0x0000600003977500</span><br><span class="line">// 2. 程序执行过程中，有各种原因可能会导致oc_p1对象计数-1，比如离开块区域等。这里我们通过置nil进行模拟</span><br><span class="line">oc_p1 = nil;</span><br><span class="line">// 3. 这里需要把之前由C指针存储的指针还原成Objective-C对象</span><br><span class="line">__weak Person *oc_p2 = (__bridge_transfer Person *)(c_p);// 这里有&quot;__weak&quot;避免计数影响。因为默认是&quot;__strong&quot;，计数会+1</span><br><span class="line">// 4. 这里使用还原后的Objective-C对象</span><br><span class="line">NSLog(@&quot;%@&quot;, oc_p2.name);</span><br><span class="line">// 5. 这里继续将C指针存储的指针还原成Objective-C对象</span><br><span class="line">__weak Person *oc_p3 = (__bridge_transfer Person *)(c_p);</span><br></pre></td></tr></table></figure>
+<p>这里代码运行情况分析如下：<br>第1步之前，堆对象计数为1。经过第1步后，**__bridge_retained<strong>会使得计数+1，堆对象计数变成2。<br>经过第2步，堆对象计数变成了1。<br>第3步</strong>__bridge_transfer**会使得计数-1，堆对象计数变成0，堆对象被释放。<br>第4步会打印null，因为oc_p2本身为null。<br>第5步，程序崩溃，因为c_p指针存储的堆对象已经释放，指针此时为野指针。</p>
+<p>从上面两个例子，我们可以看到，在和C进行赋值的过程中，桥接帮我们做了引用计数的工作。和Core Foundation的转换过程中的计数规则是一样的。<br>我们在赋值过程中，使用**__bridge_retained<strong>和</strong>__bridge_transfer<strong>可以有效的降低崩溃风险，因为这两种bridge方式，帮我们做了引用计数的加和减。<br>单独进行</strong>__bridge<strong>赋值的时候，引用计数没有改变，相当于同一时间，有多个指针指向堆对象，但是对象的计数却和指向指针的个数不一致。如果对象被释放，很可能还有指针在指向，这个时候使用就会发生野指针。<br>通过</strong>retained<strong>和</strong>transfer**，在赋值过程中，加1和减1是同步的，这样可以有效降低对象计数和指向指针个数不一致的野指针风险。</p>
+<h4 id="通过桥接给C和Objective-C赋值的风险"><a href="#通过桥接给C和Objective-C赋值的风险" class="headerlink" title="通过桥接给C和Objective-C赋值的风险"></a>通过桥接给C和Objective-C赋值的风险</h4><p>通过上面两个例子，或者写更多其他Objective-C和C指针赋值的代码后，就会发现这样写代码的风险非常大。最大的风险就是野指针和内存不释放。<br>如果完全写Objective-C的代码，OC运行时已经帮我们处理了引用计数和对象释放后指针自动变nil问题，所以我们大概率不会出现野指针和内存不释放情况（<strong>OC运行时的Weak表帮我们处理了对象释放后指针自动变nil。而Objective-C的引用计数的内存管理方式，也容易因为循环引用导致内存不释放，这是引用计数管理内存的天然缺陷</strong>）。<br>但是在C赋值嵌入进来后，即使通过桥接进行计数管理，也依旧摆脱不了随时崩溃的风险。原因就是因为对象被释放导致野指针随时可能会发生，或者对象无法释放导致内存泄漏。<br>对于经常写C代码的程序员来说，应该不会担心这些问题，因为他们已经习惯内存需要手动管理。被拥有自动内存释放机制娇生惯养的程序员们，就需要注意这个风险了。<br>比如下面代码，就很发生内存泄漏：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">void func &#123;</span><br><span class="line">    int number = 10;</span><br><span class="line">    char *c_chars = (char *)malloc(sizeof(char) * number);</span><br><span class="line">    memset(c_chars, 0, number);</span><br><span class="line">    int i = 0;</span><br><span class="line">    for (; i &lt; number - 1; ++i) &#123;</span><br><span class="line">        *(c_chars + i) = &#x27;a&#x27; + i;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    NSString *oc_str = [NSString stringWithCString:c_chars encoding:NSUTF8StringEncoding];</span><br><span class="line">    free(c_chars);</span><br><span class="line">    NSLog(@&quot;%@&quot;, oc_str);// 打印“abcdefghi”</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码中，前面用C语言申请了10个字节的堆空间，然后开始赋值被转成Objective-C的NSString对象。<br>oc_str是ARC控制的，出了func函数作用域，内存就会被释放。可是如果忘记写<code>free(c_chars);</code>这行代码，就会导致10字节的内存泄漏。像这样的内存细节，防不胜防的同时又会慢慢耗尽内存空间。</p>
+<p>所以，<strong>如果需要避免Objective-C的运行时带来的消耗而想采用C写业务，最好使用Core Foundation，它和Foundation之间的桥接非常完美，一般不会出问题。而自己写C进行混用，野指针和内存不释放是挥之不去的地雷</strong>。</p>
+<h3 id="Core-Foundation的使用"><a href="#Core-Foundation的使用" class="headerlink" title="Core Foundation的使用"></a>Core Foundation的使用</h3><p>Core Foundation只是一个非常优秀的框架，但是苹果用C写的Core Foundation框架和Objective-C写的Foundation框架，不是iOS框架的全部。框架是库的抽象，用Golang等其他高级语言，一样可以写出优秀的框架。Dart就是举足轻重的例子。</p>
+<p>上文的截图中，给出了Core Foundation框架里面都有哪些好用的组件，比如CFString、CFDate等。下面的一些示例，是用Foundation不好实现的。</p>
+<h4 id="CFRunloop介绍"><a href="#CFRunloop介绍" class="headerlink" title="CFRunloop介绍"></a>CFRunloop介绍</h4><p>iOS的Runloop水还是很深的。我也写了Runloop的一篇文章，一直在草稿中未能发布。因为牵涉面太广，如事件驱动、线程休眠、自动释放池、UI刷新等。通过Runloop能够更加清楚明白的理解App运行的原理，也可以做非常多有用的东西，如主线程卡顿监控、线程保活等。<br>Foundation提供了NSRunloop供我们开发人员使用，但是NSRunloop有一个大坑，对于不了解Runloop的开发人员来说，很容易陷进去。<br>网上有很多Runloop的介绍，在介绍让线程执行一段时间的时候，会使用<code>[[NSRunLoop currentRunLoop]run]</code>。我揣摩本意，发现他们并不是想要让线程永久长活，但是却使用了<code>run</code>函数。这样会使得当前线程永远无法释放，是永远。因为NSRunloop里面run函数是对<code>CFRunLoopRun()</code>函数的true循环封装，当结束一次循环后，NSRunloop会立刻再次调用<code>CFRunLoopRun()</code>函数，没有任何办法可以销毁当前线程的Runloop。这样，项目里面就永远的多出来一条可能已经不再需要的线程。主线程就使用的这个逻辑。<br>在CFRunnloop里面，仅有两种方式安全启动线程的runloop，分别为<code>CFRunLoopRun()</code>和<code>CFRunLoopRunInMode</code>，其中<code>CFRunloopRun</code>还是语法糖。这两种启动方式，都是一次循环，客户端可以自行控制啥时取消Runloop，有效的降低Runloop未知风险。相关源码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">CFRunloop.c</span><br><span class="line"></span><br><span class="line">// RunLoop 运行循环</span><br><span class="line">void CFRunLoopRun(void) &#123;    /* DOES CALLOUT */</span><br><span class="line">    int32_t result;</span><br><span class="line">    do &#123;</span><br><span class="line">        // 调用RunLoop执行函数（默认运行default Mode）</span><br><span class="line">        result = CFRunLoopRunSpecific(CFRunLoopGetCurrent(), kCFRunLoopDefaultMode, 1.0e10, false);</span><br><span class="line">        CHECK_FOR_FORK();</span><br><span class="line">    &#125; while (kCFRunLoopRunStopped != result &amp;&amp; kCFRunLoopRunFinished != result);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 切换并运行到对应的mode（运行modeName参数对应的mode）</span><br><span class="line">SInt32 CFRunLoopRunInMode(CFStringRef modeName, CFTimeInterval seconds, Boolean returnAfterSourceHandled) &#123;     /* DOES CALLOUT */</span><br><span class="line">    CHECK_FOR_FORK();</span><br><span class="line">    return CFRunLoopRunSpecific(CFRunLoopGetCurrent(), modeName, seconds, returnAfterSourceHandled);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>iOS 的runloop，就是通过调用<code>CFRunLoopRunSpecific()</code>-&gt;<code>__CFRunLoopRun()</code>实现的。其中，NSRunloop的run函数，相当于下面代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- (void)run &#123;</span><br><span class="line">    do &#123;</span><br><span class="line">        CFRunloopRun();</span><br><span class="line">    &#125; while(true);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>所以，线程永远也无法销毁。因为CFRunloopRun()函数会在Mode切换或者手动调用<code>CFRunLoopStop()</code>等情况下执行完毕，但是外部的do-while true循环，永远结束不掉。</p>
+<p>这里，如果需要写Runloop相关的代码，我强烈建议使用CFRunloop，而不要使用NSRunloop。相比来说，CFRunloop提供了比NSRunloop更加细致化的Api，相比之下，NSRunloop就寥寥无几了。</p>
+<p>下面是我写的一些CFRunloop测试代码，因为Core Foundation是C语言写的，所以里面的组件都是面向过程的调用方式，和面向对象有些不同：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">    self.thread = [[NSThread alloc] initWithTarget:self selector:@selector(createThread) object:nil];</span><br><span class="line">    [self.thread setName:@&quot;test thread 1&quot;];</span><br><span class="line">    [self.thread start];</span><br><span class="line"></span><br><span class="line">- (void)createThread &#123;</span><br><span class="line"></span><br><span class="line">    NSLog(@&quot;the thread is [%@]&quot;, [NSThread currentThread]);</span><br><span class="line"></span><br><span class="line">//    NSRunLoop *runloop = [NSRunLoop currentRunLoop];</span><br><span class="line">//    self.port = NSMachPort.new;</span><br><span class="line">//    self.port.delegate = self;</span><br><span class="line">//    [runloop addPort:self.port forMode:NSRunLoopCommonModes];</span><br><span class="line">//    [self addObserver];</span><br><span class="line">        </span><br><span class="line">    </span><br><span class="line">    CFRunLoopAddCommonMode(CFRunLoopGetCurrent(), (__bridge CFStringRef)@&quot;dadada&quot;);</span><br><span class="line">    </span><br><span class="line">    CFRunLoopPerformBlock(CFRunLoopGetCurrent(), kCFRunLoopCommonModes, ^&#123;</span><br><span class="line">        printf(&quot;abc&quot;);</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    NSLog(@&quot;the runloop is [%@]&quot;, [NSRunLoop currentRunLoop]);</span><br><span class="line"></span><br><span class="line">    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:10]];</span><br><span class="line">//    CFRunLoopRunInMode(kCFRunLoopDefaultMode, 5, NO);</span><br><span class="line">    NSLog(@&quot;---end&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">主线程下调用&quot;addObserver&quot;，可以实时查看主线程的Runloop状态</span><br><span class="line"></span><br><span class="line">- (void)addObserver &#123;</span><br><span class="line">    CFRunLoopObserverRef runloopObserver = CFRunLoopObserverCreateWithHandler(</span><br><span class="line">        kCFAllocatorDefault, kCFRunLoopAllActivities, YES, 0,</span><br><span class="line">        ^(CFRunLoopObserverRef observer, CFRunLoopActivity activity) &#123;</span><br><span class="line">        </span><br><span class="line">        switch (activity) &#123;</span><br><span class="line">            case kCFRunLoopEntry:</span><br><span class="line">                NSLog(@&quot;--1 即将进入loop kCFRunLoopEntry--&quot;);</span><br><span class="line">                break;</span><br><span class="line">            case kCFRunLoopBeforeTimers:</span><br><span class="line">                NSLog(@&quot;--2 即将处理timer kCFRunLoopBeforeTimers--&quot;);</span><br><span class="line">                break;</span><br><span class="line">            case kCFRunLoopBeforeSources:</span><br><span class="line">                NSLog(@&quot;--3 即将处理source kCFRunLoopBeforeSources--&quot;);</span><br><span class="line">                break;</span><br><span class="line">            case kCFRunLoopBeforeWaiting:</span><br><span class="line">                NSLog(@&quot;--4 即将休眠 kCFRunLoopBeforeWaiting--&quot;);</span><br><span class="line">                break;</span><br><span class="line">            case kCFRunLoopAfterWaiting:</span><br><span class="line">                NSLog(@&quot;--5 即将从休眠唤醒 kCFRunLoopAfterWaiting--&quot;);</span><br><span class="line">                break;</span><br><span class="line">            case kCFRunLoopExit:</span><br><span class="line">                NSLog(@&quot;--6 即将退出loop kCFRunLoopExit--&quot;);</span><br><span class="line">                break;</span><br><span class="line">            default:</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    CFRunLoopAddObserver(CFRunLoopGetCurrent(), runloopObserver, kCFRunLoopCommonModes);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="CFDictionary介绍"><a href="#CFDictionary介绍" class="headerlink" title="CFDictionary介绍"></a>CFDictionary介绍</h4><p>Foundation里面有NSDictionary与之对应，如果我们希望用我们自定义的对象为key，存储与NS字典中，直接存储是不行的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// 定义Person类</span><br><span class="line"></span><br><span class="line">@interface Person : NSObject</span><br><span class="line">@property (nonatomic, copy) NSString *name;</span><br><span class="line">@property (nonatomic, assign) NSUInteger age;</span><br><span class="line">@end</span><br><span class="line">@implementation Person</span><br><span class="line">- (NSString *)description &#123;</span><br><span class="line">    return [NSString stringWithFormat:@&quot;name:%@, age:%lu&quot;, self.name, (unsigned long)self.age];</span><br><span class="line">&#125;</span><br><span class="line">- (void)dealloc &#123;</span><br><span class="line">    printf(&quot;Person Dealloc.\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">- (void)func &#123;</span><br><span class="line">    Person *p = Person.new;</span><br><span class="line">    </span><br><span class="line">    NSMutableDictionary *oc_dic = NSMutableDictionary.new;</span><br><span class="line">    [oc_dic setObject:@&quot;&quot; forKey:p];// 这里会崩溃</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，如果我们把自定义Person类的对象p作为key存储到NSMutableDictionary中，运行时是会崩溃的。<br>因为Foundation规定，字典的key必须要实现<code>NSCoping</code>协议，字典在添加属性的时候，是调用[key copy]作为字典key的。<br>改写如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@interface Person : NSObject&lt;NSCopying&gt;</span><br><span class="line">@property (nonatomic, copy) NSString *name;</span><br><span class="line">@property (nonatomic, assign) NSUInteger age;</span><br><span class="line">@end</span><br><span class="line">@implementation Person</span><br><span class="line">- (id)copyWithZone:(nullable NSZone *)zone &#123;</span><br><span class="line">    Person *p = Person.new;</span><br><span class="line">    p.name = self.name;</span><br><span class="line">    p.age = self.age;</span><br><span class="line">    return p;</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p>如果我们使用Core Foundation，就可以避开这个限制，即Person类不需要实现<code>NSCoping</code>协议，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Person *p = Person.new;</span><br><span class="line"></span><br><span class="line">CFMutableDictionaryRef cf_mu_dic = CFDictionaryCreateMutable(kCFAllocatorDefault, 10, &amp;kCFTypeDictionaryKeyCallBacks, &amp;kCFTypeDictionaryValueCallBacks);</span><br><span class="line">CFStringRef cf_str_value = CFSTR(&quot;value&quot;);</span><br><span class="line">CFDictionaryAddValue(cf_mu_dic, (__bridge const void *)(p), cf_str_value);</span><br></pre></td></tr></table></figure>
+<p>CFDictionary默认会对Key和Value做retain，所以我们使用**__bridge<strong>即可。当p被当作key加入cf_mu_dic后，p的引用计数已经变成2了。<br>如果我们使用</strong>__bridge_retained**，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Person *p = Person.new;</span><br><span class="line"></span><br><span class="line">CFMutableDictionaryRef cf_mu_dic = CFDictionaryCreateMutable(kCFAllocatorDefault, 10, &amp;kCFTypeDictionaryKeyCallBacks, &amp;kCFTypeDictionaryValueCallBacks);</span><br><span class="line">CFStringRef cf_str_value = CFSTR(&quot;value&quot;);</span><br><span class="line">CFDictionaryAddValue(cf_mu_dic, (__bridge_retained const void *)(p), cf_str_value);</span><br><span class="line"></span><br><span class="line">p = nil;</span><br><span class="line">CFDictionaryRemoveAllValues(cf_mu_dic);</span><br><span class="line">// 这里因为&quot;__bridge_retained&quot;缘故，p置空和移除CFDictionary所有元素后，对象的引用计数还是1，所以内存泄漏。</span><br></pre></td></tr></table></figure>
+<p><strong>这里因为”__bridge_retained”缘故，p置空和移除CFDictionary所有元素后，对象的引用计数还是1，所以内存泄漏</strong>。</p>
+<p>CFDictionary的key不需要实现<code>NSCoping</code>协议这一特性，YYModel就有使用，这也是YYModel使用CFDictionary的最终原因：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">YYMemoryCache.m</span><br><span class="line"></span><br><span class="line">    _dic = CFDictionaryCreateMutable(CFAllocatorGetDefault(), 0, &amp;kCFTypeDictionaryKeyCallBacks, &amp;kCFTypeDictionaryValueCallBacks);</span><br><span class="line">    CFDictionarySetValue(_dic, (__bridge const void *)(node-&gt;_key), (__bridge const void *)(node));</span><br><span class="line">    CFDictionaryRemoveValue(_dic, (__bridge const void *)(node-&gt;_key));</span><br><span class="line">    CFDictionaryGetCount(_dic);</span><br><span class="line">    _YYLinkedMapNode *node = CFDictionaryGetValue(_lru-&gt;_dic, (__bridge const void *)(key));</span><br><span class="line"></span><br><span class="line">    CFRelease(_dic);</span><br></pre></td></tr></table></figure>
+<p>YYModel使用CFDictionary，就是因为缓存对象是各式各样的，极大可能都是没有实现<code>NSCoping</code>协议的。<br>因为YYModel通过一个<code>__unsafe_unretained</code>类型的双向链表来保存对象，所以YYModel需要一个容器来持有缓存对象防止被提前释放。<br>为了加快查询对象的速度，使用查找复杂度为1的hash map结构即字典(CFDictionary)，而非数组(CFArray)。</p>
+<p>CFDictionary还有一个巨大特性，是可以吊打NSDictionary的，那就是可以自行控制引用计数。下图表示CFDictionary的创建函数及相关函数调用：</p>
+<p><img data-src="https://s1.ax1x.com/2020/05/28/te7jRH.png" alt="te7jRH.png"></p>
+<p>我们举例一下，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_dic = CFDictionaryCreate(CFAllocatorGetDefault(), keys, values, n, &amp;kCFTypeDictionaryKeyCallBacks, &amp;kCFTypeDictionaryValueCallBacks);</span><br></pre></td></tr></table></figure>
+<p>这里创建一个_dic变量，这里每个key都会经过<code>kCFTypeDictionaryKeyCallBacks</code>结构体获取到<code>retain/release/copyDescription/equal/hash</code>进行函数调用。<br>比如，<strong>如果两个key一样，那么equal就会比对出true，第二个key元素就会被过滤</strong>。注意，这里和NSDictionary不一样，NSDictionary是完全hash map table，两个元素如果一样，就会通过<strong>拉链法</strong>或者<strong>开放寻址法</strong>进行存储。但是在CFDictionary里面，如果两个元素equal为true，则会过滤另一个。<br>然后，一个key被存储的时候，会调用retain函数进行引用计数+1。这里调用的是系统默认的，如图中所示，如果我们用自己的retain函数代替系统的，就可以实现引用计数的多变性：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">void * Custom_CFDictionaryRetainCallBack(CFAllocatorRef allocator, const void *value) &#123;</span><br><span class="line">        return value;// 系统默认为return CFRetain(value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们通过改写一个key retain 函数，就可以改变CFDictionary的key在retain时候的计数是否+1。<br>如果执行<code>CFDictionaryRemoveAllValues(cf_mu_dic);</code>，则字典中所有元素都会被移除，这个时候每个key都会被调用release函数执行引用计数-1操作，我们也可以重写：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">void Custom_CFDictionaryReleaseCallBack(CFAllocatorRef allocator, const void *value) &#123;</span><br><span class="line">    // 系统默认为CFRelease(value)，现在啥都不做</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们改写key release函数，就可以使得key被移除释放的时候，引用计数不在-1。</p>
+<p>这里，我们的操作性非常强，我们可以提供自己的函数地址，就可以实现多样化的CFDictionary引用计数逻辑，详细代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">const void * custom_dictionary_key_retain(CFAllocatorRef allocator, const void *value) &#123;</span><br><span class="line">    return value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void custom_dictionary_key_release(CFAllocatorRef allocator, const void *value) &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const void * custom_dictionary_value_retain(CFAllocatorRef allocator, const void *value) &#123;</span><br><span class="line">    return value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void custom_dictionary_value_release(CFAllocatorRef allocator, const void *value) &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)func &#123;</span><br><span class="line"></span><br><span class="line">    CFDictionaryKeyCallBacks custom_dictionary_key_call_backs = &#123;</span><br><span class="line">        0,</span><br><span class="line">        custom_dictionary_key_retain,</span><br><span class="line">        custom_dictionary_key_release,</span><br><span class="line">        CFCopyDescription,</span><br><span class="line">        CFEqual,</span><br><span class="line">        CFHash,</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    CFDictionaryValueCallBacks custom_dictionary_value_call_backs = &#123;</span><br><span class="line">        0,</span><br><span class="line">        custom_dictionary_value_retain,</span><br><span class="line">        custom_dictionary_value_release,</span><br><span class="line">        CFCopyDescription,</span><br><span class="line">        CFEqual,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    Person *p = Person.new;</span><br><span class="line">    </span><br><span class="line">    CFMutableDictionaryRef cf_mu_dic = CFDictionaryCreateMutable(kCFAllocatorDefault, 10, custom_dictionary_key_call_backs, custom_dictionary_value_call_backs);</span><br><span class="line">    // 这里的cf_mu_dic对于key和value的引用计数完全改变了，key和value在加入和移除的时候，引用计数都不会被CFDictionary改变</span><br><span class="line">    CFDictionaryAddValue(cf_mu_dic, (__bridge const void *)(p), (__bridge const void *)(p));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里，我们描述了很多CFDictionary相比于NSDictionary的不同，有如下：</p>
+<ol>
+<li>CFDictionary的key不需要实现NSCoping协议，NSDictionary的key如果没有实现NSCoping协议，则会运行时崩溃。YYModel等开源库主要就是使用了这个特性。</li>
+<li>CFDictionary的key如果相等，在元素不会被插入。NSDictionary则会通过<strong>拉链法</strong>和<strong>开放寻址法</strong>进行数据存储。</li>
+<li>CFDictionary的key和value的引用计数，都可以自行控制。NSDictionary的key用的[key copy]，value用的retain。</li>
+</ol>
+<p>所以，CFDictionary相比NSDictionary来说，扩展性也更强。</p>
+<hr>
+<p>最近一直在喝Luckin Coffee，最近因为收入造假，快要被纳斯达克下市了。</p>
+
+    </div>
+
+    
+    
+    
+      
+
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag"># 网络</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/TCP%20%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/" rel="prev" title="TCP 数据传输过程分析">
+                  <i class="fa fa-chevron-left"></i> TCP 数据传输过程分析
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/%E5%A4%9A%E9%87%8D%E6%80%A7%E6%A0%BC%E5%B0%B1%E6%98%AF%E9%80%86%E5%A4%A9%E6%94%B9%E5%91%BD/" rel="next" title="多重性格就是逆天改命">
+                  多重性格就是逆天改命 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">Current boards are better for light mode to discuss. Dark mode click here --></a></li>
+            <li class="tab"><a href="#comment-utterances">Dark mode</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
+            </div>
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+        </div>
+      </div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class=""></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">one.gongjiang@gmail.com 版权所有，转载请注明来源。</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/quicklink@2.2.0/dist/quicklink.umd.js" integrity="sha256-4kQf9z5ntdQrzsBC3YSHnEz02Z9C1UeW/E9OgnvlzSY=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2020/%E4%BB%8ECore%20Foundation%E7%9C%8B%E6%9B%B4%E5%A4%A7%E4%B8%96%E7%95%8C/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"8a9fd53bb1b0a7d5e7616fb634611df3"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

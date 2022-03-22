@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.1.0">
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.10.1","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Current boards are better for light mode to discuss. Dark mode click here -->","order":-2},"utterances":{"text":"Dark mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="事件驱动这个技术方案，可以说实实在在影响了这些年编程界的技术方向。最实际的受用者应该就是异步编程了，如I&#x2F;O。 我所认知到的语言，都是事件驱动的使用者，受益者，推动者。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="谈谈事件驱动">
+<meta property="og:url" content="https://www.yigegongjiang.com/2018/%E8%B0%88%E8%B0%88%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8/index.html">
+<meta property="og:site_name" content="一个工匠">
+<meta property="og:description" content="事件驱动这个技术方案，可以说实实在在影响了这些年编程界的技术方向。最实际的受用者应该就是异步编程了，如I&#x2F;O。 我所认知到的语言，都是事件驱动的使用者，受益者，推动者。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-11-08T07:10:08.000Z">
+<meta property="article:author" content="one.gongjiang@gmail.com">
+<meta property="article:tag" content="iOS">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Node.js">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.yigegongjiang.com/2018/%E8%B0%88%E8%B0%88%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2018/%E8%B0%88%E8%B0%88%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8/","path":"2018/谈谈事件驱动/","title":"谈谈事件驱动"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>谈谈事件驱动 | 一个工匠</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">一个工匠</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">跋山涉水，走心为匠。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags<span class="badge">10</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">4</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">43</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user fa-fw"></i>About</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%BD%A2%E8%B1%A1%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">事件驱动的形象描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iOS%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">iOS中的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Runloop"><span class="nav-number">2.0.1.</span> <span class="nav-text">Runloop</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%97%AD%E5%8C%85"><span class="nav-number">2.0.2.</span> <span class="nav-text">闭包</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BF%98%E6%9C%89%E5%85%B6%E4%BB%96%E9%9D%9E%E5%B8%B8%E5%A4%9A%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%8C%E5%A6%82%E9%80%9A%E7%9F%A5%E7%AD%89"><span class="nav-number">2.0.3.</span> <span class="nav-text">还有其他非常多的使用，如通知等</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">Python中的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Event-loop-%E5%8D%8F%E7%A8%8B"><span class="nav-number">3.0.1.</span> <span class="nav-text">Event_loop+协程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#aiohttp"><span class="nav-number">3.0.2.</span> <span class="nav-text">aiohttp</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Node-js%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">Node.js中的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Event-loop%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF"><span class="nav-number">4.0.1.</span> <span class="nav-text">Event_loop事件循环</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="one.gongjiang@gmail.com"
+      src="https://s1.ax1x.com/2020/05/05/Yi9cuQ.gif">
+  <p class="site-author-name" itemprop="name">one.gongjiang@gmail.com</p>
+  <div class="site-description" itemprop="description">跋山涉水，走心为匠。而时间，却真的不多了。</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2018/%E8%B0%88%E8%B0%88%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s1.ax1x.com/2020/05/05/Yi9cuQ.gif">
+      <meta itemprop="name" content="one.gongjiang@gmail.com">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个工匠">
+      <meta itemprop="description" content="跋山涉水，走心为匠。而时间，却真的不多了。">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="谈谈事件驱动 | 一个工匠">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          谈谈事件驱动
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2018-11-08 15:10:08" itemprop="dateCreated datePublished" datetime="2018-11-08T15:10:08+08:00">2018-11-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><code>事件驱动</code>这个技术方案，可以说实实在在影响了这些年编程界的技术方向。最实际的受用者应该就是<code>异步编程</code>了，如I&#x2F;O。</p>
+<p>我所认知到的语言，都是事件驱动的使用者，受益者，推动者。</p>
+<span id="more"></span>
+
+<p>很多朋友可能更多的停留在精通官方API阶段，还没有更深层次的认知计算机原理，不晓得代码是怎么工作的。我不精通官方API，计算机原理也认知浅薄，但在自己认知的语言范围内了解了一些。我感到庆幸，希望和大家分享。</p>
+<h3 id="事件驱动的形象描述"><a href="#事件驱动的形象描述" class="headerlink" title="事件驱动的形象描述"></a><code>事件驱动</code>的形象描述</h3><p>A和家人去外婆家取了个号。A一直在门口等着，是阻塞。A出去玩一会，门分钟去外婆家门口看看到了自己号没有，是监听。A去一个衣服店看衣服去了，到了自己号的时候，收到外婆家发的短信消息后直接去外婆家，是回调。</p>
+<p>上面这个例子，变种极多也千篇一律。串行并行、同步异步、阻塞非阻塞都可以用。我们用这个例子来说<code>事件驱动</code>。</p>
+<p>这里分析第三种情况，A去看衣服去了，这个时候外婆家的号叫到自己，并短信通知了自己，这个行为的分析。</p>
+<p>A查看短信的行为和外婆家发出短信的行为，就是我们分析的重点。</p>
+<p>外婆家为了发出这个短信，需要耗时，甚至外婆家也不知道耗时多久。所以外婆家需要做的是，一定要在A的号到了的时候，准确及时的发出短信，这是一个事件的发出。</p>
+<p>A虽然有手机，但是看不看短信是A的事情。所以A一定要在看到短信之后立即作出处理判断，这是一个事件的反馈。</p>
+<p>但是A为了能够尽快吃到饭，多做了几手准备，他把西贝、海底捞几家店的号都拿了，打算谁先叫到自己，就去谁家。</p>
+<p>所以A接受到的事件是多个并且不确定的。</p>
+<p><code>Life is thread</code>，我们把A比作一个线程。A能够及时响应各家店面发来的消息，原因就是线程里面有一个<code>while (true):&#123;pass;&#125;</code>这样的循环。依靠CPU这个超强大脑控制器，只要有事件需要通知到线程，线程里面的这个while循环就会获取到并及时处理。</p>
+<p>所以<code>事件驱动</code>的本质是：<strong>一方及时发出事件，通过CPU时间片实时轮转事件循环队列并告知到while循环以通知到另一方，另一方及时响应事件。</strong></p>
+<h3 id="iOS中的使用"><a href="#iOS中的使用" class="headerlink" title="iOS中的使用"></a>iOS中的使用</h3><h5 id="Runloop"><a href="#Runloop" class="headerlink" title="Runloop"></a><code>Runloop</code></h5><p><code>Runloop</code>可以说把<code>事件驱动</code>利用到了极致。你能想象，如果没有<code>Runloop</code>，你就真的不能使用iPhone手机了！<br><code>Runloop</code>依托于线程。我们手势点击一个按钮，就是在操作主线程里的<code>Runloop</code>。<br><code>Runloop</code>通过<code>事件驱动</code>在以下8种状态下实时循环切换，用于省电的同时又能够及时处理用户界面反馈。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">typedef CF_OPTIONS(CFOptionFlags, CFRunLoopActivity) &#123;</span><br><span class="line">    kCFRunLoopEntry         = (1UL &lt;&lt; 0), // 即将进入Loop</span><br><span class="line">    kCFRunLoopBeforeTimers  = (1UL &lt;&lt; 1), // 即将处理 Timer</span><br><span class="line">    kCFRunLoopBeforeSources = (1UL &lt;&lt; 2), // 即将处理 Source</span><br><span class="line">    kCFRunLoopBeforeWaiting = (1UL &lt;&lt; 5), // 即将进入休眠</span><br><span class="line">    kCFRunLoopAfterWaiting  = (1UL &lt;&lt; 6), // 刚从休眠中唤醒</span><br><span class="line">    kCFRunLoopExit          = (1UL &lt;&lt; 7), // 即将退出Loop</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h5 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h5><p>我们通过IOS里的<code>Block</code>闭包，可以在异步执行一串功能逻辑代码后接着处理闭包里的活。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)someMethodThatTakesABlock:(returnType (^nullability)(parameterTypes))blockName;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[someObject someMethodThatTakesABlock:^returnType (parameters) &#123;...&#125;];</span><br></pre></td></tr></table></figure>
+<h5 id="还有其他非常多的使用，如通知等"><a href="#还有其他非常多的使用，如通知等" class="headerlink" title="还有其他非常多的使用，如通知等"></a>还有其他非常多的使用，如通知等</h5><h3 id="Python中的使用"><a href="#Python中的使用" class="headerlink" title="Python中的使用"></a>Python中的使用</h3><p>Python近些年才完全开发完优秀的<code>协程</code>并开放使用。使得Python上<code>多并发</code>成为事实上的可能。这里的多，不是之前的几十几百，是上十万。</p>
+<h5 id="Event-loop-协程"><a href="#Event-loop-协程" class="headerlink" title="Event_loop+协程"></a><code>Event_loop</code>+<code>协程</code></h5><p>Python里面使用多线程其实并不怎么爽，本身就是耗资源的语言，多线程切换更加雪上加霜了。通过协程，妥妥的解决了上十万的并发。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import asyncio</span><br><span class="line">async def test(i):</span><br><span class="line">	print(&quot;test_1&quot;,i)</span><br><span class="line">	await asyncio.sleep(1)</span><br><span class="line">	print(&quot;test_2&quot;,i)</span><br><span class="line">loop=asyncio.get_event_loop()</span><br><span class="line">tasks=[test(i) for i in range(5)]</span><br><span class="line">loop.run_until_complete(asyncio.wait(tasks))</span><br><span class="line">loop.close()</span><br></pre></td></tr></table></figure>
+<h5 id="aiohttp"><a href="#aiohttp" class="headerlink" title="aiohttp"></a><code>aiohttp</code></h5><p>网络访问上的多并发，对<code>协程</code>的进一步封装。</p>
+<h3 id="Node-js中的使用"><a href="#Node-js中的使用" class="headerlink" title="Node.js中的使用"></a>Node.js中的使用</h3><h5 id="Event-loop事件循环"><a href="#Event-loop事件循环" class="headerlink" title="Event_loop事件循环"></a><code>Event_loop</code>事件循环</h5><p>这个就没得说了，彻彻底底依靠<code>事件驱动</code>起家的语言。基于<code>javascript</code>和<code>V8</code>引擎起来的Node.js，就是完完全全的单线程语言。<br>可是要知道，Node.js就是以单线程中使用事件驱动处理高IO闻名世界的。<br>你可以想象一下，一个Node.js搭建的后台，每秒上千上万的并发，都是单线程在处理吗？<br>Java就是一个用户一个请求一个线程（又名<code>线程驱动</code>），服务器资源耗费真的大。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">var fs = require(&quot;fs&quot;);</span><br><span class="line">var debug = require(&#x27;debug&#x27;)(&#x27;example1&#x27;);</span><br><span class="line"></span><br><span class="line">debug(&quot;begin&quot;);</span><br><span class="line"></span><br><span class="line">fs.readFile(&#x27;package.json&#x27;,&#x27;utf-8&#x27;,function(err,data)&#123;</span><br><span class="line">    if(err)  </span><br><span class="line">        debug(err);</span><br><span class="line">    else</span><br><span class="line">        debug(&quot;get file content&quot;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">setTimeout(function()&#123;</span><br><span class="line">    debug(&quot;timeout2&quot;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">debug(&#x27;end&#x27;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+      
+
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/iOS/" rel="tag"># iOS</a>
+              <a href="/tags/Python/" rel="tag"># Python</a>
+              <a href="/tags/Node-js/" rel="tag"># Node.js</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/%E6%8A%98%E8%85%BE/" rel="prev" title="折腾">
+                  <i class="fa fa-chevron-left"></i> 折腾
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/Block%E9%97%AD%E5%8C%85%E7%AE%80%E6%9F%A5%E8%AE%B0%E5%BD%95/" rel="next" title="Block闭包简查记录">
+                  Block闭包简查记录 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">Current boards are better for light mode to discuss. Dark mode click here --></a></li>
+            <li class="tab"><a href="#comment-utterances">Dark mode</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
+            </div>
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+        </div>
+      </div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class=""></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">one.gongjiang@gmail.com 版权所有，转载请注明来源。</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/quicklink@2.2.0/dist/quicklink.umd.js" integrity="sha256-4kQf9z5ntdQrzsBC3YSHnEz02Z9C1UeW/E9OgnvlzSY=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2018/%E8%B0%88%E8%B0%88%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"0b1be1ec2ad1d62eb3d3ddbadb86cda4"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

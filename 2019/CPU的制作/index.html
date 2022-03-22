@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.1.0">
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.10.1","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Current boards are better for light mode to discuss. Dark mode click here -->","order":-2},"utterances":{"text":"Dark mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="如果你能看到这篇文章，我想你一定查阅了很多相关资料了。如果你是对CPU的制作有一些模糊，或者希望通过其他博文来验证你的想法，那么下面一些认知或许对你有一些帮助。大到宇宙飞船，小到PC、手机、冰箱，无一没有芯片的影子。各位一定都对芯片有很多认知了，我们不需要多做说明，总之，没有芯片，就没有新社会吧。集成电路的创造，说第三次工业革命，反对的人应该不会多吧。 集成电路的制作理解一：硅&#x3D;&amp;gt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CPU的制作">
+<meta property="og:url" content="https://www.yigegongjiang.com/2019/CPU%E7%9A%84%E5%88%B6%E4%BD%9C/index.html">
+<meta property="og:site_name" content="一个工匠">
+<meta property="og:description" content="如果你能看到这篇文章，我想你一定查阅了很多相关资料了。如果你是对CPU的制作有一些模糊，或者希望通过其他博文来验证你的想法，那么下面一些认知或许对你有一些帮助。大到宇宙飞船，小到PC、手机、冰箱，无一没有芯片的影子。各位一定都对芯片有很多认知了，我们不需要多做说明，总之，没有芯片，就没有新社会吧。集成电路的创造，说第三次工业革命，反对的人应该不会多吧。 集成电路的制作理解一：硅&#x3D;&amp;gt">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s2.ax1x.com/2020/03/11/8EM7on.jpg">
+<meta property="article:published_time" content="2019-04-11T12:14:43.000Z">
+<meta property="article:author" content="one.gongjiang@gmail.com">
+<meta property="article:tag" content="计算机原理">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.ax1x.com/2020/03/11/8EM7on.jpg">
+
+
+<link rel="canonical" href="https://www.yigegongjiang.com/2019/CPU%E7%9A%84%E5%88%B6%E4%BD%9C/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2019/CPU%E7%9A%84%E5%88%B6%E4%BD%9C/","path":"2019/CPU的制作/","title":"CPU的制作"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>CPU的制作 | 一个工匠</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">一个工匠</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">跋山涉水，走心为匠。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags<span class="badge">10</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">4</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">43</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user fa-fw"></i>About</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E7%9A%84%E5%88%B6%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">集成电路的制作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%90%86%E8%A7%A3%E4%B8%80%EF%BC%9A%E7%A1%85-x3D-gt-%E6%99%B6%E5%9C%86"><span class="nav-number">1.1.</span> <span class="nav-text">理解一：硅&#x3D;&gt;晶圆</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%90%86%E8%A7%A3%E4%BA%8C%EF%BC%9A%E6%99%B6%E5%9C%86%E5%85%89%E5%88%BB%E8%85%90%E8%9A%80"><span class="nav-number">1.2.</span> <span class="nav-text">理解二：晶圆光刻腐蚀</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%90%86%E8%A7%A3%E4%B8%89%EF%BC%9A%E6%99%B6%E4%BD%93%E7%AE%A1%E6%95%B0%E9%87%8F"><span class="nav-number">1.3.</span> <span class="nav-text">理解三：晶体管数量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%90%86%E8%A7%A3%E5%9B%9B%EF%BC%9A%E6%99%B6%E5%9C%86%E8%89%AF%E7%8E%87"><span class="nav-number">1.4.</span> <span class="nav-text">理解四：晶圆良率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%90%86%E8%A7%A3%E4%BA%94%EF%BC%9A%E6%99%B6%E4%BD%93%E7%AE%A1%E6%95%B0%E9%87%8F%E4%B8%BA%E4%BB%80%E4%B9%88%E7%9B%AE%E5%89%8D%E4%BF%9D%E6%8C%81300%E4%BA%BF%E5%A4%9A%E4%B8%80%E4%BA%9B%EF%BC%8C%E5%86%8D%E4%B9%9F%E4%B8%8A%E4%B8%8D%E5%8E%BB%E4%BA%86"><span class="nav-number">1.5.</span> <span class="nav-text">理解五：晶体管数量为什么目前保持300亿多一些，再也上不去了</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%90%86%E8%A7%A3%E5%85%AD%EF%BC%9A%E5%86%85%E5%AD%98%E6%98%AF%E4%B8%8D%E6%98%AF%E4%B9%9F%E6%9C%89%E5%BE%88%E5%A4%9A%E6%99%B6%E4%BD%93%E7%AE%A1%EF%BC%9F"><span class="nav-number">1.6.</span> <span class="nav-text">理解六：内存是不是也有很多晶体管？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%90%86%E8%A7%A3%E4%B8%83%EF%BC%9A%E6%89%8B%E6%9C%BA%E9%83%BD%E6%AF%94%E7%94%B5%E8%84%91%E8%BF%98%E5%BC%BA%E5%8A%B2%E4%BA%86%E6%84%9F%E8%A7%89%EF%BC%8C%E6%89%8B%E6%9C%BA%E4%B8%BA%E4%BB%80%E4%B9%88%E9%82%A3%E4%B9%88%E5%B0%8F%EF%BC%9F%E6%89%8B%E6%9C%BA%E9%87%8C%E9%9D%A2%E6%9C%89CPU%E5%90%97%EF%BC%9F"><span class="nav-number">1.7.</span> <span class="nav-text">理解七：手机都比电脑还强劲了感觉，手机为什么那么小？手机里面有CPU吗？</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="one.gongjiang@gmail.com"
+      src="https://s1.ax1x.com/2020/05/05/Yi9cuQ.gif">
+  <p class="site-author-name" itemprop="name">one.gongjiang@gmail.com</p>
+  <div class="site-description" itemprop="description">跋山涉水，走心为匠。而时间，却真的不多了。</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2019/CPU%E7%9A%84%E5%88%B6%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s1.ax1x.com/2020/05/05/Yi9cuQ.gif">
+      <meta itemprop="name" content="one.gongjiang@gmail.com">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个工匠">
+      <meta itemprop="description" content="跋山涉水，走心为匠。而时间，却真的不多了。">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="CPU的制作 | 一个工匠">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CPU的制作
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-04-11 20:14:43" itemprop="dateCreated datePublished" datetime="2019-04-11T20:14:43+08:00">2019-04-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><img data-src="https://s2.ax1x.com/2020/03/11/8EM7on.jpg" alt="晶圆"></p>
+<p>如果你能看到这篇文章，我想你一定查阅了很多相关资料了。<br>如果你是对CPU的制作有一些模糊，或者希望通过其他博文来验证你的想法，那么下面一些认知或许对你有一些帮助。<br>大到宇宙飞船，小到PC、手机、冰箱，无一没有芯片的影子。<br>各位一定都对芯片有很多认知了，我们不需要多做说明，总之，没有芯片，就没有新社会吧。集成电路的创造，说第三次工业革命，反对的人应该不会多吧。</p>
+<h3 id="集成电路的制作"><a href="#集成电路的制作" class="headerlink" title="集成电路的制作"></a>集成电路的制作</h3><h4 id="理解一：硅-x3D-gt-晶圆"><a href="#理解一：硅-x3D-gt-晶圆" class="headerlink" title="理解一：硅&#x3D;&gt;晶圆"></a>理解一：硅&#x3D;&gt;晶圆</h4><p>原材料首当其冲的是高纯度硅。通过把高纯度的硅融化，用一个引子伸入容器，不断的让硅附着生长在引子上面。我们可以想象明矾的制作过程。<br>引子不断的往上提，最后一个很重的圆柱形硅淀就形成了。<br>这个圆柱形直径有10厘米+。<br>然后通过机器切割，从上往下，切割一个豁口或者一个边，这个豁口或者边，是为了客户进行晶圆制作的时候辨认方向用的。因为最终晶圆不是100%利用的，这个豁口或者边，是肯定不会用到的。<br>然后，对整个圆柱形硅切割成晶圆。每个晶圆对直径也还是10厘米+，但是厚度只有3毫米左右。这样的一片片晶圆，就是后面集成电路的原材料了。<br>所以，<strong>晶圆其实是很大的一个圆盘，比普通人的一张脸，还是要大一些的</strong>。</p>
+<span id="more"></span>
+
+<h4 id="理解二：晶圆光刻腐蚀"><a href="#理解二：晶圆光刻腐蚀" class="headerlink" title="理解二：晶圆光刻腐蚀"></a>理解二：晶圆光刻腐蚀</h4><p>这个比较复杂，网上都有详细的说明。Intel和AMD也有公开视频说到一系列的复杂过程。<br>我不懂，我不做更多说明。大家可以自行查看。网上都是图，还是很方便理解和查看的。</p>
+<h4 id="理解三：晶体管数量"><a href="#理解三：晶体管数量" class="headerlink" title="理解三：晶体管数量"></a>理解三：晶体管数量</h4><p>很多人看了光刻腐蚀的图文甚至视频，认同CPU里面真的好复杂。为什么呢？很多人想，这样的操作，里面有好多好多个晶体管了吧。<br>其实，很多人都不敢放大自己的想象。那不是好多好多个，也不是几百万或者几千万甚至几亿个，而是几百亿个。<br>现在的技术，已经达到<strong>300亿个晶体管</strong>，在一个<strong>指甲盖大小的CPU</strong>里面了。<br>这些晶体管，就组合成了集成电路，不同数量的晶体管，组合成不同用途的寄存器等。他们各司其职，为CPU的使命保驾护航。</p>
+<h4 id="理解四：晶圆良率"><a href="#理解四：晶圆良率" class="headerlink" title="理解四：晶圆良率"></a>理解四：晶圆良率</h4><p>请大家一定理解，一个晶圆，可不仅仅只能光刻腐蚀出来一个Die，而是很多个Die。不然这个芯片得多大啊。<br>我有个同事有次和我说，一个晶圆只能制作一个芯片，这个晶圆利用率为什么不能提高？<br>其实，我同事就没有理解晶圆的大小。一个比脸还大的盘子，怎么可能只能做一个指甲盖大小的芯片啊！<br>所以，一个芯片，可以做很多个Die，每个Die，经过测试包装后，就成了CPU。<br>所以，这里有一个良率的问题。为什么会有良率？因为几百亿个晶体管里面，有一部分的晶体管是不能使用的，而不是全部能正常工作。<br>很少有晶圆，上面光刻腐蚀的几十个Die都是完好的。<br>良率有一个现象，越靠近中心的位置，Die的良率越高。同时，越偏离中心，Die的良率越低。（中心，即晶圆的中心）<br>那每个晶圆里面，肯定有一些Die里面的晶体管是损坏的。是不是这些Die就不能用了呢？<br>不是的。<strong>同一批次的Die，那些晶体管损坏的产品，就相应的把这些损坏晶体管封死，变成低配的CPU。</strong><br>比如，同一批次的I7处理器，可能有些Die里面有两个Core（核心）损坏了。那么在后面测试的时候，就封死这两个核，变成I5处理器。<br>商人都是无利不起早的，他们为什么要这么做？因为这样做一来商家可以赚更多钱，不然那么多Die不都是扔了嘛。二来降低了用户的价格，东西多一些价格总归会将一些的。<br>网上有人提到过，那么有没有一个晶圆只做一个Die的呢？<br>有的。只是这个成本太高的。因为良率的问题，这个Die得多么精密的仪器才能够保障其晶体管不受损坏。因为这个Die占据一整个晶圆，面积大了，坏点几率也相应增加了无数倍。几乎100%。<br>哪些情况下会使用这样的超大Die？宇宙飞船啊。高级东西当然需要高级的配件。</p>
+<h4 id="理解五：晶体管数量为什么目前保持300亿多一些，再也上不去了"><a href="#理解五：晶体管数量为什么目前保持300亿多一些，再也上不去了" class="headerlink" title="理解五：晶体管数量为什么目前保持300亿多一些，再也上不去了"></a>理解五：晶体管数量为什么目前保持300亿多一些，再也上不去了</h4><p>晶体管数量越多，计算能力也就越强，电脑的处理速度也就越快。那晶体管还能不能提升到上千亿？<br>不是技术上上不去了，技术上一直在突破。<br>而是<strong>散热上不去了</strong>。晶体管需要通电才能工作，能量总归是守恒的。CPU内部几百亿个晶体管，总归要散热的。<br>因为散热真的不能那么有效，晶体管数量再多下去，就不能工作了。晶体管的工作环境温度太高了。<br>散热有很多计算方式，比如降低电压等方案都可以有效的降低散热量。但是目前的确已经到瓶颈了，好多年没有前进了。</p>
+<h4 id="理解六：内存是不是也有很多晶体管？"><a href="#理解六：内存是不是也有很多晶体管？" class="headerlink" title="理解六：内存是不是也有很多晶体管？"></a>理解六：内存是不是也有很多晶体管？</h4><p>不仅仅内存有，显卡啥的都有。<br>而且他们都有很多很多的晶体管。<br>像内存，也是使用晶圆做的。<br>只不过晶圆做的CPU，里面的晶体管更多用来处理数据运算数据做控制使用。<br>而晶圆做的内存，里面的晶体管更多用来存储数据。<br>显卡？显卡里面有GPU啊。GPU和CPU本质上都是一样的，就是里面的运算处理单元因为工作模式不同，量级不同而已。<br>所以啊，他们里面都是有亿级单位的晶体管存在。</p>
+<h4 id="理解七：手机都比电脑还强劲了感觉，手机为什么那么小？手机里面有CPU吗？"><a href="#理解七：手机都比电脑还强劲了感觉，手机为什么那么小？手机里面有CPU吗？" class="headerlink" title="理解七：手机都比电脑还强劲了感觉，手机为什么那么小？手机里面有CPU吗？"></a>理解七：手机都比电脑还强劲了感觉，手机为什么那么小？手机里面有CPU吗？</h4><p>手机里面岂止有CPU，手机里面有和PC配件一样的东西。什么CPU、GPU、内存、磁盘、驱动等等，都是齐的。<br>手机就是缩小版的PC。<br>那问题又来了，为什么手机可以非常小？<br>说实话，这也是我的知识盲区。<br>我了解到的，因为AMD它们的CPU能耗相对手机来说还是太大了，像Apple的手机芯片就是走的新的架构，为ARM架构。<br>CPU的架构是CPU性能非常大的制约因素。而Intel的架构就听说比AMD优秀非常多。<br>手机里面的CPU呢，还不是单独存在的。手机厂商，会把内存、显卡、驱动、CPU等等，全部封装在一个大的芯片里面。他们是非常集中的一体，不像PC上面想换内存条了，再买一个就好了。</p>
+<p>我是写代码的，一年前研究CPU运行原理的时候，看到了CPU的制作过程。<br>开始很以为惊奇，科技真的伟大。<br>后面对CPU运行了解的多了一些，了解了代码运行的原理，了解了二进制指令在集成电路里面的实现。<br>才发现，了解CPU的制作原理，多了解一些晶体管，对理解代码，理解计算机，作用是非常大的。<br>想象中不可能的事情，都是这些基石铺垫起来的。</p>
+<hr>
+<p>一个人的思维，决定了一个人的高度。<br>一举一动，笑或者哭，走或者跳，都是通过大脑发出指令，身体才能够执行。<br>哪些主观行动，是不通过人的思维控制的呢？神经反射之类的我们除外，它不属于主观行动。<br>一个人如何学习，如何赚钱，如何理财，如何钱生钱命转命。都是他的思维驱动他的行动的。<br>所以，努力的提升思维吧！<br>很多人说的，努力比不上选择，其实努力很廉价的。人只要主观愿意，随时可以很努力。你努力了，更多的人可以比你更努力。努力决定的仅仅是下限！<br>思维的提升，才能有效的不让努力白费，才能更好的实现人生价值。<br>都是行人。</p>
+
+    </div>
+
+    
+    
+    
+      
+
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/" rel="tag"># 计算机原理</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/%E6%88%91%E5%BF%83%E9%87%8C%E4%B8%80%E7%9B%B4%E6%9C%89%E4%B8%80%E4%B8%AA%E5%BF%B5%E6%83%B3/" rel="prev" title="我心里一直有一个念想">
+                  <i class="fa fa-chevron-left"></i> 我心里一直有一个念想
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/%E8%AE%A1%E7%AE%97%E6%9C%BAUnicode%E7%BC%96%E7%A0%81%E7%BB%88%E7%BB%93/" rel="next" title="计算机Unicode编码终结">
+                  计算机Unicode编码终结 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">Current boards are better for light mode to discuss. Dark mode click here --></a></li>
+            <li class="tab"><a href="#comment-utterances">Dark mode</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
+            </div>
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+        </div>
+      </div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class=""></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">one.gongjiang@gmail.com 版权所有，转载请注明来源。</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/quicklink@2.2.0/dist/quicklink.umd.js" integrity="sha256-4kQf9z5ntdQrzsBC3YSHnEz02Z9C1UeW/E9OgnvlzSY=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2019/CPU%E7%9A%84%E5%88%B6%E4%BD%9C/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"b1cfc5aaaaf331aee5089ea4a174fa57"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
