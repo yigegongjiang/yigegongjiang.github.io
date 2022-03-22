@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Current boards are better for light mode to discuss. Dark mode click here -->","order":-2},"utterances":{"text":"Dark mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="本来有更重要的事情要做，但那个事情急不得。我也就当作拖延时间一样，不去做它，转而分享两个对我近些年十分有帮助的手艺。 近十年有两个对我非常有益的手艺，极大的提高了我的工作舒适度。手艺一般称为个人经过学习从而有了一个能够吃饭的看家本领，那我这个称为手艺，其实有些夸大的，更多算作技巧。但我没有改动这个形容词，也只是想要描述这两个技巧对我的帮助很大。 双拼这个对我的帮助最大，是我极力推荐的。很多人都不知">
 <meta property="og:type" content="article">
@@ -294,7 +294,20 @@
 
 
 
-    <div class="comments utterances-container"></div>
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">Current boards are better for light mode to discuss. Dark mode click here --></a></li>
+            <li class="tab"><a href="#comment-utterances">Dark mode</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
+            </div>
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+        </div>
+      </div>
 </div>
   </main>
 
@@ -335,7 +348,11 @@
   <script src="https://cdn.jsdelivr.net/npm/quicklink@2.2.0/dist/quicklink.umd.js" integrity="sha256-4kQf9z5ntdQrzsBC3YSHnEz02Z9C1UeW/E9OgnvlzSY=" crossorigin="anonymous"></script>
   <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2022/03/13/%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E6%89%8B%E8%89%BA/"}</script>
   <script src="/js/third-party/quicklink.js"></script>
-<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"github-light"}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"85c8647c9e7f6a8c9107be56b6579895"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
 <script src="/js/third-party/comments/utterances.js"></script>
 
 </body>

@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Current boards are better for light mode to discuss. Dark mode click here -->","order":-2},"utterances":{"text":"Dark mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="转眼一晃，一年又过去了。我和孩子都长了一岁。不过我们成年人感受到的时间飞逝，和孩子有一些异同。孩子在一年过程中，是没心没肺的玩耍娱乐，这些经验和快乐，有些是没有记忆的，比如哪一天的楼下滑车。有一些是潜移默化的，比如哭闹后的面壁，让孩子对道理有深刻认识。对于孩子而言，一年中的经历，是无形中植入的种子，谁也不知道哪一天会发芽，或者早已经在孩子成长的过程中生根。其中弊利，谁也无法能给个断定。因为孩子的可">
 <meta property="og:type" content="article">
@@ -341,7 +341,20 @@
 
 
 
-    <div class="comments utterances-container"></div>
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">Current boards are better for light mode to discuss. Dark mode click here --></a></li>
+            <li class="tab"><a href="#comment-utterances">Dark mode</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
+            </div>
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+        </div>
+      </div>
 </div>
   </main>
 
@@ -382,7 +395,11 @@
   <script src="https://cdn.jsdelivr.net/npm/quicklink@2.2.0/dist/quicklink.umd.js" integrity="sha256-4kQf9z5ntdQrzsBC3YSHnEz02Z9C1UeW/E9OgnvlzSY=" crossorigin="anonymous"></script>
   <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2022/02/02/%E6%88%91%E7%9A%84%202021/"}</script>
   <script src="/js/third-party/quicklink.js"></script>
-<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"github-light"}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"1700e7951290cb57d9a908f348868650"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
 <script src="/js/third-party/comments/utterances.js"></script>
 
 </body>
