@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.1.0">
 
-
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -18,8 +18,9 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Current boards are better for light mode to discuss. Dark mode click here -->","order":-2},"utterances":{"text":"Dark mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.10.1","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Current boards are better for light mode to discuss. Dark mode click here -->","order":-2},"utterances":{"text":"Dark mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="Core Foundation是被iOSer忽略的一个重要框架。说重要，因为Core Foundation提供了丰富的组件库，这些组件库可以很好的用于开发工作。但之所以被忽略，因为很多开发工作，可以用更友好的Foundation框架替代。Core Foundation有Foundation没有的功能，比如CFDictionary的Key元素无需实现NSCoping协议、CFArray可以不进行对">
 <meta property="og:type" content="article">
@@ -252,7 +253,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><img src="https://s1.ax1x.com/2020/05/26/tPJlTK.png" alt="tPJlTK.png"></p>
+        <p><img data-src="https://s1.ax1x.com/2020/05/26/tPJlTK.png" alt="tPJlTK.png"></p>
 <p>Core Foundation是被iOSer<strong>忽略</strong>的一个<strong>重要</strong>框架。说重要，因为Core Foundation提供了丰富的组件库，这些组件库可以很好的用于开发工作。<br>但之所以被忽略，因为很多开发工作，可以用更友好的Foundation框架替代。<br>Core Foundation有Foundation没有的功能，比如CFDictionary的Key元素无需实现NSCoping协议、CFArray可以不进行对象引用计数等。反过来，Foundation也有Core Foundation无法胜任的工作，最大的来说就是<strong>自动引用计数</strong>功能。<br>在iOS项目开发过程中，我们可以使用基于C语言的Core Foundation框架写一些业务功能逻辑，甚至有时候非用Core Foundation不可，因为它有Foundation没有的功能。</p>
 <p>Foundation是用Objective-C语言写的，Core Foundation使用C和C++语言写的。我们都知道Objective-C是C的<strong>超集</strong>，所以认为Objective-C和C、C++混编是正常的。<br>那么，什么是超集？Objective-C是动态的面向对象的，C是静态的面向过程的，如何实现这个超集？<br>既然Objective-C可以和C、C++一起使用，那么Golang呢？我们可不可以用Go来做混合开发？</p>
 <p>通过Core Foundation，可以有更大的认知空间。<br>比如各类高级语言在计算机中是如何运行的？Dart(flutter)可以做混合开发，原理是什么？Lua做热更新，它不是C语言也不是Objective-C语言，是怎么被计算机调用执行的？用Node.js写iOS代码，到底行不行？<br>各种风马牛不相及的高级编程语言，是否有各自的边界？</p>
@@ -260,9 +261,9 @@
 
 <h3 id="iOS开发框架有哪些"><a href="#iOS开发框架有哪些" class="headerlink" title="iOS开发框架有哪些"></a>iOS开发框架有哪些</h3><p>框架是库的更高一层描述，这里的库一般指的是动态库，但说静态库，也完全没有问题。<br>比如，我们要写一个语音识别功能，我们写了1-n个动态库(a.framework、b.framework…)来完成这个功能。在项目最后，客户说只需要一个动态库，我们就把这1-n个动态库组合成1个动态库并命名GJAudioKit.framework，就可以叫GJAudioKit为语音识别框架了。<br>所以框架这个专有名字该怎么解释说明？<br>一来是众多库组合起来的意思。为了一个功能，需要写1-n个库。最后将1-n个库组合成1个库，这个库就叫一个框架。<br>二来框架是一个抽象，是比库更高层级的抽象。不管静态库还是动态库，都是目标文件(.o)的合集。而框架比库的抽象层级更高，表示一个功能、一个业务或者一个模块，比如语音识别框架。</p>
 <p>iOS系统提供了很多框架给我们使用，详见下图：</p>
-<p><img src="https://s1.ax1x.com/2020/05/26/tiVp28.png" alt="tiVp28.png"></p>
+<p><img data-src="https://s1.ax1x.com/2020/05/26/tiVp28.png" alt="tiVp28.png"></p>
 <p>我们经常使用的框架都正在图中的分层结构中找到对应的影子。<br>也可以从Xcode的资源文件中查看，如下图：</p>
-<p><img src="https://s1.ax1x.com/2020/05/26/tiZ2kR.png" alt="tiZ2kR.png"></p>
+<p><img data-src="https://s1.ax1x.com/2020/05/26/tiZ2kR.png" alt="tiZ2kR.png"></p>
 <p>刚才说到框架有1-n个库组成，上图中的SwiftUI.framework框架里面只有一个SwiftUI.h头文件，而Foundation.framework框架里面有近130个头文件。我们可以理解为一个头文件即可单独生成一个动态库。</p>
 <p>框架的理解就到这，值得一提的是，上面列出的框架，都是系统提供的，也都是C、C++、Objective-C写的。我们自己当然也可以开发需要的库或者框架，那么，我们必须要用C族语言开发吗？</p>
 <h3 id="如果用Go来写iOS框架会怎么样"><a href="#如果用Go来写iOS框架会怎么样" class="headerlink" title="如果用Go来写iOS框架会怎么样"></a>如果用Go来写iOS框架会怎么样</h3><p>手机和PC有很多不同，比如PC的硬件都是可以拆卸的，而手机一般都不会拆卸，所有硬件都是集成到一个主板焊死的，我们不能随便更换存储和内存。CPU也不一样，PC有很多种类的CPU支持，可以根据用户是美术生或者喜欢玩游戏而选择不同的产品型号，比如撕裂者等。而手机为了省电，都用的ARM架构CPU。<br>但不管手机和PC如何不同，有一个共同点是计算机发展几十年来不曾改变的，乃至手机和计算器都是一样的原理，那就是他们都依托发展于冯诺伊曼机。</p>
@@ -271,10 +272,10 @@
 <p>PC上我们可以跑上千种语言，因为这些语言最终都是二进制。只要语言被编译汇编成能够被执行的指令集，那么这些语言就有被编写和执行的意义，不管是在PC上执行，或者手机或者树莓派上执行。</p>
 <p>所以，Go当然可以在iOS手机上运行，不仅Go，Java、Ruby、Lua、Node.js都可以。那，怎么才能将Go写到iOS程序里面呢？<br>这就要分析C是如何被iOS系统执行的。因为他们都属于高级语言，如果C能够依靠一个逻辑被执行，那么Go按照这个逻辑也就可以执行。</p>
 <h4 id="C语言是如何被操作系统执行的"><a href="#C语言是如何被操作系统执行的" class="headerlink" title="C语言是如何被操作系统执行的"></a>C语言是如何被操作系统执行的</h4><h5 id="系统调用和运行时"><a href="#系统调用和运行时" class="headerlink" title="系统调用和运行时"></a>系统调用和运行时</h5><p>很久很久之前，是用纸带打洞进行编程。那时候CPU直接执行二进制。<br>现在就不行了，因为有操作系统存在了。操作系统是一个大管家，管理着所有的应用程序，通过合理的管理应用程序的内存，进行系统级别的控制。<br>操作系统该如何操作，才能管理应用程序呢？显然，控制了代码，就控制了所有。如果实际运行的代码，都在操作系统的管辖范围内，那么操作系统就想怎么控制就怎么控制了。<br>这个时候，我们就无法绕过操作系统直接让CPU执行我们的二进制了，而是需要让操作系统在中间做一个中间者，我们调用操作系统的接口，操作系统进而让CPU执行进入内核态(内核塌陷)，这个时候我们的代码才算被执行。这个操作系统的接口，就是<strong>系统调用</strong>。<br>操作系统提供了完善的服务，人们都装了主流的几大操作系统。因为我们的代码需要被用户拿去执行才有意义和价值，所以，我们的代码全都需要接受操作系统的控制。<br>所以现在，我们的C语言代码从开发阶段到被执行，是下面这样的：</p>
-<p><img src="https://s1.ax1x.com/2020/05/26/titA6H.png" alt="titA6H.png"></p>
+<p><img data-src="https://s1.ax1x.com/2020/05/26/titA6H.png" alt="titA6H.png"></p>
 <p>系统调用，都是汇编实现的，并实现了C的接口供用户调用。这里需要说明一点，几大操作系统都是用C语言提供的系统调用接口。不管用户态是什么类型的高级语言，系统调用提供的仅仅是C接口。</p>
 <p>下面是部分系统调用接口，</p>
-<p><img src="https://s1.ax1x.com/2020/05/26/tiwf6U.png" alt="tiwf6U.png"></p>
+<p><img data-src="https://s1.ax1x.com/2020/05/26/tiwf6U.png" alt="tiwf6U.png"></p>
 <p>系统调用接口并不是很多，都是操作系统提供给外界的刚需接口，大约350个左右（不同系统的接口数量不同）。这个时候，C开发人员开发的时候都是调用open用来打开文件，调用brk来申请内存。显然和现实不太一样，我们开发的时候，都用的fopen打开文件，用malloc申请内存。这是为什么呢？</p>
 <p>原因就是直接使用系统调用，非常困难。具体分两点来说：</p>
 <ol>
@@ -283,7 +284,7 @@
 </ol>
 <p>显然，C语言开发者直接进行系统调用，遇到了困难。而中间件可以解决所有困难，如果解决不了，那就再加一个中间件。</p>
 <p>下面是添加了C Runtime Library（运行时）后的调用流程：</p>
-<p><img src="https://s1.ax1x.com/2020/05/26/tiyzB8.png" alt="tiyzB8.png"></p>
+<p><img data-src="https://s1.ax1x.com/2020/05/26/tiyzB8.png" alt="tiyzB8.png"></p>
 <p>运行时是一个中间层，用户写的代码，最终调用的都是运行时接口。这个接口可以专门为C语言提供非常丰富的接口调用，有下面四种情况：</p>
 <ol>
 <li>1个系统调用接口可以为n个运行时接口提供服务，比如malloc和free都使用了brk。</li>
@@ -294,13 +295,13 @@
 <p>而且，不同系统提供的系统调用是不同的，但只要改变运行时，不需要修改用户代码，即可适配多平台。而每个系统都需要维护一套语言级别的运行时，这是必要且可行的。</p>
 <p>这样，C运行时作为中间层，极大的提高了开发人员生产力。</p>
 <h5 id="跨过运行时直接系统调用"><a href="#跨过运行时直接系统调用" class="headerlink" title="跨过运行时直接系统调用"></a>跨过运行时直接系统调用</h5><p>这里有一点需要说明，C运行时虽然作为高级语言和系统调用的中间层，但也不一定非要过这个中间层不可。因为操作系统只管理系统调用，而上层如何调用系统调用，是不受约束的。如果有一门语言，完全没有运行时概念，用户代码直接对接系统调用完全没有问题，就是上面说的<strong>系统调用生硬且基础</strong>和<strong>不能跨平台</strong>两个缺点。所以C语言真实调用逻辑如下：</p>
-<p><img src="https://s1.ax1x.com/2020/05/28/tVJ2As.png" alt="tVJ2As.png"></p>
+<p><img data-src="https://s1.ax1x.com/2020/05/28/tVJ2As.png" alt="tVJ2As.png"></p>
 <p>开发人员在编写代码的时候，可以调用C运行时库接口，也可以直接进行系统调用。但还是那句话，这样用的人肯定不多，项目里面可能个别代码会如此实现，但一定是有足够把握才会这么做。</p>
 <h5 id="Windows-API的存在"><a href="#Windows-API的存在" class="headerlink" title="Windows API的存在"></a>Windows API的存在</h5><p>还有一点需要说明，Windows和Linux还有些不一样。Linux的CRT直接进行系统调用，而Windows又加了一层中间层，名叫Window API。这个中间层夹在系统调用和MCRT之间，如下图：</p>
-<p><img src="https://s1.ax1x.com/2020/05/26/ti7UyD.png" alt="ti7UyD.png"></p>
+<p><img data-src="https://s1.ax1x.com/2020/05/26/ti7UyD.png" alt="ti7UyD.png"></p>
 <p>Window API对微软意义重大，作为最出名对商业软件，Window API更好的保障了用户升级带来对兼容性，所以中间层真的很好用。</p>
 <h5 id="C运行时和C标准库的关系"><a href="#C运行时和C标准库的关系" class="headerlink" title="C运行时和C标准库的关系"></a>C运行时和C标准库的关系</h5><p>下面额外补充一点，C语言规范中，出了标准，没有出实现。所以C语言的编译器和相关库版本非常多。<br>因为不同操作系统之间，有相同特性也有不同特性，所以不同操作系统的运行时接口有相同的也有不同的。<br>比如，内存分配，提供的api都是malloc。而windows有图形界面的绘图api，对应的linux就没有体现。<br>于是就把默认提供的api如malloc或者printf等叫做C 标准库。其他各自独有的也并入C运行时库。详见下图：</p>
-<p><img src="https://s1.ax1x.com/2020/05/26/tib9Ej.png" alt="tib9Ej.png"></p>
+<p><img data-src="https://s1.ax1x.com/2020/05/26/tib9Ej.png" alt="tib9Ej.png"></p>
 <p>C的运行时比较特别，主要因为C出了标准，却没有给实现，于是各家为政。所以C的运行时库里面包含了C标准库，还有其他接口如启动函数等。而对于其他高级语言，一般就没有运行时库包含标准库的概念，因为标准库和运行时库也是独立的。比如，Objective-C里面，系统提供了非常多的标准库即框架，这些框架都是动态库形式，但他们不是运行时，有单独的运行时库负责系统调用(OC比较特别，实际为对接C运行时而非系统调用，下面会详细说明)。</p>
 <h5 id="C语言运行总结"><a href="#C语言运行总结" class="headerlink" title="C语言运行总结"></a>C语言运行总结</h5><p>到这里，不知道大家有没有发现秘密，C语言能够被执行，有两个要点：</p>
 <ol>
@@ -316,7 +317,7 @@
 <p>现在，我们要创建一个对象person，即：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OC_Person *person = [[OC_Person alloc] init];</span><br></pre></td></tr></table></figure>
 <p>详细调用流程图如下：</p>
-<p><img src="https://s1.ax1x.com/2020/05/28/tVaMQ0.png" alt="tVaMQ0.png"></p>
+<p><img data-src="https://s1.ax1x.com/2020/05/28/tVaMQ0.png" alt="tVaMQ0.png"></p>
 <p>从上面的函数调用链，我们发现有两个关键点：</p>
 <ol>
 <li>Objective-C进行对象内存初始化的时候，通过Objective-C的函数调用，最终调用到C语言的calloc()函数调用。</li>
@@ -333,7 +334,7 @@
 </ol>
 <p>从上面对OC运行时的分析，我们可以看出，说Objective-C是C的超集，其实应该这样理解：<br>Objective-C是高级语言，在代码编译后，会调用OC运行时接口，进行相关操作如对象创建，方法查找等。而OC运行时接口的具体实现，则是依托C运行时实现的。<br>比如，我们创建的Objective-C对象，在编译后，都会转换成struct结构体的形式进行OC运行时调用。再比如，我们创建对象调用OC运行时的alloc接口，在内部，却是调用的C运行时的calloc接口(显然，calloc调用的是系统调用的brk接口)。<br>面向对象是面向开发人员的，OC运行时负责面向对象的Objective-C代码和C运行时之间的沟通。<br>Objective-C的标准库和C就不一样了。C的标准库上面说到，是C运行时的一部分。对于其他高级语言来说，标准库就是单纯为应用层封装的动态库，不属于运行时的一部分了。</p>
 <p>下面是具体的流程图：</p>
-<p><img src="https://s1.ax1x.com/2020/05/28/tVhrvT.png" alt="tVhrvT.png"></p>
+<p><img data-src="https://s1.ax1x.com/2020/05/28/tVhrvT.png" alt="tVhrvT.png"></p>
 <p>我在之前文章中，也有一个Objective-C和运行时库的说明：<a href="https://www.yigegongjiang.com/2020/04/08/Objective-C%20%E5%92%8C%20Runtime/">Objective-C 和 Runtime</a>。</p>
 <h4 id="Go该如何被iOS系统执行"><a href="#Go该如何被iOS系统执行" class="headerlink" title="Go该如何被iOS系统执行"></a>Go该如何被iOS系统执行</h4><p>我们已经分析了C和Objective-C在iOS操作系统上运行的原理。<br>我们可以确定，我们写的代码，只要最终能够对接系统调用并编译成二进制交由操作系统运行，那么我们的代码就能运行。<br>我们写的代码都是高级语言代码，比如我们写的高级语言的函数调用：<code>[OC_Person alloc]</code>，这个函数在编译后我们假设为<code>call Oxa1b2c3</code>，其中<code>Oxa1b2c3</code>是OC运行时的<code>_objc_rootAlloc</code>函数的虚拟地址。<br>在<code>_objc_rootAlloc</code>内部会调用<code>calloc()</code>进行C运行时函数调用，我们假设为<code>call Oxd4e5f6</code>。到此为止，我们自己写的[OC_person alloc]代码，我们知道在代码区里面，那么<code>Oxa1b2c3</code>和<code>Oxd4e5f6</code>这两个运行时的函数在哪里呢？<br>运行时说到底，也是代码。运行时有两种存在形式，一个是动态库，一个是静态库。<br>我们的操作系统都默认有C的动态库运行时。所以我们在Linux A电脑编译出来的ELF执行文件，在Linux B电脑上是可以直接运行的，就是因为C运行时库是用动态库的形式在执行文件启动后进行链接的。不仅仅操作系统，只要是计算机，大差不差都有C的动态库运行时，所以C语言才如此通用。因为只要写了C语言，不出意外到哪里都可以跑起来，除非用了特定系统的api。<br>那如果有一个操作系统，真的没有C的动态库运行时，是不是就不能支持可执行文件了呢？<br>运行时存在两种形式，一种动态库，还有一种静态库。我们在编译可执行文件的时候，可以把运行时打到可执行文件中，这样刚才说到的<code>Oxa1b2c3</code>和<code>Oxd4e5f6</code>运行时函数就打到可执行文件中了，即代码区。这样，及时操作系统没有安装C的动态库运行时，可执行文件一样可以跑起来。只不过，这样的化，可执行文件就会变大，因为包含了静态库运行时的大小。<br>所以Objective-C能够在iOS和Mac上运行，就是因为这两个系统里面，有动态库OC运行时。<br>那Objective-C能不能在安卓手机或者树莓派上面运行呢？因为Objective-C不支持运行时的静态库链接，而安卓和树莓派上没有动态库OC运行时，所以就运行不了Objective-C App了，因为找不到对应的函数调用，即上面说到的<code>Oxa1b2c3</code>和<code>Oxd4e5f6</code>。</p>
 <h5 id="Go静态库运行时的必要性"><a href="#Go静态库运行时的必要性" class="headerlink" title="Go静态库运行时的必要性"></a>Go静态库运行时的必要性</h5><p>所以，Golang该如何在iOS系统上执行？Golang本身是高级语言，肯定有运行时库，分别有动态库和静态库两个版本。因为iOS操作系统本身没有Golang运行时，那么在编写Golang的代码后，在编译链接的时候，把Golang的静态库链接到最终的执行文件中(静态库或者动态库，或者叫框架)，那么这串Golang编写的代码，就能够在iOS系统上完美的运行起来。<br>这个时候，Golang运行时需要做那些事情呢？</p>
@@ -343,18 +344,18 @@
 </ol>
 <p>当上面两个步骤完成，我们就可以通过Golang编写代码并导出framework库，在iOS系统上被执行。<br>我们写出Golang库，肯定还是希望被Objective-C调用，因为Objective-C和C支持混编，而Go有一个库<code>CGo</code>，可以让Go和C连通，所以Objective-C这个时候就可以放心的调用Golang开发的库&#x2F;框架了。</p>
 <p>下面是Golang在iOS系统上的运行流程图：</p>
-<p><img src="https://s1.ax1x.com/2020/05/28/tVqdIS.png" alt="tVqdIS.png"></p>
-<p>幸运的是，Go开发iOS所需要的库&#x2F;框架，目前已经有发行版了，即<a target="_blank" rel="noopener" href="https://github.com/golang/mobile">Go Mobile</a>。我测试一下，简单一行代码，在编译后的嵌入动态库中，也有1.5M，原因就是这个动态库中，有Go的静态运行时和CGO静态库。</p>
-<h5 id="其他高级语言如何编写iOS需要的动态库"><a href="#其他高级语言如何编写iOS需要的动态库" class="headerlink" title="其他高级语言如何编写iOS需要的动态库"></a>其他高级语言如何编写iOS需要的动态库</h5><p>其实不止Go，Node.js也一样可以用来开发iOS的动态库，有这个<a target="_blank" rel="noopener" href="https://github.com/JaneaSystems/nodejs-mobile">Node.js for Mobile Apps</a>。<br>Go和Node.js能够写iOS动态库，那么按照同样的逻辑，其他高级语言也一样可以做这件事，比如，游戏开发中，很多就用Lua来做热更新，Lua代码要被执行，也需要一个Lua的静态运行时嵌入到库中。</p>
+<p><img data-src="https://s1.ax1x.com/2020/05/28/tVqdIS.png" alt="tVqdIS.png"></p>
+<p>幸运的是，Go开发iOS所需要的库&#x2F;框架，目前已经有发行版了，即<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dvbGFuZy9tb2JpbGU=">Go Mobile<i class="fa fa-external-link-alt"></i></span>。我测试一下，简单一行代码，在编译后的嵌入动态库中，也有1.5M，原因就是这个动态库中，有Go的静态运行时和CGO静态库。</p>
+<h5 id="其他高级语言如何编写iOS需要的动态库"><a href="#其他高级语言如何编写iOS需要的动态库" class="headerlink" title="其他高级语言如何编写iOS需要的动态库"></a>其他高级语言如何编写iOS需要的动态库</h5><p>其实不止Go，Node.js也一样可以用来开发iOS的动态库，有这个<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0phbmVhU3lzdGVtcy9ub2RlanMtbW9iaWxl">Node.js for Mobile Apps<i class="fa fa-external-link-alt"></i></span>。<br>Go和Node.js能够写iOS动态库，那么按照同样的逻辑，其他高级语言也一样可以做这件事，比如，游戏开发中，很多就用Lua来做热更新，Lua代码要被执行，也需要一个Lua的静态运行时嵌入到库中。</p>
 <p>上面说到的，还都是业务功能库，不是UI。那Flutter就是完全依靠Dart语言来做跨平台的混合开发方案。Flutter的库会让iOS App的包体积增加15-25M，就是因为里面有一系列的运行时和相关UI组件库存在。<br>我们通过上面Go的大小可以发现，运行时库本身没有多大，Flutter库比较大的原因，是Flutter通过Dart完全重新实现了自己一套UI框架，所以代码量肯定是巨大的，框架体积自然就增大了。</p>
 <h5 id="限制高级语言的枷锁是什么"><a href="#限制高级语言的枷锁是什么" class="headerlink" title="限制高级语言的枷锁是什么"></a>限制高级语言的枷锁是什么</h5><p>所以我们可以发现，至少在iOS上面，是没有高级语言限制的，只要高级语言有这个运行在iOS系统上的需求，都能实现。<br>而Go如果后期希望像Flutter一样实现UI框架，也一样没有问题。限制它们的，仅仅是业务需求罢了（实际上，对于Go和Node.js的iOS动态库开发，需求不大，所以都是试探性发展，因为C和C++已经足够优秀，用Objective-C来开发本身也够用了）。举例而言，C++是编写稳定后台服务的热门语言，而基于C++的Qt，就可以用来做跨平台的GUI。而Swift初期被用来开发iOS&#x2F;Mac App，现在也一样可以用作服务器开发。甚至Javascript只是浏览器端的脚步语言，引入V8引擎后，JS已经花开两朵，前端和Node.js后台发展的都非常棒。</p>
 <p>我们也可以认知到，高级语言的存在，只是特定场景的需求。如果当年苹果不开发Objective-C，用Java来开发iOS App，也完全可以的，只是苹果需要一套自己的能够被私有控制的开发体系。<br>语言是用来完成特定场景的工作任务，如果用Objective-C来写服务器的I&#x2F;O多并发，显然没有Go和Node.js的事件驱动来的吞吐量大。而Objective-C后期能不能实现协程、多进程等特性？当然可以，就是需要不需要而已。<br><strong>限制语言功能及发展的，仅仅是它的业务场景，而不在于语言本身或者操作系统</strong>。</p>
 <h3 id="Core-Foundation-和-Foundation-的区别"><a href="#Core-Foundation-和-Foundation-的区别" class="headerlink" title="Core Foundation 和 Foundation 的区别"></a>Core Foundation 和 Foundation 的区别</h3><p>我们在上面已经研究了语言和框架。框架和库的关系，在文章开头也已经说明。<br>这里就来研究一下Core Foundation和Foundation两个框架的区别和联系。</p>
 <p>Core Foundation是基于C开发的，Foundation是基于Objective-C开发的。但是有一点，Foundation是基于Core Foundation封装并实现了Core Foundation所没有的部分。<br>我们可以用下图来表示Core Foundation和Foundation的关系：</p>
-<p><img src="https://s1.ax1x.com/2020/05/28/tZCYEd.png" alt="tZCYEd.png"></p>
+<p><img data-src="https://s1.ax1x.com/2020/05/28/tZCYEd.png" alt="tZCYEd.png"></p>
 <p>Foundation用Objective-C封装了Core Foundation的C组件，并实现了额外了组件供开发人员使用。而Core Foundation也有一些Foundation没能彻底封装的功能，这些功能是Core Foundation特有的。</p>
 <p>下面可以看一下Foundation和Core Foundation的组件库都有哪些：</p>
-<p><img src="https://s1.ax1x.com/2020/05/28/tZPSqe.png" alt="tZPSqe.png"><br><img src="https://s1.ax1x.com/2020/05/28/tZCzrD.png" alt="tZCzrD.png"></p>
+<p><img data-src="https://s1.ax1x.com/2020/05/28/tZPSqe.png" alt="tZPSqe.png"><br><img data-src="https://s1.ax1x.com/2020/05/28/tZCzrD.png" alt="tZCzrD.png"></p>
 <p>从图中，我们可以看到，Foundation的组件是多于Core Foundation的，比如NSBundle在Core Foundation就没有体现。而NSArray就和Core Foundation的CFArray是对应的。反过来，Core Foundation的CFTree和CFBitVector在Foundation里也没有体现，或许是在其他组件中使用到了这两个算法库。</p>
 <p>因为Core Foundation是C实现的，虽然Objective-C能够兼容并调用C，但是和C相互通信并转换，就不那么容易了。<br>其实Objective-C和C直接通信就像Go和C直接通信一样，是高级语言之间的通信。Go有CGO库完成了这个中间层，Objective-C虽然基于C，有得天独厚的优势，但是如果没有官方实现，那还是会出现高级语言之间的代沟。<br>举例来说，现在有下面两个C和Objective-C代码：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">C:</span><br><span class="line"></span><br><span class="line">typedef struct person&#123;</span><br><span class="line">	int age;</span><br><span class="line">	char *name;</span><br><span class="line">&#125; Person;</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">Objective-C:</span><br><span class="line"></span><br><span class="line">@interface Person : NSObject</span><br><span class="line">@property (nonatomic, copy) NSString *name;</span><br><span class="line">@property (nonatomic, assign) NSUInteger age;</span><br><span class="line">@end</span><br><span class="line">@implementation Person</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
@@ -406,7 +407,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">YYMemoryCache.m</span><br><span class="line"></span><br><span class="line">    _dic = CFDictionaryCreateMutable(CFAllocatorGetDefault(), 0, &amp;kCFTypeDictionaryKeyCallBacks, &amp;kCFTypeDictionaryValueCallBacks);</span><br><span class="line">    CFDictionarySetValue(_dic, (__bridge const void *)(node-&gt;_key), (__bridge const void *)(node));</span><br><span class="line">    CFDictionaryRemoveValue(_dic, (__bridge const void *)(node-&gt;_key));</span><br><span class="line">    CFDictionaryGetCount(_dic);</span><br><span class="line">    _YYLinkedMapNode *node = CFDictionaryGetValue(_lru-&gt;_dic, (__bridge const void *)(key));</span><br><span class="line"></span><br><span class="line">    CFRelease(_dic);</span><br></pre></td></tr></table></figure>
 <p>YYModel使用CFDictionary，就是因为缓存对象是各式各样的，极大可能都是没有实现<code>NSCoping</code>协议的。<br>因为YYModel通过一个<code>__unsafe_unretained</code>类型的双向链表来保存对象，所以YYModel需要一个容器来持有缓存对象防止被提前释放。<br>为了加快查询对象的速度，使用查找复杂度为1的hash map结构即字典(CFDictionary)，而非数组(CFArray)。</p>
 <p>CFDictionary还有一个巨大特性，是可以吊打NSDictionary的，那就是可以自行控制引用计数。下图表示CFDictionary的创建函数及相关函数调用：</p>
-<p><img src="https://s1.ax1x.com/2020/05/28/te7jRH.png" alt="te7jRH.png"></p>
+<p><img data-src="https://s1.ax1x.com/2020/05/28/te7jRH.png" alt="te7jRH.png"></p>
 <p>我们举例一下，</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_dic = CFDictionaryCreate(CFAllocatorGetDefault(), keys, values, n, &amp;kCFTypeDictionaryKeyCallBacks, &amp;kCFTypeDictionaryValueCallBacks);</span><br></pre></td></tr></table></figure>
 <p>这里创建一个_dic变量，这里每个key都会经过<code>kCFTypeDictionaryKeyCallBacks</code>结构体获取到<code>retain/release/copyDescription/equal/hash</code>进行函数调用。<br>比如，<strong>如果两个key一样，那么equal就会比对出true，第二个key元素就会被过滤</strong>。注意，这里和NSDictionary不一样，NSDictionary是完全hash map table，两个元素如果一样，就会通过<strong>拉链法</strong>或者<strong>开放寻址法</strong>进行存储。但是在CFDictionary里面，如果两个元素equal为true，则会过滤另一个。<br>然后，一个key被存储的时候，会调用retain函数进行引用计数+1。这里调用的是系统默认的，如图中所示，如果我们用自己的retain函数代替系统的，就可以实现引用计数的多变性：</p>
@@ -432,6 +433,8 @@
     
     
     
+      
+
 
     <footer class="post-footer">
           <div class="post-tags">
@@ -497,7 +500,10 @@
   
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
 
@@ -505,6 +511,7 @@
 
 
 
+  <script src="/js/third-party/fancybox.js"></script>
 
 
   
