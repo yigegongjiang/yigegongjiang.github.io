@@ -10,7 +10,7 @@
   <id>https://www.yigegongjiang.com/</id>
   
   <author>
-    <name>one.gongjiang@gmail.com</name>
+    <name>隔壁王二</name>
     
   </author>
   
@@ -420,11 +420,11 @@
     <category term="技术" scheme="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
+    <category term="iOS" scheme="https://www.yigegongjiang.com/tags/iOS/"/>
+    
     <category term="计算机原理" scheme="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/"/>
     
     <category term="C" scheme="https://www.yigegongjiang.com/tags/C/"/>
-    
-    <category term="iOS" scheme="https://www.yigegongjiang.com/tags/iOS/"/>
     
   </entry>
   
@@ -445,9 +445,9 @@
     <category term="技术" scheme="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="C" scheme="https://www.yigegongjiang.com/tags/C/"/>
-    
     <category term="iOS" scheme="https://www.yigegongjiang.com/tags/iOS/"/>
+    
+    <category term="C" scheme="https://www.yigegongjiang.com/tags/C/"/>
     
   </entry>
   
@@ -937,11 +937,11 @@
     <category term="技术" scheme="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
+    <category term="iOS" scheme="https://www.yigegongjiang.com/tags/iOS/"/>
+    
     <category term="计算机原理" scheme="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/"/>
     
     <category term="C" scheme="https://www.yigegongjiang.com/tags/C/"/>
-    
-    <category term="iOS" scheme="https://www.yigegongjiang.com/tags/iOS/"/>
     
     <category term="Python" scheme="https://www.yigegongjiang.com/tags/Python/"/>
     
