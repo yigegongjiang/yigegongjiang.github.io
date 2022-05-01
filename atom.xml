@@ -1,0 +1,1073 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>一个工匠</title>
+  <icon>https://www.yigegongjiang.com/icon.png</icon>
+  <subtitle>跋山涉水，走心为匠。</subtitle>
+  <link href="https://www.yigegongjiang.com/atom.xml" rel="self"/>
+  
+  <link href="https://www.yigegongjiang.com/"/>
+  <updated>2022-05-01T05:42:36.691Z</updated>
+  <id>https://www.yigegongjiang.com/</id>
+  
+  <author>
+    <name>one.gongjiang@gmail.com</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>这些年我的软件清单</title>
+    <link href="https://www.yigegongjiang.com/2022/%E8%BF%99%E4%BA%9B%E5%B9%B4%E6%88%91%E7%9A%84%E8%BD%AF%E4%BB%B6%E6%B8%85%E5%8D%95/"/>
+    <id>https://www.yigegongjiang.com/2022/%E8%BF%99%E4%BA%9B%E5%B9%B4%E6%88%91%E7%9A%84%E8%BD%AF%E4%BB%B6%E6%B8%85%E5%8D%95/</id>
+    <published>2022-05-01T05:42:36.691Z</published>
+    <updated>2022-05-01T05:42:36.691Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;终端命令工具&quot;&gt;&lt;a href=&quot;#终端命令工具&quot; class=&quot;headerlink&quot; title=&quot;终端命令工具&quot;&gt;&lt;/a&gt;终端命令工具&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;brew 神器，mac 必备。我安装软件都靠它。&lt;/li&gt;
+&lt;li&gt;zsh &amp;amp; autojump &amp;amp; zsh-autosuggestions &amp;amp; zsh-syntax-highlighting&lt;/li&gt;
+&lt;li&gt;vim &amp;amp; neovim &amp;amp; SpaceVim&lt;/li&gt;
+&lt;li&gt;tree 快速查看目录和文件&lt;/li&gt;
+&lt;li&gt;TLDR to long donot reader，命令组合提示好工具&lt;/li&gt;
+&lt;li&gt;ranger 终端文件夹浏览器&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="琐事" scheme="https://www.yigegongjiang.com/categories/%E7%90%90%E4%BA%8B/"/>
+    
+    
+    <category term="Life" scheme="https://www.yigegongjiang.com/tags/Life/"/>
+    
+    <category term="Work" scheme="https://www.yigegongjiang.com/tags/Work/"/>
+    
+    <category term="工具" scheme="https://www.yigegongjiang.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>决定做一些改变</title>
+    <link href="https://www.yigegongjiang.com/2022/%E5%86%B3%E5%AE%9A%E5%81%9A%E4%B8%80%E4%BA%9B%E6%94%B9%E5%8F%98/"/>
+    <id>https://www.yigegongjiang.com/2022/%E5%86%B3%E5%AE%9A%E5%81%9A%E4%B8%80%E4%BA%9B%E6%94%B9%E5%8F%98/</id>
+    <published>2022-05-01T04:41:02.679Z</published>
+    <updated>2022-05-01T04:41:02.679Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;做决定还是应该慎重的。&lt;br&gt;有些人很果断，遇到事情会立刻做出选择，不犹豫。这本身是好事，可如果对选择过程不加以分析，那就是概率性问题嘛，选择的恰当性五五分。我老婆就是这样的人，所以我理解的很深刻。&lt;br&gt;每年的开年，朋友圈也都能看到一些 Flag，我认为能列出 3-4 个就已经相当不错了，何况 10+。时间是很可怕的妖魔，一年时间很快就过去了。不求多，但求精吧。&lt;/p&gt;
+&lt;p&gt;我对改变的总结是，人在每个年龄段，都会有不同的想法和认知。改变，应该是在自知的前提下作出的决定，千万不能贸然行动。改变不一定说朝着好的方向走，人各不同，已有的行为习惯不一定是坏的，只是说在当前的自我认知下，可以做出更符合当前的自身情况也会带来更大收益的改变。&lt;/p&gt;
+&lt;p&gt;鉴于我目前对自己的认知，想列一些 Flag，作为对自己中长期的约束。&lt;br&gt;考虑到一个月或者一年后，可能还会有一些改变。所以本文作为只新增不删除修改的迭代文，每次更新加上时间标记。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="观点" scheme="https://www.yigegongjiang.com/categories/%E8%A7%82%E7%82%B9/"/>
+    
+    
+    <category term="Life" scheme="https://www.yigegongjiang.com/tags/Life/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>低效率工作沟通</title>
+    <link href="https://www.yigegongjiang.com/2022/%E4%BD%8E%E6%95%88%E7%8E%87%E5%B7%A5%E4%BD%9C%E6%B2%9F%E9%80%9A/"/>
+    <id>https://www.yigegongjiang.com/2022/%E4%BD%8E%E6%95%88%E7%8E%87%E5%B7%A5%E4%BD%9C%E6%B2%9F%E9%80%9A/</id>
+    <published>2022-04-28T15:46:59.754Z</published>
+    <updated>2022-04-28T15:46:59.754Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;职场沟通和人际沟通有根本上的区别。&lt;br&gt;人际沟通是模糊的，比如你问对方年龄，可能得到“90后”、“比你大一些”这些回复，那对方到底多大？你并不确切的想知道。&lt;br&gt;而工作沟通，大家都希望有精确的响应。比如几分几秒量跌了多少，对方的业务几月几号能够上线。大家希望对方能够提供一个可量化的数据。&lt;br&gt;很多工作难做，就是员工们总是把人际的沟通代入到了工作场景中，老油条的职场戏骨们尤其显著。一场对话下来，好像什么都说了，又好像什么都没说。&lt;/p&gt;
+&lt;p&gt;沟通问题，绝对是职场头疼 Top1 问题。很多时候，精力焦脆、时间不足、压力过大等等原因，都是没有有效的沟通导致的。肯定有一套完备的方法论用于有效沟通，这里我想提出的一个场景，就是有人故意破坏这套方法论，这些人门儿清，可邪恶了。&lt;/p&gt;
+&lt;p&gt;一个是啥都说，就是不说重点。&lt;br&gt;一个是啥都不说，让对方不停的挤牙膏。&lt;br&gt;还有一个是普适性较低的黑话。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="观点" scheme="https://www.yigegongjiang.com/categories/%E8%A7%82%E7%82%B9/"/>
+    
+    
+    <category term="Work" scheme="https://www.yigegongjiang.com/tags/Work/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>要不要归零</title>
+    <link href="https://www.yigegongjiang.com/2022/%E8%A6%81%E4%B8%8D%E8%A6%81%E5%BD%92%E9%9B%B6/"/>
+    <id>https://www.yigegongjiang.com/2022/%E8%A6%81%E4%B8%8D%E8%A6%81%E5%BD%92%E9%9B%B6/</id>
+    <published>2022-04-23T12:39:31.004Z</published>
+    <updated>2022-04-23T12:39:31.004Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;2022.04.14 日，我的订阅号被官方永久封杀了。对我呢，没啥影响，毕竟 4 年了，就 54 个粉丝。我也都是直接发文字，不是文章，没啥原创不原创的概念。&lt;br&gt;我对这次封杀，是很不满的。说有人举报了我，查明后给予了封杀。&lt;br&gt;但其实并没有人看我发的文字，我看后台其实就一位读者断断续续的漂两眼我的号，其实这个本身并不好判断，后台不提供哪些用户看了什么文章。只是因为我的关注量太少了，后台有一个阅读排名，刚好就是这位顾客。他是 18 年订阅的。我内心可以从容的断定，不是他举报的，也不是其他订阅者举报的。&lt;br&gt;这明明就是官方主动封杀的，却在封杀理由上写着因为用户举报，可无聊了。&lt;br&gt;我文字发出去前，你官方也审核通过了，为什么发出去后 30 分钟，就把我的号永久关停了？&lt;br&gt;我没有发啥敏感内容，如果真的敏感，肯定是发不出去的。我也没有刻意用拼音代替汉字，就那么一个读者，我犯不着还用心的躲避审查。&lt;br&gt;只是我的文字，是关于上海的一些想法，就被封了。&lt;br&gt;上海，一个国际化大都市，也变成敏感话题了。今天，“四月之声”的视频被全网封杀后，我又看了一些其他公众号的控诉，才发现仅仅是审查门槛降低了，就稍微不满意就封杀的那种，可搞笑了。&lt;br&gt;订阅号被封，我还反馈了一下，说7-10天给反馈好像，也一直没有反馈我。我也不指望反馈，因为订阅号我不会再申请，不依靠它吃饭，对我意义不大。就是自己说的话都不兑现，可丢大公司的脸了。&lt;br&gt;之前，我还想着自媒体不能称为媒体，因为自媒体没有媒体的要素。现在想想，自媒体能不被封号就不错了，哪还能自由表达自己的想法。那些依靠订阅号生存的人，一旦封号，可就是没饭碗了，能留下一些读者吃广告费养家，不容易的。&lt;br&gt;Anyway，我的号是归零了。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="观点" scheme="https://www.yigegongjiang.com/categories/%E8%A7%82%E7%82%B9/"/>
+    
+    
+    <category term="Life" scheme="https://www.yigegongjiang.com/tags/Life/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>函数调用栈之彻底理解</title>
+    <link href="https://www.yigegongjiang.com/2022/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E6%A0%88%E4%B9%8B%E5%BD%BB%E5%BA%95%E7%90%86%E8%A7%A3/"/>
+    <id>https://www.yigegongjiang.com/2022/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E6%A0%88%E4%B9%8B%E5%BD%BB%E5%BA%95%E7%90%86%E8%A7%A3/</id>
+    <published>2022-03-20T15:28:58.235Z</published>
+    <updated>2022-03-20T15:28:58.235Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;说到函数调用栈，大家应该都很清楚了，就是一个栈结构的入栈和出栈，使得被调用函数执行完毕后能够返回到调用函数处继续执行。（但实话说，函数调用栈和数据结构栈还是有一些差异的，虽然可以当作一个东西来理解，我更倾向于函数调用栈是数据结构栈的高一层级的抽象。）&lt;br&gt;但据我从网上的帖子查看和同事间观察，其实大家并不完全理解函数调用栈的实现过程，只是知道这个大概流程，说到 call、ret 等汇编的具体实现，就不理解了。或者调用函数在 call 一个子函数的时候，会把调用函数处的下一个指令地址保存在函数调用栈上，这个是什么时机保存的以及保存在哪个位置？其实也说不明白。&lt;br&gt;本篇技干就是为了彻底理解函数调用栈，从基础汇编的角度彻底理解函数执行过程。&lt;br&gt;当然，对于还不了解函数调用栈的同学，最好先了解熟悉下，再来食用。如果确实想霸王硬上弓，我也明确的说，本技干食用口味也一样鲜美，绝对可以少走弯路。如果觉得看不下去，那么很可能是基础能力还薄弱，熟悉栈数据结构 + 基础汇编后，再回头看就不会觉得索然无味了。&lt;/p&gt;
+&lt;h2 id=&quot;开局一张图&quot;&gt;&lt;a href=&quot;#开局一张图&quot; class=&quot;headerlink&quot; title=&quot;开局一张图&quot;&gt;&lt;/a&gt;开局一张图&lt;/h2&gt;&lt;p&gt;&lt;img data-src=&quot;https://s1.ax1x.com/2022/03/21/qm8X6J.png&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="计算机原理" scheme="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="C" scheme="https://www.yigegongjiang.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>提高效率的手艺</title>
+    <link href="https://www.yigegongjiang.com/2022/%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E6%89%8B%E8%89%BA/"/>
+    <id>https://www.yigegongjiang.com/2022/%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E6%89%8B%E8%89%BA/</id>
+    <published>2022-03-13T03:28:02.116Z</published>
+    <updated>2022-03-13T03:28:02.116Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本来有更重要的事情要做，但那个事情急不得。我也就当作拖延时间一样，不去做它，转而分享两个对我近些年十分有帮助的手艺。&lt;/p&gt;
+&lt;p&gt;近十年有两个对我非常有益的手艺，极大的提高了我的工作舒适度。手艺一般称为个人经过学习从而有了一个能够吃饭的看家本领，那我这个称为手艺，其实有些夸大的，更多算作技巧。但我没有改动这个形容词，也只是想要描述这两个技巧对我的帮助很大。&lt;/p&gt;
+&lt;h2 id=&quot;双拼&quot;&gt;&lt;a href=&quot;#双拼&quot; class=&quot;headerlink&quot; title=&quot;双拼&quot;&gt;&lt;/a&gt;双拼&lt;/h2&gt;&lt;p&gt;这个对我的帮助最大，是我极力推荐的。很多人都不知道双拼，我是在十年前接触了双拼，从此打字不再是苦恼。&lt;/p&gt;
+&lt;p&gt;双拼是一种打字的方式，和普通的拼音打字不同，在双拼的字典里面，任何一个汉子都只需要两个字母即可表达。比如&lt;strong&gt;双拼&lt;/strong&gt;这两个汉字，键盘表达就是&lt;code&gt;ul&lt;/code&gt;和&lt;code&gt;pb&lt;/code&gt;。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="琐事" scheme="https://www.yigegongjiang.com/categories/%E7%90%90%E4%BA%8B/"/>
+    
+    
+    <category term="Life" scheme="https://www.yigegongjiang.com/tags/Life/"/>
+    
+    <category term="工具" scheme="https://www.yigegongjiang.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>锁 - 共享数据安全指↑</title>
+    <link href="https://www.yigegongjiang.com/2022/%E9%94%81%20-%20%E5%85%B1%E4%BA%AB%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E6%8C%87%E2%86%91/"/>
+    <id>https://www.yigegongjiang.com/2022/%E9%94%81%20-%20%E5%85%B1%E4%BA%AB%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E6%8C%87%E2%86%91/</id>
+    <published>2022-03-10T15:37:11.000Z</published>
+    <updated>2022-03-10T15:37:11.000Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;锁，是并发&amp;amp;并行编程下的万能钥匙，也是最容易产生性能瓶颈的源头。在锁的前面有软硬件在协同铺路，在锁的后面还有数据结构和算法在帮忙黄袍加身。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;提前说明，本篇涵盖内容非常多，达到 4W 字。可分多餐多时间段食用，每个章节可独立阅读，问题不大。一定不要一口气阅读完，选章节阅读确认对自己有用，再细看不迟。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;共享数据安全牵涉到的点很多，从硬件层面的多核心高速缓存、MESI 缓存一致性模型、CPU 乱序执行 &amp;amp; 中断、总线 &amp;amp; 缓存原子锁，到操作系统提供的锁和编译器优化&amp;amp;重排，以及高级语言为不同业务场景不断叠加的中间层锁优化，最后还有算法如何进一步保障锁的性能。但下笔好难，文章开头也不知道写啥，毕竟大家都知道并发并行场景下共享数据会不安全，谁还能没写过多线程代码呢？用一两百字写数据不安全会造成的严重影响，就像我是傻逼一样。就在我不知道开头该写啥好糊弄过去的时候，你看，我这不是也写完了么。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="计算机原理" scheme="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="锁" scheme="https://www.yigegongjiang.com/tags/%E9%94%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>江苏女有感</title>
+    <link href="https://www.yigegongjiang.com/2022/%E6%B1%9F%E8%8B%8F%E5%A5%B3%E6%9C%89%E6%84%9F/"/>
+    <id>https://www.yigegongjiang.com/2022/%E6%B1%9F%E8%8B%8F%E5%A5%B3%E6%9C%89%E6%84%9F/</id>
+    <published>2022-02-20T06:20:22.811Z</published>
+    <updated>2022-02-20T06:20:22.811Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;兵不荒马不乱的年代，却变成了荒诞。荒诞一词很严重了，得发展成啥样才能用荒诞来形容？&lt;/p&gt;
+&lt;p&gt;在老一辈人眼里，江苏女这事就不是大事。农村或多或少都有一个买来的媳妇。有的孩子也是买的，但没妇女多。&lt;br&gt;至于为啥舆论消不下去，那肯定不是网警过年放假了。有很多高技术数据研发人员，早就做到审查自动化了。很多人都不知道现在监控技术有多发达，但一直都被这些高科技服务着。监控技术发达是因为技术研究都被用在了数据分析和监控上，举全国之力。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="琐事" scheme="https://www.yigegongjiang.com/categories/%E7%90%90%E4%BA%8B/"/>
+    
+    
+    <category term="Life" scheme="https://www.yigegongjiang.com/tags/Life/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我的 2021</title>
+    <link href="https://www.yigegongjiang.com/2022/%E6%88%91%E7%9A%84%202021/"/>
+    <id>https://www.yigegongjiang.com/2022/%E6%88%91%E7%9A%84%202021/</id>
+    <published>2022-02-02T10:37:40.000Z</published>
+    <updated>2022-02-02T10:37:40.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;转眼一晃，一年又过去了。我和孩子都长了一岁。不过我们成年人感受到的时间飞逝，和孩子有一些异同。&lt;br&gt;孩子在一年过程中，是没心没肺的玩耍娱乐，这些经验和快乐，有些是没有记忆的，比如哪一天的楼下滑车。有一些是潜移默化的，比如哭闹后的面壁，让孩子对道理有深刻认识。对于孩子而言，一年中的经历，是无形中植入的种子，谁也不知道哪一天会发芽，或者早已经在孩子成长的过程中生根。其中弊利，谁也无法能给个断定。因为孩子的可能是巨大的，谁又知道这一刻的同伴辱骂，会让其走向懦弱暴躁或者虚怀若谷的两个极端，抑或只是无声无响等待被抹除的记忆？&lt;br&gt;我们成年人的一年和孩子是不一样的体感。一年的时间，并不是一个成年人的基本单位。有人一无所有，有人衣食无忧，有人捶胸顿足，有人把酒言欢，诸多改变，很可能都不是一年之内养成的。一个赌博的习惯培养了十多年，才有可能让一个中年人一夜走向穷困。一个二十多年的烟民，才可能在短时间内走向生命尽头。我们对一年内发生的每件事，都有自己的思考和认知，是有明确的利弊权衡，这和孩子的被动接受是有区别的。&lt;/p&gt;
+&lt;p&gt;时间是极为可怕的怪物，对任何事物都有一致的光阴长河。比如铁片在生锈、沙漠在升温、高山在变矮，孩子在长高等等。在光阴长河里，万事万物都在同一个度量单位里面平滑的向前移动。这种温水煮青蛙的方式对于万事万物都是一样的刻量，有生命的、有物质形态的甚至虚无缥缈的万事万物，都随着时光的流逝，不同程度的发生了不可逆转的变化。&lt;br&gt;对于我们这些置身于怪物掌控下的一粒沙来说，短时间内有大的行为波动是不现实的。就像那些一年内暴富的机缘，不可遇更不可求。我们都是在一步步的被时间打磨，一年时间，说长不长，说短也不短，值得做一个总结和回味，也值得在以后的岁月中慢慢咀嚼，毕竟人生能有几个一年？&lt;/p&gt;
+&lt;p&gt;又一年过去了，我也慢慢逼近三十岁的门槛。2021 年，不是一个平坦年，有人欢喜但更多的人是哭。我没啥机缘，所以没有啥特别欢喜的，感觉这一年也都是水到渠成的故事。哭呢，悲惨的事情也都没有发生在我的身上，我也没有哭的必要。当我觉得又得过且过了一年的时候，我还是想回顾一下，就翻看了年度相册作为事件源，发现能写的东西还是非常多的。个中甘甜与辛酸，均冷暖自知。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="琐事" scheme="https://www.yigegongjiang.com/categories/%E7%90%90%E4%BA%8B/"/>
+    
+    
+    <category term="Life" scheme="https://www.yigegongjiang.com/tags/Life/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>碎碎念-2022</title>
+    <link href="https://www.yigegongjiang.com/2022/%E7%A2%8E%E7%A2%8E%E5%BF%B5-2022/"/>
+    <id>https://www.yigegongjiang.com/2022/%E7%A2%8E%E7%A2%8E%E5%BF%B5-2022/</id>
+    <published>2022-02-01T20:31:48.000Z</published>
+    <updated>2022-02-01T20:31:48.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;2022年04月30日 除了上海，强制封控的还有很多，比如瑞丽，天津，西安，哈尔滨等等。别看上海很残酷，感觉上海的整体表现对比下来很好的，毕竟是世界级的经济中心。&lt;br&gt;瑞丽可就有些惨了，去年 3</summary>
+        
+      
+    
+    
+    
+    <category term="碎碎念" scheme="https://www.yigegongjiang.com/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>碎碎念-2021</title>
+    <link href="https://www.yigegongjiang.com/2021/%E7%A2%8E%E7%A2%8E%E5%BF%B5-2021/"/>
+    <id>https://www.yigegongjiang.com/2021/%E7%A2%8E%E7%A2%8E%E5%BF%B5-2021/</id>
+    <published>2021-08-07T08:55:48.000Z</published>
+    <updated>2021-08-07T08:55:48.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;2021年12月30日 公司内部，先把一件事情弄大，再小的事情都会被处理掉。不会闹事没有饭吃。&lt;/p&gt;
+&lt;p&gt;2021年12月26日 今天和两位朋友要了欠款，也都很爽快。不禁想起那一年，我和高中同桌讨要3000借款的场景。 讨要了一年，期间说现在没钱、刚分手、现在手里真没钱、等等。开始的时候，我是真没放心上，当年都是好朋友，只是毕业好久没见面了，只当是困难。后面偶然从另一个好朋友那里知道也有借款并及时要回止损了，我才知道，这朋友心变了，变得喝人血馒头了。 最后他就是死马当活马医，不接电话不回信息。我就留言说法院投诉了，等传票。 他马上还了钱，然后删除好友关系，然后退出同学群。这一串操作把我打懵了，可能他面子上也觉得这很丢人吧。至于良心，我倒是不觉得他还有了，毕竟当时可是高中同桌好友，要是有哪能干出这事。&lt;/p&gt;
+&lt;p&gt;2021年12月25日 房子，终于是告一段落了。基本好了，还有冰箱洗衣机，等入住的时候再买。其他基本OK了。&lt;/p&gt;
+&lt;p&gt;2021年12月23日 人微言轻的时候，靠的就是不要脸了。别人就是看不起，只有不要脸可以更好的沟通。&lt;/p&gt;
+&lt;p&gt;2021年12月22日 今天部门开圆桌会，发现阿里同学也和走过的公司一样，都不做出头鸟，也没有啥醍醐灌顶的言论。但是那一种不向权贵膜拜低头的自信气质，是走过的公司很少见的。 走过的公司，有小厂，大家看老板脸色混饭吃。有管理上近乎国企的公司，大家严肃对待上1级和上n级领导的言论甚至抄录下来防止忘记。阿里同学有一种你是我领导但我不认为你比我强的心里。当然，阿里是禁止称呼上级为老板的。 所以呢，总体来说，很多人都在社会和公司噤若寒蝉，只有在家的时候才放开约束。大公司的员工，虽然除了工作表现上会有突出，其他方面也和大众一样，是自私、有歪心、思维更活跃的普通人。 应该按照自己想法好好打扮自己的家，对所有人那都是可以放纵的地方。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="碎碎念" scheme="https://www.yigegongjiang.com/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>打算记录一些碎碎念</title>
+    <link href="https://www.yigegongjiang.com/2021/%E6%89%93%E7%AE%97%E8%AE%B0%E5%BD%95%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    <id>https://www.yigegongjiang.com/2021/%E6%89%93%E7%AE%97%E8%AE%B0%E5%BD%95%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/</id>
+    <published>2021-07-25T04:35:41.000Z</published>
+    <updated>2021-07-25T04:35:41.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;这一篇是碎碎念的扉页，作为&lt;a href=&quot;https://www.yigegongjiang.com/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/&quot;&gt;碎碎念&lt;/a&gt;分类的开篇。&lt;br&gt;过去的这一年，我又经历了一场无法言说的个人荒诞。有严肃的，有开心的，有奇葩的，有诡异的，更有无法言说的。&lt;br&gt;过去一年，对我的影响很大，客观评价来说，我很受益，也有伤害。虽然我的这些经历，对很多人来说，每天都在经历，或者就像每日的吃饭一样正常，但我回首思考，对我或者很多很多人而言，如果有这样一场经历，人生的见识的确更丰满一些。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="碎碎念" scheme="https://www.yigegongjiang.com/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>多重性格就是逆天改命</title>
+    <link href="https://www.yigegongjiang.com/2020/%E5%A4%9A%E9%87%8D%E6%80%A7%E6%A0%BC%E5%B0%B1%E6%98%AF%E9%80%86%E5%A4%A9%E6%94%B9%E5%91%BD/"/>
+    <id>https://www.yigegongjiang.com/2020/%E5%A4%9A%E9%87%8D%E6%80%A7%E6%A0%BC%E5%B0%B1%E6%98%AF%E9%80%86%E5%A4%A9%E6%94%B9%E5%91%BD/</id>
+    <published>2020-06-13T03:45:57.000Z</published>
+    <updated>2020-06-13T03:45:57.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;我在一周前发现了一个惊人的秘密。我尝试去了解和熟悉这个秘密，发现需要很大的勇气和一个不那么友好的过程。于是我打算把战线拉长，我希望经过一段时间的自我训练后，拥有这个逆天改命的技巧与能力。&lt;br&gt;秘密就是&lt;strong&gt;多重性格&lt;/strong&gt;。多重性格不是“多重人格”，多重人格是疾病，多个人格在一个主体上不互斥的体现出来，多个人格之间相互独立。  相反，&lt;strong&gt;多重性格&lt;/strong&gt;就是一个主体，可以控制多个性格，在不同的场景下，展现不同的性格形态。但是这多个性格之间相互影响、相互约束，只在最合适的场景、使得主体舒适度最大这样的条件下，主体刻意展现其中的一种性格。&lt;/p&gt;
+&lt;p&gt;很多人都对别人劝诫，说性格不好，应该改改脾气云云。说这话的人都是傻逼，因为我也说过。&lt;br&gt;说这话的人会认为自己在某方面的性格是优秀的，因为没有尝试过改改脾气这个过程，才会顺口说出这样的劝诫。&lt;br&gt;但什么样的性格才是优秀的？这本身就不像1+1&amp;#x3D;2这样，有一个绝对的标准。&lt;br&gt;改改脾气是否是那么容易的？我下面会阐述，基本改不了。&lt;br&gt;很多女性都喜欢温文尔雅的男士，那让这个男士去做将军去砍头杀人，拿着刀他都手抖。我这是举个例子，我写过一个&lt;a href=&quot;https://www.yigegongjiang.com/2020/03/03/%E6%89%93%E6%AF%94%E6%96%B9/&quot;&gt;打比方&lt;/a&gt;的文章有说明，例子可以更好的阐述观点，但例子可能会误导人。我就想引申出一个重心：&lt;strong&gt;性格是多样的，但各有千秋。好看的外表千篇一律，有趣的灵魂也绝非万里挑一。&lt;/strong&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="琐事" scheme="https://www.yigegongjiang.com/categories/%E7%90%90%E4%BA%8B/"/>
+    
+    
+    <category term="Life" scheme="https://www.yigegongjiang.com/tags/Life/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>从Core Foundation看更大世界</title>
+    <link href="https://www.yigegongjiang.com/2020/%E4%BB%8ECore%20Foundation%E7%9C%8B%E6%9B%B4%E5%A4%A7%E4%B8%96%E7%95%8C/"/>
+    <id>https://www.yigegongjiang.com/2020/%E4%BB%8ECore%20Foundation%E7%9C%8B%E6%9B%B4%E5%A4%A7%E4%B8%96%E7%95%8C/</id>
+    <published>2020-05-23T08:51:05.000Z</published>
+    <updated>2020-05-23T08:51:05.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img data-src=&quot;https://s1.ax1x.com/2020/05/26/tPJlTK.png&quot; alt=&quot;tPJlTK.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Core Foundation是被iOSer&lt;strong&gt;忽略&lt;/strong&gt;的一个&lt;strong&gt;重要&lt;/strong&gt;框架。说重要，因为Core Foundation提供了丰富的组件库，这些组件库可以很好的用于开发工作。&lt;br&gt;但之所以被忽略，因为很多开发工作，可以用更友好的Foundation框架替代。&lt;br&gt;Core Foundation有Foundation没有的功能，比如CFDictionary的Key元素无需实现NSCoping协议、CFArray可以不进行对象引用计数等。反过来，Foundation也有Core Foundation无法胜任的工作，最大的来说就是&lt;strong&gt;自动引用计数&lt;/strong&gt;功能。&lt;br&gt;在iOS项目开发过程中，我们可以使用基于C语言的Core Foundation框架写一些业务功能逻辑，甚至有时候非用Core Foundation不可，因为它有Foundation没有的功能。&lt;/p&gt;
+&lt;p&gt;Foundation是用Objective-C语言写的，Core Foundation使用C和C++语言写的。我们都知道Objective-C是C的&lt;strong&gt;超集&lt;/strong&gt;，所以认为Objective-C和C、C++混编是正常的。&lt;br&gt;那么，什么是超集？Objective-C是动态的面向对象的，C是静态的面向过程的，如何实现这个超集？&lt;br&gt;既然Objective-C可以和C、C++一起使用，那么Golang呢？我们可不可以用Go来做混合开发？&lt;/p&gt;
+&lt;p&gt;通过Core Foundation，可以有更大的认知空间。&lt;br&gt;比如各类高级语言在计算机中是如何运行的？Dart(flutter)可以做混合开发，原理是什么？Lua做热更新，它不是C语言也不是Objective-C语言，是怎么被计算机调用执行的？用Node.js写iOS代码，到底行不行？&lt;br&gt;各种风马牛不相及的高级编程语言，是否有各自的边界？&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="网络" scheme="https://www.yigegongjiang.com/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TCP 数据传输过程分析</title>
+    <link href="https://www.yigegongjiang.com/2020/TCP%20%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/"/>
+    <id>https://www.yigegongjiang.com/2020/TCP%20%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/</id>
+    <published>2020-05-13T08:51:05.000Z</published>
+    <updated>2020-05-13T08:51:05.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img data-src=&quot;https://s1.ax1x.com/2020/05/23/YvJNNR.png&quot; alt=&quot;tcp_wireshark1.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;最近在研究发送&amp;#x2F;接收缓冲区对Socket性能对影响，朋友发来两篇质量非常高的研究性报告让我看。&lt;br&gt;&lt;span class=&quot;exturl&quot; data-url=&quot;aHR0cHM6Ly96b3Jyb3pvdS5naXRodWIuaW8vZG9jcy9Tb2NrZXQlRTclQkMlOTMlRTUlQUQlOTglRTclQTklQjYlRTclQUIlOUYlRTUlQTYlODIlRTQlQkQlOTUlRTUlQkQlQjElRTUlOTMlOERUQ1AlRTclOUElODQlRTYlODAlQTclRTglODMlQkQuaHRtbA==&quot;&gt;Socket缓存究竟如何影响TCP的性能&lt;i class=&quot;fa fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;exturl&quot; data-url=&quot;aHR0cHM6Ly9wbGFudGVnZy5naXRodWIuaW8vMjAxOS8wOS8yOC8lRTUlQjAlQjElRTYlOTglQUYlRTglQTYlODElRTQlQkQlQTAlRTYlODclODJUQ1AtLSVFNiU4MCVBNyVFOCU4MyVCRCVFNSU5MiU4QyVFNSU4RiU5MSVFOSU4MCU4MSVFNiU4RSVBNSVFNiU5NCVCNkJ1ZmZlciVFNyU5QSU4NCVFNSU4NSVCMyVFNyVCMyVCQi8=&quot;&gt;TCP性能和发送接收窗口、Buffer的关系&lt;i class=&quot;fa fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;br&gt;做研究的，都少不了数据。上面文章中“缓冲区对Socket性能分析”的数据非常严谨，我非常佩服。&lt;br&gt;于是我用WireShark分析验证TCP的数据传输流程，过程包含三次握手、滑动窗口数据传输、四次挥手，收益很多。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="网络" scheme="https://www.yigegongjiang.com/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS main 文件中的@autoreleasepool的真实用途</title>
+    <link href="https://www.yigegongjiang.com/2020/iOS%20main%20%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84@autoreleasepool%E7%9A%84%E7%9C%9F%E5%AE%9E%E7%94%A8%E9%80%94/"/>
+    <id>https://www.yigegongjiang.com/2020/iOS%20main%20%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84@autoreleasepool%E7%9A%84%E7%9C%9F%E5%AE%9E%E7%94%A8%E9%80%94/</id>
+    <published>2020-05-05T08:20:56.000Z</published>
+    <updated>2020-05-05T08:20:56.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;这个问题，在很多年前其实是经历过血腥风雨的。&lt;/p&gt;
+&lt;p&gt;就是下面的代码，Xcode创建项目的时候，会生成下面的main.mm文件:&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;int main(int argc, char * argv[]) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    @autoreleasepool &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;问题就是，main里面的autoreleasepool是做什么用的？&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="iOS" scheme="https://www.yigegongjiang.com/tags/iOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>多线程的难点在哪里</title>
+    <link href="https://www.yigegongjiang.com/2020/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E9%9A%BE%E7%82%B9%E5%9C%A8%E5%93%AA%E9%87%8C/"/>
+    <id>https://www.yigegongjiang.com/2020/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E9%9A%BE%E7%82%B9%E5%9C%A8%E5%93%AA%E9%87%8C/</id>
+    <published>2020-05-03T23:15:57.000Z</published>
+    <updated>2020-05-03T23:15:57.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img data-src=&quot;https://s1.ax1x.com/2020/05/05/YPXxOI.png&quot; alt=&quot;mutable_thread.jpg&quot;&gt;&lt;/p&gt;
+&lt;p&gt;不管在哪门开发语言中，多线程都是绕不过去的开发方式。多线程本身也不是开发语言的一部分，只是开发语言会对多线程进行语言级别的包装。&lt;br&gt;多线程属于计算机原理的一部分。每个应用都需要操作系统分配一个进程后才能在进程中执行，为了实现并发效果，才有了多进程方案。而进程切换开销太大，这才有了多线程方案。乃至于多线程也是有不小的内存和CPU开销，后面的协程才开始起家。&lt;br&gt;但是协程已经不属于计算机的范畴，协程是单线程的，需要语言级别实现的。有些语言并没有实现协程，也只能使用多线程的方案对CPU资源进行深一步的榨干。&lt;/p&gt;
+&lt;p&gt;像iOS开发里面，每个应用都是独立的沙盒，官方并没有提供多进程的方案(操作系统级别肯定要支持)，也没有提供协程方案，如果想更有效的利用CPU资源，只能从多线程上面入手。&lt;/p&gt;
+&lt;p&gt;iOS里面多线程虽然理解起来有点绕，尤其任务和队列嵌套的时候。但只要多使用几次并加以过程分析，多线程的使用也就能很好的过关了。因为GCD本身已经对多线程有了非常棒对封装，只要不自己作死，串型队列和同步任务一起处理的时候小心一些，就不会出现队列等待导致死锁。即使死锁了，像这样的系统中断性问题，也很容易排查和处理。&lt;/p&gt;
+&lt;p&gt;那多线程，难点在哪里呢？显然不是Api级别的多线程接口调用。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="iOS" scheme="https://www.yigegongjiang.com/tags/iOS/"/>
+    
+    <category term="计算机原理" scheme="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="C" scheme="https://www.yigegongjiang.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Objective-C 和 Runtime</title>
+    <link href="https://www.yigegongjiang.com/2020/Objective-C%20%E5%92%8C%20Runtime/"/>
+    <id>https://www.yigegongjiang.com/2020/Objective-C%20%E5%92%8C%20Runtime/</id>
+    <published>2020-04-08T10:43:31.000Z</published>
+    <updated>2020-04-08T10:43:31.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;strong&gt;运行时(Runtime)&lt;strong&gt;本身是一个非常普通的概念，每个编程语言都会有运行时，非iOS Objective-C特有。&lt;br&gt;概念上理解，&lt;/strong&gt;运行时，就是程序执行的过程&lt;/strong&gt;，每个编程语言，只有运行后执行特定的任务才有价值，所以每个编程语言，都有运行时。&lt;br&gt;而Objective-C的Runtime显然不仅仅是程序执行过程这么简单，它一举将基于&lt;strong&gt;面向过程的语言C&lt;/strong&gt;而实现的&lt;strong&gt;面向对象的语言Objective-C&lt;/strong&gt;变成了&lt;strong&gt;动态语言&lt;/strong&gt;。&lt;br&gt;为什么Objective-C的Runtime有些难理解，因为运行时从概念上理解非常简单，但是Java、Python、C它们的运行时都是不一样的，运行时期间可以做很多事情，所以运行时理解起来还是比较抽象和高阶。&lt;br&gt;如果把Runtime改名为&lt;strong&gt;OCDR&lt;/strong&gt;（Objective-C Dynamic Resolution，即&lt;strong&gt;Objective-C动态决议&lt;/strong&gt;），剥离运行时和运行时库的概念，那么很多人都会轻松掌握Objective-C Runtime的核心。而Objective-C Runtime本质上的确就在践行&lt;strong&gt;动态决议&lt;/strong&gt;这么一个过程。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="iOS" scheme="https://www.yigegongjiang.com/tags/iOS/"/>
+    
+    <category term="C" scheme="https://www.yigegongjiang.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>早起打卡计划ing</title>
+    <link href="https://www.yigegongjiang.com/2020/%E6%97%A9%E8%B5%B7%E6%89%93%E5%8D%A1%E8%AE%A1%E5%88%92ing/"/>
+    <id>https://www.yigegongjiang.com/2020/%E6%97%A9%E8%B5%B7%E6%89%93%E5%8D%A1%E8%AE%A1%E5%88%92ing/</id>
+    <published>2020-03-09T13:45:03.000Z</published>
+    <updated>2020-03-09T13:45:03.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img data-src=&quot;https://s2.ax1x.com/2020/03/11/8EmLuj.png&quot; alt=&quot;zaoqi1.PNG&quot;&gt;&lt;/p&gt;
+&lt;p&gt;2020.01.28，大年初四，疫情已经四处开花了。那天，我坐在出租屋里和孩子玩。我突然想到，2019年的年度总结我已经写出来了，但是2020年都过去两个月了，可是Flag呢？好像是丢了。&lt;br&gt;像我这样到人，除了抽烟一直没能戒掉，做其他事还是计划感挺强的。我觉得2020年，应该立个Flag。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="琐事" scheme="https://www.yigegongjiang.com/categories/%E7%90%90%E4%BA%8B/"/>
+    
+    
+    <category term="Life" scheme="https://www.yigegongjiang.com/tags/Life/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>打比方</title>
+    <link href="https://www.yigegongjiang.com/2020/%E6%89%93%E6%AF%94%E6%96%B9/"/>
+    <id>https://www.yigegongjiang.com/2020/%E6%89%93%E6%AF%94%E6%96%B9/</id>
+    <published>2020-03-03T13:12:24.000Z</published>
+    <updated>2020-03-03T13:12:24.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img data-src=&quot;https://s2.ax1x.com/2020/03/11/8En5L9.png&quot; alt=&quot;dabifang.jpg&quot;&gt;&lt;/p&gt;
+&lt;p&gt;很多人都喜欢打比方来阐述一件事情，比如说“xxx 就是一个例子”、“有 xxx 一个例子”、“我和你打一个这样的比方 xxx”，比方说完之后，就开始阐述自己的观点。&lt;/p&gt;
+&lt;p&gt;打比方是一个久经沙场，百试不爽的论证妙计。怎么让对方跟着你的节奏走？当然是打个比方。比方一般都比较有趣，尤其带有故事性，很容易带节奏。而观点但凡和比方有一点相合，那比方就是绝佳的药引子。&lt;/p&gt;
+&lt;p&gt;但事实是：观点可能是错的，比方可能是不存在的，观点和比方的相合度可能是1%的交集，但观点却被采纳了！&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="观点" scheme="https://www.yigegongjiang.com/categories/%E8%A7%82%E7%82%B9/"/>
+    
+    
+    <category term="Life" scheme="https://www.yigegongjiang.com/tags/Life/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IM和Socket的关系及Heart的必要性</title>
+    <link href="https://www.yigegongjiang.com/2020/IM%E5%92%8CSocket%E7%9A%84%E5%85%B3%E7%B3%BB%E5%8F%8AHeart%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7/"/>
+    <id>https://www.yigegongjiang.com/2020/IM%E5%92%8CSocket%E7%9A%84%E5%85%B3%E7%B3%BB%E5%8F%8AHeart%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7/</id>
+    <published>2020-02-04T08:45:22.000Z</published>
+    <updated>2020-02-04T08:45:22.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img data-src=&quot;https://s2.ax1x.com/2020/03/11/8EZsVx.jpg&quot; alt=&quot;heart&quot;&gt;&lt;/p&gt;
+&lt;p&gt;很多互联网服务都会开通IM功能，如好友通讯，用户反馈，在线推送等。在微信未盛行，QQ大行其道的年代，IM还属于高深技术，目前已经进入寻常百姓家了。&lt;br&gt;其实IM本身整个技术流程从终端角度来看不是一个难以理解的问题。但因为诸多人对网络协议不了解，所以认为IM难以入门。&lt;/p&gt;
+&lt;p&gt;首先要说IM是一个什么样的形态，它和HTTP&amp;#x2F;S有什么不同。&lt;br&gt;HTTP解决了端到端通讯的问题，在互联网大放异彩的原因是浏览器的盛行。冲浪需要网络获取服务端资源，HTTP可以使得终端发起网络请求服务端返回资源结果实现资源互通。&lt;br&gt;我们的感知里面，终端发起网络请求，服务端回复网络请求，HTTP使命就完成了。所以很多人对于HTTP的认知是：一次性通讯，每次需要获取信息都要重新发起请求。&lt;br&gt;其实有这样的认知是完全正确的，因为HTTP的确就是这样&lt;strong&gt;设计&lt;/strong&gt;的。这里要着重说到设计这个词，因为HTTP就是为了完成一次性通讯这么一个任务。而像HTTP这样的应用层协议还有非常多，比如FTP、RTMP等等。他们都是为了完成特定任务而实现的协议。所有应用层协议都是被设计过的，为了完成特定的使命。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="计算机原理" scheme="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="网络" scheme="https://www.yigegongjiang.com/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如果我的人生突然只剩下8小时...</title>
+    <link href="https://www.yigegongjiang.com/2020/%E5%A6%82%E6%9E%9C%E6%88%91%E7%9A%84%E4%BA%BA%E7%94%9F%E7%AA%81%E7%84%B6%E5%8F%AA%E5%89%A9%E4%B8%8B8%E5%B0%8F%E6%97%B6/"/>
+    <id>https://www.yigegongjiang.com/2020/%E5%A6%82%E6%9E%9C%E6%88%91%E7%9A%84%E4%BA%BA%E7%94%9F%E7%AA%81%E7%84%B6%E5%8F%AA%E5%89%A9%E4%B8%8B8%E5%B0%8F%E6%97%B6/</id>
+    <published>2020-01-31T09:51:07.000Z</published>
+    <updated>2020-01-31T09:51:07.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img data-src=&quot;https://s2.ax1x.com/2020/03/11/8Eu3SU.png&quot; alt=&quot;last8h.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;如果不是2019-nCoV，我都不会有这个想法。我一直觉得自己还年轻，如果不是车祸等天灾，怎么也轮不到我来思考死亡。但是风水转动的就是如此的快，每个大陆人都有感染的风险，感染后会有死亡的可能。&lt;br&gt;当然如果自己不作，做好防护工作，那肯定是相对安全的，当然这也是概率问题，概率和幸福指数直接相关，可惜我还不能理解概率。&lt;/p&gt;
+&lt;p&gt;这次疫情距离很多人都很近，尤其是一二线城市生活的人。我相信自己不会太作到去碰触病毒，但是我也认识到，不管天灾人祸还是自身疾病，不同年龄段的人都有可能突然离开。或许因为车祸，或许因为疾病，人类在未知和概率面前，还是太渺小。&lt;br&gt;而如果我的人生，突然只剩下8小时，我会做些什么？&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="观点" scheme="https://www.yigegongjiang.com/categories/%E8%A7%82%E7%82%B9/"/>
+    
+    
+    <category term="Life" scheme="https://www.yigegongjiang.com/tags/Life/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>胡说八道之雪粉</title>
+    <link href="https://www.yigegongjiang.com/2020/%E8%83%A1%E8%AF%B4%E5%85%AB%E9%81%93%E4%B9%8B%E9%9B%AA%E7%B2%89/"/>
+    <id>https://www.yigegongjiang.com/2020/%E8%83%A1%E8%AF%B4%E5%85%AB%E9%81%93%E4%B9%8B%E9%9B%AA%E7%B2%89/</id>
+    <published>2020-01-19T05:32:23.000Z</published>
+    <updated>2020-01-19T05:32:23.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img data-src=&quot;https://s2.ax1x.com/2020/03/11/8EuOkq.gif&quot; alt=&quot;snow0.GIF&quot;&gt;&lt;/p&gt;
+&lt;p&gt;雪粉已经是大众熟知的美食，不仅国内家家户户必备，国外也是一抢而空。但很少有人知道雪粉的制作过程，而我的家乡，却是雪粉生产大本营。我对雪粉，一来情有独钟，它对家乡的经济发展有巨大的推动力，二来感到惋惜，除了我的家乡，很少有人知道雪粉的制作流程，国外也只能依靠进口才能品尝一二。&lt;/p&gt;
+&lt;p&gt;雪粉这样的美食原材料，本应该被更多人了解。我网上查阅了很多资料，都没有详细介绍。我想，我可以把雪粉的制作过程写出来，也算给了雪粉一个互联网的名份。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="观点" scheme="https://www.yigegongjiang.com/categories/%E8%A7%82%E7%82%B9/"/>
+    
+    
+    <category term="Life" scheme="https://www.yigegongjiang.com/tags/Life/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Array和LinkedList的深刻认知</title>
+    <link href="https://www.yigegongjiang.com/2020/Array%E5%92%8CLinkedList%E7%9A%84%E6%B7%B1%E5%88%BB%E8%AE%A4%E7%9F%A5/"/>
+    <id>https://www.yigegongjiang.com/2020/Array%E5%92%8CLinkedList%E7%9A%84%E6%B7%B1%E5%88%BB%E8%AE%A4%E7%9F%A5/</id>
+    <published>2020-01-12T03:51:52.000Z</published>
+    <updated>2020-01-12T03:51:52.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img data-src=&quot;https://s2.ax1x.com/2020/03/11/8EnoZR.png&quot; alt=&quot;arrayvslinkedlist.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;谈数据结构的时候，到底在谈论什么？本质上就是谈论两个东西，分别是**数组(Array)&lt;strong&gt;和&lt;/strong&gt;链表(Linked List)**。&lt;/p&gt;
+&lt;h4 id=&quot;数据物理结构和数据逻辑结构&quot;&gt;&lt;a href=&quot;#数据物理结构和数据逻辑结构&quot; class=&quot;headerlink&quot; title=&quot;数据物理结构和数据逻辑结构&quot;&gt;&lt;/a&gt;数据物理结构和数据逻辑结构&lt;/h4&gt;&lt;p&gt;数组和链表，是数据存储计算机的物理结构，所以叫做数据物理结构。而队列、散列表、堆、树、图等，已经超出了物理结构，是方便我们使用的应用层结构，根据数据的1-1、1-n、n-1、n-n逻辑关系，引申出了数据逻辑结构。分别为线性结构和非线性结构，相见下图：&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="计算机原理" scheme="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我的 2019 年个人总结</title>
+    <link href="https://www.yigegongjiang.com/2020/%E6%88%91%E7%9A%84%202019%20%E5%B9%B4%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/"/>
+    <id>https://www.yigegongjiang.com/2020/%E6%88%91%E7%9A%84%202019%20%E5%B9%B4%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/</id>
+    <published>2020-01-06T16:00:00.000Z</published>
+    <updated>2020-01-06T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img data-src=&quot;https://s2.ax1x.com/2020/03/11/8EuHmj.jpg&quot; alt=&quot;2019_naonao.jpg&quot;&gt;&lt;/p&gt;
+&lt;p&gt;参加工作后的这几年，评价哪一年比较平庸或许都不好，毕竟都是自己亲身经历过的时光，每一年都是像孩子一样善待过，不忍心批评。&lt;/p&gt;
+&lt;p&gt;但就像每人心里都有一个钟意的水杯，我还是很想投 2019 一票，因为这一年，我的确有不少变化。&lt;/p&gt;
+&lt;p&gt;这一年，我在&lt;strong&gt;技能成长、认知提升、工作、家庭生活、业余生活&lt;/strong&gt;上都有很大变化。优秀肯定无从谈起，人一定要对自己有自知，但我一定是在向前走的，这让我很高兴。&lt;/p&gt;
+&lt;h3 id=&quot;技能成长&quot;&gt;&lt;a href=&quot;#技能成长&quot; class=&quot;headerlink&quot; title=&quot;技能成长&quot;&gt;&lt;/a&gt;技能成长&lt;/h3&gt;&lt;p&gt;先从 2019 年的&lt;strong&gt;技能成长&lt;/strong&gt;说起，因为它给我的温差最大，有时候我激动万分，有时候也在半夜垂头懊恼。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="琐事" scheme="https://www.yigegongjiang.com/categories/%E7%90%90%E4%BA%8B/"/>
+    
+    
+    <category term="Life" scheme="https://www.yigegongjiang.com/tags/Life/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Swift struct(值类型)与class(引用类型)区别及三种传参机制深刻关系和使用</title>
+    <link href="https://www.yigegongjiang.com/2019/Swift%20struct(%E5%80%BC%E7%B1%BB%E5%9E%8B)%E4%B8%8Eclass(%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B)%E5%8C%BA%E5%88%AB%E5%8F%8A%E4%B8%89%E7%A7%8D%E4%BC%A0%E5%8F%82%E6%9C%BA%E5%88%B6%E6%B7%B1%E5%88%BB%E5%85%B3%E7%B3%BB%E5%92%8C%E4%BD%BF%E7%94%A8/"/>
+    <id>https://www.yigegongjiang.com/2019/Swift%20struct(%E5%80%BC%E7%B1%BB%E5%9E%8B)%E4%B8%8Eclass(%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B)%E5%8C%BA%E5%88%AB%E5%8F%8A%E4%B8%89%E7%A7%8D%E4%BC%A0%E5%8F%82%E6%9C%BA%E5%88%B6%E6%B7%B1%E5%88%BB%E5%85%B3%E7%B3%BB%E5%92%8C%E4%BD%BF%E7%94%A8/</id>
+    <published>2019-12-19T16:00:00.000Z</published>
+    <updated>2019-12-19T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在Swift中，struct（值类型）和class（引用类型）的区别，不仅仅在于对象复制时候表现出来的差异，也不仅仅是构造器和继承的异同，本质上却是数据抽象层级的高低。&lt;br&gt;如果不能把值传参、地址传参和引用传参与类对象联系起来，也无法理解不同传参下对象的使用和struct、class的应用场景。&lt;/p&gt;
+&lt;p&gt;因为struct和class表现出来的是语法层面的差异，而项目使用中体现的是语义层级的差异。比如，Objective-C里面的NSString，它是引用类型，但是我们却在使用它的值语义。&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSMutableString *oldname = @&amp;quot;hello&amp;quot;.mutableCopy;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NSMutableString *newname = oldname;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;newname = @&amp;quot;word&amp;quot;.mutableCopy;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NSLog(@&amp;quot;\n oldName:%@ \n newName:%@&amp;quot;, oldname, newname);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; oldName:hello &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; newName:word&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;我们使用了引用类型的NSMutableString，但是newname并没有引用复制oldname，仅仅是指针地址复制了oldname。这样导致了newname并不是oldname的别名(alias)。&lt;br&gt;如果newname是oldname的别名，那么对newname的所有all操作，都会同步到oldname。&lt;br&gt;这里，newname如果改变了对象数据是可以同步到oldname，但是却不能改变oldname变量的值（oldname的存储值，即“hello”的指针地址）。&lt;br&gt;所以，这里的NSMutableString虽然是引用类型，却具有值语义。&lt;/p&gt;
+&lt;p&gt;因为编程语言概念上的模糊，下面首先介绍struct和值类型的关系。&lt;br&gt;然后重点说明值类型和引用类型的区别，这是重点，直接解释了struct和class的根本区别。&lt;br&gt;最后加一点小彩蛋，介绍Swift里面struct特性。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="iOS" scheme="https://www.yigegongjiang.com/tags/iOS/"/>
+    
+    <category term="Swift" scheme="https://www.yigegongjiang.com/tags/Swift/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>逃离信用卡和花呗</title>
+    <link href="https://www.yigegongjiang.com/2019/%E9%80%83%E7%A6%BB%E4%BF%A1%E7%94%A8%E5%8D%A1%E5%92%8C%E8%8A%B1%E5%91%97/"/>
+    <id>https://www.yigegongjiang.com/2019/%E9%80%83%E7%A6%BB%E4%BF%A1%E7%94%A8%E5%8D%A1%E5%92%8C%E8%8A%B1%E5%91%97/</id>
+    <published>2019-12-08T16:00:00.000Z</published>
+    <updated>2019-12-08T16:00:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;我刚刚关闭了自己的花呗。紧接着开始逐渐关闭一些信用卡的绑定。&lt;br&gt;这种温水煮青蛙的花钱方式，我经历了6年了。现在，因为穷，我有些适应不下去了。&lt;br&gt;我不知道为什么每个月都有这么多的钱要还，我更不知道为什么我要办理4张信用卡和花呗一起使用。&lt;br&gt;我就知道，我已经很久没有</summary>
+        
+      
+    
+    
+    
+    <category term="琐事" scheme="https://www.yigegongjiang.com/categories/%E7%90%90%E4%BA%8B/"/>
+    
+    
+    <category term="Life" scheme="https://www.yigegongjiang.com/tags/Life/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Swift_let_var_struct_class</title>
+    <link href="https://www.yigegongjiang.com/2019/Swift_let_var_struct_class/"/>
+    <id>https://www.yigegongjiang.com/2019/Swift_let_var_struct_class/</id>
+    <published>2019-12-04T16:00:00.000Z</published>
+    <updated>2019-12-04T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;0x01-问题描述和表现&quot;&gt;&lt;a href=&quot;#0x01-问题描述和表现&quot; class=&quot;headerlink&quot; title=&quot;0x01 问题描述和表现&quot;&gt;&lt;/a&gt;0x01 问题描述和表现&lt;/h2&gt;&lt;p&gt;对于let和var，struct和class，分成两类来说，很多人比较容易理解。let：不可变，var：可变，struct：栈空间，class：堆空间。&lt;br&gt;当我想要确认他们的原理的时候，截止发文为止，我没有在中文互联网上搜索到相关信息。所以我把他们的原理写在下面。&lt;/p&gt;
+&lt;p&gt;下面的示例，你能够理清楚多少？&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;struct Person1 &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    let name1: String = &amp;quot;name1&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    var name2: String = &amp;quot;name2&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;class Person2 &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    let name1: String = &amp;quot;name1&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    var name2: String = &amp;quot;name2&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;上面定义了一个struct，一个class，我们下面的代码会有什么结果？&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="Swift" scheme="https://www.yigegongjiang.com/tags/Swift/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>网聚人的力量-网易</title>
+    <link href="https://www.yigegongjiang.com/2019/%E7%BD%91%E8%81%9A%E4%BA%BA%E7%9A%84%E5%8A%9B%E9%87%8F-%E7%BD%91%E6%98%93/"/>
+    <id>https://www.yigegongjiang.com/2019/%E7%BD%91%E8%81%9A%E4%BA%BA%E7%9A%84%E5%8A%9B%E9%87%8F-%E7%BD%91%E6%98%93/</id>
+    <published>2019-11-24T16:00:00.000Z</published>
+    <updated>2019-11-24T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;网易这家公司挺邪乎的（自然科学解释不了），相比来说x浪x度也只能叫奇葩。&lt;/p&gt;
+&lt;p&gt;他家产品基本都是“用不久但长活”系列。&lt;br&gt;产品有猪肉、邮箱、游戏、新闻、音乐、课堂、阅读、购物等。&lt;/p&gt;
+&lt;p&gt;挑几个重点来说，邮箱当年我可是力挺的，同事朋友要找工作，我那给的第一个建议就是：”不要用QQ邮箱，一定要用126邮箱。“但是几年前，我已经转到Gmail，头都没有回一下。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="观点" scheme="https://www.yigegongjiang.com/categories/%E8%A7%82%E7%82%B9/"/>
+    
+    
+    <category term="Life" scheme="https://www.yigegongjiang.com/tags/Life/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>喝酒十之八九会误事</title>
+    <link href="https://www.yigegongjiang.com/2019/%E5%96%9D%E9%85%92%E8%AF%AF%E4%BA%8B/"/>
+    <id>https://www.yigegongjiang.com/2019/%E5%96%9D%E9%85%92%E8%AF%AF%E4%BA%8B/</id>
+    <published>2019-10-05T09:09:33.000Z</published>
+    <updated>2019-10-05T09:09:33.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img data-src=&quot;https://s2.ax1x.com/2020/03/11/8EM4sg.jpg&quot; alt=&quot;dirnk&quot;&gt;&lt;/p&gt;
+&lt;p&gt;没事不要&lt;strong&gt;乱&lt;/strong&gt;喝酒。没事不要&lt;strong&gt;多&lt;/strong&gt;喝酒。喝酒前一定明确自己当前的&lt;strong&gt;处境&lt;/strong&gt;。我多年喝酒善意的总结。&lt;/p&gt;
+&lt;p&gt;酒精对人的刺激，非常明显。少量酒精会像兴奋剂一样使人高亢。少量酒精还真不会有什么出格的事情发生，喝点就喝点嘛，谁都管不着，还真的不用怎么担心。但是一定要注意，超出预期的酒精也是从少量酒精过度过去的。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="琐事" scheme="https://www.yigegongjiang.com/categories/%E7%90%90%E4%BA%8B/"/>
+    
+    
+    <category term="Life" scheme="https://www.yigegongjiang.com/tags/Life/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HKong</title>
+    <link href="https://www.yigegongjiang.com/2019/HKong/"/>
+    <id>https://www.yigegongjiang.com/2019/HKong/</id>
+    <published>2019-08-15T10:40:23.000Z</published>
+    <updated>2019-08-15T10:40:23.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;HK，我没有去过，但是我觉得这个地方很神奇。&lt;br&gt;为什么呢？&lt;br&gt;    1. 美国棱镜门在2013年6月被曝光，美国政府遭遇百年一遇的全球信任危机，曝光人斯诺登选择在HK将相关资料公众于世。&lt;br&gt;    2. 朝鲜目前最高领导人金正恩的弟弟金正男，于2017年2月被刺杀。之前呆过比较久的地方，一个是前苏联，一个是HK。&lt;br&gt;    3. HK的香港大学世界闻名，比肩国内的清华与北大。而HK世界闻名的大学达到数十个。&lt;br&gt;    4. 中国公司上市地点有三个，HK、深圳、上海。HK这么小的面积却拥有大量的公司前往，中国众多巨头纷纷前往。&lt;br&gt;    5. HK首富李嘉诚的身价，在国内也没有几个人能够比得上。&lt;br&gt;还有很多其他的经得起推敲的新闻点，很多新闻都表明，HK是一个在政治、经历、教育等方面在全球都非常有影响力。前些年经常可以在大陆媒体上看到HK的发展和一国两制的自豪。这两年逐渐听到的少了，也或许和我不再看新闻有关。不过在代购上，经常看到HK的字眼。&lt;/p&gt;
+&lt;p&gt;HK近期成为全球人的聚焦点，有人骂有人赞更多是在观看。时间不会停下来，什么事情一定会有一个结局，或许几多年后，我们可以叫这次事件为“反送中案件”。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="观点" scheme="https://www.yigegongjiang.com/categories/%E8%A7%82%E7%82%B9/"/>
+    
+    
+    <category term="Life" scheme="https://www.yigegongjiang.com/tags/Life/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>胡说八道之云服务</title>
+    <link href="https://www.yigegongjiang.com/2019/%E8%83%A1%E8%AF%B4%E5%85%AB%E9%81%93%E4%B9%8B%E4%BA%91%E6%9C%8D%E5%8A%A1/"/>
+    <id>https://www.yigegongjiang.com/2019/%E8%83%A1%E8%AF%B4%E5%85%AB%E9%81%93%E4%B9%8B%E4%BA%91%E6%9C%8D%E5%8A%A1/</id>
+    <published>2019-08-05T08:58:00.000Z</published>
+    <updated>2019-08-05T08:58:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;杭州的云服务建设的非常快。&lt;br&gt;下图中白云的后面就有非常强大的软硬件储备，撑起了几乎整个中国互联网的基础建设。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&quot;https://s2.ax1x.com/2020/03/11/8EMbiq.jpg&quot; alt=&quot;cloudServer1&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="观点" scheme="https://www.yigegongjiang.com/categories/%E8%A7%82%E7%82%B9/"/>
+    
+    
+    <category term="Life" scheme="https://www.yigegongjiang.com/tags/Life/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>互联网网络传输协议理解坑点</title>
+    <link href="https://www.yigegongjiang.com/2019/%E4%BA%92%E8%81%94%E7%BD%91%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE%E7%90%86%E8%A7%A3%E5%9D%91%E7%82%B9/"/>
+    <id>https://www.yigegongjiang.com/2019/%E4%BA%92%E8%81%94%E7%BD%91%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE%E7%90%86%E8%A7%A3%E5%9D%91%E7%82%B9/</id>
+    <published>2019-05-25T11:53:48.000Z</published>
+    <updated>2019-05-25T11:53:48.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img data-src=&quot;https://s2.ax1x.com/2020/03/11/8EMOzT.jpg&quot; alt=&quot;tcp_udp&quot;&gt;&lt;/p&gt;
+&lt;p&gt;配图耗费经历和时间太大，尤其时间。我是懒人，都是文字说明。&lt;/p&gt;
+&lt;p&gt;备注1：网络协议博大精深，是整个互联网的根基。本人游于表层，不敢妄语，有错请指正。&lt;br&gt;备注2：本文文字较多，需要花不少时间才能阅读完。但是阅读完和理解不是一回事。如果你都懂，那这就是复习。如果你有些不懂，那我这也仅仅是提供一个入口，还需自行查阅相关技术文档。&lt;br&gt;备注3：以下采用问答形式给予问题说明。问题是真问题，答案却是要点回答，有些不涉及原理，还需自行查阅相关技术文档。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;问：网络分层是什么样的？&lt;/strong&gt;&lt;br&gt;答：那我们肯定是要闭着眼睛说出详细说出7层和5层网络模型的名字和对应的协议名称的，如网络层，ICMP协议等。理解网络数据交互过程中所有层所做的努力，理解网络分层含义。可以有下层没上层，但是不能有上层没下层。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;问：DNS协议的用途和解析方式是什么样的？&lt;/strong&gt;&lt;br&gt;答：所有应用层层面的数据，如果需要进行网络传输，必定需要ip地址这个核心参数。没有ip地址的包，是不可能发出去的，都过不了网卡。因为网卡不知道要把这个包传到哪里去。&lt;br&gt;而ip地址人类很难记忆，所以很多服务都是通过域名进行访问。域名是比较方便记忆，但是网络又不认，因为网络无法根据域名进行数据传输，即域名没有定位功能。&lt;br&gt;所以所有的应用层的域名访问，都需要DNS协议解析成ip地址后才能够封包发送，ip有定位功能。如果一个应用层服务直接通过ip地址访问另一个服务，那么是完全不用DNS做一次ip地址解析的。&lt;br&gt;我们的域名是需要从特定的服务商进行购买，在服务商处会进行ip地址的配置。而DNS协议的根据就是层层服务商解析，问根域，返回顶级域，问顶级域，返回权威域，这样通过&lt;code&gt;.com&lt;/code&gt;、&lt;code&gt;.cn&lt;/code&gt;等不同服务商的判断，最终落实并返回一个确定的ip地址。&lt;br&gt;DNS协议是系统层级的操作，应用层无需关心，系统通过DNS协议拿到ip地址后会给到应用层，然后应用层将ip地址传递到传输层进行网络数据封包。&lt;br&gt;为了效率问题，系统会进行DNS的缓存以加快解析速度，并且还会设置有效期以较少误差。&lt;br&gt;比较例外的是hosts文件。在这里配置的信息具有第一优先级，系统如果在hosts中找到了对应的域名和ip地址的映射，则不再进行DNS请求而直接返回映射数据。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="计算机原理" scheme="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="网络" scheme="https://www.yigegongjiang.com/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>计算机Unicode编码终结</title>
+    <link href="https://www.yigegongjiang.com/2019/%E8%AE%A1%E7%AE%97%E6%9C%BAUnicode%E7%BC%96%E7%A0%81%E7%BB%88%E7%BB%93/"/>
+    <id>https://www.yigegongjiang.com/2019/%E8%AE%A1%E7%AE%97%E6%9C%BAUnicode%E7%BC%96%E7%A0%81%E7%BB%88%E7%BB%93/</id>
+    <published>2019-05-21T05:47:16.000Z</published>
+    <updated>2019-05-21T05:47:16.000Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;开局三把西瓜刀：&lt;br&gt;1.代码多年不识字符集和编码，是有过错的。&lt;br&gt;2.一天到晚说“Unicode编码”，自己的误区大了。&lt;br&gt;3.没有认知字符、字节、字符集、编码的区别并以讹传讹，就是万恶了。&lt;br&gt;from “一个工匠”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;假设你已经查阅了很多关于Unicode、UTF8等之间的关系，并且有了很好的认知。毕竟这博客太低微了，能找到并打开这个链接，那肯定都是看过十几个其他博文的解读了。&lt;br&gt;本篇博文&lt;strong&gt;重点描述编码认知过程中的几个坑点&lt;/strong&gt;，这个很重要。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="计算机原理" scheme="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CPU的制作</title>
+    <link href="https://www.yigegongjiang.com/2019/CPU%E7%9A%84%E5%88%B6%E4%BD%9C/"/>
+    <id>https://www.yigegongjiang.com/2019/CPU%E7%9A%84%E5%88%B6%E4%BD%9C/</id>
+    <published>2019-04-11T12:14:43.000Z</published>
+    <updated>2019-04-11T12:14:43.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img data-src=&quot;https://s2.ax1x.com/2020/03/11/8EM7on.jpg&quot; alt=&quot;晶圆&quot;&gt;&lt;/p&gt;
+&lt;p&gt;如果你能看到这篇文章，我想你一定查阅了很多相关资料了。&lt;br&gt;如果你是对CPU的制作有一些模糊，或者希望通过其他博文来验证你的想法，那么下面一些认知或许对你有一些帮助。&lt;br&gt;大到宇宙飞船，小到PC、手机、冰箱，无一没有芯片的影子。&lt;br&gt;各位一定都对芯片有很多认知了，我们不需要多做说明，总之，没有芯片，就没有新社会吧。集成电路的创造，说第三次工业革命，反对的人应该不会多吧。&lt;/p&gt;
+&lt;h3 id=&quot;集成电路的制作&quot;&gt;&lt;a href=&quot;#集成电路的制作&quot; class=&quot;headerlink&quot; title=&quot;集成电路的制作&quot;&gt;&lt;/a&gt;集成电路的制作&lt;/h3&gt;&lt;h4 id=&quot;理解一：硅-x3D-gt-晶圆&quot;&gt;&lt;a href=&quot;#理解一：硅-x3D-gt-晶圆&quot; class=&quot;headerlink&quot; title=&quot;理解一：硅&amp;#x3D;&amp;gt;晶圆&quot;&gt;&lt;/a&gt;理解一：硅&amp;#x3D;&amp;gt;晶圆&lt;/h4&gt;&lt;p&gt;原材料首当其冲的是高纯度硅。通过把高纯度的硅融化，用一个引子伸入容器，不断的让硅附着生长在引子上面。我们可以想象明矾的制作过程。&lt;br&gt;引子不断的往上提，最后一个很重的圆柱形硅淀就形成了。&lt;br&gt;这个圆柱形直径有10厘米+。&lt;br&gt;然后通过机器切割，从上往下，切割一个豁口或者一个边，这个豁口或者边，是为了客户进行晶圆制作的时候辨认方向用的。因为最终晶圆不是100%利用的，这个豁口或者边，是肯定不会用到的。&lt;br&gt;然后，对整个圆柱形硅切割成晶圆。每个晶圆对直径也还是10厘米+，但是厚度只有3毫米左右。这样的一片片晶圆，就是后面集成电路的原材料了。&lt;br&gt;所以，&lt;strong&gt;晶圆其实是很大的一个圆盘，比普通人的一张脸，还是要大一些的&lt;/strong&gt;。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="计算机原理" scheme="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我心里一直有一个念想</title>
+    <link href="https://www.yigegongjiang.com/2019/%E6%88%91%E5%BF%83%E9%87%8C%E4%B8%80%E7%9B%B4%E6%9C%89%E4%B8%80%E4%B8%AA%E5%BF%B5%E6%83%B3/"/>
+    <id>https://www.yigegongjiang.com/2019/%E6%88%91%E5%BF%83%E9%87%8C%E4%B8%80%E7%9B%B4%E6%9C%89%E4%B8%80%E4%B8%AA%E5%BF%B5%E6%83%B3/</id>
+    <published>2019-03-27T16:13:43.000Z</published>
+    <updated>2019-03-27T16:13:43.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img data-src=&quot;https://s2.ax1x.com/2020/03/11/8EMvyF.gif&quot; alt=&quot;jiumozhi&quot;&gt;&lt;/p&gt;
+&lt;p&gt;我有一个梦想，因为这个梦想，我也产生过心里的孤独。&lt;br&gt;今天我索性大胆的把自己的念想写出来，也把自己孤独的过程表达出来。&lt;br&gt;如果屏幕前的你看完心里也会产生一些奇思妙想，那我们或许可能很好的沟通下去。如果有共鸣，如果旅途方向再一直，陌生人我也愿意为你背负行囊。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="琐事" scheme="https://www.yigegongjiang.com/categories/%E7%90%90%E4%BA%8B/"/>
+    
+    
+    <category term="Life" scheme="https://www.yigegongjiang.com/tags/Life/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>网络基础协议</title>
+    <link href="https://www.yigegongjiang.com/2019/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E5%8D%8F%E8%AE%AE/"/>
+    <id>https://www.yigegongjiang.com/2019/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E5%8D%8F%E8%AE%AE/</id>
+    <published>2019-03-01T03:47:37.000Z</published>
+    <updated>2019-03-01T03:47:37.000Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;互联网规则&quot;&gt;&lt;a href=&quot;#互联网规则&quot; class=&quot;headerlink&quot; title=&quot;互联网规则&quot;&gt;&lt;/a&gt;互联网规则&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;互联网本质，就是数据在一定的协议基础上，在多台主机之间，进行数据的流动共享。&lt;/li&gt;
+&lt;li&gt;网络传输协议非常多，不是简简单单的HTTP&amp;#x2F;HTTPS协议，我们App看的直播就有RTMP、私有UDP协议、DNS(+CDN加速)等等。&lt;/li&gt;
+&lt;li&gt;数据在网络上基于二进制包进行传输，传输规则基于7层网络协议，4&amp;#x2F;5层网络协议便于理解&lt;/li&gt;
+&lt;li&gt;数据包在传输过程中几个关键不可缺少的字段：端口、MAC地址、IP地址。可以没有应用层的HTTP等协议，但是绝对不可能没有网络层、Mac层和物理层。没有这三层，数据是不可能找到对应接收方的，甚至这个数据包都出不了你的电脑端口。可以没有应用层等，如ping一个主机使用的ICMP就是网络层协议，就没有应用层。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;HTTP-x2F-HTTPS规则&quot;&gt;&lt;a href=&quot;#HTTP-x2F-HTTPS规则&quot; class=&quot;headerlink&quot; title=&quot;HTTP&amp;#x2F;HTTPS规则&quot;&gt;&lt;/a&gt;HTTP&amp;#x2F;HTTPS规则&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;HTTP协议是无状态的协议，所以需要Session、Cookie&lt;/li&gt;
+&lt;li&gt;HTTP没有三次握手，握手的是TCP。应用层只要通过TCP必定会有三次握手。握手并不是C-S之间有一条网络管道进行连接，而是两端各自维护相应的状态，当双方状态都处于runing的时候(双方套接字处于完成状态，本质是Socket套接字，UDP也适用该规则)，代表双方连接建立&lt;/li&gt;
+&lt;li&gt;HTTPS的公私钥认证，很多情况下只发生一次，公私钥认证的用途仅仅是为C-S之间的后续通讯建立对称密钥。后续的网络请求不出问题是不会重新公私钥认证的。因为服务器会在第一次公私钥认证的时候，生成Session ID，该Session ID指向对称密钥并保存。客户端一般也会保存这个Session ID和对称密钥，后面客户端提交Session ID到服务器就可以建立起来安全通信。HTTP1.0就可以支持keep alive，多个网络请求可以复用建立的连接，这个时候更加不需要公私钥认证了。&lt;/li&gt;
+&lt;li&gt;HTTPS的公私钥认证，生成的对称密钥是由C生成一个随机数、S生成一个随机数、C再生成一个随机数这三个数完成的。公私钥认证的开始，是没有加密的，因为客户端还没有拿到公钥。所以前两个随机数是可以抓包拿到的，但是第三个随机数是C通过公钥加密传输的，所以第三个随机数的安全传输才是整个安全机制的重点。（前两个随机数被串改了也没关系，因为C和S的随机数不一样了，生成的对称密钥也不一样，后面的数据传输加解密过程中，就无法完成校验了）有个重点是，为什么需要3个随机数？而不能直接传输上面的第三次随机数？因为随机数为了确保随机性，而随机性不能完全依靠一方来确定，因为很可能不随机。而3个随机数，已经可以很好的保障最后生成的对称密钥的随机性了。&lt;/li&gt;
+&lt;/ol&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="计算机原理" scheme="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="网络" scheme="https://www.yigegongjiang.com/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>内存分配详解-由底到高</title>
+    <link href="https://www.yigegongjiang.com/2019/%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E8%AF%A6%E8%A7%A3-%E7%94%B1%E5%BA%95%E5%88%B0%E9%AB%98/"/>
+    <id>https://www.yigegongjiang.com/2019/%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E8%AF%A6%E8%A7%A3-%E7%94%B1%E5%BA%95%E5%88%B0%E9%AB%98/</id>
+    <published>2019-02-26T11:04:53.000Z</published>
+    <updated>2019-02-26T11:04:53.000Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;一行代码引发的思考&quot;&gt;&lt;a href=&quot;#一行代码引发的思考&quot; class=&quot;headerlink&quot; title=&quot;一行代码引发的思考&quot;&gt;&lt;/a&gt;一行代码引发的思考&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;int a &amp;#x3D; 5;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;问1:变量a在内存的哪里？&lt;br&gt;问2:数字5在内存的哪里？&lt;br&gt;问3:int的字节大小是多少？如果a&amp;#x3D;12345后，字节大小变不变？&lt;br&gt;问4:代码里面print(“%d”, a)，为什么可以输出5，a是怎么找到5的？&lt;br&gt;问5:内存到底在哪里？&lt;br&gt;问6:总内存有多大？&lt;br&gt;问7:总内存的大小是怎么确定的？&lt;/p&gt;
+&lt;p&gt;各位能回答上面的7问吗？&lt;/p&gt;
+&lt;p&gt;由底往上来解析，一步一步揭开洋葱的外衣，真相终究会大白于天下！&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="iOS" scheme="https://www.yigegongjiang.com/tags/iOS/"/>
+    
+    <category term="计算机原理" scheme="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="C" scheme="https://www.yigegongjiang.com/tags/C/"/>
+    
+    <category term="Python" scheme="https://www.yigegongjiang.com/tags/Python/"/>
+    
+    <category term="Node.js" scheme="https://www.yigegongjiang.com/tags/Node-js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>努力和天赋</title>
+    <link href="https://www.yigegongjiang.com/2019/%E5%8A%AA%E5%8A%9B%E5%92%8C%E5%A4%A9%E8%B5%8B/"/>
+    <id>https://www.yigegongjiang.com/2019/%E5%8A%AA%E5%8A%9B%E5%92%8C%E5%A4%A9%E8%B5%8B/</id>
+    <published>2019-02-24T10:43:21.000Z</published>
+    <updated>2019-02-24T10:43:21.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img data-src=&quot;https://s2.ax1x.com/2020/03/11/8EMjQU.jpg&quot; alt=&quot;努力和天赋&quot;&gt;&lt;/p&gt;
+&lt;p&gt;今天，在公司卫生间里面，看到了这个“每天努力0.01”和“每天懈怠0.01”一年后的差距，颇为感触。&lt;br&gt;不过我不是因为这两个差距的比较产生心里的鸡汤，而是引发了一些关于努力的思考。&lt;br&gt;什么算是努力？好人一定要好报吗？&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="观点" scheme="https://www.yigegongjiang.com/categories/%E8%A7%82%E7%82%B9/"/>
+    
+    
+    <category term="Life" scheme="https://www.yigegongjiang.com/tags/Life/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>洗牙</title>
+    <link href="https://www.yigegongjiang.com/2019/%E6%B4%97%E7%89%99/"/>
+    <id>https://www.yigegongjiang.com/2019/%E6%B4%97%E7%89%99/</id>
+    <published>2019-02-23T10:14:59.000Z</published>
+    <updated>2019-02-23T10:14:59.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;今天去社区一个牙科诊所洗牙了。&lt;/p&gt;
+&lt;p&gt;现在已经洗牙归来，本来不是什么天大的个人事情需要在博客里面说一遍。&lt;br&gt;但是我忍不住自己的喜悦，所以一定想要推荐没有洗牙习惯的朋友，一定要去一次。&lt;br&gt;这是脱胎换骨的体验。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="琐事" scheme="https://www.yigegongjiang.com/categories/%E7%90%90%E4%BA%8B/"/>
+    
+    
+    <category term="Life" scheme="https://www.yigegongjiang.com/tags/Life/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>RAC-Api-Summer</title>
+    <link href="https://www.yigegongjiang.com/2019/RAC-Api-Summer/"/>
+    <id>https://www.yigegongjiang.com/2019/RAC-Api-Summer/</id>
+    <published>2019-01-15T07:24:59.000Z</published>
+    <updated>2019-01-15T07:24:59.000Z</updated>
+    
+    
+    <summary type="html">&lt;h6 id=&quot;From-Internet-方便自己查阅使用，侵权删。&quot;&gt;&lt;a href=&quot;#From-Internet-方便自己查阅使用，侵权删。&quot; class=&quot;headerlink&quot; title=&quot;From Internet.方便自己查阅使用，侵权删。&quot;&gt;&lt;/a&gt;From Internet.方便自己查阅使用，侵权删。&lt;/h6&gt;&lt;h3 id=&quot;一、常见类&quot;&gt;&lt;a href=&quot;#一、常见类&quot; class=&quot;headerlink&quot; title=&quot;一、常见类&quot;&gt;&lt;/a&gt;一、常见类&lt;/h3&gt;&lt;p&gt;1、RACSiganl 信号类。&lt;/p&gt;
+&lt;p&gt;RACEmptySignal ：空信号，用来实现 RACSignal 的 +empty 方法；&lt;/p&gt;
+&lt;p&gt;RACReturnSignal ：一元信号，用来实现 RACSignal 的 +return: 方法；&lt;/p&gt;
+&lt;p&gt;RACDynamicSignal ：动态信号，使用一个 block - 来实现订阅行为，我们在使用 RACSignal 的 +createSignal: 方法时创建的就是该类的实例；&lt;/p&gt;
+&lt;p&gt;RACErrorSignal ：错误信号，用来实现 RACSignal 的 +error: 方法；&lt;/p&gt;
+&lt;p&gt;RACChannelTerminal ：通道终端，代表 RACChannel 的一个终端，用来实现双向绑定。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="iOS" scheme="https://www.yigegongjiang.com/tags/iOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS内存原理</title>
+    <link href="https://www.yigegongjiang.com/2019/iOS%E5%86%85%E5%AD%98%E5%8E%9F%E7%90%86/"/>
+    <id>https://www.yigegongjiang.com/2019/iOS%E5%86%85%E5%AD%98%E5%8E%9F%E7%90%86/</id>
+    <published>2019-01-06T03:30:48.000Z</published>
+    <updated>2019-01-06T03:30:48.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;iOS的内存管理，绝对是很多很多iOSer人的误区。&lt;br&gt;因为最近几年的iOS开发人员，都没有经历过MRC年代了。&lt;br&gt;MRC年代的内存总是不好管理，所以ARC帮我们做了很多事情。ARC做了很多事情让内存管理更加精准优秀外，却使得iOS开发人员不知道内存是怎么管理的了。</summary>
+        
+      
+    
+    
+    
+    <category term="技术" scheme="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="iOS" scheme="https://www.yigegongjiang.com/tags/iOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>游戏人生</title>
+    <link href="https://www.yigegongjiang.com/2018/%E6%B8%B8%E6%88%8F%E4%BA%BA%E7%94%9F/"/>
+    <id>https://www.yigegongjiang.com/2018/%E6%B8%B8%E6%88%8F%E4%BA%BA%E7%94%9F/</id>
+    <published>2018-12-31T09:00:23.000Z</published>
+    <updated>2018-12-31T09:00:23.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;最近一年，试玩了不少几款游戏。&lt;br&gt;有下载需要付费的，有内购的，也有免费的。有本机的，也有联网的。有养成类的，也有公平平台的。&lt;br&gt;游戏过程是下载了，试玩了，玩了，卸载了。最后连游戏名字也忘了。&lt;br&gt;今天，也是在2018年的最后一天，开始卸载最后一批游戏。游戏这段旅程，在我的生命里，初步结束了。&lt;br&gt;昨晚，我刚在一个游戏里面付费了30元。接着，我杀死了应用，想着这段时间我的游戏生涯。&lt;br&gt;我对于游戏，始终有一条清晰的线，沿着这条线，不迷失。也是这条线，让我知道游戏的本质，看清很low的游戏也日流水过百万的简单操作下的华丽外衣。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="观点" scheme="https://www.yigegongjiang.com/categories/%E8%A7%82%E7%82%B9/"/>
+    
+    
+    <category term="Life" scheme="https://www.yigegongjiang.com/tags/Life/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Block闭包简查记录</title>
+    <link href="https://www.yigegongjiang.com/2018/Block%E9%97%AD%E5%8C%85%E7%AE%80%E6%9F%A5%E8%AE%B0%E5%BD%95/"/>
+    <id>https://www.yigegongjiang.com/2018/Block%E9%97%AD%E5%8C%85%E7%AE%80%E6%9F%A5%E8%AE%B0%E5%BD%95/</id>
+    <published>2018-11-24T09:00:08.000Z</published>
+    <updated>2018-11-24T09:00:08.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;像Block这种闭包，就是怎么用怎么爽，怎么用怎么喜欢的编码方式了。&lt;/p&gt;
+&lt;p&gt;闭包很伟大，也是各个语言都实现了的基础语法。我这边对闭包的理解，就是：&lt;strong&gt;内部函数持有外部变量&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;但是各个语言都有需要注意的点，如iOS里面的循环引用，Swift里面的逃逸闭包，Python里面的闭包变量延迟定义等。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="iOS" scheme="https://www.yigegongjiang.com/tags/iOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>谈谈事件驱动</title>
+    <link href="https://www.yigegongjiang.com/2018/%E8%B0%88%E8%B0%88%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8/"/>
+    <id>https://www.yigegongjiang.com/2018/%E8%B0%88%E8%B0%88%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8/</id>
+    <published>2018-11-08T07:10:08.000Z</published>
+    <updated>2018-11-08T07:10:08.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;code&gt;事件驱动&lt;/code&gt;这个技术方案，可以说实实在在影响了这些年编程界的技术方向。最实际的受用者应该就是&lt;code&gt;异步编程&lt;/code&gt;了，如I&amp;#x2F;O。&lt;/p&gt;
+&lt;p&gt;我所认知到的语言，都是事件驱动的使用者，受益者，推动者。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="iOS" scheme="https://www.yigegongjiang.com/tags/iOS/"/>
+    
+    <category term="Python" scheme="https://www.yigegongjiang.com/tags/Python/"/>
+    
+    <category term="Node.js" scheme="https://www.yigegongjiang.com/tags/Node-js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>折腾</title>
+    <link href="https://www.yigegongjiang.com/2018/%E6%8A%98%E8%85%BE/"/>
+    <id>https://www.yigegongjiang.com/2018/%E6%8A%98%E8%85%BE/</id>
+    <published>2018-10-31T04:43:52.000Z</published>
+    <updated>2018-10-31T04:43:52.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;这次又折腾了一把。原因是我想有一个能够宣传出去的名字了。我希望以后，这个名字所生产的内容，可以指导或者引导一些人，也希望这个名字可以成就自己。&lt;/p&gt;
+&lt;p&gt;这个名字，其实想了很久了，但是一直没有想好。因为一开始，我想找一个英文名。找了许久许久，找到了几个试用了一段时间，发现并不合我心。终于几天前，我想到，或许那些写小说的人，他们的笔名就很有意思呢？比如南派三叔，唐家三少啥的。没有必要局限在英文名字里面走不出去。中国的文字可真是博大精深，不多久，我确定了响当当的**”一个工匠”**。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;一个工匠。跋山涉水，走心为匠。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="琐事" scheme="https://www.yigegongjiang.com/categories/%E7%90%90%E4%BA%8B/"/>
+    
+    
+    <category term="Life" scheme="https://www.yigegongjiang.com/tags/Life/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>老博新开 祭首</title>
+    <link href="https://www.yigegongjiang.com/2018/%E8%80%81%E5%8D%9A%E6%96%B0%E5%BC%80/"/>
+    <id>https://www.yigegongjiang.com/2018/%E8%80%81%E5%8D%9A%E6%96%B0%E5%BC%80/</id>
+    <published>2018-10-15T13:54:03.000Z</published>
+    <updated>2018-10-15T13:54:03.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;好久没有写博客了，猛的一下打字，久旱逢甘霖，突破九重天。&lt;/p&gt;
+&lt;p&gt;开始的CSDN博，到后面私有博，现在的静态博。虽然都挺方便的，但是变迁中感觉自己原来越懒了，要啥维护，就静态的！&lt;/p&gt;
+&lt;p&gt;最近几年，养精蓄锐全是瞎扯，不过在我身上发生的一些事情，倒是值得简要回味一下。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="琐事" scheme="https://www.yigegongjiang.com/categories/%E7%90%90%E4%BA%8B/"/>
+    
+    
+    <category term="Life" scheme="https://www.yigegongjiang.com/tags/Life/"/>
+    
+  </entry>
+  
+</feed>
