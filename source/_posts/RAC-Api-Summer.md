@@ -4,7 +4,7 @@ date: 2019-01-15 15:24:59
 categories:
 - 技术
 tags:
-- iOS
+-  iOS
 keywords: RAC,ReactiveCocoa,RAC分类,RAC API
 ---
 
@@ -140,7 +140,7 @@ replay重放：当一个信号被多次订阅,反复播放内容
 
 throttle节流:当某个信号发送比较频繁时，可以使用节流，在某一段时间不发送信号内容，过了一段时间获取信号的最新内容发出。
 
-### 五、UI - Category（常用汇总）
+### 五、UI -  Category（常用汇总）
 
 1、rac_prepareForReuseSignal： 需要复用时用
 
@@ -196,7 +196,7 @@ rac_newTextChannel
 
 相关UI：UITextField
 
-### 六、Foundation - Category （常用汇总）
+### 六、Foundation -  Category （常用汇总）
 
 1、NSArray
 
