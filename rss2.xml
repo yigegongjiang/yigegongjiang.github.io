@@ -15,14 +15,14 @@
     <atom:link href="https://www.yigegongjiang.com/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>跋山涉水，走心为匠。而时间，却真的不多了。</description>
-    <pubDate>Sat, 16 Jul 2022 06:48:15 GMT</pubDate>
+    <pubDate>Sun, 10 Jul 2022 11:16:13 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
       <title>文件存储差异-编码</title>
       <link>https://www.yigegongjiang.com/2022/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E5%B7%AE%E5%BC%82-%E7%BC%96%E7%A0%81/</link>
       <guid>https://www.yigegongjiang.com/2022/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E5%B7%AE%E5%BC%82-%E7%BC%96%E7%A0%81/</guid>
-      <pubDate>Sat, 16 Jul 2022 06:48:15 GMT</pubDate>
+      <pubDate>Sun, 10 Jul 2022 11:16:13 GMT</pubDate>
       
       <description>&lt;p&gt;前两天，我和同事需要做一个功能，是把 js 前端保存到 app 本地的图片给读取出来。桥接层只有一个 saveFile 函数可供使用，定义如下：&lt;/p&gt;
 &lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;title function_&quot;&gt;saveFile&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;string name, string content&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;// xxx&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -73,7 +73,7 @@
       <title>不确定性</title>
       <link>https://www.yigegongjiang.com/2022/%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7/</link>
       <guid>https://www.yigegongjiang.com/2022/%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7/</guid>
-      <pubDate>Sun, 22 May 2022 19:45:20 GMT</pubDate>
+      <pubDate>Sat, 28 May 2022 16:46:20 GMT</pubDate>
       
       <description>&lt;p&gt;最近偶然看到&lt;strong&gt;人生的痛苦在于追求确定性&lt;/strong&gt;这句话，感应非常强烈。我一直想用一个词或者一个简短的话，来描述和表达我两年来观察到的一个现象，可一直找不到，这下找到了，也就记录下来。我认为&lt;strong&gt;不确定性&lt;/strong&gt;这个词，将影响我的余生。&lt;/p&gt;
 &lt;p&gt;几个月前的一个夜晚，我深度思考过这个问题，就是当发生了一些不在预期内的事情的时候，不同人的处理态度是完全不一样的。&lt;br&gt;当不可预期的事情发生后，需要做决策，有人是立刻选一个，效率非常高，不管利弊都依照这个选择继续走下去。有人呢，是立刻停下来，花费很长的时间开始思考该怎么办，在经过长时间的权衡利弊之后痛苦的做一个选择，还有的人就不知所措，因为事发突然就破罐子破摔的宣泄郁闷脾气，然后故意把这件事往后面拖，拖到不能拖的时候再处理。&lt;br&gt;已经规划好的事情，做到一半，突然就面临抉择，这是很让人不爽的。就像旅游的路线图设计了好几天，真在旅游的时候，发现旅途中计划乘坐的公交车临时取消运营了。类似这样的抉择，每时每刻都在面临。&lt;/p&gt;</description>
@@ -208,7 +208,7 @@
       <title>要不要归零</title>
       <link>https://www.yigegongjiang.com/2022/%E8%A6%81%E4%B8%8D%E8%A6%81%E5%BD%92%E9%9B%B6/</link>
       <guid>https://www.yigegongjiang.com/2022/%E8%A6%81%E4%B8%8D%E8%A6%81%E5%BD%92%E9%9B%B6/</guid>
-      <pubDate>Sat, 23 Apr 2022 12:39:31 GMT</pubDate>
+      <pubDate>Sat, 23 Apr 2022 12:39:30 GMT</pubDate>
       
       <description>&lt;p&gt;2022.04.14 日，我的订阅号被官方永久封杀了。对我呢，没啥影响，毕竟 4 年了，就 54 个粉丝。我也都是直接发文字，不是文章，没啥原创不原创的概念。&lt;br&gt;我对这次封杀，是很不满的。说有人举报了我，查明后给予了封杀。&lt;br&gt;但其实并没有人看我发的文字，我看后台其实就一位读者断断续续的漂两眼我的号，其实这个本身并不好判断，后台不提供哪些用户看了什么文章。只是因为我的关注量太少了，后台有一个阅读排名，刚好就是这位顾客。他是 18 年订阅的。我内心可以从容的断定，不是他举报的，也不是其他订阅者举报的。&lt;br&gt;这明明就是官方主动封杀的，却在封杀理由上写着因为用户举报，可无聊了。&lt;br&gt;我文字发出去前，你官方也审核通过了，为什么发出去后 30 分钟，就把我的号永久关停了？&lt;br&gt;我没有发啥敏感内容，如果真的敏感，肯定是发不出去的。我也没有刻意用拼音代替汉字，就那么一个读者，我犯不着还用心的躲避审查。&lt;br&gt;只是我的文字，是关于上海的一些想法，就被封了。&lt;br&gt;上海，一个国际化大都市，也变成敏感话题了。今天，“四月之声”的视频被全网封杀后，我又看了一些其他公众号的控诉，才发现仅仅是审查门槛降低了，就稍微不满意就封杀的那种，可搞笑了。&lt;br&gt;订阅号被封，我还反馈了一下，说7-10天给反馈好像，也一直没有反馈我。我也不指望反馈，因为订阅号我不会再申请，不依靠它吃饭，对我意义不大。就是自己说的话都不兑现，可丢大公司的脸了。&lt;br&gt;之前，我还想着自媒体不能称为媒体，因为自媒体没有媒体的要素。现在想想，自媒体能不被封号就不错了，哪还能自由表达自己的想法。那些依靠订阅号生存的人，一旦封号，可就是没饭碗了，能留下一些读者吃广告费养家，不容易的。&lt;br&gt;Anyway，我的号是归零了。&lt;/p&gt;</description>
       
@@ -568,11 +568,11 @@
       <category domain="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/">技术</category>
       
       
+      <category domain="https://www.yigegongjiang.com/tags/iOS/">iOS</category>
+      
       <category domain="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/">计算机原理</category>
       
       <category domain="https://www.yigegongjiang.com/tags/C/">C</category>
-      
-      <category domain="https://www.yigegongjiang.com/tags/iOS/">iOS</category>
       
       
       <comments>https://www.yigegongjiang.com/2020/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E9%9A%BE%E7%82%B9%E5%9C%A8%E5%93%AA%E9%87%8C/#disqus_thread</comments>
@@ -595,9 +595,9 @@
       <category domain="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/">技术</category>
       
       
-      <category domain="https://www.yigegongjiang.com/tags/C/">C</category>
-      
       <category domain="https://www.yigegongjiang.com/tags/iOS/">iOS</category>
+      
+      <category domain="https://www.yigegongjiang.com/tags/C/">C</category>
       
       
       <comments>https://www.yigegongjiang.com/2020/Objective-C%20%E5%92%8C%20Runtime/#disqus_thread</comments>
@@ -1127,11 +1127,11 @@
       <category domain="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/">技术</category>
       
       
+      <category domain="https://www.yigegongjiang.com/tags/iOS/">iOS</category>
+      
       <category domain="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/">计算机原理</category>
       
       <category domain="https://www.yigegongjiang.com/tags/C/">C</category>
-      
-      <category domain="https://www.yigegongjiang.com/tags/iOS/">iOS</category>
       
       <category domain="https://www.yigegongjiang.com/tags/Python/">Python</category>
       
