@@ -5,6 +5,9 @@ categories:
 - 技术
 tags:
 - 计算机原理
+- Shell
+- C
+- 内存
 keywords: Shell, sub shell, subShell, 子shell, 解释型语言, 虚拟机, 解释器, fork, exec, 内部命令, 外部命令, 环境变量, 全局变量, source, expore
 ---
 

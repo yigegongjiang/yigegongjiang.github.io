@@ -5,6 +5,7 @@ categories:
 - 技术
 tags:
 -  计算机原理
+-  编码
 keywords: Unicode,计算机编码,计算机内存编码,磁盘数据存储编码,UTF,字符编码
 ---
 
