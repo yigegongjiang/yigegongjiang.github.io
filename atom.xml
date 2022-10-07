@@ -33,7 +33,13 @@
     <category term="技术" scheme="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
+    <category term="C" scheme="https://www.yigegongjiang.com/tags/C/"/>
+    
     <category term="计算机原理" scheme="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="Shell" scheme="https://www.yigegongjiang.com/tags/Shell/"/>
+    
+    <category term="内存" scheme="https://www.yigegongjiang.com/tags/%E5%86%85%E5%AD%98/"/>
     
   </entry>
   
@@ -66,6 +72,8 @@
     
     
     <category term="计算机原理" scheme="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="内存" scheme="https://www.yigegongjiang.com/tags/%E5%86%85%E5%AD%98/"/>
     
   </entry>
   
@@ -140,6 +148,8 @@
     
     
     <category term="计算机原理" scheme="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="编码" scheme="https://www.yigegongjiang.com/tags/%E7%BC%96%E7%A0%81/"/>
     
   </entry>
   
@@ -382,7 +392,11 @@
     <category term="技术" scheme="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
+    <category term="C" scheme="https://www.yigegongjiang.com/tags/C/"/>
+    
     <category term="计算机原理" scheme="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="内存" scheme="https://www.yigegongjiang.com/tags/%E5%86%85%E5%AD%98/"/>
     
     <category term="锁" scheme="https://www.yigegongjiang.com/tags/%E9%94%81/"/>
     
@@ -555,7 +569,15 @@
     <category term="技术" scheme="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
+    <category term="iOS" scheme="https://www.yigegongjiang.com/tags/iOS/"/>
+    
+    <category term="C" scheme="https://www.yigegongjiang.com/tags/C/"/>
+    
+    <category term="计算机原理" scheme="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/"/>
+    
     <category term="网络" scheme="https://www.yigegongjiang.com/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+    <category term="内存" scheme="https://www.yigegongjiang.com/tags/%E5%86%85%E5%AD%98/"/>
     
   </entry>
   
@@ -642,7 +664,7 @@
     <published>2020-04-08T10:43:31.000Z</published>
     <updated>2020-04-08T10:43:31.000Z</updated>
     
-    <content type="html"><![CDATA[<p><strong>运行时(Runtime)<strong>本身是一个非常普通的概念，每个编程语言都会有运行时，非iOS Objective-C特有。<br>概念上理解，</strong>运行时，就是程序执行的过程</strong>，每个编程语言，只有运行后执行特定的任务才有价值，所以每个编程语言，都有运行时。<br>而Objective-C的Runtime显然不仅仅是程序执行过程这么简单，它一举将基于<strong>面向过程的语言C</strong>而实现的<strong>面向对象的语言Objective-C</strong>变成了<strong>动态语言</strong>。<br>为什么Objective-C的Runtime有些难理解，因为运行时从概念上理解非常简单，但是Java、Python、C它们的运行时都是不一样的，运行时期间可以做很多事情，所以运行时理解起来还是比较抽象和高阶。<br>如果把Runtime改名为<strong>OCDR</strong>（Objective-C Dynamic Resolution，即<strong>Objective-C动态决议</strong>），剥离运行时和运行时库的概念，那么很多人都会轻松掌握Objective-C Runtime的核心。而Objective-C Runtime本质上的确就在践行<strong>动态决议</strong>这么一个过程。</p><span id="more"></span><p>Objective-C Runtime使得函数调用变成了动态消息传递，并且可以在执行过程中对Object进行增删改查，所以更准确的说，Runtime使得Objective-C变成了动态语言。</p><h4 id="动态语言分析"><a href="#动态语言分析" class="headerlink" title="动态语言分析"></a>动态语言分析</h4><p>首先理解一下各类语言的一个区分分界，那就是<strong>动态语言</strong>和<strong>静态语言</strong>的区分（非动态类型语言和静态类型语言）。</p><h5 id="静态语言"><a href="#静态语言" class="headerlink" title="静态语言"></a>静态语言</h5><p>静态语言比较容易理解，我们通过高级语言写好的代码，经过预处理、编译、汇编、链接后，就形成了机器码（二进制文件）。这个时候，函数名、变量名都保存在符号表中，并拥有对应的虚拟地址。而我们调用一个函数，就是通过机器码调用的，汇编示例如：’call 0X12345678’，这里call代表函数调用，0X12345678代表函数的虚拟地址。<br>这个机器码执行的过程中，PC指令寄存器会不断的记录下一行将要执行的指令，然后不停的执行下去(延伸一个知识点，如果下一行指令不再内存中，操作系统会发现页缺失，然后从硬盘中将对应缺失页的指令拷贝到对应的真实内存中，然后继续执行)。<br>这里我们可以发现，我们通过高级语言写好的函数，在编译后，就已经不可改变了。程序执行后，CPU内部的运算单元、控制单元、数据单元，就有条不紊的按照机器码执行就好了。<br>那么如果我们想改变一个函数的实现呢？比如本身调用的A函数，运行期间想调用B函数，有办法实现吗？对于静态语言来说，不行！<br>那么如果我们想改变一个对象的结构体呢？对于静态语言来说，不行！<br>所以静态语言，对于函数的定义，在编译期就必须是明确的，如果找不到函数的实现，就会编译错误。<br>举例来说，如C语言。</p><h5 id="动态语言"><a href="#动态语言" class="headerlink" title="动态语言"></a>动态语言</h5><p>动态语言相比静态语言，也比较容易理解了，在运行时代码可以根据某些条件改变自身结构，如函数的调用，自定义类的生成和对象的创建等。那这样的语言就是动态语言。<br>举例来说，如Objective-C语言。</p><h5 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h5><p>C是静态的，Objective-C是动态的，而Objective-C是基于C实现的。那Objective-C是如何基于C实现动态特性的呢？</p><p>C有它的运行时，不过程序执行过程中，CPU完全掌控机器码执行流程，所以C的运行时不能多样化，基本上就是按照程序员写的代码执行顺序执行。这也是C快的原因，因为CPU直接执行，不用考虑那么多复杂的情况。</p><p>那Python如何实现动态的呢？Python也有它的运行时，不过说来巧妙，它不是编译性语言，不会像C一样打包成机器码直接执行。Python是解释性语言，代码执行到哪一行，就即时编译该行形成机器码执行，所以Python非常容易实现动态，只要代码运行过程中适当的添加if语句对将要执行的对象进行替换，就能很好的实现动态，鸭子Duck模型也就来源于此。</p><p>那Objective-C呢？Objective-C和C一样是编译性语言，项目打包后会经过编译链接等处理变成机器码。<br>Objective-C实现动态就要运行时了，因为在运行时做了很多操作，以至于很多人叫它“运行时系统”。<br>之所以前面说Objective-C的Runtime应该改名为”Objective-C Dynamic Resolution，Objective-C动态决议”，就是因为Objective-C的Runtime主要实现的两个点都更加符合“动态决议”这个命名：</p><ol><li>通过objc_msgsend(a_object,a_object_method,xx)这个中间者函数，动态解析被调用的函数。</li><li>通过指针、数组的指针、链表指针、全局数据，间接操作函数列表、属性列表等，动态的对Object进行增删改查。</li></ol><h4 id="Objective-C-Runtime-函数调用动态性"><a href="#Objective-C-Runtime-函数调用动态性" class="headerlink" title="Objective-C Runtime 函数调用动态性"></a>Objective-C Runtime 函数调用动态性</h4><p>之所以很多人说Objective-C的函数调用并非函数调用，而是消息传递，其原因就是Objective-C的函数调用很不一样。<br>在C中，我们调用一个函数，会这样写：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Node *head = NULL;</span><br><span class="line">...生成链表...</span><br><span class="line">reverseLinkList(&amp;head);// 反转链表</span><br></pre></td></tr></table></figure><p>这里，reverseLinkList函数的调用，在汇编里面为：call 0x12345678，其中0x12345678就是reverseLinkList这个符号名的虚拟地址。<br>这里我们可以发现，reverseLinkList函数的虚拟地址在编译的时候就已经定下来了，后期无法做到动态性。<br>再来看一下Objective-C的实现，因为Objective-C是面向对象的语言，所以我们调用对象的一个方法：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Person p = Person.new;</span><br><span class="line">[p realAge];</span><br></pre></td></tr></table></figure><p>这里，[p realAge]这个函数的调用，p有自己的虚拟地址，realAge函数也有自己的虚拟地址，但是在汇编之前，该函数已经被编译成了这样：<br>objc_msgsend(p, realAge)。<br>如此，Objective-C通过objc_msgsend这个完全汇编写成的中间函数，在函数内部通过<strong>运行时库</strong>对p进行superclass和isa的访问，乃至最后实现三次动态函数转发操作。<br>所以Objective-C实现消息传递，就是依靠objc_msgsend这个中间函数来实现，如果objc_msgsend的虚拟地址为0x87654321，那么[p realAge]函数被执行的时候，实际汇编为：call 0x87654321。</p><p>上面说完了objc_msgsend这个中间函数完成动态解析的操作，那它是如何进行superclass和isa的访问，又是如何访问属性和方法列表的呢？</p><h4 id="Objective-C面向对象的本质：C的struct（结构体）"><a href="#Objective-C面向对象的本质：C的struct（结构体）" class="headerlink" title="Objective-C面向对象的本质：C的struct（结构体）"></a>Objective-C面向对象的本质：C的struct（结构体）</h4><p>通过Runtime源码，我们可以发现，Objective-C里面一切皆对象，乃至UILabel、NSTimer等。而这些对象是以什么样的数据结构存在呢？<br>都是struct（结构体）!我们的成员变量，成员属性，方法等，都保存在结构体里面。<br>所以这里我们可以深刻理解一下，为什么说Objective-C是C的超集，<strong>因为面向对象的Objective-C语言完全就是依靠面向过程的C语言发展起来的，乃至于我们写的面向对象的代码，最后都会变成面向过程的执行流程</strong>。<br>我们可以查看苹果公开的runtime.h文件，都是面向过程的函数调用。如：</p><blockquote><p>objc_setAssObjective-CiatedObject(id _Nonnull object, const void * _Nonnull key, id _Nullable value, objc_AssObjective-CiationPolicy policy)</p></blockquote><p>你看，这完全就是面向过程的编程。</p><p>因为struct是我们对象的存储结构，所以我们可以通过*class_getProperty(Class _Nullable cls, const char * _Nonnull name)*等库函数直接对struct内部保存的数据进行访问。<br>比如我们要访问a_object的a_object_method方法，那么就要通过a_object_struct，根据superclass找到类A_struct，然后遍历A_struct里面的methods数组，找到a_object_method方法并执行。</p><p>struct结构体在编译后就已经确定，那如何做到动态性如增加方法呢？struct的实现是C和C++混编的，但大体逻辑不变，都是通过指针实现的。<br>比如说，struct里面有一个方法的数组指针，那么我们动态添加方法的时候，只要通过这个数组指针就可以添加到对应的方法数组中，这样就完全不会改变struct的结构(甚至如果数组需要扩容，也和struct没有任何关系)。</p><p>因为struct在编译后就已经确定，所以能做动态性的方案不外乎这几点：</p><ol><li><strong>通过数组指针，如方法列表等</strong></li><li><strong>通过链表指针，如NSNotification等</strong></li><li><strong>通过全局对象，如关联对象等</strong></li></ol><p>所以指针才是C和Objective-C最终执行的终极形态，不断通过指针间接的对数据区进行增删改查。<br>而<strong>Objective-C的Runtime就是不断通过指针对struct结构体进行增删改查数据处理来实现动态特性</strong>。</p><h4 id="Objective-C-Runtime-总结"><a href="#Objective-C-Runtime-总结" class="headerlink" title="Objective-C Runtime 总结"></a>Objective-C Runtime 总结</h4><p>Objective-C Runtime用的最多的是objc_msgsend，所有的函数调用都会通过这个消息传递完成。<br>编译成机器码的函数调用，本身无法实现动态性，通过objc_msgsend这个中间层巧妙的实现了。<br>而objc_msgsend的汇编执行又得反过来操作运行时库，又回到了对象的struct结构体上面。<br><strong>Objective-C Runtime本质就是通过指针操作struct的增删改查来实现Objective-C的动态特性</strong>。</p><p>C语言中一切皆指针，基于C发展起来的Objective-C，也是一样。<br>而指针也是中间层思想的体现。本身无法直接操作的数据，通过指针这个中间层，间接的对数据进行操作。</p><h4 id="延伸"><a href="#延伸" class="headerlink" title="延伸"></a>延伸</h4><p>神话Runtime的结果就是越发觉得自己的无知和不知所以。<br>Runtime是啥？从编译上来看，Runtime不是和我们项目一起打包成ipa包的，那Runtime还能是啥？<br><strong>Runtime说的直白点，仅仅是个动态库而已，也叫运行时库</strong>。<br>它和我们项目里面使用的自行编译或者三方编译的动态库一样，也需要在应用启动后加载到进程中（Runtime和系统framework一样，属于系统动态库）。</p><p>iOS和Mac使用的可执行文件是Mach-o，与Linux的ELF和Window的PE一样，都是基于COFF格式扩展的。<br>所以Mach-o可执行文件的运行流程和ELF等都大差不差，当然具体到细节有一些差异。但总体都是差不多的，比如segment和section、section head、内存分区等，都一样。</p><p>应用启动后，首先操作系统通过fork开辟进程，开启用户态后，然后加载Mach-o head。head里面有很多重要信息，如Magic Number(Mach-o通过0xfeedface&#x2F;0xfeedfacf表示32&#x2F;64位，ELF则有’E’’L’’F’标记、32&#x2F;64位、版本、大小端等)、版本、支持CPU、文件类型等。</p><p>然后找到Load Commands区，这里面有几个重要的信息，其中有三个为<strong>Segment(通过Segment将相同读取及可执行权限的section汇总到一起)<strong>，</strong>Dyld</strong>，<strong>Dylib</strong>。<br>通过Segment可以找到具体执行的指令和数据的Section，和ELF里面的section head(段表)类似。应用启动的时候还没有到执行Segment那一步，还有一些重要的信息没有完成，其中一个就是动态库的符号解析和重定位。<br>PC指令寄存器首先指向了Dyld(动态链接器)，将Dyld运行起来后，开始将所有动态库复制到内存（已经在内存的无需重复加入，如系统库）。<br>所有项目里面所有用到的动态库，都会在这个时候拷贝到内存里面，一个都不会少。像一般项目，系统库都会有200-500个动态库要添加，因为已经在内存，所以不会耗费时间（手机重启后打开的第一个应用，会比较耗时，就是因为很多系统库都不在内存中）。<br>Dyld将所有需要的动态库拷贝到内存后，Runtime库也就拷贝好了。所以<strong>这是Runtime第一次展示的时机</strong>。而它第二次展示，就要等很多准备操作之后了。</p><p>因为iOS在4.3系统之后，升级了虚拟地址方案，采用了动态虚拟地址，就是每个应用程序启动后，起始地址都是动态的。那么已经编译好的Mach-0就需要重新修正指令地址了。<br>这里的指令地址修复，分为两个环节，一个是本身Mach-0内部的地址修复，如函数调用、数据使用。这个就是Rebase阶段，总体是I&#x2F;O耗时，但没有太多复杂的。</p><p>第二个环节是对动态库对引用修正。因为对动态库的使用本身就是地址为0，需要在应用启动后重定位的，所以动态虚拟地址和动态库重定位在第二个环节就一套带走了。<br>这里有个特殊点，就是动态库也是程序，同样包含指令和数据。所有应用程序对动态库的指令都是共享的，如函数调用，但是对数据都是私有的，需要应用程序自己处理。<br>第二个环节里面，会把所有需要修正的数据全部修正掉，而函数调用，则是真正运行到这行指令的时候，才能修正。没有运行之前，仅仅做了一层映射，并没有真正处理。<br>这个映射就是动态库的数据和指令的映射，是一个section保存在Data区，因为这个区的数据可读写。这个映射就是got section。<br>而第二个环节，也就是Bind阶段，更多的是CPU操作。</p><p>Rebase和Bind过后，<strong>又到了Runtime大显身手的时候了</strong>，PC指令寄存器指向了Runtime的指令位置，开始进行class的遍历、method的遍历、load的执行等等操作。</p><p>过后，才是项目的main函数的执行，然后是application的执行。当然，项目运行起来后的所有objc_msgsend，都是要走一遍Runtime的。也就是struct那一套了。</p><p>所以Runtime是一个动态库，也叫运行时库。这也是我们项目里面要使用Runtime的时候，都要先<code>#import &lt;objc/runtime.h&gt;</code>的原因。</p>]]></content>
+    <content type="html"><![CDATA[<p><strong>运行时(Runtime)<strong>本身是一个非常普通的概念，每个编程语言都会有运行时，非iOS Objective-C特有。<br>概念上理解，</strong>运行时，就是程序执行的过程</strong>，每个编程语言，只有运行后执行特定的任务才有价值，所以每个编程语言，都有运行时。<br>而Objective-C的Runtime显然不仅仅是程序执行过程这么简单，它一举将基于<strong>面向过程的语言C</strong>而实现的<strong>面向对象的语言Objective-C</strong>变成了<strong>动态语言</strong>。<br>为什么Objective-C的Runtime有些难理解，因为运行时从概念上理解非常简单，但是Java、Python、C它们的运行时都是不一样的，运行时期间可以做很多事情，所以运行时理解起来还是比较抽象和高阶。<br>如果把Runtime改名为<strong>OCDR</strong>（Objective-C Dynamic Resolution，即<strong>Objective-C动态决议</strong>），剥离运行时和运行时库的概念，那么很多人都会轻松掌握Objective-C Runtime的核心。而Objective-C Runtime本质上的确就在践行<strong>动态决议</strong>这么一个过程。</p><span id="more"></span><p>Objective-C Runtime使得函数调用变成了动态消息传递，并且可以在执行过程中对Object进行增删改查，所以更准确的说，Runtime使得Objective-C变成了动态语言。</p><h4 id="动态语言分析"><a href="#动态语言分析" class="headerlink" title="动态语言分析"></a>动态语言分析</h4><p>首先理解一下各类语言的一个区分分界，那就是<strong>动态语言</strong>和<strong>静态语言</strong>的区分（非动态类型语言和静态类型语言）。<br>关于<em>编译型语言&amp;解释型语言</em>，可以查看<a href="https://www.yigegongjiang.com/2022/Shell%E5%92%8C%E8%BF%9B%E7%A8%8B/">Shell和进程</a>。</p><h5 id="静态语言"><a href="#静态语言" class="headerlink" title="静态语言"></a>静态语言</h5><p>静态语言比较容易理解，我们通过高级语言写好的代码，经过预处理、编译、汇编、链接后，就形成了机器码（二进制文件）。这个时候，函数名、变量名都保存在符号表中，并拥有对应的虚拟地址。而我们调用一个函数，就是通过机器码调用的，汇编示例如：’call 0X12345678’，这里call代表函数调用，0X12345678代表函数的虚拟地址。<br>这个机器码执行的过程中，PC指令寄存器会不断的记录下一行将要执行的指令，然后不停的执行下去(延伸一个知识点，如果下一行指令不再内存中，操作系统会发现页缺失，然后从硬盘中将对应缺失页的指令拷贝到对应的真实内存中，然后继续执行)。<br>这里我们可以发现，我们通过高级语言写好的函数，在编译后，就已经不可改变了。程序执行后，CPU内部的运算单元、控制单元、数据单元，就有条不紊的按照机器码执行就好了。<br>那么如果我们想改变一个函数的实现呢？比如本身调用的A函数，运行期间想调用B函数，有办法实现吗？对于静态语言来说，不行！<br>那么如果我们想改变一个对象的结构体呢？对于静态语言来说，不行！<br>所以静态语言，对于函数的定义，在编译期就必须是明确的，如果找不到函数的实现，就会编译错误。<br>举例来说，如C语言。</p><h5 id="动态语言"><a href="#动态语言" class="headerlink" title="动态语言"></a>动态语言</h5><p>动态语言相比静态语言，也比较容易理解了，在运行时代码可以根据某些条件改变自身结构，如函数的调用，自定义类的生成和对象的创建等。那这样的语言就是动态语言。<br>举例来说，如Objective-C语言。</p><h5 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h5><p>C是静态的，Objective-C是动态的，而Objective-C是基于C实现的。那Objective-C是如何基于C实现动态特性的呢？</p><p>C有它的运行时，不过程序执行过程中，CPU完全掌控机器码执行流程，所以C的运行时不能多样化，基本上就是按照程序员写的代码执行顺序执行。这也是C快的原因，因为CPU直接执行，不用考虑那么多复杂的情况。</p><p>那Python如何实现动态的呢？Python也有它的运行时，不过说来巧妙，它不是编译性语言，不会像C一样打包成机器码直接执行。Python是解释性语言，代码执行到哪一行，就即时编译该行形成机器码执行，所以Python非常容易实现动态，只要代码运行过程中适当的添加if语句对将要执行的对象进行替换，就能很好的实现动态，鸭子Duck模型也就来源于此。</p><p>那Objective-C呢？Objective-C和C一样是编译性语言，项目打包后会经过编译链接等处理变成机器码。<br>Objective-C实现动态就要运行时了，因为在运行时做了很多操作，以至于很多人叫它“运行时系统”。<br>之所以前面说Objective-C的Runtime应该改名为”Objective-C Dynamic Resolution，Objective-C动态决议”，就是因为Objective-C的Runtime主要实现的两个点都更加符合“动态决议”这个命名：</p><ol><li>通过objc_msgsend(a_object,a_object_method,xx)这个中间者函数，动态解析被调用的函数。</li><li>通过指针、数组的指针、链表指针、全局数据，间接操作函数列表、属性列表等，动态的对Object进行增删改查。</li></ol><h4 id="Objective-C-Runtime-函数调用动态性"><a href="#Objective-C-Runtime-函数调用动态性" class="headerlink" title="Objective-C Runtime 函数调用动态性"></a>Objective-C Runtime 函数调用动态性</h4><p>之所以很多人说Objective-C的函数调用并非函数调用，而是消息传递，其原因就是Objective-C的函数调用很不一样。<br>在C中，我们调用一个函数，会这样写：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Node *head = NULL;</span><br><span class="line">...生成链表...</span><br><span class="line">reverseLinkList(&amp;head);// 反转链表</span><br></pre></td></tr></table></figure><p>这里，reverseLinkList函数的调用，在汇编里面为：call 0x12345678，其中0x12345678就是reverseLinkList这个符号名的虚拟地址。<br>这里我们可以发现，reverseLinkList函数的虚拟地址在编译的时候就已经定下来了，后期无法做到动态性。<br>再来看一下Objective-C的实现，因为Objective-C是面向对象的语言，所以我们调用对象的一个方法：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Person p = Person.new;</span><br><span class="line">[p realAge];</span><br></pre></td></tr></table></figure><p>这里，[p realAge]这个函数的调用，p有自己的虚拟地址，realAge函数也有自己的虚拟地址，但是在汇编之前，该函数已经被编译成了这样：<br>objc_msgsend(p, realAge)。<br>如此，Objective-C通过objc_msgsend这个完全汇编写成的中间函数，在函数内部通过<strong>运行时库</strong>对p进行superclass和isa的访问，乃至最后实现三次动态函数转发操作。<br>所以Objective-C实现消息传递，就是依靠objc_msgsend这个中间函数来实现，如果objc_msgsend的虚拟地址为0x87654321，那么[p realAge]函数被执行的时候，实际汇编为：call 0x87654321。</p><p>上面说完了objc_msgsend这个中间函数完成动态解析的操作，那它是如何进行superclass和isa的访问，又是如何访问属性和方法列表的呢？</p><h4 id="Objective-C面向对象的本质：C的struct（结构体）"><a href="#Objective-C面向对象的本质：C的struct（结构体）" class="headerlink" title="Objective-C面向对象的本质：C的struct（结构体）"></a>Objective-C面向对象的本质：C的struct（结构体）</h4><p>通过Runtime源码，我们可以发现，Objective-C里面一切皆对象，乃至UILabel、NSTimer等。而这些对象是以什么样的数据结构存在呢？<br>都是struct（结构体）!我们的成员变量，成员属性，方法等，都保存在结构体里面。<br>所以这里我们可以深刻理解一下，为什么说Objective-C是C的超集，<strong>因为面向对象的Objective-C语言完全就是依靠面向过程的C语言发展起来的，乃至于我们写的面向对象的代码，最后都会变成面向过程的执行流程</strong>。<br>我们可以查看苹果公开的runtime.h文件，都是面向过程的函数调用。如：</p><blockquote><p>objc_setAssObjective-CiatedObject(id _Nonnull object, const void * _Nonnull key, id _Nullable value, objc_AssObjective-CiationPolicy policy)</p></blockquote><p>你看，这完全就是面向过程的编程。</p><p>因为struct是我们对象的存储结构，所以我们可以通过*class_getProperty(Class _Nullable cls, const char * _Nonnull name)*等库函数直接对struct内部保存的数据进行访问。<br>比如我们要访问a_object的a_object_method方法，那么就要通过a_object_struct，根据superclass找到类A_struct，然后遍历A_struct里面的methods数组，找到a_object_method方法并执行。</p><p>struct结构体在编译后就已经确定，那如何做到动态性如增加方法呢？struct的实现是C和C++混编的，但大体逻辑不变，都是通过指针实现的。<br>比如说，struct里面有一个方法的数组指针，那么我们动态添加方法的时候，只要通过这个数组指针就可以添加到对应的方法数组中，这样就完全不会改变struct的结构(甚至如果数组需要扩容，也和struct没有任何关系)。</p><p>因为struct在编译后就已经确定，所以能做动态性的方案不外乎这几点：</p><ol><li><strong>通过数组指针，如方法列表等</strong></li><li><strong>通过链表指针，如NSNotification等</strong></li><li><strong>通过全局对象，如关联对象等</strong></li></ol><p>所以指针才是C和Objective-C最终执行的终极形态，不断通过指针间接的对数据区进行增删改查。<br>而<strong>Objective-C的Runtime就是不断通过指针对struct结构体进行增删改查数据处理来实现动态特性</strong>。</p><h4 id="Objective-C-Runtime-总结"><a href="#Objective-C-Runtime-总结" class="headerlink" title="Objective-C Runtime 总结"></a>Objective-C Runtime 总结</h4><p>Objective-C Runtime用的最多的是objc_msgsend，所有的函数调用都会通过这个消息传递完成。<br>编译成机器码的函数调用，本身无法实现动态性，通过objc_msgsend这个中间层巧妙的实现了。<br>而objc_msgsend的汇编执行又得反过来操作运行时库，又回到了对象的struct结构体上面。<br><strong>Objective-C Runtime本质就是通过指针操作struct的增删改查来实现Objective-C的动态特性</strong>。</p><p>C语言中一切皆指针，基于C发展起来的Objective-C，也是一样。<br>而指针也是中间层思想的体现。本身无法直接操作的数据，通过指针这个中间层，间接的对数据进行操作。</p><h4 id="延伸"><a href="#延伸" class="headerlink" title="延伸"></a>延伸</h4><p>神话Runtime的结果就是越发觉得自己的无知和不知所以。<br>Runtime是啥？从编译上来看，Runtime不是和我们项目一起打包成ipa包的，那Runtime还能是啥？<br><strong>Runtime说的直白点，仅仅是个动态库而已，也叫运行时库</strong>。<br>它和我们项目里面使用的自行编译或者三方编译的动态库一样，也需要在应用启动后加载到进程中（Runtime和系统framework一样，属于系统动态库）。</p><p>iOS和Mac使用的可执行文件是Mach-o，与Linux的ELF和Window的PE一样，都是基于COFF格式扩展的。<br>所以Mach-o可执行文件的运行流程和ELF等都大差不差，当然具体到细节有一些差异。但总体都是差不多的，比如segment和section、section head、内存分区等，都一样。</p><p>应用启动后，首先操作系统通过fork开辟进程，开启用户态后，然后加载Mach-o head。head里面有很多重要信息，如Magic Number(Mach-o通过0xfeedface&#x2F;0xfeedfacf表示32&#x2F;64位，ELF则有’E’’L’’F’标记、32&#x2F;64位、版本、大小端等)、版本、支持CPU、文件类型等。</p><p>然后找到Load Commands区，这里面有几个重要的信息，其中有三个为<strong>Segment(通过Segment将相同读取及可执行权限的section汇总到一起)<strong>，</strong>Dyld</strong>，<strong>Dylib</strong>。<br>通过Segment可以找到具体执行的指令和数据的Section，和ELF里面的section head(段表)类似。应用启动的时候还没有到执行Segment那一步，还有一些重要的信息没有完成，其中一个就是动态库的符号解析和重定位。<br>PC指令寄存器首先指向了Dyld(动态链接器)，将Dyld运行起来后，开始将所有动态库复制到内存（已经在内存的无需重复加入，如系统库）。<br>所有项目里面所有用到的动态库，都会在这个时候拷贝到内存里面，一个都不会少。像一般项目，系统库都会有200-500个动态库要添加，因为已经在内存，所以不会耗费时间（手机重启后打开的第一个应用，会比较耗时，就是因为很多系统库都不在内存中）。<br>Dyld将所有需要的动态库拷贝到内存后，Runtime库也就拷贝好了。所以<strong>这是Runtime第一次展示的时机</strong>。而它第二次展示，就要等很多准备操作之后了。</p><p>因为iOS在4.3系统之后，升级了虚拟地址方案，采用了动态虚拟地址，就是每个应用程序启动后，起始地址都是动态的。那么已经编译好的Mach-0就需要重新修正指令地址了。<br>这里的指令地址修复，分为两个环节，一个是本身Mach-0内部的地址修复，如函数调用、数据使用。这个就是Rebase阶段，总体是I&#x2F;O耗时，但没有太多复杂的。</p><p>第二个环节是对动态库对引用修正。因为对动态库的使用本身就是地址为0，需要在应用启动后重定位的，所以动态虚拟地址和动态库重定位在第二个环节就一套带走了。<br>这里有个特殊点，就是动态库也是程序，同样包含指令和数据。所有应用程序对动态库的指令都是共享的，如函数调用，但是对数据都是私有的，需要应用程序自己处理。<br>第二个环节里面，会把所有需要修正的数据全部修正掉，而函数调用，则是真正运行到这行指令的时候，才能修正。没有运行之前，仅仅做了一层映射，并没有真正处理。<br>这个映射就是动态库的数据和指令的映射，是一个section保存在Data区，因为这个区的数据可读写。这个映射就是got section。<br>而第二个环节，也就是Bind阶段，更多的是CPU操作。</p><p>Rebase和Bind过后，<strong>又到了Runtime大显身手的时候了</strong>，PC指令寄存器指向了Runtime的指令位置，开始进行class的遍历、method的遍历、load的执行等等操作。</p><p>过后，才是项目的main函数的执行，然后是application的执行。当然，项目运行起来后的所有objc_msgsend，都是要走一遍Runtime的。也就是struct那一套了。</p><p>所以Runtime是一个动态库，也叫运行时库。这也是我们项目里面要使用Runtime的时候，都要先<code>#import &lt;objc/runtime.h&gt;</code>的原因。</p>]]></content>
     
     
     <summary type="html">&lt;p&gt;&lt;strong&gt;运行时(Runtime)&lt;strong&gt;本身是一个非常普通的概念，每个编程语言都会有运行时，非iOS Objective-C特有。&lt;br&gt;概念上理解，&lt;/strong&gt;运行时，就是程序执行的过程&lt;/strong&gt;，每个编程语言，只有运行后执行特定的任务才有价值，所以每个编程语言，都有运行时。&lt;br&gt;而Objective-C的Runtime显然不仅仅是程序执行过程这么简单，它一举将基于&lt;strong&gt;面向过程的语言C&lt;/strong&gt;而实现的&lt;strong&gt;面向对象的语言Objective-C&lt;/strong&gt;变成了&lt;strong&gt;动态语言&lt;/strong&gt;。&lt;br&gt;为什么Objective-C的Runtime有些难理解，因为运行时从概念上理解非常简单，但是Java、Python、C它们的运行时都是不一样的，运行时期间可以做很多事情，所以运行时理解起来还是比较抽象和高阶。&lt;br&gt;如果把Runtime改名为&lt;strong&gt;OCDR&lt;/strong&gt;（Objective-C Dynamic Resolution，即&lt;strong&gt;Objective-C动态决议&lt;/strong&gt;），剥离运行时和运行时库的概念，那么很多人都会轻松掌握Objective-C Runtime的核心。而Objective-C Runtime本质上的确就在践行&lt;strong&gt;动态决议&lt;/strong&gt;这么一个过程。&lt;/p&gt;</summary>
@@ -846,6 +868,10 @@
     
     <category term="iOS" scheme="https://www.yigegongjiang.com/tags/iOS/"/>
     
+    <category term="计算机原理" scheme="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="内存" scheme="https://www.yigegongjiang.com/tags/%E5%86%85%E5%AD%98/"/>
+    
     <category term="Swift" scheme="https://www.yigegongjiang.com/tags/Swift/"/>
     
   </entry>
@@ -1041,6 +1067,8 @@
     
     <category term="计算机原理" scheme="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/"/>
     
+    <category term="编码" scheme="https://www.yigegongjiang.com/tags/%E7%BC%96%E7%A0%81/"/>
+    
   </entry>
   
   <entry>
@@ -1144,15 +1172,11 @@
     <category term="技术" scheme="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="iOS" scheme="https://www.yigegongjiang.com/tags/iOS/"/>
-    
     <category term="C" scheme="https://www.yigegongjiang.com/tags/C/"/>
     
     <category term="计算机原理" scheme="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/"/>
     
-    <category term="Python" scheme="https://www.yigegongjiang.com/tags/Python/"/>
-    
-    <category term="Node.js" scheme="https://www.yigegongjiang.com/tags/Node-js/"/>
+    <category term="内存" scheme="https://www.yigegongjiang.com/tags/%E5%86%85%E5%AD%98/"/>
     
   </entry>
   
@@ -1251,6 +1275,8 @@
     
     <category term="iOS" scheme="https://www.yigegongjiang.com/tags/iOS/"/>
     
+    <category term="内存" scheme="https://www.yigegongjiang.com/tags/%E5%86%85%E5%AD%98/"/>
+    
   </entry>
   
   <entry>
@@ -1317,9 +1343,7 @@
     
     <category term="iOS" scheme="https://www.yigegongjiang.com/tags/iOS/"/>
     
-    <category term="Python" scheme="https://www.yigegongjiang.com/tags/Python/"/>
-    
-    <category term="Node.js" scheme="https://www.yigegongjiang.com/tags/Node-js/"/>
+    <category term="计算机原理" scheme="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/"/>
     
   </entry>
   
