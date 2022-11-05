@@ -847,7 +847,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2019/%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E8%AF%A6%E8%A7%A3-%E7%94%B1%E5%BA%95%E5%88%B0%E9%AB%98/">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2019/%E4%B8%BA%E4%BB%80%E4%B9%8832%E4%BD%8D%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8F%AA%E8%83%BD%E7%94%A84G%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://s1.ax1x.com/2020/05/05/Yi9cuQ.gif">
@@ -865,7 +865,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E8%AF%A6%E8%A7%A3-%E7%94%B1%E5%BA%95%E5%88%B0%E9%AB%98/" class="post-title-link" itemprop="url">内存分配详解-由底到高</a>
+          <a href="/2019/%E4%B8%BA%E4%BB%80%E4%B9%8832%E4%BD%8D%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8F%AA%E8%83%BD%E7%94%A84G%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4/" class="post-title-link" itemprop="url">为什么32位操作系统只能用4G内存空间</a>
         </h2>
 
         <div class="post-meta-container">
@@ -898,12 +898,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="一行代码引发的思考"><a href="#一行代码引发的思考" class="headerlink" title="一行代码引发的思考"></a>一行代码引发的思考</h3><blockquote>
-<p>int a &#x3D; 5;</p>
-</blockquote>
-<p>问1:变量a在内存的哪里？<br>问2:数字5在内存的哪里？<br>问3:int的字节大小是多少？如果a&#x3D;12345后，字节大小变不变？<br>问4:代码里面print(“%d”, a)，为什么可以输出5，a是怎么找到5的？<br>问5:内存到底在哪里？<br>问6:总内存有多大？<br>问7:总内存的大小是怎么确定的？</p>
-<p>各位能回答上面的7问吗？</p>
-<p>由底往上来解析，一步一步揭开洋葱的外衣，真相终究会大白于天下！</p>
+          <h3 id="字节与比特"><a href="#字节与比特" class="headerlink" title="字节与比特"></a>字节与比特</h3><p><code>比特是计算机存储的最小存储单元</code>。我们认知到的数字<code>3</code>，在计算机的存储里（硬盘或者内存）的结构是这样的：<code>00000011</code>，也就是我们理解的二进制。<br>所以这个数字<code>3</code>是由8位组成的。每位有<code>0</code>和<code>1</code>两种变化。<br>比特存储，是计算机的基石。我们在互联网上通行的一切，如图片、音视频、文字，甚至各位的博客、App、电子书等等，能想到的能通过互联网传输的一切，都是比特存储。<br>举个例子，我们看的一张图片，在磁盘上的存储，或许就是这样子：<code>0101011101010101010111101011110101010101100***(省略100000000个)***1010100111010101</code>。</p>
+<p>1字节(byte)&#x3D;8比特(bit)<br>我们刚才说到的数字<code>3</code>，就是一个字节，在磁盘上就是<code>00000011</code>。（为了便于理解，实际可能是<code>00000000 00000011</code>，或者<code>00000000 00000000 00000000 00000011</code>）。</p>
+<p>1KB &#x3D; 1024B（2的10次方）<br>1MB &#x3D; 1024KB（2的10次方）<br>1GB &#x3D; 1024MB（2的10次方）<br>这些大小的计算都是定死的规则。规则很重要，有了规则才能合作。</p>
           <!--noindex-->
           <!--/noindex-->
         
