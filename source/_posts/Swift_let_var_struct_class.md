@@ -105,7 +105,7 @@ const int * const age4 = &temp;
 在代码的第15行，**test1.name2 = "t"**报错为**Cannot assign to property: 'test1' is a 'let' constant**，代码的第16行，**test1 = Person1()**报错为**Cannot assign to value: 'test1' is a 'let' constant**。他们的报错原因完全相同，而**name2**本身是var属性。所以15行和16行的报错不是struct内部决定的，而是由**let test1**这个**let**属性决定的。
 同样的，我们看到代码第25行，**test3.name2 = "t"**没有报错，和第15行出现报错对比，可以确定同样的**let**类型的对象变量，在修饰struct和class的时候，他们的行为却是不一致的。
 
-（我相信有不少朋友，这里会饶进入一个洞里，那就是C里面的const修饰的是Int基础类型，而这里let修饰的是struct对象，struct可不是Int或者String，struct可是对象啊！他们是否有可比性？如果没有可比性，那么上面的结论是否还能成立？这里做说明：Int、Char是啥？在内存里面就是一块存储区域。struct呢？也是一块存储区域。对象是啥？是方便我们开发所汇总出来的一套编程思想，即面向对象编程。过了IDE，解析器和编译器还会管你是Int基础类型或者对象类型？不会管的。`在广东人面前，什么都是肉，即使你是福建人。`退一万步来说，Swift里面，Int、String也是通过struct来实现的啊😂）
+（我相信有不少朋友，这里会饶进入一个洞里，那就是C里面的const修饰的是Int基础类型，而这里let修饰的是struct对象，struct可不是Int或者String，struct可是对象啊！他们是否有可比性？如果没有可比性，那么上面的结论是否还能成立？这里做说明：Int、Char是啥？在内存里面就是一块存储区域。struct呢？也是一块存储区域。对象是啥？是方便我们开发所汇总出来的一套编程思想，即面向对象编程。过了IDE，解析器和编译器还会管你是Int基础类型或者对象类型？不会管的。`在广东人面前，什么都是肉，即使你是福建人。`退一万步来说，Swift里面，Int、String也是通过struct来实现的）
 
 那我们在看看**var**。test2和test4两个var变量，虽然一个是struct对象，一个是class对象，但是他们的表现却是一致的。其实var就是**非 let**修饰符。let修饰符和const类似，那么var其实就是省略了const的修饰符。我们举下面例子
 ```
@@ -134,7 +134,7 @@ int age = 10;
 这里，我想从属性约束上说一点，这点网上说的不多。
 
 对于class，我们都是非常熟悉的了，毕竟面向对象编程这么久，也无需多言。属性是var，那么就是完全可变的。如果是let，那么回到上一个论题。
-而struct，就毕竟陌生了。我们看下面的代码截图：
+对于 struct，我们看下面的代码截图：
 ![swift_let_var_3](https://s2.ax1x.com/2020/03/11/8EQpw9.png)
 我们发现，在struct里面，不管属性是let还是var，方法（内部函数）都是无法直接修改该属性的。如代码行10和13行所示。
 如果我们需要修改内部属性，需要在方法前面加上**mutating**关键字。这在class里面是不存在的，说明struct相比class，属性约束要强一些。
