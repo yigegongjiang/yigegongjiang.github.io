@@ -211,9 +211,9 @@
     
     <category term="C" scheme="https://www.yigegongjiang.com/tags/C/"/>
     
-    <category term="计算机原理" scheme="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/"/>
-    
     <category term="Shell" scheme="https://www.yigegongjiang.com/tags/Shell/"/>
+    
+    <category term="计算机原理" scheme="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/"/>
     
     <category term="内存" scheme="https://www.yigegongjiang.com/tags/%E5%86%85%E5%AD%98/"/>
     
@@ -736,15 +736,15 @@
     <category term="技术" scheme="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="iOS" scheme="https://www.yigegongjiang.com/tags/iOS/"/>
-    
     <category term="C" scheme="https://www.yigegongjiang.com/tags/C/"/>
+    
+    <category term="iOS" scheme="https://www.yigegongjiang.com/tags/iOS/"/>
     
     <category term="计算机原理" scheme="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/"/>
     
-    <category term="内存" scheme="https://www.yigegongjiang.com/tags/%E5%86%85%E5%AD%98/"/>
-    
     <category term="网络" scheme="https://www.yigegongjiang.com/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+    <category term="内存" scheme="https://www.yigegongjiang.com/tags/%E5%86%85%E5%AD%98/"/>
     
   </entry>
   
@@ -816,9 +816,9 @@
     <category term="技术" scheme="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="iOS" scheme="https://www.yigegongjiang.com/tags/iOS/"/>
-    
     <category term="C" scheme="https://www.yigegongjiang.com/tags/C/"/>
+    
+    <category term="iOS" scheme="https://www.yigegongjiang.com/tags/iOS/"/>
     
     <category term="计算机原理" scheme="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/"/>
     
@@ -841,9 +841,9 @@
     <category term="技术" scheme="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="iOS" scheme="https://www.yigegongjiang.com/tags/iOS/"/>
-    
     <category term="C" scheme="https://www.yigegongjiang.com/tags/C/"/>
+    
+    <category term="iOS" scheme="https://www.yigegongjiang.com/tags/iOS/"/>
     
   </entry>
   
