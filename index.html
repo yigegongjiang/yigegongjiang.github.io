@@ -89,7 +89,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">5</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">61</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user fa-fw"></i>About</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">5</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">62</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user fa-fw"></i>About</a></li>
   </ul>
 </nav>
 
@@ -128,7 +128,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-count">62</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -158,6 +158,98 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2023/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F%E6%80%8E%E4%B9%88%E6%90%AD%E5%BB%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301081602545.gif">
+      <meta itemprop="name" content="隔壁王二">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个工匠">
+      <meta itemprop="description" content="跋山涉水，走心为匠。时间，真的不多了。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 一个工匠">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F%E6%80%8E%E4%B9%88%E6%90%AD%E5%BB%BA/" class="post-title-link" itemprop="url">移动端日志系统怎么搭建</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-01-23 02:34:25" itemprop="dateCreated datePublished" datetime="2023-01-23T02:34:25+08:00">2023-01-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>端上日志系统非常重要，对于用户侧的异常、排障、动线、行为等很多重要数据，都可以通过端上日志来做检索。如何搭建一套准确、高性能的完备日志 SDK 就显得尤为重要。 （另一个重要的排障信息源是埋点，通过埋点可以获取更精准的用户动线。后面有时间做一下埋点数据化方面的总结）。<br>移动端日志系统，将承载 Native、h5、动态化等多技术栈环境下的日志收口工作，同时要兼顾日志不丢不乱和高性能，其实还是有不少挑战的。<br>这一方面<strong>CocoaLumberjack</strong>其实已经做的很好，很多公司都用它作为自己的日志系统的基础框架。但它还不能作为大型 app 的流量日志收口系统。因为流量大了以后，少量的日志丢失也会带来很大的缺口，而性能方面它也有很多短板。<br><strong>mmap</strong> 可以在 IO 性能方面有显著的提升，也就是后端比较通用的<strong>零拷贝</strong>技术。在移动端上<strong>FastImageCache</strong>对 mmap 有较深的应用，但它业务绑定太强，一般无法直接使用，更多的是学习 mmap 的落地。</p>
+<p>本文会对日志系统的一些完备要素做一些说明，并特别讲解下<strong>CocoaLumberjack</strong>、<strong>FastImageCache</strong>两个技术库。</p>
+<ul>
+<li>日志是否全量。很多业务开发同学不使用日志 SDK 做日志输出，可能使用系统日志做打印，这一部分日志是否需要做收口，需要权衡一下。</li>
+<li>分等级和模块。分 Level 和 modules 进行记录和检索，可以提供问题排查速度。这方面有专业的 Debug&#x2F;Info&#x2F;Error 等标准。技术上比较好实现。</li>
+<li>性能。主要是卡顿和耗电。日志系统会底层基础架构，大流量的打入，会频繁的内存释放、I&#x2F;O，过多的占用 CPU 会导致卡顿和耗电，也会影响拖延上层业务异步代码的执行时机。</li>
+<li>数据不丢不乱。没有办法做到完全的不丢日志，只能尽可能少的减少。在 crash &#x2F; CPU 繁忙 &#x2F; 压缩加密严重耗时拖延队列等异常场景，这方面问题尤其突出。不乱就需要增加串型队列或者锁，这些同步机制都需要保障阻塞和性能。</li>
+<li>实时观测。开发和测试同学需要能够实时看到日志打印情况，这在开发和提测阶段非常有用。</li>
+<li>压缩+加密。压缩和加密都是耗时操作，对 CPU 的压力比较大。</li>
+<li>上报。得有回捞机制，得保障数据传输安全。</li>
+<li>后端系统。前置的采集完成后，后端系统的数据化检索、数据可视化等工作都是重中之重。</li>
+<li>隐私安全。这一块国内所有厂商都极度匮乏。大厂的开发同学也可以随意捞取用户日志，异常日志在内部系统可以随意传播。如果有这方面的诉求，那么整套安全体系都需要建立起来。</li>
+</ul>
+          <!--noindex-->
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -936,90 +1028,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2022/%E9%9A%8F%E6%97%B6%E9%97%B4%E7%9A%84%E5%8F%98%E5%8C%96/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301081602545.gif">
-      <meta itemprop="name" content="隔壁王二">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一个工匠">
-      <meta itemprop="description" content="跋山涉水，走心为匠。时间，真的不多了。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 一个工匠">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/%E9%9A%8F%E6%97%B6%E9%97%B4%E7%9A%84%E5%8F%98%E5%8C%96/" class="post-title-link" itemprop="url">随时间的变化</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-08-14 09:28:01" itemprop="dateCreated datePublished" datetime="2022-08-14T09:28:01+08:00">2022-08-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%A7%82%E7%82%B9/" itemprop="url" rel="index"><span itemprop="name">观点</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>时间，永远不会成为你的朋友。它会从前面拉着你，从后面推着你，有时候温文尔雅的放任你像个君子，有时候拿着皮鞭抽打下来像个魔鬼，最后把你拖到年老与色暮，拖到离别和死亡。在生命的最后一刻，有不甘，有妥协，但是时间何曾念及你是它的盟友或者朋友？</p>
-</blockquote>
-<p>我最近几年，真的是怕了时间了。也不是贪生怕死之类的情绪，真遇到突发性的死亡谁都得尿下裤子。更多的是纯粹的对时间的恐惧。<br>时间它有时候像个女人一样慢慢推着我，有时候像个男人一样粗鲁的拉着我，它一直在逼着我做点什么。当我停下来单纯就在休息的时候，我就感觉到它在我面前盯着我，让我做点什么。<br>你还记得失恋后，你是怎么释怀的吗？即使当时多么的撕心裂肺。以及很严重的手术后，身体怎么恢复的吗？失恋和手术，都不会一两天好转，可就是不知道什么时候开始，就恢复了。</p>
-<p>这些年，发生了很多意想不到的变化。比如之前上厕所一定要用蹲坑，现在也习惯马桶了。还有进屋穿鞋，之前我是想着以后有房子了，进屋也要穿鞋才不硌脚，现在是自觉的脱鞋进屋了。还有游戏，我几波起伏，从小学痛恨到中学迷恋到后来的无感，现在又给孩子买了 Switch。对游戏有很多次认知上的翻转。<br>总体下来，自以为的底线被不断翻篇。不知道这些年发生了什么，可就是实打实的变化着。变化的方向说不上好也说不上坏，谁知道过几年会不会再次变化呢。</p>
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" title="Next page" aria-label="Next page" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1079,12 +1087,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
   <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/"}</script>
   <script src="/js/third-party/quicklink.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
 <script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"d1546d731a9f30cc80127d57142a482b"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
-<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
-<script src="/js/third-party/comments/utterances.js"></script>
 
 </body>
 </html>
