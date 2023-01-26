@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.14.1","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="一年前写了一篇提高效率的手艺，提到了 Vim 作为划时代的文本编辑工具，可以有效的提高文本编辑的效率，对于写作或者 coding 都非常有用。今天整理一个稍微进阶的教程。vimer 十几年的 95% 的操作使用，应该都在这里。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vim 技巧">
+<meta property="og:url" content="https://www.yigegongjiang.com/2023/Vim%20%E6%8A%80%E5%B7%A7/index.html">
+<meta property="og:site_name" content="一个工匠">
+<meta property="og:description" content="一年前写了一篇提高效率的手艺，提到了 Vim 作为划时代的文本编辑工具，可以有效的提高文本编辑的效率，对于写作或者 coding 都非常有用。今天整理一个稍微进阶的教程。vimer 十几年的 95% 的操作使用，应该都在这里。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301270125293.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301270126742.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301270126310.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301270126737.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301270126377.png">
+<meta property="article:published_time" content="2023-01-26T15:55:42.000Z">
+<meta property="article:author" content="隔壁王二">
+<meta property="article:tag" content="Life">
+<meta property="article:tag" content="工具">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301270125293.png">
+
+
+<link rel="canonical" href="https://www.yigegongjiang.com/2023/Vim%20%E6%8A%80%E5%B7%A7/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2023/Vim%20%E6%8A%80%E5%B7%A7/","path":"2023/Vim 技巧/","title":"Vim 技巧"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Vim 技巧 | 一个工匠</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="一个工匠" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="一个工匠" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">一个工匠</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">跋山涉水，走心为匠。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">5</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">64</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user fa-fw"></i>About</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8C%89%E9%94%AE"><span class="nav-number">1.</span> <span class="nav-text">按键</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E4%B8%AA%E8%A1%8C%E4%B8%BA%E6%93%8D%E4%BD%9C"><span class="nav-number">1.1.</span> <span class="nav-text">单个行为操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E7%A7%8D%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">4 种模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AA%E8%A1%8C%E4%B8%BA%E7%BB%84%E5%90%88"><span class="nav-number">1.3.</span> <span class="nav-text">多个行为组合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="nav-number">1.4.</span> <span class="nav-text">寄存器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8%E4%BD%BF%E7%94%A8"><span class="nav-number">1.5.</span> <span class="nav-text">寄存器使用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8"><span class="nav-number">2.1.</span> <span class="nav-text">插件管理器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vundle"><span class="nav-number">2.1.1.</span> <span class="nav-text">Vundle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dein"><span class="nav-number">2.1.2.</span> <span class="nav-text">Dein</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">插件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NeoVim"><span class="nav-number">3.</span> <span class="nav-text">NeoVim</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IDE"><span class="nav-number">4.</span> <span class="nav-text">IDE</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E4%BD%BF%E7%94%A8"><span class="nav-number">5.</span> <span class="nav-text">工作使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vim-%E7%BB%88%E7%AB%AF"><span class="nav-number">5.1.</span> <span class="nav-text">Vim 终端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%86%E6%88%90IDE"><span class="nav-number">5.2.</span> <span class="nav-text">集成IDE</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A6%BB%E5%BC%80%E9%BC%A0%E6%A0%87"><span class="nav-number">6.</span> <span class="nav-text">离开鼠标</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E9%A1%B5-vim-%E6%8F%92%E4%BB%B6%EF%BC%88chrome-x2F-safari%EF%BC%89"><span class="nav-number">6.1.</span> <span class="nav-text">网页 vim 插件（chrome&#x2F;safari）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%B5%8F%E8%A7%88%E5%99%A8-Ranger"><span class="nav-number">6.2.</span> <span class="nav-text">文件浏览器 Ranger</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E9%94%AE%E7%9B%98-homerow"><span class="nav-number">6.3.</span> <span class="nav-text">全键盘 homerow</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%99%E4%BD%9C%E6%8E%A8%E8%8D%90"><span class="nav-number">7.</span> <span class="nav-text">写作推荐</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="隔壁王二"
+      src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301081602545.gif">
+  <p class="site-author-name" itemprop="name">隔壁王二</p>
+  <div class="site-description" itemprop="description">跋山涉水，走心为匠。时间，真的不多了。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2023/Vim%20%E6%8A%80%E5%B7%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301081602545.gif">
+      <meta itemprop="name" content="隔壁王二">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个工匠">
+      <meta itemprop="description" content="跋山涉水，走心为匠。时间，真的不多了。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Vim 技巧 | 一个工匠">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Vim 技巧
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-01-26 23:55:42" itemprop="dateCreated datePublished" datetime="2023-01-26T23:55:42+08:00">2023-01-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%90%90%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">琐事</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>一年前写了一篇<a href="https://www.yigegongjiang.com/2022/%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E6%89%8B%E8%89%BA/">提高效率的手艺</a>，提到了 Vim 作为划时代的文本编辑工具，可以有效的提高文本编辑的效率，对于写作或者 coding 都非常有用。<br>今天整理一个稍微进阶的教程。vimer 十几年的 95% 的操作使用，应该都在这里。</p>
+<span id="more"></span>
+<h1 id="按键"><a href="#按键" class="headerlink" title="按键"></a>按键</h1><h2 id="单个行为操作"><a href="#单个行为操作" class="headerlink" title="单个行为操作"></a>单个行为操作</h2><ul>
+<li>移动：hjkl &#x2F; w &#x2F; e &#x2F; b &#x2F; $ &#x2F; 0(^)</li>
+<li>删除：dd &#x2F; x</li>
+<li>行合并：J</li>
+<li>换行：o &#x2F; O</li>
+<li>撤回 &#x2F; 返回：u &#x2F; C+r</li>
+<li>插入：i &#x2F; （I-A-a）</li>
+<li>查找：f(-;-,) &#x2F; t &#x2F; * &#x2F; #</li>
+<li>替换：r</li>
+<li>括号匹配：%</li>
+<li>黏贴复制：yy-dd&#x2F;p</li>
+<li>拖屏：HLM &#x2F; zz(zt-zb) &#x2F; c+e &#x2F; c+y &#x2F; c+f(d-b-u) &#x2F; :n &#x2F; G &#x2F; gg</li>
+<li>位置标记：ma-‘a(mx - moving - ‘x)</li>
+<li>保存退出：:wq（<span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvMTE4MjgyNzAvaG93LWRvLWktZXhpdC12aW0=">https://stackoverflow.com/questions/11828270/how-do-i-exit-vim<i class="fa fa-external-link-alt"></i></span>）</li>
+</ul>
+<h2 id="4-种模式"><a href="#4-种模式" class="headerlink" title="4 种模式"></a>4 种模式</h2><p>esc：普通模式<br>i&#x2F;a：插入模式<br><strong>shift+:：</strong>命令模式<br>ctrl+v：区块模式</p>
+<h2 id="多个行为组合"><a href="#多个行为组合" class="headerlink" title="多个行为组合"></a>多个行为组合</h2><p>动词：d &#x2F; c &#x2F; y &#x2F; v &#x2F; …<br>介词：i &#x2F; a &#x2F; f &#x2F; t &#x2F; …<br>名词：w &#x2F; e &#x2F; p &#x2F; { &#x2F; } &#x2F; ( &#x2F; )  &#x2F; [ &#x2F; ] &#x2F; “ &#x2F; ‘ &#x2F; 字符 &#x2F; …</p>
+<ul>
+<li>动词 - (数字) - (介词) - 名词<ul>
+<li>dw &#x2F; dt? &#x2F; ci) &#x2F; ca} &#x2F; d2w &#x2F; y$ &#x2F; y3w &#x2F; v2i)</li>
+</ul>
+</li>
+<li>数字 - 动词 - (名词)<ul>
+<li>6ixy &#x2F; 4p &#x2F; 2dw &#x2F; 0y$</li>
+</ul>
+</li>
+</ul>
+<h2 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h2><ul>
+<li>录制：q[a-z] - anyaction - q</li>
+<li>使用录制：3@[a-z]</li>
+</ul>
+<h2 id="寄存器使用"><a href="#寄存器使用" class="headerlink" title="寄存器使用"></a>寄存器使用</h2><ul>
+<li>多行文本的行首&#x2F;行尾增加同样的内容<ul>
+<li>使用区块：c+v -&gt; j&#x2F;h -&gt; $&#x2F;0&#x2F;^ -&gt; I&#x2F;A -&gt; input -&gt; esc</li>
+<li>使用寄存器：qa -&gt; $&#x2F;0&#x2F;^ -&gt; I&#x2F;A -&gt; input -&gt; esc -&gt; j -&gt; q | 3@a</li>
+</ul>
+</li>
+<li>多行文本，增加序号<ul>
+<li>:let i&#x3D;0（定义变量）</li>
+<li>qa（开始录制）</li>
+<li>0 -&gt; i -&gt; input -&gt; esc -&gt; 0（到行首输入需要的分割等内容，然后回到普通模式，再次回到行首）</li>
+<li>:let @n&#x3D;i（变量放入寄存器）</li>
+<li>:let i&#x3D;i+1（变量+1，供下次使用）</li>
+<li>“nP（将寄存器的值复制到行首之前）</li>
+<li>j（进入下一行）</li>
+<li>q（结束录制）</li>
+<li>3@a（回放 3 次）</li>
+</ul>
+</li>
+</ul>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>～&#x2F;.vimrc，示例如下：</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtaXgvdmltcmMvYmxvYi9tYXN0ZXIvdmltcmNzL2Jhc2ljLnZpbQ==">vimrc&#x2F;basic.vim at master · amix&#x2F;vimrc<i class="fa fa-external-link-alt"></i></span></p>
+<h2 id="插件管理器"><a href="#插件管理器" class="headerlink" title="插件管理器"></a>插件管理器</h2><h3 id="Vundle"><a href="#Vundle" class="headerlink" title="Vundle"></a>Vundle</h3><p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1Z1bmRsZVZpbS9WdW5kbGUudmlt">https://github.com/VundleVim/Vundle.vim<i class="fa fa-external-link-alt"></i></span></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">set nocompatible              &quot; be iMproved, required</span><br><span class="line">filetype off                  &quot; required</span><br><span class="line"></span><br><span class="line">&quot; set the runtime path to include Vundle and initialize</span><br><span class="line">set rtp+=~/.vim/bundle/Vundle.vim</span><br><span class="line">call vundle#begin()</span><br><span class="line">&quot; alternatively, pass a path where Vundle should install plugins</span><br><span class="line">&quot;call vundle#begin(&#x27;~/some/path/here&#x27;)</span><br><span class="line"></span><br><span class="line">&quot; let Vundle manage Vundle, required</span><br><span class="line">Plugin &#x27;VundleVim/Vundle.vim&#x27;</span><br><span class="line"></span><br><span class="line">&quot; The following are examples of different formats supported.</span><br><span class="line">&quot; Keep Plugin commands between vundle#begin/end.</span><br><span class="line">&quot; plugin on GitHub repo</span><br><span class="line">Plugin &#x27;tpope/vim-fugitive&#x27;</span><br><span class="line">&quot; plugin from &lt;http://vim-scripts.org/vim/scripts.html&gt;</span><br><span class="line">&quot; Plugin &#x27;L9&#x27;</span><br><span class="line">&quot; Git plugin not hosted on GitHub</span><br><span class="line">Plugin &#x27;git://git.wincent.com/command-t.git&#x27;</span><br><span class="line">&quot; git repos on your local machine (i.e. when working on your own plugin)</span><br><span class="line">Plugin &#x27;file:///home/gmarik/path/to/plugin&#x27;</span><br><span class="line">&quot; The sparkup vim script is in a subdirectory of this repo called vim.</span><br><span class="line">&quot; Pass the path to set the runtimepath properly.</span><br><span class="line">Plugin &#x27;rstacruz/sparkup&#x27;, &#123;&#x27;rtp&#x27;: &#x27;vim/&#x27;&#125;</span><br><span class="line">&quot; Install L9 and avoid a Naming conflict if you&#x27;ve already installed a</span><br><span class="line">&quot; different version somewhere else.</span><br><span class="line">&quot; Plugin &#x27;ascenator/L9&#x27;, &#123;&#x27;name&#x27;: &#x27;newL9&#x27;&#125;</span><br><span class="line"></span><br><span class="line">&quot; All of your Plugins must be added before the following line</span><br><span class="line">call vundle#end()            &quot; required</span><br><span class="line">filetype plugin indent on    &quot; required</span><br><span class="line">&quot; To ignore plugin indent changes, instead use:</span><br><span class="line">&quot;filetype plugin on</span><br><span class="line">&quot;</span><br><span class="line">&quot; Brief help</span><br><span class="line">&quot; :PluginList       - lists configured plugins</span><br><span class="line">&quot; :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate</span><br><span class="line">&quot; :PluginSearch foo - searches for foo; append `!` to refresh local cache</span><br><span class="line">&quot; :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal</span><br><span class="line">&quot;</span><br><span class="line">&quot; see :h vundle for more details or wiki for FAQ</span><br><span class="line">&quot; Put your non-Plugin stuff after this line</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Dein"><a href="#Dein" class="headerlink" title="Dein"></a>Dein</h3><p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1Nob3Vnby9kZWluLnZpbQ==">https://github.com/Shougo/dein.vim<i class="fa fa-external-link-alt"></i></span></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sh -c &quot;$(wget -O- &lt;https://raw.githubusercontent.com/Shougo/dein-installer.vim/master/installer.sh&gt;)&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><p>示例：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3ByZXNlcnZpbS9uZXJkdHJlZQ==">https://github.com/preservim/nerdtree<i class="fa fa-external-link-alt"></i></span></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// Vundle</span><br><span class="line">call vundle#begin()</span><br><span class="line">  Plugin &#x27;preservim/nerdtree&#x27;</span><br><span class="line">call vundle#end()</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">// Dein</span><br><span class="line">call dein#begin()</span><br><span class="line">  call dein#add(&#x27;preservim/nerdtree&#x27;)</span><br><span class="line">call dein#end()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>插件就 Google 尽情的搜索吧，选择自己喜欢和必须的就好。Vim 插件装多了会卡，NeoVim 不会。<br>插件都是程序员非商用的产出，都是没有什么美感的。有些配置还比较繁琐，使用问题不大。<br>就这样。</p>
+<h1 id="NeoVim"><a href="#NeoVim" class="headerlink" title="NeoVim"></a>NeoVim</h1><p>和 vim 有配置上的差异，使用上一样。<strong>推荐使用 NeoVim</strong>。</p>
+<p>上面的配置、插件管理器等都是 Vim 的，NeoVim 会有一些不一样，但大体也都是一致的。插件也都是能共用的，很多插件也为 NeoVim 做了专门适配。</p>
+<h1 id="IDE"><a href="#IDE" class="headerlink" title="IDE"></a>IDE</h1><p><span class="exturl" data-url="aHR0cHM6Ly9zcGFjZXZpbS5vcmcv">https://spacevim.org/<i class="fa fa-external-link-alt"></i></span></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301270125293.png"></p>
+<ol>
+<li>多种开发语言的配置箱</li>
+<li>缓存&#x2F;窗口管理方便</li>
+<li>撤销树</li>
+<li>提供的快捷帮助命令使用很方便</li>
+<li>简化配置</li>
+<li>命令终端使用非常方便</li>
+</ol>
+<h1 id="工作使用"><a href="#工作使用" class="headerlink" title="工作使用"></a>工作使用</h1><h2 id="Vim-终端"><a href="#Vim-终端" class="headerlink" title="Vim 终端"></a>Vim 终端</h2><ul>
+<li>单文件查看&#x2F;编辑</li>
+<li>系统文件配置</li>
+<li>coding</li>
+</ul>
+<h2 id="集成IDE"><a href="#集成IDE" class="headerlink" title="集成IDE"></a>集成IDE</h2><ul>
+<li>vscode(安装 vim 插件)：全局搜索 &#x2F; 代码阅读 &#x2F; json格式化</li>
+<li>xcode(打开 vim 模式)：函数调用链 &#x2F; code</li>
+</ul>
+<h1 id="离开鼠标"><a href="#离开鼠标" class="headerlink" title="离开鼠标"></a>离开鼠标</h1><h2 id="网页-vim-插件（chrome-x2F-safari）"><a href="#网页-vim-插件（chrome-x2F-safari）" class="headerlink" title="网页 vim 插件（chrome&#x2F;safari）"></a>网页 vim 插件（chrome&#x2F;safari）</h2><p><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301270126742.png"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301270126310.png"></p>
+<h2 id="文件浏览器-Ranger"><a href="#文件浏览器-Ranger" class="headerlink" title="文件浏览器 Ranger"></a>文件浏览器 Ranger</h2><p><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301270126737.png"></p>
+<h2 id="全键盘-homerow"><a href="#全键盘-homerow" class="headerlink" title="全键盘 homerow"></a>全键盘 homerow</h2><p><span class="exturl" data-url="aHR0cHM6Ly93d3cuaG9tZXJvdy5hcHAv">https://www.homerow.app/<i class="fa fa-external-link-alt"></i></span></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301270126377.png"></p>
+<h1 id="写作推荐"><a href="#写作推荐" class="headerlink" title="写作推荐"></a>写作推荐</h1><p>问题：</p>
+<ul>
+<li>频繁修改前面写过的内容，使用 Vim 可以更专注于内容。避免手的移动干扰思路。</li>
+<li>中文场景下 vim 体验不好（普通模式下的键盘操作需要英文）</li>
+</ul>
+<p>推荐：<br><strong>Xcode</strong></p>
+<ul>
+<li>xcode 官方自定义了一套 vim，适配中文场景非常棒。写作过程中基本不用再切换输入法。</li>
+<li>如果需要搭建复杂文档，有多个文件和文件夹，可以通过 git 、workspace、playground 自行配置。<ul>
+<li>git：云存储</li>
+<li>workspace：多个文件系统做隔离</li>
+<li>playground：markdown 和 预览</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>Follow me by other channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/one_gongjiang">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/gongjiang">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="mailto:one.gongjiang@gmail.com">
+            <span class="icon">
+              <i class="fa fa-envelope"></i>
+            </span>
+
+            <span class="label">Email</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Life/" rel="tag"># Life</a>
+              <a href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag"># 工具</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F%E6%80%8E%E4%B9%88%E6%90%AD%E5%BB%BA/" rel="prev" title="移动端日志系统怎么搭建">
+                  <i class="fa fa-chevron-left"></i> 移动端日志系统怎么搭建
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/%E5%8F%8C%E6%8B%BC-%E5%B0%91%E6%9C%89%E7%9A%84%E9%AB%98%E5%9B%9E%E6%8A%A5%E6%95%88%E7%8E%87%E6%8A%80%E8%83%BD/" rel="next" title="双拼-少有的高回报效率技能">
+                  双拼-少有的高回报效率技能 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">Light Mode (Better for light mode to discuss, base github, cannot commen can email me)</a></li>
+            <li class="tab"><a href="#comment-utterances">Dark Mode</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
+            </div>
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+        </div>
+      </div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class=""></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">one.gongjiang艾特gmail.com 所有文章均为原创。我不介意任意形式的转载，但最好不要修改内容。因转载或者修改内容导致的任何问题，我均不负责。如果你真的担心版权，可邮联。评价需要外网，这是枷锁，也是照妖镜。</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.8/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2023/Vim%20%E6%8A%80%E5%B7%A7/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"49a74cd259c151e42dc66c9befb017f1"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

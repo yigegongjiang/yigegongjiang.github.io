@@ -15,8 +15,58 @@
     <atom:link href="https://www.yigegongjiang.com/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>跋山涉水，走心为匠。时间，真的不多了。</description>
-    <pubDate>Sun, 22 Jan 2023 18:34:25 GMT</pubDate>
+    <pubDate>Thu, 26 Jan 2023 17:38:29 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>双拼-少有的高回报效率技能</title>
+      <link>https://www.yigegongjiang.com/2023/%E5%8F%8C%E6%8B%BC-%E5%B0%91%E6%9C%89%E7%9A%84%E9%AB%98%E5%9B%9E%E6%8A%A5%E6%95%88%E7%8E%87%E6%8A%80%E8%83%BD/</link>
+      <guid>https://www.yigegongjiang.com/2023/%E5%8F%8C%E6%8B%BC-%E5%B0%91%E6%9C%89%E7%9A%84%E9%AB%98%E5%9B%9E%E6%8A%A5%E6%95%88%E7%8E%87%E6%8A%80%E8%83%BD/</guid>
+      <pubDate>Thu, 26 Jan 2023 17:38:29 GMT</pubDate>
+      
+      <description>&lt;p&gt;前两天教孩子玩 9 皇后版的数独游戏，对于全盘多个空格，如何尽可能快的填充。我提到得找到最容易解决的哪些空格,解决的空格越多，后面空格的数字约束也就越多，也就越好解决。&lt;br&gt;这个游戏的本质就是如何把每一个空格填充，并且效能最大，贪婪嘛。&lt;br&gt;今天说的&lt;strong&gt;双拼&lt;/strong&gt;，就是这样一个文本处理的软技能，工作和生活上都是通杀，在之前的&lt;a href=&quot;https://www.yigegongjiang.com/2022/%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E6%89%8B%E8%89%BA/&quot;&gt;提高效率的手艺&lt;/a&gt;里也有提到。&lt;br&gt;生活上手机聊天打字，工作上项目汇报打字，各行各业各个人群都可以用得到。&lt;br&gt;2 天时间就可以熟练掌握的受益终生的软技能。&lt;/p&gt;</description>
+      
+      
+      
+      <content:encoded><![CDATA[<p>前两天教孩子玩 9 皇后版的数独游戏，对于全盘多个空格，如何尽可能快的填充。我提到得找到最容易解决的哪些空格,解决的空格越多，后面空格的数字约束也就越多，也就越好解决。<br>这个游戏的本质就是如何把每一个空格填充，并且效能最大，贪婪嘛。<br>今天说的<strong>双拼</strong>，就是这样一个文本处理的软技能，工作和生活上都是通杀，在之前的<a href="https://www.yigegongjiang.com/2022/%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E6%89%8B%E8%89%BA/">提高效率的手艺</a>里也有提到。<br>生活上手机聊天打字，工作上项目汇报打字，各行各业各个人群都可以用得到。<br>2 天时间就可以熟练掌握的受益终生的软技能。</p><span id="more"></span><h2 id="什么是双拼"><a href="#什么是双拼" class="headerlink" title="什么是双拼"></a>什么是双拼</h2><p>一种汉字的键盘表达方式。是全拼的压缩，同样包含声母和韵母，拼音的更简单表达方式。</p><p><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301270156216.png"><br><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301270156732.png"></p><h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><p>1.单字母重复打<br>如：a→&gt;aa &#x2F; o→&gt;oo &#x2F; e→&gt;ee<br>2.双字母保持全拼方式<br>如：an→an &#x2F; er→er &#x2F; ou→ou<br>3.多字母为首字母+韵母所在键。熟悉规则之后，会形成肌肉记忆，和键盘盲打一样。<br>如：ang一&gt;ah  &#x2F;  shuang pin  一&gt;  ul pb</p><h2 id="双拼方案"><a href="#双拼方案" class="headerlink" title="双拼方案"></a>双拼方案</h2><p>双拼方案有很多，有小鹤&#x2F;微软&#x2F;搜狗&#x2F;自然码&#x2F;紫光&#x2F;大牛&#x2F;小月&#x2F;小浪等近 20 种。<br>推荐“<strong>小鹤双拼</strong>”。在设计上，小鹤双拼脱胎于较为古老的自然码双拼，调整了部分韵母的位置，但基本上把使用频率较高的韵母放在了比较易于发力的食指和中指上。不推荐小众或者爱好者的方案，对于研发同学机器切换频率较高，非常见方案可能需要重新搭建环境，影响效率。</p><p><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301270156564.png"></p><h2 id="码表"><a href="#码表" class="headerlink" title="码表"></a>码表</h2><p>首字母 + 韵母</p><p><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301270156658.png"></p><p>规则：</p><ul><li>首字母：U&#x2F;I&#x2F;V 比较特别</li><li>韵母：都需要背一下。每个按键表示 1-2 个韵母，不会超过 3 个。</li><li>其他键盘：和全拼一样功能，无需记忆</li></ul><h2 id="双拼特点"><a href="#双拼特点" class="headerlink" title="双拼特点"></a>双拼特点</h2><ul><li>所有汉字，最多使用两个按键就可以表达，打字速度非常快，相比全拼提升 50%+。</li><li>减少按键频次和肌肉劳损，减小打字出错概率以及出错后的修改复杂度 <ul><li>工作消息经常有错别字，懒得改，让同事难以理解甚至理解错意思。用双拼后，可以减少错字概率，出错后修改复杂度也不大。</li><li>生活上聊天消息也一样，打错字的概率和错了之后的修正复杂度，都要低一些，才有可能会去修正。双拼可以做到这一点。</li></ul></li><li>有一定的节奏感，打字过程比较会愉悦</li><li>保留了汉字的发音规则，降低入门门槛。原有的全拼技术优化也可以重用，比如高频、方言等。和需要转换思维模式的拆字五笔有较大区别。</li></ul><h2 id="支持情况"><a href="#支持情况" class="headerlink" title="支持情况"></a>支持情况</h2><p>常见系统(linux&#x2F;windows&#x2F;mac&#x2F;iphone&#x2F;android)均支持双拼，包括系统输入法和三方输入法。(windows 系统输入法默认支持微软双拼，不支持小鹤，需要自行改一下码表，10 分钟可以改完。)<br>个别双拼方式可能不支持，小众和爱好者方案一般不用，所以影响不大。</p><h2 id="学习成本"><a href="#学习成本" class="headerlink" title="学习成本"></a>学习成本</h2><p>有一定的学习曲线，但不高。主要就是短期内多使用，尽快形成肌肉记忆。<br>2-3 天左右可以熟悉使用，1 周可以熟练使用，2 周可以形成肌肉记忆。<br>肌肉记忆就和键盘盲打一样，让你说键冒 x 的左边是什么字母或者 ；号键冒在哪个位置，你可以说不上来。但是只要一打字，你就能准确的按到那个位置。这就是肌肉记忆。<br>在线练习：<span class="exturl" data-url="aHR0cHM6Ly9hcGkuaWhpbnQubWUvc2h1YW5nLw==">https://api.ihint.me/shuang/<i class="fa fa-external-link-alt"></i></span><br>微信小程序：<strong>双拼练习</strong></p>]]></content:encoded>
+      
+      
+      <category domain="https://www.yigegongjiang.com/categories/%E7%90%90%E4%BA%8B/">琐事</category>
+      
+      
+      <category domain="https://www.yigegongjiang.com/tags/Life/">Life</category>
+      
+      <category domain="https://www.yigegongjiang.com/tags/%E5%B7%A5%E5%85%B7/">工具</category>
+      
+      
+      <comments>https://www.yigegongjiang.com/2023/%E5%8F%8C%E6%8B%BC-%E5%B0%91%E6%9C%89%E7%9A%84%E9%AB%98%E5%9B%9E%E6%8A%A5%E6%95%88%E7%8E%87%E6%8A%80%E8%83%BD/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Vim 技巧</title>
+      <link>https://www.yigegongjiang.com/2023/Vim%20%E6%8A%80%E5%B7%A7/</link>
+      <guid>https://www.yigegongjiang.com/2023/Vim%20%E6%8A%80%E5%B7%A7/</guid>
+      <pubDate>Thu, 26 Jan 2023 15:55:42 GMT</pubDate>
+      
+      <description>&lt;p&gt;一年前写了一篇&lt;a href=&quot;https://www.yigegongjiang.com/2022/%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E6%89%8B%E8%89%BA/&quot;&gt;提高效率的手艺&lt;/a&gt;，提到了 Vim 作为划时代的文本编辑工具，可以有效的提高文本编辑的效率，对于写作或者 coding 都非常有用。&lt;br&gt;今天整理一个稍微进阶的教程。vimer 十几年的 95% 的操作使用，应该都在这里。&lt;/p&gt;</description>
+      
+      
+      
+      <content:encoded><![CDATA[<p>一年前写了一篇<a href="https://www.yigegongjiang.com/2022/%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E6%89%8B%E8%89%BA/">提高效率的手艺</a>，提到了 Vim 作为划时代的文本编辑工具，可以有效的提高文本编辑的效率，对于写作或者 coding 都非常有用。<br>今天整理一个稍微进阶的教程。vimer 十几年的 95% 的操作使用，应该都在这里。</p><span id="more"></span><h1 id="按键"><a href="#按键" class="headerlink" title="按键"></a>按键</h1><h2 id="单个行为操作"><a href="#单个行为操作" class="headerlink" title="单个行为操作"></a>单个行为操作</h2><ul><li>移动：hjkl &#x2F; w &#x2F; e &#x2F; b &#x2F; $ &#x2F; 0(^)</li><li>删除：dd &#x2F; x</li><li>行合并：J</li><li>换行：o &#x2F; O</li><li>撤回 &#x2F; 返回：u &#x2F; C+r</li><li>插入：i &#x2F; （I-A-a）</li><li>查找：f(-;-,) &#x2F; t &#x2F; * &#x2F; #</li><li>替换：r</li><li>括号匹配：%</li><li>黏贴复制：yy-dd&#x2F;p</li><li>拖屏：HLM &#x2F; zz(zt-zb) &#x2F; c+e &#x2F; c+y &#x2F; c+f(d-b-u) &#x2F; :n &#x2F; G &#x2F; gg</li><li>位置标记：ma-‘a(mx - moving - ‘x)</li><li>保存退出：:wq（<span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvMTE4MjgyNzAvaG93LWRvLWktZXhpdC12aW0=">https://stackoverflow.com/questions/11828270/how-do-i-exit-vim<i class="fa fa-external-link-alt"></i></span>）</li></ul><h2 id="4-种模式"><a href="#4-种模式" class="headerlink" title="4 种模式"></a>4 种模式</h2><p>esc：普通模式<br>i&#x2F;a：插入模式<br><strong>shift+:：</strong>命令模式<br>ctrl+v：区块模式</p><h2 id="多个行为组合"><a href="#多个行为组合" class="headerlink" title="多个行为组合"></a>多个行为组合</h2><p>动词：d &#x2F; c &#x2F; y &#x2F; v &#x2F; …<br>介词：i &#x2F; a &#x2F; f &#x2F; t &#x2F; …<br>名词：w &#x2F; e &#x2F; p &#x2F; { &#x2F; } &#x2F; ( &#x2F; )  &#x2F; [ &#x2F; ] &#x2F; “ &#x2F; ‘ &#x2F; 字符 &#x2F; …</p><ul><li>动词 - (数字) - (介词) - 名词<ul><li>dw &#x2F; dt? &#x2F; ci) &#x2F; ca} &#x2F; d2w &#x2F; y$ &#x2F; y3w &#x2F; v2i)</li></ul></li><li>数字 - 动词 - (名词)<ul><li>6ixy &#x2F; 4p &#x2F; 2dw &#x2F; 0y$</li></ul></li></ul><h2 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h2><ul><li>录制：q[a-z] - anyaction - q</li><li>使用录制：3@[a-z]</li></ul><h2 id="寄存器使用"><a href="#寄存器使用" class="headerlink" title="寄存器使用"></a>寄存器使用</h2><ul><li>多行文本的行首&#x2F;行尾增加同样的内容<ul><li>使用区块：c+v -&gt; j&#x2F;h -&gt; $&#x2F;0&#x2F;^ -&gt; I&#x2F;A -&gt; input -&gt; esc</li><li>使用寄存器：qa -&gt; $&#x2F;0&#x2F;^ -&gt; I&#x2F;A -&gt; input -&gt; esc -&gt; j -&gt; q | 3@a</li></ul></li><li>多行文本，增加序号<ul><li>:let i&#x3D;0（定义变量）</li><li>qa（开始录制）</li><li>0 -&gt; i -&gt; input -&gt; esc -&gt; 0（到行首输入需要的分割等内容，然后回到普通模式，再次回到行首）</li><li>:let @n&#x3D;i（变量放入寄存器）</li><li>:let i&#x3D;i+1（变量+1，供下次使用）</li><li>“nP（将寄存器的值复制到行首之前）</li><li>j（进入下一行）</li><li>q（结束录制）</li><li>3@a（回放 3 次）</li></ul></li></ul><h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>～&#x2F;.vimrc，示例如下：</p><p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtaXgvdmltcmMvYmxvYi9tYXN0ZXIvdmltcmNzL2Jhc2ljLnZpbQ==">vimrc&#x2F;basic.vim at master · amix&#x2F;vimrc<i class="fa fa-external-link-alt"></i></span></p><h2 id="插件管理器"><a href="#插件管理器" class="headerlink" title="插件管理器"></a>插件管理器</h2><h3 id="Vundle"><a href="#Vundle" class="headerlink" title="Vundle"></a>Vundle</h3><p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1Z1bmRsZVZpbS9WdW5kbGUudmlt">https://github.com/VundleVim/Vundle.vim<i class="fa fa-external-link-alt"></i></span></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">set nocompatible              &quot; be iMproved, required</span><br><span class="line">filetype off                  &quot; required</span><br><span class="line"></span><br><span class="line">&quot; set the runtime path to include Vundle and initialize</span><br><span class="line">set rtp+=~/.vim/bundle/Vundle.vim</span><br><span class="line">call vundle#begin()</span><br><span class="line">&quot; alternatively, pass a path where Vundle should install plugins</span><br><span class="line">&quot;call vundle#begin(&#x27;~/some/path/here&#x27;)</span><br><span class="line"></span><br><span class="line">&quot; let Vundle manage Vundle, required</span><br><span class="line">Plugin &#x27;VundleVim/Vundle.vim&#x27;</span><br><span class="line"></span><br><span class="line">&quot; The following are examples of different formats supported.</span><br><span class="line">&quot; Keep Plugin commands between vundle#begin/end.</span><br><span class="line">&quot; plugin on GitHub repo</span><br><span class="line">Plugin &#x27;tpope/vim-fugitive&#x27;</span><br><span class="line">&quot; plugin from &lt;http://vim-scripts.org/vim/scripts.html&gt;</span><br><span class="line">&quot; Plugin &#x27;L9&#x27;</span><br><span class="line">&quot; Git plugin not hosted on GitHub</span><br><span class="line">Plugin &#x27;git://git.wincent.com/command-t.git&#x27;</span><br><span class="line">&quot; git repos on your local machine (i.e. when working on your own plugin)</span><br><span class="line">Plugin &#x27;file:///home/gmarik/path/to/plugin&#x27;</span><br><span class="line">&quot; The sparkup vim script is in a subdirectory of this repo called vim.</span><br><span class="line">&quot; Pass the path to set the runtimepath properly.</span><br><span class="line">Plugin &#x27;rstacruz/sparkup&#x27;, &#123;&#x27;rtp&#x27;: &#x27;vim/&#x27;&#125;</span><br><span class="line">&quot; Install L9 and avoid a Naming conflict if you&#x27;ve already installed a</span><br><span class="line">&quot; different version somewhere else.</span><br><span class="line">&quot; Plugin &#x27;ascenator/L9&#x27;, &#123;&#x27;name&#x27;: &#x27;newL9&#x27;&#125;</span><br><span class="line"></span><br><span class="line">&quot; All of your Plugins must be added before the following line</span><br><span class="line">call vundle#end()            &quot; required</span><br><span class="line">filetype plugin indent on    &quot; required</span><br><span class="line">&quot; To ignore plugin indent changes, instead use:</span><br><span class="line">&quot;filetype plugin on</span><br><span class="line">&quot;</span><br><span class="line">&quot; Brief help</span><br><span class="line">&quot; :PluginList       - lists configured plugins</span><br><span class="line">&quot; :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate</span><br><span class="line">&quot; :PluginSearch foo - searches for foo; append `!` to refresh local cache</span><br><span class="line">&quot; :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal</span><br><span class="line">&quot;</span><br><span class="line">&quot; see :h vundle for more details or wiki for FAQ</span><br><span class="line">&quot; Put your non-Plugin stuff after this line</span><br><span class="line"></span><br></pre></td></tr></table></figure><h3 id="Dein"><a href="#Dein" class="headerlink" title="Dein"></a>Dein</h3><p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1Nob3Vnby9kZWluLnZpbQ==">https://github.com/Shougo/dein.vim<i class="fa fa-external-link-alt"></i></span></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sh -c &quot;$(wget -O- &lt;https://raw.githubusercontent.com/Shougo/dein-installer.vim/master/installer.sh&gt;)&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><p>示例：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3ByZXNlcnZpbS9uZXJkdHJlZQ==">https://github.com/preservim/nerdtree<i class="fa fa-external-link-alt"></i></span></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// Vundle</span><br><span class="line">call vundle#begin()</span><br><span class="line">  Plugin &#x27;preservim/nerdtree&#x27;</span><br><span class="line">call vundle#end()</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">// Dein</span><br><span class="line">call dein#begin()</span><br><span class="line">  call dein#add(&#x27;preservim/nerdtree&#x27;)</span><br><span class="line">call dein#end()</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>插件就 Google 尽情的搜索吧，选择自己喜欢和必须的就好。Vim 插件装多了会卡，NeoVim 不会。<br>插件都是程序员非商用的产出，都是没有什么美感的。有些配置还比较繁琐，使用问题不大。<br>就这样。</p><h1 id="NeoVim"><a href="#NeoVim" class="headerlink" title="NeoVim"></a>NeoVim</h1><p>和 vim 有配置上的差异，使用上一样。<strong>推荐使用 NeoVim</strong>。</p><p>上面的配置、插件管理器等都是 Vim 的，NeoVim 会有一些不一样，但大体也都是一致的。插件也都是能共用的，很多插件也为 NeoVim 做了专门适配。</p><h1 id="IDE"><a href="#IDE" class="headerlink" title="IDE"></a>IDE</h1><p><span class="exturl" data-url="aHR0cHM6Ly9zcGFjZXZpbS5vcmcv">https://spacevim.org/<i class="fa fa-external-link-alt"></i></span></p><p><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301270125293.png"></p><ol><li>多种开发语言的配置箱</li><li>缓存&#x2F;窗口管理方便</li><li>撤销树</li><li>提供的快捷帮助命令使用很方便</li><li>简化配置</li><li>命令终端使用非常方便</li></ol><h1 id="工作使用"><a href="#工作使用" class="headerlink" title="工作使用"></a>工作使用</h1><h2 id="Vim-终端"><a href="#Vim-终端" class="headerlink" title="Vim 终端"></a>Vim 终端</h2><ul><li>单文件查看&#x2F;编辑</li><li>系统文件配置</li><li>coding</li></ul><h2 id="集成IDE"><a href="#集成IDE" class="headerlink" title="集成IDE"></a>集成IDE</h2><ul><li>vscode(安装 vim 插件)：全局搜索 &#x2F; 代码阅读 &#x2F; json格式化</li><li>xcode(打开 vim 模式)：函数调用链 &#x2F; code</li></ul><h1 id="离开鼠标"><a href="#离开鼠标" class="headerlink" title="离开鼠标"></a>离开鼠标</h1><h2 id="网页-vim-插件（chrome-x2F-safari）"><a href="#网页-vim-插件（chrome-x2F-safari）" class="headerlink" title="网页 vim 插件（chrome&#x2F;safari）"></a>网页 vim 插件（chrome&#x2F;safari）</h2><p><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301270126742.png"></p><p><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301270126310.png"></p><h2 id="文件浏览器-Ranger"><a href="#文件浏览器-Ranger" class="headerlink" title="文件浏览器 Ranger"></a>文件浏览器 Ranger</h2><p><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301270126737.png"></p><h2 id="全键盘-homerow"><a href="#全键盘-homerow" class="headerlink" title="全键盘 homerow"></a>全键盘 homerow</h2><p><span class="exturl" data-url="aHR0cHM6Ly93d3cuaG9tZXJvdy5hcHAv">https://www.homerow.app/<i class="fa fa-external-link-alt"></i></span></p><p><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301270126377.png"></p><h1 id="写作推荐"><a href="#写作推荐" class="headerlink" title="写作推荐"></a>写作推荐</h1><p>问题：</p><ul><li>频繁修改前面写过的内容，使用 Vim 可以更专注于内容。避免手的移动干扰思路。</li><li>中文场景下 vim 体验不好（普通模式下的键盘操作需要英文）</li></ul><p>推荐：<br><strong>Xcode</strong></p><ul><li>xcode 官方自定义了一套 vim，适配中文场景非常棒。写作过程中基本不用再切换输入法。</li><li>如果需要搭建复杂文档，有多个文件和文件夹，可以通过 git 、workspace、playground 自行配置。<ul><li>git：云存储</li><li>workspace：多个文件系统做隔离</li><li>playground：markdown 和 预览</li></ul></li></ul>]]></content:encoded>
+      
+      
+      <category domain="https://www.yigegongjiang.com/categories/%E7%90%90%E4%BA%8B/">琐事</category>
+      
+      
+      <category domain="https://www.yigegongjiang.com/tags/Life/">Life</category>
+      
+      <category domain="https://www.yigegongjiang.com/tags/%E5%B7%A5%E5%85%B7/">工具</category>
+      
+      
+      <comments>https://www.yigegongjiang.com/2023/Vim%20%E6%8A%80%E5%B7%A7/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>移动端日志系统怎么搭建</title>
@@ -200,7 +250,7 @@
       <title>生活推荐清单</title>
       <link>https://www.yigegongjiang.com/2022/%E7%94%9F%E6%B4%BB%E6%8E%A8%E8%8D%90%E6%B8%85%E5%8D%95/</link>
       <guid>https://www.yigegongjiang.com/2022/%E7%94%9F%E6%B4%BB%E6%8E%A8%E8%8D%90%E6%B8%85%E5%8D%95/</guid>
-      <pubDate>Fri, 07 Oct 2022 17:22:18 GMT</pubDate>
+      <pubDate>Fri, 07 Oct 2022 15:22:18 GMT</pubDate>
       
       <description>&lt;p&gt;之前写有&lt;a href=&quot;https://www.yigegongjiang.com/2022/%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E6%89%8B%E8%89%BA/&quot;&gt;提高效率的手艺&lt;/a&gt;和&lt;a href=&quot;https://www.yigegongjiang.com/2022/%E8%BF%99%E4%BA%9B%E5%B9%B4%E6%88%91%E7%9A%84%E8%BD%AF%E4%BB%B6%E6%B8%85%E5%8D%95/&quot;&gt;这些年我的软件清单&lt;/a&gt;两个推荐，一个用来提高文字编辑的效率，一个推荐了手机和电脑可以安装的一些高效率的软件。&lt;br&gt;这次推荐一些日常生活的避坑指北。生活还有几十年，掉坑在所难免，所以这篇推荐清单打算做长期更新。&lt;/p&gt;
 &lt;h2 id=&quot;指北概要&quot;&gt;&lt;a href=&quot;#指北概要&quot; class=&quot;headerlink&quot; title=&quot;指北概要&quot;&gt;&lt;/a&gt;指北概要&lt;/h2&gt;&lt;ul&gt;
@@ -234,9 +284,9 @@
       
       <category domain="https://www.yigegongjiang.com/tags/Life/">Life</category>
       
-      <category domain="https://www.yigegongjiang.com/tags/Work/">Work</category>
-      
       <category domain="https://www.yigegongjiang.com/tags/%E5%B7%A5%E5%85%B7/">工具</category>
+      
+      <category domain="https://www.yigegongjiang.com/tags/Work/">Work</category>
       
       
       <comments>https://www.yigegongjiang.com/2022/%E7%94%9F%E6%B4%BB%E6%8E%A8%E8%8D%90%E6%B8%85%E5%8D%95/#disqus_thread</comments>
@@ -261,11 +311,11 @@
       
       <category domain="https://www.yigegongjiang.com/tags/C/">C</category>
       
-      <category domain="https://www.yigegongjiang.com/tags/Shell/">Shell</category>
-      
       <category domain="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/">计算机原理</category>
       
       <category domain="https://www.yigegongjiang.com/tags/%E5%86%85%E5%AD%98/">内存</category>
+      
+      <category domain="https://www.yigegongjiang.com/tags/Shell/">Shell</category>
       
       
       <comments>https://www.yigegongjiang.com/2022/Shell%E5%92%8C%E8%BF%9B%E7%A8%8B/#disqus_thread</comments>
@@ -491,9 +541,9 @@
       
       <category domain="https://www.yigegongjiang.com/tags/Life/">Life</category>
       
-      <category domain="https://www.yigegongjiang.com/tags/Work/">Work</category>
-      
       <category domain="https://www.yigegongjiang.com/tags/%E5%B7%A5%E5%85%B7/">工具</category>
+      
+      <category domain="https://www.yigegongjiang.com/tags/Work/">Work</category>
       
       
       <comments>https://www.yigegongjiang.com/2022/%E8%BF%99%E4%BA%9B%E5%B9%B4%E6%88%91%E7%9A%84%E8%BD%AF%E4%BB%B6%E6%B8%85%E5%8D%95/#disqus_thread</comments>
@@ -1153,9 +1203,9 @@
       
       <category domain="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/">计算机原理</category>
       
-      <category domain="https://www.yigegongjiang.com/tags/%E5%86%85%E5%AD%98/">内存</category>
-      
       <category domain="https://www.yigegongjiang.com/tags/Swift/">Swift</category>
+      
+      <category domain="https://www.yigegongjiang.com/tags/%E5%86%85%E5%AD%98/">内存</category>
       
       
       <comments>https://www.yigegongjiang.com/2019/Swift%20struct(%E5%80%BC%E7%B1%BB%E5%9E%8B)%E4%B8%8Eclass(%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B)%E5%8C%BA%E5%88%AB%E5%8F%8A%E4%B8%89%E7%A7%8D%E4%BC%A0%E5%8F%82%E6%9C%BA%E5%88%B6%E6%B7%B1%E5%88%BB%E5%85%B3%E7%B3%BB%E5%92%8C%E4%BD%BF%E7%94%A8/#disqus_thread</comments>
