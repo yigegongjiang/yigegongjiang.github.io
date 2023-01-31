@@ -2,10 +2,9 @@
 title: Vim 技巧
 date: 2023-01-26 23:55:42
 categories:
-- 琐事
-tags:
-- Life
 - 工具
+tags:
+- Work
 keywords:
 ---
 

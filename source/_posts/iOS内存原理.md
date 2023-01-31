@@ -4,8 +4,8 @@ date: 2019-01-06 11:30:48
 categories:
 - 技术
 tags:
--  iOS
--  内存
+- iOS
+- 内存
 keywords: 内存管理、内存释放、ARC、ARC内存原理
 ---
 
