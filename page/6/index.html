@@ -88,7 +88,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags<span class="badge">12</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">65</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user fa-fw"></i>About</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section"><i class="rss fa-fw"></i>Rss</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags<span class="badge">12</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">64</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user fa-fw"></i>About</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section"><i class="rss fa-fw"></i>Rss</a></li>
   </ul>
 </nav>
 
@@ -127,7 +127,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-count">64</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -157,87 +157,6 @@
     </div>
 
     <div class="main-inner index posts-expand">
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2019/%E4%BA%92%E8%81%94%E7%BD%91%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE%E7%90%86%E8%A7%A3%E5%9D%91%E7%82%B9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301081602545.gif">
-      <meta itemprop="name" content="隔壁王二">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一个工匠">
-      <meta itemprop="description" content="时间，真的不多了。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 一个工匠">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/%E4%BA%92%E8%81%94%E7%BD%91%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE%E7%90%86%E8%A7%A3%E5%9D%91%E7%82%B9/" class="post-title-link" itemprop="url">互联网网络传输协议理解坑点</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2019-05-25 19:53:48" itemprop="dateCreated datePublished" datetime="2019-05-25T19:53:48+08:00">2019-05-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><img data-src="https://s2.ax1x.com/2020/03/11/8EMOzT.jpg" alt="tcp_udp"></p>
-<h3 id="DNS协议的用途和解析方式是什么样的？"><a href="#DNS协议的用途和解析方式是什么样的？" class="headerlink" title="DNS协议的用途和解析方式是什么样的？"></a>DNS协议的用途和解析方式是什么样的？</h3><p>所有应用层层面的数据，如果需要进行网络传输，必定需要ip地址这个核心参数。没有ip地址的包，是不可能发出去的，都过不了网卡。因为网卡不知道要把这个包传到哪里去。<br>而ip地址人类很难记忆，所以很多服务都是通过域名进行访问。域名是比较方便记忆，但是网络又不认，因为网络无法根据域名进行数据传输，即域名没有定位功能。<br>所以所有的应用层的域名访问，都需要DNS协议解析成ip地址后才能够封包发送，ip有定位功能。如果一个应用层服务直接通过ip地址访问另一个服务，那么是完全不用DNS做一次ip地址解析的。<br>我们的域名是需要从特定的服务商进行购买，在服务商处会进行ip地址的配置。而DNS协议的根据就是层层服务商解析，问根域，返回顶级域，问顶级域，返回权威域，这样通过<code>.com</code>、<code>.cn</code>等不同服务商的判断，最终落实并返回一个确定的ip地址。<br>DNS协议是系统层级的操作，应用层无需关心，系统通过DNS协议拿到ip地址后会给到应用层，然后应用层将ip地址传递到传输层进行网络数据封包。<br>为了效率问题，系统会进行DNS的缓存以加快解析速度，并且还会设置有效期以较少误差。<br>比较例外的是hosts文件。在这里配置的信息具有第一优先级，系统如果在hosts中找到了对应的域名和ip地址的映射，则不再进行DNS请求而直接返回映射数据。<br>DNS 会有劫持问题，在移动端会使用 HTTPDNS 技术。DNS 有一个非常重要的大杀器，就是做负载均衡。</p>
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        
-      
-    </footer>
-  </article>
-</div>
-
-
-
 
     
 
@@ -969,6 +888,86 @@
 <p>ARC内存不是绝对安全释放的，还牵涉到内存区，如果字符串定义到了堆区，释放是及时的，定义到了栈区和常量区，就不那么及时了（虽然引用计数&#x3D;0，代码也不能在调用，但是真实内存还在）。<br>而且很可能还会因为代码原因导致引用计数永远不可能为0，常见的就是循环引用，如Block的双向强引用，NSTimer的双向强引用等等，这里都需要特别的破环。解决双向引用的问题，核心在于破环，只要有一个缺口，内存不可能不释放。</p>
 <p>深入理解<strong>自己生成的对象，自己持有、非自己生成的对象，自己也能持有、不再需要自己持有的对象需要释放、非自己持有的对象无法释放</strong>，就能深入理解iOS的内存管理。<br>强烈推荐《Objective-C高级编程》，网上所有说明几乎均处于此。与其不断的翻阅二手说明书，弄的自己眼花缭乱，不如拿着原版，仔细啃食。</p>
 
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2018/%E6%B8%B8%E6%88%8F%E4%BA%BA%E7%94%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301081602545.gif">
+      <meta itemprop="name" content="隔壁王二">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个工匠">
+      <meta itemprop="description" content="时间，真的不多了。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 一个工匠">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2018/%E6%B8%B8%E6%88%8F%E4%BA%BA%E7%94%9F/" class="post-title-link" itemprop="url">游戏人生</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2018-12-31 17:00:23" itemprop="dateCreated datePublished" datetime="2018-12-31T17:00:23+08:00">2018-12-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%A7%82%E7%82%B9/" itemprop="url" rel="index"><span itemprop="name">观点</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>最近一年，试玩了不少几款游戏。<br>有下载需要付费的，有内购的，也有免费的。有本机的，也有联网的。有养成类的，也有公平平台的。<br>游戏过程是下载了，试玩了，玩了，卸载了。最后连游戏名字也忘了。<br>今天，也是在2018年的最后一天，开始卸载最后一批游戏。游戏这段旅程，在我的生命里，初步结束了。<br>昨晚，我刚在一个游戏里面付费了30元。接着，我杀死了应用，想着这段时间我的游戏生涯。<br>我对于游戏，始终有一条清晰的线，沿着这条线，不迷失。也是这条线，让我知道游戏的本质，看清很low的游戏也日流水过百万的简单操作下的华丽外衣。</p>
+          <!--noindex-->
+          <!--/noindex-->
+        
       
     </div>
 

@@ -6,7 +6,7 @@
   <link href="https://www.yigegongjiang.com/atom.xml" rel="self"/>
   
   <link href="https://www.yigegongjiang.com/"/>
-  <updated>2023-02-11T16:31:28.000Z</updated>
+  <updated>2023-01-26T17:38:29.000Z</updated>
   <id>https://www.yigegongjiang.com/</id>
   
   <author>
@@ -15,35 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>RSS</title>
-    <link href="https://www.yigegongjiang.com/2023/RSS/"/>
-    <id>https://www.yigegongjiang.com/2023/RSS/</id>
-    <published>2023-02-11T16:31:28.000Z</published>
-    <updated>2023-02-11T16:31:28.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>RSS 现在都已经快被人遗忘了，当 2013 年 Google 关闭 reader 聚合浏览器的时候逐渐淡出互联网舞台。<br>RSS 是用来做订阅文章用的，比如某个网站更新一篇文章的同时，网站会依据 xml 协议将新文章的 url 和概要写入公开文档中。RSS 客户端在启动的时候去拉取这份文档，和本地的文档做 diff，发现有新增的文章，就标记为未读并提醒用户。<br>不管从技术层面还是操作层面，复杂度都非常低。2013 年之前很多用户都用这种方式订阅诸多内容创作者的文章。<br>内容创作者如果想盈利，可以对收费文章进行权限认证，购买了服务的用户给分配密钥。为防止用户多处分发，还可以进行流量控制。</p><p>虽然现在 RSS 没落了，还对于需要获取特定信息的人来说，RSS 依旧非常好用，可以专注信息的获取。很多技术&#x2F;生活网站，依旧会释放 RSS 公开文档，就是有时候需要找一下。<br>这里就贴一下最佳的 RSS 使用方式，少走弯路。</p><h2 id="不愿付费的用户"><a href="#不愿付费的用户" class="headerlink" title="不愿付费的用户"></a>不愿付费的用户</h2><p>feedly</p>]]></content>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;RSS 现在都已经快被人遗忘了，当 2013 年 Google 关闭 reader 聚合浏览器的时候逐渐淡出互联网舞台。&lt;br&gt;RSS 是用来做订阅文章用的，比如某个网站更新一篇文章的同时，网站会依据 xml 协议将新文章的 url 和概要写入公开文档中。RSS</summary>
-        
-      
-    
-    
-    
-    <category term="工具" scheme="https://www.yigegongjiang.com/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-    <category term="Life" scheme="https://www.yigegongjiang.com/tags/Life/"/>
-    
-    <category term="Work" scheme="https://www.yigegongjiang.com/tags/Work/"/>
-    
-  </entry>
   
   <entry>
     <title>双拼-少有的高回报效率技能</title>
