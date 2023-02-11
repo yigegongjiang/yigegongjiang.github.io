@@ -15,8 +15,39 @@
     <atom:link href="https://www.yigegongjiang.com/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>时间，真的不多了。</description>
-    <pubDate>Thu, 26 Jan 2023 17:38:29 GMT</pubDate>
+    <pubDate>Sat, 11 Feb 2023 16:31:28 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>RSS</title>
+      <link>https://www.yigegongjiang.com/2023/RSS/</link>
+      <guid>https://www.yigegongjiang.com/2023/RSS/</guid>
+      <pubDate>Sat, 11 Feb 2023 16:31:28 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;RSS 现在都已经快被人遗忘了，当 2013 年 Google 关闭 reader 聚合浏览器的时候逐渐淡出互联网舞台。&lt;br&gt;RSS 是用来做订阅文章用的，比如某个网站更新一篇文章的同时，网站会依据 xml 协议将新文章的 url 和概要写入公开文档中。RSS</description>
+          
+        
+      
+      
+      
+      <content:encoded><![CDATA[<p>RSS 现在都已经快被人遗忘了，当 2013 年 Google 关闭 reader 聚合浏览器的时候逐渐淡出互联网舞台。<br>RSS 是用来做订阅文章用的，比如某个网站更新一篇文章的同时，网站会依据 xml 协议将新文章的 url 和概要写入公开文档中。RSS 客户端在启动的时候去拉取这份文档，和本地的文档做 diff，发现有新增的文章，就标记为未读并提醒用户。<br>不管从技术层面还是操作层面，复杂度都非常低。2013 年之前很多用户都用这种方式订阅诸多内容创作者的文章。<br>内容创作者如果想盈利，可以对收费文章进行权限认证，购买了服务的用户给分配密钥。为防止用户多处分发，还可以进行流量控制。</p><p>虽然现在 RSS 没落了，还对于需要获取特定信息的人来说，RSS 依旧非常好用，可以专注信息的获取。很多技术&#x2F;生活网站，依旧会释放 RSS 公开文档，就是有时候需要找一下。<br>这里就贴一下最佳的 RSS 使用方式，少走弯路。</p><h2 id="不愿付费的用户"><a href="#不愿付费的用户" class="headerlink" title="不愿付费的用户"></a>不愿付费的用户</h2><p>feedly</p>]]></content:encoded>
+      
+      
+      <category domain="https://www.yigegongjiang.com/categories/%E5%B7%A5%E5%85%B7/">工具</category>
+      
+      
+      <category domain="https://www.yigegongjiang.com/tags/Life/">Life</category>
+      
+      <category domain="https://www.yigegongjiang.com/tags/Work/">Work</category>
+      
+      
+      <comments>https://www.yigegongjiang.com/2023/RSS/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>双拼-少有的高回报效率技能</title>
@@ -307,9 +338,9 @@
       
       <category domain="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/">计算机原理</category>
       
-      <category domain="https://www.yigegongjiang.com/tags/%E5%86%85%E5%AD%98/">内存</category>
-      
       <category domain="https://www.yigegongjiang.com/tags/Shell/">Shell</category>
+      
+      <category domain="https://www.yigegongjiang.com/tags/%E5%86%85%E5%AD%98/">内存</category>
       
       
       <comments>https://www.yigegongjiang.com/2022/Shell%E5%92%8C%E8%BF%9B%E7%A8%8B/#disqus_thread</comments>
@@ -1195,9 +1226,9 @@
       
       <category domain="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/">计算机原理</category>
       
-      <category domain="https://www.yigegongjiang.com/tags/Swift/">Swift</category>
-      
       <category domain="https://www.yigegongjiang.com/tags/%E5%86%85%E5%AD%98/">内存</category>
+      
+      <category domain="https://www.yigegongjiang.com/tags/Swift/">Swift</category>
       
       
       <comments>https://www.yigegongjiang.com/2019/Swift%20struct(%E5%80%BC%E7%B1%BB%E5%9E%8B)%E4%B8%8Eclass(%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B)%E5%8C%BA%E5%88%AB%E5%8F%8A%E4%B8%89%E7%A7%8D%E4%BC%A0%E5%8F%82%E6%9C%BA%E5%88%B6%E6%B7%B1%E5%88%BB%E5%85%B3%E7%B3%BB%E5%92%8C%E4%BD%BF%E7%94%A8/#disqus_thread</comments>

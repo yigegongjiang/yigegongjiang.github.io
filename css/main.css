@@ -5,7 +5,8 @@
   --text-color: #555;
   --blockquote-color: #666;
   --link-color: #555;
-  --link-hover-color: #222;
+  --link-title-color: #1a1dce;
+  --link-hover-color: #ff0040;
   --brand-color: #fff;
   --brand-hover-color: #fff;
   --table-row-odd-bg-color: #f9f9f9;
@@ -32,7 +33,8 @@
     --text-color: #ccc;
     --blockquote-color: #bbb;
     --link-color: #ccc;
-    --link-hover-color: #eee;
+    --link-title-color: #03c988;
+    --link-hover-color: #ff0040;
     --brand-color: #ddd;
     --brand-hover-color: #ddd;
     --table-row-odd-bg-color: #282828;
@@ -261,8 +263,8 @@ p {
   margin: 0 0 20px;
 }
 a {
-  border-bottom: 1px solid #999;
-  color: var(--link-color);
+  border-bottom: 1px solid var(--link-title-color);
+  color: var(--link-title-color);
   cursor: pointer;
   outline: 0;
   text-decoration: none;
@@ -1067,8 +1069,8 @@ pre code {
 }
 .site-subtitle {
   color: #ddd;
-  font-size: 0.8125em;
-  margin: 10px 10px 0;
+  font-size: 1em;
+  margin: 0px;
 }
 .use-motion .site-title,
 .use-motion .site-subtitle,
@@ -1186,14 +1188,9 @@ pre code {
   display: inline-block;
 }
 .site-author-image {
-  border: 1px solid #eee;
-  max-width: 120px;
+  max-width: 100px;
   padding: 2px;
   border-radius: 50%;
-  transition: transform 1s ease-out;
-}
-.site-author-image:hover {
-  transform: rotateZ(360deg);
 }
 .site-author-name {
   color: var(--text-color);
@@ -1464,12 +1461,12 @@ pre code {
 }
 @media (min-width: 1200px) {
   .footer-inner {
-    width: 1160px;
+    width: calc(100% - 20px);
   }
 }
 @media (min-width: 1600px) {
   .footer-inner {
-    width: 73%;
+    width: calc(100% - 20px);
   }
 }
 .use-motion .footer {
@@ -1848,33 +1845,34 @@ pre code {
 }
 .posts-expand .post-header {
   font-size: 1.125em;
-  margin-bottom: 60px;
-  text-align: center;
+  margin-bottom: 0px;
+  text-align: left;
 }
 .posts-expand .post-title {
-  font-size: 1.5em;
+  color: var(--link-title-color);
+  font-size: 2em;
   font-weight: normal;
   margin: initial;
   overflow-wrap: break-word;
 }
 .posts-expand .post-title-link {
   border-bottom: 0;
-  color: var(--link-color);
   display: inline-block;
   position: relative;
 }
 .posts-expand .post-title-link::before {
-  background: var(--link-color);
+  background: rgba(0,0,0,0);
   bottom: 0;
   content: '';
   height: 2px;
   left: 0;
   position: absolute;
-  transform: scaleX(0);
+  transform: scaleX(1);
   transition: transform 0.2s ease-in-out;
   width: 100%;
 }
 .posts-expand .post-title-link:hover::before {
+  background: var(--link-hover-color);
   transform: scaleX(1);
 }
 .posts-expand .post-title-link .fa-external-link-alt {
@@ -1887,10 +1885,10 @@ pre code {
   transform: rotate(30deg);
 }
 .posts-expand .post-meta-container {
-  color: #999;
+  color: var(--link-title-color);
   font-family: Lato, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 0.75em;
-  margin-top: 3px;
+  margin-top: 0px;
 }
 .posts-expand .post-meta-container .post-description {
   font-size: 0.875em;
@@ -1903,6 +1901,7 @@ pre code {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  justify-content: start;
 }
 :not(.post-meta-break) + .post-meta-item::before {
   content: '|';
@@ -2361,12 +2360,12 @@ ul.breadcrumb li:last-child {
 }
 @media (min-width: 1200px) {
   .main {
-    width: 1160px;
+    width: calc(100% - 20px);
   }
 }
 @media (min-width: 1600px) {
   .main {
-    width: 73%;
+    width: calc(100% - 20px);
   }
 }
 @media (max-width: 991px) {
@@ -2378,7 +2377,7 @@ ul.breadcrumb li:last-child {
 .main-inner {
   border-radius: initial;
   box-sizing: border-box;
-  width: calc(100% - 252px);
+  width: calc(100% - 152px);
 }
 @media (max-width: 991px) {
   .main-inner {
@@ -2387,7 +2386,7 @@ ul.breadcrumb li:last-child {
   }
 }
 .footer-inner {
-  padding-left: 252px;
+  padding-left: 152px;
 }
 @media (max-width: 991px) {
   .footer-inner {
@@ -2397,7 +2396,7 @@ ul.breadcrumb li:last-child {
   }
 }
 .column {
-  width: 240px;
+  width: 140px;
 }
 @media (max-width: 991px) {
   .column {
@@ -2413,7 +2412,7 @@ ul.breadcrumb li:last-child {
   }
 }
 .site-meta {
-  padding: 20px 0;
+  padding: 0px 0;
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .site-nav-toggle,
@@ -2568,7 +2567,7 @@ ul.breadcrumb li:last-child {
   border-bottom: 1px solid #ddd;
 }
 .post-block:first-of-type {
-  padding-top: 40px;
+  padding-top: 0px;
 }
 @media (max-width: 767px) {
   .pagination {
