@@ -23,7 +23,7 @@
     <meta name="description" content="最近本网站的 HTTPS SSL 证书过期了，于是去域名管理平台重新申请了一下。无意中通过 dig 发现，网站的 DNS 解析 IP 一直是 198.18.1.xxx 这些。因为我的域名是 CNAME 映射到 github 的，所以有 dig 了一下 github 对应的 ip，发现也是 198.18.1.xxx。从哪个角度来看，至少都有些问题。我用的 DNSPod 域名解析平台，dig 自定义域">
 <meta property="og:type" content="article">
 <meta property="og:title" content="网络代理是如何工作的(致敬Surge)">
-<meta property="og:url" content="https://www.yigegongjiang.com/2023/%E7%BD%91%E7%BB%9C%E4%B8%8A%E7%9A%84%E5%B0%8F%E6%8F%92%E6%9B%B2/index.html">
+<meta property="og:url" content="https://www.yigegongjiang.com/2023/%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84(%E8%87%B4%E6%95%ACSurge)/index.html">
 <meta property="og:site_name" content="一个工匠">
 <meta property="og:description" content="最近本网站的 HTTPS SSL 证书过期了，于是去域名管理平台重新申请了一下。无意中通过 dig 发现，网站的 DNS 解析 IP 一直是 198.18.1.xxx 这些。因为我的域名是 CNAME 映射到 github 的，所以有 dig 了一下 github 对应的 ip，发现也是 198.18.1.xxx。从哪个角度来看，至少都有些问题。我用的 DNSPod 域名解析平台，dig 自定义域">
 <meta property="og:locale" content="en_US">
@@ -36,11 +36,11 @@
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202304160218073.png">
 
 
-<link rel="canonical" href="https://www.yigegongjiang.com/2023/%E7%BD%91%E7%BB%9C%E4%B8%8A%E7%9A%84%E5%B0%8F%E6%8F%92%E6%9B%B2/">
+<link rel="canonical" href="https://www.yigegongjiang.com/2023/%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84(%E8%87%B4%E6%95%ACSurge)/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2023/%E7%BD%91%E7%BB%9C%E4%B8%8A%E7%9A%84%E5%B0%8F%E6%8F%92%E6%9B%B2/","path":"2023/网络上的小插曲/","title":"网络代理是如何工作的(致敬Surge)"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2023/%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84(%E8%87%B4%E6%95%ACSurge)/","path":"2023/网络代理是如何工作的(致敬Surge)/","title":"网络代理是如何工作的(致敬Surge)"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>网络代理是如何工作的(致敬Surge) | 一个工匠</title>
@@ -172,7 +172,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2023/%E7%BD%91%E7%BB%9C%E4%B8%8A%E7%9A%84%E5%B0%8F%E6%8F%92%E6%9B%B2/">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2023/%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84(%E8%87%B4%E6%95%ACSurge)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301081602545.gif">
@@ -394,11 +394,11 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2023/%E7%BD%91%E7%BB%9C%E4%B8%8A%E7%9A%84%E5%B0%8F%E6%8F%92%E6%9B%B2/"}</script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2023/%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84(%E8%87%B4%E6%95%ACSurge)/"}</script>
   <script src="/js/third-party/quicklink.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"9ce9a48e828ee333a1561303c73f1b69"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"b8f45b96f1f35ee847e9a773fc1efcba"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
 <script src="/js/third-party/comments/utterances.js"></script>
