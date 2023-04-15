@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.14.1","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="最近本网站的 HTTPS SSL 证书过期了，于是去域名管理平台重新申请了一下。无意中通过 dig 发现，网站的 DNS 解析 IP 一直是 198.18.1.xxx 这些。因为我的域名是 CNAME 映射到 github 的，所以有 dig 了一下 github 对应的 ip，发现也是 198.18.1.xxx。从哪个角度来看，至少都有些问题。我用的 DNSPod 域名解析平台，dig 自定义域">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络代理是如何工作的(致敬Surge)">
+<meta property="og:url" content="https://www.yigegongjiang.com/2023/%E7%BD%91%E7%BB%9C%E4%B8%8A%E7%9A%84%E5%B0%8F%E6%8F%92%E6%9B%B2/index.html">
+<meta property="og:site_name" content="一个工匠">
+<meta property="og:description" content="最近本网站的 HTTPS SSL 证书过期了，于是去域名管理平台重新申请了一下。无意中通过 dig 发现，网站的 DNS 解析 IP 一直是 198.18.1.xxx 这些。因为我的域名是 CNAME 映射到 github 的，所以有 dig 了一下 github 对应的 ip，发现也是 198.18.1.xxx。从哪个角度来看，至少都有些问题。我用的 DNSPod 域名解析平台，dig 自定义域">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202304160218073.png">
+<meta property="article:published_time" content="2023-04-08T18:02:13.213Z">
+<meta property="article:author" content="隔壁王二">
+<meta property="article:tag" content="网络">
+<meta property="article:tag" content="计算机基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202304160218073.png">
+
+
+<link rel="canonical" href="https://www.yigegongjiang.com/2023/%E7%BD%91%E7%BB%9C%E4%B8%8A%E7%9A%84%E5%B0%8F%E6%8F%92%E6%9B%B2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2023/%E7%BD%91%E7%BB%9C%E4%B8%8A%E7%9A%84%E5%B0%8F%E6%8F%92%E6%9B%B2/","path":"2023/网络上的小插曲/","title":"网络代理是如何工作的(致敬Surge)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>网络代理是如何工作的(致敬Surge) | 一个工匠</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="一个工匠" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="一个工匠" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">一个工匠</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags<span class="badge">12</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">66</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user fa-fw"></i>About</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section"><i class="rss fa-fw"></i>Rss</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%B4%E6%95%AC-Surge"><span class="nav-number">1.</span> <span class="nav-text">致敬 Surge</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%9F%B3"><span class="nav-number">2.</span> <span class="nav-text">基石</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Socket"><span class="nav-number">2.1.</span> <span class="nav-text">Socket</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Wireshark"><span class="nav-number">2.2.</span> <span class="nav-text">Wireshark</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86-%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">网络代理-系统代理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#http"><span class="nav-number">3.1.</span> <span class="nav-text">http</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#https"><span class="nav-number">3.2.</span> <span class="nav-text">https</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socks5"><span class="nav-number">3.3.</span> <span class="nav-text">socks5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%88%E7%AB%AF%E9%BB%98%E8%AE%A4%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%B5%B0%E4%BB%A3%E7%90%86"><span class="nav-number">3.4.</span> <span class="nav-text">终端默认为什么不走代理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#POSIX-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">3.4.1.</span> <span class="nav-text">POSIX 是什么</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86-%E8%99%9A%E6%8B%9F%E7%BD%91%E5%8D%A1"><span class="nav-number">4.</span> <span class="nav-text">网络代理-虚拟网卡</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#VPN-amp-%E4%BB%A3%E7%90%86%E5%B7%AE%E5%BC%82"><span class="nav-number">5.</span> <span class="nav-text">VPN&amp;代理差异</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DNS"><span class="nav-number">6.</span> <span class="nav-text">DNS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DOH-httpdns"><span class="nav-number">7.</span> <span class="nav-text">DOH(httpdns)</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="隔壁王二"
+      src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301081602545.gif">
+  <p class="site-author-name" itemprop="name">隔壁王二</p>
+  <div class="site-description" itemprop="description">时间，真的不多了。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2023/%E7%BD%91%E7%BB%9C%E4%B8%8A%E7%9A%84%E5%B0%8F%E6%8F%92%E6%9B%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301081602545.gif">
+      <meta itemprop="name" content="隔壁王二">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个工匠">
+      <meta itemprop="description" content="时间，真的不多了。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="网络代理是如何工作的(致敬Surge) | 一个工匠">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          网络代理是如何工作的(致敬Surge)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-04-09 02:02:13" itemprop="dateCreated datePublished" datetime="2023-04-09T02:02:13+08:00">2023-04-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>最近本网站的 HTTPS SSL 证书过期了，于是去域名管理平台重新申请了一下。<br>无意中通过 dig 发现，网站的 DNS 解析 IP 一直是 <strong>198.18.1.xxx</strong> 这些。因为我的域名是 CNAME 映射到 github 的，所以有 dig 了一下 github 对应的 ip，发现也是 <strong>198.18.1.xxx</strong>。<br>从哪个角度来看，至少都有些问题。我用的 DNSPod 域名解析平台，dig 自定义域名和 github page 域名，怎么也不能在同一个网段里。<br>搜索了一下才知道，原来 ip 198 不是公网 ip，之前我以为内网 ip 是 10&#x2F;192 这些，知识还是有局限。</p>
+<blockquote>
+<p>198.18.0.0&#x2F;15  198.18.0.0 – 198.19.255.255  131,072  专用网络  用于测试两个不同的子网的网间通信。<br><span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvJUU0JUJGJTlEJUU3JTk1JTk5SVAlRTUlOUMlQjAlRTUlOUQlODA=">https://zh.wikipedia.org/wiki/保留IP地址<i class="fa fa-external-link-alt"></i></span></p>
+</blockquote>
+<p>在家庭网络中 dig 互联网的域名，为什么 dns 解析成了 198.x 呢？最后发现是我最常使用的网络软件 <strong>Surge</strong> 引起的。<br><strong>Surge</strong> 这些年给了我很多帮助，很感谢。特意开此文，讲解 Surge 工作原理，以致敬 Surge。<br>本文会对 Socket、Wireshark、网络系统代理(http&#x2F;s、socket5、POSIX)、网络网卡代理(VIF)、VPN、DNS、DOH(SNI) 等知识点进行描述，以更加全面的讲解 Surge 的工作原理。</p>
+<h1 id="致敬-Surge"><a href="#致敬-Surge" class="headerlink" title="致敬 Surge"></a>致敬 Surge</h1><p>Surge 是一款非常强大的网络调试工具，很多人都对它极为陌生，主要原因是它的售价过高，宣传和使用的人也不多。<br>我认为每一个 ITer 都应该使用它。网络在 IT 工作中时刻都需要关注，如 DNS 解析、网络流量查看和 hook、网络代理等等，这些 Surge 都可以做到。是发现和排查网络问题的神器，也可以协助工作。<br>这里我会先介绍下 Surge 的使用，或许你会感兴趣。如果以后 Surge 帮助到了你，那也是一件幸事。</p>
+<span id="more"></span>
+
+<p>Surge 只有 iOS 和 Mac 版，是订阅制，我简单介绍下订阅制，如下图：<br><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202304160218073.png"><br>Surge iOS 和 Mac 需要单独购买，iOS 只能在非国区 apple store 下载，Mac 可以在<span class="exturl" data-url="aHR0cHM6Ly9uc3N1cmdlLmNvbS8=">官网<i class="fa fa-external-link-alt"></i></span>下载。<br>价格是有些贵，iOS 和 Mac 差不多都要 $49.9。Mac 版建议拼车，140 元左右，iOS 不建议拼车，比较麻烦。两个平台都可以试用下，效果不错再订阅。<br>这里有 Surge 的答疑，如：<span class="exturl" data-url="aHR0cHM6Ly9rYi5uc3N1cmdlLmNvbS9zdXJnZS1rbm93bGVkZ2UtYmFzZS92L3poL3JlbGVhc2Utbm90ZXMvc3VyZ2UtbWFjLTU=">Mac release notes<i class="fa fa-external-link-alt"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9rYi5uc3N1cmdlLmNvbS9zdXJnZS1rbm93bGVkZ2UtYmFzZS92L3poL3JlbGVhc2Utbm90ZXMvc3VyZ2UtaW9z">iOS release notes<i class="fa fa-external-link-alt"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9rYi5uc3N1cmdlLmNvbS9zdXJnZS1rbm93bGVkZ2UtYmFzZS92L3poL2xpY2Vuc2UvcHJlLXNhbGU=">常见问题<i class="fa fa-external-link-alt"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9rYi5uc3N1cmdlLmNvbS9zdXJnZS1rbm93bGVkZ2UtYmFzZS92L3poL2xpY2Vuc2UvaW9zLWZ1cw==">订阅说明<i class="fa fa-external-link-alt"></i></span>。<br>下面是一些 Surge 的常见使用：<br><strong>http&#x2F;https&#x2F;socks5代理</strong>、<strong>机场流量转发</strong>(懂的)、<strong>软路由</strong>(相当强悍)、<strong>MitM</strong>&amp;readWrite(比金瓶梅Charles好用)、<strong>DNS代理</strong>、<strong>模块和脚本</strong>(强大功能，非专业人士不常用)。<br>iOS 和 Mac 可以互联，通过 Mac 连上 iOS 后，可以快速设置&amp;查看 iOS 上的网络流量。<br>如果对于刚需人群，软路由功能就已经让 Surge 的售价低到尘埃里了，懂得已懂。</p>
+<p>下面对 Surge 是如何做网络流量劫持代理转发等核心功能，做技术分析。</p>
+<h1 id="基石"><a href="#基石" class="headerlink" title="基石"></a>基石</h1><h2 id="Socket"><a href="#Socket" class="headerlink" title="Socket"></a>Socket</h2><p>在之前的<a href="https://www.yigegongjiang.com/2020/IM%E5%92%8CSocket%E7%9A%84%E5%85%B3%E7%B3%BB%E5%8F%8AHeart%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7/">IM 和 Socket 的关系及 Heart 的必要性</a>文章中，对 Socket 套接字和 Socket库 有说明。<br>一定要理解 <strong>gethostbyname()<strong>、</strong>socket()<strong>、</strong>bind()<strong>、</strong>connect()<strong>、</strong>listen()<strong>、</strong>accept()<strong>、</strong>send()&#x2F;recv()和write()&#x2F;read()</strong> 这些 socket api，否则无法理解 tcp&#x2F;udp 的数据包传输，也无法理解下面要说的网络代理。</p>
+<h2 id="Wireshark"><a href="#Wireshark" class="headerlink" title="Wireshark"></a>Wireshark</h2><p>在之前的<a href="https://www.yigegongjiang.com/2020/TCP%20%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/">TCP 数据传输过程分析</a>文章中，有对 Wireshark 如何抓包和数据分析进行过阐述。Wireshark 是网络流量分析的神器，在理解 surge 的过程中，我对 tls、sni、dns、vif、lookback 等场景都进行了抓包分析和验证，非常有帮助。</p>
+<h1 id="网络代理-系统代理"><a href="#网络代理-系统代理" class="headerlink" title="网络代理-系统代理"></a>网络代理-系统代理</h1><h2 id="http"><a href="#http" class="headerlink" title="http"></a>http</h2><h2 id="https"><a href="#https" class="headerlink" title="https"></a>https</h2><h2 id="socks5"><a href="#socks5" class="headerlink" title="socks5"></a>socks5</h2><h2 id="终端默认为什么不走代理"><a href="#终端默认为什么不走代理" class="headerlink" title="终端默认为什么不走代理"></a>终端默认为什么不走代理</h2><h3 id="POSIX-是什么"><a href="#POSIX-是什么" class="headerlink" title="POSIX 是什么"></a>POSIX 是什么</h3><p>解释 Posix 标准<br>C 标准库&#x2F;运行时库<br>glibc &#x2F; libc &#x2F; MCRT(msvcrt)</p>
+<p>POSIX线程 - <span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvUE9TSVglRTclQkElQkYlRTclQTglOEI=">https://zh.wikipedia.org/wiki/POSIX%E7%BA%BF%E7%A8%8B<i class="fa fa-external-link-alt"></i></span><br>#include &lt;pthread.h&gt;<br>#include &lt;threads.h&gt;</p>
+<p>pthread和thread都是多线程编程的相关库。<br>pthread是POSIX标准中的线程库，它在许多操作系统上都得到了实现，包括Unix、Linux、macOS等。pthread提供了一组高级的线程函数，使得多线程编程更加方便。<br>thread是C++11标准中的线程库，它主要应用于C++开发，并且仅在支持C++11标准的操作系统上才能使用。thread提供了类似于STL的接口，使得多线程编程更加高效。<br>总的来说，pthread和thread的区别在于：pthread是POSIX标准中的线程库，主要适用于跨平台编程；thread是C++11标准中的线程库，主要适用于C++开发。</p>
+<h1 id="网络代理-虚拟网卡"><a href="#网络代理-虚拟网卡" class="headerlink" title="网络代理-虚拟网卡"></a>网络代理-虚拟网卡</h1><h1 id="VPN-amp-代理差异"><a href="#VPN-amp-代理差异" class="headerlink" title="VPN&amp;代理差异"></a>VPN&amp;代理差异</h1><h1 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h1><p>域名解析运营商的配置后台<br>dns 的递归和迭代查询</p>
+<p>gethostbyname()<br>&#x2F;&#x2F; 引出 dns over https</p>
+<h1 id="DOH-httpdns"><a href="#DOH-httpdns" class="headerlink" title="DOH(httpdns)"></a>DOH(httpdns)</h1><p>记的有一次问过一个候选人问题，就是对于一个网络请求，是 TCP 三次握手先发生，还是 HTTPS 安全认证先发生。<br>对于 DOH，会引申一个问题：正式的 https 网络请求发出前，需要先做 doh 请求，拿到 网络域名对应的 ip。而 doh 也是一个 https 请求，本身也需要做 ssl&#x2F;tls 鉴权。</p>
+<p>dns over https：如何更高效的 dns - 移动端方案（hook 请求 &#x2F; hook getipbyname）</p>
+<p>surge 开放的 网络知识 ： SNI等</p>
+<p>okhttp&#x2F;afnetwork 怎么进行网络请求，以及安全验证<br>面向信仰编程系列 - <span class="exturl" data-url="aHR0cHM6Ly9kcmF2ZW5lc3MubWUvYWZuZXR3b3JraW5nNS8=">https://draveness.me/afnetworking5/<i class="fa fa-external-link-alt"></i></span></p>
+<p>DNS 什么时候做解析，什么时候不做解析</p>
+<p>由浅入深写代理-系列<br><span class="exturl" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS9mYWNlcnQvcG9zdHM/cGFnZT0y">https://www.zhihu.com/people/facert/posts?page=2<i class="fa fa-external-link-alt"></i></span></p>
+<p>Android 网络优化，使用 HTTPDNS 优化 DNS，从原理到 OkHttp 集成<br><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vcG9zdC82ODQ0OTAzODA2MjE2NjE3OTky">https://juejin.cn/post/6844903806216617992<i class="fa fa-external-link-alt"></i></span><br>Android端HTTPS（含SNI）业务场景：IP直连方案<br><span class="exturl" data-url="aHR0cHM6Ly93d3cuYWxpYmFiYWNsb3VkLmNvbS9oZWxwL3poL2h0dHBkbnMvbGF0ZXN0L2Nvbm5lY3QtYW4tYW5kcm9pZC1hcHAtdG8tYW4taXAtYWRkcmVzcy1vdmVyLWh0dHBz">https://www.alibabacloud.com/help/zh/httpdns/latest/connect-an-android-app-to-an-ip-address-over-https<i class="fa fa-external-link-alt"></i></span><br>iOS端HTTPS（含SNI）业务场景“IP直连”方案说明<br><span class="exturl" data-url="aHR0cHM6Ly9oZWxwLmFsaXl1bi5jb20vZG9jdW1lbnRfZGV0YWlsLzI3MTc4Ni5odG1s">https://help.aliyun.com/document_detail/271786.html<i class="fa fa-external-link-alt"></i></span></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>Follow me by other channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/one_gongjiang">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/gongjiang">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="mailto:one.gongjiang@gmail.com">
+            <span class="icon">
+              <i class="fa fa-envelope"></i>
+            </span>
+
+            <span class="label">Email</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag"># 网络</a>
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="tag"># 计算机基础</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/%E5%8F%88%E5%8D%81%E5%B9%B4-%E8%87%B3%E4%B8%89%E5%8D%81%E8%80%8C%E7%AB%8B/" rel="prev" title="又十年-至三十而立">
+                  <i class="fa fa-chevron-left"></i> 又十年-至三十而立
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">Light Mode (Better for light mode to discuss, base github, cannot commen can email me)</a></li>
+            <li class="tab"><a href="#comment-utterances">Dark Mode</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
+            </div>
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+        </div>
+      </div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class=""></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">one.gongjiang艾特gmail.com 所有文章均为原创。我不介意任意形式的转载，但最好不要修改内容。因转载或者修改内容导致的任何问题，我均不负责。如果你真的担心版权，可邮联。评价需要外网，这是枷锁，也是照妖镜。</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.8/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2023/%E7%BD%91%E7%BB%9C%E4%B8%8A%E7%9A%84%E5%B0%8F%E6%8F%92%E6%9B%B2/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"9ce9a48e828ee333a1561303c73f1b69"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
