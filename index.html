@@ -217,7 +217,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>最近本网站的 HTTPS SSL 证书过期了，于是去域名管理平台重新申请了一下。<br>无意中通过 dig 发现，网站的 DNS 解析 IP 一直是 <strong>198.18.1.xxx</strong> 这些。因为我的域名是 CNAME 映射到 github 的，所以有 dig 了一下 github 对应的 ip，发现也是 <strong>198.18.1.xxx</strong>。<br>从哪个角度来看，至少都有些问题。我用的 DNSPod 域名解析平台，dig 自定义域名和 github page 域名，怎么也不能在同一个网段里。<br>搜索了一下才知道，原来 ip 198 不是公网 ip，之前我以为内网 ip 是 10&#x2F;192 这些，知识还是有局限。</p>
+          <p>最近本网站的 HTTPS SSL 证书过期了，于是去域名管理平台重新申请了一下。<br>无意中通过 dig 发现，网站的 DNS 解析 IP 一直是 <strong>198.18.1.xxx</strong> 这些。因为我的域名是 CNAME 映射到 github 的，所以又 dig 了一下 github 对应的 ip，发现也是 <strong>198.18.1.xxx</strong>。<br>从哪个角度来看，至少都有些问题。我用的 DNSPod 域名解析平台，dig 自定义域名和 github page 域名，怎么也不能在同一个网段里。<br>搜索了一下才知道，原来 ip 198 不是公网 ip，之前我以为内网 ip 是 10&#x2F;192 这些，知识还是有局限。</p>
 <blockquote>
 <p>198.18.0.0&#x2F;15  198.18.0.0 – 198.19.255.255  131,072  专用网络  用于测试两个不同的子网的网间通信。<br><span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvJUU0JUJGJTlEJUU3JTk1JTk5SVAlRTUlOUMlQjAlRTUlOUQlODA=">https://zh.wikipedia.org/wiki/保留IP地址<i class="fa fa-external-link-alt"></i></span></p>
 </blockquote>
