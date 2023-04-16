@@ -4,8 +4,9 @@ categories:
 - 技术
 tags:
 - 计算机基础
+- 计算机原理
 - 网络
-keys: 
+keys:  Surge,代理,socks5,VIF,虚拟网卡,DOH,DNS劫持,POSIX,wireshark,SNI
 ---
 
 最近本网站的 HTTPS SSL 证书过期了，于是去域名管理平台重新申请了一下。
