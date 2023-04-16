@@ -15,14 +15,14 @@
     <atom:link href="https://www.yigegongjiang.com/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>时间，真的不多了。</description>
-    <pubDate>Sat, 08 Apr 2023 18:02:13 GMT</pubDate>
+    <pubDate>Sun, 16 Apr 2023 08:43:00 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
       <title>网络代理是如何工作的(致敬Surge)</title>
       <link>https://www.yigegongjiang.com/2023/%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84(%E8%87%B4%E6%95%ACSurge)/</link>
       <guid>https://www.yigegongjiang.com/2023/%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84(%E8%87%B4%E6%95%ACSurge)/</guid>
-      <pubDate>Sat, 08 Apr 2023 18:02:13 GMT</pubDate>
+      <pubDate>Sun, 16 Apr 2023 08:43:00 GMT</pubDate>
       
       <description>&lt;p&gt;最近本网站的 HTTPS SSL 证书过期了，于是去域名管理平台重新申请了一下。&lt;br&gt;无意中通过 dig 发现，网站的 DNS 解析 IP 一直是 &lt;strong&gt;198.18.1.xxx&lt;/strong&gt; 这些。因为我的域名是 CNAME 映射到 github 的，所以又 dig 了一下 github 对应的 ip，发现也是 &lt;strong&gt;198.18.1.xxx&lt;/strong&gt;。&lt;br&gt;从哪个角度来看，至少都有些问题。我用的 DNSPod 域名解析平台，dig 自定义域名和 github page 域名，怎么也不能在同一个网段里。&lt;br&gt;搜索了一下才知道，原来 ip 198 不是公网 ip，之前我以为内网 ip 是 10&amp;#x2F;192 这些，知识还是有局限。&lt;/p&gt;
 &lt;blockquote&gt;
