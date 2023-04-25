@@ -476,14 +476,15 @@ anyway，DNS 也是 socket 遍历里面的一环，即 gethostbyname() 函数。
 SNI，就是上面截图里面的：Server Name Indication。
 如果服务器 Nginx 配置来 N 个域名的解析，那么 Nginx 就会根据 SNI，知道当前请求的域名是什么，然后返回对应的 ssl/tls CA 证书（如果 Nginx 只配置一个域名，那其实有没有 SNI 都没有关系了）。
 
-Surge 默认没有对 DOH 做支持，需要通过 js model(模块) 实现。
-因为 DOH 的支持需要一定的条件，准确来说，需要 client 支持，因为 DOH 的实现，会带来跨域、http 请求头 host 变为 ip 的预准备工作等：
+Surge 默认已经对 DOH 做支持，在软件的控制面板里面有 DNS over https/https/3/QUIC 的配置。
+
+DOH 的支持需要一定的条件，准确来说，需要 client 支持，因为 DOH 的实现，会带来跨域、http 请求头 host 变为 ip 的预准备工作等：
 1. client 需要先进行 https 请求，获取目标域名的 ip，而后将域名请求转为 ip 请求（1. 实现 gethostbyname 2. 强行把请求的域名变成 ip）。
 2. client 需要在 ssl/tls 认证的时候，将 SNI 变为域名，而不能是 ip，否则服务器不知道返回那个域名的证书。
 3. client 拿到服务器证书后，需要自行进行证书校验，需要再把 ip 转为域名，和证书里面的域名做匹配，匹配成功才算证书校验合格。
 
-对于以上三点，目前 Chrome 等浏览器都做了支持，但是 app 还不支持，这里说的就是 Android 和 iOS。
-
+这些在 Mac 端并没有什么问题，上面的系统代理和网卡代理都可以看到，并不需要 client 主动的感知 DNS，Surge 完全可以全部劫持。目前 Chrome 等浏览器都都做了 DOH 的支持。
+但是在 app 上还没法完美支持，这里说的就是 Android 和 iOS。
 Android 基于常用的 OKHttp 还比较方便实现，因为 OKHttp 提供 gethostbyname() 接口的实现，这样在 DNS 阶段就可以做 DNS 的hook。然后对 SNI 做一个反射，就可以完成。
 iOS 就相当麻烦了，主要原因是系统没有提供 SNI 的 hook 方式，即使通过 fishhook 完成了 gethostbyname() 的 hook，也没法顺利实现 SNI 的 hook。当然也有解，但是难度很大，很容易出错。这里还是期待系统级别的支持。
 
