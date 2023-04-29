@@ -199,7 +199,7 @@ Objective-C的标准库和C就不一样了。C的标准库上面说到，是C运
 
 ![tVhrvT.png](https://s1.ax1x.com/2020/05/28/tVhrvT.png)
 
-我在之前文章中，也有一个Objective-C和运行时库的说明：[Objective-C 和 Runtime](https://www.yigegongjiang.com/2020/04/08/Objective-C%20%E5%92%8C%20Runtime/)。
+我在之前文章中，也有一个Objective-C和运行时库的说明：[Objective-C 和 Runtime](https://www.yigegongjiang.com/2020/Objective-C%20和%20Runtime/)。
 
 #### Go该如何被iOS系统执行
 
