@@ -110,7 +110,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags<span class="badge">12</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">66</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user fa-fw"></i>About</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section"><i class="rss fa-fw"></i>Rss</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags<span class="badge">12</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">67</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user fa-fw"></i>About</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section"><i class="rss fa-fw"></i>Rss</a></li>
   </ul>
 </nav>
 
@@ -150,7 +150,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-count">67</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -323,7 +323,7 @@
 <p>从上面对OC运行时的分析，我们可以看出，说Objective-C是C的超集，其实应该这样理解：<br>Objective-C是高级语言，在代码编译后，会调用OC运行时接口，进行相关操作如对象创建，方法查找等。而OC运行时接口的具体实现，则是依托C运行时实现的。<br>比如，我们创建的Objective-C对象，在编译后，都会转换成struct结构体的形式进行OC运行时调用。再比如，我们创建对象调用OC运行时的alloc接口，在内部，却是调用的C运行时的calloc接口(显然，calloc调用的是系统调用的brk接口)。<br>面向对象是面向开发人员的，OC运行时负责面向对象的Objective-C代码和C运行时之间的沟通。<br>Objective-C的标准库和C就不一样了。C的标准库上面说到，是C运行时的一部分。对于其他高级语言来说，标准库就是单纯为应用层封装的动态库，不属于运行时的一部分了。</p>
 <p>下面是具体的流程图：</p>
 <p><img data-src="https://s1.ax1x.com/2020/05/28/tVhrvT.png" alt="tVhrvT.png"></p>
-<p>我在之前文章中，也有一个Objective-C和运行时库的说明：<a href="https://www.yigegongjiang.com/2020/04/08/Objective-C%20%E5%92%8C%20Runtime/">Objective-C 和 Runtime</a>。</p>
+<p>我在之前文章中，也有一个Objective-C和运行时库的说明：<a href="https://www.yigegongjiang.com/2020/Objective-C%20%E5%92%8C%20Runtime/">Objective-C 和 Runtime</a>。</p>
 <h4 id="Go该如何被iOS系统执行"><a href="#Go该如何被iOS系统执行" class="headerlink" title="Go该如何被iOS系统执行"></a>Go该如何被iOS系统执行</h4><p>我们已经分析了C和Objective-C在iOS操作系统上运行的原理。<br>我们可以确定，我们写的代码，只要最终能够对接系统调用并编译成二进制交由操作系统运行，那么我们的代码就能运行。<br>我们写的代码都是高级语言代码，比如我们写的高级语言的函数调用：<code>[OC_Person alloc]</code>，这个函数在编译后我们假设为<code>call Oxa1b2c3</code>，其中<code>Oxa1b2c3</code>是OC运行时的<code>_objc_rootAlloc</code>函数的虚拟地址。<br>在<code>_objc_rootAlloc</code>内部会调用<code>calloc()</code>进行C运行时函数调用，我们假设为<code>call Oxd4e5f6</code>。到此为止，我们自己写的[OC_person alloc]代码，我们知道在代码区里面，那么<code>Oxa1b2c3</code>和<code>Oxd4e5f6</code>这两个运行时的函数在哪里呢？<br>运行时说到底，也是代码。运行时有两种存在形式，一个是动态库，一个是静态库。<br>我们的操作系统都默认有C的动态库运行时。所以我们在Linux A电脑编译出来的ELF执行文件，在Linux B电脑上是可以直接运行的，就是因为C运行时库是用动态库的形式在执行文件启动后进行链接的。不仅仅操作系统，只要是计算机，大差不差都有C的动态库运行时，所以C语言才如此通用。因为只要写了C语言，不出意外到哪里都可以跑起来，除非用了特定系统的api。<br>那如果有一个操作系统，真的没有C的动态库运行时，是不是就不能支持可执行文件了呢？<br>运行时存在两种形式，一种动态库，还有一种静态库。我们在编译可执行文件的时候，可以把运行时打到可执行文件中，这样刚才说到的<code>Oxa1b2c3</code>和<code>Oxd4e5f6</code>运行时函数就打到可执行文件中了，即代码区。这样，及时操作系统没有安装C的动态库运行时，可执行文件一样可以跑起来。只不过，这样的化，可执行文件就会变大，因为包含了静态库运行时的大小。<br>所以Objective-C能够在iOS和Mac上运行，就是因为这两个系统里面，有动态库OC运行时。<br>那Objective-C能不能在安卓手机或者树莓派上面运行呢？因为Objective-C不支持运行时的静态库链接，而安卓和树莓派上没有动态库OC运行时，所以就运行不了Objective-C App了，因为找不到对应的函数调用，即上面说到的<code>Oxa1b2c3</code>和<code>Oxd4e5f6</code>。</p>
 <h5 id="Go静态库运行时的必要性"><a href="#Go静态库运行时的必要性" class="headerlink" title="Go静态库运行时的必要性"></a>Go静态库运行时的必要性</h5><p>所以，Golang该如何在iOS系统上执行？Golang本身是高级语言，肯定有运行时库，分别有动态库和静态库两个版本。因为iOS操作系统本身没有Golang运行时，那么在编写Golang的代码后，在编译链接的时候，把Golang的静态库链接到最终的执行文件中(静态库或者动态库，或者叫框架)，那么这串Golang编写的代码，就能够在iOS系统上完美的运行起来。<br>这个时候，Golang运行时需要做那些事情呢？</p>
 <ol>
