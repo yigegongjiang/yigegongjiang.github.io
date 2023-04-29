@@ -44,8 +44,8 @@
     
     <item>
       <title>网络代理是如何工作的(致敬Surge)</title>
-      <link>https://www.yigegongjiang.com/2023/%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84(%E8%87%B4%E6%95%ACSurge)/</link>
-      <guid>https://www.yigegongjiang.com/2023/%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84(%E8%87%B4%E6%95%ACSurge)/</guid>
+      <link>https://www.yigegongjiang.com/2023/for_surge/</link>
+      <guid>https://www.yigegongjiang.com/2023/for_surge/</guid>
       <pubDate>Sun, 16 Apr 2023 08:43:00 GMT</pubDate>
       
       <description>&lt;p&gt;最近本网站的 HTTPS SSL 证书过期了，于是去域名管理平台重新申请了一下。&lt;br&gt;无意中通过 dig 发现，网站的 DNS 解析 IP 一直是 &lt;strong&gt;198.18.1.xxx&lt;/strong&gt; 这些。因为我的域名是 CNAME 映射到 github 的，所以又 dig 了一下 github 对应的 ip，发现也是 &lt;strong&gt;198.18.1.xxx&lt;/strong&gt;。&lt;br&gt;从哪个角度来看，至少都有些问题。我用的 DNSPod 域名解析平台，dig 自定义域名和 github page 域名，怎么也不能在同一个网段里。&lt;br&gt;搜索了一下才知道，原来 ip 198 不是公网 ip，之前我以为内网 ip 是 10&amp;#x2F;192 这些，知识还是有局限。&lt;/p&gt;
@@ -70,7 +70,7 @@
       <category domain="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</category>
       
       
-      <comments>https://www.yigegongjiang.com/2023/%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84(%E8%87%B4%E6%95%ACSurge)/#disqus_thread</comments>
+      <comments>https://www.yigegongjiang.com/2023/for_surge/#disqus_thread</comments>
       
     </item>
     
@@ -127,8 +127,8 @@
     
     <item>
       <title>Vim 技巧</title>
-      <link>https://www.yigegongjiang.com/2023/Vim%20%E6%8A%80%E5%B7%A7/</link>
-      <guid>https://www.yigegongjiang.com/2023/Vim%20%E6%8A%80%E5%B7%A7/</guid>
+      <link>https://www.yigegongjiang.com/2023/Vim/</link>
+      <guid>https://www.yigegongjiang.com/2023/Vim/</guid>
       <pubDate>Thu, 26 Jan 2023 15:55:42 GMT</pubDate>
       
       <description>&lt;p&gt;一年前写了一篇&lt;a href=&quot;https://www.yigegongjiang.com/2022/%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E6%89%8B%E8%89%BA/&quot;&gt;提高效率的手艺&lt;/a&gt;，提到了 Vim 作为划时代的文本编辑工具，可以有效的提高文本编辑的效率，对于写作或者 coding 都非常有用。&lt;br&gt;今天整理一个稍微进阶的教程。vimer 十几年的 95% 的操作使用，应该都在这里。&lt;/p&gt;</description>
@@ -144,7 +144,7 @@
       <category domain="https://www.yigegongjiang.com/tags/Work/">Work</category>
       
       
-      <comments>https://www.yigegongjiang.com/2023/Vim%20%E6%8A%80%E5%B7%A7/#disqus_thread</comments>
+      <comments>https://www.yigegongjiang.com/2023/Vim/#disqus_thread</comments>
       
     </item>
     
@@ -940,8 +940,8 @@
     
     <item>
       <title>从Core Foundation看更大世界</title>
-      <link>https://www.yigegongjiang.com/2020/%E4%BB%8ECore%20Foundation%E7%9C%8B%E6%9B%B4%E5%A4%A7%E4%B8%96%E7%95%8C/</link>
-      <guid>https://www.yigegongjiang.com/2020/%E4%BB%8ECore%20Foundation%E7%9C%8B%E6%9B%B4%E5%A4%A7%E4%B8%96%E7%95%8C/</guid>
+      <link>https://www.yigegongjiang.com/2020/Core_Foundation/</link>
+      <guid>https://www.yigegongjiang.com/2020/Core_Foundation/</guid>
       <pubDate>Sat, 23 May 2020 08:51:05 GMT</pubDate>
       
       <description>&lt;p&gt;&lt;img data-src=&quot;https://s1.ax1x.com/2020/05/26/tPJlTK.png&quot; alt=&quot;tPJlTK.png&quot;&gt;&lt;/p&gt;
@@ -968,7 +968,7 @@
       <category domain="https://www.yigegongjiang.com/tags/%E5%86%85%E5%AD%98/">内存</category>
       
       
-      <comments>https://www.yigegongjiang.com/2020/%E4%BB%8ECore%20Foundation%E7%9C%8B%E6%9B%B4%E5%A4%A7%E4%B8%96%E7%95%8C/#disqus_thread</comments>
+      <comments>https://www.yigegongjiang.com/2020/Core_Foundation/#disqus_thread</comments>
       
     </item>
     
