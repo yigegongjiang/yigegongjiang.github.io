@@ -6,7 +6,7 @@
   <link href="https://www.yigegongjiang.com/atom.xml" rel="self"/>
   
   <link href="https://www.yigegongjiang.com/"/>
-  <updated>2023-05-13T14:07:57.000Z</updated>
+  <updated>2023-05-15T15:23:22.000Z</updated>
   <id>https://www.yigegongjiang.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>致敬耗子哥</title>
+    <link href="https://www.yigegongjiang.com/2023/haoel/"/>
+    <id>https://www.yigegongjiang.com/2023/haoel/</id>
+    <published>2023-05-15T15:23:22.000Z</published>
+    <updated>2023-05-15T15:23:22.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>左耳朵耗子，原名陈浩，很多人称呼耗子哥。<br>互联网布道者，骨灰级程序员。<br>因心梗离开了。</p><p>我受到不少耗子哥的影响，对其博客中的 VIM 教程尤其深刻。<br>他的很多观点，都具有过来人深刻的教诲。</p><p>早上看到消息，本以为是假消息，毕竟这是一个没有真消息的年代。<br>但是没过几分钟，查证了，也沉默了。<br>他生前影响了很多人，他的离开，让整个中文技术圈轰动。</p><p>致敬耗子哥。</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;左耳朵耗子，原名陈浩，很多人称呼耗子哥。&lt;br&gt;互联网布道者，骨灰级程序员。&lt;br&gt;因心梗离开了。&lt;/p&gt;
+&lt;p&gt;我受到不少耗子哥的影响，对其博客中的 VIM</summary>
+        
+      
+    
+    
+    
+    <category term="琐事" scheme="https://www.yigegongjiang.com/categories/%E7%90%90%E4%BA%8B/"/>
+    
+    
+    <category term="Life" scheme="https://www.yigegongjiang.com/tags/Life/"/>
+    
+  </entry>
   
   <entry>
     <title>Socket 与 ICMP</title>

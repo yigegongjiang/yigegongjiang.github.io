@@ -15,8 +15,38 @@
     <atom:link href="https://www.yigegongjiang.com/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>时间，真的不多了。</description>
-    <pubDate>Sat, 13 May 2023 14:07:57 GMT</pubDate>
+    <pubDate>Mon, 15 May 2023 15:23:22 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>致敬耗子哥</title>
+      <link>https://www.yigegongjiang.com/2023/haoel/</link>
+      <guid>https://www.yigegongjiang.com/2023/haoel/</guid>
+      <pubDate>Mon, 15 May 2023 15:23:22 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;左耳朵耗子，原名陈浩，很多人称呼耗子哥。&lt;br&gt;互联网布道者，骨灰级程序员。&lt;br&gt;因心梗离开了。&lt;/p&gt;
+&lt;p&gt;我受到不少耗子哥的影响，对其博客中的 VIM</description>
+          
+        
+      
+      
+      
+      <content:encoded><![CDATA[<p>左耳朵耗子，原名陈浩，很多人称呼耗子哥。<br>互联网布道者，骨灰级程序员。<br>因心梗离开了。</p><p>我受到不少耗子哥的影响，对其博客中的 VIM 教程尤其深刻。<br>他的很多观点，都具有过来人深刻的教诲。</p><p>早上看到消息，本以为是假消息，毕竟这是一个没有真消息的年代。<br>但是没过几分钟，查证了，也沉默了。<br>他生前影响了很多人，他的离开，让整个中文技术圈轰动。</p><p>致敬耗子哥。</p>]]></content:encoded>
+      
+      
+      <category domain="https://www.yigegongjiang.com/categories/%E7%90%90%E4%BA%8B/">琐事</category>
+      
+      
+      <category domain="https://www.yigegongjiang.com/tags/Life/">Life</category>
+      
+      
+      <comments>https://www.yigegongjiang.com/2023/haoel/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>Socket 与 ICMP</title>
