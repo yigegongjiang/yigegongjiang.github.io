@@ -20,20 +20,20 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.14.1","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="很多互联网服务都会开通IM功能，如好友通讯，用户反馈，在线推送等。在微信未盛行，QQ大行其道的年代，IM还属于高深技术，目前已经进入寻常百姓家了。其实IM本身整个技术流程从终端角度来看不是一个难以理解的问题。但因为诸多人对网络协议不了解，所以认为IM难以入门。 首先要说IM是一个什么样的形态，它和HTTP&#x2F;S有什么不同。HTTP解决了端到端通讯的问题，在互联网大放异彩的原因是浏览器的盛">
+    <meta name="description" content="很多互联网服务都会开通IM功能，如好友通讯，用户反馈，在线推送等。在微信未盛行，QQ大行其道的年代，IM还属于高深技术，目前已经进入寻常百姓家了。其实IM本身整个技术流程从终端角度来看不是一个难以理解的问题。但因为诸多人对网络协议不了解，所以认为IM难以入门。 首先要说IM是一个什么样的形态，它和HTTP&#x2F;S有什么不同。HTTP解决了端到端通讯的问题，在互联网大放异彩的原因是浏览器的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IM和Socket的关系及Heart的必要性">
 <meta property="og:url" content="https://www.yigegongjiang.com/2020/IM%E5%92%8CSocket%E7%9A%84%E5%85%B3%E7%B3%BB%E5%8F%8AHeart%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7/index.html">
 <meta property="og:site_name" content="一个工匠">
-<meta property="og:description" content="很多互联网服务都会开通IM功能，如好友通讯，用户反馈，在线推送等。在微信未盛行，QQ大行其道的年代，IM还属于高深技术，目前已经进入寻常百姓家了。其实IM本身整个技术流程从终端角度来看不是一个难以理解的问题。但因为诸多人对网络协议不了解，所以认为IM难以入门。 首先要说IM是一个什么样的形态，它和HTTP&#x2F;S有什么不同。HTTP解决了端到端通讯的问题，在互联网大放异彩的原因是浏览器的盛">
+<meta property="og:description" content="很多互联网服务都会开通IM功能，如好友通讯，用户反馈，在线推送等。在微信未盛行，QQ大行其道的年代，IM还属于高深技术，目前已经进入寻常百姓家了。其实IM本身整个技术流程从终端角度来看不是一个难以理解的问题。但因为诸多人对网络协议不了解，所以认为IM难以入门。 首先要说IM是一个什么样的形态，它和HTTP&#x2F;S有什么不同。HTTP解决了端到端通讯的问题，在互联网大放异彩的原因是浏览器的">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://s2.ax1x.com/2020/03/11/8EZsVx.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202305300019200.jpg">
 <meta property="article:published_time" content="2020-02-04T08:45:22.000Z">
 <meta property="article:author" content="隔壁王二">
 <meta property="article:tag" content="计算机原理">
 <meta property="article:tag" content="网络">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s2.ax1x.com/2020/03/11/8EZsVx.jpg">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202305300019200.jpg">
 
 
 <link rel="canonical" href="https://www.yigegongjiang.com/2020/IM%E5%92%8CSocket%E7%9A%84%E5%85%B3%E7%B3%BB%E5%8F%8AHeart%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7/">
@@ -223,7 +223,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><img data-src="https://s2.ax1x.com/2020/03/11/8EZsVx.jpg" alt="heart"></p>
+        <img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202305300019200.jpg" width="30%">
+
 <p>很多互联网服务都会开通IM功能，如好友通讯，用户反馈，在线推送等。在微信未盛行，QQ大行其道的年代，IM还属于高深技术，目前已经进入寻常百姓家了。<br>其实IM本身整个技术流程从终端角度来看不是一个难以理解的问题。但因为诸多人对网络协议不了解，所以认为IM难以入门。</p>
 <p>首先要说IM是一个什么样的形态，它和HTTP&#x2F;S有什么不同。<br>HTTP解决了端到端通讯的问题，在互联网大放异彩的原因是浏览器的盛行。冲浪需要网络获取服务端资源，HTTP可以使得终端发起网络请求服务端返回资源结果实现资源互通。<br>我们的感知里面，终端发起网络请求，服务端回复网络请求，HTTP使命就完成了。所以很多人对于HTTP的认知是：一次性通讯，每次需要获取信息都要重新发起请求。<br>其实有这样的认知是完全正确的，因为HTTP的确就是这样<strong>设计</strong>的。这里要着重说到设计这个词，因为HTTP就是为了完成一次性通讯这么一个任务。而像HTTP这样的应用层协议还有非常多，比如FTP、RTMP等等。他们都是为了完成特定任务而实现的协议。所有应用层协议都是被设计过的，为了完成特定的使命。</p>
 <span id="more"></span>

@@ -27,7 +27,7 @@
 <meta property="og:site_name" content="一个工匠">
 <meta property="og:description" content="最近在研究发送&#x2F;接收缓冲区对Socket性能对影响，朋友发来两篇质量非常高的研究性报告让我看。Socket缓存究竟如何影响TCP的性能TCP性能和发送接收窗口、Buffer的关系做研究的，都少不了数据。上面文章中“缓冲区对Socket性能分析”的数据非常严谨，我非常佩服。于是我用WireShark分析验证TCP的数据传输流程，过程包含三次握手、滑动窗口数据传输、四次挥手，收益很多。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://s1.ax1x.com/2020/05/23/YvJNNR.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202305300023093.png">
 <meta property="og:image" content="https://s1.ax1x.com/2020/05/23/Yvalm8.jpg">
 <meta property="og:image" content="https://s1.ax1x.com/2020/05/23/Yva10S.jpg">
 <meta property="og:image" content="https://s1.ax1x.com/2020/05/23/Yv03TO.png">
@@ -52,7 +52,7 @@
 <meta property="article:author" content="隔壁王二">
 <meta property="article:tag" content="网络">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s1.ax1x.com/2020/05/23/YvJNNR.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202305300023093.png">
 
 
 <link rel="canonical" href="https://www.yigegongjiang.com/2020/TCP%20%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/">
@@ -242,7 +242,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><img data-src="https://s1.ax1x.com/2020/05/23/YvJNNR.png" alt="tcp_wireshark1.png"></p>
+        <img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202305300023093.png" width="30%">
+
 <p>最近在研究发送&#x2F;接收缓冲区对Socket性能对影响，朋友发来两篇质量非常高的研究性报告让我看。<br><span class="exturl" data-url="aHR0cHM6Ly96b3Jyb3pvdS5naXRodWIuaW8vZG9jcy9Tb2NrZXQlRTclQkMlOTMlRTUlQUQlOTglRTclQTklQjYlRTclQUIlOUYlRTUlQTYlODIlRTQlQkQlOTUlRTUlQkQlQjElRTUlOTMlOERUQ1AlRTclOUElODQlRTYlODAlQTclRTglODMlQkQuaHRtbA==">Socket缓存究竟如何影响TCP的性能<i class="fa fa-external-link-alt"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly9wbGFudGVnZy5naXRodWIuaW8vMjAxOS8wOS8yOC8lRTUlQjAlQjElRTYlOTglQUYlRTglQTYlODElRTQlQkQlQTAlRTYlODclODJUQ1AtLSVFNiU4MCVBNyVFOCU4MyVCRCVFNSU5MiU4QyVFNSU4RiU5MSVFOSU4MCU4MSVFNiU4RSVBNSVFNiU5NCVCNkJ1ZmZlciVFNyU5QSU4NCVFNSU4NSVCMyVFNyVCMyVCQi8=">TCP性能和发送接收窗口、Buffer的关系<i class="fa fa-external-link-alt"></i></span><br>做研究的，都少不了数据。上面文章中“缓冲区对Socket性能分析”的数据非常严谨，我非常佩服。<br>于是我用WireShark分析验证TCP的数据传输流程，过程包含三次握手、滑动窗口数据传输、四次挥手，收益很多。</p>
 <span id="more"></span>
 

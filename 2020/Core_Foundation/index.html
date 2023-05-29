@@ -20,14 +20,14 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.14.1","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Core Foundation是被iOSer忽略的一个重要框架。说重要，因为Core Foundation提供了丰富的组件库，这些组件库可以很好的用于开发工作。但之所以被忽略，因为很多开发工作，可以用更友好的Foundation框架替代。Core Foundation有Foundation没有的功能，比如CFDictionary的Key元素无需实现NSCoping协议、CFArray可以不进行对">
+    <meta name="description" content="Core Foundation是被iOSer忽略的一个重要框架。说重要，因为Core Foundation提供了丰富的组件库，这些组件库可以很好的用于开发工作。但之所以被忽略，因为很多开发工作，可以用更友好的Foundation框架替代。Core Foundation有Foundation没有的功能，比如CFDictionary的Key元素无需实现NSCoping协议、CFArray可以不进行">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从Core Foundation看更大世界">
 <meta property="og:url" content="https://www.yigegongjiang.com/2020/Core_Foundation/index.html">
 <meta property="og:site_name" content="一个工匠">
-<meta property="og:description" content="Core Foundation是被iOSer忽略的一个重要框架。说重要，因为Core Foundation提供了丰富的组件库，这些组件库可以很好的用于开发工作。但之所以被忽略，因为很多开发工作，可以用更友好的Foundation框架替代。Core Foundation有Foundation没有的功能，比如CFDictionary的Key元素无需实现NSCoping协议、CFArray可以不进行对">
+<meta property="og:description" content="Core Foundation是被iOSer忽略的一个重要框架。说重要，因为Core Foundation提供了丰富的组件库，这些组件库可以很好的用于开发工作。但之所以被忽略，因为很多开发工作，可以用更友好的Foundation框架替代。Core Foundation有Foundation没有的功能，比如CFDictionary的Key元素无需实现NSCoping协议、CFArray可以不进行">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://s1.ax1x.com/2020/05/26/tPJlTK.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202305300022398.png">
 <meta property="og:image" content="https://s1.ax1x.com/2020/05/26/tiVp28.png">
 <meta property="og:image" content="https://s1.ax1x.com/2020/05/26/tiZ2kR.png">
 <meta property="og:image" content="https://s1.ax1x.com/2020/05/26/titA6H.png">
@@ -51,7 +51,7 @@
 <meta property="article:tag" content="网络">
 <meta property="article:tag" content="内存">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s1.ax1x.com/2020/05/26/tPJlTK.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202305300022398.png">
 
 
 <link rel="canonical" href="https://www.yigegongjiang.com/2020/Core_Foundation/">
@@ -241,7 +241,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><img data-src="https://s1.ax1x.com/2020/05/26/tPJlTK.png" alt="tPJlTK.png"></p>
+        <img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202305300022398.png" width="30%">
+
 <p>Core Foundation是被iOSer<strong>忽略</strong>的一个<strong>重要</strong>框架。说重要，因为Core Foundation提供了丰富的组件库，这些组件库可以很好的用于开发工作。<br>但之所以被忽略，因为很多开发工作，可以用更友好的Foundation框架替代。<br>Core Foundation有Foundation没有的功能，比如CFDictionary的Key元素无需实现NSCoping协议、CFArray可以不进行对象引用计数等。反过来，Foundation也有Core Foundation无法胜任的工作，最大的来说就是<strong>自动引用计数</strong>功能。<br>在iOS项目开发过程中，我们可以使用基于C语言的Core Foundation框架写一些业务功能逻辑，甚至有时候非用Core Foundation不可，因为它有Foundation没有的功能。</p>
 <p>Foundation是用Objective-C语言写的，Core Foundation使用C和C++语言写的。我们都知道Objective-C是C的<strong>超集</strong>，所以认为Objective-C和C、C++混编是正常的。<br>那么，什么是超集？Objective-C是动态的面向对象的，C是静态的面向过程的，如何实现这个超集？<br>既然Objective-C可以和C、C++一起使用，那么Golang呢？我们可不可以用Go来做混合开发？</p>
 <p>通过Core Foundation，可以有更大的认知空间。<br>比如各类高级语言在计算机中是如何运行的？Dart(flutter)可以做混合开发，原理是什么？Lua做热更新，它不是C语言也不是Objective-C语言，是怎么被计算机调用执行的？用Node.js写iOS代码，到底行不行？<br>各种风马牛不相及的高级编程语言，是否有各自的边界？</p>
