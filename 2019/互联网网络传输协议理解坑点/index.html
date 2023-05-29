@@ -20,20 +20,20 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.14.1","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="DNS协议的用途和解析方式是什么样的？所有应用层层面的数据，如果需要进行网络传输，必定需要ip地址这个核心参数。没有ip地址的包，是不可能发出去的，都过不了网卡。因为网卡不知道要把这个包传到哪里去。而ip地址人类很难记忆，所以很多服务都是通过域名进行访问。域名是比较方便记忆，但是网络又不认，因为网络无法根据域名进行数据传输，即域名没有定位功能。所以所有的应用层的域名访问，都需要DNS协议解析成i">
+    <meta name="description" content="DNS协议的用途和解析方式是什么样的？所有应用层层面的数据，如果需要进行网络传输，必定需要ip地址这个核心参数。没有ip地址的包，是不可能发出去的，都过不了网卡。因为网卡不知道要把这个包传到哪里去。而ip地址人类很难记忆，所以很多服务都是通过域名进行访问。域名是比较方便记忆，但是网络又不认，因为网络无法根据域名进行数据传输，即域名没有定位功能。所以所有的应用层的域名访问，都需要DNS协议解析成">
 <meta property="og:type" content="article">
 <meta property="og:title" content="互联网网络传输协议理解坑点">
 <meta property="og:url" content="https://www.yigegongjiang.com/2019/%E4%BA%92%E8%81%94%E7%BD%91%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE%E7%90%86%E8%A7%A3%E5%9D%91%E7%82%B9/index.html">
 <meta property="og:site_name" content="一个工匠">
-<meta property="og:description" content="DNS协议的用途和解析方式是什么样的？所有应用层层面的数据，如果需要进行网络传输，必定需要ip地址这个核心参数。没有ip地址的包，是不可能发出去的，都过不了网卡。因为网卡不知道要把这个包传到哪里去。而ip地址人类很难记忆，所以很多服务都是通过域名进行访问。域名是比较方便记忆，但是网络又不认，因为网络无法根据域名进行数据传输，即域名没有定位功能。所以所有的应用层的域名访问，都需要DNS协议解析成i">
+<meta property="og:description" content="DNS协议的用途和解析方式是什么样的？所有应用层层面的数据，如果需要进行网络传输，必定需要ip地址这个核心参数。没有ip地址的包，是不可能发出去的，都过不了网卡。因为网卡不知道要把这个包传到哪里去。而ip地址人类很难记忆，所以很多服务都是通过域名进行访问。域名是比较方便记忆，但是网络又不认，因为网络无法根据域名进行数据传输，即域名没有定位功能。所以所有的应用层的域名访问，都需要DNS协议解析成">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://s2.ax1x.com/2020/03/11/8EMOzT.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202305300011337.jpg">
 <meta property="article:published_time" content="2019-05-25T11:53:48.000Z">
 <meta property="article:author" content="隔壁王二">
 <meta property="article:tag" content="计算机原理">
 <meta property="article:tag" content="网络">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s2.ax1x.com/2020/03/11/8EMOzT.jpg">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202305300011337.jpg">
 
 
 <link rel="canonical" href="https://www.yigegongjiang.com/2019/%E4%BA%92%E8%81%94%E7%BD%91%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE%E7%90%86%E8%A7%A3%E5%9D%91%E7%82%B9/">
@@ -223,7 +223,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><img data-src="https://s2.ax1x.com/2020/03/11/8EMOzT.jpg" alt="tcp_udp"></p>
+        <img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202305300011337.jpg" width="30%">
+
 <h3 id="DNS协议的用途和解析方式是什么样的？"><a href="#DNS协议的用途和解析方式是什么样的？" class="headerlink" title="DNS协议的用途和解析方式是什么样的？"></a>DNS协议的用途和解析方式是什么样的？</h3><p>所有应用层层面的数据，如果需要进行网络传输，必定需要ip地址这个核心参数。没有ip地址的包，是不可能发出去的，都过不了网卡。因为网卡不知道要把这个包传到哪里去。<br>而ip地址人类很难记忆，所以很多服务都是通过域名进行访问。域名是比较方便记忆，但是网络又不认，因为网络无法根据域名进行数据传输，即域名没有定位功能。<br>所以所有的应用层的域名访问，都需要DNS协议解析成ip地址后才能够封包发送，ip有定位功能。如果一个应用层服务直接通过ip地址访问另一个服务，那么是完全不用DNS做一次ip地址解析的。<br>我们的域名是需要从特定的服务商进行购买，在服务商处会进行ip地址的配置。而DNS协议的根据就是层层服务商解析，问根域，返回顶级域，问顶级域，返回权威域，这样通过<code>.com</code>、<code>.cn</code>等不同服务商的判断，最终落实并返回一个确定的ip地址。<br>DNS协议是系统层级的操作，应用层无需关心，系统通过DNS协议拿到ip地址后会给到应用层，然后应用层将ip地址传递到传输层进行网络数据封包。<br>为了效率问题，系统会进行DNS的缓存以加快解析速度，并且还会设置有效期以较少误差。<br>比较例外的是hosts文件。在这里配置的信息具有第一优先级，系统如果在hosts中找到了对应的域名和ip地址的映射，则不再进行DNS请求而直接返回映射数据。<br>DNS 会有劫持问题，在移动端会使用 HTTPDNS 技术。DNS 有一个非常重要的大杀器，就是做负载均衡。</p>
 <span id="more"></span>
 
