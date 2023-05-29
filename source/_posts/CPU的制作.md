@@ -8,7 +8,7 @@ tags:
 keywords: CPU,晶圆,光刻,内存,晶体管
 ---
 
-![晶圆](https://s2.ax1x.com/2020/03/11/8EM7on.jpg)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202305300013497.jpg" width="30%">
 
 对 CPU 的一点简要说明。
 如果你是对CPU的制作有一些模糊，或者希望通过其他博文来验证你的想法，那么下面一些认知或许对你有一些帮助。

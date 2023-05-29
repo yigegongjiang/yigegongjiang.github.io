@@ -9,7 +9,7 @@ tags:
 keywords: Socket,IM,,Heart,TCP,UDP,心跳,心跳包,间隔
 ---
 
-![heart](https://s2.ax1x.com/2020/03/11/8EZsVx.jpg)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202305300019200.jpg" width="30%">
 
 很多互联网服务都会开通IM功能，如好友通讯，用户反馈，在线推送等。在微信未盛行，QQ大行其道的年代，IM还属于高深技术，目前已经进入寻常百姓家了。
 其实IM本身整个技术流程从终端角度来看不是一个难以理解的问题。但因为诸多人对网络协议不了解，所以认为IM难以入门。

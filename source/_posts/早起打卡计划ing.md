@@ -8,7 +8,7 @@ tags:
 keywords:
 ---
 
-![zaoqi1.PNG](https://s2.ax1x.com/2020/03/11/8EmLuj.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202305300017504.png" width="30%">
 
 2020.01.28，大年初四，疫情已经四处开花了。那天，我坐在出租屋里和孩子玩。我突然想到，2019年的年度总结我已经写出来了，但是2020年都过去两个月了，可是Flag呢？好像是丢了。
 像我这样到人，除了抽烟一直没能戒掉，做其他事还是计划感挺强的。我觉得2020年，应该立个Flag。

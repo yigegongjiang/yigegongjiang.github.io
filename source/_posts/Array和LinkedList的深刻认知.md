@@ -8,7 +8,7 @@ tags:
 keywords: Array,Linked,Linked List,数组,链表,C,Swift,iOS,计算机,计算机原理
 ---
 
-![arrayvslinkedlist.png](https://s2.ax1x.com/2020/03/11/8EnoZR.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202305300021966.png" width="30%">
 
 谈数据结构的时候，到底在谈论什么？本质上就是谈论两个东西，分别是**数组(Array)**和**链表(Linked List)**。
 

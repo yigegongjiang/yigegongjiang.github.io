@@ -12,7 +12,7 @@ tags:
 keywords: 
 ---
 
-![tPJlTK.png](https://s1.ax1x.com/2020/05/26/tPJlTK.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202305300022398.png" width="30%">
 
 Core Foundation是被iOSer**忽略**的一个**重要**框架。说重要，因为Core Foundation提供了丰富的组件库，这些组件库可以很好的用于开发工作。
 但之所以被忽略，因为很多开发工作，可以用更友好的Foundation框架替代。

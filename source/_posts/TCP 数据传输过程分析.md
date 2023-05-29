@@ -8,7 +8,7 @@ tags:
 keywords: 
 ---
 
-![tcp_wireshark1.png](https://s1.ax1x.com/2020/05/23/YvJNNR.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202305300023093.png" width="30%">
 
 最近在研究发送/接收缓冲区对Socket性能对影响，朋友发来两篇质量非常高的研究性报告让我看。
 [Socket缓存究竟如何影响TCP的性能](https://zorrozou.github.io/docs/Socket%E7%BC%93%E5%AD%98%E7%A9%B6%E7%AB%9F%E5%A6%82%E4%BD%95%E5%BD%B1%E5%93%8DTCP%E7%9A%84%E6%80%A7%E8%83%BD.html)
