@@ -623,9 +623,18 @@
   </url>
   
   <url>
-    <loc>https://www.yigegongjiang.com/2023/Journey%20Under%20the%20Midnight%20Sun/</loc>
+    <loc>https://www.yigegongjiang.com/2018/Journey%20Under%20the%20Midnight%20Sun/</loc>
     
-    <lastmod>2023-05-29</lastmod>
+    <lastmod>2018-11-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yigegongjiang.com/2019/Green%20train/</loc>
+    
+    <lastmod>2019-11-01</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
