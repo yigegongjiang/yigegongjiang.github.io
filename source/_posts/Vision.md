@@ -5,7 +5,7 @@ categories:
 - 观点
 tags:
 - Life
-keywords:
+keywords: vision
 ---
 
 Apple WWDC 大会上，发布了 Vision 设备，24 年初向美国售卖，3499 美元。预计不久也会在国内市场透出，加上税应该在 2.5W 左右。
