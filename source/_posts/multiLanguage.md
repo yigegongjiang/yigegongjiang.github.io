@@ -91,6 +91,7 @@ C++ 的 auto 类型推断 和 tuple 元组 太好用了。STL 容器实在强大
 
 简单写服务、脚本，千万别往 Java/C++ 上面凑。2-3 小时就能看完 Python 的语法，用 Google 搜索下诉求，就能找到开源库。
 Python，当之无愧的开箱即用。
+Anaconda 很好用， 通过 conda 来代替 pip 和 环境隔离非常方便。
 
 # Docker:
 
