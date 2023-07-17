@@ -7,7 +7,7 @@ tags:
 - 计算机基础
 - 网络
 - iOS
-keywords: 数字签名,公私钥,完整性,身份认证,机密性,不可否认,摘要,SSL/TSL,苹果双重认证,非对称加密,数字证书,加签,验签,
+keywords: 数字签名,公私钥,完整性,身份认证,机密性,不可否认,摘要,SSL/TSL,苹果双重认证,非对称加密,数字证书,加签,验签,passkey
 ---
 
 数字签名可以解决数据安全里面的**完整性**，**身份认证**和**不可否认**三大特性，但是解决不了**机密性**问题。机密性需要通过对称密钥/公私钥解决，所以数字签名其实和加解密/密文/机密性这些在概念上非一个层次。
@@ -54,6 +54,32 @@ keywords: 数字签名,公私钥,完整性,身份认证,机密性,不可否认,�
 这里说数据签名用于明文场景，是因为数据签名定义上，就是使用私钥进行加签。但加签的数据可以被所有公钥验签后获取，所以没有私密性可言。这也符合非对称加密的特点，即单向安全。数据签名正好使用的是反向，自然就没有密文一说了。
 非对称加密只有在公钥加密私钥解密情况下才是安全的，这就是单向认证。如果希望双方的数据都是安全的，就需要使用双向认证了。
 ![](https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301021647509.jpeg)
+
+### 数字签名应用场景：PassKey
+
+天下苦 登陆 & 验证码 久矣。
+passkey 无密码登陆，是相当期待的功能。目前 Google 平台已经全面上线，Apple 和 微软 都已经对 passkey 做了支持。
+无密码登陆，就是通过在终端如 iPhone/Android/Mac/Window 上，建立一份公私钥。
+注册的时候，将终端私钥上传到服务端。
+登陆的时候，服务端给一个校验字符串，让终端来加签。最后服务端用当初的公钥来解签。能解开并且和校验字符串一致，则表示当前用户值得信任。
+
+https://www.passkeys.io/ 已经做了 passkey 注册的 demo，我体验了一遍，效果很棒。部分流程如下：
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202307172322604.jpg" width="30%">
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202307172322603.jpg" width="10%">
+
+图中，是通过 iPhone 终端登录的。其实也可以通过 Mac 端直接登录，这样就可以少了换端的成本。
+当通过其他端同步的时候，其实 chrome 浏览器是通过开启一个 socket 通道，使用中继服务器完成 passkey 的获取。
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202307172322601.jpg" width="30%">
+
+这里其实还有两个问题可以解答：
+
+1. 终端的公私钥，该怎么保存？这里 iPhone 会通过端侧加密和 iCloud 同步的方案，在 Apple 生态的机子上共享。还可以分享给他人。Android 等终端也都有差不多的能力。
+2. 终端如何确保不是他人来申请 passkey 能力？这里一般通过指纹和面部识别，也可以通过其他硬件辅助验证。
+
+下面是整套 passkey 注册和登录的流程图：
+
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202307172332616.jpg" width="40%">
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202307172332617.jpg" width="40%">
 
 ### 数字签名应用场景：SSL
 
