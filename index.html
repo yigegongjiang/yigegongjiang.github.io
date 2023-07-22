@@ -300,10 +300,13 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>最近学习回顾了几门高级语言和周边工具。这里做个小总结，学习暂时告一段落，以后会在需要的时候再捡起来。</p>
-<h1 id="Java："><a href="#Java：" class="headerlink" title="Java："></a>Java：</h1><p>Java 这些年发展很快，我大学时候使用 Java 写过简单的后台，那时候还是 SSH，即 Spring&#x2F;Struct&#x2F;hibernate，使用的还是外部 tomcat + JSP 的方案。<br>看现在的技术方案，都已经被 Spring 全家桶吃完了。基于前后端分离逐渐统一，Java 开发已经不再需要配置 JSP 这些页面模版了。<br>我感触比较大的是 Spring core 和 Spring 周边 对 Java 研发生态的影响是如此之大。<br>其中 依赖注入 和 AOP 已经通过框架层面提高了研发同学的生产力，真棒。大学写 Java 的时候，经常使用的是各种 xml 配置。现在变成了各种注解。</p>
-<p>Java 的周边是真的多，从 数据库到微服务，鉴权、限流、消息队列、Docker、Nginx等。这些周边依托 Spring 全家桶，简单用起来是不难，但是在并发上来后的负载均衡、熔断等机制，还是挺考验工程和技术能力的。<br>当然，对这些周边，停留在使用的层面是远远不够的。深入研究也需要大量的时间，这是非常耗费精力的。</p>
-<p>Java 这门语言，的确相当强大。多年前还被人诟病依托字节码做多平台的性能较低，在 JIT 发展起来后就完全抹平了和编译语言的执行效率。<br>Java 还有一个优点，就是设计模式在 Java 这个体系里面能够充分的发挥作用。甚至有一种感觉：设计模式就是为 Java 而贴合设计的。</p>
-<p>虽然如此，但是我还是不喜欢 Java。10年前，我实习期间因为对 Java 的抵触而换了赛道。<br>当时我觉得 Java 太模式化了，在 Java 的世界里面，很多都是规定好的，条条框框。如果不按照这些约束走，那么就需要重新造轮子，甚至引发不可预期的问题。而我不喜欢那种被约束的感觉。<br>现在回头看，Java 在 Spring 加持下，其实更加模式化了。</p>
+<h1 id="Swift："><a href="#Swift：" class="headerlink" title="Swift："></a>Swift：</h1><p>Swift 这门语言，真的是大杂烩。集合了不知道多少语言的混杂体。<br>Swift 语法都觉得似成相识，比如 范型、异步、多线程、函数编程、闭包、下标、嵌套、元组、虚函数。不过这些能力都是一门高级语言本该支持的，也无可厚非。<br>后起的语言，的确是有后天优势的。很多语言都有历史遗留问题，比如 python 为了解决作用域问题，弄出来 global、local、nolocal 这样反人类的设计。</p>
+<blockquote>
+<p>值类型和引用类型(struct &#x2F; class)借鉴的 C++，详见之前的文章：<a href="https://www.yigegongjiang.com/2019/Swift%20struct(%E5%80%BC%E7%B1%BB%E5%9E%8B)%E4%B8%8Eclass(%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B)%E5%8C%BA%E5%88%AB%E5%8F%8A%E4%B8%89%E7%A7%8D%E4%BC%A0%E5%8F%82%E6%9C%BA%E5%88%B6%E6%B7%B1%E5%88%BB%E5%85%B3%E7%B3%BB%E5%92%8C%E4%BD%BF%E7%94%A8/">Swift struct (值类型) 与 class (引用类型) 区别及三种传参机制深刻关系和使用</a></p>
+<p>元组，借鉴的 C++ 的 tuple。这是真好用，尤其在写算法的时候，可以省去不少逻辑复杂度。</p>
+<p>属性包装器 propertyWrapper 借鉴 Java 的注解。</p>
+<p>函数调用中的虚函数，借鉴 C++ 的虚函数设计。不过在函数调用这个问题上，也没有那么多选择，要么静态编译直接派发，要么虚函数存储方法列表派发，要么像 OC 一样动态派发，要么就得和 Java 这类一样靠虚拟机动态解析(JIT是直接派发)。本质就是找函数指针的过程。</p>
+</blockquote>
           <!--noindex-->
           <!--/noindex-->
         
