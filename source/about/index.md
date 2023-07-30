@@ -4,6 +4,8 @@ date: 2018-10-16 13:32:11
 type: "about"
 ---
 
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202307310054975.png" width="5%" align=left >
+
 我是一个在IT行业多年奋战的Coder。
 经历过多家公司，有大有小。  
 经历过多个产品，有成有败。  
