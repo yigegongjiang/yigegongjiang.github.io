@@ -146,7 +146,7 @@ someOne.name = "Robot"
 > someOne.name:Robot
 ```
 那么我们定义一个Person对象时候的内存分布如下图：
-![swift_struct_class_引用类型](https://s2.ax1x.com/2020/03/11/8EMdxO.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061808341.png" width="50%">
 person这个引用变量，我们使用的时候，可能存储在栈中的（也可能在堆中，但不是重点）。但是其指向的对象，却一定是在堆中的。
 > 这里我们有两个名词认知不要弄混了，一个是person变量，一个是person对象。变量只是符号，编译的时候存储于符号表中的一个标记，对象才是我们使用的数据实体，变量用于找到对象。someOne也是同理。下文中的变量和对象都是同理，后面不再做强调。
 
@@ -172,7 +172,7 @@ someOne.name = "Robot"
 > someOne.name:Robot
 ```
 内存分布如下图：
-![swift_struct_class_值类型](https://s2.ax1x.com/2020/03/11/8EM2JP.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061809607.png" width="50%">
 我们可以发现，值类型相比引用类型，person和someOne这两个值变量，**指向**特征不那么明显了，更多的是复制。我们的someOne并没有指向person，而是把person的数据完全复制了一份成为自己的。
 更重要的，person和someOne存储的，**不再是对象的指针，而是真真实实的数据了**。其实对象依旧还是对象，变量依旧是变量，如上面说的那样。但是，**值变量，直接包含数据(值类型的定义)**了，不再通过指针指向数据了。
 当然，我们从图上看到的，值对象是在栈里面。当然值对象也会在堆里面，场景不一样，存储位置也会不一样。但是和引用对象不同的一点，**值对象是可以存储在栈里面的**。
@@ -227,7 +227,7 @@ assert(person == someOne)
 // assert(person != someOne)
 ```
 它们的内存图如下：
-![swift_struct_class_值类型相等性](https://s2.ax1x.com/2020/03/11/8EMgit.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061810033.png" width="50%">
 当两个值对象的name都是Hello的时候，两个值对象是相等的。如果someOne的name变成Robot，两个值对象就是不想等的。（如果我们把注释的代码打开，相应注释位置上一行代码删除，会发现两个断言都是可以通过的。）
 值类型的相等性比较真的非常简单，就是匹配字节码是否一致。只要值对象的所有字节码是一致的，那两个值对象就是相等的。字节码从哪里来？Hello和Robot，计算机不认识的，他们都会变成对应的码值然后转化成二进制存储内存中。所以值类型相等性判断就是查看二进制是否一样。
 
@@ -244,7 +244,7 @@ assert(person == someOne)
     assert([str1 isEqualToString:str2]); // OK
 ```
 相应的内存图如下：
-![swift_struct_class_引用类型相等性](https://s2.ax1x.com/2020/03/11/8EM6II.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061811891.png" width="50%">
 因为Objective-C对于字符串的生成比较考究（Objective-C里面，字符串根据创建的形式不同和存储中英文的不同，有常量区、栈区、堆区不同表现形式），我们用上面方式建立两个不同地址的Hello字符串。其中比较相等性，一个是通过**==**，一个是通过**equal**。
 引用类型的相等性比较，直接通过值类型的==比较的化，比较的是内存地址，显然str1和str2，他们的内存地址不可能一样，所以他们并不相等。
 而通过equal来比较，就变成了上面的值类型的字节码比较，Hello的二进制存储都是一样的，他们就相等了。
@@ -308,7 +308,7 @@ int param1 = 20;
 change(param1);
 ```
 上面的内存分布如图：
-![swift_struct_class_值类型的三种传参](https://s2.ax1x.com/2020/03/11/8EMDqH.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061811789.png" width="50%">
 
 我们分析一下值类型下的三种传参，
 1. 值传参，就是行参对象原封不动的获取了实参对象的**数据拷贝**。两个对象之间不再有任何关联，对行参对象的内部修改(someOne.name = "Robot")和自身修改(someOne = Person(name: "SomeOne", age: 18))，都不会更改另一个对象的任何数据。如上图所示，person对象没有任何修改。
@@ -394,7 +394,7 @@ int main(int argc, const char * argv[]) {
 }
 ```
 上面的内存分布如图：
-![swift_struct_class_引用类型的三种传参](https://s2.ax1x.com/2020/03/11/8EMsZd.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061812422.png" width="50%">
 
 我们分析一下引用类型下的三种传参，
 1. 值传参，因为引用类型不支持值传参，所以我们使用copy，模拟了值传参。这也是**深拷贝**的实现方式。我们通过自定义copy来实现引用类型的值传参。
@@ -446,7 +446,7 @@ ReferenceType r2 = r1;
 所以我们可以发现：
 **值类型通过地址传参和引用传参，可以实现引用语义。**
 **引用类型通过值传参，可以实现值语义。**
-![swift_struct_class_值语义和引用语义](https://s2.ax1x.com/2020/03/11/8EMBse.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061813761.png" width="50%">
 
 代码示例如下：
 ```
@@ -513,7 +513,7 @@ struct Person {
 var person = Person(name: "Gongjiang", age: 20)
 person.name = "Hello"
 ```
-![swift_struct_class_值类型引用类型互嵌1](https://s2.ax1x.com/2020/03/11/8EM5LQ.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061814818.png" width="50%">
 
 #### 值类型嵌套引用类型
 
@@ -537,7 +537,7 @@ var dog = Dog(name: "Wa")
 var person = Person(name: "Gongjiang", age: 20, dog: dog)
 person.name = "Hello"
 ```
-![swift_struct_class_值类型引用类型互嵌2](https://s2.ax1x.com/2020/03/11/8EMRRf.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061814319.png" width="50%">
 
 #### 引用类型嵌套值类型
 
@@ -551,7 +551,7 @@ class Dog {
 }
 var dog = Dog(name: "Wa")
 ```
-![swift_struct_class_值类型引用类型互嵌3](https://s2.ax1x.com/2020/03/11/8EMhQS.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061815244.png" width="50%">
 
 #### 引用类型嵌套引用类型
 
@@ -580,7 +580,7 @@ var dog = Dog(name: "Wa")
 var person = Person(name: "Gongjiang", age: 20, dog: dog)
 person.name = "Hello"
 ```
-![swift_struct_class_值类型引用类型互嵌4](https://s2.ax1x.com/2020/03/11/8EMWz8.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061815976.png" width="50%">
 
 ### 0X07 Swift中的struct为什么很特别？struct能给我们带来哪些认知？
 

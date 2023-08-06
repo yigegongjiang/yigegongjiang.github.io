@@ -26,11 +26,11 @@ keywords:
 于是我准备了疫情的3个状态图，分别表示**正在爆发**、**正在好转**、**已经结束**。然后用手机把丁香园实时数据截图并剪裁，最后通过“订阅号助手”App直接发文。
 
 下面是我准备的3张图片：
-![zaoqi3.PNG](https://s2.ax1x.com/2020/03/11/8EmXbn.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061905664.png" width="30%">
 **正在爆发**
-![zaoqi2.PNG](https://s2.ax1x.com/2020/03/11/8EmvEq.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061905108.png" width="30%">
 **正在好转**
-![zaoqi1.PNG](https://s2.ax1x.com/2020/03/11/8EmLuj.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061906348.png" width="30%">
 **已经结束**
 
 图是我用Sketch做的，开始想着用PS，发现已经卸载了。重装一个PS包太大了，Sketch下载包小很多。这样前前后后找图标，压缩图片，也折腾了一个小时左右。
@@ -39,9 +39,10 @@ keywords:
 2020.02.01 06:23，第一条推文发送成功。
 2020.02.04 06:02，第一条距离6点最近的推文发送成功。
 后面渐渐稳定在6点多一些，超过7点以后就不发了。
-**距离今日，总共过去37日，发表推文28篇，坚持率76%**。
+距离今日，总共过去37日，发表推文28篇，坚持率76%。
 不是很好。有点超出我的预期，但没有达到我期待。但还是很感动，这特么比戒烟容易多了。
 
 ___
 
-公众号名称：**[一个工匠](https://mp.weixin.qq.com/s/lWd9XWx5UfP4U9ySrGBuLw)**
+公众号名称：[一个工匠](https://mp.weixin.qq.com/s/lWd9XWx5UfP4U9ySrGBuLw)
+已经被腾讯给封了。-- by 2023.08.06

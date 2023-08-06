@@ -39,12 +39,12 @@ Foundation是用Objective-C语言写的，Core Foundation使用C和C++语言写�
 
 iOS系统提供了很多框架给我们使用，详见下图：
 
-![tiVp28.png](https://s1.ax1x.com/2020/05/26/tiVp28.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061755389.png" width="50%">
 
 我们经常使用的框架都正在图中的分层结构中找到对应的影子。
 也可以从Xcode的资源文件中查看，如下图：
 
-![tiZ2kR.png](https://s1.ax1x.com/2020/05/26/tiZ2kR.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061756517.png" width="50%">
 
 刚才说到框架有1-n个库组成，上图中的SwiftUI.framework框架里面只有一个SwiftUI.h头文件，而Foundation.framework框架里面有近130个头文件。我们可以理解为一个头文件即可单独生成一个动态库。
 
@@ -75,13 +75,13 @@ PC上我们可以跑上千种语言，因为这些语言最终都是二进制。
 操作系统提供了完善的服务，人们都装了主流的几大操作系统。因为我们的代码需要被用户拿去执行才有意义和价值，所以，我们的代码全都需要接受操作系统的控制。
 所以现在，我们的C语言代码从开发阶段到被执行，是下面这样的：
 
-![titA6H.png](https://s1.ax1x.com/2020/05/26/titA6H.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061756597.png" width="50%">
 
 系统调用，都是汇编实现的，并实现了C的接口供用户调用。这里需要说明一点，几大操作系统都是用C语言提供的系统调用接口。不管用户态是什么类型的高级语言，系统调用提供的仅仅是C接口。
 
 下面是部分系统调用接口，
 
-![tiwf6U.png](https://s1.ax1x.com/2020/05/26/tiwf6U.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061757818.png" width="50%">
 
 系统调用接口并不是很多，都是操作系统提供给外界的刚需接口，大约350个左右（不同系统的接口数量不同）。这个时候，C开发人员开发的时候都是调用open用来打开文件，调用brk来申请内存。显然和现实不太一样，我们开发的时候，都用的fopen打开文件，用malloc申请内存。这是为什么呢？
 
@@ -93,7 +93,7 @@ PC上我们可以跑上千种语言，因为这些语言最终都是二进制。
 
 下面是添加了C Runtime Library（运行时）后的调用流程：
 
-![tiyzB8.png](https://s1.ax1x.com/2020/05/26/tiyzB8.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061758180.png" width="50%">
 
 运行时是一个中间层，用户写的代码，最终调用的都是运行时接口。这个接口可以专门为C语言提供非常丰富的接口调用，有下面四种情况：
 1. 1个系统调用接口可以为n个运行时接口提供服务，比如malloc和free都使用了brk。
@@ -109,7 +109,7 @@ PC上我们可以跑上千种语言，因为这些语言最终都是二进制。
 
 这里有一点需要说明，C运行时虽然作为高级语言和系统调用的中间层，但也不一定非要过这个中间层不可。因为操作系统只管理系统调用，而上层如何调用系统调用，是不受约束的。如果有一门语言，完全没有运行时概念，用户代码直接对接系统调用完全没有问题，就是上面说的**系统调用生硬且基础**和**不能跨平台**两个缺点。所以C语言真实调用逻辑如下：
 
-![tVJ2As.png](https://s1.ax1x.com/2020/05/28/tVJ2As.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061759090.png" width="50%">
 
 开发人员在编写代码的时候，可以调用C运行时库接口，也可以直接进行系统调用。但还是那句话，这样用的人肯定不多，项目里面可能个别代码会如此实现，但一定是有足够把握才会这么做。
 
@@ -117,7 +117,7 @@ PC上我们可以跑上千种语言，因为这些语言最终都是二进制。
 
 还有一点需要说明，Windows和Linux还有些不一样。Linux的CRT直接进行系统调用，而Windows又加了一层中间层，名叫Window API。这个中间层夹在系统调用和MCRT之间，如下图：
 
-![ti7UyD.png](https://s1.ax1x.com/2020/05/26/ti7UyD.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061759003.png" width="50%">
 
 Window API对微软意义重大，作为最出名对商业软件，Window API更好的保障了用户升级带来对兼容性，所以中间层真的很好用。
 
@@ -128,7 +128,7 @@ Window API对微软意义重大，作为最出名对商业软件，Window API更
 比如，内存分配，提供的api都是malloc。而windows有图形界面的绘图api，对应的linux就没有体现。
 于是就把默认提供的api如malloc或者printf等叫做C 标准库。其他各自独有的也并入C运行时库。详见下图：
 
-![tib9Ej.png](https://s1.ax1x.com/2020/05/26/tib9Ej.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061800095.png" width="50%">
 
 C的运行时比较特别，主要因为C出了标准，却没有给实现，于是各家为政。所以C的运行时库里面包含了C标准库，还有其他接口如启动函数等。而对于其他高级语言，一般就没有运行时库包含标准库的概念，因为标准库和运行时库也是独立的。比如，Objective-C里面，系统提供了非常多的标准库即框架，这些框架都是动态库形式，但他们不是运行时，有单独的运行时库负责系统调用(OC比较特别，实际为对接C运行时而非系统调用，下面会详细说明)。
 
@@ -170,7 +170,7 @@ OC_Person *person = [[OC_Person alloc] init];
 ```
 详细调用流程图如下：
 
-![tVaMQ0.png](https://s1.ax1x.com/2020/05/28/tVaMQ0.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061800826.png" width="50%">
 
 从上面的函数调用链，我们发现有两个关键点：
 1. Objective-C进行对象内存初始化的时候，通过Objective-C的函数调用，最终调用到C语言的calloc()函数调用。
@@ -197,7 +197,7 @@ Objective-C的标准库和C就不一样了。C的标准库上面说到，是C运
 
 下面是具体的流程图：
 
-![tVhrvT.png](https://s1.ax1x.com/2020/05/28/tVhrvT.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061801048.png" width="50%">
 
 我在之前文章中，也有一个Objective-C和运行时库的说明：[Objective-C 和 Runtime](https://www.yigegongjiang.com/2020/Objective-C%20和%20Runtime/)。
 
@@ -226,7 +226,7 @@ Objective-C的标准库和C就不一样了。C的标准库上面说到，是C运
 
 下面是Golang在iOS系统上的运行流程图：
 
-![tVqdIS.png](https://s1.ax1x.com/2020/05/28/tVqdIS.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061802061.png" width="50%">
 
 幸运的是，Go开发iOS所需要的库/框架，目前已经有发行版了，即[Go Mobile](https://github.com/golang/mobile)。我测试一下，简单一行代码，在编译后的嵌入动态库中，也有1.5M，原因就是这个动态库中，有Go的静态运行时和CGO静态库。
 
@@ -255,14 +255,15 @@ Go和Node.js能够写iOS动态库，那么按照同样的逻辑，其他高级�
 Core Foundation是基于C开发的，Foundation是基于Objective-C开发的。但是有一点，Foundation是基于Core Foundation封装并实现了Core Foundation所没有的部分。
 我们可以用下图来表示Core Foundation和Foundation的关系：
 
-![tZCYEd.png](https://s1.ax1x.com/2020/05/28/tZCYEd.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061803283.png" width="50%">
 
 Foundation用Objective-C封装了Core Foundation的C组件，并实现了额外了组件供开发人员使用。而Core Foundation也有一些Foundation没能彻底封装的功能，这些功能是Core Foundation特有的。
 
 下面可以看一下Foundation和Core Foundation的组件库都有哪些：
 
-![tZPSqe.png](https://s1.ax1x.com/2020/05/28/tZPSqe.png)
-![tZCzrD.png](https://s1.ax1x.com/2020/05/28/tZCzrD.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061803150.png" width="50%">
+
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061804527.png" width="50%">
 
 从图中，我们可以看到，Foundation的组件是多于Core Foundation的，比如NSBundle在Core Foundation就没有体现。而NSArray就和Core Foundation的CFArray是对应的。反过来，Core Foundation的CFTree和CFBitVector在Foundation里也没有体现，或许是在其他组件中使用到了这两个算法库。
 
@@ -630,7 +631,7 @@ YYModel使用CFDictionary，就是因为缓存对象是各式各样的，极大�
 
 CFDictionary还有一个巨大特性，是可以吊打NSDictionary的，那就是可以自行控制引用计数。下图表示CFDictionary的创建函数及相关函数调用：
 
-![te7jRH.png](https://s1.ax1x.com/2020/05/28/te7jRH.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061805046.png" width="50%">
 
 我们举例一下，
 ```

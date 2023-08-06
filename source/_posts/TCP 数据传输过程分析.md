@@ -22,18 +22,18 @@ keywords:
 
 主要分析TCP的头字段，有序号、确认序号、ACK、SYN、Option、窗口大小等。详见下图TCP头字段说明：
 
-![tcp_wireshark2.jpg](https://s1.ax1x.com/2020/05/23/Yvalm8.jpg)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061820560.png" width="30%">
 
 部分内容分析了IP的头字段，如包大小等。详见下图IP头字段说明：
 
-![tcp_wireshark3.jpg](https://s1.ax1x.com/2020/05/23/Yva10S.jpg)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061820628.png" width="30%">
 
 ### 数据包长度的问题
 
 一个网络包的最大长度，为65535字节，为什么是这个大小呢？因为在IP网络层，用于标记一个包大小的位数是16位，而16位能够标记的大小就是2的16次方，即65535字节(-1)。
 上图IP头字段中有一个“总长度（16位）”字段，即包大小字段。具体抓包如下：
 
-![Yv03TO.png](https://s1.ax1x.com/2020/05/23/Yv03TO.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061820780.png" width="80%">
 
 图中“Total Length：64”即当前包大小，通过下部分的绿色bit标记显示，可以看出，共有16个比特位用来标记“Total Length”大小，当前为64个字节，即“00000000 01000000”。
 所以，65535字节大小的包，是IP网络层能够从上层接收的最大包大小。
@@ -53,13 +53,13 @@ IP分片后，每个分片后的包单独发送，每个包都有可能丢包。
 所以TCP就自己维护分段逻辑，在三次握手的时候，确定一个合适的包大小，后续所有的包，都按照这个大小进行传输。
 这个大小尽量能直接通过IP层而不会被分片（实际上，是否被分片，还由中间路由控制，因为不能绝对不分片），这样，通过滑动窗口，TCP就很好的控制了包的传输。这里TCP确定的一个合适的包大小，就是三次握手的时候确定的。在第一次和第二次握手包里面，双方都会发送自己最大的MSS，然后双方就有自己和对方的MSS，取最小值，作为包大小。这个MSS存储于第一次和第二次握手包里面的Option里面，名为`TCP Option Maximum segment size`。详见下图：
 
-![tcp_wireshark5.png](https://s1.ax1x.com/2020/05/23/Yvyae1.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061821528.png" width="80%">
 
 图中是抓互联网包中第二次握手的数据，可以看到绿色部分`TCP Option Maximum segment size：1460 bytes`。这里第一次握手终端发给服务器的也是1460大小，我没有把图截出来。如果双方大小不一致，协商后会按照小的一方来。
 这里可以发现，TCP的包大小，是小于1500的。而后面进行正式数据传输的时候，都会以此大小为标准。
 但是TCP包大小也不是说一定小于1500，比如下图：
 
-![tcp_wireshark6.png](https://s1.ax1x.com/2020/05/23/Yv6acQ.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061822794.png" width="80%">
 
 这个图里面，红色框中，Maximum segment size已经达到16344字节，远远大于1500。
 其实这个图是本机服务器的场景，网络包都没有经过网关，是我在本机开了一个http服务抓的包。所以在第一次和第二次握手的时候，传输层会考虑当前网络环境，给出一个合适的大小值。
@@ -76,9 +76,11 @@ SYN是用来请求建立连接（建立套接字）的。第一次和第二次�
 当三次握手完成后，后面传输的所有数据包，ACK的位都必须是1，表示当前套接字已经建立。
 详细可以看下图：
 
-![tcp_wireshark7.png](https://s1.ax1x.com/2020/05/23/YvWc6S.png)
-![tcp_wireshark8.png](https://s1.ax1x.com/2020/05/23/YvW6l8.png)
-![tcp_wireshark9.png](https://s1.ax1x.com/2020/05/23/YvWySf.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061823039.png" width="80%">
+
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061823179.png" width="80%">
+
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061823859.png" width="80%">
 
 其实，三次握手的过程，完成了很多事情，远远不止建立稳定套接字这么简单。下面说几个我分析到的：
 
@@ -90,13 +92,16 @@ SYN是用来请求建立连接（建立套接字）的。第一次和第二次�
 而**确认号**按照接收的数据包大小进行回执，告知对方自己接收了哪些包。因为滑动窗口的缘故，并不会每个数据包都给予确认，而是批量给予确认，所以确认号有可能会跳跃好几个接收的序列号。
 序列号详见下图(序列号是随机的一个比较大的数，在wireshark中默认显示相对序号，真实序号为Sequence number (raw)字段)：
 
-![tcp_wireshark10.png](https://s1.ax1x.com/2020/05/23/YvjAYT.png)
-![tcp_wireshark11.png](https://s1.ax1x.com/2020/05/23/YvjEfU.png)
-![tcp_wireshark12.png](https://s1.ax1x.com/2020/05/23/YvjiT0.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061825703.png" width="80%">
+
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061825484.png" width="80%">
+
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061825471.png" width="80%">
+
 
 确认号详见下图：
 
-![tcp_wireshark13.png](https://s1.ax1x.com/2020/05/23/Yvv7IP.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061825878.png" width="80%">
 
 ##### 奇怪的握手和挥手序列号
 
@@ -112,12 +117,12 @@ SYN是用来请求建立连接（建立套接字）的。第一次和第二次�
 所以第一次握手，TCP认为该包一定需要认真对待，如果丢了，一定需要重传，不然握手就没法建立了。所以TCP为这个包，默认做了序列号增加的操作。具体应该增加几，TCP默认增加1。
 详见下图：
 
-![tcp_wireshark14.png](https://s1.ax1x.com/2020/05/23/YxS2GV.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061827026.png" width="80%">
 
 第二次握手和第一次握手一样，都非常重要，所以服务端的序列号也做了加1的操作，不在说明。
 而第三次握手的序列号就没有加1了，如下图：
 
-![tcp_wireshark15.png](https://s1.ax1x.com/2020/05/23/YxpxpV.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061827820.png" width="80%">
 
 四次挥手也和三次握手一样的逻辑，在第一次和第三次挥手的时候，序列号都做了加1，而第二次和第四次，就没有做加1了。
 
@@ -144,9 +149,11 @@ SYN是用来请求建立连接（建立套接字）的。第一次和第二次�
  
  具体流程详见下图：
 
-![tcp_wireshark16.png](https://s1.ax1x.com/2020/05/23/Yxm9oT.png)
-![tcp_wireshark17.png](https://s1.ax1x.com/2020/05/23/YxmpwV.png)
-![tcp_wireshark18.png](https://s1.ax1x.com/2020/05/23/YxmSe0.png) 
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061827052.png" width="80%">
+
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061828259.png" width="80%">
+
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061829747.png" width="80%">
  
  上面说到，scale在第一次和第二次握手的时候，就已经确定，并且后面不会更改。我在抓包的时候，的确没有在其他数据包里面发现scale字段。
  TCP毕竟只是传输层协议，它不管数据是啥，只管传输。那么后续如何根据scale来计算窗口大小的呢？
@@ -162,7 +169,7 @@ SYN是用来请求建立连接（建立套接字）的。第一次和第二次�
 
 具体抓包如下：
 
-![tcp_wireshark19.png](https://s1.ax1x.com/2020/05/23/Yx8V6U.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061830106.png" width="80%">
 
 传输过程中，窗口变化情况很多，上面也只举例说了一部分。
 
@@ -178,7 +185,7 @@ SYN是用来请求建立连接（建立套接字）的。第一次和第二次�
 
 抓包如下：
 
-![tcp_wireshark20.png](https://s1.ax1x.com/2020/05/23/YxJseg.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061830768.png" width="80%">
 
 ### TCP Keep-Alive
 
@@ -187,7 +194,7 @@ TCP 会自行保持TCP通道的稳定性，这个和HTTP的keep-alive不一样�
 具体发送信息为：[TCP Keep-Alive]和[TCP Keep-Alive ACK]
 详见下图：
 
-![tcp_wireshark21.png](https://s1.ax1x.com/2020/05/23/YxtAUJ.png)
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061831644.png" width="80%">
 
 ### 滑动窗口
 
