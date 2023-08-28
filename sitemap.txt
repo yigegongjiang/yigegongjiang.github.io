@@ -73,6 +73,7 @@ https://www.yigegongjiang.com/2023/high_school/
 https://www.yigegongjiang.com/2023/multiLanguage/
 https://www.yigegongjiang.com/2023/signature/
 https://www.yigegongjiang.com/2023/notion/
+https://www.yigegongjiang.com/2023/the_sea/
 https://www.yigegongjiang.com/about/index.html
 https://www.yigegongjiang.com/categories/index.html
 https://www.yigegongjiang.com/tags/index.html
@@ -95,3 +96,4 @@ https://www.yigegongjiang.com/categories/%E5%B7%A5%E5%85%B7/
 https://www.yigegongjiang.com/categories/%E7%90%90%E4%BA%8B/
 https://www.yigegongjiang.com/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/
 https://www.yigegongjiang.com/categories/%E6%97%B6%E9%97%B4%E8%88%9F/
+https://www.yigegongjiang.com/categories/%E6%97%85%E6%B8%B8%E8%AE%B0/
