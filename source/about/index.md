@@ -1,10 +1,10 @@
 ---
-title: 一个工匠
+title: 一个工匠(海驴)
 date: 2018-10-16 13:32:11
 type: "about"
 ---
 
-<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202307310054975.png" width="5%" align=left >
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202307310054975.png" width="80" align=left >
 
 我是一个在 IT 行业多年奋战的 Coder。
 经历过多家公司，有大有小。  
