@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.0.0-rc2">
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
@@ -15,17 +15,17 @@
 
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.20/fancybox/fancybox.css" integrity="sha256-RvRHGSuWAxZpXKV9lLDt2e+rZ+btzn48Wp4ueS3NZKs=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.14.1","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.18.1","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="0x01 问题描述和表现对于let和var，struct和class，分成两类来说，很多人比较容易理解。let：不可变，var：可变，struct：栈空间，class：堆空间。当我想要确认他们的原理的时候，截止发文为止，我没有在中文互联网上搜索到相关信息。所以我把他们的原理写在下面。 下面的示例，你能够理清楚多少？ 12345678struct Person1 &amp;#123;    let name">
+    <meta name="description" content="0x01 问题描述和表现对于let和var，struct和class，分成两类来说，很多人比较容易理解。let：不可变，var：可变，struct：栈空间，class：堆空间。当我想要确认他们的原理的时候，截止发文为止，我没有在中文互联网上搜索到相关信息。所以我把他们的原理写在下面。 下面的示例，你能够理清楚多少？ 12345678struct Person1 &#123;    let name">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift_let_var_struct_class">
 <meta property="og:url" content="https://www.yigegongjiang.com/2019/Swift_let_var_struct_class/index.html">
 <meta property="og:site_name" content="一个工匠">
-<meta property="og:description" content="0x01 问题描述和表现对于let和var，struct和class，分成两类来说，很多人比较容易理解。let：不可变，var：可变，struct：栈空间，class：堆空间。当我想要确认他们的原理的时候，截止发文为止，我没有在中文互联网上搜索到相关信息。所以我把他们的原理写在下面。 下面的示例，你能够理清楚多少？ 12345678struct Person1 &amp;#123;    let name">
+<meta property="og:description" content="0x01 问题描述和表现对于let和var，struct和class，分成两类来说，很多人比较容易理解。let：不可变，var：可变，struct：栈空间，class：堆空间。当我想要确认他们的原理的时候，截止发文为止，我没有在中文互联网上搜索到相关信息。所以我把他们的原理写在下面。 下面的示例，你能够理清楚多少？ 12345678struct Person1 &#123;    let name">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061817971.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061817238.png">
@@ -224,8 +224,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
-        <h2 id="0x01-问题描述和表现"><a href="#0x01-问题描述和表现" class="headerlink" title="0x01 问题描述和表现"></a>0x01 问题描述和表现</h2><p>对于let和var，struct和class，分成两类来说，很多人比较容易理解。let：不可变，var：可变，struct：栈空间，class：堆空间。<br>当我想要确认他们的原理的时候，截止发文为止，我没有在中文互联网上搜索到相关信息。所以我把他们的原理写在下面。</p>
+    <div class="post-body" itemprop="articleBody"><h2 id="0x01-问题描述和表现"><a href="#0x01-问题描述和表现" class="headerlink" title="0x01 问题描述和表现"></a>0x01 问题描述和表现</h2><p>对于let和var，struct和class，分成两类来说，很多人比较容易理解。let：不可变，var：可变，struct：栈空间，class：堆空间。<br>当我想要确认他们的原理的时候，截止发文为止，我没有在中文互联网上搜索到相关信息。所以我把他们的原理写在下面。</p>
 <p>下面的示例，你能够理清楚多少？</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">struct Person1 &#123;</span><br><span class="line">    let name1: String = &quot;name1&quot;</span><br><span class="line">    var name2: String = &quot;name2&quot;</span><br><span class="line">&#125;</span><br><span class="line">class Person2 &#123;</span><br><span class="line">    let name1: String = &quot;name1&quot;</span><br><span class="line">    var name2: String = &quot;name2&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -255,8 +254,8 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">（4）</span><br><span class="line">int temp = 24;</span><br><span class="line">const int * const age4 = &amp;temp;</span><br></pre></td></tr></table></figure>
 
 <p>这四个常量age的存储，如下图所示：<br><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061817238.png" width="50%"></p>
-<p>对于age1，我们就不能通过<strong>age1 &#x3D; 0;<strong>这样的语句修改值了。<br>对于age2，因为const标记的是值，所以</strong>*age2 &#x3D; 0;<strong>是不行的，会报错。但是我们可以通过</strong>age2 &#x3D; &amp;other;<strong>这样的语句修改age2对应的指针值。<br>对于age3，因为const标记的是指针，所以</strong>age3 &#x3D; &amp;other;*<em>是不行的，会报错。但是我们可以通过</em></strong>age3 &#x3D; 0;**这样的语句修改age3对应的数值。<br>对于age4，因为数值和指针都是只读的，都是常量，什么也修改不了。</p>
-<p>我们发现，其实Swift里的let，就是C里的const。<strong>但是在struct和class中表现是不一致的。</strong>struct类型的let变量就是<strong>“（4）int temp &#x3D; 24;const int * const age4 &#x3D; &amp;temp;”</strong>类型，什么都修改不了。而class类型的let变量，就是<strong>“（3）int temp &#x3D; 23;int * const age3 &#x3D; &amp;temp;”</strong>类型，本身对象指针无法修改，但是内部属性在修饰符允许的情况下是可以修改的。</p>
+<p>对于age1，我们就不能通过<strong>age1 &#x3D; 0;<strong>这样的语句修改值了。<br>对于age2，因为const标记的是值，所以</strong>*age2 &#x3D; 0;<strong>是不行的，会报错。但是我们可以通过</strong>age2 &#x3D; &other;<strong>这样的语句修改age2对应的指针值。<br>对于age3，因为const标记的是指针，所以</strong>age3 &#x3D; &other;*<em>是不行的，会报错。但是我们可以通过</em></strong>age3 &#x3D; 0;**这样的语句修改age3对应的数值。<br>对于age4，因为数值和指针都是只读的，都是常量，什么也修改不了。</p>
+<p>我们发现，其实Swift里的let，就是C里的const。<strong>但是在struct和class中表现是不一致的。</strong>struct类型的let变量就是<strong>“（4）int temp &#x3D; 24;const int * const age4 &#x3D; &temp;”</strong>类型，什么都修改不了。而class类型的let变量，就是<strong>“（3）int temp &#x3D; 23;int * const age3 &#x3D; &temp;”</strong>类型，本身对象指针无法修改，但是内部属性在修饰符允许的情况下是可以修改的。</p>
 <p>我们通过上面的报错信息验证一下刚才的观点。<br>在代码的第15行，<strong>test1.name2 &#x3D; “t”<strong>报错为</strong>Cannot assign to property: ‘test1’ is a ‘let’ constant</strong>，代码的第16行，<strong>test1 &#x3D; Person1()<strong>报错为</strong>Cannot assign to value: ‘test1’ is a ‘let’ constant</strong>。他们的报错原因完全相同，而<strong>name2</strong>本身是var属性。所以15行和16行的报错不是struct内部决定的，而是由<strong>let test1</strong>这个<strong>let</strong>属性决定的。<br>同样的，我们看到代码第25行，<strong>test3.name2 &#x3D; “t”<strong>没有报错，和第15行出现报错对比，可以确定同样的</strong>let</strong>类型的对象变量，在修饰struct和class的时候，他们的行为却是不一致的。</p>
 <p>（我相信有不少朋友，这里会饶进入一个洞里，那就是C里面的const修饰的是Int基础类型，而这里let修饰的是struct对象，struct可不是Int或者String，struct可是对象啊！他们是否有可比性？如果没有可比性，那么上面的结论是否还能成立？这里做说明：Int、Char是啥？在内存里面就是一块存储区域。struct呢？也是一块存储区域。对象是啥？是方便我们开发所汇总出来的一套编程思想，即面向对象编程。过了IDE，解析器和编译器还会管你是Int基础类型或者对象类型？不会管的。<code>在广东人面前，什么都是肉，即使你是福建人。</code>退一万步来说，Swift里面，Int、String也是通过struct来实现的）</p>
 <p>那我们在看看<strong>var</strong>。test2和test4两个var变量，虽然一个是struct对象，一个是class对象，但是他们的表现却是一致的。其实var就是<strong>非 let</strong>修饰符。let修饰符和const类似，那么var其实就是省略了const的修饰符。我们举下面例子</p>
@@ -280,7 +279,7 @@
 </ol>
 <p>这里的蹊跷点就在于，外部约束大于内部约束了。我感觉不可思议，但这的确是一个事实。</p>
 <h2 id="0x05-总结"><a href="#0x05-总结" class="headerlink" title="0x05 总结"></a>0x05 总结</h2><ol>
-<li>Swift里的let，就是C里的const。<strong>但是在struct和class中表现是不一致的。</strong>struct类型的let变量就是<strong>“（4）int temp &#x3D; 24;const int * const age4 &#x3D; &amp;temp;”</strong>类型，什么都修改不了。而class类型的let变量，就是<strong>“（3）int temp &#x3D; 23;int * const age3 &#x3D; &amp;temp;”</strong>类型，本身对象指针无法修改，但是内部属性在修饰符允许的情况下是可以修改的。</li>
+<li>Swift里的let，就是C里的const。<strong>但是在struct和class中表现是不一致的。</strong>struct类型的let变量就是<strong>“（4）int temp &#x3D; 24;const int * const age4 &#x3D; &temp;”</strong>类型，什么都修改不了。而class类型的let变量，就是<strong>“（3）int temp &#x3D; 23;int * const age3 &#x3D; &temp;”</strong>类型，本身对象指针无法修改，但是内部属性在修饰符允许的情况下是可以修改的。</li>
 <li>struct相比class，内部属性约束会更强一些。</li>
 </ol>
 <p>下面给出我这边完整测试代码（可通过代码右上方复制按钮直接复制）：</p>
@@ -352,12 +351,12 @@
           <div class="post-nav">
             <div class="post-nav-item">
                 <a href="/2019/%E7%BD%91%E8%81%9A%E4%BA%BA%E7%9A%84%E5%8A%9B%E9%87%8F-%E7%BD%91%E6%98%93/" rel="prev" title="网聚人的力量-网易">
-                  <i class="fa fa-chevron-left"></i> 网聚人的力量-网易
+                  <i class="fa fa-angle-left"></i> 网聚人的力量-网易
                 </a>
             </div>
             <div class="post-nav-item">
                 <a href="/2019/%E9%80%83%E7%A6%BB%E4%BF%A1%E7%94%A8%E5%8D%A1%E5%92%8C%E8%8A%B1%E5%91%97/" rel="next" title="逃离信用卡和花呗">
-                  逃离信用卡和花呗 <i class="fa fa-chevron-right"></i>
+                  逃离信用卡和花呗 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
@@ -390,15 +389,14 @@
   <footer class="footer">
     <div class="footer-inner">
 
-
-<div class="copyright">
-  &copy; 
-  <span itemprop="copyrightYear">2023</span>
-  <span class="with-love">
-    <i class=""></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">one.gongjiang艾特gmail.com 所有文章均为原创。我不介意任意形式的转载，但最好不要修改内容。因转载或者修改内容导致的任何问题，我均不负责。如果你真的担心版权，可邮联。评价需要外网，这是枷锁，也是照妖镜。</span>
-</div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">one.gongjiang艾特gmail.com 所有文章均为原创。我不介意任意形式的转载，但最好不要修改内容。因转载或者修改内容导致的任何问题，我均不负责。如果你真的担心版权，可邮联。评价需要外网，这是枷锁，也是照妖镜。</span>
+  </div>
 
     </div>
   </footer>
@@ -418,8 +416,7 @@
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.20/fancybox/fancybox.umd.js" integrity="sha256-q8XkJ6dj5VwSvzI8+nATCHHQG+Xv/dAZBCgqmu93zOY=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.8/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
@@ -428,7 +425,9 @@
   
 
 
+
   <script src="/js/third-party/fancybox.js"></script>
+
 
 
   

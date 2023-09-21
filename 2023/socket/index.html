@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.0.0-rc2">
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
@@ -15,10 +15,10 @@
 
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.20/fancybox/fancybox.css" integrity="sha256-RvRHGSuWAxZpXKV9lLDt2e+rZ+btzn48Wp4ueS3NZKs=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.14.1","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.18.1","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="关于网络相关的历史文章中，很多次提到 Socket 套接字的重要性。最近看到 ICMP 的一些知识，发现和 Socket 有非常强的依赖。于是对 Socket 和周边，再做一次逻辑的梳理。本文会对 ICMP 查询&#x2F;差错报文 如何 NAT网关 和写入 Socket 接收缓冲区进行具体阐释。 Socket、文件描述符、API、套接字Socket 在系统内部创建后是唯一的。和 源 ip(本机">
 <meta property="og:type" content="article">
@@ -114,7 +114,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Socket%E3%80%81%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E3%80%81API%E3%80%81%E5%A5%97%E6%8E%A5%E5%AD%97"><span class="nav-number">1.</span> <span class="nav-text">Socket、文件描述符、API、套接字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-Socket"><span class="nav-number">2.</span> <span class="nav-text">TCP Socket</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UDP-Socket"><span class="nav-number">3.</span> <span class="nav-text">UDP Socket</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Socket-bind-x2F-connect-%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">Socket bind&#x2F;connect 的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%81%EF%BC%81ICMP-%E6%98%AF%E5%A6%82%E4%BD%95%E7%A9%BF%E8%BF%87-NAT-%E7%9A%84"><span class="nav-number">5.</span> <span class="nav-text">！！ICMP 是如何穿过 NAT 的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%81%EF%BC%81ICMP-%E6%98%AF%E5%A6%82%E4%BD%95%E5%86%99%E5%85%A5%E8%BF%9B%E7%A8%8B-Socket-%E7%9A%84"><span class="nav-number">6.</span> <span class="nav-text">！！ICMP 是如何写入进程(Socket)的</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Socket%E3%80%81%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E3%80%81API%E3%80%81%E5%A5%97%E6%8E%A5%E5%AD%97"><span class="nav-number">1.</span> <span class="nav-text">Socket、文件描述符、API、套接字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-Socket"><span class="nav-number">2.</span> <span class="nav-text">TCP Socket</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UDP-Socket"><span class="nav-number">3.</span> <span class="nav-text">UDP Socket</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Socket-bind-connect-%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">Socket bind&#x2F;connect 的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%81%EF%BC%81ICMP-%E6%98%AF%E5%A6%82%E4%BD%95%E7%A9%BF%E8%BF%87-NAT-%E7%9A%84"><span class="nav-number">5.</span> <span class="nav-text">！！ICMP 是如何穿过 NAT 的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%81%EF%BC%81ICMP-%E6%98%AF%E5%A6%82%E4%BD%95%E5%86%99%E5%85%A5%E8%BF%9B%E7%A8%8B-Socket-%E7%9A%84"><span class="nav-number">6.</span> <span class="nav-text">！！ICMP 是如何写入进程(Socket)的</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -219,8 +219,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
-        <p>关于网络相关的历史文章中，很多次提到 Socket 套接字的重要性。最近看到 ICMP 的一些知识，发现和 Socket 有非常强的依赖。于是对 Socket 和周边，再做一次逻辑的梳理。<br>本文会对 <strong>ICMP 查询&#x2F;差错报文</strong> 如何 <strong>NAT网关</strong> 和<strong>写入 Socket 接收缓冲区</strong>进行具体阐释。</p>
+    <div class="post-body" itemprop="articleBody"><p>关于网络相关的历史文章中，很多次提到 Socket 套接字的重要性。最近看到 ICMP 的一些知识，发现和 Socket 有非常强的依赖。于是对 Socket 和周边，再做一次逻辑的梳理。<br>本文会对 <strong>ICMP 查询&#x2F;差错报文</strong> 如何 <strong>NAT网关</strong> 和<strong>写入 Socket 接收缓冲区</strong>进行具体阐释。</p>
 <h3 id="Socket、文件描述符、API、套接字"><a href="#Socket、文件描述符、API、套接字" class="headerlink" title="Socket、文件描述符、API、套接字"></a>Socket、文件描述符、API、套接字</h3><p>Socket 在系统内部创建后是唯一的。和 源 ip(本机 ip)、目标 ip(服务端 ip)、源端口、目标端口 有一定的绑定关系，根据具体协议而定。<br>通过这种绑定关系，可以将对应的数据包写入到对应的 Socket 接收缓冲区中供上层读取。<br>如果绑定关系出现 1-N，即一个数据包找到了多个 Socket，那么数据包就会往多个 Socket 中都写入一份，在后面 ICMP 中做分析。</p>
 <p>Socket api，各个语言都有上层实现，底层都是对 Socket C Api 的封装。就是大家知道的 <code>gethostbyname</code>、<code>bind/connect/write/sendto</code> 这些。</p>
 <p>Socket 文件描述符，不是真的文件。在 Unix 下习惯对资源进行抽象，即一切接文件，包括内存数据。Socket 文件描述符是内核内存区域的指针。</p>
@@ -243,7 +242,7 @@
 <li>ICMP 差错报文可能会通知 Client 目的地址和端口不可达。Socket 中没有 Server_ip &amp; Server_port，内核协议栈无法找到 Socket，也就无法通知到 Client。(Client 会干等，一直等)</li>
 </ol>
 <p>当然，<strong>UDP Socket 也可以执行 connect</strong>。这样就可以绑定服务端的 ip&amp;port 了。这样，上面的几个问题也就解决了。</p>
-<h3 id="Socket-bind-x2F-connect-的作用"><a href="#Socket-bind-x2F-connect-的作用" class="headerlink" title="Socket bind&#x2F;connect 的作用"></a>Socket bind&#x2F;connect 的作用</h3><p><strong>bind，是自定义自己的 ip 和 port 到 Socket 中</strong>。<br><strong>connect，是自定义对方的 ip 和 port 到 Socket 中</strong>。</p>
+<h3 id="Socket-bind-connect-的作用"><a href="#Socket-bind-connect-的作用" class="headerlink" title="Socket bind&#x2F;connect 的作用"></a>Socket bind&#x2F;connect 的作用</h3><p><strong>bind，是自定义自己的 ip 和 port 到 Socket 中</strong>。<br><strong>connect，是自定义对方的 ip 和 port 到 Socket 中</strong>。</p>
 <p>所以，客户端也可以 bind 的，这样就可以指定自己的端口了，就不需要操作系统随机指定了。如果两台公网的 UDP，就可以这样操作，摆脱 Client-Server 模型，两台设备都可以随时向对方发送消息，即两台设备同时充当客户端和服务端。<br>所以，UDP 也可以 connect，这样就可以将四元组信息绑定到 Socket 中，接收到 ICMP 差错报文，就可以立刻接收到错误信息了。(下面会说明为什么)</p>
 <h3 id="！！ICMP-是如何穿过-NAT-的"><a href="#！！ICMP-是如何穿过-NAT-的" class="headerlink" title="！！ICMP 是如何穿过 NAT 的"></a>！！ICMP 是如何穿过 NAT 的</h3><p>先简要描述下 NAT 场景。<br>一个数据包，在正常的路由器、交换机传输中，是不会改变网络层 src_ip 和 des_ip 的。所以我们收到的数据包，网络层的 des_ip 都是服务端 ip，不会变成网关或者中间路由器的 ip。<br>上面这种场景是<strong>转发网关</strong>。<br>但是对于内网设备，在 NAT 路由的时候，会把 内网 IP 映射为 NAT 设备的公网 IP，以解决 ipv4 短缺问题。这个时候数据包网络层的 src_ip 会从内网 ip 192.xx 变为公网 ip xx.xx。<br>上面这种场景是<strong>NAT 网关</strong>。<br>NAT 网关会有很多有类型，按照严格程度，有锥形、完全锥形等，主要通过数据包的 src_ip&amp;src_port 建立一个映射表。这对 NAT 穿越增加不小的难度。</p>
 <p>ICMP 是网络层协议，没有端口的概念。NAT 是需要根据端口做内网和公网映射表，来<strong>实现内网访问互联网</strong>和<strong>外网数据包进入内网</strong>。<br>显然，这有些矛盾。预期来说，从内网出去的 ICMP 查询报文，公网返回后就 NAT 不进来了。从公网返回的 ICMP 差错报文 也同样 NAT 不进来。</p>
@@ -319,12 +318,12 @@
           <div class="post-nav">
             <div class="post-nav-item">
                 <a href="/2023/network_privacy/" rel="prev" title="对互联网隐私的一些想法">
-                  <i class="fa fa-chevron-left"></i> 对互联网隐私的一些想法
+                  <i class="fa fa-angle-left"></i> 对互联网隐私的一些想法
                 </a>
             </div>
             <div class="post-nav-item">
                 <a href="/2023/haoel/" rel="next" title="致敬耗子哥">
-                  致敬耗子哥 <i class="fa fa-chevron-right"></i>
+                  致敬耗子哥 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
@@ -357,15 +356,14 @@
   <footer class="footer">
     <div class="footer-inner">
 
-
-<div class="copyright">
-  &copy; 
-  <span itemprop="copyrightYear">2023</span>
-  <span class="with-love">
-    <i class=""></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">one.gongjiang艾特gmail.com 所有文章均为原创。我不介意任意形式的转载，但最好不要修改内容。因转载或者修改内容导致的任何问题，我均不负责。如果你真的担心版权，可邮联。评价需要外网，这是枷锁，也是照妖镜。</span>
-</div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">one.gongjiang艾特gmail.com 所有文章均为原创。我不介意任意形式的转载，但最好不要修改内容。因转载或者修改内容导致的任何问题，我均不负责。如果你真的担心版权，可邮联。评价需要外网，这是枷锁，也是照妖镜。</span>
+  </div>
 
     </div>
   </footer>
@@ -385,8 +383,7 @@
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.20/fancybox/fancybox.umd.js" integrity="sha256-q8XkJ6dj5VwSvzI8+nATCHHQG+Xv/dAZBCgqmu93zOY=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.8/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
@@ -395,7 +392,9 @@
   
 
 
+
   <script src="/js/third-party/fancybox.js"></script>
+
 
 
   

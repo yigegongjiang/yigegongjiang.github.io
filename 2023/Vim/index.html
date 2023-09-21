@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.0.0-rc2">
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
@@ -15,10 +15,10 @@
 
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.20/fancybox/fancybox.css" integrity="sha256-RvRHGSuWAxZpXKV9lLDt2e+rZ+btzn48Wp4ueS3NZKs=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.14.1","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.18.1","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="一年前写了一篇提高效率的手艺，提到了 Vim 作为划时代的文本编辑工具，可以有效的提高文本编辑的效率，对于写作或者 coding 都非常有用。今天整理一个稍微进阶的教程。vimer 十几年的 95% 的操作使用，应该都在这里。  Vim 作者，Bram 于 2023.08.05 日去世了，享年 62 岁。像我这种只要碰键盘就离不开 vim 的人，对 vim 的感激，是十分强烈的。悼念 Bram。计">
 <meta property="og:type" content="article">
@@ -120,7 +120,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8C%89%E9%94%AE"><span class="nav-number">1.</span> <span class="nav-text">按键</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E4%B8%AA%E8%A1%8C%E4%B8%BA%E6%93%8D%E4%BD%9C"><span class="nav-number">1.1.</span> <span class="nav-text">单个行为操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E7%A7%8D%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">4 种模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AA%E8%A1%8C%E4%B8%BA%E7%BB%84%E5%90%88"><span class="nav-number">1.3.</span> <span class="nav-text">多个行为组合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="nav-number">1.4.</span> <span class="nav-text">寄存器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8%E4%BD%BF%E7%94%A8"><span class="nav-number">1.5.</span> <span class="nav-text">寄存器使用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8"><span class="nav-number">2.1.</span> <span class="nav-text">插件管理器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vundle"><span class="nav-number">2.1.1.</span> <span class="nav-text">Vundle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dein"><span class="nav-number">2.1.2.</span> <span class="nav-text">Dein</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">插件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NeoVim"><span class="nav-number">3.</span> <span class="nav-text">NeoVim</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IDE"><span class="nav-number">4.</span> <span class="nav-text">IDE</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E4%BD%BF%E7%94%A8"><span class="nav-number">5.</span> <span class="nav-text">工作使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vim-%E7%BB%88%E7%AB%AF"><span class="nav-number">5.1.</span> <span class="nav-text">Vim 终端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%86%E6%88%90IDE"><span class="nav-number">5.2.</span> <span class="nav-text">集成IDE</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A6%BB%E5%BC%80%E9%BC%A0%E6%A0%87"><span class="nav-number">6.</span> <span class="nav-text">离开鼠标</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E9%A1%B5-vim-%E6%8F%92%E4%BB%B6%EF%BC%88chrome-x2F-safari%EF%BC%89"><span class="nav-number">6.1.</span> <span class="nav-text">网页 vim 插件（chrome&#x2F;safari）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%B5%8F%E8%A7%88%E5%99%A8-Ranger"><span class="nav-number">6.2.</span> <span class="nav-text">文件浏览器 Ranger</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E9%94%AE%E7%9B%98-homerow"><span class="nav-number">6.3.</span> <span class="nav-text">全键盘 homerow</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%99%E4%BD%9C%E6%8E%A8%E8%8D%90"><span class="nav-number">7.</span> <span class="nav-text">写作推荐</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8C%89%E9%94%AE"><span class="nav-number">1.</span> <span class="nav-text">按键</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E4%B8%AA%E8%A1%8C%E4%B8%BA%E6%93%8D%E4%BD%9C"><span class="nav-number">1.1.</span> <span class="nav-text">单个行为操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E7%A7%8D%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">4 种模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AA%E8%A1%8C%E4%B8%BA%E7%BB%84%E5%90%88"><span class="nav-number">1.3.</span> <span class="nav-text">多个行为组合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="nav-number">1.4.</span> <span class="nav-text">寄存器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8%E4%BD%BF%E7%94%A8"><span class="nav-number">1.5.</span> <span class="nav-text">寄存器使用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8"><span class="nav-number">2.1.</span> <span class="nav-text">插件管理器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vundle"><span class="nav-number">2.1.1.</span> <span class="nav-text">Vundle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dein"><span class="nav-number">2.1.2.</span> <span class="nav-text">Dein</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">插件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NeoVim"><span class="nav-number">3.</span> <span class="nav-text">NeoVim</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IDE"><span class="nav-number">4.</span> <span class="nav-text">IDE</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E4%BD%BF%E7%94%A8"><span class="nav-number">5.</span> <span class="nav-text">工作使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vim-%E7%BB%88%E7%AB%AF"><span class="nav-number">5.1.</span> <span class="nav-text">Vim 终端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%86%E6%88%90IDE"><span class="nav-number">5.2.</span> <span class="nav-text">集成IDE</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A6%BB%E5%BC%80%E9%BC%A0%E6%A0%87"><span class="nav-number">6.</span> <span class="nav-text">离开鼠标</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E9%A1%B5-vim-%E6%8F%92%E4%BB%B6%EF%BC%88chrome-safari%EF%BC%89"><span class="nav-number">6.1.</span> <span class="nav-text">网页 vim 插件（chrome&#x2F;safari）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%B5%8F%E8%A7%88%E5%99%A8-Ranger"><span class="nav-number">6.2.</span> <span class="nav-text">文件浏览器 Ranger</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E9%94%AE%E7%9B%98-homerow"><span class="nav-number">6.3.</span> <span class="nav-text">全键盘 homerow</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%99%E4%BD%9C%E6%8E%A8%E8%8D%90"><span class="nav-number">7.</span> <span class="nav-text">写作推荐</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -225,8 +225,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
-        <p>一年前写了一篇<a href="https://www.yigegongjiang.com/2022/%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E6%89%8B%E8%89%BA/">提高效率的手艺</a>，提到了 Vim 作为划时代的文本编辑工具，可以有效的提高文本编辑的效率，对于写作或者 coding 都非常有用。<br>今天整理一个稍微进阶的教程。vimer 十几年的 95% 的操作使用，应该都在这里。</p>
+    <div class="post-body" itemprop="articleBody"><p>一年前写了一篇<a href="https://www.yigegongjiang.com/2022/%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E6%89%8B%E8%89%BA/">提高效率的手艺</a>，提到了 Vim 作为划时代的文本编辑工具，可以有效的提高文本编辑的效率，对于写作或者 coding 都非常有用。<br>今天整理一个稍微进阶的教程。vimer 十几年的 95% 的操作使用，应该都在这里。</p>
 <blockquote>
 <p>Vim 作者，Bram 于 2023.08.05 日去世了，享年 62 岁。像我这种只要碰键盘就离不开 vim 的人，对 vim 的感激，是十分强烈的。悼念 Bram。<br>计算机的基石和发展，也就这几十年。那一批有卓越贡献的人，后面二十年会相继离去。C 语言之父丹尼斯十年前走了，70 岁。后面会越来越多。</p>
 </blockquote>
@@ -314,7 +313,7 @@
 <li>vscode(安装 vim 插件)：全局搜索 &#x2F; 代码阅读 &#x2F; json格式化</li>
 <li>xcode(打开 vim 模式)：函数调用链 &#x2F; code</li>
 </ul>
-<h1 id="离开鼠标"><a href="#离开鼠标" class="headerlink" title="离开鼠标"></a>离开鼠标</h1><h2 id="网页-vim-插件（chrome-x2F-safari）"><a href="#网页-vim-插件（chrome-x2F-safari）" class="headerlink" title="网页 vim 插件（chrome&#x2F;safari）"></a>网页 vim 插件（chrome&#x2F;safari）</h2><p><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301270126742.png"></p>
+<h1 id="离开鼠标"><a href="#离开鼠标" class="headerlink" title="离开鼠标"></a>离开鼠标</h1><h2 id="网页-vim-插件（chrome-safari）"><a href="#网页-vim-插件（chrome-safari）" class="headerlink" title="网页 vim 插件（chrome&#x2F;safari）"></a>网页 vim 插件（chrome&#x2F;safari）</h2><p><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301270126742.png"></p>
 <p><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301270126310.png"></p>
 <h2 id="文件浏览器-Ranger"><a href="#文件浏览器-Ranger" class="headerlink" title="文件浏览器 Ranger"></a>文件浏览器 Ranger</h2><p><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301270126737.png"></p>
 <h2 id="全键盘-homerow"><a href="#全键盘-homerow" class="headerlink" title="全键盘 homerow"></a>全键盘 homerow</h2><p><span class="exturl" data-url="aHR0cHM6Ly93d3cuaG9tZXJvdy5hcHAv">https://www.homerow.app/<i class="fa fa-external-link-alt"></i></span></p>
@@ -398,12 +397,12 @@
           <div class="post-nav">
             <div class="post-nav-item">
                 <a href="/2023/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F%E6%80%8E%E4%B9%88%E6%90%AD%E5%BB%BA/" rel="prev" title="移动端日志系统怎么搭建">
-                  <i class="fa fa-chevron-left"></i> 移动端日志系统怎么搭建
+                  <i class="fa fa-angle-left"></i> 移动端日志系统怎么搭建
                 </a>
             </div>
             <div class="post-nav-item">
                 <a href="/2023/%E5%8F%8C%E6%8B%BC-%E5%B0%91%E6%9C%89%E7%9A%84%E9%AB%98%E5%9B%9E%E6%8A%A5%E6%95%88%E7%8E%87%E6%8A%80%E8%83%BD/" rel="next" title="双拼-少有的高回报效率技能">
-                  双拼-少有的高回报效率技能 <i class="fa fa-chevron-right"></i>
+                  双拼-少有的高回报效率技能 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
@@ -436,15 +435,14 @@
   <footer class="footer">
     <div class="footer-inner">
 
-
-<div class="copyright">
-  &copy; 
-  <span itemprop="copyrightYear">2023</span>
-  <span class="with-love">
-    <i class=""></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">one.gongjiang艾特gmail.com 所有文章均为原创。我不介意任意形式的转载，但最好不要修改内容。因转载或者修改内容导致的任何问题，我均不负责。如果你真的担心版权，可邮联。评价需要外网，这是枷锁，也是照妖镜。</span>
-</div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">one.gongjiang艾特gmail.com 所有文章均为原创。我不介意任意形式的转载，但最好不要修改内容。因转载或者修改内容导致的任何问题，我均不负责。如果你真的担心版权，可邮联。评价需要外网，这是枷锁，也是照妖镜。</span>
+  </div>
 
     </div>
   </footer>
@@ -464,8 +462,7 @@
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.20/fancybox/fancybox.umd.js" integrity="sha256-q8XkJ6dj5VwSvzI8+nATCHHQG+Xv/dAZBCgqmu93zOY=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.8/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
@@ -474,7 +471,9 @@
   
 
 
+
   <script src="/js/third-party/fancybox.js"></script>
+
 
 
   

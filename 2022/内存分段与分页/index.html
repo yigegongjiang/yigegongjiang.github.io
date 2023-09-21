@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.0.0-rc2">
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
@@ -15,10 +15,10 @@
 
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.20/fancybox/fancybox.css" integrity="sha256-RvRHGSuWAxZpXKV9lLDt2e+rZ+btzn48Wp4ueS3NZKs=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.14.1","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.18.1","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="一年前写了“段页内存管理”的部分章节，后面一直搁置在草稿箱中。最近发现内存相关的知识非常重要，最近几十年科技文明的巅峰，硬件侧就是 CPU，软件侧就围绕着操作系统对内存的控制了。就又整理补齐，形成内存分段分页较完整说明。硬件 CPU 的不断革新，从 X86 和 ARM 架构的铺天盖地，到 RISC-V 新星崛起和 MIPS 的消退。还有各种流水线优化、APU-ZPU 的推成出新，以及 Apple">
 <meta property="og:type" content="article">
@@ -126,7 +126,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00-%E5%86%85%E5%AD%98%E6%98%AF%E5%A6%82%E4%BD%95%E8%A2%AB-CPU-%E6%B6%88%E8%B4%B9%E7%9A%84"><span class="nav-number">1.</span> <span class="nav-text">0x00 内存是如何被 CPU 消费的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-%E5%86%85%E5%AD%98%E8%9B%AE%E8%8D%92%E6%97%B6%E4%BB%A3-%E5%88%86%E6%AE%B5"><span class="nav-number">2.</span> <span class="nav-text">0x01 内存蛮荒时代 - 分段</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E5%AE%89%E5%85%A8"><span class="nav-number">2.0.1.</span> <span class="nav-text">内存安全</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E7%A9%BA%E6%B4%9E"><span class="nav-number">2.0.2.</span> <span class="nav-text">内存空洞</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-%E5%86%85%E5%AD%98%E9%9D%92%E9%93%9C%E6%97%B6%E4%BB%A3-%E5%88%86%E6%AE%B5%E5%88%86%E9%A1%B5%E5%85%B1%E5%AD%98"><span class="nav-number">3.</span> <span class="nav-text">0x02 内存青铜时代 - 分段分页共存</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%9D%E6%8A%A4%E6%A8%A1%E5%BC%8F%E6%9C%AA%E5%BC%80%E5%90%AF%E5%B9%B3%E5%9D%A6%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.0.1.</span> <span class="nav-text">保护模式未开启平坦模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%9D%E6%8A%A4%E6%A8%A1%E5%BC%8F%E5%BC%80%E5%90%AF%E5%B9%B3%E5%9D%A6%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.0.2.</span> <span class="nav-text">保护模式开启平坦模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%9D%E6%8A%A4%E6%A8%A1%E5%BC%8F%E5%88%B0%E5%BA%95%E5%B1%9E%E4%BA%8E%E4%BB%80%E4%B9%88%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.0.3.</span> <span class="nav-text">保护模式到底属于什么内存模型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03-%E5%86%85%E5%AD%98%E6%96%87%E6%98%8E%E6%97%B6%E4%BB%A3-%E5%88%86%E9%A1%B5"><span class="nav-number">4.</span> <span class="nav-text">0x03 内存文明时代-分页</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%9C%B0%E5%9D%80-amp-%E9%80%BB%E8%BE%91%E5%9C%B0%E5%9D%80"><span class="nav-number">4.0.1.</span> <span class="nav-text">线性地址 &amp; 逻辑地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TLB"><span class="nav-number">4.0.2.</span> <span class="nav-text">TLB</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04-%E5%AE%9E%E6%A8%A1%E5%BC%8F%E3%80%81%E4%BF%9D%E6%8A%A4%E6%A8%A1%E5%BC%8F%E3%80%81%E9%95%BF%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%BC%80%E5%90%AF"><span class="nav-number">5.</span> <span class="nav-text">0x04 实模式、保护模式、长模式的开启</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x05-%E5%8A%A0%E9%A4%90-%E6%96%87%E7%AB%A0%E5%BC%80%E5%A4%B4%E7%9A%84%E9%97%AE%E9%A2%98-3"><span class="nav-number">6.</span> <span class="nav-text">0x05 加餐 - 文章开头的问题 3</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00-%E5%86%85%E5%AD%98%E6%98%AF%E5%A6%82%E4%BD%95%E8%A2%AB-CPU-%E6%B6%88%E8%B4%B9%E7%9A%84"><span class="nav-number">1.</span> <span class="nav-text">0x00 内存是如何被 CPU 消费的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-%E5%86%85%E5%AD%98%E8%9B%AE%E8%8D%92%E6%97%B6%E4%BB%A3-%E5%88%86%E6%AE%B5"><span class="nav-number">2.</span> <span class="nav-text">0x01 内存蛮荒时代 - 分段</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E5%AE%89%E5%85%A8"><span class="nav-number">2.0.1.</span> <span class="nav-text">内存安全</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E7%A9%BA%E6%B4%9E"><span class="nav-number">2.0.2.</span> <span class="nav-text">内存空洞</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-%E5%86%85%E5%AD%98%E9%9D%92%E9%93%9C%E6%97%B6%E4%BB%A3-%E5%88%86%E6%AE%B5%E5%88%86%E9%A1%B5%E5%85%B1%E5%AD%98"><span class="nav-number">3.</span> <span class="nav-text">0x02 内存青铜时代 - 分段分页共存</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%9D%E6%8A%A4%E6%A8%A1%E5%BC%8F%E6%9C%AA%E5%BC%80%E5%90%AF%E5%B9%B3%E5%9D%A6%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.0.1.</span> <span class="nav-text">保护模式未开启平坦模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%9D%E6%8A%A4%E6%A8%A1%E5%BC%8F%E5%BC%80%E5%90%AF%E5%B9%B3%E5%9D%A6%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.0.2.</span> <span class="nav-text">保护模式开启平坦模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%9D%E6%8A%A4%E6%A8%A1%E5%BC%8F%E5%88%B0%E5%BA%95%E5%B1%9E%E4%BA%8E%E4%BB%80%E4%B9%88%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.0.3.</span> <span class="nav-text">保护模式到底属于什么内存模型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03-%E5%86%85%E5%AD%98%E6%96%87%E6%98%8E%E6%97%B6%E4%BB%A3-%E5%88%86%E9%A1%B5"><span class="nav-number">4.</span> <span class="nav-text">0x03 内存文明时代-分页</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%9C%B0%E5%9D%80-%E9%80%BB%E8%BE%91%E5%9C%B0%E5%9D%80"><span class="nav-number">4.0.1.</span> <span class="nav-text">线性地址 &amp; 逻辑地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TLB"><span class="nav-number">4.0.2.</span> <span class="nav-text">TLB</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04-%E5%AE%9E%E6%A8%A1%E5%BC%8F%E3%80%81%E4%BF%9D%E6%8A%A4%E6%A8%A1%E5%BC%8F%E3%80%81%E9%95%BF%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%BC%80%E5%90%AF"><span class="nav-number">5.</span> <span class="nav-text">0x04 实模式、保护模式、长模式的开启</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x05-%E5%8A%A0%E9%A4%90-%E6%96%87%E7%AB%A0%E5%BC%80%E5%A4%B4%E7%9A%84%E9%97%AE%E9%A2%98-3"><span class="nav-number">6.</span> <span class="nav-text">0x05 加餐 - 文章开头的问题 3</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -231,8 +231,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
-        <p>一年前写了“段页内存管理”的部分章节，后面一直搁置在草稿箱中。最近发现内存相关的知识非常重要，最近几十年科技文明的巅峰，硬件侧就是 CPU，软件侧就围绕着操作系统对内存的控制了。就又整理补齐，形成<strong>内存分段分页</strong>较完整说明。<br>硬件 CPU 的不断革新，从 X86 和 ARM 架构的铺天盖地，到 RISC-V 新星崛起和 MIPS 的消退。还有各种流水线优化、APU-ZPU 的推成出新，以及 Apple M1 的展露头脚。虽然 CPU 本身短时间内看不到跨越式的提升，但 CPU 周边是玩出了花。<br>而已经趋于稳定的操作系统，最近好多年都没有啥惊世骇俗的壮举出现。依托着 CPU 侧的大腿，操作系统躺着进行升级。但换一个角度，也可以认为操作系统已经设计的足够完备，在商业化的时代，有需求就一定会有满足，或许对于当前操作系统来说，目前的设计应对有余。<br>操作系统的很多设计，都摆脱不了内存这尊大神。首先，操作系统本身和上层应用，就是放在内存里运行的。其次，操作系统的基石进程和线程，就贴着内存进行设计。多核心后的 L0-2 级缓存同步也是为内存定制，当然这个算 CPU 对内存的依赖。IO&#x2F;文件系统&#x2F;网络也都离不开内存的影子。<br>内存本身的制作工艺门槛不高，有 N 多厂商做这个事情。但内存在科技长河中的位置，绝对举足轻重。整个计算机的发展史，内存表现不多，但是中流砥柱。<br>本文可以顺带解决如下几个问题：</p>
+    <div class="post-body" itemprop="articleBody"><p>一年前写了“段页内存管理”的部分章节，后面一直搁置在草稿箱中。最近发现内存相关的知识非常重要，最近几十年科技文明的巅峰，硬件侧就是 CPU，软件侧就围绕着操作系统对内存的控制了。就又整理补齐，形成<strong>内存分段分页</strong>较完整说明。<br>硬件 CPU 的不断革新，从 X86 和 ARM 架构的铺天盖地，到 RISC-V 新星崛起和 MIPS 的消退。还有各种流水线优化、APU-ZPU 的推成出新，以及 Apple M1 的展露头脚。虽然 CPU 本身短时间内看不到跨越式的提升，但 CPU 周边是玩出了花。<br>而已经趋于稳定的操作系统，最近好多年都没有啥惊世骇俗的壮举出现。依托着 CPU 侧的大腿，操作系统躺着进行升级。但换一个角度，也可以认为操作系统已经设计的足够完备，在商业化的时代，有需求就一定会有满足，或许对于当前操作系统来说，目前的设计应对有余。<br>操作系统的很多设计，都摆脱不了内存这尊大神。首先，操作系统本身和上层应用，就是放在内存里运行的。其次，操作系统的基石进程和线程，就贴着内存进行设计。多核心后的 L0-2 级缓存同步也是为内存定制，当然这个算 CPU 对内存的依赖。IO&#x2F;文件系统&#x2F;网络也都离不开内存的影子。<br>内存本身的制作工艺门槛不高，有 N 多厂商做这个事情。但内存在科技长河中的位置，绝对举足轻重。整个计算机的发展史，内存表现不多，但是中流砥柱。<br>本文可以顺带解决如下几个问题：</p>
 <ul>
 <li>地址总线、数据总线、控制总线是什么？CPU 如何通过地址总线找到内存地址？</li>
 <li>CPU 和内存之间的高速缓存引发的缓存一致性问题是怎么回事？<a href="https://www.yigegongjiang.com/2022/%E9%94%81%20-%20%E5%85%B1%E4%BA%AB%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E6%8C%87%E2%86%91/">锁 - 共享数据安全指↑</a></li>
@@ -278,7 +277,7 @@
 <h4 id="保护模式到底属于什么内存模型"><a href="#保护模式到底属于什么内存模型" class="headerlink" title="保护模式到底属于什么内存模型"></a>保护模式到底属于什么内存模型</h4><p>i386，就是 32 位 CPU。我们把这种 CPU 叫做<strong>段式管理和页式管理混合模式</strong>。其实没啥新意，就通过平坦模式来进行区分。他们并没有过多的混合，更准确的说法，应该叫<strong>段页隔离模式</strong>。</p>
 <h2 id="0x03-内存文明时代-分页"><a href="#0x03-内存文明时代-分页" class="headerlink" title="0x03 内存文明时代-分页"></a>0x03 内存文明时代-分页</h2><p>前面说到 Inter 在弄一个酷睿处理器的时候，不仅高性能的酷睿处理器没弄好，还错失先机，让 AMD 弄出了 x86 兼容 64 位，即 x86-64。<br>32 位 CPU 能支持的最大内存就是 4G。当然通过 PAE 技术也能使用到 64G 的内存，但需要特别改造，后面的加餐会说。<br>在内存快速发展的时间点，64 位 CPU 可以搭配更大的地址总线，毕竟更大的内存谁会不喜欢呢。<br>这就来到了 Inter x86 架构的<strong>长模式</strong>。<br>在实模式的时候，只能使用分段模型的物理地址。在保护模式的时候，分段和分页模型可以并存，但是操作系统会修改成平坦模式，大多使用的都是分页模型。到了长模式，就只有分页模型了。<br>一方面只能使用分页模型，一方面 x86 的分段模型还要兼容。32 位平坦模式的兼容办法是把段基地址修改成 0x00000000，段长度修改成 0xFFFFFFFF。长模式的兼容办法是把段基地址和段长度都设置为无效位，避免了多余的运算。</p>
 <p>因为整体的分页模型没有改变，所以对内存的操作上，大的方向没有改变。这里额外说明另外两个知识点，一个是<strong>线性地址</strong>，一个是 <strong>TLB</strong>。</p>
-<h4 id="线性地址-amp-逻辑地址"><a href="#线性地址-amp-逻辑地址" class="headerlink" title="线性地址 &amp; 逻辑地址"></a>线性地址 &amp; 逻辑地址</h4><p>虚拟地址是给应用程序看的，物理地址是给内存看的。从上面的兼容可以看到，段寄存器一直存在，那么虚拟地址还会经过分段模型走一遍，产生另一个地址 N。然后 N 被 MMU 硬解成物理地址。<br>这里的 N，就是<strong>线性地址(有小彩蛋)</strong>,即分页模型下经过段寄存器处理过后的地址。<br>对于 32 位保护模式下的平坦模式，段基地址为 0，段长度为 4G，所以 N 等于虚拟地址，即段寄存器空运算了一次。<br>对于 64 位长模式，段基地址和段长度都是无效位，所以 N 等于虚拟地址，即段寄存器没有参与运算。<br>所以分页模型下，虚拟地址和线性地址是一样的值。<br>！！因为虚拟地址和线性地址是一样的，而我们一直都习惯叫虚拟地址，其实是先入为主了。<br>！！其实，虚拟地址和线性地址的定义刚好反过来。即程序里面看到的，其实是线性地址，经过分段模型后产生的 N，其实是虚拟地址。<br>！！更宽泛点来说，线性地址就是虚拟地址，虚拟地址就是线性地址。虚拟地址和线性地址相互是 alias，毕竟他们之间完全相等。但上面的分段模型运算就是他们之间的差异。</p>
+<h4 id="线性地址-逻辑地址"><a href="#线性地址-逻辑地址" class="headerlink" title="线性地址 &amp; 逻辑地址"></a>线性地址 &amp; 逻辑地址</h4><p>虚拟地址是给应用程序看的，物理地址是给内存看的。从上面的兼容可以看到，段寄存器一直存在，那么虚拟地址还会经过分段模型走一遍，产生另一个地址 N。然后 N 被 MMU 硬解成物理地址。<br>这里的 N，就是<strong>线性地址(有小彩蛋)</strong>,即分页模型下经过段寄存器处理过后的地址。<br>对于 32 位保护模式下的平坦模式，段基地址为 0，段长度为 4G，所以 N 等于虚拟地址，即段寄存器空运算了一次。<br>对于 64 位长模式，段基地址和段长度都是无效位，所以 N 等于虚拟地址，即段寄存器没有参与运算。<br>所以分页模型下，虚拟地址和线性地址是一样的值。<br>！！因为虚拟地址和线性地址是一样的，而我们一直都习惯叫虚拟地址，其实是先入为主了。<br>！！其实，虚拟地址和线性地址的定义刚好反过来。即程序里面看到的，其实是线性地址，经过分段模型后产生的 N，其实是虚拟地址。<br>！！更宽泛点来说，线性地址就是虚拟地址，虚拟地址就是线性地址。虚拟地址和线性地址相互是 alias，毕竟他们之间完全相等。但上面的分段模型运算就是他们之间的差异。</p>
 <p>把同样的逻辑，搬到 16 位 CPU 实模式分段模型的场景，那时我们是通过 cs*16+ip 这种形式来确定物理地址的。cs 和 ip 寄存器的值。我们可以提前计算这个值，而最后也通过这个值进行物理内存地址寻址。<br>我们认为我们通过物理地址来寻址，其实我们用的是 cs 和 ip。<strong>这种通过段基地址左移加偏移的方式，即 base*16+offset，就是逻辑地址</strong>。逻辑地址不是计算后的值，而是指代 cs 和 ip 本身，是一对。<br>逻辑地址通过分段模型后，生成的值就是物理地址。<br>所以分段模型下，逻辑地址和物理地址虽然定义不一样，但实际上也可以说是一样的值。</p>
 <h4 id="TLB"><a href="#TLB" class="headerlink" title="TLB"></a>TLB</h4><p><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/%E5%86%85%E5%AD%98%E6%AE%B5%E9%A1%B5.004.jpeg" alt="TLB 高速缓存"></p>
 <p>TLB 高速缓存，和内存的 L0-2 三级缓存是一样的。也是硬件集成在 CPU 中。是对 MMU 页表运算的高速缓存。<br>TLB 的 L0 缓存，分为指令地址缓存和数据地址缓存。L1-2 级缓存，就是全地址缓存了。<br>基本和 CPU 对内存的 L0-2 高速缓存一模一样。脏数据也同样需要被标记和写回。<br>这一块就去看<a href="https://www.yigegongjiang.com/2022/%E9%94%81%20-%20%E5%85%B1%E4%BA%AB%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E6%8C%87%E2%86%91/">锁 - 共享数据安全指↑</a>就可以了。</p>
@@ -357,12 +356,12 @@
           <div class="post-nav">
             <div class="post-nav-item">
                 <a href="/2022/%E6%9C%89%E8%AE%A1%E5%88%92%E7%9A%84%E5%8A%AA%E5%8A%9B/" rel="prev" title="有计划的努力">
-                  <i class="fa fa-chevron-left"></i> 有计划的努力
+                  <i class="fa fa-angle-left"></i> 有计划的努力
                 </a>
             </div>
             <div class="post-nav-item">
                 <a href="/2022/Shell%E5%92%8C%E8%BF%9B%E7%A8%8B/" rel="next" title="Shell和进程">
-                  Shell和进程 <i class="fa fa-chevron-right"></i>
+                  Shell和进程 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
@@ -395,15 +394,14 @@
   <footer class="footer">
     <div class="footer-inner">
 
-
-<div class="copyright">
-  &copy; 
-  <span itemprop="copyrightYear">2023</span>
-  <span class="with-love">
-    <i class=""></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">one.gongjiang艾特gmail.com 所有文章均为原创。我不介意任意形式的转载，但最好不要修改内容。因转载或者修改内容导致的任何问题，我均不负责。如果你真的担心版权，可邮联。评价需要外网，这是枷锁，也是照妖镜。</span>
-</div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">one.gongjiang艾特gmail.com 所有文章均为原创。我不介意任意形式的转载，但最好不要修改内容。因转载或者修改内容导致的任何问题，我均不负责。如果你真的担心版权，可邮联。评价需要外网，这是枷锁，也是照妖镜。</span>
+  </div>
 
     </div>
   </footer>
@@ -423,8 +421,7 @@
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.20/fancybox/fancybox.umd.js" integrity="sha256-q8XkJ6dj5VwSvzI8+nATCHHQG+Xv/dAZBCgqmu93zOY=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.8/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
@@ -433,7 +430,9 @@
   
 
 
+
   <script src="/js/third-party/fancybox.js"></script>
+
 
 
   
