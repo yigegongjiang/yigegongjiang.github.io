@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.0.0-rc2">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.20/fancybox/fancybox.css" integrity="sha256-RvRHGSuWAxZpXKV9lLDt2e+rZ+btzn48Wp4ueS3NZKs=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.18.1","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Mac 上原生的双拼输入法，有时候间歇性的卡死。在网上找了不少办法，均不能很好的解决。我对原生输入法还是有不少感情的。自从 Mac 和 iPhone 支持小鹤双拼后，就迁移到了原生输入法，到目前也有很多年了。 这次把 Mac 侧迁移到 Rime，也尽量和原生的体验保持一致。鉴于 Rime 本身配置较为复杂，这里把自己使用的精简版做下记录。 体验说明（和 原生 的输入方式保持一致，包括中英文切换方式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rime - 小鹤双拼">
+<meta property="og:url" content="https://www.yigegongjiang.com/2023/rime/index.html">
+<meta property="og:site_name" content="一个工匠">
+<meta property="og:description" content="Mac 上原生的双拼输入法，有时候间歇性的卡死。在网上找了不少办法，均不能很好的解决。我对原生输入法还是有不少感情的。自从 Mac 和 iPhone 支持小鹤双拼后，就迁移到了原生输入法，到目前也有很多年了。 这次把 Mac 侧迁移到 Rime，也尽量和原生的体验保持一致。鉴于 Rime 本身配置较为复杂，这里把自己使用的精简版做下记录。 体验说明（和 原生 的输入方式保持一致，包括中英文切换方式">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220148970.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220148972.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220148971.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220148974.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220148973.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220148975.png">
+<meta property="article:published_time" content="2023-09-21T10:47:49.000Z">
+<meta property="article:author" content="海驴">
+<meta property="article:tag" content="Life">
+<meta property="article:tag" content="Work">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220148970.png">
+
+
+<link rel="canonical" href="https://www.yigegongjiang.com/2023/rime/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2023/rime/","path":"2023/rime/","title":"rime - 小鹤双拼"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>rime - 小鹤双拼 | 一个工匠</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="一个工匠" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="一个工匠" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">一个工匠</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags<span class="badge">12</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">77</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user fa-fw"></i>About</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section"><i class="rss fa-fw"></i>Rss</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0x1"><span class="nav-number">1.</span> <span class="nav-text">0x1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x2"><span class="nav-number">2.</span> <span class="nav-text">0x2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x3"><span class="nav-number">3.</span> <span class="nav-text">0x3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9B%E9%98%B6%E8%AF%B4%E6%98%8E"><span class="nav-number">4.</span> <span class="nav-text">进阶说明</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%93%E5%BC%80%E7%94%9F%E5%83%BB%E5%AD%97"><span class="nav-number">4.1.</span> <span class="nav-text">打开生僻字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%93%E5%BC%80-emoji"><span class="nav-number">4.2.</span> <span class="nav-text">打开 emoji</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%93%E5%BC%80-%E7%B9%81%E4%BD%93%E5%AD%97"><span class="nav-number">4.3.</span> <span class="nav-text">打开 繁体字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%97%AD-%E8%AF%8D%E5%BA%93"><span class="nav-number">4.4.</span> <span class="nav-text">关闭 词库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BD%BB%E5%BA%95%E5%85%B3%E9%97%AD-emoji"><span class="nav-number">4.5.</span> <span class="nav-text">彻底关闭 emoji</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A1%A8%E6%83%85%E5%92%8C%E7%AC%A6%E5%8F%B7"><span class="nav-number">4.6.</span> <span class="nav-text">自定义表情和符号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BF%AB%E6%8D%B7%E8%AF%AD%E5%8F%A5"><span class="nav-number">4.7.</span> <span class="nav-text">自定义快捷语句</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="海驴"
+      src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301081602545.gif">
+  <p class="site-author-name" itemprop="name">海驴</p>
+  <div class="site-description" itemprop="description">时间，真的不多了。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">77</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2023/rime/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301081602545.gif">
+      <meta itemprop="name" content="海驴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个工匠">
+      <meta itemprop="description" content="时间，真的不多了。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="rime - 小鹤双拼 | 一个工匠">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          rime - 小鹤双拼
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-09-21 18:47:49" itemprop="dateCreated datePublished" datetime="2023-09-21T18:47:49+08:00">2023-09-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>Mac 上原生的双拼输入法，有时候间歇性的卡死。在网上找了不少办法，均不能很好的解决。<br>我对原生输入法还是有不少感情的。自从 Mac 和 iPhone 支持小鹤双拼后，就迁移到了原生输入法，到目前也有很多年了。</p>
+<p>这次把 Mac 侧迁移到 Rime，也尽量和原生的体验保持一致。鉴于 Rime 本身配置较为复杂，这里把自己使用的精简版做下记录。</p>
+<p>体验说明（和 原生 的输入方式保持一致，包括中英文切换方式）：</p>
+<ol>
+<li>使用 CapsLock 键作为 英文 和 中文 的切换键。</li>
+<li>Rime 仅仅有 <strong>小鹤双拼</strong> 的输入能力，其他输入法包括英文均做了阉割。</li>
+<li>各种类型的符号输入，和原生保持一致。还有 半角、全角、生僻字、Shift 快捷键 等。</li>
+</ol>
+<p>基本上，就是无感切换了。</p>
+<p>配置，都已经处理好了。真要配置这些细节，还是挺花费时间的，我前后共计花了 4-5 小时。<br>如果你和我的输入法使用习惯一致，建议直接拿去用，不要想着二次配置了。毕竟这只是工具。浪费时间不值得。<br>预计 10 分钟以为，可以完成本文配制，顺利使用 Rime 的双拼。</p>
+<span id="more"></span>
+
+<h1 id="0x1"><a href="#0x1" class="headerlink" title="0x1"></a>0x1</h1><p>brew 安装 输入法<br><code>brew reinstall --cask squirrel</code></p>
+<p>然后退出当前用户重新登录，或者重启电脑。</p>
+<p>现在可以在设置里面找到 Squirrel 输入法了。</p>
+<img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220148970.png" width="30%">
+
+<p>完成后，就可以通过 CapsLock 键切换输入法了。这里希望你也是这样的用户习惯，不然后面的配置可能不适用。因为有些同学习惯 Shift 切换输入法。<br><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220148972.png" width="30%"></p>
+<h1 id="0x2"><a href="#0x2" class="headerlink" title="0x2"></a>0x2</h1><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220148971.png" width="30%">
+
+<p>点击设置，会打开 输入法 的配置文件夹。这里下载配置文件，全部复制到当前配置文件夹里面。<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvcmltZQ==">https://github.com/yigegongjiang/rime<i class="fa fa-external-link-alt"></i></span></p>
+<p>然后点击上面截图里面，setting 上面有一个 <strong>Deploy</strong> 部署按扭，点击后等 3-5 秒中，配置就部署完成了。</p>
+<h1 id="0x3"><a href="#0x3" class="headerlink" title="0x3"></a>0x3</h1><p>目前已经可以正常是用 rime 的双拼了。enjoy yourself.</p>
+<p>如果正常的话，应该可以出现下面两种不同模式(正常&#x2F;暗黑)下的输入项，基本和 原生 的还原。<br>其中暗黑模式无法做到 100% 还原，因为系统会根据输入窗口的配色，对输入面版做颜色调整，但是 Rime 只能做固定配色。</p>
+<img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220148974.png" width="30%">
+
+<img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220148973.png" width="30%">
+
+
+<h1 id="进阶说明"><a href="#进阶说明" class="headerlink" title="进阶说明"></a>进阶说明</h1><p>在 rime 输入法下，按 <code>control+~</code> 键，光标出会出配制项。这里可以做进一步的配制，如启用 utf8 打开生僻字，打开 emoji，切换繁体和简体等。</p>
+<p>如果这里满足不了诉求，可以修改下面的配制项，重新部署一下即可。这里有一份快速的配置指南。</p>
+<img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220148975.png" width="30%">
+
+<p>主要配制都是在 <code>double_pinyin_flypy.custom.yaml</code> 文件中，这是双拼的配制文件。</p>
+<h2 id="打开生僻字"><a href="#打开生僻字" class="headerlink" title="打开生僻字"></a>打开生僻字</h2><p>默如和原生的逻辑一致，是关闭生僻字的。这样可以有效的减少侯选字的数量。如果需要打开生僻字，可以做如下操作：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- options: [&quot;gbk&quot;,&quot;utf8&quot;] # 这里是屏蔽生僻字用的。不然候选里面有很多生僻字。UTF8 会打开生僻字，GBK 不会。 </span><br><span class="line">  reset: 0                                          </span><br><span class="line">  states:</span><br><span class="line">    - GBK</span><br><span class="line">    - UTF-8</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>把 reset 修改成 1</p>
+<h2 id="打开-emoji"><a href="#打开-emoji" class="headerlink" title="打开 emoji"></a>打开 emoji</h2><p>一定要在打开 生僻字 的基础上，才能打开 emoji。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- name: emoji_suggestion</span><br><span class="line">  reset: 0</span><br><span class="line">  states: [ &quot;N&quot;, &quot;Y&quot; ] # 是否需要 Emoji。注意，只能在 选中 UTF8 的时候，才可以打开 emoji，否则有概率系统 crash(实测结果)。</span><br></pre></td></tr></table></figure>
+<p>把 reset 修改成 1</p>
+<h2 id="打开-繁体字"><a href="#打开-繁体字" class="headerlink" title="打开 繁体字"></a>打开 繁体字</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- name: simplification</span><br><span class="line">  reset: 1</span><br><span class="line">  states: [ 繁, 简 ] # 繁体、间体切换。默认繁体，这里需要通过 reset 强制简体</span><br></pre></td></tr></table></figure>
+<p>把 reset 修改成 0</p>
+<h2 id="关闭-词库"><a href="#关闭-词库" class="headerlink" title="关闭 词库"></a>关闭 词库</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#載入朙月拼音擴充詞庫</span><br><span class="line">#&#x27;translator/dictionary&#x27;: luna_pinyin.extended</span><br><span class="line">&#x27;translator/preedit_format&#x27;: &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>把 <code>translator/dictionary</code> 这一行注释掉即可。下一行千万不能注释，否则双拼输入的时候，输入框会显示全拼字符。</p>
+<h2 id="彻底关闭-emoji"><a href="#彻底关闭-emoji" class="headerlink" title="彻底关闭 emoji"></a>彻底关闭 emoji</h2><p>全局搜索一下，把 <code>emoji_suggestion</code> 相关的，都删掉即可</p>
+<h2 id="自定义表情和符号"><a href="#自定义表情和符号" class="headerlink" title="自定义表情和符号"></a>自定义表情和符号</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"># 自定义符号上屏</span><br><span class="line">punctuator:</span><br><span class="line">  import_preset: symbols</span><br><span class="line">  symbols:</span><br><span class="line">    &quot;/bq&quot;: [😀,😁,😂,😃,😄,😅,😆,😉,😊,😋,😎,😍,😘,😗]</span><br><span class="line">  half_shape:</span><br><span class="line">    &quot;#&quot;: &quot;#&quot;</span><br><span class="line">    &quot;*&quot;: &quot;*&quot;</span><br><span class="line">    &quot;`&quot;: &quot;`&quot;</span><br><span class="line">    &quot;~&quot;: &quot;~&quot;</span><br><span class="line">    &quot;@&quot;: &quot;@&quot;</span><br><span class="line">    &quot;=&quot;: &quot;=&quot;</span><br><span class="line">    &#x27;\&#x27;: &quot;、&quot;</span><br><span class="line">    &quot;%&quot;: &quot;%&quot;</span><br><span class="line">    &quot;$&quot;: &quot;¥&quot;</span><br><span class="line">    &quot;|&quot;: &quot;｜&quot;</span><br><span class="line">    &quot;/&quot;: &quot;/&quot;</span><br><span class="line">    &quot;&#x27;&quot;: &#123; pair: [&quot;「&quot;, &quot;」&quot;] &#125;</span><br><span class="line">    &quot;[&quot;: &quot;【&quot;</span><br><span class="line">    &quot;]&quot;: &quot;】&quot;</span><br><span class="line">    &quot;&lt;&quot;: &quot;《&quot;</span><br><span class="line">    &quot;&gt;&quot;: &quot;》&quot;</span><br></pre></td></tr></table></figure>
+<p>修改这里，可以自定义键盘对应的符号，也可以自定义表情。</p>
+<h2 id="自定义快捷语句"><a href="#自定义快捷语句" class="headerlink" title="自定义快捷语句"></a>自定义快捷语句</h2><p>在 <code>custom_phrase.txt</code> 文件夹中，可以把需要的快捷短句录入进去。<br>切记，一定要用 tab 做间隔，不能直接使用空格。（文件顶部有描述）</p>
+<hr>
+<p>GFW 不仅可以控制流量的出口，也可以反向控制流量的入口。<br>我们看到的外面不是真实的，外面看到的我们也不是真实的。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>Follow me by other channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/hai_lv_">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/gongjiang">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="mailto:one.gongjiang@gmail.com">
+            <span class="icon">
+              <i class="fa fa-envelope"></i>
+            </span>
+
+            <span class="label">Email</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Life/" rel="tag"># Life</a>
+              <a href="/tags/Work/" rel="tag"># Work</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/the_sea/" rel="prev" title="沿海旅游(威海、青岛)">
+                  <i class="fa fa-angle-left"></i> 沿海旅游(威海、青岛)
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">Light Mode (Better for light mode to discuss, base github, cannot commen can email me)</a></li>
+            <li class="tab"><a href="#comment-utterances">Dark Mode</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
+            </div>
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+        </div>
+      </div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">one.gongjiang艾特gmail.com 所有文章均为原创。我不介意任意形式的转载，但最好不要修改内容。因转载或者修改内容导致的任何问题，我均不负责。如果你真的担心版权，可邮联。评价需要外网，这是枷锁，也是照妖镜。</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.20/fancybox/fancybox.umd.js" integrity="sha256-q8XkJ6dj5VwSvzI8+nATCHHQG+Xv/dAZBCgqmu93zOY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.8/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2023/rime/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"d8d46259a513eef5291d0b365b52d292"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
