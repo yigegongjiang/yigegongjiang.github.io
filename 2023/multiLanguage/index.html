@@ -242,7 +242,7 @@
 <p>Swift 目前还是极度不适合服务端开发（2023）。简单项目也不建议尝试，因为意义真的不大。如果项目真的简单，希望快速开发，其实更愿意推荐 Python。<br>Swift 的服务端周边生态太差了，社区也匮乏，Vapor 这样的 web 框架真的是简陋。</p>
 <p>很多人还推荐使用 Swift 来写脚本或者可执行命令，简直就是脱裤子放屁。十分不推荐。时间很宝贵，要善待。<br>这类脚本开发，能有 python 写的爽？退一步说，即使非 PC 场景命令，是 app 执行中的脚步，那 python 也可以做一个阉割版的解释器放在 app 中，在 Mac 和 iPhone 都能跑。</p>
 <p>但是在 苹果 生态里面，only swift，也不用在留念 Objective-C 了。<br>随着很多 api 只开放 swift 接口，OC 的影子会逐渐退去。<br>SwiftUI 也是大势所趋，结合 Combine 还是很方便的做 MVVM 架构开发的。<br>很想试试 Swift 做 Vision Pro 的开发。</p>
-<p>Swift 用起来还是挺爽的，3 年前用 swift 做过一段时间的开发，这次使用下来，发现新增了 async&#x2F;await 协程，而且非常好用，相当惊喜。</p>
+<p>Swift 用起来还是挺爽的，3 年前用 swift 做过一段时间的开发，这次使用下来，发现新增了 async&#x2F;await 协程，而且非常好用。<br>这里特别说明一下通过 <strong>协程</strong> 整合了 <strong>异步&amp;并发</strong> 两大能力的 async&#x2F;await，寥寥几行代码实现了这么多功能，简直相当惊艳。<br>很少有语言会把协程能力和 多线程 做耦合，一般都是需要开发同学自己加多线程逻辑的。</p>
 <p>整体感触：<br>Swift 使用起来还是很爽的。尤其很好的支持了函数式编程。整体比 OC 爽的不止一点点。<br>但 Swift 目前还是得围绕苹果生态使用，想破圈，还是很难。 之前 tensorflow 增加对 Swift 的支持，后来也放弃了。IBM 也推出并停止了 Swift 服务端的建设道路。<br>之前还对 Swift 成为全能型开发语言有一些期待的，目前来看，难了，基本不可能了。<br>这里大胆做个预期：截止当前 2023 年，Swift 已经没有破圈的可能了。以后如果没有惊艳的 case，机会也不会有了。</p>
 <h2 id="SwiftUI"><a href="#SwiftUI" class="headerlink" title="SwiftUI"></a>SwiftUI</h2><p>如果没有经历过动态化开发，很多人会不理解为什么复杂的应用界面可以通过 SwiftUI 这样的层级形式给描绘出来。<br>我之前和同事聊过，GUI 开发，最主要的是数据的稳定，UI 一定是跟着数据转的。只要数据稳定，就不会有大的问题。</p>
 <p>界面(UI)，是一层皮肤，SwiftUI 和 Flutter 的 dart，都是用来描述这层皮肤的样式的。当然可以拎出来单独设计。<br>大厂也都会自建 DSL 的 UI 描述方式和专用 IDE，一般是通过 JSON&#x2F;TS &amp; VSCode 来做。<br>编码上没有太多差异，更多的是功能 api 上的联动性。SwiftUI 官方出品，直接在写 UI 的时候就能联动系统 API，使用起来也是最爽的。</p>
@@ -432,12 +432,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
   <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2023/multiLanguage/"}</script>
   <script src="/js/third-party/quicklink.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
 <script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"40b21f1784876c065dd41ce1830b92e9"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
-<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
-<script src="/js/third-party/comments/utterances.js"></script>
 
 </body>
 </html>
