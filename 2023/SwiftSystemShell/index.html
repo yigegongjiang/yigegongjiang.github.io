@@ -20,12 +20,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.18.1","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="不推荐使用 Swift 写脚本，和 Python 比起来，该生态链相对匮乏，开发耗时会增加很多。但对于偏 Swift 的同学来说，这也的确是更可控和方便维护的方式之一。尤其对于公司内部工具，有问题可以更快的找到原因并处理，不至于手忙脚乱。通过 Swift 进行脚本开发的环境和入门，可参考：Swift 脚本开发环境搭建 在开发脚本的时候，经常会使用到在终端环境中安装&#x2F;预制的命令、管道、文件">
+    <meta name="description" content="不推荐使用 Swift 写脚本，和 Python 比起来，该生态链相对匮乏，开发耗时会增加很多。但对于偏 Swift 的同学来说，这也的确是更可控和方便维护的方式之一。尤其对于公司内部工具，有问题可以更快的找到原因并处理，不至于手忙脚乱。  通过 Swift 进行脚本开发的环境和入门，可参考：Swift 脚本开发环境搭建 在开发脚本的时候，经常会使用到在终端环境中安装&#x2F;预制的命令、管道">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【Swift 三方源码1】SwiftShell 高效的命令行工具">
 <meta property="og:url" content="https://www.yigegongjiang.com/2023/SwiftSystemShell/index.html">
 <meta property="og:site_name" content="一个工匠">
-<meta property="og:description" content="不推荐使用 Swift 写脚本，和 Python 比起来，该生态链相对匮乏，开发耗时会增加很多。但对于偏 Swift 的同学来说，这也的确是更可控和方便维护的方式之一。尤其对于公司内部工具，有问题可以更快的找到原因并处理，不至于手忙脚乱。通过 Swift 进行脚本开发的环境和入门，可参考：Swift 脚本开发环境搭建 在开发脚本的时候，经常会使用到在终端环境中安装&#x2F;预制的命令、管道、文件">
+<meta property="og:description" content="不推荐使用 Swift 写脚本，和 Python 比起来，该生态链相对匮乏，开发耗时会增加很多。但对于偏 Swift 的同学来说，这也的确是更可控和方便维护的方式之一。尤其对于公司内部工具，有问题可以更快的找到原因并处理，不至于手忙脚乱。  通过 Swift 进行脚本开发的环境和入门，可参考：Swift 脚本开发环境搭建 在开发脚本的时候，经常会使用到在终端环境中安装&#x2F;预制的命令、管道">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-12-13T05:56:00.000Z">
 <meta property="article:author" content="海驴">
@@ -220,7 +220,10 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>不推荐使用 Swift 写脚本，和 Python 比起来，该生态链相对匮乏，开发耗时会增加很多。<br>但对于偏 Swift 的同学来说，这也的确是更可控和方便维护的方式之一。尤其对于公司内部工具，有问题可以更快的找到原因并处理，不至于手忙脚乱。<br>通过 Swift 进行脚本开发的环境和入门，可参考：<a href="https://www.yigegongjiang.com/2023/SwiftCommandEnv/">Swift 脚本开发环境搭建</a></p>
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>不推荐使用 Swift 写脚本，和 Python 比起来，该生态链相对匮乏，开发耗时会增加很多。<br>但对于偏 Swift 的同学来说，这也的确是更可控和方便维护的方式之一。尤其对于公司内部工具，有问题可以更快的找到原因并处理，不至于手忙脚乱。</p>
+</blockquote>
+<p>通过 Swift 进行脚本开发的环境和入门，可参考：<a href="https://www.yigegongjiang.com/2023/SwiftCommandEnv/">Swift 脚本开发环境搭建</a></p>
 <p>在开发脚本的时候，经常会使用到在终端环境中安装&#x2F;预制的命令、管道、文件读取等。这些能力，<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2thcmVtYW4vU3dpZnRTaGVsbA==">SwiftShell<i class="fa fa-external-link-alt"></i></span> 做了完备的封装，很方便使用。<br>这里对该库源码进行一些解读。同时，也会做前置知识点如文件、管道、描述符、子进程进行简单介绍。</p>
 <span id="more"></span>
 
