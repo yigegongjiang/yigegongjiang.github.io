@@ -291,7 +291,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let semaphore = DispatchSemaphore(value: 0)</span><br><span class="line">async &#123;</span><br><span class="line">  ...</span><br><span class="line">  semaphore.signal()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">semaphore.wait()</span><br></pre></td></tr></table></figure>
 <p>可以将信号量的操作，进行单独封装，后续需要 wait 的时候，只需要便捷的调用一些 api 即可。</p>
 <p>当然，鉴于 GCD 强大的多线程管理能力，还可以使用 group 等方式，进行多个异步操作的并行操作等。</p>
-<h2 id="系统命令"><a href="#系统命令" class="headerlink" title="系统命令"></a>系统命令</h2><p>当然，命令行开发过程中，不可避免需要使用到丰富的系统命令，如 <code>ls/grep</code> 等。<br>这可以通过 Process Api 来操作，但这里不做过多介绍，因为有强大的三方库可以使用。<br>详见：<a href="https://www.yigegongjiang.com/">【Swift 三方源码1】SwiftShell 高效的命令行工具</a></p>
+<h2 id="系统命令"><a href="#系统命令" class="headerlink" title="系统命令"></a>系统命令</h2><p>当然，命令行开发过程中，不可避免需要使用到丰富的系统命令，如 <code>ls/grep</code> 等。<br>这可以通过 Process Api 来操作，但这里不做过多介绍，因为有强大的三方库可以使用。<br>详见：<a href="https://www.yigegongjiang.com/2023/SwiftSystemShell/">【Swift 三方源码1】SwiftShell 高效的命令行工具</a></p>
 <h2 id="命令行小结"><a href="#命令行小结" class="headerlink" title="命令行小结"></a>命令行小结</h2><p>以上，就是通过 Swift 做命令行开发中的一些概要和部分细节的地方了。<br>如最开始说到的那样，使用 Swift 开发命令行，除了 UIKit&#x2F;AppKit&#x2F;SwiftUI 这些 UI 属性不能使用之外，其他并没有太多的 api 限制。<br>甚至可以使用 UserDefault 存储，这样可以极大的简化用户的 cookie 等信息的保存。</p>
 <p>除此之外，大概就是对 Swift 高效和美丽的使用了。<br>Swift 这门语言虽然上手容易，但美丽的使用并不简单。<br>巧妙的使用 enum、protocol、async、combine 等高级功能，并且不搞乱代码，就很优秀。</p>
 <hr>
