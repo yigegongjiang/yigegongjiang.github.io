@@ -263,7 +263,7 @@ semaphore.wait()
 
 当然，命令行开发过程中，不可避免需要使用到丰富的系统命令，如 `ls/grep` 等。
 这可以通过 Process Api 来操作，但这里不做过多介绍，因为有强大的三方库可以使用。
-详见：[【Swift 三方源码1】SwiftShell 高效的命令行工具](https://www.yigegongjiang.com)
+详见：[【Swift 三方源码1】SwiftShell 高效的命令行工具](https://www.yigegongjiang.com/2023/SwiftSystemShell/)
 
 ## 命令行小结
 
