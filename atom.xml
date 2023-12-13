@@ -6,7 +6,7 @@
   <link href="https://www.yigegongjiang.com/atom.xml" rel="self"/>
   
   <link href="https://www.yigegongjiang.com/"/>
-  <updated>2023-12-13T05:56:00.000Z</updated>
+  <updated>2023-12-13T19:29:00.000Z</updated>
   <id>https://www.yigegongjiang.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Arc 浏览器 - 意外的惊喜</title>
+    <link href="https://www.yigegongjiang.com/2023/arc/"/>
+    <id>https://www.yigegongjiang.com/2023/arc/</id>
+    <published>2023-12-13T19:29:00.000Z</published>
+    <updated>2023-12-13T19:29:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>最喜爱 <code>世界之窗</code>，那个快如闪电的 Browser。</p></blockquote><p>每个人都有自己喜欢的浏览器，但每个人都不满意自己喜欢的浏览器。这是当今 Browser 之乱现象。<br>归根结底，在于浏览器内核太过复杂，没有推倒革新的可能。只能依托 webkit&#x2F;blink 内核之上做层层补补的体感优化。<br>但千人千面，一个浏览器能够适配多个人的使用习惯已经很困难，更何况兼容上亿用户的心情。</p><p>也属实没想到，在早已过了 Browser 大拼杀的今天，还有 <span class="exturl" data-url="aHR0cHM6Ly9hcmMubmV0Lw==">Arc<i class="fa fa-external-link-alt"></i></span> 这样的黑马闯了出来。<br>我已经重度使用两月有余，忍不住做一下使用过程中的体验和分享。</p><p>Arc 使用的还是 Chrome-Blink 内核，重在用户使用体感上的创新。<br>早期通过会员邀请制预约排号（目前已经完全开放），当时体验了半小时有余，放弃了，感觉不到又什么亮点。重新尝试后，发现了很多亮点。<br>应该还是使用的多了，就发现了很多早期没有注意到的功能。也侧面反映一个点，一开始使用有可能劝退。<br>希望我的分享可以降低初次使用的劝退门槛。<br>但也如开头所言，可能您最后并不喜欢也不选择 Arc，概率或许还很大。</p><span id="more"></span><h1 id="大致对比"><a href="#大致对比" class="headerlink" title="大致对比"></a>大致对比</h1><p>Safari：网页响应较慢，有时候菊花圈转的非常糟心。网页搜索功能超级糟糕。密码管理对接苹果生态，这非常棒。但随着 Chrome 有插件支持 Apple 密码同步，吸引力也不大了。虽然省电做的非常好，但我的电脑常年对接电源，无意义。<br>Chrome：速度很快，非常棒。操作很简洁。内存消耗过大。已打开网页不能很好的分组汇总，造成打开网页过多及紊乱。<br>其他 Chrome(Blink) 内核：和 Chrome 比没发现特别的优势，花里胡哨的功能较多，没有发现特别的吸引力。<br>Arc：保持了 Chrome 的速度，内存消耗不大。解决了多 tab 和多 window 的难题，使得已打开网页比较方便分组隔离。手势操作很简洁，花里胡哨的功能也比较实用。</p><p>对我而言，最大的吸引力是解决了多 tab 和多 window 难题。查阅资料较多的时候，往往打开 10-40 个网页，后面又不知道从哪个开始关，一头乱麻。<br>使用 Arc 后，从不再有这个困扰。因为 Arc 的网页浮窗设计，对于无关紧要的网页及时做了关闭，根本不会打开多余的 tab 和 window。</p><h1 id="Browser-必备能力"><a href="#Browser-必备能力" class="headerlink" title="Browser 必备能力"></a>Browser 必备能力</h1><p>这里是一些无关痛痒的必备能力，基本上只有 Safari 是个异类。</p><ol><li>导入 Safari 和 Chrome 等浏览器的历史记录、收藏标签、密码等。</li><li>支持 Chrome 商店</li><li>网页打开速度快</li><li>内存占用低</li><li>双击选中文本后，ctrl+f 直接高光所有匹配文本，网页不发生 offset 滚动。（也只有 Safari，把文本搜索做的如此 low。）</li></ol><p>实际上我一直在使用 Safari，因为 Chrome 内存占用太高了，我的电脑有些搞不来，偶尔用用。<br>至今怀念那个快如闪电的 <strong>世界之窗</strong>。</p><h1 id="尽快关闭网页"><a href="#尽快关闭网页" class="headerlink" title="尽快关闭网页"></a>尽快关闭网页</h1><p>以往动不动打开 10-40 个 tab，1-3 个 window。后面要关闭的时候非常痛苦，完全不知道哪些 tab 对应哪些内容，要一个一个的回刷，担心误关了。<br>在使用 Arc 两个月，常打开的网页 tab 不超过 10 个，一次新增 window 都没有。</p><p>做为浏览器，Arc 的目标不是打开网页，而是尽快关闭网页。这个反向的设计，使我最大的推荐理由。</p><p>一般来说，打开陌生的新网页有三种途径：</p><ol><li>常用网页打开新链接（如 Google）</li><li>陌生页面打开新链接</li><li>其他 app 通过默认 browser 打开链接</li></ol><p>对于 1 场景，Arc 的设计是：被 Pin(favorite) 的网页（Google 一般加入 Pin），点击链接，默认弹出网页浮层。该浮层具有完整的网页体验，若发现不感兴趣，通过手势可及时关闭浮层。<br>对于 2 场景，按着 Shift 键后打开链接，和 1 的效果一样，即出现网页浮层。<br>对于 3 场景，Arc 提供了一个 Little 简化模式，并不在 Arc 主页面打开链接。Little 也是一个浮层，不感兴趣也可及时关闭。</p><p>所以 Arc 对于尽快关闭网页的设计，就是提供浮层，这种强视觉的方式，让用户尽快且方便的关闭不需要打开的链接。</p><h1 id="网页全屏"><a href="#网页全屏" class="headerlink" title="网页全屏"></a>网页全屏</h1><p>各个浏览器基本上都在顶部有一个丑丑的标签栏，这会占据一定的网页视图空间。而且在网页打开过多后，只能看到 logo，识别网页内容的功能已经丢失。<br>更甚至，一般书签栏还占据一行，进一步减少了网页视图空间。虽然有快捷键打开和关闭，但是基本不会操作。</p><p>Arc 的改进，是引入了侧边栏。将 Pin(favorite)、书签栏、已打开 tab 等统一在侧边栏展示。<br>通过 ctrl+s 快捷键，可以打开关闭侧边栏。关闭后，<strong>当前网页就是真全屏状态，这实在是太棒了</strong>。</p><p>最神的是 ctrl+s 快捷键，这个即方便又不被使用的鸡肋快捷键，被用于这个功能，真是妙不可言。</p><h1 id="Pin"><a href="#Pin" class="headerlink" title="Pin"></a>Pin</h1><p>Arc 的另一个挖掘用户痛点，是<strong>书签栏 并不常用，常用的网页就那么几个，可能还不在书签栏</strong>。</p><p>所以在侧边栏上，顶部通过区块 Icon 的方式置顶了被 Pin 的网页。非常方便点击和识别，完全弱化了书签栏存在的意义，且十分有效和方便。</p><p>Chrome 和 Safari 也在尝试做这个，它们是把 Pin 的网页移动至 所有 tab 的最左侧，且通过颜色进行分组区分。<br>但他们鸡肋的两点是：不方便识别且不能关闭。被 Pin 的网页，Safari 只能长久打开，Chrome 关闭后就被移除不在 Pin 分组。</p><p>Arc 的设计是：随时可以关闭，降低内存消耗。再次打开，回到原始状态。</p><h1 id="Space"><a href="#Space" class="headerlink" title="Space"></a>Space</h1><p>为了让用户不创建多个 Window，以防止屏幕视图过多，干扰筛选，Arc 通过 Space 来间接实现 Window 功能。<br>Space 可以通过手势滚动进行切换，非常方便。</p><p>每个 Space 都是独立的，有独立的 Profile，也可以 copy 另一个 Space。<br>这就很方便做常用功能的拆分和隔离，如 Pin&#x2F;书签 等。</p><p>我经常在 A space 做 chatgpt 和 google 的搜索，在 B space 也做 chatgpt 和 google 的搜索。<br>虽然可以通过快捷键来新建 tab，但是手势滚动一下，还是要比按下键盘舒服的多。<br>而且，新建 tab 那是新开网页，而切 space 那是切到已经打开网页。chatgpt 新开网页还是很慢的。</p><h1 id="Max-Ai"><a href="#Max-Ai" class="headerlink" title="Max Ai"></a>Max Ai</h1><p>这是比较潮流的点，我用的不多，但也有收益。<br>Arc 默认已经提供免费的 Ai 场景的应用，如鼠标移动到链接上，会提示当前链接的内容概要。</p><p>一个亮点是：在当前页面 ctrl+f 输入问题，Ai 会整理当前页面的内容作为语料，对输入问题进行解答。这很有趣和有用。<br>还有个亮点是：下载文件和新开 tab，Ai 会重命名文件名称或者 tab 名称，以更符合对应场景的含义。还很准，这也很有用。</p><hr><p>月薪 3k 买 8k 羽绒服，远不如辞职卧床 3 个月。</p>]]></content>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;最喜爱 &lt;code&gt;世界之窗&lt;/code&gt;，那个快如闪电的 Browser。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;每个人都有自己喜欢的浏览器，但每个人都不满意自己喜欢的浏览器。这是当今 Browser 之乱现象。&lt;br&gt;归根结底，在于浏览器内核太过复杂，没有推倒革新的可能。只能依托 webkit&amp;#x2F;blink 内核之上做层层补补的体感优化。&lt;br&gt;但千人千面，一个浏览器能够适配多个人的使用习惯已经很困难，更何况兼容上亿用户的心情。&lt;/p&gt;
+&lt;p&gt;也属实没想到，在早已过了 Browser 大拼杀的今天，还有 &lt;span class=&quot;exturl&quot; data-url=&quot;aHR0cHM6Ly9hcmMubmV0Lw==&quot;&gt;Arc&lt;i class=&quot;fa fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt; 这样的黑马闯了出来。&lt;br&gt;我已经重度使用两月有余，忍不住做一下使用过程中的体验和分享。&lt;/p&gt;
+&lt;p&gt;Arc 使用的还是 Chrome-Blink 内核，重在用户使用体感上的创新。&lt;br&gt;早期通过会员邀请制预约排号（目前已经完全开放），当时体验了半小时有余，放弃了，感觉不到又什么亮点。重新尝试后，发现了很多亮点。&lt;br&gt;应该还是使用的多了，就发现了很多早期没有注意到的功能。也侧面反映一个点，一开始使用有可能劝退。&lt;br&gt;希望我的分享可以降低初次使用的劝退门槛。&lt;br&gt;但也如开头所言，可能您最后并不喜欢也不选择 Arc，概率或许还很大。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="工具" scheme="https://www.yigegongjiang.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="Life" scheme="https://www.yigegongjiang.com/tags/Life/"/>
+    
+    <category term="Work" scheme="https://www.yigegongjiang.com/tags/Work/"/>
+    
+  </entry>
   
   <entry>
     <title>【Swift 三方源码1】SwiftShell 高效的命令行工具</title>
