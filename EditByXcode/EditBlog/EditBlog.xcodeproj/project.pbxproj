@@ -31,9 +31,9 @@
 		B2BE32AD2B2C45A5009D8A37 = {
 			isa = PBXGroup;
 			children = (
-				B2BE32B92B2C45A5009D8A37 /* EditBlog */,
 				B2BE32C12B2C4610009D8A37 /* _drafts */,
 				B2BE32C22B2C4610009D8A37 /* _posts */,
+				B2BE32B92B2C45A5009D8A37 /* EditBlog */,
 				B2BE32B82B2C45A5009D8A37 /* Products */,
 			);
 			sourceTree = "<group>";
