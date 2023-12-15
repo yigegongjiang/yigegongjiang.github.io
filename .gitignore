@@ -67,3 +67,6 @@ db.json
 node_modules/
 public/
 .deploy*/
+/EditByXcode/EditBlog.xcworkspace/xcuserdata/gebiwanger.xcuserdatad/IDEFindNavigatorScopes.plist
+/EditByXcode/EditBlog.xcworkspace/xcuserdata/gebiwanger.xcuserdatad/UserInterfaceState.xcuserstate
+*.xcuserstate
