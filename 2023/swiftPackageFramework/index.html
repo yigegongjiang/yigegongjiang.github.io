@@ -91,7 +91,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">81</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user fa-fw"></i>About</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section"><i class="rss fa-fw"></i>Rss</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">82</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user fa-fw"></i>About</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section"><i class="rss fa-fw"></i>Rss</a></li>
   </ul>
 </nav>
 
@@ -116,7 +116,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0x01-%E9%97%AD%E6%BA%90framework%E8%AF%B4%E6%98%8E"><span class="nav-number">1.</span> <span class="nav-text">0x01 闭源framework说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x02-Package-%E8%BE%93%E5%87%BA-Binary-%E5%8D%A1%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">0x02 Package 输出 Binary 卡点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x02-Package-%E8%BE%93%E5%87%BA-Binary-%E6%96%B9%E6%A1%88"><span class="nav-number">3.</span> <span class="nav-text">0x02 Package 输出 Binary 方案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x03-xcframework"><span class="nav-number">4.</span> <span class="nav-text">0x03 xcframework</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x04-%E5%B0%8F%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">0x04 小结</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0x01-%E9%97%AD%E6%BA%90framework%E8%AF%B4%E6%98%8E"><span class="nav-number">1.</span> <span class="nav-text">0x01 闭源framework说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x02-Package-%E8%BE%93%E5%87%BA-Binary-%E5%8D%A1%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">0x02 Package 输出 Binary 卡点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x03-Package-%E8%BE%93%E5%87%BA-Binary-%E6%96%B9%E6%A1%88"><span class="nav-number">3.</span> <span class="nav-text">0x03 Package 输出 Binary 方案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x04-xcframework"><span class="nav-number">4.</span> <span class="nav-text">0x04 xcframework</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x05-%E5%B0%8F%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">0x05 小结</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -131,7 +131,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">81</span>
+          <span class="site-state-item-count">82</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -254,9 +254,9 @@
 
 <p>并没有输出 framework，只剩下已经编译好的 .o 目标文件。</p>
 <p>其实，若 Package 按上图中直接集成项目中，输出的产物也是这样，只是 Xcode 默认会进行目标文件的链接或者头文件查询等工作。<br>只是当独立进行 Package framework 输出的时候，上面两个问题官方是没有给予支持。</p>
-<h1 id="0x02-Package-输出-Binary-方案"><a href="#0x02-Package-输出-Binary-方案" class="headerlink" title="0x02 Package 输出 Binary 方案"></a>0x02 Package 输出 Binary 方案</h1><p>对于 Package 输出 动态库 framework，目前的问题是头文件不在 framework 里面，无法直接给其他项目使用。<br>前面我们已经对 framework 里的内容做了分析，Headers 是 OC 的头文件产物，Package 是明确不支持 OC 的，只能写 Swift 代码。所以不用关心。<br>我们只需要把 swiftmodule 头文件夹，按照 framework 的标准复制到 PackageFrameworks&#x2F;MyLibrary.framework&#x2F;Modules 里面即可。Modules 里面的 <code>module.modulemap</code> 在这里也不需要了，它主要是为 OC module化服务的，如 sub module 等。<br>所以，如果是 xcode 打包，我们可以在 scheme 的 <code>Build Post-Actions</code> 或者 project 的 <code>Build Phases Run Script</code> 中加入一些脚本，把 swiftmodule 复制到 <code>.../xx.framework/Modules/</code> 里面，则 xx.framework 即可以作为动态 framework 给其他项目使用。</p>
+<h1 id="0x03-Package-输出-Binary-方案"><a href="#0x03-Package-输出-Binary-方案" class="headerlink" title="0x03 Package 输出 Binary 方案"></a>0x03 Package 输出 Binary 方案</h1><p>对于 Package 输出 动态库 framework，目前的问题是头文件不在 framework 里面，无法直接给其他项目使用。<br>前面我们已经对 framework 里的内容做了分析，Headers 是 OC 的头文件产物，Package 是明确不支持 OC 的，只能写 Swift 代码。所以不用关心。<br>我们只需要把 swiftmodule 头文件夹，按照 framework 的标准复制到 PackageFrameworks&#x2F;MyLibrary.framework&#x2F;Modules 里面即可。Modules 里面的 <code>module.modulemap</code> 在这里也不需要了，它主要是为 OC module化服务的，如 sub module 等。<br>所以，如果是 xcode 打包，我们可以在 scheme 的 <code>Build Post-Actions</code> 或者 project 的 <code>Build Phases Run Script</code> 中加入一些脚本，把 swiftmodule 复制到 <code>.../xx.framework/Modules/</code> 里面，则 xx.framework 即可以作为动态 framework 给其他项目使用。</p>
 <p>对于 Package 输出 静态库 framework，目前的问题是 framework 都没有生成，只有编译好的 .o 目标文件。<br>静态 framework 是对 .a 和 头文件的封装，一个可行的办法是通过 <code>ar -crs libXXX.a XXX1.o XXX2.o</code> 命令，将所有的 .o 进行压缩 .a 文件（需要移除 .a 后缀，framework 主动识别，不要 .a 后缀）。<br>然后把 .a 文件和 swiftmodule 放到新建的 xx.framework 中。<br>虽然可行，但也看得出来，这有些复杂。还有 sign&#x2F;info.plist 文件没有处理，当然实际上它们也并不需要。<br>这个方案有些复杂，但是一个曲线救国的方案却很方便，就是 <code>xcframework</code>。</p>
-<h1 id="0x03-xcframework"><a href="#0x03-xcframework" class="headerlink" title="0x03 xcframework"></a>0x03 xcframework</h1><p>简单介绍一下 xcframework，它是苹果生态里面最近几年提出来的<code>多平台二进制</code>输出方案。framework 是<code>多架构二进制</code>输出方案。</p>
+<h1 id="0x04-xcframework"><a href="#0x04-xcframework" class="headerlink" title="0x04 xcframework"></a>0x04 xcframework</h1><p>简单介绍一下 xcframework，它是苹果生态里面最近几年提出来的<code>多平台二进制</code>输出方案。framework 是<code>多架构二进制</code>输出方案。</p>
 <p>通过 xcode 或者 xcodebuild 打包的 framework，虽然看起来是一个文件，但其实是 <code>fat framework</code>，它里面可能封装了多个架构(arm64&#x2F;x86_64)的二进制，以供不同架构平台(真机&#x2F;模拟器)使用。<br>通过 file 命令可以看见其支持的架构：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">file ...//Build/Products/Debug-iphonesimulator/ProjLibrary.framework/ProjLibrary</span><br><span class="line"></span><br><span class="line">// (Mach-O universal binary with 2 architectures 表示支持两个架构)</span><br><span class="line">...//Build/Products/Debug-iphonesimulator/ProjLibrary.framework/ProjLibrary: Mach-O universal binary with 2 architectures: [x86_64:Mach-O 64-bit dynamically linked shared library x86_64] [arm64:Mach-O 64-bit dynamically linked shared library arm64]</span><br><span class="line">// (x86_64)</span><br><span class="line">...//Build/Products/Debug-iphonesimulator/ProjLibrary.framework/ProjLibrary (for architecture x86_64):  Mach-O 64-bit dynamically linked shared library x86_64</span><br><span class="line">// (arm64)</span><br><span class="line">...//Build/Products/Debug-iphonesimulator/ProjLibrary.framework/ProjLibrary (for architecture arm64):  Mach-O 64-bit dynamically linked shared library arm64</span><br></pre></td></tr></table></figure>
 
@@ -267,7 +267,7 @@
 <p>实际上，xcframework 并不管 <code>x.framework</code> 是不是真的拥有当前平台的架构，它是按照文件夹进行过滤的。如果编译的时候不符合，就报错这样子。甚至每一个具体的二进制文件依旧是包含多架构的 <code>fat framework</code>，xcframework 也不会过问。这些信息，也同样会在聚合的 Info.plist 里有标记。<br>所以这里有个注意点，即最好准确的输出每个二进制文件的架构并输入到对应的子文件夹中，若包含多架构，xcframework 的尺寸会凭空大很多。(一般是通过命令行操作，不会有误差。若通过 xcode 手动打包，得注意 目标设备不要选中 <code>any ios devices simulator</code> 等，这会打出多架构的包出来)</p>
 <p>对于如何输出 xcframework，也提供了友好的命令，即 <code>xcodebuild -create-xcframework  -framework pathA/N.framework -framework pathB/N.framework -framework pathC/N.framework -allow-internal-distribution -output N.xcframework</code>，这是把多个 framework 合并成一个 xcframework 的方式，具体可查阅更多资料。</p>
 <p>在上一节说到曲线救国的 Package 输出 静态库 framework，就是巧妙的使用 <code>xcodebuild -create-xcframework</code> 命令。具体如下：<br><code>xcodebuild -create-xcframework  -library pathA/N.a -library pathB/N.a -library pathC/N.a -allow-internal-distribution -output N.xcframework</code><br>即待合并的目标文件使用 -library 标记，这样可以将多个 .a 文件聚合为 xcframework，而不用关心手动将 .a 转为 .framework 的复杂问题。（当然，这里还需要手动&#x2F;脚本将 swiftmodule 复制到对应 framework 的 modules 文件夹中。）</p>
-<h1 id="0x04-小结"><a href="#0x04-小结" class="headerlink" title="0x04 小结"></a>0x04 小结</h1><p>至此，说明了如何在 Package 环境下，快速输出二进制给到其他项目使用。</p>
+<h1 id="0x05-小结"><a href="#0x05-小结" class="headerlink" title="0x05 小结"></a>0x05 小结</h1><p>至此，说明了如何在 Package 环境下，快速输出二进制给到其他项目使用。</p>
 <p>对于 <code>fat framework</code> 或者 <code>xcframework</code> 会不会增加线上包大小，不用担心。因为当前平台&amp;架构的包，准备提交的时候以及 App Store(iOS&#x2F;Mac) 均会进行过滤。准备提交的时候，若参杂 模拟器 包，会不允通过（一般 Pods&#x2F;SPM 已经默认做了去除。若手动管理，可增加 build phases 脚本进行剔除）。同时包含 armV7 和 arm64，在提交审核后也会被苹果后台根据不同平台进行剔除，App Store 上看到的已经是去除冗余架构后的大小。<br>但是对于非 App Store 的包，就不一定了。iPhone 有巨魔等自签平台，量很少不用关心。在 Mac 平台上，自签的 dmg 为了适配 Intel 和 M 架构，会同时包含多个架构，这会增加包大小。当然也可以为不同平台提供不同的包，增加少许复杂度。</p>
 <p>实际上闭源的 framework&#x2F;xcframework 不仅仅用于输出二进制给到其他项目使用。<br>对于大型项目，在长年累积过程中，可能会有好几百个模块库。使用源码的话，会严重增加编译时长(编译一次耗时 1H 不夸张)。<br>这时候将每个模块直接输出二进制库，对编译时长有质的飞跃。</p>
 <hr>
@@ -340,6 +340,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2023/SwiftDependXcode/" rel="next" title="在 Xcode 中更好的使用 Swift">
+                  在 Xcode 中更好的使用 Swift <i class="fa fa-angle-right"></i>
+                </a>
             </div>
           </div>
     </footer>
