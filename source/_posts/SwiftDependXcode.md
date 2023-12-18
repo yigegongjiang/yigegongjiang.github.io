@@ -48,28 +48,32 @@ Find Selected Symbol in Workspace: 根据符号进行搜索，相比文本搜索
 这几个快捷键，基本覆盖找代码过程中的大部分场景。里面还有一些小技巧，如**前后缀及单词匹配、大小写敏感、展示方法和属性**等。
 
 ## 缺陷
-对于 Procotol，如 ClassA 实现了 ProtocolB，ProtocolB 继承 ProtocolA。这样的链条下，Protocol 向上查询，无法操作。
-对于复杂的 Protocol 组合，没有很好的办法在 Xcode 里面快速找到 m protocol 继承的祖先 protocol。
-这个有一个补救的办法，是通过下面说到的 DocC 来看。DocC 文档的末尾，一般有一个 `Conformed to` 列表，用于标记当前 Procotol 实现了哪些祖先 Protocol。
+对于 Procotol，若 ProtocolB 继承 ProtocolA。无法通过以上 `Find` 操作从 ProtocolB 找到其祖先协议 ProtocolA。这是 Xcode 的缺陷。
+这个有一个补救的办法，是通过下面说到的 DocC 来查阅。DocC 文档的末尾，一般有一个 `Conformed to` 列表，用于标记当前 Procotol 实现了哪些祖先 Protocol。
 
-## 技巧 1 Scheme 去除干扰
+## 技巧 1 Xcode Index
 
-对于 `⌥T` 文本搜索，任何条件下使用都没有问题。但是其他的搜索如符号、祖先等，就需要 xcode 先解析项目，然后才能通过读取缓存文件来使用。
-这里的解析项目，是不需要编译通过的。只要打开项目，用对应的 Scheme 和 Target，就会进行整项目解析。
+对于 `⌥T` 文本搜索，任何条件下使用都没有问题。但是其他的搜索如符号、祖先等，就需要 xcode 先解析项目生成 Index 索引，然后才能通过读取 db 缓存来使用。
+这里的解析项目，是不需要编译通过的。只需要 Xcode 把项目的词法分析操作完即可(默认打开项目就会解析)。
 
-对于有些项目，如 github 源码、自己建立的测试工程等，某些原因下可能无法编译通过。
+但这里也会有一个小问题，就是多个 Group 下有大量无法编译通过的文件，Index 索引生成会失败。
+这时候可以通过新建 Target，将文件添加到不同的 Target 中。可以解决 Index 索引失效问题。
+
+## 技巧 2 Scheme 去除干扰
+
+如 `Xcode Index` 中描述，对于有些项目，如 github 源码、自己建立的测试工程等，某些原因下可能无法编译通过。
 这个时候项目里面会有很多 error，使用搜索的时候，会有很多刺眼的红色警告条干扰。
 
 这个时候可以操作 `Manager Schemes - show`，将所有 scheme 取消勾选。因为 xcode 已经把项目解析完成，搜索依旧是可以使用的。这样可以有效的去除警告干扰。
 
-## 技巧 2 Search Scopes
+## 技巧 3 Search Scopes
 
 巧妙设置 Scopes，可以大范围缩小部分文本的搜索范围。搜索范围可以设置为部分主项目文件夹和任意三方库的关联。
 有个小技巧，是按着 Control 选中需要搜索的文件夹或者三方库，然后右键，会有一个快捷添加 Scopes 的入口。
 
 <img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202312160601060.png" width="30%">
 
-## 技巧 3 正则搜索
+## 技巧 4 正则搜索
 
 配合 ChatGPT 写**正则搜索**，也非常棒。如果需要对正则结果使用文本替换功能(replace)，最好在 vscode 里面操作，效果会更好。
 
