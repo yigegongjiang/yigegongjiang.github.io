@@ -47,29 +47,56 @@ Find Selected Symbol in Workspace: 根据符号进行搜索，相比文本搜索
 
 这几个快捷键，基本覆盖找代码过程中的大部分场景。里面还有一些小技巧，如**前后缀及单词匹配、大小写敏感、展示方法和属性**等。
 
-配合 ChatGPT 写**正则搜索**，也非常棒。如果需要对正则结果使用文本替换功能(replace)，最好在 vscode 里面操作，效果会更好。
+## 缺陷
+对于 Procotol，如 ClassA 实现了 ProtocolB，ProtocolB 继承 ProtocolA。这样的链条下，Protocol 向上查询，无法操作。
+对于复杂的 Protocol 组合，没有很好的办法在 Xcode 里面快速找到 m protocol 继承的祖先 protocol。
+这个有一个补救的办法，是通过下面说到的 DocC 来看。DocC 文档的末尾，一般有一个 `Conformed to` 列表，用于标记当前 Procotol 实现了哪些祖先 Protocol。
 
-## 巧用 Search Scopes
+## 技巧 1 Scheme 去除干扰
+
+对于 `⌥T` 文本搜索，任何条件下使用都没有问题。但是其他的搜索如符号、祖先等，就需要 xcode 先解析项目，然后才能通过读取缓存文件来使用。
+这里的解析项目，是不需要编译通过的。只要打开项目，用对应的 Scheme 和 Target，就会进行整项目解析。
+
+对于有些项目，如 github 源码、自己建立的测试工程等，某些原因下可能无法编译通过。
+这个时候项目里面会有很多 error，使用搜索的时候，会有很多刺眼的红色警告条干扰。
+
+这个时候可以操作 `Manager Schemes - show`，将所有 scheme 取消勾选。因为 xcode 已经把项目解析完成，搜索依旧是可以使用的。这样可以有效的去除警告干扰。
+
+## 技巧 2 Search Scopes
 
 巧妙设置 Scopes，可以大范围缩小部分文本的搜索范围。搜索范围可以设置为部分主项目文件夹和任意三方库的关联。
 有个小技巧，是按着 Control 选中需要搜索的文件夹或者三方库，然后右键，会有一个快捷添加 Scopes 的入口。
 
 <img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202312160601060.png" width="30%">
 
-# 0x02 使用 Assistant 视图
+## 技巧 3 正则搜索
+
+配合 ChatGPT 写**正则搜索**，也非常棒。如果需要对正则结果使用文本替换功能(replace)，最好在 vscode 里面操作，效果会更好。
+
+# 0x02 Swift 官方源码
+
+上面说到的搜索，仅仅对于有源码的当前项目或者三方库进行使用。Swift Foundation 等模块，只能通过其生成的 api 接口来预览。
+这个时候弊端非常明显，就是很难查找当前一个系统类的父子及实现协议之间的关系(如：想要查看 Array 实现了哪些 Protocol 以及父子类)。
+
+因为 Swift 是开源的，这里一个办法是直接获取 Swift 源码。具体方法可以参考这篇文章。[swift-5.9-RELEASE源码编译（Xcode）](https://juejin.cn/post/7291555600854171683#heading-15)
+
+整套流程非常耗费时间和磁盘大小(62.5G)，若非查看 cpp 实现源码，可通过 lite 版本进行 swift 源码查阅 [swift5.9.2_rawcode_lite](https://github.com/yigegongjiang/swift5.9.2_rawcode_lite)。
+当然，cpp 源码包含非常多的有价值内容。如 LLVM 项目中有整套编译器和平台架构的实现。Swift 项目中有对 ELF/Mach-0 Image 等详细操作流程的实现。
+
+# 0x03 使用 Assistant 视图
 
 在编辑窗口使用默认快捷键 `⌃⌥⌘↩` 可打开 **Assistant** 视图。在做 Storyboard/SwiftUI 等 UI 面板开发的时候经常用里面的 auto 功能以打开对应源码文件。
 其中还有一些如 Procotol/extension/superclass 等，毕竟方便展示当前打开页面的清单。
 
 尤其里面有一个 `interface` 能力，可以展示当前 swift 源码对应的头文件。这样可以边看源码边看接口定义，非常方便。
 
-# 0x03 首选 DocC 文档
+# 0x04 首选 DocC 文档
 
 苹果开放了 DocC 能力，可以快速输出任意项目/三方库的接口文档。具有和官方文档一样的体感，非常好用。
 
 DocC 文档可通过 `⇧⌘0` 快捷键快速体验。通过 Product - Build Documentation 可快速输出项目接口文档。
 
-# 0x04 Bookmark
+# 0x05 Bookmark
 
 新版 xcode(15) 增加了书签 Bookmark 功能。可以在文本任意行右键找到入口，在搜索面板的左侧找到书签总入口。
 
@@ -78,7 +105,7 @@ DocC 文档可通过 `⇧⌘0` 快捷键快速体验。通过 Product - Build Do
 
 <img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202312160617272.png" width="30%">
 
-# 0x05 加餐：vim
+# 0x06 加餐：vim
 
 xcode 自建了 vim 的支持。vim 对中文场景一直有诟病，切换输入法的瞬间秒变灾难。vscode/终端 均是如此。
 但是 xcode 完美支持中文。在普通状态中文场景下，按键会自动表意为英文并执行对应的命令，不会变灾难。
