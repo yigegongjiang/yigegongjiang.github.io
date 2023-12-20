@@ -171,18 +171,139 @@ suspend/resume/isRunning：意如其名
 
 # 源码分析
 
-待完成
+SwiftShell 源码已经停止更新较久了，部分 api 已经不符合当前 Swift(5.9.2) 的标准建议。
+但 SwiftShell 本身是一套非常精妙小巧的框架设计，可以快速在项目中进行改写并使用。实际上，目前 Swift 5.9.2 版本使用，并不需要做调整，即可正常使用。
+如需要进一步调优以适用于自己的项目，可在查阅原作者源码或下文分析后，自行修改。
 
-## 整体设计
+源码分析注释已经同步更新于 Github 项目中，可直接阅读该项目：[SwiftShell 源码解析](https://github.com/yigegongjiang/SwiftShell)
 
-## Stream 
+**前置** 中已经对 FileHandle、stdin/stdout、file seek、Pipe、Process 等做了介绍。了解了这些后，可以比较方便的阅读源码，注释中也对必要的环境进行了阐述。
+还有一些 SwiftShell 中用到的知识点，这里也做一些说明，或许可以更利于理解项目：
 
-## Context
+## 终端 env 参数传递
 
-## Command
-// 四种方式
+打开终端解释器后，bash/zsh 等环境初始化成功后，当前进程会有一些已经配置好的环境变量。
+这些环境变量有些是需要传递给通过 SwiftShell 执行的子进程命令的。
+具体的操作流程并不复杂，但是对于环境变量是如何传递给子进程的，以及子进程对变量的操作是否会影响到父进程，可以查看 [Shell 和进程](https://www.yigegongjiang.com/2022/Shell%E5%92%8C%E8%BF%9B%E7%A8%8B/#0x03-Shell-%E5%92%8C-SubShell) 以获取更详细的说明。
 
+## Lazy 延迟计算
+
+鉴于 FileHandle 为文本 IO 操作，SwiftShell 内部为防止耗时，已经尽可能的使用 lazy 延迟迭代器对 IO 数据进行解析。
+
+Swift 中对 Sequence 序列进行 Lazy 操作，是通过在内部新建一个内部类迭代器完成的。
+
+```
+// 自定义 `CycleIndex` 迭代器，同时实现 `Sequence` 协议，作为序列使用 lazy 操作及高阶操作
+class CycleIndex: IteratorProtocol, Sequence {
+  typealias Element = Int
+  var index: Int = 0
+  func next() -> Int? {
+    defer {
+      index += 1
+    }
+    guard index < 10 else {
+      return nil
+    }
+    return index
+  }
+}
+```
+
+```
+1. var i = CycleIndex().lazy
+2. var j = i.map { pass }
+
+3. for _ in j {} OR j.makeIterator().next()
+```
+
+第 1 步，通过 lazy 计算属性会根据 CycleIndex() 对象生成一份新的对象 `LazySequence` i。
+
+第 2 步，对 i 进行 map 访问，会继续生成一个 `LazyMapSequence` 对象 j 并将 map 闭包存储于对象 j 中，这就是 lazy map 不会立刻执行的原因。
+在 j 内部有一个内部类 `Iterator` **n**。该内部类实现了 `IteratorProtocol` 协议，即 **n** 是一个可迭代对象。
+
+第 3 步通过 for...in 或 next 对 j 进行访问的时候，就会调用到 **n** 的 next() 方法，该 next() 会对 j 持有的 map 闭包进行执行。外部每调用一次 next()，map 闭包就会执行一次。
+
+这是 lazy 能够对 序列 进行延迟访问的原因。
+
+```
+// lazy 计算属性实现
+public var lazy: LazySequence<Self> {
+  return LazySequence(_base: self)
+}
+
+// 可迭代内部类设计
+extension LazyMapSequence {
+  public struct Iterator {
+    ...
+  }
+}
+extension LazyMapSequence.Iterator: IteratorProtocol {
+  public mutating func next() -> Element? {
+    return _base.next().map(_transform)
+  }
+}
+```
+
+## 类型檫除
+
+对于范型协议，是不能直接用作返回值的，如：
+```
+protocol Fly {
+  associatedtype action
+  func canFly() -> action
+}
+}
+
+class Cat: Fly {
+  typealias action = Bool
+  func canFly() -> action {
+    false
+  }
+}
+
+class Bird: Fly {
+  typealias action = String
+  func canFly() -> action {
+    "flase"
+  }
+}
+```
+
+以上定义了 Fly 协议，两个实现类中对于是否可以 Fly 的返回类型是不一样的。
+
+```
+func theAnimal() -> Fly {
+  ... {
+    return Cat()
+  }
+  ... {
+    return Bird()
+  }
+}
+```
+
+函数返回 Fly 协议，Xcode 检查会不通过，编译报错。因为当前返回值具有多样性，Xcode 并不能知道具体的返回类型是什么。
+比如：`let m = theAnimal().canFly()`，此时 m 是 Bool 类型还是 String 类型，就无法判断。
+
+私认为这是 Swift 对 protocol 实现范型 不友好 的地方，官方没有提供友好的解决方案，而问题又的确是需要解决。
+公认的解决方案是：类型檫除。使用中间层代理的形式，以 Anyxxx(AnyIterator、AnySequence) 对原有的数据进行中间层封装。
+
+Swift 内部也在大量使用该方案，可查阅 Swift 源码 `ExistentialCollection.swift - AnyIterator`。源码可参考：[Swift 官方源码 Lite](https://www.yigegongjiang.com/2023/SwiftDependXcode/#0x02-Swift-%E5%AE%98%E6%96%B9%E6%BA%90%E7%A0%81)
+
+在 `AnyIterator` 中，定义了 `_AnyIteratorBoxBase`、`_IteratorBox` 两个关键类，用于明确 Iterator 的 next() 返回值到底是什么类型。
+这样可以在任意位置正常使用 `AnyIterator`，因为通过范型参数的形式，Xcode 已经明确知道迭代值是什么。 
+
+理想的类型檫除，是 Xcode 明确知道类型是什么，可以使用静态调用，代码执行会更高效。
+后期 Swift 的确推出了较友好的一个方案用于类型檫除，即 **some**。用于 Xcode 对返回类型进行智能推断，很多场景下均可以使用 **some** 做类型檫除。
+
+除 **some** 外，还有 **any** 也可以用于类型檫除。使用 **any** 后，Xcode 就完全不管具体类型，而是交由运行时判断。这相对而言是有一定风险和性能损耗的。
+鉴于“又不是不能用”原则，在降低代码复杂度、可维护等理由下，若 **some** 无法满足，还是推荐 **any** 的。
+准确来说，如果项目中需要考虑到 **any** 的性能损耗，那一定是还有其他更需要解决的问题。
+
+但对于开源的项目，还是建议使用公认的`类型檫除`方案，即 Swift 官方也在大量使用的 中间层 代理方案。
+虽然略显复杂，但却十分行之有效。
 
 ___
 
+荣耀归于主，因祂配得我们一切的赞美和敬拜。
 
