@@ -88,7 +88,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">82</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user fa-fw"></i>About</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section"><i class="rss fa-fw"></i>Rss</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">83</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user fa-fw"></i>About</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section"><i class="rss fa-fw"></i>Rss</a></li>
   </ul>
 </nav>
 
@@ -127,7 +127,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">82</span>
+          <span class="site-state-item-count">83</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -157,6 +157,89 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2022/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E5%B7%AE%E5%BC%82-%E7%BC%96%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
+      <meta itemprop="name" content="海驴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个工匠">
+      <meta itemprop="description" content="时间，真的不多了。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 一个工匠">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E5%B7%AE%E5%BC%82-%E7%BC%96%E7%A0%81/" class="post-title-link" itemprop="url">文件存储差异-编码</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-07-10 19:16:13" itemprop="dateCreated datePublished" datetime="2022-07-10T19:16:13+08:00">2022-07-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>前两天，我和同事需要做一个功能，是把 js 前端保存到 app 本地的图片给读取出来。桥接层只有一个 saveFile 函数可供使用，定义如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">saveFile</span>(<span class="params">string name, string content</span>) &#123;</span><br><span class="line">  <span class="comment">// xxx</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我同事说可以让前端把 jpg 图片直接保存，我们直接去拿图片就好了。看这个接口的入参是 string 类型，我说这可能不行，得依靠 base64。同事想了一下，说图片也是二进制存储的，和文本形式上是一样的，应该有一种方式把 jpg 图片转一下，然后就可以通过这个接口保存到本地并且还是 jpg 的图片。<br>然后呢，我就想到了很多年前，我向另一个同事说需要一张 png 图片，这种 jpg 的不行。然后同事给了我 png 图片后，我这边问题还是无法解决。查了很久的 bug，发现同事是把 <strong>.jpg</strong> 的后缀改成了 <strong>.png</strong> 然后给我的 :(<br>所以呢，这次还是继续聊下编码。之前有聊过一次，也比较深入了，详见 <a href="https://www.yigegongjiang.com/2019/%E8%AE%A1%E7%AE%97%E6%9C%BAUnicode%E7%BC%96%E7%A0%81%E7%BB%88%E7%BB%93/">计算机 Unicode 编码终结</a>，那片对文本编码做了详解。这次我要聊聊二进制文件和文本文件的存储差异。二进制文件有常见的图片文件和应用程序的可执行文件。</p>
+          <!--noindex-->
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -794,8 +877,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>说到函数调用栈，大家应该都很清楚了，就是一个栈结构的入栈和出栈，使得被调用函数执行完毕后能够返回到调用函数处继续执行。（但实话说，函数调用栈和数据结构栈还是有一些差异的，虽然可以当作一个东西来理解，我更倾向于函数调用栈是数据结构栈的高一层级的抽象。）<br>据我从网上的帖子查看和同事间观察，其实大家并不完全理解函数调用栈的实现过程，只是知道这个大概流程，说到 call、ret 等汇编的具体实现，就不理解了。或者调用函数在 call 一个子函数的时候，会把调用函数处的下一个指令地址保存在函数调用栈上，这个是什么时机保存的以及保存在哪个位置？其实也说不明白。<br>本篇文章就是为了彻底理解函数调用栈，从基础汇编的角度彻底理解函数执行过程。这样，对于 Go&#x2F;Python&#x2F;Swift 等语言的协程的实现，就会很容易理解了。<br>当然，前提还是要熟悉栈数据结构，以及了解一些 基础汇编 后，本文章会阅读的顺畅很多。</p>
-<h2 id="Start"><a href="#Start" class="headerlink" title="Start"></a>Start</h2><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202305300024542.png" width="30%">
+          <blockquote>
+<p>2023.12.24 更：请移步 <a href="https://www.yigegongjiang.com/2023/stackForFunc/">从汇编角度理解 “函数调用栈” 和 “有栈协程”</a>。<br>新增了<strong>有栈协程的汇编实现</strong>章节，为适应爬虫也做了 url 更新。因本文有较多用户访问，担心有收藏会失效，所以新开一文，请做移步。</p>
+</blockquote>
+<p>函数调用栈虽然表面意思很容易理解，但是说到汇编层面，对于 call、ret 等命令的具体表现，还是有一些理解复杂度。<br>尤其在协程大放异彩后，通过函数调用栈来表达协程的逻辑，也尤为重要。<br>本篇文章会从基础汇编的角度理解函数执行过程。这样，对于 Go&#x2F;Python&#x2F;Swift 等语言的协程的实现，也会更容易理解。</p>
+<h2 id="Start"><a href="#Start" class="headerlink" title="Start"></a>Start</h2><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202312240542124.png" width="60%">
           <!--noindex-->
           <!--/noindex-->
         
@@ -879,89 +965,6 @@
 <p>近十年有两个对我非常有益的手艺，极大的提高了我的工作舒适度。手艺一般称为个人经过学习从而有了一个能够吃饭的看家本领，那我这个称为手艺，其实有些夸大的，更多算作技巧。但我没有改动这个形容词，也只是想要描述这两个技巧对我的帮助很大。</p>
 <h2 id="双拼"><a href="#双拼" class="headerlink" title="双拼"></a>双拼</h2><p>这个对我的帮助最大，是我极力推荐的。很多人都不知道双拼，我是在十年前接触了双拼，从此打字不再是苦恼。</p>
 <p>双拼是一种打字的方式，和普通的拼音打字不同，在双拼的字典里面，任何一个汉子都只需要两个字母即可表达。比如<strong>双拼</strong>这两个汉字，键盘表达就是<code>ul</code>和<code>pb</code>。</p>
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2022/%E9%94%81%20-%20%E5%85%B1%E4%BA%AB%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E6%8C%87%E2%86%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
-      <meta itemprop="name" content="海驴">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一个工匠">
-      <meta itemprop="description" content="时间，真的不多了。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 一个工匠">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/%E9%94%81%20-%20%E5%85%B1%E4%BA%AB%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E6%8C%87%E2%86%91/" class="post-title-link" itemprop="url">锁 - 共享数据安全指↑</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-03-10 23:37:11" itemprop="dateCreated datePublished" datetime="2022-03-10T23:37:11+08:00">2022-03-10</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>锁，是并发&amp;并行编程下的万能钥匙，也是最容易产生性能瓶颈的源头。在锁的前面有软硬件在协同铺路，在锁的后面还有数据结构和算法在帮忙黄袍加身。<br>提前说明，本篇涵盖内容非常多，达到 4W 字。可分多餐多时间段食用，每个章节可独立阅读，问题不大。一定不要一口气阅读完，选章节阅读确认对自己有用，再细看不迟。<br>内存相关的知识非常重要，需要很大篇幅和示例图来阐述。另一篇文章<a href="https://www.yigegongjiang.com/2022/%E5%86%85%E5%AD%98%E5%88%86%E6%AE%B5%E4%B8%8E%E5%88%86%E9%A1%B5/">内存分段与分页</a>对 CPU 和内存的数据读取做了详细阐述。在<a href="https://www.yigegongjiang.com/2022/%E5%86%85%E5%AD%98%E5%88%86%E6%AE%B5%E4%B8%8E%E5%88%86%E9%A1%B5/">内存分段与分页</a>中文字数超过了 1W，本文的文字数也超过了 4W，均需要多张配图。重要性和难理解程度，都很高。</p>
-</blockquote>
-<p>共享数据安全牵涉到的点很多，从硬件层面的多核心高速缓存、MESI 缓存一致性模型、CPU 乱序执行 &amp; 中断、总线 &amp; 缓存原子锁，到操作系统提供的锁和编译器优化&amp;重排，以及高级语言为不同业务场景不断叠加的中间层锁优化，最后还有算法如何进一步保障锁的性能。但下笔好难，文章开头也不知道写啥，毕竟大家都知道并发并行场景下共享数据会不安全，谁还能没写过多线程代码呢？用一两百字写数据不安全会造成的严重影响，就像我是傻逼一样。就在我不知道开头该写啥好糊弄过去的时候，你看，我这不是也写完了么。</p>
           <!--noindex-->
           <!--/noindex-->
         
