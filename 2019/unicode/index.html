@@ -118,7 +118,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Unicode"><span class="nav-number">1.</span> <span class="nav-text">Unicode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UTF"><span class="nav-number">2.</span> <span class="nav-text">UTF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">内存字符编码</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Unicode"><span class="nav-number">1.</span> <span class="nav-text">Unicode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UTF"><span class="nav-number">2.</span> <span class="nav-text">UTF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URL"><span class="nav-number">3.</span> <span class="nav-text">URL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81"><span class="nav-number">4.</span> <span class="nav-text">内存字符编码</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -259,6 +259,25 @@
 <li>UTF-16 占用空间中等，解析速度快。因为更多的码位用 2 个字节表示，字节大小基本固定（少部分字符通过 4 个字节表示），解析非常快。</li>
 <li>UTF-32 占用空间最大，解析速度最快。一个码位用 4 个字节表示，字节大小全部固定，解析非常快。</li>
 </ol>
+<h2 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h2><p>对字符非常敏感的一个环境，就是 URL。URL 对组成其内容的元素要求非常严格，只允许下面这些字符：</p>
+<blockquote>
+<p>A  B  C  D  E  F  G  H  I  J  K  L  M  N  O  P  Q  R  S  T  U  V  W  X  Y  Z<br>a  b  c  d  e  f  g  h  i  j  k  l  m  n  o  p  q  r  s  t  u  v  w  x  y  z<br>0  1  2  3  4  5  6  7  8  9<br>-  _  .  ~  </p>
+</blockquote>
+<p>ASCII 字符集也没有全部包含，只有上面这些字符是可以在 url 里面直接使用的。不在这个列表里面的，全部都需要进行<strong>百分号转码</strong>。<br>百分号转码是 URL 特有的一套规则，默认使用 UTF-8 作为字符编码依据，对编码后的字节产物，进行百分号分割。<br>百分号转码后还需要还原回去，这套流程分别叫做 <strong>URL Encoding</strong> 和 <strong>URL Decoding</strong>。</p>
+<p>所以，对 URL 来说，它使用的编解码是 <strong>URL Encoding</strong> 和 <strong>URL Decoding</strong>，这套编码内部通过百分号拼接 UTF-8 字节来实现。</p>
+<p>举个例子：</p>
+<blockquote>
+<p><code>http://www.xx.com/中</code><br><code>http%3a%2f%2fwww.xx.com%2f%e4%b8%ad</code></p>
+</blockquote>
+<p>原始 url 里面的 <code>:</code>、<code>/</code>、<code>中</code> 均被转码了。其中 <code>中</code> 的 UTF-8 形式是 <code>0xE4B8AD</code>，上面有介绍过。这里会通过 % 号进行每个字节分割。</p>
+<p>这里有个小的疑惑点，即 <code>%</code> 号本身，并不是 URL 允许的字符，但是它可以直接用在 URL 中。举个例子：</p>
+<blockquote>
+<p><code>http://www.xx.com/%</code><br><code>http%3a%2f%2fwww.xx.com%2f%25</code></p>
+</blockquote>
+<p>这里可以发现，<code>%</code> 本身在 <strong>URL Encoding</strong> 中也会被转成 <code>%25</code>，因为它的 UTF-8 字节是 <code>0x25</code>。</p>
+<p>这也是 <strong>URL Encoding</strong> 规则的定义，通过 UTF-8 编码的字节，需要通过 % 进行字节分割。% 虽然不是 URL 允许的字符，但可以出现在 URL 中。</p>
+<p>如此之后，URL 实际上可以被多次 encoding，每次 encoding 的时候 % 都会被换成 <code>%25</code>。<br>对 <code>%</code> URL Encoding 5 次之后结果是：<code>%25252525</code>。如果需要拿到最开始的 <code>%</code> 符号，也同样需要对应 URL Decoding 5 次。</p>
+<p>所以开发过程中，Encoding 和 Decoding 的次数需要一致，这个非常重要。否则就拿不到正确的 URL。</p>
 <h2 id="内存字符编码"><a href="#内存字符编码" class="headerlink" title="内存字符编码"></a>内存字符编码</h2><p>通过上面三个 UTF 的编码说明，可以得出，空间最小的是 UTF-8 编码。<br>所以毋庸置疑，网络传输，磁盘存储，都是用的是 UTF-8 编码。占用空间小，对于网络和磁盘来说，比什么都重要。1M 或者 2M 的数据，感觉无所谓，对于 100G，UTF-8 很可能一下子就能节省 50-80% 的空间。</p>
 <p>但是内存里面使用的是什么编码呢？当应用程序把文本读入内存后，数据就在内存里面了。这时候内存中的数据一定也有一种编码格式，否则就是直接存储 Unicode 的码位了。<br>内存和磁盘文件编码有很大的不同。详见另一篇解读<a href="https://www.yigegongjiang.com/2022/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E5%B7%AE%E5%BC%82-%E7%BC%96%E7%A0%81/">文件存储差异 - 编码</a></p>
 <p>具体来说，到内存中，就是一个可执行程序的运行时中了。<br>对于普通数字类型，是几个字节就是几个字节，比如 char 是 1 字节。<br>对于字符串类型，则在 UTF-8 和 UTF-16 之间选择，不同语言使用的不一样，但大多都是使用的 UTF-16，因为解析速度更快。<br>注意，这是语言级别的差异，而非系统级别的。实际上，内存中对于字符串使用什么编码，对程序的执行本身没有太多影响。就是用 UTF-8，最后输出的二进制文件可能会小一些，但是程序执行上也可能会慢一些，但是不影响最终的程序运行结果。</p>
