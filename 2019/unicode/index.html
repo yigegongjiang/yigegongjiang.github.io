@@ -118,7 +118,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Unicode"><span class="nav-number">1.</span> <span class="nav-text">Unicode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UTF"><span class="nav-number">2.</span> <span class="nav-text">UTF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URL"><span class="nav-number">3.</span> <span class="nav-text">URL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81"><span class="nav-number">4.</span> <span class="nav-text">内存字符编码</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Unicode"><span class="nav-number">1.</span> <span class="nav-text">Unicode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UTF"><span class="nav-number">2.</span> <span class="nav-text">UTF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URL"><span class="nav-number">3.</span> <span class="nav-text">URL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81"><span class="nav-number">4.</span> <span class="nav-text">内存字符编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%86%E5%88%AB"><span class="nav-number">5.</span> <span class="nav-text">文本文件的识别</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -281,6 +281,19 @@
 <h2 id="内存字符编码"><a href="#内存字符编码" class="headerlink" title="内存字符编码"></a>内存字符编码</h2><p>通过上面三个 UTF 的编码说明，可以得出，空间最小的是 UTF-8 编码。<br>所以毋庸置疑，网络传输，磁盘存储，都是用的是 UTF-8 编码。占用空间小，对于网络和磁盘来说，比什么都重要。1M 或者 2M 的数据，感觉无所谓，对于 100G，UTF-8 很可能一下子就能节省 50-80% 的空间。</p>
 <p>但是内存里面使用的是什么编码呢？当应用程序把文本读入内存后，数据就在内存里面了。这时候内存中的数据一定也有一种编码格式，否则就是直接存储 Unicode 的码位了。<br>内存和磁盘文件编码有很大的不同。详见另一篇解读<a href="https://www.yigegongjiang.com/2022/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E5%B7%AE%E5%BC%82-%E7%BC%96%E7%A0%81/">文件存储差异 - 编码</a></p>
 <p>具体来说，到内存中，就是一个可执行程序的运行时中了。<br>对于普通数字类型，是几个字节就是几个字节，比如 char 是 1 字节。<br>对于字符串类型，则在 UTF-8 和 UTF-16 之间选择，不同语言使用的不一样，但大多都是使用的 UTF-16，因为解析速度更快。<br>注意，这是语言级别的差异，而非系统级别的。实际上，内存中对于字符串使用什么编码，对程序的执行本身没有太多影响。就是用 UTF-8，最后输出的二进制文件可能会小一些，但是程序执行上也可能会慢一些，但是不影响最终的程序运行结果。</p>
+<h2 id="文本文件的识别"><a href="#文本文件的识别" class="headerlink" title="文本文件的识别"></a>文本文件的识别</h2><blockquote>
+<p>2023.12.25 更</p>
+</blockquote>
+<p>对于一个文件本身而言，存储的内容都是二进制。虽然可以根据后缀认为某个文件是文本文件，但鉴于后缀也可以更改，所以这并不准确。<br>还有一种方案是读取文件头的 <code>magic number</code>。但这种方案对于识别文件二进制类型比较有用，并不能识别出文本文件。因为文本文件一般都是没有特定的 <code>magic number</code> 的。</p>
+<p>对于图片&#x2F;视频等文件，读取它们的二进制内容和读取 <code>.txt</code> 等文本文件的技术方案一致。<br>不过对于图片等二进制，显然无法进行有效的 UTF 解码，所以读取后会是乱码。<br>对同一个文件进行一致的编码和解码，这样写入的二进制就具有一定的规则。读取的时候按照同样的规则进行解析，当然可以识别出当初写入的内容。</p>
+<p>当然，可以对文件的二进制内容全部读出来，然后通过 UTF 进行解码，若能解出来，那就是文本文件。<br>这是稳定的方案，但具有极大的性能损耗。因为一个图片或者视频，它的二进制内容是非常多的，IO 成本过大。</p>
+<p>有一个比较小巧的技术方案，即对文本内容主动进行多个位置的截取解码，以较小的性能开销来对文本文件进行识别。</p>
+<p>比如从 文件头 N 偏移的位置截取 10 个字节数据。对这 10 字节进行不同维度的解码。<br>只要能有一次解出来，说明这 10 字节数据是符合文本编码规范的。（大概率无法一次解出。因为 10 字节里面只有一部分是完整的编码数据，两头很可能是被截断的，无法被解码）<br>同样的操作可以进行 M 次，需要 M 次全部命中，才能认为当前文件的确是文本文件。合理的设置 M 值，对于真的文本文件会具有很高的识别效率。<br>但只要有一次不命中，既可以确认当前文件不是文本文件。即非文本文件，可以一次命中，效率极高。</p>
+<p>这样，也可以过滤图片文件中插入文本这种操作。</p>
+<p>这种方案以读取少量的文本内容和多次匹配作为代价，可以比较稳定的确认当前文件是否是文本文件。</p>
+<p>源代码可参考：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvSExWRmlsZUR1bXA=">HLVFileDump<i class="fa fa-external-link-alt"></i></span></p>
+<hr>
+<p>体毛具有生长期、休止期。头发的生长期很长，可以持续 2-6 年。腿毛的生长期只有几个月。<br>生长期结束后就不长了，休止期会退毛，然后毛囊长出新的毛发。重复生长期过程。<br>所以头发可以很长但是腿毛就很短。</p>
 
     </div>
 
