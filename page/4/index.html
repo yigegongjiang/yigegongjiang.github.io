@@ -221,7 +221,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">saveFile(string name, string content) &#123;</span><br><span class="line">  // xxx</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>同事说可以让前端把 jpg 图片直接保存，我们直接去拿图片原始数据就好。看这个接口的入参是 string 类型，我说这可能不行，得依靠 base64。<br>同事想了一下，说图片也是二进制存储的，和文本形式上是一样的，应该有一种方式把 jpg 图片转一下，然后就可以通过这个接口保存到本地并且还是 jpg 二进制图片。</p>
-<p>然后呢，就想到很多年前，我向另一个同事说需要一张 png 图片，这种 jpg 的不行。然后同事给了我 png 图片后，我这边问题还是无法解决。查了很久的 bug，发现同事是把 <strong>.jpg</strong> 的后缀改成了 <strong>.png</strong> 然后给我的 :(<br>所以呢，这次还是继续聊下编码。之前有聊过一次，也比较深入了，详见 <a href="https://www.yigegongjiang.com/2019/%E8%AE%A1%E7%AE%97%E6%9C%BAUnicode%E7%BC%96%E7%A0%81%E7%BB%88%E7%BB%93/">计算机 Unicode 编码终结</a>，那片对文本编码做了详解。这次要聊聊二进制文件和文本文件的存储差异。二进制文件有常见的图片文件和应用程序的可执行文件。</p>
+<p>然后呢，就想到很多年前，我向另一个同事说需要一张 png 图片，这种 jpg 的不行。然后同事给了我 png 图片后，我这边问题还是无法解决。查了很久的 bug，发现同事是把 <strong>.jpg</strong> 的后缀改成了 <strong>.png</strong> 然后给我的 :(<br>所以呢，这次还是继续聊下编码。之前有聊过一次，也比较深入了，详见 <a href="https://www.yigegongjiang.com/2019/unicode/">计算机文本编码 - Unicode 和 UTF8</a>，那片对文本编码做了详解。这次要聊聊二进制文件和文本文件的存储差异。二进制文件有常见的图片文件和应用程序的可执行文件。</p>
           <!--noindex-->
           <!--/noindex-->
         
