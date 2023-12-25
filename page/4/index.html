@@ -88,7 +88,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">83</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user fa-fw"></i>About</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section"><i class="rss fa-fw"></i>Rss</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">82</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user fa-fw"></i>About</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section"><i class="rss fa-fw"></i>Rss</a></li>
   </ul>
 </nav>
 
@@ -127,7 +127,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">83</span>
+          <span class="site-state-item-count">82</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -166,7 +166,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2022/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E5%B7%AE%E5%BC%82-%E7%BC%96%E7%A0%81/">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2022/%E9%9A%8F%E6%97%B6%E9%97%B4%E7%9A%84%E5%8F%98%E5%8C%96/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
@@ -184,7 +184,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E5%B7%AE%E5%BC%82-%E7%BC%96%E7%A0%81/" class="post-title-link" itemprop="url">文件存储差异-编码</a>
+          <a href="/2022/%E9%9A%8F%E6%97%B6%E9%97%B4%E7%9A%84%E5%8F%98%E5%8C%96/" class="post-title-link" itemprop="url">随时间的变化</a>
         </h2>
 
         <div class="post-meta-container">
@@ -195,7 +195,7 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2022-07-10 19:16:13" itemprop="dateCreated datePublished" datetime="2022-07-10T19:16:13+08:00">2022-07-10</time>
+      <time title="Created: 2022-08-14 09:28:01" itemprop="dateCreated datePublished" datetime="2022-08-14T09:28:01+08:00">2022-08-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -203,7 +203,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+          <a href="/categories/%E8%A7%82%E7%82%B9/" itemprop="url" rel="index"><span itemprop="name">观点</span></a>
         </span>
     </span>
 
@@ -217,11 +217,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>前两天，和同事做一个功能，是把 js 前端保存到 app 本地的图片给读取出来。桥接层只有一个 saveFile 函数可供使用，定义如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">saveFile(string name, string content) &#123;</span><br><span class="line">  // xxx</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>同事说可以让前端把 jpg 图片直接保存，我们直接去拿图片原始数据就好。看这个接口的入参是 string 类型，我说这可能不行，得依靠 base64。<br>同事想了一下，说图片也是二进制存储的，和文本形式上是一样的，应该有一种方式把 jpg 图片转一下，然后就可以通过这个接口保存到本地并且还是 jpg 二进制图片。</p>
-<p>然后呢，就想到很多年前，我向另一个同事说需要一张 png 图片，这种 jpg 的不行。然后同事给了我 png 图片后，我这边问题还是无法解决。查了很久的 bug，发现同事是把 <strong>.jpg</strong> 的后缀改成了 <strong>.png</strong> 然后给我的 :(<br>所以呢，这次还是继续聊下编码。之前有聊过一次，也比较深入了，详见 <a href="https://www.yigegongjiang.com/2019/unicode/">计算机文本编码 - Unicode 和 UTF8</a>，那片对文本编码做了详解。这次要聊聊二进制文件和文本文件的存储差异。二进制文件有常见的图片文件和应用程序的可执行文件。</p>
+          <blockquote>
+<p>时间，永远不会成为你的朋友。它会从前面拉着你，从后面推着你，有时候温文尔雅的放任你像个君子，有时候拿着皮鞭抽打下来像个魔鬼，最后把你拖到年老与色暮，拖到离别和死亡。在生命的最后一刻，有不甘，有妥协，但是时间何曾念及你是它的盟友或者朋友？</p>
+</blockquote>
+<p>我最近几年，真的是怕了时间了。也不是贪生怕死之类的情绪，真遇到突发性的死亡谁都得尿下裤子。更多的是纯粹的对时间的恐惧。<br>时间它有时候像个女人一样慢慢推着我，有时候像个男人一样粗鲁的拉着我，它一直在逼着我做点什么。当我停下来单纯就在休息的时候，我就感觉到它在我面前盯着我，让我做点什么。<br>你还记得失恋后，你是怎么释怀的吗？即使当时多么的撕心裂肺。以及很严重的手术后，身体怎么恢复的吗？失恋和手术，都不会一两天好转，可就是不知道什么时候开始，就恢复了。</p>
+<p>这些年，发生了很多意想不到的变化。比如之前上厕所一定要用蹲坑，现在也习惯马桶了。还有进屋穿鞋，之前我是想着以后有房子了，进屋也要穿鞋才不硌脚，现在是自觉的脱鞋进屋了。还有游戏，我几波起伏，从小学痛恨到中学迷恋到后来的无感，现在又给孩子买了 Switch。对游戏有很多次认知上的翻转。<br>总体下来，自以为的底线被不断翻篇。不知道这些年发生了什么，可就是实打实的变化着。变化的方向说不上好也说不上坏，谁知道过几年会不会再次变化呢。</p>
           <!--noindex-->
           <!--/noindex-->
         
