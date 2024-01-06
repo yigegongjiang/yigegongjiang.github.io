@@ -9,6 +9,8 @@ tags:
 keywords: Swift,Package,Package.swift,SPM,Swift Package Manager,命令行开发,脚本开发,ArgumentParser,进度条输出,异步等待,系统命令,Process,Swift命令行开发,Swift生态,Package管理,ArgumentParser,Xcode调试技巧,进度条输出,异步处理,系统命令操作,Swift脚本
 ---
 
+> 2024.01.06 更：欢迎查阅 Swift 开发的[文本纠错命令行工具](https://www.yigegongjiang.com/2024/SwiftZhTextCorrect/)。
+
 不推荐使用 Swift 写脚本，和 Python 比起来，该生态链相对匮乏，开发耗时会增加很多。
 但对于偏 Swift 的同学来说，这也的确是更可控和方便维护的方式之一。尤其对于公司内部工具，有问题可以更快的找到原因并处理，不至于手忙脚乱。
 
