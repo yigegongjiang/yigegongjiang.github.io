@@ -46,9 +46,9 @@
 <meta property="article:published_time" content="2020-05-23T08:51:05.000Z">
 <meta property="article:author" content="海驴">
 <meta property="article:tag" content="计算机原理">
-<meta property="article:tag" content="iOS">
 <meta property="article:tag" content="网络">
 <meta property="article:tag" content="内存">
+<meta property="article:tag" content="iOS">
 <meta property="article:tag" content="C">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202305300022398.png">
@@ -333,7 +333,7 @@
 <p>下面是具体的流程图：</p>
 <img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061801048.png" width="50%">
 
-<p>我在之前文章中，也有一个Objective-C和运行时库的说明：<a href="https://www.yigegongjiang.com/2020/Objective-C%20%E5%92%8C%20Runtime/">Objective-C 和 Runtime</a>。</p>
+<p>我在之前文章中，也有一个Objective-C和运行时库的说明：<a href="https://www.yigegongjiang.com/2020/runtime/">Objective-C 和 Runtime</a>。</p>
 <h4 id="Go该如何被iOS系统执行"><a href="#Go该如何被iOS系统执行" class="headerlink" title="Go该如何被iOS系统执行"></a>Go该如何被iOS系统执行</h4><p>我们已经分析了C和Objective-C在iOS操作系统上运行的原理。<br>我们可以确定，我们写的代码，只要最终能够对接系统调用并编译成二进制交由操作系统运行，那么我们的代码就能运行。<br>我们写的代码都是高级语言代码，比如我们写的高级语言的函数调用：<code>[OC_Person alloc]</code>，这个函数在编译后我们假设为<code>call Oxa1b2c3</code>，其中<code>Oxa1b2c3</code>是OC运行时的<code>_objc_rootAlloc</code>函数的虚拟地址。<br>在<code>_objc_rootAlloc</code>内部会调用<code>calloc()</code>进行C运行时函数调用，我们假设为<code>call Oxd4e5f6</code>。到此为止，我们自己写的[OC_person alloc]代码，我们知道在代码区里面，那么<code>Oxa1b2c3</code>和<code>Oxd4e5f6</code>这两个运行时的函数在哪里呢？<br>运行时说到底，也是代码。运行时有两种存在形式，一个是动态库，一个是静态库。<br>我们的操作系统都默认有C的动态库运行时。所以我们在Linux A电脑编译出来的ELF执行文件，在Linux B电脑上是可以直接运行的，就是因为C运行时库是用动态库的形式在执行文件启动后进行链接的。不仅仅操作系统，只要是计算机，大差不差都有C的动态库运行时，所以C语言才如此通用。因为只要写了C语言，不出意外到哪里都可以跑起来，除非用了特定系统的api。<br>那如果有一个操作系统，真的没有C的动态库运行时，是不是就不能支持可执行文件了呢？<br>运行时存在两种形式，一种动态库，还有一种静态库。我们在编译可执行文件的时候，可以把运行时打到可执行文件中，这样刚才说到的<code>Oxa1b2c3</code>和<code>Oxd4e5f6</code>运行时函数就打到可执行文件中了，即代码区。这样，及时操作系统没有安装C的动态库运行时，可执行文件一样可以跑起来。只不过，这样的化，可执行文件就会变大，因为包含了静态库运行时的大小。<br>所以Objective-C能够在iOS和Mac上运行，就是因为这两个系统里面，有动态库OC运行时。<br>那Objective-C能不能在安卓手机或者树莓派上面运行呢？因为Objective-C不支持运行时的静态库链接，而安卓和树莓派上没有动态库OC运行时，所以就运行不了Objective-C App了，因为找不到对应的函数调用，即上面说到的<code>Oxa1b2c3</code>和<code>Oxd4e5f6</code>。</p>
 <h5 id="Go静态库运行时的必要性"><a href="#Go静态库运行时的必要性" class="headerlink" title="Go静态库运行时的必要性"></a>Go静态库运行时的必要性</h5><p>所以，Golang该如何在iOS系统上执行？Golang本身是高级语言，肯定有运行时库，分别有动态库和静态库两个版本。因为iOS操作系统本身没有Golang运行时，那么在编写Golang的代码后，在编译链接的时候，把Golang的静态库链接到最终的执行文件中(静态库或者动态库，或者叫框架)，那么这串Golang编写的代码，就能够在iOS系统上完美的运行起来。<br>这个时候，Golang运行时需要做那些事情呢？</p>
 <ol>
@@ -488,9 +488,9 @@
 
           <div class="post-tags">
               <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/" rel="tag"># 计算机原理</a>
-              <a href="/tags/iOS/" rel="tag"># iOS</a>
               <a href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag"># 网络</a>
               <a href="/tags/%E5%86%85%E5%AD%98/" rel="tag"># 内存</a>
+              <a href="/tags/iOS/" rel="tag"># iOS</a>
               <a href="/tags/C/" rel="tag"># C</a>
           </div>
 
@@ -498,7 +498,7 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2020/TCP%20%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/" rel="prev" title="TCP 数据传输过程分析">
+                <a href="/2020/TCPTranslation/" rel="prev" title="TCP 数据传输过程分析">
                   <i class="fa fa-angle-left"></i> TCP 数据传输过程分析
                 </a>
             </div>
@@ -586,12 +586,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
   <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2020/Core_Foundation/"}</script>
   <script src="/js/third-party/quicklink.js"></script>
-<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
-<script src="/js/third-party/comments/utterances.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
 <script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"c292aa453fc9fa5149b259aafb370e67"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
 
 </body>
 </html>

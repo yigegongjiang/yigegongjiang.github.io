@@ -246,6 +246,7 @@
 <h5 id="aiohttp"><a href="#aiohttp" class="headerlink" title="aiohttp"></a><code>aiohttp</code></h5><p>网络访问上的多并发，对<code>协程</code>的进一步封装。</p>
 <h3 id="Node-js中的使用"><a href="#Node-js中的使用" class="headerlink" title="Node.js中的使用"></a>Node.js中的使用</h3><h5 id="Event-loop事件循环"><a href="#Event-loop事件循环" class="headerlink" title="Event_loop事件循环"></a><code>Event_loop</code>事件循环</h5><p>这个就没得说了，彻彻底底依靠<code>事件驱动</code>起家的语言。基于<code>javascript</code>和<code>V8</code>引擎起来的Node.js，就是完完全全的单线程语言。<br>可是要知道，Node.js就是以单线程中使用事件驱动处理高IO闻名世界的。<br>你可以想象一下，一个Node.js搭建的后台，每秒上千上万的并发，都是单线程在处理吗？<br>Java就是一个用户一个请求一个线程（又名<code>线程驱动</code>），服务器资源耗费真的大。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">var fs = require(&quot;fs&quot;);</span><br><span class="line">var debug = require(&#x27;debug&#x27;)(&#x27;example1&#x27;);</span><br><span class="line"></span><br><span class="line">debug(&quot;begin&quot;);</span><br><span class="line"></span><br><span class="line">fs.readFile(&#x27;package.json&#x27;,&#x27;utf-8&#x27;,function(err,data)&#123;</span><br><span class="line">    if(err)  </span><br><span class="line">        debug(err);</span><br><span class="line">    else</span><br><span class="line">        debug(&quot;get file content&quot;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">setTimeout(function()&#123;</span><br><span class="line">    debug(&quot;timeout2&quot;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">debug(&#x27;end&#x27;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
     </div>
 
     
@@ -397,12 +398,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
   <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2018/%E8%B0%88%E8%B0%88%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8/"}</script>
   <script src="/js/third-party/quicklink.js"></script>
-<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
-<script src="/js/third-party/comments/utterances.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
 <script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"0b1be1ec2ad1d62eb3d3ddbadb86cda4"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.0.0-rc2">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.20/fancybox/fancybox.css" integrity="sha256-RvRHGSuWAxZpXKV9lLDt2e+rZ+btzn48Wp4ueS3NZKs=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.18.1","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="不管在哪门开发语言中，多线程都是绕不过去的开发方式。多线程本身也不是开发语言的一部分，只是开发语言会对多线程进行语言级别的包装。多线程属于计算机原理的一部分。每个应用都需要操作系统分配一个进程后才能在进程中执行，为了实现并发效果，才有了多进程方案。而进程切换开销太大，这才有了多线程方案。乃至于多线程也是有不小的内存和CPU开销，后面的协程才开始起家。但是协程已经不属于计算机的范畴，协程是单线程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多线程的难点在哪里">
+<meta property="og:url" content="https://www.yigegongjiang.com/2020/threads/index.html">
+<meta property="og:site_name" content="一个工匠">
+<meta property="og:description" content="不管在哪门开发语言中，多线程都是绕不过去的开发方式。多线程本身也不是开发语言的一部分，只是开发语言会对多线程进行语言级别的包装。多线程属于计算机原理的一部分。每个应用都需要操作系统分配一个进程后才能在进程中执行，为了实现并发效果，才有了多进程方案。而进程切换开销太大，这才有了多线程方案。乃至于多线程也是有不小的内存和CPU开销，后面的协程才开始起家。但是协程已经不属于计算机的范畴，协程是单线程">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061839730.png">
+<meta property="article:published_time" content="2020-05-03T23:15:57.000Z">
+<meta property="article:author" content="海驴">
+<meta property="article:tag" content="计算机原理">
+<meta property="article:tag" content="iOS">
+<meta property="article:tag" content="C">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061839730.png">
+
+
+<link rel="canonical" href="https://www.yigegongjiang.com/2020/threads/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2020/threads/","path":"2020/threads/","title":"多线程的难点在哪里"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>多线程的难点在哪里 | 一个工匠</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="一个工匠" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="一个工匠" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">一个工匠</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">83</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user fa-fw"></i>About</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section"><i class="rss fa-fw"></i>Rss</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#GCD-%E7%BA%BF%E7%A8%8B%E6%93%8D%E4%BD%9C%E7%9A%84%E7%90%86%E8%A7%A3"><span class="nav-number">1.</span> <span class="nav-text">GCD 线程操作的理解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E4%BB%BB%E5%8A%A1%E5%92%8C%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1"><span class="nav-number">1.1.</span> <span class="nav-text">同步任务和异步任务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%B2%E8%A1%8C%E9%98%9F%E5%88%97%E5%92%8C%E5%B9%B6%E5%8F%91%E9%98%9F%E5%88%97"><span class="nav-number">1.2.</span> <span class="nav-text">串行队列和并发队列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E5%86%99%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81%E5%A4%9A%E5%88%86%E6%9E%90"><span class="nav-number">1.3.</span> <span class="nav-text">多写测试代码多分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B9%8B%E5%8E%9F%E5%AD%90%E6%80%A7%E7%B2%92%E5%BA%A6"><span class="nav-number">2.</span> <span class="nav-text">多线程数据处理之原子性粒度</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B2%92%E5%BA%A6%E8%BF%87%E5%A4%A7%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">粒度过大：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B2%92%E5%BA%A6%E8%BF%87%E5%B0%8F%EF%BC%9A"><span class="nav-number">2.2.</span> <span class="nav-text">粒度过小：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B9%8B%E9%94%81"><span class="nav-number">3.</span> <span class="nav-text">多线程数据处理之锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">多线程数据安全总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7"><span class="nav-number">5.</span> <span class="nav-text">多线程下数据结构和算法的重要性</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="海驴"
+      src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
+  <p class="site-author-name" itemprop="name">海驴</p>
+  <div class="site-description" itemprop="description">时间，真的不多了。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">83</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2020/threads/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
+      <meta itemprop="name" content="海驴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个工匠">
+      <meta itemprop="description" content="时间，真的不多了。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="多线程的难点在哪里 | 一个工匠">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          多线程的难点在哪里
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-05-04 07:15:57" itemprop="dateCreated datePublished" datetime="2020-05-04T07:15:57+08:00">2020-05-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061839730.png" width="30%">
+
+<p>不管在哪门开发语言中，多线程都是绕不过去的开发方式。多线程本身也不是开发语言的一部分，只是开发语言会对多线程进行语言级别的包装。<br>多线程属于计算机原理的一部分。每个应用都需要操作系统分配一个进程后才能在进程中执行，为了实现并发效果，才有了多进程方案。而进程切换开销太大，这才有了多线程方案。乃至于多线程也是有不小的内存和CPU开销，后面的协程才开始起家。<br>但是协程已经不属于计算机的范畴，协程是单线程的，需要语言级别实现的。有些语言并没有实现协程，也只能使用多线程的方案对CPU资源进行深一步的榨干。</p>
+<p>像iOS开发里面，每个应用都是独立的沙盒，官方并没有提供多进程的方案(操作系统级别肯定要支持)，也没有提供协程方案，如果想更有效的利用CPU资源，只能从多线程上面入手。</p>
+<p>iOS里面多线程虽然理解起来有点绕，尤其任务和队列嵌套的时候。但只要多使用几次并加以过程分析，多线程的使用也就能很好的过关了。因为GCD本身已经对多线程有了非常棒对封装，只要不自己作死，串型队列和同步任务一起处理的时候小心一些，就不会出现队列等待导致死锁。即使死锁了，像这样的系统中断性问题，也很容易排查和处理。</p>
+<p>那多线程，难点在哪里呢？显然不是Api级别的多线程接口调用。</p>
+<span id="more"></span>
+
+<p>移动端界面开发，要保障不出现重大事故，很大程度上不在于UI。因为UI是寄托于数据展示的，只要数据不出现大问题，UI都是写好的机器代码，基本不会出问题。<br>但如果数据有间歇性的不稳定，那么对于App来说就是一个隐藏的地雷，因为谁也不知道哪个时刻会发生数组越界，或者数据为空。<br>所以，<strong>数据的稳定性和完整性</strong>，非常重要。</p>
+<p>在多线程情况下，我们会操作UI吗？显然不会，多线程更多处理的都是数据。所以多线程难点可以从数据下手。<strong>如果多线程情况下数据的可靠性无法保证，宁愿放弃多线程(FMDB就是一个例子)<strong>。<br>多线程情况下，数据的稳定性和完整性的保障，很复杂吗？其实也并不复杂，因为就两个要素点：</strong>原子性粒度的大小和锁</strong>。<br>原子性粒度的大小，不会太难控，有些编程经验，不会处理的太差。<br>而锁机制翻来覆去就那些，系统能够支持的甚至更少。在Java里面就有很多不同的锁，在iOS里面算来算去就那么几个，还是新瓶装旧酒。</p>
+<p>那多线程，难点主要在哪里呢？其实还是数据。<strong>难点在于数据的处理！复杂度上的消耗，计算机时间片的消耗。</strong><br><strong>多线程编程，最终考量的其实是数据结构和算法！</strong></p>
+<p>对于上面的诸多观点，下面一一进行分析：</p>
+<h3 id="GCD-线程操作的理解"><a href="#GCD-线程操作的理解" class="headerlink" title="GCD 线程操作的理解"></a>GCD 线程操作的理解</h3><p>iOS下面，官方提供的多线程方案有Pthreads、NSThread、GCD、NSOperation。</p>
+<p>Pthreads是完全C开发的，相关函数调用感觉会非常小巧，感受一下，如<code>pthread_create(x ...)</code>，<code>pthread_exit(NULL)</code>这样。我一直很喜欢这种面向过程式的函数调用开发方式，显然这样的函数也是和面向对象格格不入的。<br>NSThread是对Pthreads的OC封装，方便使用了一些。但是他们两个都需要自行管理线程生命周期。既然已经面向对象开发，连内存都可以自动释放了，我们还是应该使用更加一体化的多线程方式，那就是GCD和NSOperation。</p>
+<p>NSOperation将多线程的面向对象更加具体化，在处理比较复杂和大型的多线程场景下，非常适用，因为代码理解性和可读性非常高。<br>其实，iOS开发人员使用的基本都是GCD，无出其右。因为工作场景下，GCD完全可以完成多线程任务了，性能也足够好，使用又方便，代码简短易懂。如果不是复杂和大型的多线程场景，基本也不会去用NSOperation。<br><strong>而且GCD还有一个大杀器，那就是线程安全锁</strong>。<strong>GCD将多线程操作和线程安全都涵盖了</strong>，我们可以很方便的使用<code>dispatch_barrier_async</code>写出读写锁，也可以使用<code>dispatch_semaphore</code>写出二元和多元信号量锁。<br>可以说，使用GCD，把多线程开发的大部分问题一套带走了。当然还有一个没有带走的，就是上面提到的“数据结构和算法”。</p>
+<p>很多人对GCD理解困难，其实是被三个方面困住了。<strong>一个是不理解队列这种数据结构</strong>，<strong>一个是不理解任务这种执行方式</strong>，<strong>一个是不写代码进行测试和分析执行过程</strong>。</p>
+<h4 id="同步任务和异步任务"><a href="#同步任务和异步任务" class="headerlink" title="同步任务和异步任务"></a>同步任务和异步任务</h4><p><strong>一个任务是同步还是异步，是依靠线程的。因为我们函数执行过程中，只可能在一个线程里面执行。如果是同步任务，那么不可能换线程，如果是异步任务，那么必须要换线程。</strong><br>函数执行是一个函数调用执行栈空间，通过rbp和rsp两个寄存器不断上下移动栈指针位置来实现的。而一个函数调用执行栈就专属于一个线程。<br><strong>如果是同步任务，只能在当前函数调用栈执行，所以开启不了新线程。</strong><br><strong>如果是异步任务，必须要脱离当前函数调用栈，必须要开启新线程。(不开启新线程也可以，就是协程方案。但是OC不支持协程，所以只能开启新线程。)</strong></p>
+<p><strong>同步任务要点</strong>：</p>
+<ol>
+<li>同步任务立刻被放入队尾（但是不一定立刻执行，因为队列里面可能已经有任务X和Y，则必须等X和Y出队[如果是同步任务还必须执行完]后才能执行被放入队尾的同步任务）。</li>
+<li>同步任务一定要被执行完后才能继续后面的代码执行。</li>
+<li>不具备开启新线程能力。同步任务被调用的时候在A线程，执行也一定在A线程。</li>
+</ol>
+<p><strong>异步任务要点</strong>：</p>
+<ol>
+<li>异步任务立刻被放入队尾（但是不一定立刻执行，因为队列里面可能已经有任务X和Y，则必须等X和Y出队后才能执行被放入队尾的异步任务）。</li>
+<li>异步任务因为肯定会开启新线程，所以后续代码立刻执行。</li>
+<li>具备开启新线程能力，而且一定要开启。但是开启线程数量由队列决定。异步任务被调用的时候在A线程，执行一定不在A线程。</li>
+</ol>
+<h4 id="串行队列和并发队列"><a href="#串行队列和并发队列" class="headerlink" title="串行队列和并发队列"></a>串行队列和并发队列</h4><p>队列(Queue)是非常基本的数据结构，基于数组或者链表这两种物理结构实现。队列它的特点就是：外部数据从队尾入队，内部数据从队头出队。<br>比如这个队列：<code>队尾-&gt;A-&gt;B-&gt;C-&gt;队头</code>，如果现在加入外部数据<code>D</code>，那么D只能添加在A的后面，想插队添加到指定index是不可能的。而如果内部数据想被删除，只能先删除C，然后才能继续删除B和A。想插队删除元素，也不可能。</p>
+<p><strong>串行队列要点</strong>：</p>
+<ol>
+<li>允许开启线程，最多开启1个线程，是否开启线程由任务决定。</li>
+<li>所有任务必须依次出队，必须上一个出队的任务处理完，下一个任务才允许出队并执行。</li>
+</ol>
+<p><strong>并发队列要点</strong>：</p>
+<ol>
+<li>允许开启线程，可以开启多个线程(100以上都有可能，依靠系统调度)，是否开启线程由任务决定。</li>
+<li>所有任务必须依次出队，但是下一个任务出队不需要上一个任务执行完。</li>
+</ol>
+<p>用上面ABC队列举例，如果A、B、C任务分别需要执行10s。<br>相关伪代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// 被外界业务调用的函数</span><br><span class="line">- (void)test &#123;</span><br><span class="line">    /*</span><br><span class="line">     ...</span><br><span class="line">     这里有业务代码执行，标记这块区域为X，此时X执行代码所在线程我们假设为thread_1。（thread_1也就是当前test函数被执行所在的线程。）</span><br><span class="line">     ...</span><br><span class="line">     */</span><br><span class="line">    dispatch_queue_t queue = 队列;</span><br><span class="line">    任务C(queue, ^&#123;</span><br><span class="line">        [NSThread sleepForTimeInterval:10];</span><br><span class="line">    &#125;);</span><br><span class="line">    任务B(queue, ^&#123;</span><br><span class="line">        [NSThread sleepForTimeInterval:2];</span><br><span class="line">    &#125;);</span><br><span class="line">    任务A(queue, ^&#123;</span><br><span class="line">        [NSThread sleepForTimeInterval:2];</span><br><span class="line">    &#125;);</span><br><span class="line">    /*</span><br><span class="line">     ...</span><br><span class="line">     这里有业务代码执行，标记这块区域为Y，此时Y执行代码一定也在thread_1线程</span><br><span class="line">     ...</span><br><span class="line">     */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在串行队列下有下面可能：</p>
+<ol>
+<li>X为thread1，任务为thread1，执行过程为：X_thread1-&gt;(C-&gt;10s后-&gt;B-&gt;10s后-&gt;A-&gt;10s后)_thread1-&gt;Y_thread1（A、B、C均为同步任务）</li>
+<li>X为thread1，任务为thread2，执行过程为：X_thread1-&gt;(C-&gt;10s后-&gt;B-&gt;10s后-&gt;A-&gt;10s后)_thread2-&gt;Y_thread1（A、B、C均为异步任务）</li>
+<li>X为thread1，任务为thread1和thread2，执行过程为：X_thread1-&gt;(C-&gt;10s后)_thread1-&gt;(B)_thread2-&gt;(A-&gt;10s后)_thread1-&gt;Y_thread1（A、C均为同步任务，B异步）<ol>
+<li>分析一下：因为C是同步任务，所以必须C执行10s后，后面的任务才能出队。因为B是异步任务，所以C执行完后，B先出队，但A不用等B执行完即可出队执行。所以B和A可以说是并发执行的。</li>
+<li>A出队后，只有当A被执行完成，后面的业务代码才能继续执行。</li>
+</ol>
+</li>
+</ol>
+<p>在并发队列下有下面可能：</p>
+<ol>
+<li>X为thread1，任务为thread1，执行过程为：X_thread1-&gt;(C-&gt;10s后-&gt;B-&gt;10s后-&gt;A-&gt;10s后)_thread1-&gt;Y_thread1（A、B、C均为同步任务）</li>
+<li>X为thread1，任务为threadx，执行过程为：X_thread1-&gt;Y_thread1-&gt;(C)_threadx-&gt;(B)_threadx-&gt;(A)_threadx（A、B、C均为异步任务）<ol>
+<li>分析一下：首先ABC都是异步任务，在并发队列里面都会开启新线程，所以X执行完后把ABC添加到队列后，不会等ABC的执行过程，直接就会执行Y了。为什么呢？因为ABC在其他线程，由其他线程负责执行，ABC的代码执行调用栈都不在thread1上面，而是在他们各自对应的线程。</li>
+<li>其次，ABC三个任务，C会先出队，然后是B，然后是A。他们出队顺序是固定的，但是因为他们各自在各自的执行线程，所以执行的先后顺序是不确定的。</li>
+<li>ABC是否开启多个线程有系统决定。如果系统开启3个线程，那么ABC会各自在自己的线程执行，没有先后顺序。如果系统仅仅开启2个线程，那么A会被分配到C或者B的执行线程，这个时候A就必须要等C或者B执行完才能执行（代码执行依靠调用栈，当前在执行C或者B，就不可能执行A，只能等C或者B执行完，当前调用栈结束，才能继续执行A）。</li>
+</ol>
+</li>
+<li>X为thread1，任务为thread1和thread2，执行过程为：X_thread1-&gt;(C-&gt;10s后)_thread1-&gt;(B)_thread2-&gt;(A-&gt;10s后)_thread1-&gt;Y_thread1（A、C均为同步任务，B异步）<ol>
+<li>分析过程和串行队列一致</li>
+</ol>
+</li>
+</ol>
+<p>上面的结果都只是一小部分。因为任务可能会有多个同步和异步穿插，所以整体执行过程会更复杂(如A同步+B异步+C同步+D异步等)。但只要记住上面同步异步及串行并发的要点部分，整体抽丝剥茧来分析，过程并不难理解。</p>
+<h4 id="多写测试代码多分析"><a href="#多写测试代码多分析" class="headerlink" title="多写测试代码多分析"></a>多写测试代码多分析</h4><p>多写一些测试代码并分析过程，GCD的内容很快就能理解。<br>多写一些串行队列嵌套同步任务，很容易出现死锁，很快就能根据上面的几个要点分析出来死锁原因。<br>所以<strong>死锁和主队列没多大关系，只要是串行队列嵌套同步任务，都可能出现死锁</strong>。<br><strong>主队列就是串行队列的特殊形式，因为主队列比串行队列更严苛，主队列不能开启新线程，只能在主线程运行，这就是主队列的要点，其他和串行队列一致</strong>。</p>
+<p>比如下面这个多线程代码分析：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">// 被外界业务调用的函数</span><br><span class="line">- (void)test &#123;</span><br><span class="line">    /*</span><br><span class="line">     ...</span><br><span class="line">     这里有业务代码执行，标记这块区域为X，此时X执行代码所在线程我们假设为thread_1。（thread_1也就是当前test函数被执行所在的线程。）</span><br><span class="line">     ...</span><br><span class="line">     */</span><br><span class="line">    dispatch_queue_t queue = dispatch_queue_create(&quot;&quot;, DISPATCH_QUEUE_SERIAL);</span><br><span class="line">    dispatch_async(dispatch_get_global_queue(0, 0), ^&#123;</span><br><span class="line">        // C</span><br><span class="line">        dispatch_sync(queue, ^&#123;</span><br><span class="line">            [NSThread sleepForTimeInterval:1];</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    // B</span><br><span class="line">    dispatch_async(queue, ^&#123;</span><br><span class="line">        [NSThread sleepForTimeInterval:2];</span><br><span class="line">    &#125;);</span><br><span class="line">    // A</span><br><span class="line">    dispatch_sync(queue, ^&#123;</span><br><span class="line">        [NSThread sleepForTimeInterval:2];</span><br><span class="line">    &#125;);</span><br><span class="line">    /*</span><br><span class="line">     ...</span><br><span class="line">     这里有业务代码执行，标记这块区域为Y，此时Y执行代码一定也在thread_1线程</span><br><span class="line">     ...</span><br><span class="line">     */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>它的执行流程是：<code>X_thread1-&gt;(C-&gt;1s)_thread1-&gt;(B-&gt;2s-&gt;C-&gt;2s)_thread1-&gt;Y_thread1</code>。<br>分析：C被异步加入到串行队列里面，所以这个时候队列里面已经有C。因为C是异步加入的，所以B代码也会立刻执行并被立刻加入串行队列。但是B没有办法执行，因为C需要1s才能执行完成。当1s过后，B才能出队并执行。所以代码会在B处停3s然后才能将A加入队列并执行。</p>
+<h3 id="多线程数据处理之原子性粒度"><a href="#多线程数据处理之原子性粒度" class="headerlink" title="多线程数据处理之原子性粒度"></a>多线程数据处理之原子性粒度</h3><p>如果上面GCD你已经能够熟练的分析并使用了，可能会有种大悟的感觉，原来多线程也不过如此。<br>可千万不要认为，上面GCD的使用，就是多线程的全部，相关多线程的坑来说，上面都是皮毛，多线程的坑完全不是串行队列死锁那么简单。</p>
+<p>我们看最简单的一种情况</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">@interface VC ()  &#123;</span><br><span class="line">    int _number;</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation VC</span><br><span class="line">- (void)test &#123;</span><br><span class="line">	_number = 0;</span><br><span class="line">    dispatch_queue_t queue = dispatch_queue_create(&quot;&quot;, DISPATCH_QUEUE_CONCURRENT);</span><br><span class="line">    dispatch_group_t group = dispatch_group_create();</span><br><span class="line">    for (int i = 0; i &lt; 10000; ++i) &#123;</span><br><span class="line">        dispatch_group_async(group, queue, ^&#123;</span><br><span class="line">            self-&gt;_number = self-&gt;_number + 1;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 0; i &lt; 10000; ++i) &#123;</span><br><span class="line">        dispatch_group_async(group, queue, ^&#123;</span><br><span class="line">            self-&gt;_number = self-&gt;_number - 1;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    dispatch_group_notify(group, queue, ^&#123;</span><br><span class="line">        printf(&quot;the _number is %d\n&quot;, self-&gt;_number);// 很少会打印0，有可能是-12，有可能是10，反正很少为0</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+
+<p>上面，我们多个异步线程操作_number成员变量，分别进行10000次增减1，最后结果不是0。这就是多线程的一个坑。<br>出现上面的原因就是，<code>self-&gt;_number = self-&gt;_number + 1;</code>这行代码不是原子的。<br>你可能会觉得，那这样的等号赋值可能有问题，那<code>++self-&gt;_number;</code>这样的方式进行增1操作会不会正常？<br>结果就是，一样不正常。不正常的原因，依旧因为<code>++self-&gt;_number;</code>这行代码也不是原子的。<br>那什么是原子的操作？<br><strong>一条CPU执行的一个单指令，就是原子的</strong>。<code>++</code>、<code>--</code>这样的高级语言，在汇编后都会被编译成好几个操作指令。当计算机把操作指令执行了一半的时候，另一个线程也会开始执行，这个时候前一个线程就会被系统调度打断，去执行下一个线程的指令。所以，数据这个时候就产生了紊乱，导致<code>++</code>、<code>--</code>操作完全乱套了。</p>
+<p>问题已经讲述清楚了，那该怎么解决呢？就是要手动制造原子性。一个操作指令是原子的，但是我们不可能把高级语言写出操作指令的形式，那样就回到汇编时代了。所以我们需要在外部制造更大的原子性区域，在这个区域里面，同一时间只能有一个线程操作。这样，就不会出现区域里面的代码执行一半转而另一个线程闯进来了。</p>
+<p><strong>原子性是有粒度大小的，如果粒度过大，则多线程间接变成单线程。如果粒度过小，则可能不足以保障原子性</strong>。<br>下面举例分析：</p>
+<h4 id="粒度过大："><a href="#粒度过大：" class="headerlink" title="粒度过大："></a>粒度过大：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">- (void)test &#123;</span><br><span class="line">    _number = 0;</span><br><span class="line">    dispatch_queue_t queue = dispatch_queue_create(&quot;&quot;, DISPATCH_QUEUE_CONCURRENT);</span><br><span class="line">    dispatch_group_t group = dispatch_group_create();</span><br><span class="line">    for (int i = 0; i &lt; 10000; ++i) &#123;</span><br><span class="line">        dispatch_group_async(group, queue, ^&#123;</span><br><span class="line">            @synchronized (self) &#123;// 这里为了测试方便，使用了self，开发过程中不要这么用，应该维持一个私有对象用来做标记</span><br><span class="line">                [self add];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 0; i &lt; 10000; ++i) &#123;</span><br><span class="line">        dispatch_group_async(group, queue, ^&#123;</span><br><span class="line">            @synchronized (self) &#123;</span><br><span class="line">                [self sub];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    dispatch_group_notify(group, queue, ^&#123;</span><br><span class="line">        printf(&quot;the _number is %d\n&quot;, self-&gt;_number);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)add &#123;</span><br><span class="line">    /*</span><br><span class="line">     ...</span><br><span class="line">     这里有很多代码逻辑，预计1000行</span><br><span class="line">     ...</span><br><span class="line">     */</span><br><span class="line">    ++_number;</span><br><span class="line">    /*</span><br><span class="line">    ...</span><br><span class="line">    这里有很多代码逻辑，预计1000行</span><br><span class="line">    ...</span><br><span class="line">    */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)sub &#123;</span><br><span class="line">    /*</span><br><span class="line">     ...</span><br><span class="line">     这里有很多代码逻辑，预计1000行</span><br><span class="line">     ...</span><br><span class="line">     */</span><br><span class="line">    --_number;</span><br><span class="line">    /*</span><br><span class="line">    ...</span><br><span class="line">    这里有很多代码逻辑，预计1000行</span><br><span class="line">    ...</span><br><span class="line">    */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面我们的多线程操作主要是add和sub两个函数，业务处理也都在这两个函数里面。但是我们在调用add和sub函数的时候，通过synchronized锁临时添加了原子性区域，这就导致add和sub里面的2000多行代码，同一时间只能一条线程执行，变成了单线程操作。多线程形同实亡。</p>
+<h4 id="粒度过小："><a href="#粒度过小：" class="headerlink" title="粒度过小："></a>粒度过小：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">@property (atomic) int num;</span><br><span class="line"></span><br><span class="line">- (void)test &#123;</span><br><span class="line">    self.num = 0;</span><br><span class="line">    dispatch_queue_t queue = dispatch_queue_create(&quot;&quot;, DISPATCH_QUEUE_CONCURRENT);</span><br><span class="line">    dispatch_group_t group = dispatch_group_create();</span><br><span class="line">    for (int i = 0; i &lt; 10000; ++i) &#123;</span><br><span class="line">        dispatch_group_async(group, queue, ^&#123;</span><br><span class="line">            ++self.num;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 0; i &lt; 10000; ++i) &#123;</span><br><span class="line">        dispatch_group_async(group, queue, ^&#123;</span><br><span class="line">            --self.num;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    dispatch_group_notify(group, queue, ^&#123;</span><br><span class="line">        printf(&quot;the _number is %d\n&quot;, self.num);// 依旧不为0</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们定义了一个原子性(atomic)的num变量，但是最后打印的num依旧不为0。原因就是num虽然已经在set和get方法里面添加了synchronized锁，但这个锁只能保障num变量在读和取的时候是原子性的。如果两个线程同时读，这个时候两个线程获取到的值是一样的，但是一个线程增1，一个线程减1，最后两个线程原子性调用set方法赋值。显然，num的值这个时候就以最后调用set方法的线程值为准，不在准确了。<br>这个时候就是原子性粒度过小，导致虽然添加了锁，但依旧值不准确。</p>
+<p>所以为了多线程处理能力最大化(足够榨干CPU资源)，也为了数据依旧稳定和准确，原子性的粒度需要考量一个合适的区域。</p>
+<h3 id="多线程数据处理之锁"><a href="#多线程数据处理之锁" class="headerlink" title="多线程数据处理之锁"></a>多线程数据处理之锁</h3><p>原子性粒度考量完成后，下面就是如何保障这个原子性区域的问题了。上面我们简化说明都使用了synchronized锁，但是多线程本身还有其他各种锁，synchronized只是其中使用最方便但是效率也最低的一种。<br>iOS下锁比较好理解，因为不像JAVA，iOS下锁就那么多，下面根据多线程锁机制来分析。</p>
+<p>《程序员的自我修养-链接、装载与库》一书中，在说到线程安全锁机制的时候，概括说了5种锁，而iOS里面所有锁就是基于其中4种来的。<br>5种线程锁分别是：信号量、互斥量、临界区、读写锁、条件变量。<br><strong>信号量</strong>：是线程级别的，任何一个线程均可以自行加锁和解锁，任何一个线程也可以对另一个线程已加的锁进行解锁。<br><strong>互斥量</strong>：也是线程级别的，但是比信号量严苛一些。任何一个线程均可以自行加锁和解锁，但是A线程不能对B线程已加的锁进行解锁，必须有B线程自己解锁。(iOS里面，A也可以解B加的锁，没有报错。)<br><strong>临界区</strong>：进程级别的。比互斥量严苛了一些。加锁解锁被称作<code>进入临界区</code>、<code>离开临界区</code>。A进程创建的临界区，只有A进程可以进出，其他进程不能操作。因为iOS是沙盒机制，对于单个App来说，不存在多进程，所以临界区在iOS开发里面用不到。不过系统肯定是需要临界区的，不过那是操作系统的事情了。<br><strong>读写锁</strong>：读的时候数据不需要保障稳定性，所以可以并发读，但是写一定要独立，写的时候只能一个一个写，而且写的时候不能有读操作。也叫<code>共享-独占锁</code>。<br><strong>条件变量</strong>：在达到某个特定的条件下，线程才能加锁和解锁。条件可以预先设置好，后面的加锁和解锁就根据条件来触发。</p>
+<p>iOS的锁有二十种左右，但更多都是对几个特定锁对封装。举例来说：</p>
+<ol>
+<li>OSSpinLock 自旋锁（特别说明，虽然性能非常高，但是已经被废弃）。本质是互斥锁，ABC同时访问对时候，C先进去并加锁，然后AB不断循环访问是否解锁，如果解锁，立刻进入并加锁。所以被挡在锁外面对线程没有休息，而是不停对查询。<ol>
+<li>CPU消耗很大，因为挡在锁外面对线程一直在不停查询。</li>
+<li>因为优先级反转原因，该锁已经被苹果弃用。比如优先级为：A&gt;B&gt;C。这个时候C提前进入加锁并执行代码，但是A优先级太高，导致A不停查询并占用了非常多对时间片，最后C用了很久才执行完并解锁。这个过程中，有太多时间片都浪费在了查询上。</li>
+</ol>
+</li>
+<li>os_unfair_lock 互斥锁的一种，OSSpinLock的替代品。自旋锁会不停的查询并忙等，os_unfair_lock会在加锁的情况下，对线程进行休眠。当解锁后继续执行。<ol>
+<li>只要是锁，优先级反转都会出现。但是不同于自旋锁，互斥锁会让挡在外面对线程处于休眠状态，在解锁后激活并执行。这样对CPU的消耗会很低。</li>
+</ol>
+</li>
+<li>dispatch_semaphore 信号量。可以实现二元信号量和多元信号量。通过信号量还可以做限制并发操作。</li>
+<li>pthread_mutex 互斥锁。mutex是互斥锁的完整体现。基于mutex可以实现互斥锁、递归锁、条件锁。效率非常高。<ol>
+<li>普通互斥锁：性能很高的锁，挡在锁外面的线程会休眠，不会出现优先级反转后时间片浪费情况。</li>
+<li>递归锁：当A线程因为递归等原因，在没有释放锁的情况下，又重新加锁。这个时候互斥锁是不能加锁的，因为之前已经加过锁了。递归锁可以解决这个问题，在递归锁下，同一个线程可以一次加锁，然后一次解锁。</li>
+<li>条件锁：mutex实现的条件锁，不能根据条件自动加锁解锁。需要动手激活指定条件然后加锁或解锁。</li>
+</ol>
+</li>
+<li>NSLock 互斥锁。对mutex普通互斥锁的封装，面向对象。</li>
+<li>NSRecursiveLock 递归锁。对mutex 递归锁的封装，面向对象。</li>
+<li>NSCondition 条件锁。对mutex 条件锁的封装，面向对象。可以预设条件，在条件到达后，自行加锁解锁。相关mutex自行实现，代码过程更加自动化。</li>
+<li>synchronized 递归锁。对mutex 递归锁的封装，使用最方便，不需要手动加锁和解锁。但是性能也是所有锁里面最低的。</li>
+<li>dispatch_rwlock 读写锁。可以保障写操作的互斥独立，读操作是重入可并发的。</li>
+<li>dispatch_barrier_async 栅栏锁。可以分割一段任务队列（警告：必须使用自定义队列，不能使用主队列和全部队列）。也可以用来模拟读写锁，iOS的属性修饰符atomic完全可以通过dispatch_barrier_async来实现。</li>
+<li>dispatch_group_t 栅栏锁。和barrier类似，功能方向略有差异，group栅栏锁可以实现组的操作。</li>
+</ol>
+<p>还有其他一些锁，但可以发现，大差不差，都是对多线程5种锁的实现和封装，这5种锁分别是：<strong>信号量、互斥量、临界区（iOS开发层面没必要使用）、读写锁、条件变量</strong>。</p>
+<p>在iOS开发里面具体使用哪些锁问题已经不大，只要不使用OSSpinLock，其他锁都可以试一试。目前来看，业务层面开发，NSLock和synchronized用的较多。组件库方面，os_unfair_lock和mutex使用的较多。</p>
+<h3 id="多线程数据安全总结"><a href="#多线程数据安全总结" class="headerlink" title="多线程数据安全总结"></a>多线程数据安全总结</h3><p>Runtime源码里面，对于SideTable中weak表的实现，就是原子性粒度和锁的解释说明。<br>Runtime对weak表的整个实现，都标记为线程不安全，并且在外部SizeTable中定义了spinlock自旋锁来限制原子性区域。<br>所以weak表的实现里面，原子性区域还是比较大的，整个weak表内部的数据的处理都处于不安全状态，通过最外界的函数调用处，给予自旋锁来保障线程安全。<br>相关代码如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">struct SideTable &#123;</span><br><span class="line">    // 锁对象 =&gt; 自旋锁，用于上锁/解锁 SideTable</span><br><span class="line">    // spinlock_t的最终定义实际上是一个uint32_t类型的非公平的自旋锁。所谓非公平，就是说获得锁的顺序和申请锁的顺序无关，也就是说，第一个申请锁的线程有可能会是最后一个获得到该锁，或者是刚获得锁的线程会再次立刻获得到该锁，造成饥饿等待。 同时，在OC中，_os_unfair_lock_opaque也记录了获取它的线程信息，只有获得该锁的线程才能够解开这把锁。</span><br><span class="line">    spinlock_t slock;</span><br><span class="line">    // 索引哈希表(稠密哈希)   =&gt; 对象引用计数map,用来存储OC对象的引用计数(仅在未开启isa优化 或 在isa优化情况下isa_t的引用计数溢出时才会用到)。</span><br><span class="line">    // 是一个以objc_object为key的hash表，其vaule就是OC对象的引用计数。同时，当OC对象的引用计数变为0时，会自动将相关的信息从hash表中剔除。</span><br><span class="line">    RefcountMap refcnts;</span><br><span class="line">    // weak表(核心实现)      =&gt; 对象弱引用map</span><br><span class="line">    weak_table_t weak_table;</span><br><span class="line"></span><br><span class="line">    // 构造函数</span><br><span class="line">    SideTable() &#123;</span><br><span class="line">        memset(&amp;weak_table, 0, sizeof(weak_table));</span><br><span class="line">    &#125;</span><br><span class="line">    // 析构函数(看看函数体，苹果设计的SideTable其实不希望被析构，不然会引起fatal 错误)</span><br><span class="line">    ~SideTable() &#123;</span><br><span class="line">        _objc_fatal(&quot;Do not delete SideTable.&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 锁操作 符合StripedMap对T的定义</span><br><span class="line">    void lock() &#123; slock.lock(); &#125;</span><br><span class="line">    void unlock() &#123; slock.unlock(); &#125;</span><br><span class="line">    void forceReset() &#123; slock.forceReset(); &#125;</span><br><span class="line"></span><br><span class="line">    // Address-ordered lock discipline for a pair of side tables.</span><br><span class="line"></span><br><span class="line">    template&lt;HaveOld, HaveNew&gt;</span><br><span class="line">    static void lockTwo(SideTable *lock1, SideTable *lock2);</span><br><span class="line">    template&lt;HaveOld, HaveNew&gt;</span><br><span class="line">    static void unlockTwo(SideTable *lock1, SideTable *lock2);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>还有Runtime里面_read_images函数里面操作SEL的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">    // 将所有SEL都注册到哈希表中，是另外一张哈希表</span><br><span class="line">    static size_t UnfixedSelectors;</span><br><span class="line">    sel_lock();</span><br><span class="line">    for (EACH_HEADER) &#123;</span><br><span class="line">        if (hi-&gt;isPreoptimized()) continue;</span><br><span class="line"></span><br><span class="line">        bool isBundle = hi-&gt;isBundle();</span><br><span class="line">        // 取出的是字符串数组，例如首地址是&quot;class&quot;</span><br><span class="line">        SEL *sels = _getObjc2SelectorRefs(hi, &amp;count);</span><br><span class="line">        UnfixedSelectors += count;</span><br><span class="line">        for (i = 0; i &lt; count; i++) &#123;</span><br><span class="line">            // sel_cname函数内部就是将SEL强转为常量字符串</span><br><span class="line">            const char *name = sel_cname(sels[i]);</span><br><span class="line">            // 注册SEL的操作</span><br><span class="line">            sels[i] = sel_registerNameNoLock(name, isBundle);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    sel_unlock();</span><br><span class="line">---</span><br><span class="line">void sel_lock(void)</span><br><span class="line">&#123;</span><br><span class="line">    selLock.write();</span><br><span class="line">&#125;</span><br><span class="line">void sel_unlock(void)</span><br><span class="line">&#123;</span><br><span class="line">    selLock.unlockWrite();</span><br><span class="line">&#125;</span><br><span class="line">---</span><br><span class="line">rwlock_t selLock;</span><br></pre></td></tr></table></figure>
+<p>这里对原子性粒度把控的就很细，用的读写锁。</p>
+<h3 id="多线程下数据结构和算法的重要性"><a href="#多线程下数据结构和算法的重要性" class="headerlink" title="多线程下数据结构和算法的重要性"></a>多线程下数据结构和算法的重要性</h3><p>到这里，多线程下数据安全基本已经可以告一段落了。但是，还没有结束。<br>我们之前提过，多线程下数据安全通过原子性粒度的把控和锁机制，已经可以比较好的实现。而粒度控制小心一些，锁就那么多，用的恰当一些，数据安全就没有问题了。<br>后面的问题，就是原子性区域内部的代码执行效率的问题了。<strong>因为原子性区域内部都是单个线程在执行，所以执行效率一定是要很高的</strong>。<br>我们举个例子，如果原子性区域里面，代码耗时需要1s，那么多线程操作下，是不是有很多线程都会被原地休眠？整个执行效率肯定低下的要死。</p>
+<p>所以，这个时候，就要<strong>使用合适的数据结构和算法，来提高代码执行的效率</strong>。</p>
+<p>我们用YYCache的内存缓存举例，YYCache使用pthread_mutex互斥锁，原子性粒度控制的很小，在对数据进行操作的时候才开始加锁和解锁。<br>缓存使用来LRU算法，通过双向链表来实现数据对增和删的复杂度为O(1)。<br>但是链表的查询复杂度是比较高的，因为链表无法做随机寻址，也没法用数组的空间局部性缓存加速。<br>所以作者通过空间换时间的方式，引入了hash map，将缓存数据存入hash map中实现查询复杂度为O(1)。<br>这样，整体内存缓存的数据的操作复杂度都将为O(1)。</p>
+<p>之前也写过文章说明数组和链表的优缺点，其中重要一点就是链表的增删复杂度为1，数组的查复杂度为1。为了更好的使用数组和链表的双方优点，所以hash map和链表常一块使用。</p>
+<p>Runtime里面也是各种hash table和hash map table的使用，甚至hash函数都为了高效，尽可能使用位操作来计算索引值。</p>
+<p>所以多线程编程，数据安全能通过锁保障的也都能很好保障（像FMDB和iOS UI 主线程，知道多线程数据安全的处理风险太大，索性就不支持多线程了），唯有算法这个环节，诡异且多变，最能体现价值。</p>
+<hr>
+<p>今天是五四青年节日，我查了青年的年龄标准，是14-28周岁。突然很开心，我明年还能在过一次五四青年节。<br>历史前进的车轮肯定不会停下来，不管是文明，经济，抑或是网络，甚至自由。后浪必定比前浪更加优秀，这是毋庸置疑的，否则不符合历史规律。<br>每一波新一代，都拥有更棒的环境，更好的认知，更方便的学习方式。所以后浪们必定更加优秀和杰出，这是必然。<br>社会这个大团体，也一定会在后浪的推动下，一直向前，稳步向前。<br>但有一个重点我也想表达，随着历史长河的流逝，社会必然会进步。如果要进步的更快，那思想独立和思想解放必定占据非常大的比重，中国的新一代在这方面有很大短板。<br>我已经在职场7年了，虽然还是青年，但已经没有了青年的气质和气息。即使假装青年的疯癫，但眼角的复杂情绪却无法掩藏，也无法欺骗自己。<br>我显然不是青年了，很多时候我会无知于自己的未来，也对未来充满恐惧、失措、无助，而青年人不应该有这些拘束思想，他们应该是奔放的，激情四射的。<br>我想了一下，我脱离青年身份，应该是3年前，那年我24周岁，本命年。那年，我孩子出生。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>Follow me by other channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/hai_lv_">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/gongjiang">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="mailto:one.gongjiang@gmail.com">
+            <span class="icon">
+              <i class="fa fa-envelope"></i>
+            </span>
+
+            <span class="label">Email</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/" rel="tag"># 计算机原理</a>
+              <a href="/tags/iOS/" rel="tag"># iOS</a>
+              <a href="/tags/C/" rel="tag"># C</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/runtime/" rel="prev" title="Objective-C 和 Runtime">
+                  <i class="fa fa-angle-left"></i> Objective-C 和 Runtime
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/autorelease/" rel="next" title="iOS main 文件中的@autoreleasepool的真实用途">
+                  iOS main 文件中的@autoreleasepool的真实用途 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">Light Mode (Better for light mode to discuss, base github, cannot commen can email me)</a></li>
+            <li class="tab"><a href="#comment-utterances">Dark Mode</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
+            </div>
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+        </div>
+      </div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">one.gongjiang艾特gmail.com 所有文章均为原创。我不介意任意形式的转载，但最好不要修改内容。因转载或者修改内容导致的任何问题，我均不负责。如果你真的担心版权，可邮联。评价需要外网，这是枷锁，也是照妖镜。</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.20/fancybox/fancybox.umd.js" integrity="sha256-q8XkJ6dj5VwSvzI8+nATCHHQG+Xv/dAZBCgqmu93zOY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.8/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2020/threads/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"e18116dee7993d3a8c0569cc2a6d8a75"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

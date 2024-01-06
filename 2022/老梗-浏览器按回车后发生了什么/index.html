@@ -235,9 +235,9 @@
 <li>网络通信的基石，只要是网络通信，这就是绕不开的大山，这就是中流砥柱。</li>
 <li>socket 的核心在于 socket 描述符和发送接收缓冲区。发送接收缓冲区不是 socket 特有的，是计算机基础的一部分，我们使用终端的时候，输入指令和参数的时候都在使用这套缓冲区。</li>
 <li>大名鼎鼎的<strong>三次握手</strong>就在 socket 建联的时候发生的。<strong>成也萧何败也萧何</strong>，因为 socket 是内嵌计算机的底层服务，也包括 TCP。所以即使三次握手已经拖慢了互联网这么多年，但依旧无法做升级。Quic 的出现就是忍不了 socket tcp 的<strong>队头阻塞</strong>而破釜沉舟的东西。</li>
-<li>socket tcp 的详细过程，可查阅之前文章：<a href="https://www.yigegongjiang.com/2020/TCP%20%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/">TCP 数据传输过程分析</a></li>
-<li>谈 socket 离不开端口，谈端口离不开进程。可查阅之前文章：<a href="https://www.yigegongjiang.com/2022/Shell%E5%92%8C%E8%BF%9B%E7%A8%8B/#%E4%B8%A4%E7%A7%8D%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F-By-fork-amp-exec">Shell 和进程-两种进程创建方式</a></li>
-<li>socket 本身可查阅之前文章：<a href="https://www.yigegongjiang.com/2020/IM%E5%92%8CSocket%E7%9A%84%E5%85%B3%E7%B3%BB%E5%8F%8AHeart%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7/">IM 和 Socket 的关系及 Heart 的必要性</a></li>
+<li>socket tcp 的详细过程，可查阅之前文章：<a href="https://www.yigegongjiang.com/2020/TCPTranslation/">TCP 数据传输过程分析</a></li>
+<li>谈 socket 离不开端口，谈端口离不开进程。可查阅之前文章：<a href="https://www.yigegongjiang.com/2022/Shell/#%E4%B8%A4%E7%A7%8D%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F-By-fork-amp-exec">Shell 和进程-两种进程创建方式</a></li>
+<li>socket 本身可查阅之前文章：<a href="https://www.yigegongjiang.com/2020/im/">IM 和 Socket 的关系及 Heart 的必要性</a></li>
 </ol>
 <span id="more"></span>
 
@@ -249,7 +249,7 @@
 <h2 id="七层五层网络协议"><a href="#七层五层网络协议" class="headerlink" title="七层五层网络协议"></a>七层五层网络协议</h2><ol>
 <li>网络通信的基石，和 Socket 一样是中流砥柱。不过 socket 那一层需要复杂的编码，这一层只能躺着使用，可以窥看它的实现，有不爽的地方也无能为力。</li>
 <li>会话层的 TLS 是 HTTP 和 HTTPS 的差异，这一块集中了密码学的知识。TLS 的耗时是非常可观的，要想躺着减小耗时，就尽快升级到 TLS1.3。其次，尽快用 ECDHE 代替 RSA，ECDHE 减小了签名大小、解密时间，还支持抢跑。</li>
-<li>传输层的 TCP 详细过程，可查阅之前文章：<a href="https://www.yigegongjiang.com/2020/TCP%20%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/">TCP 数据传输过程分析</a></li>
+<li>传输层的 TCP 详细过程，可查阅之前文章：<a href="https://www.yigegongjiang.com/2020/TCPTranslation/">TCP 数据传输过程分析</a></li>
 <li>这里有两个重要的 case，就是 MTU 和 MSS。传输层的 MSS 会拆包，叫分段，IP 层的 MTU 也会拆包，叫分片。当包在网线传输的时候，其他的路由器属于三层设备，可以将包解到第三层即 IP 层，这个时候也就拿到了 MTU 范围内的全部包数据，如果包数据不符合当前路由器的 MTU 大小设置，可以将包抛弃，或者拆成更小的包后继续传给服务器，服务器会根据编号进行重组(分片重组)。包里面可以设置一个参数，当路由器 MTU 过小需要拆包的时候，不允许拆包，强制直接丢弃。因为 IP 层面的拆包，是风险很大的，这个时候包里面没有了传输层的头部，有可能会服务器侧各种拦截。</li>
 <li>MAC 层会通过 ARP 拿到下一跳的路由器或者主机的 MAC 地址。MAC 地址并不是电脑本身的一部分，而是网卡的一部分。在电脑主机启动后，网卡驱动会对网卡进行初始化，这个时候网卡有一片 ROM 区域会被驱动配置。后续拿的 mac 地址，其实就是从网卡的这个 rom 区域拿的。</li>
 <li>UDP 和 TCP 的根本差异，不在于稳定性和使用方式，而在于包大小。如果每个包都很小，那么 UDP 要比 TCP 传输的更高效。只是有些包比较大，UDP 传输的话，一个包丢了就得全部重传。TCP 可以通过稳定的复杂机制来保障快速重传。比如 DNS 查询，就是通过 UDP 来发包的。DNS 查询很重要，为什么没有使用 TCP 的稳定通道？就是所有数据就一个包大小，丢了就丢了，没有回执就是丢了嘛，那就再重传一下。</li>
@@ -258,8 +258,8 @@
 <li>核心啊，能上网就靠它了。大图里面详细说了 NAT 的流程，包括 MAC 层 MAC 地址与 网络层 IP 地址的变化，以及 NAT 映射表和端到端隧道穿越的实现。</li>
 </ol>
 <h2 id="浏览器渲染"><a href="#浏览器渲染" class="headerlink" title="浏览器渲染"></a>浏览器渲染</h2><ol>
-<li>这里重点说了 V8 对 javascript 支持。详细可查阅之前文章：<a href="https://www.yigegongjiang.com/2022/Shell%E5%92%8C%E8%BF%9B%E7%A8%8B/#%E8%A7%A3%E9%87%8A%E7%BC%96%E8%AF%91%E6%B7%B7%E5%90%88%E5%9E%8B">Shell 和进程-解释编译混合型语言</a></li>
-<li>图片渲染部分，以及如何实现渐进式图片，可查阅之前文章：<a href="https://www.yigegongjiang.com/2022/%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E5%B7%AE%E5%BC%82-%E7%BC%96%E7%A0%81/">文件存储差异 - 编码</a></li>
+<li>这里重点说了 V8 对 javascript 支持。详细可查阅之前文章：<a href="https://www.yigegongjiang.com/2022/Shell/#%E8%A7%A3%E9%87%8A%E7%BC%96%E8%AF%91%E6%B7%B7%E5%90%88%E5%9E%8B">Shell 和进程-解释编译混合型语言</a></li>
+<li>图片渲染部分，以及如何实现渐进式图片，可查阅之前文章：<a href="https://www.yigegongjiang.com/2023/unicode/">文件存储差异 - 编码</a></li>
 </ol>
 <h2 id="CDN-加速"><a href="#CDN-加速" class="headerlink" title="CDN 加速"></a>CDN 加速</h2><ol>
 <li>和 DNS 一样，CDN 负载均衡服务器非常有用处。</li>
@@ -420,12 +420,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
   <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2022/%E8%80%81%E6%A2%97-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8C%89%E5%9B%9E%E8%BD%A6%E5%90%8E%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/"}</script>
   <script src="/js/third-party/quicklink.js"></script>
-<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
-<script src="/js/third-party/comments/utterances.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
 <script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"e53289eb9dd181799ed556d6273402fa"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
 
 </body>
 </html>

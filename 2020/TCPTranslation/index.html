@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.0.0-rc2">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.20/fancybox/fancybox.css" integrity="sha256-RvRHGSuWAxZpXKV9lLDt2e+rZ+btzn48Wp4ueS3NZKs=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.18.1","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="最近在研究发送&#x2F;接收缓冲区对Socket性能对影响，朋友发来两篇质量非常高的研究性报告让我看。Socket缓存究竟如何影响TCP的性能TCP性能和发送接收窗口、Buffer的关系做研究的，都少不了数据。上面文章中“缓冲区对Socket性能分析”的数据非常严谨，我非常佩服。于是我用WireShark分析验证TCP的数据传输流程，过程包含三次握手、滑动窗口数据传输、四次挥手，收益很多。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TCP 数据传输过程分析">
+<meta property="og:url" content="https://www.yigegongjiang.com/2020/TCPTranslation/index.html">
+<meta property="og:site_name" content="一个工匠">
+<meta property="og:description" content="最近在研究发送&#x2F;接收缓冲区对Socket性能对影响，朋友发来两篇质量非常高的研究性报告让我看。Socket缓存究竟如何影响TCP的性能TCP性能和发送接收窗口、Buffer的关系做研究的，都少不了数据。上面文章中“缓冲区对Socket性能分析”的数据非常严谨，我非常佩服。于是我用WireShark分析验证TCP的数据传输流程，过程包含三次握手、滑动窗口数据传输、四次挥手，收益很多。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202305300023093.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061820560.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061820628.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061820780.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061821528.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061822794.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061823039.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061823179.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061823859.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061825703.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061825484.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061825471.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061825878.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061827026.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061827820.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061827052.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061828259.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061829747.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061830106.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061830768.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061831644.png">
+<meta property="article:published_time" content="2020-05-13T08:51:05.000Z">
+<meta property="article:author" content="海驴">
+<meta property="article:tag" content="网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202305300023093.png">
+
+
+<link rel="canonical" href="https://www.yigegongjiang.com/2020/TCPTranslation/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2020/TCPTranslation/","path":"2020/TCPTranslation/","title":"TCP 数据传输过程分析"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>TCP 数据传输过程分析 | 一个工匠</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="一个工匠" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="一个工匠" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">一个工匠</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">83</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user fa-fw"></i>About</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section"><i class="rss fa-fw"></i>Rss</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%B4%E9%83%A8%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E"><span class="nav-number">1.</span> <span class="nav-text">头部字段说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%8C%85%E9%95%BF%E5%BA%A6%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">数据包长度的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">三次握手过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ACK%E5%92%8CSYN"><span class="nav-number">3.1.</span> <span class="nav-text">ACK和SYN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%8F%E5%88%97%E5%8F%B7"><span class="nav-number">3.2.</span> <span class="nav-text">序列号</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A5%87%E6%80%AA%E7%9A%84%E6%8F%A1%E6%89%8B%E5%92%8C%E6%8C%A5%E6%89%8B%E5%BA%8F%E5%88%97%E5%8F%B7"><span class="nav-number">3.2.1.</span> <span class="nav-text">奇怪的握手和挥手序列号</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Window-Size%EF%BC%88Scale%EF%BC%89"><span class="nav-number">3.3.</span> <span class="nav-text">Window Size（Scale）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8F%A1%E6%89%8B%E4%B8%AD%E7%9A%84%E7%AA%97%E5%8F%A3%E5%A4%A7%E5%B0%8F"><span class="nav-number">3.3.1.</span> <span class="nav-text">握手中的窗口大小</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E7%AA%97%E5%8F%A3%E5%A4%A7%E5%B0%8F%E8%B0%83%E6%95%B4"><span class="nav-number">3.3.2.</span> <span class="nav-text">传输过程中的窗口大小调整</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B"><span class="nav-number">4.</span> <span class="nav-text">四次挥手</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-Keep-Alive"><span class="nav-number">5.</span> <span class="nav-text">TCP Keep-Alive</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="nav-number">6.</span> <span class="nav-text">滑动窗口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%A2%E5%8C%85%E9%87%8D%E4%BC%A0%E4%BC%98%E5%8C%96"><span class="nav-number">7.</span> <span class="nav-text">丢包重传优化</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="海驴"
+      src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
+  <p class="site-author-name" itemprop="name">海驴</p>
+  <div class="site-description" itemprop="description">时间，真的不多了。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">83</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2020/TCPTranslation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
+      <meta itemprop="name" content="海驴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个工匠">
+      <meta itemprop="description" content="时间，真的不多了。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="TCP 数据传输过程分析 | 一个工匠">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          TCP 数据传输过程分析
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-05-13 16:51:05" itemprop="dateCreated datePublished" datetime="2020-05-13T16:51:05+08:00">2020-05-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202305300023093.png" width="30%">
+
+<p>最近在研究发送&#x2F;接收缓冲区对Socket性能对影响，朋友发来两篇质量非常高的研究性报告让我看。<br><span class="exturl" data-url="aHR0cHM6Ly96b3Jyb3pvdS5naXRodWIuaW8vZG9jcy9Tb2NrZXQlRTclQkMlOTMlRTUlQUQlOTglRTclQTklQjYlRTclQUIlOUYlRTUlQTYlODIlRTQlQkQlOTUlRTUlQkQlQjElRTUlOTMlOERUQ1AlRTclOUElODQlRTYlODAlQTclRTglODMlQkQuaHRtbA==">Socket缓存究竟如何影响TCP的性能<i class="fa fa-external-link-alt"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly9wbGFudGVnZy5naXRodWIuaW8vMjAxOS8wOS8yOC8lRTUlQjAlQjElRTYlOTglQUYlRTglQTYlODElRTQlQkQlQTAlRTYlODclODJUQ1AtLSVFNiU4MCVBNyVFOCU4MyVCRCVFNSU5MiU4QyVFNSU4RiU5MSVFOSU4MCU4MSVFNiU4RSVBNSVFNiU5NCVCNkJ1ZmZlciVFNyU5QSU4NCVFNSU4NSVCMyVFNyVCMyVCQi8=">TCP性能和发送接收窗口、Buffer的关系<i class="fa fa-external-link-alt"></i></span><br>做研究的，都少不了数据。上面文章中“缓冲区对Socket性能分析”的数据非常严谨，我非常佩服。<br>于是我用WireShark分析验证TCP的数据传输流程，过程包含三次握手、滑动窗口数据传输、四次挥手，收益很多。</p>
+<span id="more"></span>
+
+<h3 id="头部字段说明"><a href="#头部字段说明" class="headerlink" title="头部字段说明"></a>头部字段说明</h3><p>主要分析TCP的头字段，有序号、确认序号、ACK、SYN、Option、窗口大小等。详见下图TCP头字段说明：</p>
+<img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061820560.png" width="30%">
+
+<p>部分内容分析了IP的头字段，如包大小等。详见下图IP头字段说明：</p>
+<img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061820628.png" width="30%">
+
+<h3 id="数据包长度的问题"><a href="#数据包长度的问题" class="headerlink" title="数据包长度的问题"></a>数据包长度的问题</h3><p>一个网络包的最大长度，为65535字节，为什么是这个大小呢？因为在IP网络层，用于标记一个包大小的位数是16位，而16位能够标记的大小就是2的16次方，即65535字节(-1)。<br>上图IP头字段中有一个“总长度（16位）”字段，即包大小字段。具体抓包如下：</p>
+<img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061820780.png" width="80%">
+
+<p>图中“Total Length：64”即当前包大小，通过下部分的绿色bit标记显示，可以看出，共有16个比特位用来标记“Total Length”大小，当前为64个字节，即“00000000 01000000”。<br>所以，65535字节大小的包，是IP网络层能够从上层接收的最大包大小。<br>那么65535字节的包，是否可以直接发送呢？显然是不行的，因为还有MTU的限制。</p>
+<p>链路层还有大小限制，为1500大小，所以网络层对于大于1500字节的包，需要进行分片。<br>而且，MTU不是一个定值，一个1500字节的包，在网络路由中，可能一个路由仅仅支持500大小的包，那么这个包就需要被这个路由分片。<br>所有分片的包，都需要网络层被重组，然后才能够上传到传输层（如果丢包，传输层会做校验，校验不通过会被丢弃）。而重组，也不一定是服务器完成。比如防火墙需要把包重组后才能做安全防护，所以重组在防火墙这里就可以发生了，当然，服务器的网络传输层也会做重组操作。<br>以上说明中，提到的字节大小，是包含发送的数据和每一层头字段的总和，所以实际数据会偏小10-100字节。</p>
+<p>分片，是针对网络层来说的，因为网络层对接链路层，如果发现大于MTU，就会分片后，交由链路层发送出去。</p>
+<p>所以对于UDP来说，一个2000字节的包，IP层可能会分成两片后发送出去。<br>IP分片后，每个分片后的包单独发送，每个包都有可能丢包。对于UDP来说，一个包丢了，整个UDP的包都算丢失了。因为对方进行分片重组后，交由UDP，UDP会进行数据校验（UDP的头部有16位大小的”校验和”字段），发现数据不完整，就会丢弃。所以这个时候这个包就算丢了。</p>
+<p>而TCP显然不想和UDP一样，TCP已经做分段了，TCP自己维护了一套数据包的稳定传输，当然不希望IP层分片，这样会导致TCP的一个包，经过IP的分片不稳定传输后，更加不稳定，增加丢包概率。<br>所以TCP就自己维护分段逻辑，在三次握手的时候，确定一个合适的包大小，后续所有的包，都按照这个大小进行传输。<br>这个大小尽量能直接通过IP层而不会被分片（实际上，是否被分片，还由中间路由控制，因为不能绝对不分片），这样，通过滑动窗口，TCP就很好的控制了包的传输。这里TCP确定的一个合适的包大小，就是三次握手的时候确定的。在第一次和第二次握手包里面，双方都会发送自己最大的MSS，然后双方就有自己和对方的MSS，取最小值，作为包大小。这个MSS存储于第一次和第二次握手包里面的Option里面，名为<code>TCP Option Maximum segment size</code>。详见下图：</p>
+<img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061821528.png" width="80%">
+
+<p>图中是抓互联网包中第二次握手的数据，可以看到绿色部分<code>TCP Option Maximum segment size：1460 bytes</code>。这里第一次握手终端发给服务器的也是1460大小，我没有把图截出来。如果双方大小不一致，协商后会按照小的一方来。<br>这里可以发现，TCP的包大小，是小于1500的。而后面进行正式数据传输的时候，都会以此大小为标准。<br>但是TCP包大小也不是说一定小于1500，比如下图：</p>
+<img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061822794.png" width="80%">
+
+<p>这个图里面，红色框中，Maximum segment size已经达到16344字节，远远大于1500。<br>其实这个图是本机服务器的场景，网络包都没有经过网关，是我在本机开了一个http服务抓的包。所以在第一次和第二次握手的时候，传输层会考虑当前网络环境，给出一个合适的大小值。<br>图中可以看到，红色框里面有很多16388大小的包传输，这是握手之后正式传输的数据包，表示每个包的大小有16388字节。之所以不是16344，就是上面说到的，网络各层会添加各自的头部，这个也是需要一定空间的，数据包大小是发送的数据和层头部字段的总和，所以会有10-100字节的偏差。</p>
+<h3 id="三次握手过程"><a href="#三次握手过程" class="headerlink" title="三次握手过程"></a>三次握手过程</h3><p>三次握手，首先能想到的就是SYN和ACK。但SYN和ACK并不是虚无缥缈的东西，它们是实实在在的用头部字段表示的。具体可以看文章顶部TCP的头部字段，在中间部分有SYN和ACK字段，位于Flag标志位中，他们分别占据1位，是个bool值。</p>
+<h4 id="ACK和SYN"><a href="#ACK和SYN" class="headerlink" title="ACK和SYN"></a>ACK和SYN</h4><p>SYN是用来请求建立连接（建立套接字）的。第一次和第二次握手，在C和S端均发送了SYN，表示双方均希望建立连接。<br>而ACK是SYN的答复，即”请求建立连接回复”(同意建立套接字)。第二次和第三次握手，在S和C端均发送了ACK，表示双方均回执了对方的建立连接请求。<br>当三次握手完成后，后面传输的所有数据包，ACK的位都必须是1，表示当前套接字已经建立。<br>详细可以看下图：</p>
+<img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061823039.png" width="80%">
+
+<img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061823179.png" width="80%">
+
+<img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061823859.png" width="80%">
+
+<p>其实，三次握手的过程，完成了很多事情，远远不止建立稳定套接字这么简单。下面说几个我分析到的：</p>
+<h4 id="序列号"><a href="#序列号" class="headerlink" title="序列号"></a>序列号</h4><p>三次握手的时候会确定序列号。每个包传输的时候，都会带一个唯一的序列号。这个序列号在滑动窗口的时候用来做确认标记，当然还有其他用途，比较包超时等。<br>序列号是一个比较大的数，会以时间戳为依据，每4ms会加1，这样可以防止超时的包最后又正确传输到接收方的过滤操作。<br>有一个需要注意的是，<strong>序列号</strong>和<strong>确认号</strong>是相对的。<br><strong>序列号</strong>相对自己的应用层发送的数据包大小递增，只要应用层需要发送数据，那么在传输层每个包的序列号，都是上一个包的序列号加上上一个包的数据大小。如果是回执包，是不会增加序列号的，因为回执包，是TCP传输层维护数据完整性用的，都不会上传到应用层，所以不牵涉到应用层的发送数据。对于TCP层自己发送的用于维持数据完整性的数据包，不会增加序列号。(三次握手和四次挥手的序列号有些特别，下面会讨论。)<br>而<strong>确认号</strong>按照接收的数据包大小进行回执，告知对方自己接收了哪些包。因为滑动窗口的缘故，并不会每个数据包都给予确认，而是批量给予确认，所以确认号有可能会跳跃好几个接收的序列号。<br>序列号详见下图(序列号是随机的一个比较大的数，在wireshark中默认显示相对序号，真实序号为Sequence number (raw)字段)：</p>
+<img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061825703.png" width="80%">
+
+<img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061825484.png" width="80%">
+
+<img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061825471.png" width="80%">
+
+
+<p>确认号详见下图：</p>
+<img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061825878.png" width="80%">
+
+<h5 id="奇怪的握手和挥手序列号"><a href="#奇怪的握手和挥手序列号" class="headerlink" title="奇怪的握手和挥手序列号"></a>奇怪的握手和挥手序列号</h5><p>下面重点说一下三次握手和四次挥手的序列号问题。因为这两个阶段序列号比较奇葩，也就是为什么三次握手的时候，第二次的ACK要加1，第三次的Seq要加1。<br>准确来说，如果一个数据包需要重传，那么这个数据包一定非常重要。所以我们应用层的数据包都是需要重传的。而有些包，或许没有那么重要，我们举例来说，那就是第三次握手。<br>握手一定需要三次，这是我们都知道的，那么如果第三次握手就是没有发到服务端，难道后面的数据就不能传了吗？<br>比如说，第一第二次握手都很快完成了，但是第三次握手迟迟没有完成，乃至于一直在超时重发，那么是不是客户端就一定要等第三次消息包确认接收后，才能发送应用层的数据呢？<br>实际上，并不是。<strong>其实客户端在发送第三次握手后，马上就开始发送应用层数据了。如果第三次握手迟迟没有到服务端，但是服务端接收到了客户端发过来的后续数据，那么也认为客户端已经成功接收到了第二次握手的包，所以服务端也同样会建立套接字。</strong><br>这个也叫做<strong>抢跑</strong>。<br>所以，对于那些不是非常重要的数据包，这些数据包的序列号是不需要增加的。<strong>而序列号增加的最终目的，就是为了做包的整合和过滤。</strong>所以细心的朋友看上面图的时候，客户端的回执包的Seq一直都是631，因为回执包如果丢了，还有其他的回执包用于滑动窗口的验证，一个包丢了，问题不大。<br>第一次握手，客户端的相对序列号为0，tcp数据大小（TCP segment length）为0。按照上面的序列号规则，那么对方的回执号也应该是0，第三次握手发送的序列号也应该是0（0+0&#x3D;0规则）。<br>但事实不是这样，服务端的回执是1，第三次握手发送的序列号也变成了1。<br>所以第一次握手，TCP认为该包一定需要认真对待，如果丢了，一定需要重传，不然握手就没法建立了。所以TCP为这个包，默认做了序列号增加的操作。具体应该增加几，TCP默认增加1。<br>详见下图：</p>
+<img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061827026.png" width="80%">
+
+<p>第二次握手和第一次握手一样，都非常重要，所以服务端的序列号也做了加1的操作，不在说明。<br>而第三次握手的序列号就没有加1了，如下图：</p>
+<img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061827820.png" width="80%">
+
+<p>四次挥手也和三次握手一样的逻辑，在第一次和第三次挥手的时候，序列号都做了加1，而第二次和第四次，就没有做加1了。</p>
+<h4 id="Window-Size（Scale）"><a href="#Window-Size（Scale）" class="headerlink" title="Window Size（Scale）"></a>Window Size（Scale）</h4><p>在第一次和第二次握手阶段，还确定了一个非常重要的东西，就是窗口大小。我们都知道TCP是基于滑动窗口来实现流量控制、顺序传输、丢包重传这三个重要机制的。但很多人不知道，窗口的大小，其实在握手阶段就已经<strong>最初</strong>确定。这里说最初两个字，是因为窗口大小在数据传输过程中，还会变化。</p>
+<h5 id="握手中的窗口大小"><a href="#握手中的窗口大小" class="headerlink" title="握手中的窗口大小"></a>握手中的窗口大小</h5><p> 在第一和第二次握手的过程中，双方会互相发送window size头字段，表示窗口大小。最终会取最小值参与窗口大小的计算。<br> 之所以说参与窗口大小的计算，而不是确定，是因为第一第二次握手确定的窗口大小，并不是最终大小。还有一个scale字段，最终窗口大小的值是scale和window size相乘的值，即scale * window size。<br> scale字段，在第一次和第二次握手的时候，是在Option字段里面存储的，占据3个字节大小，存储的是位移运算的偏移。如果scale值为6，则为64，即1进行左移6位，如果值为7，则为128。<br> 这个scale说来还有一个特别，在握手阶段确定之后，就不会改变了。<br> 在第一次和第二次握手里面，scale已经协商并确定，但是最终窗口大小的值确是由第三次握手确认的。说起来有点绕，我举例说一下。</p>
+<p> 首先说一下为什么需要scale。在文章首部，TCP头字段里面，有一个窗口大小的标记位，共16位。也就是说，TCP默认支持的滑动窗口大小，最大为2的16次方，即65535字节。<br> 但是随着互联网的快速发展，网络越来越好，带宽越来越大，65535字节的窗口大小，已经不能满足客观的互联网需求，就是说窗口太小了。<br> 所以这就弄出来一个scale，用TCP头字段的<code>window size * (1&lt;&lt;scale)</code>，来标记最终窗口大小。</p>
+<p> 这里举个例子，如果客户端<code>Window size = 1000,scale = 6</code>，服务器<code>Window size = 2000,scale = 7</code>，那么最终窗口大小就是<code>1000 * (1&lt;&lt;6)</code>，即64000字节大小。</p>
+<p> 但是有时候呢，客户端和服务器的资源可能都非常好，比较内网或者本机环境，这个时候客户端<code>Window size = 65535(满了),scale = 6</code>,服务器<code>Window size = 65535(也满了),scale = 6</code>。<br> 这个时候，如果计算滑动窗口，<code>65535*(1&lt;&lt;6)=4194240字节=4M</code>。这个时候滑动窗口又太大了，所以这个时候就需要在第三次握手的时候，重新计算Window size。第三次握手的时候，TCP的头部Window size可能会变成6739，这个时候窗口大小为<code>6739*(1&lt;&lt;6)=408256字节</code>。</p>
+<p> 具体流程详见下图：</p>
+<img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061827052.png" width="80%">
+
+<img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061828259.png" width="80%">
+
+<img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061829747.png" width="80%">
+ 
+<p> 上面说到，scale在第一次和第二次握手的时候，就已经确定，并且后面不会更改。我在抓包的时候，的确没有在其他数据包里面发现scale字段。<br> TCP毕竟只是传输层协议，它不管数据是啥，只管传输。那么后续如何根据scale来计算窗口大小的呢？<br> 我猜测是把这个字段放到套接字里面了。原因有两个，一：我的确没有找到其他数据包里面有scale标记，二：scale是因为互联网快速发展起来后才加上的，这个时候TCP头字段已经确定，并且写死到计算机内核中无法修改。所以只能放在其他位置，比如套接字。</p>
+<h5 id="传输过程中的窗口大小调整"><a href="#传输过程中的窗口大小调整" class="headerlink" title="传输过程中的窗口大小调整"></a>传输过程中的窗口大小调整</h5><p>因为滑动窗口的机制，如果发送方发送的数据，接收方能够及时消化掉，那么滑动窗口就保持不变。<br>如果接收方来不及处理发送方发过来的数据，会导致接收缓冲区满，这个时候发送方继续发送数据，接收方也无法读取了。<br>所以发送方就选择暂时不发送数据。发送方如何知道接收方来不及处理这么一个状态呢？那就需要接收方通过滑动窗口告知到它了。<br>所以发送和接收方，在数据传输的过程中，会及时的将双方的窗口状态发送到对方。这里对方指的是客户端或者服务端。因为客户端和服务端都可能成为发送方或者接收方。<br><strong>在数据传输这个过程中，发送和接收方的窗口，是不一样大的</strong>。因为这是客户端和服务端两个端的状态，发送方发出的数据，如果接收方一直没有响应，那么发送方的数据只能继续呆在发送缓冲区，这个时候发送方的窗口可能还比较大，而接收方因为无法处理更多数据，可能窗口都已经关闭了。</p>
+<p>具体抓包如下：</p>
+<img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061830106.png" width="80%">
+
+<p>传输过程中，窗口变化情况很多，上面也只举例说了一部分。</p>
+<h3 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h3><p>四次挥手，抓包上看过程和三次挥手很相似。主要有下面几点需要注意：</p>
+<ol>
+<li>双方都可以发送断开连接请求。即C和S均可以主动发起第一次挥手。</li>
+<li>FIN 断开连接（销毁套接字）。第一次和第三次挥手，会发送这个FIN。</li>
+<li>ACK 断开连接回复（同意断开连接）。第二次、第三次、第四次挥手，会发送这个ACK。</li>
+<li>第三次挥手后，消息接收方会发送第四次握手，并立刻处于TIME_WAIT（等待）状态。这个状态会等待2MSL时间后，才断开连接。这里需要等待的时间足够长（2MSL），因为第四次挥手可能会丢包，所以需要重发，所以不能立刻断开。如果立刻断开，另一端收不到第四次挥手，可能认为对方还不想断开连接，那么套接字就会一直存在，消耗资源。还有，MSL是包在网络上的最长时间，超过这个时间，包就认为需要被丢弃，会回执ICMP的错误回执包。MSL的值不等，一般为30s&#x2F;60s&#x2F;120s。</li>
+<li>还有一点，上面说到一端收不到第四次挥手，可能会一直保留套接字，导致消耗资源。其实当它发出第三次挥手，并迟迟等不到第四次握手，相当于它认为它发出的第三次挥手包丢了，所以会重发第三次挥手包。这个时候，如果另一端已经过了2MSL，会自动销毁，然后重发的第三次挥手包，会没有接收方，ICMP会告知错误，这个时候它也可以判断另一端已经走了，自己可以销毁资源了。</li>
+</ol>
+<p>抓包如下：</p>
+<img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061830768.png" width="80%">
+
+<h3 id="TCP-Keep-Alive"><a href="#TCP-Keep-Alive" class="headerlink" title="TCP Keep-Alive"></a>TCP Keep-Alive</h3><p>TCP 会自行保持TCP通道的稳定性，这个和HTTP的keep-alive不一样。TCP的Keep-Alive是纯通道层的心跳，用于验证当前双方的连接（套接字）是否稳定。<br>具体发送时机和失败后的发送次数和间隔，操作系统有默认参数，也可以手动调整。默认为7200s后发送第一个检测包，之后每隔75s发送一次。如果没有收到回执包，则连续重试9次，每次重试时间翻倍。<br>具体发送信息为：[TCP Keep-Alive]和[TCP Keep-Alive ACK]<br>详见下图：</p>
+<img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061831644.png" width="80%">
+
+<h3 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h3><p>上面在介绍窗口大小的时候，已经说明过滑动窗口的抓包数据分析。<br>具体来说，在数据传输过程中，应用层可能不会立刻读取缓冲区数据，所以有一部分已经接收的数据依旧存储在缓冲区中，但他们还没有被读取，而且它们占据了一部分缓冲区大小。这个时候窗口大小就需要调整了，因为发送方如果继续按照之前的窗口约定一直发送数据，缓冲区已经不能接收更多数据了，所以这些包都会被丢弃，而发送方一直会收不到包接收成功的回执包。所以通信双方一定要实时约定窗口大小。<br>滑动窗口，<strong>主要是为了不把接收方的缓冲区塞满</strong>，这样就实现了流量控制。也同时实现了顺序整理，丢包重传策略。<br>在滑动窗口大小标记为0后，双方会间隔性发送探测包，询问当前是否已经有合适的窗口继续发送数据。如果拥堵方缓冲区数据被读取了，这个时候窗口大小充足后，会立刻发送[TCP Window Update]消息包，告知另一端，可以继续发送数据了。</p>
+<h3 id="丢包重传优化"><a href="#丢包重传优化" class="headerlink" title="丢包重传优化"></a>丢包重传优化</h3><p>在上面说[TCP Window Full]的时候，我们遇到了一个重传包的情况，即[TCP Retransmission]。当时接收方缓冲区非常紧张，导致不能及时的消化发送方的数据，所以170ms内没有给发送方发送回执包。发送方以为包丢了，所以重传了。<br>每一个包，如果在规定时间里面没有收到回执包，即认为丢包。丢包后，会根据指数级的延时进行重发。这里就会有一个问题，如果一个包在前几次都发送失败了，后面会效率很低，因为要很久才能够重发。在滑动窗口的时候，会有一个<strong>冗余回执</strong>的优化，即按照1-9这9个包排序，其中5包丢失了，后面接收方在收到7、8、9包后，会发送4包的回执，表示5包没有收到。这样发送方在收到3次5包的冗余回执后，会立刻进入<strong>快速重传</strong>，避免了超时周期过长的问题。</p>
+<hr>
+<p>太累了，累哭了，写技术文章太累了。<br>写字加画图，喝了两大杯咖啡和一罐红牛，真费钱。<br>远远没有牛逼好吹。<br>如果有人说牛逼难吹，那一定是书看少了知识不够渊博。<br>我就很佩服牛逼吹的又响又脱俗的人。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>Follow me by other channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/hai_lv_">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/gongjiang">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="mailto:one.gongjiang@gmail.com">
+            <span class="icon">
+              <i class="fa fa-envelope"></i>
+            </span>
+
+            <span class="label">Email</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag"># 网络</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/autorelease/" rel="prev" title="iOS main 文件中的@autoreleasepool的真实用途">
+                  <i class="fa fa-angle-left"></i> iOS main 文件中的@autoreleasepool的真实用途
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/Core_Foundation/" rel="next" title="从Core Foundation看更大世界">
+                  从Core Foundation看更大世界 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">Light Mode (Better for light mode to discuss, base github, cannot commen can email me)</a></li>
+            <li class="tab"><a href="#comment-utterances">Dark Mode</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
+            </div>
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+        </div>
+      </div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">one.gongjiang艾特gmail.com 所有文章均为原创。我不介意任意形式的转载，但最好不要修改内容。因转载或者修改内容导致的任何问题，我均不负责。如果你真的担心版权，可邮联。评价需要外网，这是枷锁，也是照妖镜。</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.20/fancybox/fancybox.umd.js" integrity="sha256-q8XkJ6dj5VwSvzI8+nATCHHQG+Xv/dAZBCgqmu93zOY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.8/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2020/TCPTranslation/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"e5658b0546d63a2bb633506751922305"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

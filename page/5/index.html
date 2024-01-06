@@ -166,7 +166,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2022/%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E6%89%8B%E8%89%BA/">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2022/workefficiency/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
@@ -184,7 +184,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E6%89%8B%E8%89%BA/" class="post-title-link" itemprop="url">提高效率的手艺</a>
+          <a href="/2022/workefficiency/" class="post-title-link" itemprop="url">提高效率的手艺</a>
         </h2>
 
         <div class="post-meta-container">
@@ -249,7 +249,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2022/%E9%94%81%20-%20%E5%85%B1%E4%BA%AB%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E6%8C%87%E2%86%91/">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2022/lock/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
@@ -267,7 +267,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/%E9%94%81%20-%20%E5%85%B1%E4%BA%AB%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E6%8C%87%E2%86%91/" class="post-title-link" itemprop="url">锁 - 共享数据安全指↑</a>
+          <a href="/2022/lock/" class="post-title-link" itemprop="url">锁 - 共享数据安全指↑</a>
         </h2>
 
         <div class="post-meta-container">
@@ -301,7 +301,7 @@
     
     <div class="post-body" itemprop="articleBody">
           <blockquote>
-<p>锁，是并发&amp;并行编程下的万能钥匙，也是最容易产生性能瓶颈的源头。在锁的前面有软硬件在协同铺路，在锁的后面还有数据结构和算法在帮忙黄袍加身。<br>提前说明，本篇涵盖内容非常多，达到 4W 字。可分多餐多时间段食用，每个章节可独立阅读，问题不大。一定不要一口气阅读完，选章节阅读确认对自己有用，再细看不迟。<br>内存相关的知识非常重要，需要很大篇幅和示例图来阐述。另一篇文章<a href="https://www.yigegongjiang.com/2022/%E5%86%85%E5%AD%98%E5%88%86%E6%AE%B5%E4%B8%8E%E5%88%86%E9%A1%B5/">内存分段与分页</a>对 CPU 和内存的数据读取做了详细阐述。在<a href="https://www.yigegongjiang.com/2022/%E5%86%85%E5%AD%98%E5%88%86%E6%AE%B5%E4%B8%8E%E5%88%86%E9%A1%B5/">内存分段与分页</a>中文字数超过了 1W，本文的文字数也超过了 4W，均需要多张配图。重要性和难理解程度，都很高。</p>
+<p>锁，是并发&amp;并行编程下的万能钥匙，也是最容易产生性能瓶颈的源头。在锁的前面有软硬件在协同铺路，在锁的后面还有数据结构和算法在帮忙黄袍加身。<br>提前说明，本篇涵盖内容非常多，达到 4W 字。可分多餐多时间段食用，每个章节可独立阅读，问题不大。一定不要一口气阅读完，选章节阅读确认对自己有用，再细看不迟。<br>内存相关的知识非常重要，需要很大篇幅和示例图来阐述。另一篇文章<a href="https://www.yigegongjiang.com/2022/memory/">内存分段与分页</a>对 CPU 和内存的数据读取做了详细阐述。在<a href="https://www.yigegongjiang.com/2022/memory/">内存分段与分页</a>中文字数超过了 1W，本文的文字数也超过了 4W，均需要多张配图。重要性和难理解程度，都很高。</p>
 </blockquote>
 <p>共享数据安全牵涉到的点很多，从硬件层面的多核心高速缓存、MESI 缓存一致性模型、CPU 乱序执行 &amp; 中断、总线 &amp; 缓存原子锁，到操作系统提供的锁和编译器优化&amp;重排，以及高级语言为不同业务场景不断叠加的中间层锁优化，最后还有算法如何进一步保障锁的性能。但下笔好难，文章开头也不知道写啥，毕竟大家都知道并发并行场景下共享数据会不安全，谁还能没写过多线程代码呢？用一两百字写数据不安全会造成的严重影响，就像我是傻逼一样。就在我不知道开头该写啥好糊弄过去的时候，你看，我这不是也写完了么。</p>
           <!--noindex-->
@@ -413,7 +413,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2022/%E6%88%91%E7%9A%84%202021/">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2022/my2021/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
@@ -431,7 +431,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/%E6%88%91%E7%9A%84%202021/" class="post-title-link" itemprop="url">我的 2021</a>
+          <a href="/2022/my2021/" class="post-title-link" itemprop="url">我的 2021</a>
         </h2>
 
         <div class="post-meta-container">
@@ -917,7 +917,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2020/TCP%20%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2020/TCPTranslation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
@@ -935,7 +935,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/TCP%20%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/" class="post-title-link" itemprop="url">TCP 数据传输过程分析</a>
+          <a href="/2020/TCPTranslation/" class="post-title-link" itemprop="url">TCP 数据传输过程分析</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1050,12 +1050,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
   <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/page/5/"}</script>
   <script src="/js/third-party/quicklink.js"></script>
-<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
-<script src="/js/third-party/comments/utterances.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
 <script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"82ca3c470e333e0bd93410abdccf0f6d"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
 
 </body>
 </html>
