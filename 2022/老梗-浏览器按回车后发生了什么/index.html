@@ -236,7 +236,7 @@
 <li>socket 的核心在于 socket 描述符和发送接收缓冲区。发送接收缓冲区不是 socket 特有的，是计算机基础的一部分，我们使用终端的时候，输入指令和参数的时候都在使用这套缓冲区。</li>
 <li>大名鼎鼎的<strong>三次握手</strong>就在 socket 建联的时候发生的。<strong>成也萧何败也萧何</strong>，因为 socket 是内嵌计算机的底层服务，也包括 TCP。所以即使三次握手已经拖慢了互联网这么多年，但依旧无法做升级。Quic 的出现就是忍不了 socket tcp 的<strong>队头阻塞</strong>而破釜沉舟的东西。</li>
 <li>socket tcp 的详细过程，可查阅之前文章：<a href="https://www.yigegongjiang.com/2020/TCPTranslation/">TCP 数据传输过程分析</a></li>
-<li>谈 socket 离不开端口，谈端口离不开进程。可查阅之前文章：<a href="https://www.yigegongjiang.com/2022/Shell/#%E4%B8%A4%E7%A7%8D%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F-By-fork-amp-exec">Shell 和进程-两种进程创建方式</a></li>
+<li>谈 socket 离不开端口，谈端口离不开进程。可查阅之前文章：<a href="https://www.yigegongjiang.com/2022/shell/#%E4%B8%A4%E7%A7%8D%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F-By-fork-amp-exec">Shell 和进程-两种进程创建方式</a></li>
 <li>socket 本身可查阅之前文章：<a href="https://www.yigegongjiang.com/2020/im/">IM 和 Socket 的关系及 Heart 的必要性</a></li>
 </ol>
 <span id="more"></span>
@@ -258,7 +258,7 @@
 <li>核心啊，能上网就靠它了。大图里面详细说了 NAT 的流程，包括 MAC 层 MAC 地址与 网络层 IP 地址的变化，以及 NAT 映射表和端到端隧道穿越的实现。</li>
 </ol>
 <h2 id="浏览器渲染"><a href="#浏览器渲染" class="headerlink" title="浏览器渲染"></a>浏览器渲染</h2><ol>
-<li>这里重点说了 V8 对 javascript 支持。详细可查阅之前文章：<a href="https://www.yigegongjiang.com/2022/Shell/#%E8%A7%A3%E9%87%8A%E7%BC%96%E8%AF%91%E6%B7%B7%E5%90%88%E5%9E%8B">Shell 和进程-解释编译混合型语言</a></li>
+<li>这里重点说了 V8 对 javascript 支持。详细可查阅之前文章：<a href="https://www.yigegongjiang.com/2022/shell/#%E8%A7%A3%E9%87%8A%E7%BC%96%E8%AF%91%E6%B7%B7%E5%90%88%E5%9E%8B">Shell 和进程-解释编译混合型语言</a></li>
 <li>图片渲染部分，以及如何实现渐进式图片，可查阅之前文章：<a href="https://www.yigegongjiang.com/2023/unicode/">文件存储差异 - 编码</a></li>
 </ol>
 <h2 id="CDN-加速"><a href="#CDN-加速" class="headerlink" title="CDN 加速"></a>CDN 加速</h2><ol>
