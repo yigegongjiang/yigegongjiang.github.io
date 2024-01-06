@@ -21,7 +21,7 @@ Objective-C Runtime使得函数调用变成了动态消息传递，并且可以�
 #### 动态语言分析
 
 首先理解一下各类语言的一个区分分界，那就是**动态语言**和**静态语言**的区分（非动态类型语言和静态类型语言）。
-关于*编译型语言&解释型语言*，可以查看[Shell和进程](https://www.yigegongjiang.com/2022/Shell/)。
+关于*编译型语言&解释型语言*，可以查看[Shell和进程](https://www.yigegongjiang.com/2022/shell/)。
 
 ##### 静态语言
 

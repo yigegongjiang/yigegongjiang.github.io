@@ -139,7 +139,7 @@ open class Pipe : NSObject, @unchecked Sendable {
 
 ## 0x02 Process(进程)
 
-在 [Shell 和进程](https://www.yigegongjiang.com/2022/Shell/) 章节中，详细的介绍了进程和 Shell 的关系。
+在 [Shell 和进程](https://www.yigegongjiang.com/2022/shell/) 章节中，详细的介绍了进程和 Shell 的关系。
 在可执行文件中调用终端命令，就需要创建子进程，并在子进程中运行命令，而后跨进程通信以拿到返回值。
 基本原理详见 `Shell 和进程` 一文，这里仅对 Process 模块 api 进行介绍。
 
@@ -183,7 +183,7 @@ SwiftShell 源码已经停止更新较久了，部分 api 已经不符合当前 
 
 打开终端解释器后，bash/zsh 等环境初始化成功后，当前进程会有一些已经配置好的环境变量。
 这些环境变量有些是需要传递给通过 SwiftShell 执行的子进程命令的。
-具体的操作流程并不复杂，但是对于环境变量是如何传递给子进程的，以及子进程对变量的操作是否会影响到父进程，可以查看 [Shell 和进程](https://www.yigegongjiang.com/2022/Shell/#0x03-Shell-%E5%92%8C-SubShell) 以获取更详细的说明。
+具体的操作流程并不复杂，但是对于环境变量是如何传递给子进程的，以及子进程对变量的操作是否会影响到父进程，可以查看 [Shell 和进程](https://www.yigegongjiang.com/2022/shell/#0x03-Shell-%E5%92%8C-SubShell) 以获取更详细的说明。
 
 ## Lazy 延迟计算
 

@@ -338,7 +338,7 @@ if __name__ == '__main__':
 ### POSIX 是什么
 
 POSIX 可以从 Wiki 上面查，但是大概率看了也不理解。其实它就是一套 API 统一标准，就和“书同文车同轨统一度量衡”一样，这里用 C 的运行时库里面的线程来说明：
-C 语言有标准库和运行时库，具体可以看一下之前的文章：[从 Core Foundation 看更大世界 -> C 运行时和 C 标准库的关系](https://www.yigegongjiang.com/2020/Core%20Foundation/#C运行时和C标准库的关系)。
+C 语言有标准库和运行时库，具体可以看一下之前的文章：[从 Core Foundation 看更大世界 -> C 运行时和 C 标准库的关系](https://www.yigegongjiang.com/2020/Core_Foundation/#C运行时和C标准库的关系)。
 如果要通过 C 语言来实现多线程操作，就需要使用线程 api。毕竟如果 C 语言本身没有实现，那么我们还要处理各种锁机制和内核线程之间的关系，几乎不可能。关于锁有多么的麻烦，可以看之前文章：[锁 - 共享数据安全指↑](https://www.yigegongjiang.com/2022/lock/)
 恰巧，C 标准库就是没有制定多线程技术的实现(最近才制定)，所以 Windows 平台的 MCRT 运行时库和 Linux 平台的 glibc 运行时库，都没有一个 C 语言标准的多线程实现。
 事实上 MCRT 和 glibc 本身都实现了多线程 api，因为没有 C 标准库制定标准，如果 MCRT 和 glibc 各自为政，两边的 thread api 就会有命名和功能上的差异，开发人员就不能夸平台执行了。
@@ -350,7 +350,7 @@ C 语言有标准库和运行时库，具体可以看一下之前的文章：[�
 ### 终端走系统代理
 
 终端要走系统代理，就需要在 zshrc 等配置文件中配置 http_proxy、https_proxy、all_proxy 这些。如果一次窗口周期使用，还可以用 export 来做。
-为什么 export 可以使得本次窗口周期内等所有子进程都走代理，可以看之前的文章：[Shell 和进程](https://www.yigegongjiang.com/2022/Shell/)
+为什么 export 可以使得本次窗口周期内等所有子进程都走代理，可以看之前的文章：[Shell 和进程](https://www.yigegongjiang.com/2022/shell/)
 而 http_proxy 这些配置可以使得终端网络走系统代理，是因为 POSIX 标准下的网络实现，认 http_proxy 这个流量转发配置。
 然而这个配置的认证，也是可以由开发人员自定义的，所以安全起见，还是做如下配置，把一些可能的情况都配全。
 ```
