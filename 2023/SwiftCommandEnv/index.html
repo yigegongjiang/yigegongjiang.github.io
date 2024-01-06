@@ -20,12 +20,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.18.1","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="不推荐使用 Swift 写脚本，和 Python 比起来，该生态链相对匮乏，开发耗时会增加很多。但对于偏 Swift 的同学来说，这也的确是更可控和方便维护的方式之一。尤其对于公司内部工具，有问题可以更快的找到原因并处理，不至于手忙脚乱。 相对于 Python 环境丰富的基建资源，使用 Swift 做脚本开发的优点在于生态的一致性。苹果官方抹平了 脚本开发 和 应用开发 的界限，即 开发环境、三方">
+    <meta name="description" content="2024.01.06 更：欢迎查阅 Swift 开发的文本纠错命令行工具。  不推荐使用 Swift 写脚本，和 Python 比起来，该生态链相对匮乏，开发耗时会增加很多。但对于偏 Swift 的同学来说，这也的确是更可控和方便维护的方式之一。尤其对于公司内部工具，有问题可以更快的找到原因并处理，不至于手忙脚乱。 相对于 Python 环境丰富的基建资源，使用 Swift 做脚本开发的优点在于">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift 脚本开发环境搭建">
 <meta property="og:url" content="https://www.yigegongjiang.com/2023/SwiftCommandEnv/index.html">
 <meta property="og:site_name" content="一个工匠">
-<meta property="og:description" content="不推荐使用 Swift 写脚本，和 Python 比起来，该生态链相对匮乏，开发耗时会增加很多。但对于偏 Swift 的同学来说，这也的确是更可控和方便维护的方式之一。尤其对于公司内部工具，有问题可以更快的找到原因并处理，不至于手忙脚乱。 相对于 Python 环境丰富的基建资源，使用 Swift 做脚本开发的优点在于生态的一致性。苹果官方抹平了 脚本开发 和 应用开发 的界限，即 开发环境、三方">
+<meta property="og:description" content="2024.01.06 更：欢迎查阅 Swift 开发的文本纠错命令行工具。  不推荐使用 Swift 写脚本，和 Python 比起来，该生态链相对匮乏，开发耗时会增加很多。但对于偏 Swift 的同学来说，这也的确是更可控和方便维护的方式之一。尤其对于公司内部工具，有问题可以更快的找到原因并处理，不至于手忙脚乱。 相对于 Python 环境丰富的基建资源，使用 Swift 做脚本开发的优点在于">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202312131859591.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202312131859592.png">
@@ -225,7 +225,10 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>不推荐使用 Swift 写脚本，和 Python 比起来，该生态链相对匮乏，开发耗时会增加很多。<br>但对于偏 Swift 的同学来说，这也的确是更可控和方便维护的方式之一。尤其对于公司内部工具，有问题可以更快的找到原因并处理，不至于手忙脚乱。</p>
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>2024.01.06 更：欢迎查阅 Swift 开发的<a href="https://www.yigegongjiang.com/2024/SwiftZhTextCorrect/">文本纠错命令行工具</a>。</p>
+</blockquote>
+<p>不推荐使用 Swift 写脚本，和 Python 比起来，该生态链相对匮乏，开发耗时会增加很多。<br>但对于偏 Swift 的同学来说，这也的确是更可控和方便维护的方式之一。尤其对于公司内部工具，有问题可以更快的找到原因并处理，不至于手忙脚乱。</p>
 <p>相对于 Python 环境丰富的基建资源，使用 Swift 做脚本开发的优点在于<strong>生态的一致性</strong>。<br>苹果官方抹平了 脚本开发 和 应用开发 的界限，即 开发环境、三方库导入和使用(苹果自身的开源库&#x2F;三方库)、系统平台 api(存储、网络、协程、并发等，UI api 除外)等，均表现一致。<br>可以像应用开发的流程一样，进行脚本命令行的开发。</p>
 <span id="more"></span>
 
@@ -450,12 +453,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
   <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2023/SwiftCommandEnv/"}</script>
   <script src="/js/third-party/quicklink.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
 <script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"0e890d650bc84c0d13e8cccd6ae758ed"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
-<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
-<script src="/js/third-party/comments/utterances.js"></script>
 
 </body>
 </html>
