@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.0.0-rc2">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.20/fancybox/fancybox.css" integrity="sha256-RvRHGSuWAxZpXKV9lLDt2e+rZ+btzn48Wp4ueS3NZKs=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.18.1","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="字节与比特比特是计算机存储的最小存储单元。我们认知到的数字3，在计算机的存储里（硬盘或者内存）的结构是这样的：00000011，也就是我们理解的二进制。所以这个数字3是由8位组成的。每位有0和1两种变化。比特存储，是计算机的基石。我们在互联网上通行的一切，如图片、音视频、文字，甚至各位的博客、App、电子书等等，能想到的能通过互联网传输的一切，都是比特存储。举个例子，我们看的一张图片，在磁盘上的存">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为什么32位操作系统只能用4G内存空间">
+<meta property="og:url" content="https://www.yigegongjiang.com/2019/4gMemory/index.html">
+<meta property="og:site_name" content="一个工匠">
+<meta property="og:description" content="字节与比特比特是计算机存储的最小存储单元。我们认知到的数字3，在计算机的存储里（硬盘或者内存）的结构是这样的：00000011，也就是我们理解的二进制。所以这个数字3是由8位组成的。每位有0和1两种变化。比特存储，是计算机的基石。我们在互联网上通行的一切，如图片、音视频、文字，甚至各位的博客、App、电子书等等，能想到的能通过互联网传输的一切，都是比特存储。举个例子，我们看的一张图片，在磁盘上的存">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-02-26T11:04:53.000Z">
+<meta property="article:author" content="海驴">
+<meta property="article:tag" content="计算机原理">
+<meta property="article:tag" content="内存">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.yigegongjiang.com/2019/4gMemory/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2019/4gMemory/","path":"2019/4gMemory/","title":"为什么32位操作系统只能用4G内存空间"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>为什么32位操作系统只能用4G内存空间 | 一个工匠</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="一个工匠" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="一个工匠" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">一个工匠</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">83</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user fa-fw"></i>About</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section"><i class="rss fa-fw"></i>Rss</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E8%8A%82%E4%B8%8E%E6%AF%94%E7%89%B9"><span class="nav-number">1.</span> <span class="nav-text">字节与比特</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E6%9D%A1"><span class="nav-number">2.</span> <span class="nav-text">内存条</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CPU"><span class="nav-number">3.</span> <span class="nav-text">CPU</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E6%9D%BF-%E5%9C%B0%E5%9D%80%E6%80%BB%E7%BA%BF"><span class="nav-number">4.</span> <span class="nav-text">主板-地址总线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%80%BB%E7%BA%BF%E5%92%8C%E5%9C%B0%E5%9D%80%E6%80%BB%E7%BA%BF%E7%9A%84%E5%85%B3%E8%81%94"><span class="nav-number">5.</span> <span class="nav-text">数据总线和地址总线的关联</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%8832%E4%BD%8D%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8F%AA%E8%83%BD%E7%94%A84G%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4"><span class="nav-number">6.</span> <span class="nav-text">为什么32位操作系统只能用4G内存空间</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="海驴"
+      src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
+  <p class="site-author-name" itemprop="name">海驴</p>
+  <div class="site-description" itemprop="description">时间，真的不多了。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">83</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2019/4gMemory/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
+      <meta itemprop="name" content="海驴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个工匠">
+      <meta itemprop="description" content="时间，真的不多了。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="为什么32位操作系统只能用4G内存空间 | 一个工匠">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          为什么32位操作系统只能用4G内存空间
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-02-26 19:04:53" itemprop="dateCreated datePublished" datetime="2019-02-26T19:04:53+08:00">2019-02-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="字节与比特"><a href="#字节与比特" class="headerlink" title="字节与比特"></a>字节与比特</h3><p><code>比特是计算机存储的最小存储单元</code>。我们认知到的数字<code>3</code>，在计算机的存储里（硬盘或者内存）的结构是这样的：<code>00000011</code>，也就是我们理解的二进制。<br>所以这个数字<code>3</code>是由8位组成的。每位有<code>0</code>和<code>1</code>两种变化。<br>比特存储，是计算机的基石。我们在互联网上通行的一切，如图片、音视频、文字，甚至各位的博客、App、电子书等等，能想到的能通过互联网传输的一切，都是比特存储。<br>举个例子，我们看的一张图片，在磁盘上的存储，或许就是这样子：<code>0101011101010101010111101011110101010101100***(省略100000000个)***1010100111010101</code>。</p>
+<p>1字节(byte)&#x3D;8比特(bit)<br>我们刚才说到的数字<code>3</code>，就是一个字节，在磁盘上就是<code>00000011</code>。（为了便于理解，实际可能是<code>00000000 00000011</code>，或者<code>00000000 00000000 00000000 00000011</code>）。</p>
+<p>1KB &#x3D; 1024B（2的10次方）<br>1MB &#x3D; 1024KB（2的10次方）<br>1GB &#x3D; 1024MB（2的10次方）<br>这些大小的计算都是定死的规则。规则很重要，有了规则才能合作。</p>
+<span id="more"></span>
+
+<h3 id="内存条"><a href="#内存条" class="headerlink" title="内存条"></a>内存条</h3><p>实实在在的东西，有4GB、8GB、16GB等大小，长条形的带黑边的玩意，实体店网店都能买到，笔记本的小一些，台式机的大一些，有各种型号。手机都是用的贴片系统 SOC，内存条都集成到了主板上。<br>如果电脑开机的时候出现<code>滴滴滴</code>的声音，就把内存条拔出来檫檫，有很大概率能好，这是台式机时候的老梗。<br><strong>内存条根本性决定了我们可用的最大内存。</strong>如果内存只有一个G，不管CPU和操作系统怎么高配，也只有一个G的内存能用。</p>
+<p>内存条是硬件存储设备。很容易能支持8GB的数据存储。8GB &#x3D; 8G * 1024M * 1024K * 1024Byte，也就是<code>8589934592</code>Byte(字节)，<code>8589934592 * 8</code>即<code>68719476736</code>Bit（比特）。</p>
+<h3 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h3><p><strong>CPU一定程度上影响了最大内存。</strong><br>我们经常说的32位操作系统或者64位操作系统，其实说的就是CPU里面核心的寄存器是 32 位还是 64 位！<br>寄存器是由多个<strong>集成电路元件IC</strong>组合成的。CPU上有数据总线的针脚，可以和内存条一一对应，这里就有数据总线、地址总线、控制总线三大总线了。<br>如果CPU的数据总线有32个针脚，并且和内存条上面的32个数据总线针脚一一对应连接，那么就可以一次进行32比特的数据传输，也就是一次4个字节。<br>数据在CPU和内存双向流动的帮手就是寄存器。所以寄存器也要有一次处理32比特数据的能力，所以这个时候寄存器也是32位的。<br>CPU中的寄存器决定我们的操作系统是<code>32位</code>还是<code>64位</code>（甚至8位，16位等）。这里的<code>32位</code>和<code>64位</code>，指的是寄存器的位数，而非内存地址的长度。寄存器位数越大，那么一次处理数据的能力越强。比如32位寄存器一次可以处理4字节数据，64位寄存器一次可以处理8字节数据。</p>
+<h3 id="主板-地址总线"><a href="#主板-地址总线" class="headerlink" title="主板-地址总线"></a>主板-地址总线</h3><p>上面我们说的CPU一定程度上影响最大内存，但不是根本原因。<br><strong>地址总线</strong>影响的是内存空间寻址范围。<strong>地址总线硬件决定了我们可用的最大内存。</strong><br>在CPU和内存条上，有两个重要的线，一个是数据总线，一个是地址总线。因为CPU和内存条本质也不是互通的，他们都需要插在主板上面，所以主板是他们沟通的桥梁。</p>
+<p>上面我们说到8G的内存条，有68719476736比特的数据，逆过来分析一下：<br>这么大的比特数据，在内存条是按照8Bit一组排列的。<br>每8Bit形成一个小房间。所以8GB的内存条里面，有<code>68719476736 / 8</code>个房间。<br>计算机操作系统可以通过<code>定向寻址</code>的方案，直接找到每个房间。形象来说，就是每个房间都有一个<code>内存地址</code>,系统通过<code>内存地址</code>就可以瞬间找到那个房间，房间里面有8个小人(8Bit)。</p>
+<p><code>内存地址</code>是关键，就由地址总线来指向和控制。如果地址总线有32条，那么<code>内存地址</code>最小为：<code>00000000 00000000 00000000 00000000</code>，最大为：<code>11111111 11111111 11111111 11111111</code>。64条就<code>00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000</code>和<code>11111111 11111111 11111111 11111111 11111111 11111111 11111111 11111111</code>。<br>对于32条地址总线来说，这最小和最大之间，有多少个呢？因为每个Bit有<code>0</code>和<code>1</code>两个选择，所以总共有2的32次方个。每一个都一一对应内存条里面的一个房间，所以最多可以对应<code>2*2*2*2(32个2相乘)=4294967296</code>个房间。<br>每个房间是8Bit即1Byte(字节)，也就是总房间大小为:<code>4294967296Byte</code>，也就是<code>4294967296Byte/1024K/1024M/1024G = 4GB</code>。<br><strong>对于32条地址总线，最大的内存地址也就是：<code>11111111 11111111 11111111 11111111</code>。也就是最多只能找到<code>2*2*2*2(32个2相乘)=4294967296</code>个房间。也就是最大内存查找范围只有<code>4294967296Byte/1024K/1024M/1024G = 4GB</code>。</strong></p>
+<h3 id="数据总线和地址总线的关联"><a href="#数据总线和地址总线的关联" class="headerlink" title="数据总线和地址总线的关联"></a>数据总线和地址总线的关联</h3><p>上面说了数据总线和地址总线，我们知道了数据总线用来传输数据，地址总线用来定位地址。<br>数据总线和地址总线的数量是不固定的，比如window操作系统，32位，那么数据总线是32条，而地址总线可能是32条，也可能是36条。<br>如果地址总线是32条，那么最大内存就是4G，如果有36条，那么最大内存就是64G了。</p>
+<p>如果32位数据总线，配36位地址总线，那么一次只能传输32位数据，数据对应的地址却是36位，寄存器这样看存不下来嘛，因为寄存器少了4位。这个时候可以通过位移动，将两个 32 位的地址变成 36 位。<br>如果64位数据总线，配36位地址总线，那么一次能传输64位数据，而数据对应的地址却只有36位。这样只要把高位补0就可以了，这也是为什么64位操作系统能够兼容32位软件的原因。虽然浪费了空间，但是能兼容。<br>64位数据总线配64位地址总线？2的64次数，实在太大了，就是ipv6的数量。所以根本配不了64条地址总线，就是配了，也没有这么大的内存可以叠加啊。所以一般都配40-50条地址总线就差不多了。</p>
+<h3 id="为什么32位操作系统只能用4G内存空间"><a href="#为什么32位操作系统只能用4G内存空间" class="headerlink" title="为什么32位操作系统只能用4G内存空间"></a>为什么32位操作系统只能用4G内存空间</h3><p>当年win7系统，明明买了8G的内存条，到<code>我到电脑</code>里面一看，只有4G不到。其余到4G不见了。<br>其实不是不见了，它还在那里，只是地址总线只有32条，导致读取不了更多到内存空间了。</p>
+<hr>
+<p>C绝对是计算机语言的开荒基石。<br>熟练C的程序员，大脑里就有一片星辰大海。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>Follow me by other channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/hai_lv_">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/gongjiang">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="mailto:one.gongjiang@gmail.com">
+            <span class="icon">
+              <i class="fa fa-envelope"></i>
+            </span>
+
+            <span class="label">Email</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/" rel="tag"># 计算机原理</a>
+              <a href="/tags/%E5%86%85%E5%AD%98/" rel="tag"># 内存</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/workhard/" rel="prev" title="努力和天赋">
+                  <i class="fa fa-angle-left"></i> 努力和天赋
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E5%8D%8F%E8%AE%AE/" rel="next" title="网络基础协议">
+                  网络基础协议 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">Light Mode (Better for light mode to discuss, base github, cannot commen can email me)</a></li>
+            <li class="tab"><a href="#comment-utterances">Dark Mode</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
+            </div>
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+        </div>
+      </div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">one.gongjiang艾特gmail.com 所有文章均为原创。我不介意任意形式的转载，但最好不要修改内容。因转载或者修改内容导致的任何问题，我均不负责。如果你真的担心版权，可邮联。评价需要外网，这是枷锁，也是照妖镜。</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.20/fancybox/fancybox.umd.js" integrity="sha256-q8XkJ6dj5VwSvzI8+nATCHHQG+Xv/dAZBCgqmu93zOY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.8/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2019/4gMemory/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"610abd78783e5881d3cd9c963c20fa13"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
