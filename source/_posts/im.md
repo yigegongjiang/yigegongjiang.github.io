@@ -6,7 +6,6 @@ categories:
 tags:
 - 网络
 - 计算机原理
-keywords: Socket,IM,,Heart,TCP,UDP,心跳,心跳包,间隔
 ---
 
 <img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202305300019200.jpg" width="30%">

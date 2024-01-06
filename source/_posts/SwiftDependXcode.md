@@ -5,7 +5,6 @@ categories:
 - 技术
 tags:
 - Swift
-keywords:
 ---
 
 在 OC 时代，通过 .h 头文件以及 include 标记，还有那长长的 api 名称，可以很方便的意会和找到某个类。使用 Xcode 十年，在 Vim 的加持下，基本没用过啥快捷键。

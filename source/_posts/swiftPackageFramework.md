@@ -5,7 +5,6 @@ categories:
 - 技术
 tags:
 - Swift
-keywords:
 ---
 
 Swift Package Manager(SPM) 已经被苹果放置于一个很重要的位置，在[历史文章](https://www.yigegongjiang.com/2023/SwiftCommandEnv/#Package)中对其做了一定的分析，Package 目前的定位和 Xcode Project `.xcodeproj` 同级别。SPM 不仅仅用于替代 Cocoapods，而是 Apple 后期语言研发生态的一部分。

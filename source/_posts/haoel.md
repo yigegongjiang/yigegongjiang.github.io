@@ -5,7 +5,6 @@ categories:
 - 琐事
 tags:
 - Life
-keywords:
 ---
 
 左耳朵耗子，原名陈浩，很多人称呼耗子哥。

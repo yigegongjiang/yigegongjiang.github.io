@@ -6,7 +6,6 @@ categories:
 tags:
 - Work
 - Life
-keywords: Browser,世界之窗,Arc,Chrome,Safari,内核,webkit/blink,浏览器内核,网页打开速度,内存占用,用户体感,使用体验,体验分享,操作简洁,功能实用,速度快,内存消耗,网页分组,多tab和多window,网页全屏,快捷键操作,侧边栏,Pin标记,网页全屏,快速关闭网页,AI场景应用,网页内容摘要,下载文件重命名,Ctrl+f文本高亮,导入历史记录,收藏,密码,网页搜索功能,内存占用,导航标签,滚动切换Space
 ---
 
 > 最喜爱 `世界之窗`，那个快如闪电的 Browser。

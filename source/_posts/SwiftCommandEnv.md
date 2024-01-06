@@ -6,7 +6,6 @@ categories:
 tags:
 - Swift
 - Swift三方源码系列
-keywords: Swift,Package,Package.swift,SPM,Swift Package Manager,命令行开发,脚本开发,ArgumentParser,进度条输出,异步等待,系统命令,Process,Swift命令行开发,Swift生态,Package管理,ArgumentParser,Xcode调试技巧,进度条输出,异步处理,系统命令操作,Swift脚本
 ---
 
 > 2024.01.06 更：欢迎查阅 Swift 开发的[文本纠错命令行工具](https://www.yigegongjiang.com/2024/SwiftZhTextCorrect/)。

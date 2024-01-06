@@ -9,7 +9,6 @@ tags:
 - 内存
 - iOS
 - C
-keywords: 
 ---
 
 <img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202305300022398.png" width="30%">
@@ -199,7 +198,7 @@ Objective-C的标准库和C就不一样了。C的标准库上面说到，是C运
 
 <img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061801048.png" width="50%">
 
-我在之前文章中，也有一个Objective-C和运行时库的说明：[Objective-C 和 Runtime](https://www.yigegongjiang.com/2020/Objective-C%20和%20Runtime/)。
+我在之前文章中，也有一个Objective-C和运行时库的说明：[Objective-C 和 Runtime](https://www.yigegongjiang.com/2020/runtime/)。
 
 #### Go该如何被iOS系统执行
 

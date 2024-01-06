@@ -5,7 +5,6 @@ categories:
 - 技术
 tags:
 - 计算机原理
-keywords: Array,Linked,Linked List,数组,链表,C,Swift,iOS,计算机,计算机原理
 ---
 
 <img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061752405.jpg" width="30%">

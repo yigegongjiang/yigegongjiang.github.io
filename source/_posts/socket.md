@@ -5,7 +5,6 @@ categories:
 - 技术
 tags:
 - 网络
-keywords: socket,icmp,ping,udp socket,udp connect,ICMP NAT,NAT
 ---
 
 关于网络相关的历史文章中，很多次提到 Socket 套接字的重要性。最近看到 ICMP 的一些知识，发现和 Socket 有非常强的依赖。于是对 Socket 和周边，再做一次逻辑的梳理。

@@ -5,7 +5,6 @@ categories:
 - 观点
 tags:
 - Life
-keywords: 努力,天赋
 ---
 
 <img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202305300016670.jpg" width="30%">

@@ -6,7 +6,6 @@ categories:
 tags:
 - Life
 - Work
-keywords:
 ---
 
 RSS 现在都已经快被人遗忘了，当 2013 年 Google 关闭 reader 聚合浏览器的时候逐渐淡出互联网舞台。

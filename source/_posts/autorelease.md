@@ -5,7 +5,6 @@ categories:
 - 技术
 tags:
 - iOS
-keywords: iOS,main文件,@autoreleasepool
 ---
 
 这个问题，在很多年前其实是经历过血腥风雨的。

@@ -5,7 +5,6 @@ categories:
 - 技术
 tags:
 - 计算机原理
-keywords: CPU,晶圆,光刻,内存,晶体管
 ---
 
 <img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202305300013497.jpg" width="30%">

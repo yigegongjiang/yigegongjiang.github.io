@@ -5,7 +5,6 @@ categories:
 - 技术
 tags:
 - iOS
-keywords: RAC,ReactiveCocoa,RAC分类,RAC API
 ---
 
 ###### From Internet.方便自己查阅使用，侵权删。

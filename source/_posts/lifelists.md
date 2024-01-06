@@ -5,10 +5,9 @@ categories:
 - 工具
 tags:
 - Life
-keywords:
 ---
 
-之前写有[提高效率的手艺](https://www.yigegongjiang.com/2022/提高效率的手艺/)和[这些年我的软件清单](https://www.yigegongjiang.com/2022/这些年我的软件清单/)两个推荐，一个用来提高文字编辑的效率，一个推荐了手机和电脑可以安装的一些高效率的软件。
+之前写有[提高效率的手艺](https://www.yigegongjiang.com/2022/workefficiency/)和[这些年我的软件清单](https://www.yigegongjiang.com/2022/applists/)两个推荐，一个用来提高文字编辑的效率，一个推荐了手机和电脑可以安装的一些高效率的软件。
 这次推荐一些日常生活的避坑指北。生活还有几十年，掉坑在所难免，所以这篇推荐清单打算做长期更新。
 
 ## 指北概要

@@ -5,7 +5,6 @@ categories:
 - 琐事
 tags:
 - Life
-keywords: 白夜行
 ---
 
 雪穗和亮司大约10岁在图书馆相识

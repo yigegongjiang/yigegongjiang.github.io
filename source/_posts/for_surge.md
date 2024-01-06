@@ -45,12 +45,12 @@ iOS 和 Mac 可以互联，通过 Mac 连上 iOS 后，可以快速设置&查看
 
 ## Socket
 
-在之前的[IM 和 Socket 的关系及 Heart 的必要性](https://www.yigegongjiang.com/2020/IM%E5%92%8CSocket%E7%9A%84%E5%85%B3%E7%B3%BB%E5%8F%8AHeart%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7/)文章中，对 Socket 套接字和 Socket库 有说明。
+在之前的[IM 和 Socket 的关系及 Heart 的必要性](https://www.yigegongjiang.com/2020/im/)文章中，对 Socket 套接字和 Socket库 有说明。
 一定要理解 **gethostbyname()**、**socket()**、**bind()**、**connect()**、**listen()**、**accept()**、**send()/recv()和write()/read()** 这些 socket api，否则无法理解 tcp/udp 的数据包传输，也无法理解下面要说的网络代理。
 
 ## Wireshark
 
-在之前的[TCP 数据传输过程分析](https://www.yigegongjiang.com/2020/TCP%20%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/)文章中，有对 Wireshark 如何抓包和数据分析进行过阐述。Wireshark 是网络流量分析的神器，在理解 surge 的过程中，我对 tls、sni、dns、vif、lookback 等场景都进行了抓包分析和验证，非常有帮助。
+在之前的[TCP 数据传输过程分析](https://www.yigegongjiang.com/2020/TCPTranslation/)文章中，有对 Wireshark 如何抓包和数据分析进行过阐述。Wireshark 是网络流量分析的神器，在理解 surge 的过程中，我对 tls、sni、dns、vif、lookback 等场景都进行了抓包分析和验证，非常有帮助。
 如果不能对虚拟网卡和物理网卡的数据包进行详细的参数级观测，理解网络代理会有不小的 gap。
 
 # 网络代理-系统代理
@@ -338,8 +338,8 @@ if __name__ == '__main__':
 ### POSIX 是什么
 
 POSIX 可以从 Wiki 上面查，但是大概率看了也不理解。其实它就是一套 API 统一标准，就和“书同文车同轨统一度量衡”一样，这里用 C 的运行时库里面的线程来说明：
-C 语言有标准库和运行时库，具体可以看一下之前的文章：[从 Core Foundation 看更大世界 -> C 运行时和 C 标准库的关系](https://www.yigegongjiang.com/2020/从Core%20Foundation看更大世界/#C运行时和C标准库的关系)。
-如果要通过 C 语言来实现多线程操作，就需要使用线程 api。毕竟如果 C 语言本身没有实现，那么我们还要处理各种锁机制和内核线程之间的关系，几乎不可能。关于锁有多么的麻烦，可以看之前文章：[锁 - 共享数据安全指↑](https://www.yigegongjiang.com/2022/锁%20-%20共享数据安全指↑/)
+C 语言有标准库和运行时库，具体可以看一下之前的文章：[从 Core Foundation 看更大世界 -> C 运行时和 C 标准库的关系](https://www.yigegongjiang.com/2020/Core%20Foundation/#C运行时和C标准库的关系)。
+如果要通过 C 语言来实现多线程操作，就需要使用线程 api。毕竟如果 C 语言本身没有实现，那么我们还要处理各种锁机制和内核线程之间的关系，几乎不可能。关于锁有多么的麻烦，可以看之前文章：[锁 - 共享数据安全指↑](https://www.yigegongjiang.com/2022/lock/)
 恰巧，C 标准库就是没有制定多线程技术的实现(最近才制定)，所以 Windows 平台的 MCRT 运行时库和 Linux 平台的 glibc 运行时库，都没有一个 C 语言标准的多线程实现。
 事实上 MCRT 和 glibc 本身都实现了多线程 api，因为没有 C 标准库制定标准，如果 MCRT 和 glibc 各自为政，两边的 thread api 就会有命名和功能上的差异，开发人员就不能夸平台执行了。
 这时候就有了 [POSIX 线程](https://zh.wikipedia.org/wiki/POSIX%E7%BA%BF%E7%A8%8B) 标准，现在 MCRT 和 glibc 都依据 POSIX 线程标准来实现功能和开放 api，两端就统一了。
@@ -350,7 +350,7 @@ C 语言有标准库和运行时库，具体可以看一下之前的文章：[�
 ### 终端走系统代理
 
 终端要走系统代理，就需要在 zshrc 等配置文件中配置 http_proxy、https_proxy、all_proxy 这些。如果一次窗口周期使用，还可以用 export 来做。
-为什么 export 可以使得本次窗口周期内等所有子进程都走代理，可以看之前的文章：[Shell 和进程](https://www.yigegongjiang.com/2022/Shell和进程/)
+为什么 export 可以使得本次窗口周期内等所有子进程都走代理，可以看之前的文章：[Shell 和进程](https://www.yigegongjiang.com/2022/Shell/)
 而 http_proxy 这些配置可以使得终端网络走系统代理，是因为 POSIX 标准下的网络实现，认 http_proxy 这个流量转发配置。
 然而这个配置的认证，也是可以由开发人员自定义的，所以安全起见，还是做如下配置，把一些可能的情况都配全。
 ```
@@ -379,7 +379,7 @@ Surge 有一个选项，叫增强模式，开启增强模式后，就会通过�
 这样就完成了**域名捕获**的工作。
 
 但是域名捕获又会带来另一个问题，就是**分片的数据包必须要做重组**。
-对于数据包分片，在 [TCP 数据传输过程分析](https://www.yigegongjiang.com/2020/TCP%20数据传输过程分析/) 里面有说明，可以查阅下。
+对于数据包分片，在 [TCP 数据传输过程分析](https://www.yigegongjiang.com/2020/TCPTranslation/) 里面有说明，可以查阅下。
 概要来说，IP 网络层的数据包，有 icmp/ping 这些不过传输层的数据，也有 tcp/udp 这些传输层过来的数据。tcp 会尽量阻止数据包分片的发生甚至可以强制不分片，而 udp 就完全不会管这个了。
 综上，因为 dns 解析过程中分片的数据包标识非目标主机，这里又对数据包强制接管及转发，那么一定要做分片重组，否则目标主机无法完成重组操作。
 当然重组逻辑本身可控，主要通过 IP 数据包里面的 16 位包标识 ID 进行重组。

@@ -6,11 +6,10 @@ categories:
 tags:
 - Life
 - Work
-keywords: brew,zsh,vim,tree,ranger,surge,bob,mweb,keynot,telegram,twitter,youtube
 ---
 
 这里是工作中的软件清单，可以使得工作愉悦和提效。
-还有一份生活清单可以点[这里](https://www.yigegongjiang.com/2022/%E7%94%9F%E6%B4%BB%E6%8E%A8%E8%8D%90%E6%B8%85%E5%8D%95/)
+还有一份生活清单可以点[这里](https://www.yigegongjiang.com/2022/lifelists/)
 
 ### 终端命令工具
 
@@ -48,7 +47,7 @@ keywords: brew,zsh,vim,tree,ranger,surge,bob,mweb,keynot,telegram,twitter,youtub
 * markdown 排版非常棒且方便
 * 路过图床
 * PicGo + Github 图床（我用这个代替了路过图床）
-* MWeb （Ulysses 写作最好用，但价格较贵）/ 2022.10.08 更：现在用 Xcode & Vim，非常棒，详见[提高效率的手艺](https://www.yigegongjiang.com/2022/提高效率的手艺/)
+* MWeb （Ulysses 写作最好用，但价格较贵）/ 2022.10.08 更：现在用 Xcode & Vim，非常棒，详见[提高效率的手艺](https://www.yigegongjiang.com/2022/workefficiency/)
 * Hexo + Github + 评论Issus
 * Kiddle
 * Pocket
@@ -66,7 +65,7 @@ keywords: brew,zsh,vim,tree,ranger,surge,bob,mweb,keynot,telegram,twitter,youtub
 * Apple 提醒 Reminders（久经考验，完全图一个完善的苹果生态。即使 Things 也非常好用，但还是放弃了）
 * Apple 备忘录 Notes（简单记笔记还是非常好用的。）
 * Notion（复杂些的笔记，就需要 notion 了。有了数据库能力后，就完全和语雀等平台拉开了差距。）
-* 双拼 极力推荐，[详情](https://www.yigegongjiang.com/2022/提高效率的手艺/#双拼)
+* 双拼 极力推荐，[详情](https://www.yigegongjiang.com/2022/workefficiency/#双拼)
 * Safari + Chrome
 * 快捷指令 shortcuts (快速开关多个闹钟，启动后一键打开 N 个软件，和部分软件可以快速协同工作)
 * SwitchKey 根据使用的软件自动切换输入法

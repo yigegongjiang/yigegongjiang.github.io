@@ -5,10 +5,9 @@ categories:
 - 工具
 tags:
 - Work
-keywords:
 ---
 
-一年前写了一篇[提高效率的手艺](https://www.yigegongjiang.com/2022/%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E6%89%8B%E8%89%BA/)，提到了 Vim 作为划时代的文本编辑工具，可以有效的提高文本编辑的效率，对于写作或者 coding 都非常有用。
+一年前写了一篇[提高效率的手艺](https://www.yigegongjiang.com/2022/workefficiency/)，提到了 Vim 作为划时代的文本编辑工具，可以有效的提高文本编辑的效率，对于写作或者 coding 都非常有用。
 今天整理一个稍微进阶的教程。vimer 十几年的 95% 的操作使用，应该都在这里。
 
 > Vim 作者，Bram 于 2023.08.05 日去世了，享年 62 岁。像我这种只要碰键盘就离不开 vim 的人，对 vim 的感激，是十分强烈的。悼念 Bram。

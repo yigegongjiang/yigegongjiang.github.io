@@ -6,7 +6,6 @@ categories:
 tags:
 - Life
 - Work
-keywords: rime,squirrel,双拼,小鹤双拼,配制
 ---
 
 > 2023.12.14 更：mac 14.2 版本，已经完全解决了中文输入法的问题。

@@ -6,7 +6,6 @@ categories:
 tags:
 - Swift
 - Swift三方源码系列
-keywords:
 ---
 
 > 不推荐使用 Swift 写脚本，和 Python 比起来，该生态链相对匮乏，开发耗时会增加很多。
@@ -33,7 +32,7 @@ Swift 中 Filehandle 属于 FileManager 这一类文件操作 api 的一部分�
 这三个标准流，一般不需要设置，操作系统或者运行时环境会在启动应用程序的时候，默认进行设置。
 其中，stdin 默认是键盘输入，stdout 默认是屏幕，stderr 默认也是屏幕。所以，使用 print 进行打印的时候会在电脑屏幕上进行展示，也可以在终端里面输入一些字符以和程序进行互动响应。
 对于命令行可执行文件，当然依旧遵从该法则。
-但是对于手机或者电脑里面的应用程序，默认就会关闭 stdout 和 stderr 了，因为这个时候已经离开调试环境，print 输出是没有必要的，更需要的是[日志](https://www.yigegongjiang.com/2023/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F%E6%80%8E%E4%B9%88%E6%90%AD%E5%BB%BA/)，而这需要磁盘存储。
+但是对于手机或者电脑里面的应用程序，默认就会关闭 stdout 和 stderr 了，因为这个时候已经离开调试环境，print 输出是没有必要的，更需要的是[日志](https://www.yigegongjiang.com/2023/track/)，而这需要磁盘存储。
 当然，也可以在应用程序启动后，手动更改 stdout 的指向，从屏幕改为文件，这样就可以将 print 的内容输出到指定文件夹，可以这样设置：`freopen(file,"a+",stdout)`
 
 对于系统的设计，有一个规则即**一切皆文件**，比如内存、键盘、缓存、网络 Socket 等。即只要是有字节输入输出场景的，都可以通过高层级的**文件**进行抽象和描述。
@@ -140,7 +139,7 @@ open class Pipe : NSObject, @unchecked Sendable {
 
 ## 0x02 Process(进程)
 
-在 [Shell 和进程](https://www.yigegongjiang.com/2022/Shell%E5%92%8C%E8%BF%9B%E7%A8%8B/) 章节中，详细的介绍了进程和 Shell 的关系。
+在 [Shell 和进程](https://www.yigegongjiang.com/2022/Shell/) 章节中，详细的介绍了进程和 Shell 的关系。
 在可执行文件中调用终端命令，就需要创建子进程，并在子进程中运行命令，而后跨进程通信以拿到返回值。
 基本原理详见 `Shell 和进程` 一文，这里仅对 Process 模块 api 进行介绍。
 
@@ -184,7 +183,7 @@ SwiftShell 源码已经停止更新较久了，部分 api 已经不符合当前 
 
 打开终端解释器后，bash/zsh 等环境初始化成功后，当前进程会有一些已经配置好的环境变量。
 这些环境变量有些是需要传递给通过 SwiftShell 执行的子进程命令的。
-具体的操作流程并不复杂，但是对于环境变量是如何传递给子进程的，以及子进程对变量的操作是否会影响到父进程，可以查看 [Shell 和进程](https://www.yigegongjiang.com/2022/Shell%E5%92%8C%E8%BF%9B%E7%A8%8B/#0x03-Shell-%E5%92%8C-SubShell) 以获取更详细的说明。
+具体的操作流程并不复杂，但是对于环境变量是如何传递给子进程的，以及子进程对变量的操作是否会影响到父进程，可以查看 [Shell 和进程](https://www.yigegongjiang.com/2022/Shell/#0x03-Shell-%E5%92%8C-SubShell) 以获取更详细的说明。
 
 ## Lazy 延迟计算
 
