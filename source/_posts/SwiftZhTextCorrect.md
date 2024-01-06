@@ -1,5 +1,5 @@
 ---
-title: 【Swift】中文词语纠正
+title: 【Swift】中文词语纠错
 date: 2024-01-06 04:22:22
 categories:
 - 技术
