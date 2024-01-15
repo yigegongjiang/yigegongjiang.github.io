@@ -5,6 +5,15 @@ date: 2024-01-15 03:32:11
 
 # 小工具
 
+* [JapanMemory - 日本语速记](https://github.com/yigegongjiang/JapanMemory)： **Mac app**
+> 刚开始学习日语，五十音图总是记不住。于是想到了把记不住的音定时循环随机展示，以加强记忆，效果良好。
+  * Next...
+    * 通过配置文件，可外部动态配置待记忆内容
+    * 增加单词记忆
+
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202401160655916.jpg" width="30%">
+<img src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202401160655917.jpg" width="30%">
+
 * [HLVPaste - 轻量级文本输入框](https://github.com/yigegongjiang/HLVPaste)： **Mac app**
 > 通过 LaunchBar 等启动工具，可快速打开 app HLVPaste 并获得焦点（如已经打开，上一次的内容会自动清空）。
 > HLVPaste 有非常小巧的界面，输入文本后即可移动到其他窗口。文本会自动 copy 到 Mac 粘贴版。
