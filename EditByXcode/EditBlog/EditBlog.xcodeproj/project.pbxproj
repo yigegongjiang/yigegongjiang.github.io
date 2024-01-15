@@ -16,6 +16,7 @@
 		B2BE32C12B2C4610009D8A37 /* _drafts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = _drafts; path = ../../source/_drafts; sourceTree = "<group>"; };
 		B2BE32C22B2C4610009D8A37 /* _posts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = _posts; path = ../../source/_posts; sourceTree = "<group>"; };
 		B2E1FB992B54C25C003E4DA1 /* openSource */ = {isa = PBXFileReference; lastKnownFileType = folder; name = openSource; path = ../../source/openSource; sourceTree = "<group>"; };
+		B2E1FB9A2B54C49E003E4DA1 /* about */ = {isa = PBXFileReference; lastKnownFileType = folder; name = about; path = ../../source/about; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +33,7 @@
 		B2BE32AD2B2C45A5009D8A37 = {
 			isa = PBXGroup;
 			children = (
+				B2E1FB9A2B54C49E003E4DA1 /* about */,
 				B2E1FB992B54C25C003E4DA1 /* openSource */,
 				B2BE32C12B2C4610009D8A37 /* _drafts */,
 				B2BE32C22B2C4610009D8A37 /* _posts */,
