@@ -16,16 +16,15 @@
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.css" integrity="sha256-6cQIC71/iBIYXFK+0RHAvwmjwWzkWd+r7v/BX3/vZDc=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.1","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="在 OC 时代，通过 .h 头文件以及 include 标记，还有那长长的 api 名称，可以很方便的意会和找到某个类。使用 Xcode 十年，在 Vim 的加持下，基本没用过啥快捷键。最近在 Swift 里面一顿拾掇，理解源码也太复杂了。1 个 class 在 3 个文件中增加了 5 个扩展并实现了 4 个协议，1 个文件中包含 400 行注释 500 行代码 10 多个杂七杂八的 enum&amp;#">
+    <meta name="description" content="在 OC 时代，通过 .h 头文件以及 include 标记，还有那长长的 api 名称，可以很方便的意会和找到某个类。使用 Xcode 十年，在 Vim 的加持下，基本没用过啥快捷键。最近在 Swift 里面一顿拾掇，理解源码也太复杂了。1 个 class 在 3 个文件中增加了 5 个扩展并实现了 4 个协议，1 个文件中包含 400 行注释 500 行代码 10 多个杂七杂八的 enum&#x2F;s">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在 Xcode 中更好的使用 Swift">
 <meta property="og:url" content="https://www.yigegongjiang.com/2023/SwiftDependXcode/index.html">
 <meta property="og:site_name" content="一个工匠">
-<meta property="og:description" content="在 OC 时代，通过 .h 头文件以及 include 标记，还有那长长的 api 名称，可以很方便的意会和找到某个类。使用 Xcode 十年，在 Vim 的加持下，基本没用过啥快捷键。最近在 Swift 里面一顿拾掇，理解源码也太复杂了。1 个 class 在 3 个文件中增加了 5 个扩展并实现了 4 个协议，1 个文件中包含 400 行注释 500 行代码 10 多个杂七杂八的 enum&amp;#">
+<meta property="og:description" content="在 OC 时代，通过 .h 头文件以及 include 标记，还有那长长的 api 名称，可以很方便的意会和找到某个类。使用 Xcode 十年，在 Vim 的加持下，基本没用过啥快捷键。最近在 Swift 里面一顿拾掇，理解源码也太复杂了。1 个 class 在 3 个文件中增加了 5 个扩展并实现了 4 个协议，1 个文件中包含 400 行注释 500 行代码 10 多个杂七杂八的 enum&#x2F;s">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202312160601060.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202312160617272.png">
@@ -45,6 +44,9 @@
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>在 Xcode 中更好的使用 Swift | 一个工匠</title>
   
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CTEWJ02QX"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-8CTEWJ02QX","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
 
 
 
@@ -92,7 +94,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">83</span></a></li><li class="menu-item menu-item-opensource"><a href="/openSource" rel="section">OpenSource</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section">RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">83</span></a></li><li class="menu-item menu-item-opensource"><a href="/openSource" rel="section">OpenSource</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
   </ul>
 </nav>
 
@@ -154,6 +156,18 @@
     </div>
 
     
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          Links
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9oYWlfbHZf" title="https:&#x2F;&#x2F;twitter.com&#x2F;hai_lv_">X(Twitter)</span>
+            </li>
+        </ul>
+      </div>
+    </div>
         <div class="pjax">
         </div>
   </aside>
@@ -222,39 +236,39 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>在 OC 时代，通过 .h 头文件以及 include 标记，还有那长长的 api 名称，可以很方便的意会和找到某个类。使用 Xcode 十年，在 Vim 的加持下，基本没用过啥快捷键。<br>最近在 Swift 里面一顿拾掇，理解源码也太复杂了。<br>1 个 class 在 3 个文件中增加了 5 个扩展并实现了 4 个协议，1 个文件中包含 400 行注释 500 行代码 10 多个杂七杂八的 enum&#x2F;struct&#x2F;class&#x2F;extension&#x2F;protocol，去他妈的。</p>
-<p>一直都是夸奖 Swift 的，作为后现代语言，集百家长补百家短。<br>但不好的编程习惯对 Swift 来说会是灾难，文件名不在作为当前文件内容的强约束、无需 import 后的 extension 可以写在任意位置、enum&#x2F;struct&#x2F;class 是值类型值语义引用类型引用语义搞不愣清后的混用，等等，这些都会骤然增加 Swift 源码的理解。</p>
+    <div class="post-body" itemprop="articleBody"><p>在 OC 时代，通过 .h 头文件以及 include 标记，还有那长长的 api 名称，可以很方便的意会和找到某个类。使用 Xcode 十年，在 Vim 的加持下，基本没用过啥快捷键。<br>最近在 Swift 里面一顿拾掇，理解源码也太复杂了。<br>1 个 class 在 3 个文件中增加了 5 个扩展并实现了 4 个协议，1 个文件中包含 400 行注释 500 行代码 10 多个杂七杂八的 enum/struct/class/extension/protocol，去他妈的。</p>
+<p>一直都是夸奖 Swift 的，作为后现代语言，集百家长补百家短。<br>但不好的编程习惯对 Swift 来说会是灾难，文件名不在作为当前文件内容的强约束、无需 import 后的 extension 可以写在任意位置、enum/struct/class 是值类型值语义引用类型引用语义搞不愣清后的混用，等等，这些都会骤然增加 Swift 源码的理解。</p>
 <p>不得已对 Xcode 进行一些调教。<br>目标是快速<strong>查阅继承、搜索、实现协议方、三方库文档</strong>等代码阅读操作。</p>
 <span id="more"></span>
 
 <h1 id="0x01-搜索快捷治理"><a href="#0x01-搜索快捷治理" class="headerlink" title="0x01 搜索快捷治理"></a>0x01 搜索快捷治理</h1><p>vscode 的搜索是出奇的快和方便查阅。很喜欢做的一件事情，是把公司几百个仓库 down 下来，通过 vscode 搜索要抄的作业。这时候通过搜索简短的注释级别的语意，就能找到期望的代码片段，AI 都得落泪。</p>
 <p>对于 xcode，感觉就像老人，多操作几个功能就菊花圈转啊转的。搜索符号、文本的时候也经常有卡顿。可能是电脑太差了吧。<br>最近把搜索切到快捷键后，感觉快了很多。这应该是不用鼠标操作 UI，避免了主线程的卡顿。xcode 中主线程易卡死，最烂 IDE 不是吹的。</p>
 <p>新增的快捷搜索如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">⌥C  -&gt;  Find Call Hierarchy</span><br><span class="line">⌥A  -&gt;  Find Ancestor Types</span><br><span class="line">⌥C  -&gt;  Find Conforming Types</span><br><span class="line">⌥D  -&gt;  Find Descendent Types</span><br><span class="line">⌥S  -&gt;  Find Selected Symbol in Workspace</span><br><span class="line">⌥T  -&gt;  Find Selected Text in Workspace</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">⌥C  -&gt;  Find Call Hierarchy</span><br><span class="line">⌥A  -&gt;  Find Ancestor Types</span><br><span class="line">⌥C  -&gt;  Find Conforming Types</span><br><span class="line">⌥D  -&gt;  Find Descendent Types</span><br><span class="line">⌥S  -&gt;  Find Selected Symbol in Workspace</span><br><span class="line">⌥T  -&gt;  Find Selected Text in Workspace</span><br></pre></td></tr></tbody></table></figure>
 <p>在 setting - Key Bindings - filter【find】进行修改，使用 Option 做前缀，这样不会产生快捷键冲突。后缀使用语意单词的首字母，方便记忆。<br>在需要搜索的单词上按下快捷键，就可以切到 搜索 区域展示搜索结果了（<strong>无需全选单词，xcode 默认会做单词内容全选</strong>）。</p>
-<p>对其中的几个搜索做下介绍：<br>Find Ancestor Types: 展示当前 class 的逐个父类(祖先类)。其中，协议也属于祖先类，会一并展示。<br>Find Descendent Types: 和上一个相反，展示子类。不过无法展示协议的实现类。和上一个有差异。<br>Find Conforming Types: 展示当前协议的实现类。其中若 A 协议继承 B 协议，搜索 B 也会将 A 展示出来。<br>Find Selected Symbol in Workspace: 根据符号进行搜索，相比文本搜索会更准确。如 函数、属性 的搜索，直接展示所有使用方。</p>
+<p>对其中的几个搜索做下介绍：<br>Find Ancestor Types: 展示当前 class 的逐个父类 (祖先类)。其中，协议也属于祖先类，会一并展示。<br>Find Descendent Types: 和上一个相反，展示子类。不过无法展示协议的实现类。和上一个有差异。<br>Find Conforming Types: 展示当前协议的实现类。其中若 A 协议继承 B 协议，搜索 B 也会将 A 展示出来。<br>Find Selected Symbol in Workspace: 根据符号进行搜索，相比文本搜索会更准确。如 函数、属性 的搜索，直接展示所有使用方。</p>
 <p>这几个快捷键，基本覆盖找代码过程中的大部分场景。里面还有一些小技巧，如<strong>前后缀及单词匹配、大小写敏感、展示方法和属性</strong>等。</p>
 <h2 id="缺陷"><a href="#缺陷" class="headerlink" title="缺陷"></a>缺陷</h2><p>对于 Procotol，若 ProtocolB 继承 ProtocolA。无法通过以上 <code>Find</code> 操作从 ProtocolB 找到其祖先协议 ProtocolA。这是 Xcode 的缺陷。<br>这个有一个补救的办法，是通过下面说到的 DocC 来查阅。DocC 文档的末尾，一般有一个 <code>Conformed to</code> 列表，用于标记当前 Procotol 实现了哪些祖先 Protocol。</p>
-<h2 id="技巧-1-Xcode-Index"><a href="#技巧-1-Xcode-Index" class="headerlink" title="技巧 1 Xcode Index"></a>技巧 1 Xcode Index</h2><p>对于 <code>⌥T</code> 文本搜索，任何条件下使用都没有问题。但是其他的搜索如符号、祖先等，就需要 xcode 先解析项目生成 Index 索引，然后才能通过读取 db 缓存来使用。<br>这里的解析项目，是不需要编译通过的。只需要 Xcode 把项目的词法分析操作完即可(默认打开项目就会解析)。</p>
+<h2 id="技巧-1-Xcode-Index"><a href="#技巧-1-Xcode-Index" class="headerlink" title="技巧 1 Xcode Index"></a>技巧 1 Xcode Index</h2><p>对于 <code>⌥T</code> 文本搜索，任何条件下使用都没有问题。但是其他的搜索如符号、祖先等，就需要 xcode 先解析项目生成 Index 索引，然后才能通过读取 db 缓存来使用。<br>这里的解析项目，是不需要编译通过的。只需要 Xcode 把项目的词法分析操作完即可 (默认打开项目就会解析)。</p>
 <p>但这里也会有一个小问题，就是多个 Group 下有大量无法编译通过的文件，Index 索引生成会失败。<br>这时候可以通过新建 Target，将文件添加到不同的 Target 中。可以解决 Index 索引失效问题。</p>
 <h2 id="技巧-2-Scheme-去除干扰"><a href="#技巧-2-Scheme-去除干扰" class="headerlink" title="技巧 2 Scheme 去除干扰"></a>技巧 2 Scheme 去除干扰</h2><p>如 <code>Xcode Index</code> 中描述，对于有些项目，如 github 源码、自己建立的测试工程等，某些原因下可能无法编译通过。<br>这个时候项目里面会有很多 error，使用搜索的时候，会有很多刺眼的红色警告条干扰。</p>
 <p>这个时候可以操作 <code>Manager Schemes - show</code>，将所有 scheme 取消勾选。因为 xcode 已经把项目解析完成，搜索依旧是可以使用的。这样可以有效的去除警告干扰。</p>
 <h2 id="技巧-3-Search-Scopes"><a href="#技巧-3-Search-Scopes" class="headerlink" title="技巧 3 Search Scopes"></a>技巧 3 Search Scopes</h2><p>巧妙设置 Scopes，可以大范围缩小部分文本的搜索范围。搜索范围可以设置为部分主项目文件夹和任意三方库的关联。<br>有个小技巧，是按着 Control 选中需要搜索的文件夹或者三方库，然后右键，会有一个快捷添加 Scopes 的入口。</p>
 <img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202312160601060.png" width="30%">
 
-<h2 id="技巧-4-正则搜索"><a href="#技巧-4-正则搜索" class="headerlink" title="技巧 4 正则搜索"></a>技巧 4 正则搜索</h2><p>配合 ChatGPT 写<strong>正则搜索</strong>，也非常棒。如果需要对正则结果使用文本替换功能(replace)，最好在 vscode 里面操作，效果会更好。</p>
-<h1 id="0x02-Swift-官方源码"><a href="#0x02-Swift-官方源码" class="headerlink" title="0x02 Swift 官方源码"></a>0x02 Swift 官方源码</h1><p>上面说到的搜索，仅仅对于有源码的当前项目或者三方库进行使用。Swift Foundation 等模块，只能通过其生成的 api 接口来预览。<br>这个时候弊端非常明显，就是很难查找当前一个系统类的父子及实现协议之间的关系(如：想要查看 Array 实现了哪些 Protocol 以及父子类)。</p>
-<p>因为 Swift 是开源的，这里一个办法是直接获取 Swift 源码。具体方法可以参考这篇文章。<span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vcG9zdC83MjkxNTU1NjAwODU0MTcxNjgzI2hlYWRpbmctMTU=">swift-5.9-RELEASE源码编译（Xcode）<i class="fa fa-external-link-alt"></i></span></p>
-<p>整套流程非常耗费时间和磁盘大小(62.5G)，若非查看 cpp 实现源码，可通过 lite 版本进行 swift 源码查阅 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvc3dpZnQ1LjkuMl9yYXdjb2RlX2xpdGU=">swift5.9.2_rawcode_lite<i class="fa fa-external-link-alt"></i></span>。<br>当然，cpp 源码包含非常多的有价值内容。如 LLVM 项目中有整套编译器和平台架构的实现。Swift 项目中有对 ELF&#x2F;Mach-0 Image 等详细操作流程的实现。</p>
-<h1 id="0x03-使用-Assistant-视图"><a href="#0x03-使用-Assistant-视图" class="headerlink" title="0x03 使用 Assistant 视图"></a>0x03 使用 Assistant 视图</h1><p>在编辑窗口使用默认快捷键 <code>⌃⌥⌘↩</code> 可打开 <strong>Assistant</strong> 视图。在做 Storyboard&#x2F;SwiftUI 等 UI 面板开发的时候经常用里面的 auto 功能以打开对应源码文件。<br>其中还有一些如 Procotol&#x2F;extension&#x2F;superclass 等，毕竟方便展示当前打开页面的清单。</p>
+<h2 id="技巧-4-正则搜索"><a href="#技巧-4-正则搜索" class="headerlink" title="技巧 4 正则搜索"></a>技巧 4 正则搜索</h2><p>配合 ChatGPT 写<strong>正则搜索</strong>，也非常棒。如果需要对正则结果使用文本替换功能 (replace)，最好在 vscode 里面操作，效果会更好。</p>
+<h1 id="0x02-Swift-官方源码"><a href="#0x02-Swift-官方源码" class="headerlink" title="0x02 Swift 官方源码"></a>0x02 Swift 官方源码</h1><p>上面说到的搜索，仅仅对于有源码的当前项目或者三方库进行使用。Swift Foundation 等模块，只能通过其生成的 api 接口来预览。<br>这个时候弊端非常明显，就是很难查找当前一个系统类的父子及实现协议之间的关系 (如：想要查看 Array 实现了哪些 Protocol 以及父子类)。</p>
+<p>因为 Swift 是开源的，这里一个办法是直接获取 Swift 源码。具体方法可以参考这篇文章。<span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vcG9zdC83MjkxNTU1NjAwODU0MTcxNjgzI2hlYWRpbmctMTU=">swift-5.9-RELEASE 源码编译（Xcode）</span></p>
+<p>整套流程非常耗费时间和磁盘大小 (62.5G)，若非查看 cpp 实现源码，可通过 lite 版本进行 swift 源码查阅 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvc3dpZnQ1LjkuMl9yYXdjb2RlX2xpdGU=">swift5.9.2_rawcode_lite</span>。<br>当然，cpp 源码包含非常多的有价值内容。如 LLVM 项目中有整套编译器和平台架构的实现。Swift 项目中有对 ELF/Mach-0 Image 等详细操作流程的实现。</p>
+<h1 id="0x03-使用-Assistant-视图"><a href="#0x03-使用-Assistant-视图" class="headerlink" title="0x03 使用 Assistant 视图"></a>0x03 使用 Assistant 视图</h1><p>在编辑窗口使用默认快捷键 <code>⌃⌥⌘↩</code> 可打开 <strong>Assistant</strong> 视图。在做 Storyboard/SwiftUI 等 UI 面板开发的时候经常用里面的 auto 功能以打开对应源码文件。<br>其中还有一些如 Procotol/extension/superclass 等，毕竟方便展示当前打开页面的清单。</p>
 <p>尤其里面有一个 <code>interface</code> 能力，可以展示当前 swift 源码对应的头文件。这样可以边看源码边看接口定义，非常方便。</p>
-<h1 id="0x04-首选-DocC-文档"><a href="#0x04-首选-DocC-文档" class="headerlink" title="0x04 首选 DocC 文档"></a>0x04 首选 DocC 文档</h1><p>苹果开放了 DocC 能力，可以快速输出任意项目&#x2F;三方库的接口文档。具有和官方文档一样的体感，非常好用。</p>
+<h1 id="0x04-首选-DocC-文档"><a href="#0x04-首选-DocC-文档" class="headerlink" title="0x04 首选 DocC 文档"></a>0x04 首选 DocC 文档</h1><p>苹果开放了 DocC 能力，可以快速输出任意项目 / 三方库的接口文档。具有和官方文档一样的体感，非常好用。</p>
 <p>DocC 文档可通过 <code>⇧⌘0</code> 快捷键快速体验。通过 Product - Build Documentation 可快速输出项目接口文档。</p>
-<h1 id="0x05-Bookmark"><a href="#0x05-Bookmark" class="headerlink" title="0x05 Bookmark"></a>0x05 Bookmark</h1><p>新版 xcode(15) 增加了书签 Bookmark 功能。可以在文本任意行右键找到入口，在搜索面板的左侧找到书签总入口。</p>
+<h1 id="0x05-Bookmark"><a href="#0x05-Bookmark" class="headerlink" title="0x05 Bookmark"></a>0x05 Bookmark</h1><p>新版 xcode (15) 增加了书签 Bookmark 功能。可以在文本任意行右键找到入口，在搜索面板的左侧找到书签总入口。</p>
 <p>以前，都是通过打断点然后把该断点设置取消状态的方案，在断点总入口里面刻意做到标记。把断点当书签用。<br>现在有了单独的书签，展示上也更加友好。这些 IDE 必备的功能，虽迟但到吧。</p>
 <img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202312160617272.png" width="30%">
 
-<h1 id="0x06-加餐：vim"><a href="#0x06-加餐：vim" class="headerlink" title="0x06 加餐：vim"></a>0x06 加餐：vim</h1><p>xcode 自建了 vim 的支持。vim 对中文场景一直有诟病，切换输入法的瞬间秒变灾难。vscode&#x2F;终端 均是如此。<br>但是 xcode 完美支持中文。在普通状态中文场景下，按键会自动表意为英文并执行对应的命令，不会变灾难。<br>xcode 是我见过的对 vim 支持最友好的 IDE。</p>
+<h1 id="0x06-加餐：vim"><a href="#0x06-加餐：vim" class="headerlink" title="0x06 加餐：vim"></a>0x06 加餐：vim</h1><p>xcode 自建了 vim 的支持。vim 对中文场景一直有诟病，切换输入法的瞬间秒变灾难。vscode / 终端 均是如此。<br>但是 xcode 完美支持中文。在普通状态中文场景下，按键会自动表意为英文并执行对应的命令，不会变灾难。<br>xcode 是我见过的对 vim 支持最友好的 IDE。</p>
 <p>如今，我经常中文写作，对于 md 文档也希望通过 xcode 来管理。我的方案是这样的：</p>
 <ol>
 <li>建立一个命名为 EditBlog 的 workspace 和 library，这样可以提供一个最小化的 xcode 项目模版。</li>
@@ -295,7 +309,7 @@
       </div>
 
       <div class="social-item">
-          <a target="_blank" class="social-link" href="https://t.me/gongjiang">
+          <a target="_blank" class="social-link" href="https://t.me/hai_lv_tg">
             <span class="icon">
               <i class="fab fa-telegram"></i>
             </span>
@@ -374,7 +388,7 @@
     <div class="footer-inner">
 
   <div class="copyright">
-    &copy; 
+    &copy; 2018 – 
     <span itemprop="copyrightYear">2024</span>
     <span class="with-love">
       <i class=""></i>
@@ -400,7 +414,6 @@
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.umd.js" integrity="sha256-ytMJGN3toR+a84u7g7NuHm91VIR06Q41kMWDr2pq7Zo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
@@ -410,7 +423,6 @@
 
 
 
-  <script src="/js/third-party/fancybox.js"></script>
 
 
 

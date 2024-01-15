@@ -16,16 +16,15 @@
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.css" integrity="sha256-6cQIC71/iBIYXFK+0RHAvwmjwWzkWd+r7v/BX3/vZDc=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.1","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="一直有一个写字痛点，就是错别字。尤其在发帖子和写文章这样的正式场合，错别字会引起很大的误解，而每次检查都会很吃力。试用了人气较高的“写作猫”和“火龙果”两个纠错平台，都有很大的局限性，并不适合我这样的人使用。  写作猫的缺点是 word 走天下，一点也不 nice。火龙果的缺点是没有纠错能力，我用测试文档只检测出来两个不存在的英文错误。它们都不支持 markdown 检测。付费较高，对于非高频使用">
+    <meta name="description" content="一直有一个写字痛点，就是错别字。尤其在发帖子和写文章这样的正式场合，错别字会引起很大的误解，而每次检查都会很吃力。试用了人气较高的 “写作猫” 和 “火龙果” 两个纠错平台，都有很大的局限性，并不适合我这样的人使用。  写作猫的缺点是 word 走天下，一点也不 nice。火龙果的缺点是没有纠错能力，我用测试文档只检测出来两个不存在的英文错误。它们都不支持 markdown 检测。付费较高，对于非">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【Swift】中文词语纠错">
 <meta property="og:url" content="https://www.yigegongjiang.com/2024/SwiftZhTextCorrect/index.html">
 <meta property="og:site_name" content="一个工匠">
-<meta property="og:description" content="一直有一个写字痛点，就是错别字。尤其在发帖子和写文章这样的正式场合，错别字会引起很大的误解，而每次检查都会很吃力。试用了人气较高的“写作猫”和“火龙果”两个纠错平台，都有很大的局限性，并不适合我这样的人使用。  写作猫的缺点是 word 走天下，一点也不 nice。火龙果的缺点是没有纠错能力，我用测试文档只检测出来两个不存在的英文错误。它们都不支持 markdown 检测。付费较高，对于非高频使用">
+<meta property="og:description" content="一直有一个写字痛点，就是错别字。尤其在发帖子和写文章这样的正式场合，错别字会引起很大的误解，而每次检查都会很吃力。试用了人气较高的 “写作猫” 和 “火龙果” 两个纠错平台，都有很大的局限性，并不适合我这样的人使用。  写作猫的缺点是 word 走天下，一点也不 nice。火龙果的缺点是没有纠错能力，我用测试文档只检测出来两个不存在的英文错误。它们都不支持 markdown 检测。付费较高，对于非">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202401061607920.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202401061607769.png">
@@ -45,6 +44,9 @@
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>【Swift】中文词语纠错 | 一个工匠</title>
   
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CTEWJ02QX"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-8CTEWJ02QX","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
 
 
 
@@ -92,7 +94,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">83</span></a></li><li class="menu-item menu-item-opensource"><a href="/openSource" rel="section">OpenSource</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section">RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">83</span></a></li><li class="menu-item menu-item-opensource"><a href="/openSource" rel="section">OpenSource</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
   </ul>
 </nav>
 
@@ -154,6 +156,18 @@
     </div>
 
     
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          Links
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9oYWlfbHZf" title="https:&#x2F;&#x2F;twitter.com&#x2F;hai_lv_">X(Twitter)</span>
+            </li>
+        </ul>
+      </div>
+    </div>
         <div class="pjax">
         </div>
   </aside>
@@ -222,22 +236,22 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>一直有一个写字痛点，就是错别字。尤其在发帖子和写文章这样的正式场合，错别字会引起很大的误解，而每次检查都会很吃力。<br>试用了人气较高的“写作猫”和“火龙果”两个纠错平台，都有很大的局限性，并不适合我这样的人使用。</p>
+    <div class="post-body" itemprop="articleBody"><p>一直有一个写字痛点，就是错别字。尤其在发帖子和写文章这样的正式场合，错别字会引起很大的误解，而每次检查都会很吃力。<br>试用了人气较高的 “写作猫” 和 “火龙果” 两个纠错平台，都有很大的局限性，并不适合我这样的人使用。</p>
 <blockquote>
 <p>写作猫的缺点是 word 走天下，一点也不 nice。<br>火龙果的缺点是没有纠错能力，我用测试文档只检测出来两个不存在的英文错误。<br>它们都不支持 markdown 检测。<br>付费较高，对于非高频使用人员不友好。</p>
 </blockquote>
-<p>于是，尝试自己写一个纠错工具，目前做了开源，支持 CLI 和 GUI，详见：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvSExWU2VudGVuY2U=">HLVSentence<i class="fa fa-external-link-alt"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvSExWWmhDb3JyZWN0">HLVZhCorrect<i class="fa fa-external-link-alt"></i></span>。<br>技术方案是：<strong>检测文本文件</strong> -&gt; <strong>文本分句</strong> -&gt; <strong>词语检测</strong> -&gt; <strong>工具集成</strong>。<br>遇到的核心问题有：</p>
+<p>于是，尝试自己写一个纠错工具，目前做了开源，支持 CLI 和 GUI，详见：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvSExWU2VudGVuY2U=">HLVSentence</span>、<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvSExWWmhDb3JyZWN0">HLVZhCorrect</span>。<br>技术方案是：<strong>检测文本文件</strong> -&gt; <strong>文本分句</strong> -&gt; <strong>词语检测</strong> -&gt; <strong>工具集成</strong>。<br>遇到的核心问题有：</p>
 <ul>
 <li>准确识别文本文件。文本文件无 Magic Number 二进制特征，如何准确识别当前文件为文本文件并读取内容。</li>
 <li>文本分句校准。对于纯中文场景，通过常用的标点符号即可正则分句。但一般会参杂英文、特殊符号，还有 markdown。</li>
-<li>中文纠错检测和校准。找了不少方案，最后选择 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NoaWJpbmc2MjQvcHljb3JyZWN0b3I=">pycorrector<i class="fa fa-external-link-alt"></i></span> 提供的中文纠错模型。工具需要和 python 环境做对接，并对待检测文本做进一步校准以满足模型。</li>
+<li>中文纠错检测和校准。找了不少方案，最后选择 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NoaWJpbmc2MjQvcHljb3JyZWN0b3I=">pycorrector</span> 提供的中文纠错模型。工具需要和 python 环境做对接，并对待检测文本做进一步校准以满足模型。</li>
 <li>非终端环境和 python 脚本互联。需要支持 python 虚拟安装环境。</li>
-<li>SwiftUI 开发 “命令行 CLI 工具”和 “Mac 菜单栏工具”，将工具对接 brew 平台。</li>
+<li>SwiftUI 开发 “命令行 CLI 工具” 和 “Mac 菜单栏工具”，将工具对接 brew 平台。</li>
 </ul>
 <p>下面是开发文本纠错工具的一些历程。</p>
 <span id="more"></span>
 
-<h2 id="Demo-演示"><a href="#Demo-演示" class="headerlink" title="Demo 演示"></a>Demo 演示</h2><p>可查阅 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvSExWU2VudGVuY2U=">HLVSentence<i class="fa fa-external-link-alt"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvSExWWmhDb3JyZWN0">HLVZhCorrect<i class="fa fa-external-link-alt"></i></span> 两个项目的 readme 主页，查看 CLI 和 GUI 的效果和使用说明。</p>
+<h2 id="Demo-演示"><a href="#Demo-演示" class="headerlink" title="Demo 演示"></a>Demo 演示</h2><p>可查阅 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvSExWU2VudGVuY2U=">HLVSentence</span>、<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvSExWWmhDb3JyZWN0">HLVZhCorrect</span> 两个项目的 readme 主页，查看 CLI 和 GUI 的效果和使用说明。</p>
 <img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202401061607920.png" width="40%">
 <img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202401061607769.png" width="40%">
 
@@ -257,10 +271,10 @@
 <li>先判断有没有 magic number。如果有，则可以识别到当前文件的具体类型。<code>一般只要有 maigc，就不再是文本文件了</code>。</li>
 <li>再对文件内容进行多个位置的截取解码。根据文件大小<code>动态设置采样点</code>，且所有采样点<code>解码全部通过</code>，则判定为文本文件。</li>
 </ol>
-<p>Swift 文本文件识别 源码详见：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvSExWRmlsZUR1bXA=">HLVFileDump<i class="fa fa-external-link-alt"></i></span><br>对于文本编码的详细介绍可查阅 <a href="https://www.yigegongjiang.com/2023/unicode/">计算机字符编码与内存编码</a></p>
+<p>Swift 文本文件识别 源码详见：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvSExWRmlsZUR1bXA=">HLVFileDump</span><br>对于文本编码的详细介绍可查阅 <a href="https://www.yigegongjiang.com/2023/unicode/">计算机字符编码与内存编码</a></p>
 <h2 id="文本分句"><a href="#文本分句" class="headerlink" title="文本分句"></a>文本分句</h2><p>纯中文环境下的分句，比较好实现。只需要控制将<code>？</code>、<code>；</code>等几个特别的断句符号进行识别即可。<br>但很少有纯中文的段落，一般都是中英文混杂，而且还有个数算术符号。如下面几个例子：</p>
 <ol>
-<li><code>今天的温度是 25.3°C，天空晴朗，风速约 10 mph.</code>，这里末尾是英文的<code>.</code> 收尾，且数字中含有<code>.</code>无法做断句。这里只能通过 NLP 语言模型进行分句，Apple 提供了 <code>NaturalLanguage</code> 物料库，可以在多语言混合的场景下，进行语句分割，且能够处理数字符号。</li>
+<li><code>今天的温度是 25.3°C，天空晴朗，风速约 10 mph.</code>，这里末尾是英文的<code>.</code> 收尾，且数字中含有<code>.</code> 无法做断句。这里只能通过 NLP 语言模型进行分句，Apple 提供了 <code>NaturalLanguage</code> 物料库，可以在多语言混合的场景下，进行语句分割，且能够处理数字符号。</li>
 <li><code>今天天气不错（适合出游），你要参加吗？</code>，这里 NLP 就不能很好识别，会把中文的<code>（</code>进行分句，导致 <code>（）</code> 两个字符被分割到两个分句里面。</li>
 <li><code>1. 吃饭 2. 睡觉 3. 打豆豆</code>，这样有数字前缀或者其他特殊字符前后缀的，在分句后理应去除序号或者特殊描述符号，只保留汉字内容。这个 NLP 能初步识别，但也有误差，基本够用。</li>
 <li>特殊标记符号如 <code>\t</code> 等，需要特别处理。它们会影响到分句的质量。</li>
@@ -271,7 +285,7 @@
 <li>将上一步的分句结果使用 NLP 二次分句，此时基本符合分句诉求，偏差不大。</li>
 </ol>
 <p>但是在可行方案执行前，还有一个重要的点，是 <strong>NLP 对 markdown 识别不敏感，误差率较高</strong>。还需要先进行 markdown 的去格式化。</p>
-<h2 id="文本纠错"><a href="#文本纠错" class="headerlink" title="文本纠错"></a>文本纠错</h2><p>找了很多文本纠错开源方案，大多不理想。甚至文章开头说到的商业平台，测试下来也没有很优秀。<br>一个很主要的点，是纠错是针对单词而非语境的。针对单词的纠错通过大量的单词匹配即可，但误差率较高。<br>最后使用的是 python3 实现的 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NoaWJpbmc2MjQvcHljb3JyZWN0b3I=">pycorrector<i class="fa fa-external-link-alt"></i></span> 模型，能够部分识别语境。</p>
+<h2 id="文本纠错"><a href="#文本纠错" class="headerlink" title="文本纠错"></a>文本纠错</h2><p>找了很多文本纠错开源方案，大多不理想。甚至文章开头说到的商业平台，测试下来也没有很优秀。<br>一个很主要的点，是纠错是针对单词而非语境的。针对单词的纠错通过大量的单词匹配即可，但误差率较高。<br>最后使用的是 python3 实现的 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NoaWJpbmc2MjQvcHljb3JyZWN0b3I=">pycorrector</span> 模型，能够部分识别语境。</p>
 <p>对模型参数进行一些调整处理后，目前能够做到：</p>
 <ol>
 <li>如果有错，非常大的概率是能够被检测到。</li>
@@ -283,10 +297,10 @@
 <p>最后通过 <a href="https://www.yigegongjiang.com/2023/SwiftSystemShell/">SwiftShell 高效的命令行工具</a> 实现了数据互通。<br>因为 app 环境中缺失终端环境变量，这在使用 Conda python 虚拟环境的时候会找不到 python 可执行三方库。<br>最后的解决方案是委屈用户，需要自行通过 <code>echo $PATH</code> 获取终端 path 后设置到 app 中。</p>
 <p>对于 CLI 环境倒比较友好，因为 CLI 本来就是在终端中运行的，已经拥有了终端上下文 Env，没有遇到太多的问题。</p>
 <h2 id="CLI-和-SwiftUI"><a href="#CLI-和-SwiftUI" class="headerlink" title="CLI 和 SwiftUI"></a>CLI 和 SwiftUI</h2><p>Swift 开发 CLI 命令行，整体还是比较快速简便的，官方有较好的支持。<br>入门可以参考：<a href="https://www.yigegongjiang.com/2023/SwiftCommandEnv/">Swift 脚本开发环境搭建</a>，当前项目也是完全按照入门说明来操作的。尤其文中的 <code>不换行更新上一次的输出结果</code> 和 <code>异步等待</code>，在命令行开发过程中很有用。</p>
-<p>SwiftUI 开发 Mac 还是有不少概念需要理清。<br>AppKit 和 UIKit 有很大的差异，比如 Window&#x2F;WindowController&#x2F;NSMenu&#x2F;NSStatus 等。SwiftUI 又要抹平两者的差异，所以 SwiftUI 整体上和 AppKit&#x2F;UIKit 都有较大差异。<br>建议一个入门方式，是通过 Xcode 的 <code>Development Documentation</code> 快速查看 SwiftUI 的编写规则，混个脸熟。<br>然后在 Github 上面搜索 Api 找到一些比较新的 SwiftUI 项目阅读源码。<br>最后，频繁的咨询 ChatGPT，有时候它给的答案并不对，但能给一个大致的方向。</p>
-<h2 id="brew"><a href="#brew" class="headerlink" title="brew"></a>brew</h2><p>可参考当前工程的私有配置：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvaG9tZWJyZXctdGFw">homebrew-tap<i class="fa fa-external-link-alt"></i></span>。<br>brew 自定义仓库等相关资料较少，本人也没有进一步学习。<br>目前把 CLI 和 GUI 都部署到了自定义仓库中，有需要的可以简单参考下。</p>
+<p>SwiftUI 开发 Mac 还是有不少概念需要理清。<br>AppKit 和 UIKit 有很大的差异，比如 Window/WindowController/NSMenu/NSStatus 等。SwiftUI 又要抹平两者的差异，所以 SwiftUI 整体上和 AppKit/UIKit 都有较大差异。<br>建议一个入门方式，是通过 Xcode 的 <code>Development Documentation</code> 快速查看 SwiftUI 的编写规则，混个脸熟。<br>然后在 Github 上面搜索 Api 找到一些比较新的 SwiftUI 项目阅读源码。<br>最后，频繁的咨询 ChatGPT，有时候它给的答案并不对，但能给一个大致的方向。</p>
+<h2 id="brew"><a href="#brew" class="headerlink" title="brew"></a>brew</h2><p>可参考当前工程的私有配置：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvaG9tZWJyZXctdGFw">homebrew-tap</span>。<br>brew 自定义仓库等相关资料较少，本人也没有进一步学习。<br>目前把 CLI 和 GUI 都部署到了自定义仓库中，有需要的可以简单参考下。</p>
 <hr>
-<p>App Store 真的做到了“花开两朵，各表一支”。<br>在 Mac 上，Mac App Store(MAS) 犹如鸡肋，复杂的沙盒安全形同虚设。<br>Apple 看着 MAS 生意惨淡，却毫无作为。既不能做为平台为优秀的软件做宣传，也阻止不了垃圾软件的恶意收费。</p>
+<p>App Store 真的做到了 “花开两朵，各表一支”。<br>在 Mac 上，Mac App Store (MAS) 犹如鸡肋，复杂的沙盒安全形同虚设。<br>Apple 看着 MAS 生意惨淡，却毫无作为。既不能做为平台为优秀的软件做宣传，也阻止不了垃圾软件的恶意收费。</p>
 
     </div>
 
@@ -311,7 +325,7 @@
       </div>
 
       <div class="social-item">
-          <a target="_blank" class="social-link" href="https://t.me/gongjiang">
+          <a target="_blank" class="social-link" href="https://t.me/hai_lv_tg">
             <span class="icon">
               <i class="fab fa-telegram"></i>
             </span>
@@ -387,7 +401,7 @@
     <div class="footer-inner">
 
   <div class="copyright">
-    &copy; 
+    &copy; 2018 – 
     <span itemprop="copyrightYear">2024</span>
     <span class="with-love">
       <i class=""></i>
@@ -413,7 +427,6 @@
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.umd.js" integrity="sha256-ytMJGN3toR+a84u7g7NuHm91VIR06Q41kMWDr2pq7Zo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
@@ -423,7 +436,6 @@
 
 
 
-  <script src="/js/third-party/fancybox.js"></script>
 
 
 

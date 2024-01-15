@@ -16,7 +16,6 @@
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.css" integrity="sha256-6cQIC71/iBIYXFK+0RHAvwmjwWzkWd+r7v/BX3/vZDc=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.1","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
@@ -41,6 +40,9 @@
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>一个工匠</title>
   
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CTEWJ02QX"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-8CTEWJ02QX","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
 
 
 
@@ -88,7 +90,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">83</span></a></li><li class="menu-item menu-item-opensource"><a href="/openSource" rel="section">OpenSource</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section">RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">83</span></a></li><li class="menu-item menu-item-opensource"><a href="/openSource" rel="section">OpenSource</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
   </ul>
 </nav>
 
@@ -149,6 +151,18 @@
     </div>
 
     
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          Links
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9oYWlfbHZf" title="https:&#x2F;&#x2F;twitter.com&#x2F;hai_lv_">X(Twitter)</span>
+            </li>
+        </ul>
+      </div>
+    </div>
         <div class="pjax">
         </div>
   </aside>
@@ -302,10 +316,10 @@
           <p>最近学习回顾了几门高级语言和周边工具。这里做个小总结，学习暂时告一段落，以后会在需要的时候再捡起来。</p>
 <h1 id="Swift："><a href="#Swift：" class="headerlink" title="Swift："></a>Swift：</h1><p>Swift 这门语言，真的是大杂烩。集合了不知道多少语言的混杂体。<br>Swift 语法都觉得似成相识，比如 范型、异步、多线程、函数编程、闭包、下标、嵌套、元组、虚函数。不过这些能力都是一门高级语言本该支持的，也无可厚非。<br>后起的语言，的确是有后天优势的。很多语言都有历史遗留问题，比如 python 为了解决作用域问题，弄出来 global、local、nolocal 这样反人类的设计。</p>
 <blockquote>
-<p>值类型和引用类型(struct &#x2F; class)借鉴的 C++，详见之前的文章：<a href="https://www.yigegongjiang.com/2019/SwiftStruct/">Swift struct (值类型) 与 class (引用类型) 区别及三种传参机制深刻关系和使用</a></p>
+<p>值类型和引用类型 (struct /class) 借鉴的 C++，详见之前的文章：<a href="https://www.yigegongjiang.com/2019/SwiftStruct/">Swift struct (值类型) 与 class (引用类型) 区别及三种传参机制深刻关系和使用</a></p>
 <p>元组，借鉴的 C++ 的 tuple。这是真好用，尤其在写算法的时候，可以省去不少逻辑复杂度。</p>
 <p>属性包装器 propertyWrapper 借鉴 Java 的注解。</p>
-<p>函数调用中的虚函数，借鉴 C++ 的虚函数设计。不过在函数调用这个问题上，也没有那么多选择，要么静态编译直接派发，要么虚函数存储方法列表派发，要么像 OC 一样动态派发，要么就得和 Java 这类一样靠虚拟机动态解析(JIT是直接派发)。本质就是找函数指针的过程。</p>
+<p>函数调用中的虚函数，借鉴 C++ 的虚函数设计。不过在函数调用这个问题上，也没有那么多选择，要么静态编译直接派发，要么虚函数存储方法列表派发，要么像 OC 一样动态派发，要么就得和 Java 这类一样靠虚拟机动态解析 (JIT 是直接派发)。本质就是找函数指针的过程。</p>
 </blockquote>
           <!--noindex-->
           <!--/noindex-->
@@ -387,7 +401,7 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>2023 高考过去了，这两天老家也开始农忙了。体验过农忙的学生，一般都想着靠读书改变命运，不愿面对面朝黄土背朝天的广袤天地。<br>农村，是一片复杂的土地，无数的人想要离开，最后还是回到了那里。高考，就是一个敲门砖，离开农村的那块垫脚的砖。</p>
-<p>在这片困乏饥饿的神州大地上，学历不一定代表未来，但没学历，是真的没有未来。<br>有学历，依旧会承受疲劳工作、生儿育女、职场危机、生活一地鸡毛、老年浑噩。<br>没有学历，对有学历所要承受的一个都少不了，只会更刻骨和铭记。还要承受低能、工作学历卡口等歧视。<br>所以，还是考的好一点吧。很多人都能上大学，但 985&#x2F;211 和普通本科，是完全不一样的，本科和学院也是不一样的。<br>如果考的不好，请复习 1 年甚至 2 年，不要失去耐心。<br>多年之后，会发现上学是好轻松的活儿。上学也是上班，工作的好点，省去了以后多少的精神崩溃。</p>
+<p>在这片困乏饥饿的神州大地上，学历不一定代表未来，但没学历，是真的没有未来。<br>有学历，依旧会承受疲劳工作、生儿育女、职场危机、生活一地鸡毛、老年浑噩。<br>没有学历，对有学历所要承受的一个都少不了，只会更刻骨和铭记。还要承受低能、工作学历卡口等歧视。<br>所以，还是考的好一点吧。很多人都能上大学，但 985/211 和普通本科，是完全不一样的，本科和学院也是不一样的。<br>如果考的不好，请复习 1 年甚至 2 年，不要失去耐心。<br>多年之后，会发现上学是好轻松的活儿。上学也是上班，工作的好点，省去了以后多少的精神崩溃。</p>
           <!--noindex-->
           <!--/noindex-->
         
@@ -473,8 +487,8 @@
 <li>视前屏幕是不透明的。即戴上 Vision 后，眼前就是一片黑。</li>
 <li>内置的 M2&amp;R1 芯片和 12 枚摄像头，可以将内外部的画面，在视前屏幕的内外屏上 10ms 延迟内实时展示。即内部看到的是外部建模后的投影，外部也能看到内部的眼睛区域，也是投影建模后的。</li>
 <li>Vision 能绘出非常大的视觉区域和 3D 视觉效果，突破了显示器等外接设备的物理限制。</li>
-<li>Vision 的摄像头和传感器，通过对眼部、手部、身体的感知，可以比用户更早一步的知道用户想要干嘛。已经能够通过 虚拟键盘&#x2F;手势&#x2F;眼势 做到输出和输出。</li>
-<li>Vision 有自己的操作系统，和 Apple 生态可以互通。即可以在 Vision 上自行开发应用，现有的 Mac&#x2F;iOS 应用也可以在 Vision 上使用。</li>
+<li>Vision 的摄像头和传感器，通过对眼部、手部、身体的感知，可以比用户更早一步的知道用户想要干嘛。已经能够通过 虚拟键盘 / 手势 / 眼势 做到输出和输出。</li>
+<li>Vision 有自己的操作系统，和 Apple 生态可以互通。即可以在 Vision 上自行开发应用，现有的 Mac/iOS 应用也可以在 Vision 上使用。</li>
 <li>Vision 覆盖了 游戏、办公、生活娱乐、出行 等多个方面，即年龄段、时间段，不受限制。</li>
 </ol>
 <p>我对 Vision 非常满意的地方，在于它从另一个维度，实现了我的一个渴望。<br>我一直都希望有一个非常大的屏幕，可以用来浏览网络信息、办公。<br>但是这样的屏幕因为像素和空间尺寸等原因，对我来说其实无法满足。我还一直很有遗憾。<br>真没想到，Vision 在虚拟现实里面做到了。</p>
@@ -638,12 +652,12 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>关于网络相关的历史文章中，很多次提到 Socket 套接字的重要性。最近看到 ICMP 的一些知识，发现和 Socket 有非常强的依赖。于是对 Socket 和周边，再做一次逻辑的梳理。<br>本文会对 <strong>ICMP 查询&#x2F;差错报文</strong> 如何 <strong>NAT网关</strong> 和<strong>写入 Socket 接收缓冲区</strong>进行具体阐释。</p>
-<h3 id="Socket、文件描述符、API、套接字"><a href="#Socket、文件描述符、API、套接字" class="headerlink" title="Socket、文件描述符、API、套接字"></a>Socket、文件描述符、API、套接字</h3><p>Socket 在系统内部创建后是唯一的。和 源 ip(本机 ip)、目标 ip(服务端 ip)、源端口、目标端口 有一定的绑定关系，根据具体协议而定。<br>通过这种绑定关系，可以将对应的数据包写入到对应的 Socket 接收缓冲区中供上层读取。<br>如果绑定关系出现 1-N，即一个数据包找到了多个 Socket，那么数据包就会往多个 Socket 中都写入一份，在后面 ICMP 中做分析。</p>
+          <p>关于网络相关的历史文章中，很多次提到 Socket 套接字的重要性。最近看到 ICMP 的一些知识，发现和 Socket 有非常强的依赖。于是对 Socket 和周边，再做一次逻辑的梳理。<br>本文会对 <strong>ICMP 查询 / 差错报文</strong> 如何 <strong>NAT 网关</strong> 和<strong>写入 Socket 接收缓冲区</strong>进行具体阐释。</p>
+<h3 id="Socket、文件描述符、API、套接字"><a href="#Socket、文件描述符、API、套接字" class="headerlink" title="Socket、文件描述符、API、套接字"></a>Socket、文件描述符、API、套接字</h3><p>Socket 在系统内部创建后是唯一的。和 源 ip (本机 ip)、目标 ip (服务端 ip)、源端口、目标端口 有一定的绑定关系，根据具体协议而定。<br>通过这种绑定关系，可以将对应的数据包写入到对应的 Socket 接收缓冲区中供上层读取。<br>如果绑定关系出现 1-N，即一个数据包找到了多个 Socket，那么数据包就会往多个 Socket 中都写入一份，在后面 ICMP 中做分析。</p>
 <p>Socket api，各个语言都有上层实现，底层都是对 Socket C Api 的封装。就是大家知道的 <code>gethostbyname</code>、<code>bind/connect/write/sendto</code> 这些。</p>
 <p>Socket 文件描述符，不是真的文件。在 Unix 下习惯对资源进行抽象，即一切接文件，包括内存数据。Socket 文件描述符是内核内存区域的指针。</p>
 <p>套接字，就是指 Socket。一般也就是指 api 或者 文件描述符 其中的一种，看具体场景。</p>
-<p>Socket api 可以直接操作传输层(TCP&#x2F;UDP)或者网络层(ICMP)，从 Socket 往下(传输层&#x2F;网络层…)开始，都属于操作系统管辖。<br>所以 HTTP 经历很多版本的优化，依旧差强人意，就是因为核心层 TCP 不好改动，需要系统升级。最后通过 UDP 做上层改造来实现 QUIC。</p>
+<p>Socket api 可以直接操作传输层 (TCP/UDP) 或者网络层 (ICMP)，从 Socket 往下 (传输层 / 网络层…) 开始，都属于操作系统管辖。<br>所以 HTTP 经历很多版本的优化，依旧差强人意，就是因为核心层 TCP 不好改动，需要系统升级。最后通过 UDP 做上层改造来实现 QUIC。</p>
           <!--noindex-->
           <!--/noindex-->
         
@@ -723,7 +737,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>人们都对个人隐私比较在乎，但是对个人互联网隐私比较忽视。<br>前些年还流行一句话：<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvJUU1JTlDJUE4JUU0JUJBJTkyJUU4JTgxJTk0JUU3JUJEJTkxJUU0JUI4JThBJUVGJUJDJThDJUU2JUIyJUExJUU0JUJBJUJBJUU3JTlGJUE1JUU5JTgxJTkzJUU0JUJEJUEwJUU2JTk4JUFGJUU0JUI4JTgwJUU2JTlEJUExJUU3JThCJTk3">在互联网上，没人知道你是一条狗<i class="fa fa-external-link-alt"></i></span>，还有那幅经典的狗在屏幕前的画。<br>这句话旨在强调“用户能够在互联网上以一种不透漏个人信息的方式发送和接收信息”。但是很多人却理解为：在互联网上很难留下踪迹，没人知道狗是我，或者我是狗。</p>
+          <p>人们都对个人隐私比较在乎，但是对个人互联网隐私比较忽视。<br>前些年还流行一句话：<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvJUU1JTlDJUE4JUU0JUJBJTkyJUU4JTgxJTk0JUU3JUJEJTkxJUU0JUI4JThBJUVGJUJDJThDJUU2JUIyJUExJUU0JUJBJUJBJUU3JTlGJUE1JUU5JTgxJTkzJUU0JUJEJUEwJUU2JTk4JUFGJUU0JUI4JTgwJUU2JTlEJUExJUU3JThCJTk3">在互联网上，没人知道你是一条狗</span>，还有那幅经典的狗在屏幕前的画。<br>这句话旨在强调 “用户能够在互联网上以一种不透漏个人信息的方式发送和接收信息”。但是很多人却理解为：在互联网上很难留下踪迹，没人知道狗是我，或者我是狗。</p>
 <p>只要在网络上行动，就一定会留下痕迹。只是痕迹留下的多少，以及持有痕迹的一方愿不愿意向外透露而已。<br>说网络是虚拟的，是从产品形态上来描述的。但网络本身并不是虚拟的，每一个网页、消息、短视频，都是要通过数据包进行电信号传输的，是真实存在的实体。<br>因为数据包是实体的，所以在互联网行走，一定会有痕迹。</p>
           <!--noindex-->
           <!--/noindex-->
@@ -771,7 +785,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/for_surge/" class="post-title-link" itemprop="url">网络代理是如何工作的(致敬Surge)</a>
+          <a href="/2023/for_surge/" class="post-title-link" itemprop="url">网络代理是如何工作的 (致敬 Surge)</a>
         </h2>
 
         <div class="post-meta-container">
@@ -804,11 +818,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>最近本网站的 HTTPS SSL 证书过期了，于是去域名管理平台重新申请了一下。<br>无意中通过 dig 发现，网站的 DNS 解析 IP 一直是 <strong>198.18.1.xxx</strong> 这些。因为域名是 CNAME 映射到 github 的，所以又 dig 了一下 github 对应的 ip，发现也是 <strong>198.18.1.xxx</strong>。<br>从哪个角度来看，至少都有些问题。使用的 DNSPod 域名解析平台，dig 自定义域名和 github page 域名，怎么也不能在同一个网段里。<br>搜索了一下才知道，原来 ip 198 不是公网 ip，之前以为内网 ip 是 10&#x2F;192 这些，知识还是有局限。</p>
+          <p>最近本网站的 HTTPS SSL 证书过期了，于是去域名管理平台重新申请了一下。<br>无意中通过 dig 发现，网站的 DNS 解析 IP 一直是 <strong>198.18.1.xxx</strong> 这些。因为域名是 CNAME 映射到 github 的，所以又 dig 了一下 github 对应的 ip，发现也是 <strong>198.18.1.xxx</strong>。<br>从哪个角度来看，至少都有些问题。使用的 DNSPod 域名解析平台，dig 自定义域名和 github page 域名，怎么也不能在同一个网段里。<br>搜索了一下才知道，原来 ip 198 不是公网 ip，之前以为内网 ip 是 10/192 这些，知识还是有局限。</p>
 <blockquote>
-<p>198.18.0.0&#x2F;15  198.18.0.0 – 198.19.255.255  131,072  专用网络  用于测试两个不同的子网的网间通信。<br><span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvJUU0JUJGJTlEJUU3JTk1JTk5SVAlRTUlOUMlQjAlRTUlOUQlODA=">https://zh.wikipedia.org/wiki/保留IP地址<i class="fa fa-external-link-alt"></i></span></p>
+<p>198.18.0.0/15  198.18.0.0 – 198.19.255.255  131,072  专用网络  用于测试两个不同的子网的网间通信。<br><span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvJUU0JUJGJTlEJUU3JTk1JTk5SVAlRTUlOUMlQjAlRTUlOUQlODA=">https://zh.wikipedia.org/wiki/ 保留 IP 地址</span></p>
 </blockquote>
-<p>在家庭网络中 dig 互联网的域名，为什么 dns 解析成了 198.x 呢？最后发现是最常使用的网络软件 <strong>Surge</strong> 引起的。<br><strong>Surge</strong> 这些年给了我很多帮助，很感谢。特意开此文，讲解 Surge 工作原理，以致敬 Surge。<br>本文会对 Socket、Wireshark、网络系统代理(http&#x2F;s、socket5、POSIX)、网络网卡代理(VIF)、VPN、DNS、DOH(SNI) 等知识点进行描述，以更加全面的讲解 Surge 的工作原理。</p>
+<p>在家庭网络中 dig 互联网的域名，为什么 dns 解析成了 198.x 呢？最后发现是最常使用的网络软件 <strong>Surge</strong> 引起的。<br><strong>Surge</strong> 这些年给了我很多帮助，很感谢。特意开此文，讲解 Surge 工作原理，以致敬 Surge。<br>本文会对 Socket、Wireshark、网络系统代理 (http/s、socket5、POSIX)、网络网卡代理 (VIF)、VPN、DNS、DOH (SNI) 等知识点进行描述，以更加全面的讲解 Surge 的工作原理。</p>
 <h1 id="致敬-Surge"><a href="#致敬-Surge" class="headerlink" title="致敬 Surge"></a>致敬 Surge</h1><p>Surge 是一款非常强大的网络调试工具，很多人都对它极为陌生，主要原因是它的售价过高，宣传和使用的人也不多。<br>每一个 ITer 都应该使用它。网络在 IT 工作中时刻都需要关注，如 DNS 解析、网络流量查看和 hook、网络代理等等，这些 Surge 都可以做到。是发现和排查网络问题的神器，也可以协助工作。<br>这里会先介绍下 Surge 的使用，或许你会感兴趣。如果以后 Surge 帮助到了你，那也是一件幸事。</p>
           <!--noindex-->
           <!--/noindex-->
@@ -856,7 +870,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/tenyears/" class="post-title-link" itemprop="url">又十年-至三十而立</a>
+          <a href="/2023/tenyears/" class="post-title-link" itemprop="url">又十年 - 至三十而立</a>
         </h2>
 
         <div class="post-meta-container">
@@ -891,7 +905,7 @@
     <div class="post-body" itemprop="articleBody">
           <p>我一直都在回味前不久过了三十岁的生日，这个年龄坎悄无声息的就来了。<br>那晚，我和以往一样，回家的比较晚。老婆孩子都在等我，他们做了火锅，庆祝我生日。孩子还用压岁钱，送了我一瓶香水。<br>我知道那天是我生日，只是我自己也没有多少在乎和关注。但破防的夜宵，还是让我语言沉默和大脑峰回路转。</p>
 <p>三十而立了。</p>
-<p>当自己走到了三十的路口，停下来看看左右，再看看回头路，才发现目前正在停驻的路口，心里是多么的不想面对以及情绪复杂。<br>哥哥什么时候三十的，我没有注意。老婆三十的坎，我也没什么顿悟。而父母今年也是六十了，我写文章这一刻才发觉。奶奶也已经九十八了。<br>其实我本该对亲人，嗯，本该多一些关心的。老婆评价过我，说我对亲人没得感情。我不承认，但也不否认。真要做个度量的话，还是“不否认”占据多数的。</p>
+<p>当自己走到了三十的路口，停下来看看左右，再看看回头路，才发现目前正在停驻的路口，心里是多么的不想面对以及情绪复杂。<br>哥哥什么时候三十的，我没有注意。老婆三十的坎，我也没什么顿悟。而父母今年也是六十了，我写文章这一刻才发觉。奶奶也已经九十八了。<br>其实我本该对亲人，嗯，本该多一些关心的。老婆评价过我，说我对亲人没得感情。我不承认，但也不否认。真要做个度量的话，还是 “不否认” 占据多数的。</p>
 <p>张学友近期发布了「又十年」，听着听着，就感慨万千，想表达的能表达的，都在一首歌里。<br>「一眨眼 又是一個十年」<br>「生命給我們什麼都不可能拒絕 這句話我當年不了解」<br>「那些瓜葛糾結 在某一天突然迎刃而解」</p>
           <!--noindex-->
           <!--/noindex-->
@@ -939,7 +953,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/double/" class="post-title-link" itemprop="url">双拼-少有的高回报效率技能</a>
+          <a href="/2023/double/" class="post-title-link" itemprop="url">双拼 - 少有的高回报效率技能</a>
         </h2>
 
         <div class="post-meta-container">
@@ -972,7 +986,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>前两天教孩子玩 9 皇后版的数独游戏，对于全盘多个空格，如何尽可能快的填充。我提到得找到最容易解决的哪些空格,解决的空格越多，后面空格的数字约束也就越多，也就越好解决。<br>这个游戏的本质就是如何把每一个空格填充，并且效能最大，贪婪嘛。<br>今天说的<strong>双拼</strong>，就是这样一个文本处理的软技能，工作和生活上都是通杀，在之前的<a href="https://www.yigegongjiang.com/2022/workefficiency/">提高效率的手艺</a>里也有提到。<br>生活上手机聊天打字，工作上项目汇报打字，各行各业各个人群都可以用得到。<br>2 天时间就可以熟练掌握的受益终生的软技能。</p>
+          <p>前两天教孩子玩 9 皇后版的数独游戏，对于全盘多个空格，如何尽可能快的填充。我提到得找到最容易解决的哪些空格，解决的空格越多，后面空格的数字约束也就越多，也就越好解决。<br>这个游戏的本质就是如何把每一个空格填充，并且效能最大，贪婪嘛。<br>今天说的<strong>双拼</strong>，就是这样一个文本处理的软技能，工作和生活上都是通杀，在之前的<a href="https://www.yigegongjiang.com/2022/workefficiency/">提高效率的手艺</a>里也有提到。<br>生活上手机聊天打字，工作上项目汇报打字，各行各业各个人群都可以用得到。<br>2 天时间就可以熟练掌握的受益终生的软技能。</p>
           <!--noindex-->
           <!--/noindex-->
         
@@ -1004,7 +1018,7 @@
     <div class="footer-inner">
 
   <div class="copyright">
-    &copy; 
+    &copy; 2018 – 
     <span itemprop="copyrightYear">2024</span>
     <span class="with-love">
       <i class=""></i>
@@ -1030,7 +1044,6 @@
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.umd.js" integrity="sha256-ytMJGN3toR+a84u7g7NuHm91VIR06Q41kMWDr2pq7Zo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
@@ -1040,7 +1053,6 @@
 
 
 
-  <script src="/js/third-party/fancybox.js"></script>
 
 
 

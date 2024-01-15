@@ -16,16 +16,15 @@
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.css" integrity="sha256-6cQIC71/iBIYXFK+0RHAvwmjwWzkWd+r7v/BX3/vZDc=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.1","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="只要使用电子产品，每时每刻都在和字符打交道。目之所及的字符，在存储、显示、执行等环节都离不开编码的支持。但对于字符编码，也会有一些误区，比如：Unicode 和 UTF 是否都是编码、字节和编码的关系、āáǎà的音标字符表达、内存字符编码 等等。 本文将循序渐进的，从 ASCII&#x2F; Unicode 介绍到 UTF8&#x2F;16&#x2F;32，以及文本二进制存储和 URL 编码&amp;#x">
+    <meta name="description" content="只要使用电子产品，每时每刻都在和字符打交道。目之所及的字符，在存储、显示、执行等环节都离不开编码的支持。但对于字符编码，也会有一些误区，比如：Unicode 和 UTF 是否都是编码、字节和编码的关系、āáǎà 的音标字符表达、内存字符编码 等等。 本文将循序渐进的，从 ASCII&#x2F; Unicode 介绍到 UTF8&#x2F;16&#x2F;32，以及文本二进制存储和 URL 编码 &#x2F; 多次编码等场景，最后解释内存">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机字符编码与内存编码 - Unicode、UTF8、String">
 <meta property="og:url" content="https://www.yigegongjiang.com/2023/unicode/index.html">
 <meta property="og:site_name" content="一个工匠">
-<meta property="og:description" content="只要使用电子产品，每时每刻都在和字符打交道。目之所及的字符，在存储、显示、执行等环节都离不开编码的支持。但对于字符编码，也会有一些误区，比如：Unicode 和 UTF 是否都是编码、字节和编码的关系、āáǎà的音标字符表达、内存字符编码 等等。 本文将循序渐进的，从 ASCII&#x2F; Unicode 介绍到 UTF8&#x2F;16&#x2F;32，以及文本二进制存储和 URL 编码&amp;#x">
+<meta property="og:description" content="只要使用电子产品，每时每刻都在和字符打交道。目之所及的字符，在存储、显示、执行等环节都离不开编码的支持。但对于字符编码，也会有一些误区，比如：Unicode 和 UTF 是否都是编码、字节和编码的关系、āáǎà 的音标字符表达、内存字符编码 等等。 本文将循序渐进的，从 ASCII&#x2F; Unicode 介绍到 UTF8&#x2F;16&#x2F;32，以及文本二进制存储和 URL 编码 &#x2F; 多次编码等场景，最后解释内存">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202312241510727.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202312241530132.png">
@@ -47,6 +46,9 @@
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>计算机字符编码与内存编码 - Unicode、UTF8、String | 一个工匠</title>
   
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CTEWJ02QX"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-8CTEWJ02QX","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
 
 
 
@@ -94,7 +96,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">83</span></a></li><li class="menu-item menu-item-opensource"><a href="/openSource" rel="section">OpenSource</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section">RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">83</span></a></li><li class="menu-item menu-item-opensource"><a href="/openSource" rel="section">OpenSource</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
   </ul>
 </nav>
 
@@ -156,6 +158,18 @@
     </div>
 
     
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          Links
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9oYWlfbHZf" title="https:&#x2F;&#x2F;twitter.com&#x2F;hai_lv_">X(Twitter)</span>
+            </li>
+        </ul>
+      </div>
+    </div>
         <div class="pjax">
         </div>
   </aside>
@@ -224,8 +238,8 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>只要使用电子产品，每时每刻都在和字符打交道。目之所及的字符，在存储、显示、执行等环节都离不开编码的支持。<br>但对于字符编码，也会有一些误区，比如：Unicode 和 UTF 是否都是编码、字节和编码的关系、āáǎà的音标字符表达、内存字符编码 等等。</p>
-<p>本文将循序渐进的，从 ASCII&#x2F; Unicode 介绍到 UTF8&#x2F;16&#x2F;32，以及文本二进制存储和 URL 编码&#x2F;多次编码等场景，最后解释内存中字符串的编码格式。<br>每个环节都通过二进制调试的方式给予实际的场景输出，争取一遍将编码吃透。</p>
+    <div class="post-body" itemprop="articleBody"><p>只要使用电子产品，每时每刻都在和字符打交道。目之所及的字符，在存储、显示、执行等环节都离不开编码的支持。<br>但对于字符编码，也会有一些误区，比如：Unicode 和 UTF 是否都是编码、字节和编码的关系、āáǎà 的音标字符表达、内存字符编码 等等。</p>
+<p>本文将循序渐进的，从 ASCII/ Unicode 介绍到 UTF8/16/32，以及文本二进制存储和 URL 编码 / 多次编码等场景，最后解释内存中字符串的编码格式。<br>每个环节都通过二进制调试的方式给予实际的场景输出，争取一遍将编码吃透。</p>
 <span id="more"></span>
 
 <style>
@@ -256,12 +270,12 @@
 </style>
 
 <h2 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h2><p>ASCII 是大学计算机教科书入门知识点，如果不联系上码位和 Unicode ，还是不好理解的。知道有这个东西在，但是怎么玩的却不是很清楚。<br>比如，C 语言是古老的伟大语言，印象中 C 语言教程都使用的 ASCII 字符，没有出现中文。那么 C 语言可以通过 printf 输出中文吗？</p>
-<p><strong>ASCII 和 Unicode 都是字符集，又称码表</strong>，字符集可以看做一个数组，里面的每个元素称为 <strong>码位 &#x2F; 码点 &#x2F;Code Point</strong>。<br>字符集是约定俗成的一套全世界都默认遵守的规则矩阵，这套规则矩阵里面的每个元素（码位），都<strong>表示一个特定的符号含义且不可改变</strong>。</p>
+<p><strong>ASCII 和 Unicode 都是字符集，又称码表</strong>，字符集可以看做一个数组，里面的每个元素称为 <strong>码位 / 码点 /Code Point</strong>。<br>字符集是约定俗成的一套全世界都默认遵守的规则矩阵，这套规则矩阵里面的每个元素（码位），都<strong>表示一个特定的符号含义且不可改变</strong>。</p>
 <p>ASCII 并不是表示 0-9 或者 a-z 这些我们肉眼看到的符号。这些符号是对于人类友好的视觉表达。</p>
-<p>比如 <code>@</code> 字符，可以脑海里回忆一下，这些年是不是见过很多样式的 @ 符号。但这些不同的视觉表达并不是 ASCII。<br><code>@</code> 字母的 ASCII 码位是 <code>0x40 (64)</code>，这个才是 ASCII 的含义。即 ASCII 定义了 <code>0x40</code> 这个码位只能用来表达 <code>@</code> 这个字母的含义，不能表示 a&#x2F;b 或其他。</p>
+<p>比如 <code>@</code> 字符，可以脑海里回忆一下，这些年是不是见过很多样式的 @ 符号。但这些不同的视觉表达并不是 ASCII。<br><code>@</code> 字母的 ASCII 码位是 <code>0x40 (64)</code>，这个才是 ASCII 的含义。即 ASCII 定义了 <code>0x40</code> 这个码位只能用来表达 <code>@</code> 这个字母的含义，不能表示 a/b 或其他。</p>
 <p>从 ASCII 进化到 Unicode，就是增加了很多码位，以建立全世界的规则矩阵，大家都得遵守。<br>emoji 等各种表情符号就是 Unicode 里面的特定码位。应用层识别到具体的表情码位后，做的符号映射和视觉显示。<br>切换字体，也同样是对同一个码位，做不同的视觉表达。<br>所以，这里很重要的一点，是对 <strong>码位</strong> 的理解。<strong>码位才是每一个字符的互联网流通语言</strong>。后面介绍的文本文件存储、二进制文件存储等，都离不开<strong>码位</strong>。</p>
-<p>对于字符来说，计算机也只对码位做存储，在没有 Unicode 的时候，计算机存储的就是 ASCII 里面的共计 256 个码位(00000000 - 11111111)。<br>下面例子中，将 <code>abcde</code> 存储到文件中，共计 5 个字节。通过 <code>xxd</code> 命令确认每个字节的存储内容都是这些字母的 ASCII 码位。(后面统一使用十六进制 hexdump 查看)。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; cat test.txt                                                                </span><br><span class="line">abcde</span><br><span class="line"></span><br><span class="line">&gt; wc -c test.txt                                                                  </span><br><span class="line">5 test.txt</span><br><span class="line"></span><br><span class="line">&gt; xxd -b test.txt</span><br><span class="line">00000000: 01100001 01100010 01100011 01100100 01100101           abcde</span><br><span class="line"></span><br><span class="line">&gt; hexdump -C test.txt</span><br><span class="line">61 62 63 64 65    |abcde|</span><br></pre></td></tr></table></figure>
+<p>对于字符来说，计算机也只对码位做存储，在没有 Unicode 的时候，计算机存储的就是 ASCII 里面的共计 256 个码位 (00000000 - 11111111)。<br>下面例子中，将 <code>abcde</code> 存储到文件中，共计 5 个字节。通过 <code>xxd</code> 命令确认每个字节的存储内容都是这些字母的 ASCII 码位。(后面统一使用十六进制 hexdump 查看)。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; cat test.txt                                                                </span><br><span class="line">abcde</span><br><span class="line"></span><br><span class="line">&gt; wc -c test.txt                                                                  </span><br><span class="line">5 test.txt</span><br><span class="line"></span><br><span class="line">&gt; xxd -b test.txt</span><br><span class="line">00000000: 01100001 01100010 01100011 01100100 01100101           abcde</span><br><span class="line"></span><br><span class="line">&gt; hexdump -C test.txt</span><br><span class="line">61 62 63 64 65    |abcde|</span><br></pre></td></tr></tbody></table></figure>
 
 <p>有了 Unicode 之后，当然也可以对 Unicode 的码位做存储，这是最简单的复刻 ASCII 的模式，但这有一些问题。<br>Unicode 采用平面码位设计，共计 17 个平面，每个平面有 65536 个码位，共计 1114112 个码位。<br>二进制是：<code>xxxxx 00000000 00000000</code> - <code>xxxxx 11111111 11111111</code>。xx 表示平面，从 0 - 16，范围是：<code>00000</code> - <code>10000</code>，绝大部分字符的 xx 都是 <code>00000</code>，称为 零平面。</p>
 <p>如果要将 Unicode 的码位做存储，为了补齐每个字节，那么每个码位都需要 3 字节的存储空间。<br>这对于磁盘和内存都无法接受，尤其英文是世界的流通语言，在 ASCII 的时候，它们仅需 1 个字节的存储空间。</p>
@@ -271,18 +285,18 @@
 <thead>
 <tr>
 <th align="center">字符</th>
-<th>Unicode 码位 十六进制</th>
-<th>Unicode 码位 二进制</th>
+<th> Unicode 码位 十六进制</th>
+<th> Unicode 码位 二进制</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">a</td>
+<td align="center"> a</td>
 <td>0x61</td>
 <td>00000 00000000 01100001</td>
 </tr>
 <tr>
-<td align="center">中</td>
-<td>0x4e2d</td>
+<td align="center"> 中</td>
+<td> 0x4e2d</td>
 <td>00000 01001110 00101101</td>
 </tr>
 <tr>
@@ -291,20 +305,20 @@
 <td>00001 11110110 00000000</td>
 </tr>
 </tbody></table>
-<h2 id="UTF"><a href="#UTF" class="headerlink" title="UTF"></a>UTF</h2><p>UTF，是字符编码，是一套算法实现，实际上是<strong>对码位进行编码</strong>。<br>它们服务于前面说到的 Unicode 字符集，具体职责是：<strong>如何对码位进行压缩，以节省空间，并兼顾效率(编码&amp;解码)</strong> 。</p>
+<h2 id="UTF"><a href="#UTF" class="headerlink" title="UTF"></a>UTF</h2><p>UTF，是字符编码，是一套算法实现，实际上是<strong>对码位进行编码</strong>。<br>它们服务于前面说到的 Unicode 字符集，具体职责是：<strong>如何对码位进行压缩，以节省空间，并兼顾效率 (编码 &amp; 解码)</strong> 。</p>
 <p>这里介绍一下 UTF-8 和 UTF-16。</p>
 <h3 id="UTF-8"><a href="#UTF-8" class="headerlink" title="UTF-8"></a>UTF-8</h3><p>UTF-8 使用多字节来表达一个 Unicode 码位</p>
 <table>
 <thead>
 <tr>
 <th align="center">字节数</th>
-<th>Unicode码位</th>
+<th> Unicode 码位</th>
 <th>十进制</th>
-<th>UTF-8 编码</th>
+<th> UTF-8 编码</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">1</td>
+<td align="center"> 1</td>
 <td>000000-00007F</td>
 <td>0-127</td>
 <td>0xxxxxxx</td>
@@ -335,20 +349,20 @@
 <th align="center">符号</th>
 <th>码位</th>
 <th align="center">字节</th>
-<th>UTF-8 编码</th>
+<th> UTF-8 编码</th>
 <th>十六进制</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">a</td>
+<td align="center"> a</td>
 <td>00000000 00000000 01100001(0x61)</td>
 <td align="center">1</td>
 <td>01100001</td>
 <td>0x61</td>
 </tr>
 <tr>
-<td align="center">中</td>
-<td>00000000 01001110 00101101(0x4E2D)</td>
+<td align="center"> 中</td>
+<td> 00000000 01001110 00101101(0x4E2D)</td>
 <td align="center">3</td>
 <td>&lt;1110&gt;0100 &lt;10&gt;111000 &lt;10&gt;101101</td>
 <td>0xE4B8AD</td>
@@ -364,27 +378,27 @@
 <p>可以换算一下，将 UTF-8 的二进制编码，去掉前面的标记位，就是原本的码位二进制。</p>
 <img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202312241510727.png" width="40%">
 
-<h3 id="UTF-16"><a href="#UTF-16" class="headerlink" title="UTF-16"></a>UTF-16</h3><p>UTF-16 是固定编码，要么是 2 字节，要么是 4 字节，根据平面来决定。对于第一个平面(零平面)均使用 2 字节，其他的使用 4 字节。<br>但是 UTF-16 有个默认2字节前缀，即最小也是 4 字节。还是上面的例子：</p>
+<h3 id="UTF-16"><a href="#UTF-16" class="headerlink" title="UTF-16"></a>UTF-16</h3><p>UTF-16 是固定编码，要么是 2 字节，要么是 4 字节，根据平面来决定。对于第一个平面 (零平面) 均使用 2 字节，其他的使用 4 字节。<br>但是 UTF-16 有个默认 2 字节前缀，即最小也是 4 字节。还是上面的例子：</p>
 <table>
 <thead>
 <tr>
 <th align="center">符号</th>
 <th>码位</th>
 <th align="center">字节</th>
-<th>UTF-8 编码</th>
+<th> UTF-8 编码</th>
 <th>十六进制</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">a</td>
+<td align="center"> a</td>
 <td>00000000 00000000 01100001(0x61)</td>
 <td align="center">2</td>
 <td>00000000 01100001</td>
 <td>0x0061</td>
 </tr>
 <tr>
-<td align="center">中</td>
-<td>00000000 01001110 00101101(0x4E2D)</td>
+<td align="center"> 中</td>
+<td> 00000000 01001110 00101101(0x4E2D)</td>
 <td align="center">2</td>
 <td>01001110 00101101</td>
 <td>0x4E2D</td>
@@ -397,7 +411,7 @@
 <td>0xD83D 0xDE00</td>
 </tr>
 </tbody></table>
-<p>这里有个小小的注意点，对于 UTF16 来说，零平面的码点，码位和UTF16值，是一样的。这一点对于后面要说到的 内存编码 很重要，这里先了解下，后面再细说。</p>
+<p>这里有个小小的注意点，对于 UTF16 来说，零平面的码点，码位和 UTF16 值，是一样的。这一点对于后面要说到的 内存编码 很重要，这里先了解下，后面再细说。</p>
 <img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202312241530132.png" width="40%">
 
 <h3 id="UTF-小结"><a href="#UTF-小结" class="headerlink" title="UTF 小结"></a>UTF 小结</h3><p>UTF32 就不介绍了，用的也少，4 个固定字节大小，也没什么特别要说的。比较下 UTF8 和 UTF16 的差异：</p>
@@ -427,7 +441,7 @@
 <p>如此之后，URL 实际上可以被多次 encoding，每次 encoding 的时候 % 都会被换成 <code>%25</code>。<br>对 <code>%</code> URL Encoding 5 次之后结果是：<code>%25252525</code>。如果需要拿到最开始的 <code>%</code> 符号，也同样需要对应 URL Decoding 5 次。</p>
 <p>所以开发过程中，Encoding 和 Decoding 的次数需要一致，这个非常重要。否则就拿不到正确的 URL。</p>
 <h2 id="音调"><a href="#音调" class="headerlink" title="音调"></a>音调</h2><p>对于音调来说，每个字母都有 4 个音调。为 <code>āáǎà</code> 每个字符都设置一个码位有些不合适。而且除了音调，还有其他一些场景，也具有同样的现象。<br>Unicode 设计上，会通过两个码位来表示一个字符。即码位和字符并不总是 1:1 的关系，有时候是 2:1。<br>比如，<code>ā</code>字符，就是由 <code>a</code> 码位 和 <code>ˉ</code> 码位连续组合。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; cat test.txt                                                                    </span><br><span class="line">ā</span><br><span class="line">&gt; wc -c test.txt                                                                  </span><br><span class="line">3 test.txt</span><br><span class="line">&gt; hexdump -C test.txt                                                             </span><br><span class="line">61 cc 84   |a..|</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; cat test.txt                                                                    </span><br><span class="line">ā</span><br><span class="line">&gt; wc -c test.txt                                                                  </span><br><span class="line">3 test.txt</span><br><span class="line">&gt; hexdump -C test.txt                                                             </span><br><span class="line">61 cc 84   |a..|</span><br></pre></td></tr></tbody></table></figure>
 
 <p>其中，<code>a</code> 和 <code>ˉ</code> 的 Unicode 码位分别是：</p>
 <table>
@@ -436,12 +450,12 @@
 <th align="center">符号</th>
 <th>码位</th>
 <th align="center">字节</th>
-<th>UTF-8 编码</th>
+<th> UTF-8 编码</th>
 <th>十六进制</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">a</td>
+<td align="center"> a</td>
 <td>00000000 00000000 01100001(0x61)</td>
 <td align="center">1</td>
 <td>01100001</td>
@@ -456,50 +470,50 @@
 </tr>
 </tbody></table>
 <p>存储的时候，两个码位还是单独存储的，上面 wc 命令查看共计 3 字节。只是展示的时候，需要应用层做识别，将音调显示在前面字母的顶部。<br>注意，两个码位组合代表一个字符，这是 Unicode 的规定，需要使用方遵守约定。<br>但 Unicode 本身并没有一套计算公式，将两个码位组合成一个码位。实际上就是两个码位按照前后顺序写入即可。</p>
-<h2 id="文本文件的识别"><a href="#文本文件的识别" class="headerlink" title="文本文件的识别"></a>文本文件的识别</h2><p>我们认为的文本文件，一般都是通过特定文本编码写入文本的文件，比如 .txt 或者 .m&#x2F;.java 等文件。而非 .zip&#x2F;.jpg 等文件。<br>对于文件而言，存储的内容都是二进制。虽然可以根据后缀认为某个文件是文本文件，但鉴于后缀也可以更改，所以这并不准确。<br>有一种方案是读取文件头的 <code>magic number</code>。但这种方案对于识别文件二进制类型比较有用，并不能识别出文本文件。因为文本文件一般都是没有特定的 <code>magic number</code> 的。</p>
-<p>对于图片&#x2F;视频等文件，读取它们的二进制内容和读取 <code>.txt</code> 等文本文件的技术方案一致。<br>不过对于图片等二进制，显然无法进行有效的 UTF 解码，所以读取后会是乱码。<br>对同一个文件进行一致的编码和解码，这样写入的二进制就具有一定的规则。读取的时候按照同样的规则进行解析，当然可以识别出当初写入的内容。</p>
+<h2 id="文本文件的识别"><a href="#文本文件的识别" class="headerlink" title="文本文件的识别"></a>文本文件的识别</h2><p>我们认为的文本文件，一般都是通过特定文本编码写入文本的文件，比如 .txt 或者 .m/.java 等文件。而非 .zip/.jpg 等文件。<br>对于文件而言，存储的内容都是二进制。虽然可以根据后缀认为某个文件是文本文件，但鉴于后缀也可以更改，所以这并不准确。<br>有一种方案是读取文件头的 <code>magic number</code>。但这种方案对于识别文件二进制类型比较有用，并不能识别出文本文件。因为文本文件一般都是没有特定的 <code>magic number</code> 的。</p>
+<p>对于图片 / 视频等文件，读取它们的二进制内容和读取 <code>.txt</code> 等文本文件的技术方案一致。<br>不过对于图片等二进制，显然无法进行有效的 UTF 解码，所以读取后会是乱码。<br>对同一个文件进行一致的编码和解码，这样写入的二进制就具有一定的规则。读取的时候按照同样的规则进行解析，当然可以识别出当初写入的内容。</p>
 <p>当然，可以对文件的二进制内容全部读出来，然后通过 UTF 进行解码，若能解出来，那就是文本文件。<br>这是稳定的方案，但具有极大的性能损耗。因为一个图片或者视频，它的二进制内容是非常多的，IO 成本过大。</p>
 <p>有一个比较小巧的技术方案，即对文本内容主动进行多个位置的截取解码，以较小的性能开销来对文本文件进行识别。</p>
 <p>比如从 文件头 N 偏移的位置截取 10 个字节数据。对这 10 字节进行不同维度的解码。<br>只要能有一次解出来，说明这 10 字节数据是符合文本编码规范的。（大概率无法一次解出。因为 10 字节里面只有一部分是完整的编码数据，两头很可能是被截断的，无法被解码）<br>同样的操作可以进行 M 次，需要 M 次全部命中，才能认为当前文件的确是文本文件。合理的设置 M 值，对于真的文本文件会具有很高的识别效率。<br>但只要有一次不命中，既可以确认当前文件不是文本文件。即非文本文件，可以一次命中，效率极高。</p>
 <p>这样，也可以过滤图片文件中插入文本这种操作。</p>
 <p>这种方案以读取少量的文本内容和多次匹配作为代价，可以比较稳定的确认当前文件是否是文本文件。</p>
-<p>源代码可参考：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvSExWRmlsZUR1bXA=">HLVFileDump<i class="fa fa-external-link-alt"></i></span></p>
+<p>源代码可参考：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvSExWRmlsZUR1bXA=">HLVFileDump</span></p>
 <h2 id="内存字符编码"><a href="#内存字符编码" class="headerlink" title="内存字符编码"></a>内存字符编码</h2><p>终于要说到内存中的字符编码了。这是非常重要的一环，也是很多人对于字符编码的卡点瓶颈所在。</p>
 <p>前面说的字符使用 UTF 编码，都是以写入文本来说明的，主要阐述的是 UTF 编码的<strong>存储能力</strong>。<br>这一方面 UTF-8 通过多字节能力，可以非常有效的压缩文件大小。这在磁盘、网络传输等方面是绝对的王者。</p>
 <p>但是在程序运行过程中，比如字符串大小匹配场景，也会对字符串进行操作。这时候的字符，在内存中是什么样的表现呢？</p>
 <p>它一定会有一个表现形式，否则它就没法存在。<br>它可以通过<strong>码位 二进制</strong>的形式在内存中表达。上面也提到过磁盘存储也可以直接存储码位，但固定 3 字节的大小太费存储了，在内存这里显然更拘谨，所以更不合适。</p>
 <p>也没更多选项了，要么 UTF-8，要么 UTF-16。因为 UTF-32 是 4 字节，那还不如直接存储码位了。</p>
 <p>实际上，在内存中对于字符使用 UTF 的那个存储，不是由操作系统决定的，而是由编程语言决定的。对于高级语言一般都使用 UTF-16，但 C 语言使用 UTF-8。</p>
-<p>在介绍内存编码之前，还是先简单说明一下二进制文件吧。文本文件属于二进制文件，但二进制文件具有更多的表现能力。<br>理解了它们，除了方便理解后面的内存字符编码，也对文件中的字节有更好的认识(对于本文而言，这属于番外内容)。</p>
-<h3 id="二进制文件"><a href="#二进制文件" class="headerlink" title="二进制文件"></a>二进制文件</h3><p>所有文件都是二进制文件。<br>高级语言对文件进行读写的时候，需要通过内核塌陷的模式，调用操作系统 api 拿到文件句柄然后操作 read&#x2F;write api。<br>这里 read 和 write 的数据，都是 Data 二进制。即文件、文件系统、操作系统、计算机，只理解二进制，不理解具体的字符。</p>
-<p>对于二进制文件，也有很多种用途。比如：<br>文本文件，主要用来记录文字，将文字编码后写入，解码后还原。每个字节都是一致的含义，即都表示文字(也可以认为没有含义)。<br>图片&#x2F;视频文件，主要用来存储特定格式的数据。它的每个字节所表达的含义可能都不一样，比如 m-n 字节的数据表示地理位置，i-j 字节的数据表示拍摄机器的型号等。<br>可执行文件，如 Twitter，主要用来严丝合缝的存储自身需要的数据。它不需要被外部读取，它本身可运行读取自己。比如 ELF 文件，每个 section、每个段、符号表等，都需要存储在特定的区域。</p>
+<p>在介绍内存编码之前，还是先简单说明一下二进制文件吧。文本文件属于二进制文件，但二进制文件具有更多的表现能力。<br>理解了它们，除了方便理解后面的内存字符编码，也对文件中的字节有更好的认识 (对于本文而言，这属于番外内容)。</p>
+<h3 id="二进制文件"><a href="#二进制文件" class="headerlink" title="二进制文件"></a>二进制文件</h3><p>所有文件都是二进制文件。<br>高级语言对文件进行读写的时候，需要通过内核塌陷的模式，调用操作系统 api 拿到文件句柄然后操作 read/write api。<br>这里 read 和 write 的数据，都是 Data 二进制。即文件、文件系统、操作系统、计算机，只理解二进制，不理解具体的字符。</p>
+<p>对于二进制文件，也有很多种用途。比如：<br>文本文件，主要用来记录文字，将文字编码后写入，解码后还原。每个字节都是一致的含义，即都表示文字 (也可以认为没有含义)。<br>图片 / 视频文件，主要用来存储特定格式的数据。它的每个字节所表达的含义可能都不一样，比如 m-n 字节的数据表示地理位置，i-j 字节的数据表示拍摄机器的型号等。<br>可执行文件，如 Twitter，主要用来严丝合缝的存储自身需要的数据。它不需要被外部读取，它本身可运行读取自己。比如 ELF 文件，每个 section、每个段、符号表等，都需要存储在特定的区域。</p>
 <p>这样看下来，从文件的角度来看，都是二进制数据，没有差别。但是对文件使用者来说，二进制文件的含义千差万别。</p>
 <p>在很多年前，我希望同事将 jpg 图片改成 png 图片。拿到 png 图片后程序的 bug 依旧没有解决。最后排查发现同事把 .jpg 的后缀改成了 .png :(<br>程序走 .png 的逻辑，但内部数据是 .jpg 的格式，这就会导致无法解析。</p>
 <h3 id="值编码"><a href="#值编码" class="headerlink" title="值编码"></a>值编码</h3><p>说到内存编码，是针对刚才提到的可执行二进制文件来说的。因为文件执行起来后，才会使用字符和内存。<br>对于下面三种场景，同样的字符 1，具有同样的字节大小，但使用方式一点都不一样：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int8 i = 1; </span><br><span class="line">char i = &#x27;1&#x27;; </span><br><span class="line">String i = &quot;1&quot;; </span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int8 i = 1; </span><br><span class="line">char i = '1'; </span><br><span class="line">String i = "1"; </span><br></pre></td></tr></tbody></table></figure>
 
 <p>对于 1 字符，在 二进制数、ASCII 和 Unicode 中分别是如下定义：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">数字二进制 int8：00000001(0x1)</span><br><span class="line">ASCII 码位：00110001(0x31)</span><br><span class="line">Unicode 码位: 00000 00000000 00110001(0x31)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">数字二进制 int8：00000001(0x1)</span><br><span class="line">ASCII 码位：00110001(0x31)</span><br><span class="line">Unicode 码位: 00000 00000000 00110001(0x31)</span><br></pre></td></tr></tbody></table></figure>
 
 <p>编译器需要对 int 类型的 1 进行数字操作，通过数字二进制就可以表达，不需要使用字符集码位。<br>对于 char 类型，编译器明确该类型只需要满足 ASCII，直接使用 ASCII 码位即可。<br>对于 String 类型，下面细说。<br>这就是<strong>值编码</strong>。即这个字符使用什么编码，是和它的类型有关，编译器最终会决定编码类型。</p>
 <h3 id="内存字符编码-1"><a href="#内存字符编码-1" class="headerlink" title="内存字符编码"></a>内存字符编码</h3><p>在文本文件的时候，文件使用 UTF8 编码，但是读取文件的时候还需要解码，目的是解出码位，通过码位识别当前字符是哪个坑位，以做应用层显示。<br>但对于可执行程序而言，内存中的数据可以从可执行文件中读取，且不需要解码。即可执行文件中该字符是什么内容，原封不动的读取放入内存或者寄存器即可。<br>这样的目的是省去解码操作，直接进行二进制的读取即可，可执行文件是速度优先，整个编译器都在为速度服务。</p>
 <p>所以对于上面的 String 类型，在内存中使用何种编码，直接通过查看可执行文件来确认。下面开始准备物料进行分析：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// Swift</span><br><span class="line">let swift_x = &quot;a1&quot;;</span><br><span class="line">let swift_y = &quot;中1&quot;;</span><br><span class="line">let swift_z = &quot;😀1&quot;;</span><br><span class="line"></span><br><span class="line">// C</span><br><span class="line">void test_c(void) &#123;</span><br><span class="line">  char *c_x = &quot;a3&quot;;</span><br><span class="line">  char *c_y = &quot;中3&quot;;</span><br><span class="line">  char *c_z = &quot;😀3&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Objective-C</span><br><span class="line">+ (void)load &#123;</span><br><span class="line">  NSString *oc_x = @&quot;a2&quot;;</span><br><span class="line">  NSString *oc_y = @&quot;中2&quot;;</span><br><span class="line">  NSString *oc_z = @&quot;😀2&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// Swift</span><br><span class="line">let swift_x = "a1";</span><br><span class="line">let swift_y = "中1";</span><br><span class="line">let swift_z = "😀1";</span><br><span class="line"></span><br><span class="line">// C</span><br><span class="line">void test_c(void) {</span><br><span class="line">  char *c_x = "a3";</span><br><span class="line">  char *c_y = "中3";</span><br><span class="line">  char *c_z = "😀3";</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">// Objective-C</span><br><span class="line">+ (void)load {</span><br><span class="line">  NSString *oc_x = @"a2";</span><br><span class="line">  NSString *oc_y = @"中2";</span><br><span class="line">  NSString *oc_z = @"😀2";</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
-<p>选了三个不同的语言，字符串末尾增加了 1&#x2F;2&#x2F;3 标记。下面看下编译产物：</p>
+<p>选了三个不同的语言，字符串末尾增加了 1/2/3 标记。下面看下编译产物：</p>
 <img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202312260331800.jpg" width="80%">
 
 <p>显然，内存中各种高级语言也是使用了 UTF 编码，这没得选择，Unicode 和 UTF 是绝配。</p>
 <ol>
 <li>C 语言统一使用 UTF8 编码</li>
-<li>Objective-C 同时使用了 UTF8 和 UTF16</li>
+<li> Objective-C 同时使用了 UTF8 和 UTF16</li>
 <li>Swift 使用了 UTF8（查阅资料说 Swift 也会在某些场景下使用 UTF16，没能复现）</li>
 </ol>
-<p>但各类语言的内存编码使用情况并不是一边倒的偏向某一方。<br>比如 Java&#x2F;Python&#x2F;JS 使用的是 UTF16，Go&#x2F;Swift 使用的是 UTF8。还有些是两者同时使用如 Objective-C。</p>
+<p>但各类语言的内存编码使用情况并不是一边倒的偏向某一方。<br>比如 Java/Python/JS 使用的是 UTF16，Go/Swift 使用的是 UTF8。还有些是两者同时使用如 Objective-C。</p>
 <p>在内存中使用 UTF8 或者 UTF16，主要考虑的并不是存储和编解码性能。<br>因为在程序运行过程中操作的字符频率并不会很多，远远不如一个 .txt 或者 .png 里面动不动几十 K 或者几十 M。</p>
-<p>内存中在乎的是<strong>字节操作性能</strong>。在算法执行过程中，对字符的 比较&#x2F;截取&#x2F;复制 等操作，那是越快越好。<br>在配置相同的情况下，哪个编码的字节小，哪个就会快一些。<br>比如对 <code>a</code>、<code>b</code> 两个字符进行比较，若使用 UTF8，则只需要比较 1 个字节。若使用 UTF16，则需要比较 2 个字节。<br>对于 <code>中</code>、<code>文</code> 两个字符比较，UTF8 需要比较 3 个字节，UTF16 需要比较 2 个字节。</p>
+<p>内存中在乎的是<strong>字节操作性能</strong>。在算法执行过程中，对字符的 比较 / 截取 / 复制 等操作，那是越快越好。<br>在配置相同的情况下，哪个编码的字节小，哪个就会快一些。<br>比如对 <code>a</code>、<code>b</code> 两个字符进行比较，若使用 UTF8，则只需要比较 1 个字节。若使用 UTF16，则需要比较 2 个字节。<br>对于 <code>中</code>、<code>文</code> 两个字符比较，UTF8 需要比较 3 个字节，UTF16 需要比较 2 个字节。</p>
 <p>因为 Unicode 码位的不同位置区块，是偏向不同国家语言的。比如英文主要集中在前面的 ASCII 部分，中文就比较靠后。<br>在 UTF8 场景，英文肯定占有优势，字符串操作的字节数直接比中文少了一大半。<br>但大家又集中处于 零平面 区块，在 UTF16 里面基本所有国家的字符都是 2 字节，从上帝视角来看这又比较公平。</p>
-<p>最好的办法当然是根据文本内容的不同，选择不同的编码。<br>目前 Objective-C 的做法是：若字符中全是 ASCII，则使用 UTF8。只要有不是 ASCII 的字符，则使用 UTF16。这是一定程度上的优化。<br>听说 Swift 可以根据内容，智能的选择哪一个更合适(若英文偏多则使用UTF8这样子)，但本地没能复现。但显然这是最优解。</p>
+<p>最好的办法当然是根据文本内容的不同，选择不同的编码。<br>目前 Objective-C 的做法是：若字符中全是 ASCII，则使用 UTF8。只要有不是 ASCII 的字符，则使用 UTF16。这是一定程度上的优化。<br>听说 Swift 可以根据内容，智能的选择哪一个更合适 (若英文偏多则使用 UTF8 这样子)，但本地没能复现。但显然这是最优解。</p>
 <hr>
 <p>体毛具有生长期、休止期。头发的生长期很长，可以持续 2-6 年。腿毛的生长期只有几个月。<br>生长期结束后就不长了，休止期会退毛，然后毛囊长出新的毛发。重复生长期过程。<br>所以头发可以很长但是腿毛就很短。</p>
 
@@ -526,7 +540,7 @@
       </div>
 
       <div class="social-item">
-          <a target="_blank" class="social-link" href="https://t.me/gongjiang">
+          <a target="_blank" class="social-link" href="https://t.me/hai_lv_tg">
             <span class="icon">
               <i class="fab fa-telegram"></i>
             </span>
@@ -606,7 +620,7 @@
     <div class="footer-inner">
 
   <div class="copyright">
-    &copy; 
+    &copy; 2018 – 
     <span itemprop="copyrightYear">2024</span>
     <span class="with-love">
       <i class=""></i>
@@ -632,7 +646,6 @@
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.umd.js" integrity="sha256-ytMJGN3toR+a84u7g7NuHm91VIR06Q41kMWDr2pq7Zo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
@@ -642,7 +655,6 @@
 
 
 
-  <script src="/js/third-party/fancybox.js"></script>
 
 
 

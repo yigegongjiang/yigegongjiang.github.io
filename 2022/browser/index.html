@@ -16,13 +16,12 @@
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.css" integrity="sha256-6cQIC71/iBIYXFK+0RHAvwmjwWzkWd+r7v/BX3/vZDc=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.1","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="想起了一个老问题：浏览器按下回车的时候，后续流程是怎么变化的。这个问题非常精妙，基本上把网络问题一次打包了。对相关知识面了解越多的人，能说的内容也越多。越资深的人，能说的时间也越长。我对网络也一直感兴趣，索性这次就做了大图，越做就盘子越大耗时越多，每个点都可以延伸一个举足轻重的行业。 浏览器按下回车键后，发生了太多太多事情，我文字理下图中写不下的重点，详细看下面大图。大图下载地址 DNS 重点是时">
 <meta property="og:type" content="article">
-<meta property="og:title" content="老梗-浏览器按回车后发生了什么">
+<meta property="og:title" content="老梗 - 浏览器按回车后发生了什么">
 <meta property="og:url" content="https://www.yigegongjiang.com/2022/browser/index.html">
 <meta property="og:site_name" content="一个工匠">
 <meta property="og:description" content="想起了一个老问题：浏览器按下回车的时候，后续流程是怎么变化的。这个问题非常精妙，基本上把网络问题一次打包了。对相关知识面了解越多的人，能说的内容也越多。越资深的人，能说的时间也越长。我对网络也一直感兴趣，索性这次就做了大图，越做就盘子越大耗时越多，每个点都可以延伸一个举足轻重的行业。 浏览器按下回车键后，发生了太多太多事情，我文字理下图中写不下的重点，详细看下面大图。大图下载地址 DNS 重点是时">
@@ -41,11 +40,14 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2022/browser/","path":"2022/browser/","title":"老梗-浏览器按回车后发生了什么"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2022/browser/","path":"2022/browser/","title":"老梗 - 浏览器按回车后发生了什么"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>老梗-浏览器按回车后发生了什么 | 一个工匠</title>
+<title>老梗 - 浏览器按回车后发生了什么 | 一个工匠</title>
   
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CTEWJ02QX"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-8CTEWJ02QX","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
 
 
 
@@ -93,7 +95,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">83</span></a></li><li class="menu-item menu-item-opensource"><a href="/openSource" rel="section">OpenSource</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section">RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">83</span></a></li><li class="menu-item menu-item-opensource"><a href="/openSource" rel="section">OpenSource</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
   </ul>
 </nav>
 
@@ -155,6 +157,18 @@
     </div>
 
     
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          Links
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9oYWlfbHZf" title="https:&#x2F;&#x2F;twitter.com&#x2F;hai_lv_">X(Twitter)</span>
+            </li>
+        </ul>
+      </div>
+    </div>
         <div class="pjax">
         </div>
   </aside>
@@ -186,12 +200,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="老梗-浏览器按回车后发生了什么 | 一个工匠">
+      <meta itemprop="name" content="老梗 - 浏览器按回车后发生了什么 | 一个工匠">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          老梗-浏览器按回车后发生了什么
+          老梗 - 浏览器按回车后发生了什么
         </h1>
 
         <div class="post-meta-container">
@@ -224,7 +238,7 @@
     
     
     <div class="post-body" itemprop="articleBody"><p>想起了一个老问题：浏览器按下回车的时候，后续流程是怎么变化的。<br>这个问题非常精妙，基本上把网络问题一次打包了。<br>对相关知识面了解越多的人，能说的内容也越多。越资深的人，能说的时间也越长。<br>我对网络也一直感兴趣，索性这次就做了大图，越做就盘子越大耗时越多，每个点都可以延伸一个举足轻重的行业。</p>
-<p>浏览器按下回车键后，发生了太多太多事情，我文字理下图中写不下的重点，详细看下面大图。<span class="exturl" data-url="aHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL3lpZ2Vnb25namlhbmcvaW1hZ2Vfc3BhY2VAbWFpbi9ibG9nX2ltZy8lRTYlQjUlOEYlRTglQTclODglRTUlOTklQTglRTUlOUIlOUUlRTglQkQlQTYlRTUlOTAlOEUucG5n">大图下载地址<i class="fa fa-external-link-alt"></i></span></p>
+<p>浏览器按下回车键后，发生了太多太多事情，我文字理下图中写不下的重点，详细看下面大图。<span class="exturl" data-url="aHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL3lpZ2Vnb25namlhbmcvaW1hZ2Vfc3BhY2VAbWFpbi9ibG9nX2ltZy8lRTYlQjUlOEYlRTglQTclODglRTUlOTklQTglRTUlOUIlOUUlRTglQkQlQTYlRTUlOTAlOEUucG5n">大图下载地址</span></p>
 <h2 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h2><ol>
 <li>重点是时机。DNS 查询是为了域名和 IP 映射，所以它的时机非常非常靠前，是所有网络活动的第一步。</li>
 <li>发挥大作用的是负载均衡。</li>
@@ -236,8 +250,8 @@
 <li>socket 的核心在于 socket 描述符和发送接收缓冲区。发送接收缓冲区不是 socket 特有的，是计算机基础的一部分，我们使用终端的时候，输入指令和参数的时候都在使用这套缓冲区。</li>
 <li>大名鼎鼎的<strong>三次握手</strong>就在 socket 建联的时候发生的。<strong>成也萧何败也萧何</strong>，因为 socket 是内嵌计算机的底层服务，也包括 TCP。所以即使三次握手已经拖慢了互联网这么多年，但依旧无法做升级。Quic 的出现就是忍不了 socket tcp 的<strong>队头阻塞</strong>而破釜沉舟的东西。</li>
 <li>socket tcp 的详细过程，可查阅之前文章：<a href="https://www.yigegongjiang.com/2020/TCPTranslation/">TCP 数据传输过程分析</a></li>
-<li>谈 socket 离不开端口，谈端口离不开进程。可查阅之前文章：<a href="https://www.yigegongjiang.com/2022/shell/#%E4%B8%A4%E7%A7%8D%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F-By-fork-amp-exec">Shell 和进程-两种进程创建方式</a></li>
-<li>socket 本身可查阅之前文章：<a href="https://www.yigegongjiang.com/2020/im/">IM 和 Socket 的关系及 Heart 的必要性</a></li>
+<li>谈 socket 离不开端口，谈端口离不开进程。可查阅之前文章：<a href="https://www.yigegongjiang.com/2022/shell/#%E4%B8%A4%E7%A7%8D%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F-By-fork-amp-exec">Shell 和进程 - 两种进程创建方式</a></li>
+<li> socket 本身可查阅之前文章：<a href="https://www.yigegongjiang.com/2020/im/">IM 和 Socket 的关系及 Heart 的必要性</a></li>
 </ol>
 <span id="more"></span>
 
@@ -250,7 +264,7 @@
 <li>网络通信的基石，和 Socket 一样是中流砥柱。不过 socket 那一层需要复杂的编码，这一层只能躺着使用，可以窥看它的实现，有不爽的地方也无能为力。</li>
 <li>会话层的 TLS 是 HTTP 和 HTTPS 的差异，这一块集中了密码学的知识。TLS 的耗时是非常可观的，要想躺着减小耗时，就尽快升级到 TLS1.3。其次，尽快用 ECDHE 代替 RSA，ECDHE 减小了签名大小、解密时间，还支持抢跑。</li>
 <li>传输层的 TCP 详细过程，可查阅之前文章：<a href="https://www.yigegongjiang.com/2020/TCPTranslation/">TCP 数据传输过程分析</a></li>
-<li>这里有两个重要的 case，就是 MTU 和 MSS。传输层的 MSS 会拆包，叫分段，IP 层的 MTU 也会拆包，叫分片。当包在网线传输的时候，其他的路由器属于三层设备，可以将包解到第三层即 IP 层，这个时候也就拿到了 MTU 范围内的全部包数据，如果包数据不符合当前路由器的 MTU 大小设置，可以将包抛弃，或者拆成更小的包后继续传给服务器，服务器会根据编号进行重组(分片重组)。包里面可以设置一个参数，当路由器 MTU 过小需要拆包的时候，不允许拆包，强制直接丢弃。因为 IP 层面的拆包，是风险很大的，这个时候包里面没有了传输层的头部，有可能会服务器侧各种拦截。</li>
+<li>这里有两个重要的 case，就是 MTU 和 MSS。传输层的 MSS 会拆包，叫分段，IP 层的 MTU 也会拆包，叫分片。当包在网线传输的时候，其他的路由器属于三层设备，可以将包解到第三层即 IP 层，这个时候也就拿到了 MTU 范围内的全部包数据，如果包数据不符合当前路由器的 MTU 大小设置，可以将包抛弃，或者拆成更小的包后继续传给服务器，服务器会根据编号进行重组 (分片重组)。包里面可以设置一个参数，当路由器 MTU 过小需要拆包的时候，不允许拆包，强制直接丢弃。因为 IP 层面的拆包，是风险很大的，这个时候包里面没有了传输层的头部，有可能会服务器侧各种拦截。</li>
 <li>MAC 层会通过 ARP 拿到下一跳的路由器或者主机的 MAC 地址。MAC 地址并不是电脑本身的一部分，而是网卡的一部分。在电脑主机启动后，网卡驱动会对网卡进行初始化，这个时候网卡有一片 ROM 区域会被驱动配置。后续拿的 mac 地址，其实就是从网卡的这个 rom 区域拿的。</li>
 <li>UDP 和 TCP 的根本差异，不在于稳定性和使用方式，而在于包大小。如果每个包都很小，那么 UDP 要比 TCP 传输的更高效。只是有些包比较大，UDP 传输的话，一个包丢了就得全部重传。TCP 可以通过稳定的复杂机制来保障快速重传。比如 DNS 查询，就是通过 UDP 来发包的。DNS 查询很重要，为什么没有使用 TCP 的稳定通道？就是所有数据就一个包大小，丢了就丢了，没有回执就是丢了嘛，那就再重传一下。</li>
 </ol>
@@ -258,7 +272,7 @@
 <li>核心啊，能上网就靠它了。大图里面详细说了 NAT 的流程，包括 MAC 层 MAC 地址与 网络层 IP 地址的变化，以及 NAT 映射表和端到端隧道穿越的实现。</li>
 </ol>
 <h2 id="浏览器渲染"><a href="#浏览器渲染" class="headerlink" title="浏览器渲染"></a>浏览器渲染</h2><ol>
-<li>这里重点说了 V8 对 javascript 支持。详细可查阅之前文章：<a href="https://www.yigegongjiang.com/2022/shell/#%E8%A7%A3%E9%87%8A%E7%BC%96%E8%AF%91%E6%B7%B7%E5%90%88%E5%9E%8B">Shell 和进程-解释编译混合型语言</a></li>
+<li>这里重点说了 V8 对 javascript 支持。详细可查阅之前文章：<a href="https://www.yigegongjiang.com/2022/shell/#%E8%A7%A3%E9%87%8A%E7%BC%96%E8%AF%91%E6%B7%B7%E5%90%88%E5%9E%8B">Shell 和进程 - 解释编译混合型语言</a></li>
 <li>图片渲染部分，以及如何实现渐进式图片，可查阅之前文章：<a href="https://www.yigegongjiang.com/2023/unicode/">文件存储差异 - 编码</a></li>
 </ol>
 <h2 id="CDN-加速"><a href="#CDN-加速" class="headerlink" title="CDN 加速"></a>CDN 加速</h2><ol>
@@ -291,7 +305,7 @@
       </div>
 
       <div class="social-item">
-          <a target="_blank" class="social-link" href="https://t.me/gongjiang">
+          <a target="_blank" class="social-link" href="https://t.me/hai_lv_tg">
             <span class="icon">
               <i class="fab fa-telegram"></i>
             </span>
@@ -337,8 +351,8 @@
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/virusafter/" rel="next" title="三年疫情五味杂陈-下">
-                  三年疫情五味杂陈-下 <i class="fa fa-angle-right"></i>
+                <a href="/2022/virusafter/" rel="next" title="三年疫情五味杂陈 - 下">
+                  三年疫情五味杂陈 - 下 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
@@ -372,7 +386,7 @@
     <div class="footer-inner">
 
   <div class="copyright">
-    &copy; 
+    &copy; 2018 – 
     <span itemprop="copyrightYear">2024</span>
     <span class="with-love">
       <i class=""></i>
@@ -398,7 +412,6 @@
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.umd.js" integrity="sha256-ytMJGN3toR+a84u7g7NuHm91VIR06Q41kMWDr2pq7Zo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
@@ -408,7 +421,6 @@
 
 
 
-  <script src="/js/third-party/fancybox.js"></script>
 
 
 

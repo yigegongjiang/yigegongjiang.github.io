@@ -16,7 +16,6 @@
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.css" integrity="sha256-6cQIC71/iBIYXFK+0RHAvwmjwWzkWd+r7v/BX3/vZDc=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.1","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
@@ -41,6 +40,9 @@
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>一个工匠</title>
   
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CTEWJ02QX"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-8CTEWJ02QX","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
 
 
 
@@ -88,7 +90,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">83</span></a></li><li class="menu-item menu-item-opensource"><a href="/openSource" rel="section">OpenSource</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section">RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">83</span></a></li><li class="menu-item menu-item-opensource"><a href="/openSource" rel="section">OpenSource</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
   </ul>
 </nav>
 
@@ -149,6 +151,18 @@
     </div>
 
     
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          Links
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9oYWlfbHZf" title="https:&#x2F;&#x2F;twitter.com&#x2F;hai_lv_">X(Twitter)</span>
+            </li>
+        </ul>
+      </div>
+    </div>
         <div class="pjax">
         </div>
   </aside>
@@ -217,17 +231,17 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>一直有一个写字痛点，就是错别字。尤其在发帖子和写文章这样的正式场合，错别字会引起很大的误解，而每次检查都会很吃力。<br>试用了人气较高的“写作猫”和“火龙果”两个纠错平台，都有很大的局限性，并不适合我这样的人使用。</p>
+          <p>一直有一个写字痛点，就是错别字。尤其在发帖子和写文章这样的正式场合，错别字会引起很大的误解，而每次检查都会很吃力。<br>试用了人气较高的 “写作猫” 和 “火龙果” 两个纠错平台，都有很大的局限性，并不适合我这样的人使用。</p>
 <blockquote>
 <p>写作猫的缺点是 word 走天下，一点也不 nice。<br>火龙果的缺点是没有纠错能力，我用测试文档只检测出来两个不存在的英文错误。<br>它们都不支持 markdown 检测。<br>付费较高，对于非高频使用人员不友好。</p>
 </blockquote>
-<p>于是，尝试自己写一个纠错工具，目前做了开源，支持 CLI 和 GUI，详见：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvSExWU2VudGVuY2U=">HLVSentence<i class="fa fa-external-link-alt"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvSExWWmhDb3JyZWN0">HLVZhCorrect<i class="fa fa-external-link-alt"></i></span>。<br>技术方案是：<strong>检测文本文件</strong> -&gt; <strong>文本分句</strong> -&gt; <strong>词语检测</strong> -&gt; <strong>工具集成</strong>。<br>遇到的核心问题有：</p>
+<p>于是，尝试自己写一个纠错工具，目前做了开源，支持 CLI 和 GUI，详见：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvSExWU2VudGVuY2U=">HLVSentence</span>、<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvSExWWmhDb3JyZWN0">HLVZhCorrect</span>。<br>技术方案是：<strong>检测文本文件</strong> -&gt; <strong>文本分句</strong> -&gt; <strong>词语检测</strong> -&gt; <strong>工具集成</strong>。<br>遇到的核心问题有：</p>
 <ul>
 <li>准确识别文本文件。文本文件无 Magic Number 二进制特征，如何准确识别当前文件为文本文件并读取内容。</li>
 <li>文本分句校准。对于纯中文场景，通过常用的标点符号即可正则分句。但一般会参杂英文、特殊符号，还有 markdown。</li>
-<li>中文纠错检测和校准。找了不少方案，最后选择 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NoaWJpbmc2MjQvcHljb3JyZWN0b3I=">pycorrector<i class="fa fa-external-link-alt"></i></span> 提供的中文纠错模型。工具需要和 python 环境做对接，并对待检测文本做进一步校准以满足模型。</li>
+<li>中文纠错检测和校准。找了不少方案，最后选择 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NoaWJpbmc2MjQvcHljb3JyZWN0b3I=">pycorrector</span> 提供的中文纠错模型。工具需要和 python 环境做对接，并对待检测文本做进一步校准以满足模型。</li>
 <li>非终端环境和 python 脚本互联。需要支持 python 虚拟安装环境。</li>
-<li>SwiftUI 开发 “命令行 CLI 工具”和 “Mac 菜单栏工具”，将工具对接 brew 平台。</li>
+<li>SwiftUI 开发 “命令行 CLI 工具” 和 “Mac 菜单栏工具”，将工具对接 brew 平台。</li>
 </ul>
 <p>下面是开发文本纠错工具的一些历程。</p>
           <!--noindex-->
@@ -309,8 +323,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>只要使用电子产品，每时每刻都在和字符打交道。目之所及的字符，在存储、显示、执行等环节都离不开编码的支持。<br>但对于字符编码，也会有一些误区，比如：Unicode 和 UTF 是否都是编码、字节和编码的关系、āáǎà的音标字符表达、内存字符编码 等等。</p>
-<p>本文将循序渐进的，从 ASCII&#x2F; Unicode 介绍到 UTF8&#x2F;16&#x2F;32，以及文本二进制存储和 URL 编码&#x2F;多次编码等场景，最后解释内存中字符串的编码格式。<br>每个环节都通过二进制调试的方式给予实际的场景输出，争取一遍将编码吃透。</p>
+          <p>只要使用电子产品，每时每刻都在和字符打交道。目之所及的字符，在存储、显示、执行等环节都离不开编码的支持。<br>但对于字符编码，也会有一些误区，比如：Unicode 和 UTF 是否都是编码、字节和编码的关系、āáǎà 的音标字符表达、内存字符编码 等等。</p>
+<p>本文将循序渐进的，从 ASCII/ Unicode 介绍到 UTF8/16/32，以及文本二进制存储和 URL 编码 / 多次编码等场景，最后解释内存中字符串的编码格式。<br>每个环节都通过二进制调试的方式给予实际的场景输出，争取一遍将编码吃透。</p>
           <!--noindex-->
           <!--/noindex-->
         
@@ -470,8 +484,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>在 OC 时代，通过 .h 头文件以及 include 标记，还有那长长的 api 名称，可以很方便的意会和找到某个类。使用 Xcode 十年，在 Vim 的加持下，基本没用过啥快捷键。<br>最近在 Swift 里面一顿拾掇，理解源码也太复杂了。<br>1 个 class 在 3 个文件中增加了 5 个扩展并实现了 4 个协议，1 个文件中包含 400 行注释 500 行代码 10 多个杂七杂八的 enum&#x2F;struct&#x2F;class&#x2F;extension&#x2F;protocol，去他妈的。</p>
-<p>一直都是夸奖 Swift 的，作为后现代语言，集百家长补百家短。<br>但不好的编程习惯对 Swift 来说会是灾难，文件名不在作为当前文件内容的强约束、无需 import 后的 extension 可以写在任意位置、enum&#x2F;struct&#x2F;class 是值类型值语义引用类型引用语义搞不愣清后的混用，等等，这些都会骤然增加 Swift 源码的理解。</p>
+          <p>在 OC 时代，通过 .h 头文件以及 include 标记，还有那长长的 api 名称，可以很方便的意会和找到某个类。使用 Xcode 十年，在 Vim 的加持下，基本没用过啥快捷键。<br>最近在 Swift 里面一顿拾掇，理解源码也太复杂了。<br>1 个 class 在 3 个文件中增加了 5 个扩展并实现了 4 个协议，1 个文件中包含 400 行注释 500 行代码 10 多个杂七杂八的 enum/struct/class/extension/protocol，去他妈的。</p>
+<p>一直都是夸奖 Swift 的，作为后现代语言，集百家长补百家短。<br>但不好的编程习惯对 Swift 来说会是灾难，文件名不在作为当前文件内容的强约束、无需 import 后的 extension 可以写在任意位置、enum/struct/class 是值类型值语义引用类型引用语义搞不愣清后的混用，等等，这些都会骤然增加 Swift 源码的理解。</p>
 <p>不得已对 Xcode 进行一些调教。<br>目标是快速<strong>查阅继承、搜索、实现协议方、三方库文档</strong>等代码阅读操作。</p>
           <!--noindex-->
           <!--/noindex-->
@@ -552,9 +566,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>Swift Package Manager(SPM) 已经被苹果放置于一个很重要的位置，在<a href="https://www.yigegongjiang.com/2023/SwiftCommandEnv/#Package">历史文章</a>中对其做了一定的分析，Package 目前的定位和 Xcode Project <code>.xcodeproj</code> 同级别。SPM 不仅仅用于替代 Cocoapods，而是 Apple 后期语言研发生态的一部分。<br>鉴于 Xcode 对 Package 的支持，可以很方便的将项目中的代码进行组件化设计，做一定的逻辑分析即可拆分成多个 Package，这在开发过程中非常有利于项目的架构、单测、可持续性。<br>以前若这样做，需要对 Cocoapods 有深入的了解，这是一个比较复杂且细节的过程。通过 SPM 只需要 <code>New - Package</code> 即可，将复杂度从项目级别压缩到文件级别。</p>
-<p>SPM 出现后，很多 Pods 模块通过增加 <code>Package.swift</code> 配置文件可以很方便交由 SPM 管理。但对于直接通过 <code>Package.swift</code> 创建的独立库，并没有方便的方案转为 Pods 管理，还是需要走一遍 Pods 的流程。<br>不过，这里做一个预言，Pods 终将被 SPM 取代，因为 <strong>SPM 是更具有可持续性和生态深度耦合</strong>，在 Xcode 整合(编辑&#x2F;搜索&#x2F;联调等)、多平台兼容，源码管理、二进制库&#x2F;仓库管理、CI等方面，都具有得天独厚的优势。<br>相比 Pods 完善的脚本自定义能力(基于 ruby 的生态)，SPM 是有一定的短板，但不推荐。<br>很多大公司在做统一基建的时候，会深度魔改 Pods。简单的东西越做越复杂的原因，除了增加一些”又不是不能用”的功能，还有就是在复杂度提升后打的各种补丁。<br>虽然这么说，Pods 完善的自定义能力，SPM 也一样可以做到，毕竟这些能力很大部分都属于扩展能力，如插件。执行流程中大家都可以在 xcodebuild 等相关命令的任意位置，随时可以写一些定制脚本做插入执行。</p>
-<p>初期，Swift Package 只能做源码(开源)共享，后面增加了 <code>binaryTarget</code> 能力，可以在提供了二进制库(framework&#x2F;xcframework)的情况下，直接通过 SPM 做分发。(闭源共享)<br>但二进制库从哪里来，普遍的方案还是通过 <code>.xcodeproj</code> 的形式编译导出 framework&#x2F;xcframework 库。<br>Swift Package 虽然支持导出动态库和静态库，但流程上还不彻底，并不能直接交付使用，下面对此做一些解释说明。</p>
+          <p>Swift Package Manager (SPM) 已经被苹果放置于一个很重要的位置，在<a href="https://www.yigegongjiang.com/2023/SwiftCommandEnv/#Package">历史文章</a>中对其做了一定的分析，Package 目前的定位和 Xcode Project <code>.xcodeproj</code> 同级别。SPM 不仅仅用于替代 Cocoapods，而是 Apple 后期语言研发生态的一部分。<br>鉴于 Xcode 对 Package 的支持，可以很方便的将项目中的代码进行组件化设计，做一定的逻辑分析即可拆分成多个 Package，这在开发过程中非常有利于项目的架构、单测、可持续性。<br>以前若这样做，需要对 Cocoapods 有深入的了解，这是一个比较复杂且细节的过程。通过 SPM 只需要 <code>New - Package</code> 即可，将复杂度从项目级别压缩到文件级别。</p>
+<p>SPM 出现后，很多 Pods 模块通过增加 <code>Package.swift</code> 配置文件可以很方便交由 SPM 管理。但对于直接通过 <code>Package.swift</code> 创建的独立库，并没有方便的方案转为 Pods 管理，还是需要走一遍 Pods 的流程。<br>不过，这里做一个预言，Pods 终将被 SPM 取代，因为 <strong>SPM 是更具有可持续性和生态深度耦合</strong>，在 Xcode 整合 (编辑 / 搜索 / 联调等)、多平台兼容，源码管理、二进制库 / 仓库管理、CI 等方面，都具有得天独厚的优势。<br>相比 Pods 完善的脚本自定义能力 (基于 ruby 的生态)，SPM 是有一定的短板，但不推荐。<br>很多大公司在做统一基建的时候，会深度魔改 Pods。简单的东西越做越复杂的原因，除了增加一些” 又不是不能用” 的功能，还有就是在复杂度提升后打的各种补丁。<br>虽然这么说，Pods 完善的自定义能力，SPM 也一样可以做到，毕竟这些能力很大部分都属于扩展能力，如插件。执行流程中大家都可以在 xcodebuild 等相关命令的任意位置，随时可以写一些定制脚本做插入执行。</p>
+<p>初期，Swift Package 只能做源码 (开源) 共享，后面增加了 <code>binaryTarget</code> 能力，可以在提供了二进制库 (framework/xcframework) 的情况下，直接通过 SPM 做分发。(闭源共享)<br>但二进制库从哪里来，普遍的方案还是通过 <code>.xcodeproj</code> 的形式编译导出 framework/xcframework 库。<br>Swift Package 虽然支持导出动态库和静态库，但流程上还不彻底，并不能直接交付使用，下面对此做一些解释说明。</p>
           <!--noindex-->
           <!--/noindex-->
         
@@ -637,8 +651,8 @@
           <blockquote>
 <p>最喜爱 <code>世界之窗</code>，那个快如闪电的 Browser。</p>
 </blockquote>
-<p>每个人都有自己喜欢的浏览器，但每个人都不满意自己喜欢的浏览器。这是当今 Browser 之乱现象。<br>归根结底，在于浏览器内核太过复杂，没有推倒革新的可能。只能依托 webkit&#x2F;blink 内核之上做层层补补的体感优化。<br>但千人千面，一个浏览器能够适配多个人的使用习惯已经很困难，更何况兼容上亿用户的心情。</p>
-<p>也属实没想到，在早已过了 Browser 大拼杀的今天，还有 <span class="exturl" data-url="aHR0cHM6Ly9hcmMubmV0Lw==">Arc<i class="fa fa-external-link-alt"></i></span> 这样的黑马闯了出来。<br>我已经重度使用两月有余，忍不住做一下使用过程中的体验和分享。</p>
+<p>每个人都有自己喜欢的浏览器，但每个人都不满意自己喜欢的浏览器。这是当今 Browser 之乱现象。<br>归根结底，在于浏览器内核太过复杂，没有推倒革新的可能。只能依托 webkit/blink 内核之上做层层补补的体感优化。<br>但千人千面，一个浏览器能够适配多个人的使用习惯已经很困难，更何况兼容上亿用户的心情。</p>
+<p>也属实没想到，在早已过了 Browser 大拼杀的今天，还有 <span class="exturl" data-url="aHR0cHM6Ly9hcmMubmV0Lw==">Arc</span> 这样的黑马闯了出来。<br>我已经重度使用两月有余，忍不住做一下使用过程中的体验和分享。</p>
 <p>Arc 使用的还是 Chrome-Blink 内核，重在用户使用体感上的创新。<br>早期通过会员邀请制预约排号（目前已经完全开放），当时体验了半小时有余，放弃了，感觉不到又什么亮点。重新尝试后，发现了很多亮点。<br>应该还是使用的多了，就发现了很多早期没有注意到的功能。也侧面反映一个点，一开始使用有可能劝退。<br>希望我的分享可以降低初次使用的劝退门槛。<br>但也如开头所言，可能您最后并不喜欢也不选择 Arc，概率或许还很大。</p>
           <!--noindex-->
           <!--/noindex-->
@@ -686,7 +700,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/SwiftSystemShell/" class="post-title-link" itemprop="url">【Swift 三方源码1】SwiftShell 高效的命令行工具</a>
+          <a href="/2023/SwiftSystemShell/" class="post-title-link" itemprop="url">【Swift 三方源码 1】SwiftShell 高效的命令行工具</a>
         </h2>
 
         <div class="post-meta-container">
@@ -723,7 +737,7 @@
 <p>不推荐使用 Swift 写脚本，和 Python 比起来，该生态链相对匮乏，开发耗时会增加很多。<br>但对于偏 Swift 的同学来说，这也的确是更可控和方便维护的方式之一。尤其对于公司内部工具，有问题可以更快的找到原因并处理，不至于手忙脚乱。</p>
 </blockquote>
 <p>通过 Swift 进行脚本开发的环境和入门，可参考：<a href="https://www.yigegongjiang.com/2023/SwiftCommandEnv/">Swift 脚本开发环境搭建</a></p>
-<p>在开发脚本的时候，经常会使用到在终端环境中安装&#x2F;预制的命令、管道、文件读取等。这些能力，<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2thcmVtYW4vU3dpZnRTaGVsbA==">SwiftShell<i class="fa fa-external-link-alt"></i></span> 做了完备的封装，很方便使用。<br>这里对该库源码进行一些解读。同时，也会做前置知识点如文件、管道、描述符、子进程进行简单介绍。</p>
+<p>在开发脚本的时候，经常会使用到在终端环境中安装 / 预制的命令、管道、文件读取等。这些能力，<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2thcmVtYW4vU3dpZnRTaGVsbA==">SwiftShell</span> 做了完备的封装，很方便使用。<br>这里对该库源码进行一些解读。同时，也会做前置知识点如文件、管道、描述符、子进程进行简单介绍。</p>
           <!--noindex-->
           <!--/noindex-->
         
@@ -807,7 +821,7 @@
 <p>2024.01.06 更：欢迎查阅 Swift 开发的<a href="https://www.yigegongjiang.com/2024/SwiftZhTextCorrect/">文本纠错命令行工具</a>。</p>
 </blockquote>
 <p>不推荐使用 Swift 写脚本，和 Python 比起来，该生态链相对匮乏，开发耗时会增加很多。<br>但对于偏 Swift 的同学来说，这也的确是更可控和方便维护的方式之一。尤其对于公司内部工具，有问题可以更快的找到原因并处理，不至于手忙脚乱。</p>
-<p>相对于 Python 环境丰富的基建资源，使用 Swift 做脚本开发的优点在于<strong>生态的一致性</strong>。<br>苹果官方抹平了 脚本开发 和 应用开发 的界限，即 开发环境、三方库导入和使用(苹果自身的开源库&#x2F;三方库)、系统平台 api(存储、网络、协程、并发等，UI api 除外)等，均表现一致。<br>可以像应用开发的流程一样，进行脚本命令行的开发。</p>
+<p>相对于 Python 环境丰富的基建资源，使用 Swift 做脚本开发的优点在于<strong>生态的一致性</strong>。<br>苹果官方抹平了 脚本开发 和 应用开发 的界限，即 开发环境、三方库导入和使用 (苹果自身的开源库 / 三方库)、系统平台 api (存储、网络、协程、并发等，UI api 除外) 等，均表现一致。<br>可以像应用开发的流程一样，进行脚本命令行的开发。</p>
           <!--noindex-->
           <!--/noindex-->
         
@@ -888,7 +902,7 @@
     
     <div class="post-body" itemprop="articleBody">
           <blockquote>
-<p>2023.12.14 更：mac 14.2 版本，已经完全解决了中文输入法的问题。<br>2023.10.03 更：采用 twitter 网友的办法，我又换回系统输入法了。详见：<span class="exturl" data-url="aHR0cHM6Ly94LmNvbS9oYWlfbHZfL3N0YXR1cy8xNzA0NTk3MDg2MzQ2NjQ5Nzc4P3M9MjA=">https://x.com/hai_lv_/status/1704597086346649778?s=20<i class="fa fa-external-link-alt"></i></span></p>
+<p>2023.12.14 更：mac 14.2 版本，已经完全解决了中文输入法的问题。<br>2023.10.03 更：采用 twitter 网友的办法，我又换回系统输入法了。详见：<span class="exturl" data-url="aHR0cHM6Ly94LmNvbS9oYWlfbHZfL3N0YXR1cy8xNzA0NTk3MDg2MzQ2NjQ5Nzc4P3M9MjA=">https://x.com/hai_lv_/status/1704597086346649778?s=20</span></p>
 </blockquote>
 <p>Mac 上原生的双拼输入法，有时候间歇性的卡死。在网上找了不少办法，均不能很好的解决。<br>我对原生输入法还是有不少感情的。自从 Mac 和 iPhone 支持小鹤双拼后，就迁移到了原生输入法，到目前也有很多年了。</p>
 <p>这次把 Mac 侧迁移到 Rime，也尽量和原生的体验保持一致。鉴于 Rime 本身配置较为复杂，这里把自己使用的精简版做下记录。</p>
@@ -946,7 +960,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/the_sea/" class="post-title-link" itemprop="url">沿海旅游(威海、青岛)</a>
+          <a href="/2023/the_sea/" class="post-title-link" itemprop="url">沿海旅游 (威海、青岛)</a>
         </h2>
 
         <div class="post-meta-container">
@@ -980,7 +994,7 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>最近难得休了一次长假，计划和家人出去旅游。近十几年来，基本没有什么旅游经历。如果公司团建也算旅游的话，那也可以算增加一些经验值。<br>老婆说一直想看海，于是趁着旺季，把山东的威海和青岛逛了一圈。</p>
-<p>简单记录一下威海和青岛两座城市的备忘，给有缘人。<br>威海主打的就是海，政府也对旅游提供了较大的支持，建设了一个环海公路。<br>去威海旅游，一辆电瓶车就可以解决一大半行程。有很多租电瓶车的地方，60 元&#x2F;天。<br>沿着环海公路，可以直接从国际沙滩骑到海上公园，6 小时可以玩完，整个旅途都适合小孩子。<br>住的话，一定要选择在韩乐坊附近，最好距离韩乐坊500-1000米以内。这个位置距离海边也近，晚上有比较多的活动选择，尤其吃喝方便。<br>华夏城那里有一个小孩子的户外娱乐场所，非常棒。玩累了可以带孩子去耍，只在白天开放。</p>
+<p>简单记录一下威海和青岛两座城市的备忘，给有缘人。<br>威海主打的就是海，政府也对旅游提供了较大的支持，建设了一个环海公路。<br>去威海旅游，一辆电瓶车就可以解决一大半行程。有很多租电瓶车的地方，60 元 / 天。<br>沿着环海公路，可以直接从国际沙滩骑到海上公园，6 小时可以玩完，整个旅途都适合小孩子。<br>住的话，一定要选择在韩乐坊附近，最好距离韩乐坊 500-1000 米以内。这个位置距离海边也近，晚上有比较多的活动选择，尤其吃喝方便。<br>华夏城那里有一个小孩子的户外娱乐场所，非常棒。玩累了可以带孩子去耍，只在白天开放。</p>
           <!--noindex-->
           <!--/noindex-->
         
@@ -1012,7 +1026,7 @@
     <div class="footer-inner">
 
   <div class="copyright">
-    &copy; 
+    &copy; 2018 – 
     <span itemprop="copyrightYear">2024</span>
     <span class="with-love">
       <i class=""></i>
@@ -1038,7 +1052,6 @@
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.umd.js" integrity="sha256-ytMJGN3toR+a84u7g7NuHm91VIR06Q41kMWDr2pq7Zo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
@@ -1048,7 +1061,6 @@
 
 
 
-  <script src="/js/third-party/fancybox.js"></script>
 
 
 

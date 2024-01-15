@@ -16,7 +16,6 @@
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.css" integrity="sha256-6cQIC71/iBIYXFK+0RHAvwmjwWzkWd+r7v/BX3/vZDc=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.1","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
@@ -41,6 +40,9 @@
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>一个工匠</title>
   
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CTEWJ02QX"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-8CTEWJ02QX","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
 
 
 
@@ -88,7 +90,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">83</span></a></li><li class="menu-item menu-item-opensource"><a href="/openSource" rel="section">OpenSource</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section">RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">83</span></a></li><li class="menu-item menu-item-opensource"><a href="/openSource" rel="section">OpenSource</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
   </ul>
 </nav>
 
@@ -149,6 +151,18 @@
     </div>
 
     
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          Links
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9oYWlfbHZf" title="https:&#x2F;&#x2F;twitter.com&#x2F;hai_lv_">X(Twitter)</span>
+            </li>
+        </ul>
+      </div>
+    </div>
         <div class="pjax">
         </div>
   </aside>
@@ -300,15 +314,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>端上日志系统非常重要，对于用户侧的异常、排障、动线、行为等很多重要数据，都可以通过端上日志来做检索。如何搭建一套准确、高性能的完备日志 SDK 就显得尤为重要。 （另一个重要的排障信息源是埋点，通过埋点可以获取更精准的用户动线。后面有时间做一下埋点数据化方面的总结）。<br>移动端日志系统，将承载 Native、h5、动态化等多技术栈环境下的日志收口工作，同时要兼顾日志不丢不乱和高性能，其实还是有不少挑战的。<br>这一方面<strong>CocoaLumberjack</strong>其实已经做的很好，很多公司都用它作为自己的日志系统的基础框架。但它还不能作为大型 app 的流量日志收口系统。因为流量大了以后，少量的日志丢失也会带来很大的缺口，而性能方面它也有很多短板。<br><strong>mmap</strong> 可以在 IO 性能方面有显著的提升，也就是后端比较通用的<strong>零拷贝</strong>技术。在移动端上<strong>FastImageCache</strong>对 mmap 有较深的应用，但它业务绑定太强，一般无法直接使用，更多的是学习 mmap 的落地。</p>
-<p>本文会对日志系统的一些完备要素做一些说明，并特别讲解下<strong>CocoaLumberjack</strong>、<strong>FastImageCache</strong>两个技术库。</p>
+          <p>端上日志系统非常重要，对于用户侧的异常、排障、动线、行为等很多重要数据，都可以通过端上日志来做检索。如何搭建一套准确、高性能的完备日志 SDK 就显得尤为重要。 （另一个重要的排障信息源是埋点，通过埋点可以获取更精准的用户动线。后面有时间做一下埋点数据化方面的总结）。<br>移动端日志系统，将承载 Native、h5、动态化等多技术栈环境下的日志收口工作，同时要兼顾日志不丢不乱和高性能，其实还是有不少挑战的。<br>这一方面 <strong>CocoaLumberjack</strong> 其实已经做的很好，很多公司都用它作为自己的日志系统的基础框架。但它还不能作为大型 app 的流量日志收口系统。因为流量大了以后，少量的日志丢失也会带来很大的缺口，而性能方面它也有很多短板。<br><strong>mmap</strong> 可以在 IO 性能方面有显著的提升，也就是后端比较通用的<strong>零拷贝</strong>技术。在移动端上 <strong>FastImageCache</strong> 对 mmap 有较深的应用，但它业务绑定太强，一般无法直接使用，更多的是学习 mmap 的落地。</p>
+<p>本文会对日志系统的一些完备要素做一些说明，并特别讲解下 <strong>CocoaLumberjack</strong>、<strong>FastImageCache</strong> 两个技术库。</p>
 <ul>
 <li>日志是否全量。很多业务开发同学不使用日志 SDK 做日志输出，可能使用系统日志做打印，这一部分日志是否需要做收口，需要权衡一下。</li>
-<li>分等级和模块。分 Level 和 modules 进行记录和检索，可以提供问题排查速度。这方面有专业的 Debug&#x2F;Info&#x2F;Error 等标准。技术上比较好实现。</li>
-<li>性能。主要是卡顿和耗电。日志系统会底层基础架构，大流量的打入，会频繁的内存释放、I&#x2F;O，过多的占用 CPU 会导致卡顿和耗电，也会影响拖延上层业务异步代码的执行时机。</li>
-<li>数据不丢不乱。没有办法做到完全的不丢日志，只能尽可能少的减少。在 crash &#x2F; CPU 繁忙 &#x2F; 压缩加密严重耗时拖延队列等异常场景，这方面问题尤其突出。不乱就需要增加串型队列或者锁，这些同步机制都需要保障阻塞和性能。</li>
+<li>分等级和模块。分 Level 和 modules 进行记录和检索，可以提供问题排查速度。这方面有专业的 Debug/Info/Error 等标准。技术上比较好实现。</li>
+<li>性能。主要是卡顿和耗电。日志系统会底层基础架构，大流量的打入，会频繁的内存释放、I/O，过多的占用 CPU 会导致卡顿和耗电，也会影响拖延上层业务异步代码的执行时机。</li>
+<li>数据不丢不乱。没有办法做到完全的不丢日志，只能尽可能少的减少。在 crash / CPU 繁忙 / 压缩加密严重耗时拖延队列等异常场景，这方面问题尤其突出。不乱就需要增加串型队列或者锁，这些同步机制都需要保障阻塞和性能。</li>
 <li>实时观测。开发和测试同学需要能够实时看到日志打印情况，这在开发和提测阶段非常有用。</li>
-<li>压缩+加密。压缩和加密都是耗时操作，对 CPU 的压力比较大。</li>
+<li>压缩 + 加密。压缩和加密都是耗时操作，对 CPU 的压力比较大。</li>
 <li>上报。得有回捞机制，得保障数据传输安全。</li>
 <li>后端系统。前置的采集完成后，后端系统的数据化检索、数据可视化等工作都是重中之重。</li>
 <li>隐私安全。这一块国内所有厂商都极度匮乏。大厂的开发同学也可以随意捞取用户日志，异常日志在内部系统可以随意传播。如果有这方面的诉求，那么整套安全体系都需要建立起来。</li>
@@ -392,7 +406,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>数字签名可以解决数据安全里面的<strong>完整性</strong>，<strong>身份认证</strong>和<strong>不可否认</strong>三大特性，但是解决不了<strong>机密性</strong>问题。机密性需要通过对称密钥&#x2F;公私钥解决，所以数字签名其实和加解密&#x2F;密文&#x2F;机密性这些在概念上非一个层次。<br>签名的本质不在于加解密，而是加验签。<br>数字签名，<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvJUU2JTk1JUI4JUU0JUJEJThEJUU3JUIwJUJEJUU3JUFCJUEw">定义<i class="fa fa-external-link-alt"></i></span>上是<strong>拿着私钥的一方，通过私钥 X 对消息 M 进行加密(加签)，生成签名 N，并把消息 M 和签名 N 一起给出去。拿着公钥的一方，用公钥 Y 对签名 N 进行解密(验签)生成 M’。用消息 M 和 M’ 做比较，如果相等，则数据没有被篡改。如果不想等，则数据不再安全</strong>。<br>对于公私钥，我们一般是使用公钥加密私钥解密，这样可以保障单向数据机密性。而私钥加密公钥解密是解决不了机密性问题的，如果要通过公私钥完全解决数据机密性，则需要双向认证。<br>数字签名就使用了私钥加密公钥解密这套方案，所以数字签名是没有密文&#x2F;机密性可言的。在数据签名里，一般把私钥加密叫做<strong>加签</strong>，公钥解密叫做<strong>验签</strong>。</p>
+          <p>数字签名可以解决数据安全里面的<strong>完整性</strong>，<strong>身份认证</strong>和<strong>不可否认</strong>三大特性，但是解决不了<strong>机密性</strong>问题。机密性需要通过对称密钥 / 公私钥解决，所以数字签名其实和加解密 / 密文 / 机密性这些在概念上非一个层次。<br>签名的本质不在于加解密，而是加验签。<br>数字签名，<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvJUU2JTk1JUI4JUU0JUJEJThEJUU3JUIwJUJEJUU3JUFCJUEw">定义</span>上是<strong>拿着私钥的一方，通过私钥 X 对消息 M 进行加密 (加签)，生成签名 N，并把消息 M 和签名 N 一起给出去。拿着公钥的一方，用公钥 Y 对签名 N 进行解密 (验签) 生成 M’。用消息 M 和 M’ 做比较，如果相等，则数据没有被篡改。如果不想等，则数据不再安全</strong>。<br>对于公私钥，我们一般是使用公钥加密私钥解密，这样可以保障单向数据机密性。而私钥加密公钥解密是解决不了机密性问题的，如果要通过公私钥完全解决数据机密性，则需要双向认证。<br>数字签名就使用了私钥加密公钥解密这套方案，所以数字签名是没有密文 / 机密性可言的。在数据签名里，一般把私钥加密叫做<strong>加签</strong>，公钥解密叫做<strong>验签</strong>。</p>
           <!--noindex-->
           <!--/noindex-->
         
@@ -519,7 +533,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/virusafter/" class="post-title-link" itemprop="url">三年疫情五味杂陈-下</a>
+          <a href="/2022/virusafter/" class="post-title-link" itemprop="url">三年疫情五味杂陈 - 下</a>
         </h2>
 
         <div class="post-meta-container">
@@ -600,7 +614,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/browser/" class="post-title-link" itemprop="url">老梗-浏览器按回车后发生了什么</a>
+          <a href="/2022/browser/" class="post-title-link" itemprop="url">老梗 - 浏览器按回车后发生了什么</a>
         </h2>
 
         <div class="post-meta-container">
@@ -634,7 +648,7 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>想起了一个老问题：浏览器按下回车的时候，后续流程是怎么变化的。<br>这个问题非常精妙，基本上把网络问题一次打包了。<br>对相关知识面了解越多的人，能说的内容也越多。越资深的人，能说的时间也越长。<br>我对网络也一直感兴趣，索性这次就做了大图，越做就盘子越大耗时越多，每个点都可以延伸一个举足轻重的行业。</p>
-<p>浏览器按下回车键后，发生了太多太多事情，我文字理下图中写不下的重点，详细看下面大图。<span class="exturl" data-url="aHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL3lpZ2Vnb25namlhbmcvaW1hZ2Vfc3BhY2VAbWFpbi9ibG9nX2ltZy8lRTYlQjUlOEYlRTglQTclODglRTUlOTklQTglRTUlOUIlOUUlRTglQkQlQTYlRTUlOTAlOEUucG5n">大图下载地址<i class="fa fa-external-link-alt"></i></span></p>
+<p>浏览器按下回车键后，发生了太多太多事情，我文字理下图中写不下的重点，详细看下面大图。<span class="exturl" data-url="aHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL3lpZ2Vnb25namlhbmcvaW1hZ2Vfc3BhY2VAbWFpbi9ibG9nX2ltZy8lRTYlQjUlOEYlRTglQTclODglRTUlOTklQTglRTUlOUIlOUUlRTglQkQlQTYlRTUlOTAlOEUucG5n">大图下载地址</span></p>
 <h2 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h2><ol>
 <li>重点是时机。DNS 查询是为了域名和 IP 映射，所以它的时机非常非常靠前，是所有网络活动的第一步。</li>
 <li>发挥大作用的是负载均衡。</li>
@@ -646,8 +660,8 @@
 <li>socket 的核心在于 socket 描述符和发送接收缓冲区。发送接收缓冲区不是 socket 特有的，是计算机基础的一部分，我们使用终端的时候，输入指令和参数的时候都在使用这套缓冲区。</li>
 <li>大名鼎鼎的<strong>三次握手</strong>就在 socket 建联的时候发生的。<strong>成也萧何败也萧何</strong>，因为 socket 是内嵌计算机的底层服务，也包括 TCP。所以即使三次握手已经拖慢了互联网这么多年，但依旧无法做升级。Quic 的出现就是忍不了 socket tcp 的<strong>队头阻塞</strong>而破釜沉舟的东西。</li>
 <li>socket tcp 的详细过程，可查阅之前文章：<a href="https://www.yigegongjiang.com/2020/TCPTranslation/">TCP 数据传输过程分析</a></li>
-<li>谈 socket 离不开端口，谈端口离不开进程。可查阅之前文章：<a href="https://www.yigegongjiang.com/2022/shell/#%E4%B8%A4%E7%A7%8D%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F-By-fork-amp-exec">Shell 和进程-两种进程创建方式</a></li>
-<li>socket 本身可查阅之前文章：<a href="https://www.yigegongjiang.com/2020/im/">IM 和 Socket 的关系及 Heart 的必要性</a></li>
+<li>谈 socket 离不开端口，谈端口离不开进程。可查阅之前文章：<a href="https://www.yigegongjiang.com/2022/shell/#%E4%B8%A4%E7%A7%8D%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F-By-fork-amp-exec">Shell 和进程 - 两种进程创建方式</a></li>
+<li> socket 本身可查阅之前文章：<a href="https://www.yigegongjiang.com/2020/im/">IM 和 Socket 的关系及 Heart 的必要性</a></li>
 </ol>
           <!--noindex-->
           <!--/noindex-->
@@ -729,12 +743,12 @@
     
     <div class="post-body" itemprop="articleBody">
           <blockquote>
-<p>update:2022.10.29 昨天听说开始有解封迹象了，今天我收到了运营商发出的“奥密克戎感染后的身体事项”的说明短信。能收到这样的短信，就是一叶落知天下秋，看样子是要逐步解封了，应该会在一两年内全部解封。不好的消息是：没有听说 ICU、医疗、特效药、病房有做准备，即使逐渐放开，这些必要的医疗准备工作也要提前半年到一年就要开展起来的。目前看是打算逐渐解封+硬扛，要带走不少老年人了。老年人得注意。</p>
+<p>update:2022.10.29 昨天听说开始有解封迹象了，今天我收到了运营商发出的 “奥密克戎感染后的身体事项” 的说明短信。能收到这样的短信，就是一叶落知天下秋，看样子是要逐步解封了，应该会在一两年内全部解封。不好的消息是：没有听说 ICU、医疗、特效药、病房有做准备，即使逐渐放开，这些必要的医疗准备工作也要提前半年到一年就要开展起来的。目前看是打算逐渐解封 + 硬扛，要带走不少老年人了。老年人得注意。</p>
 </blockquote>
 <p>COVID-19，从 2019 年可能在 10 - 11 月初步感染人体，到 12 月底被媒体曝光，再到现在，已经 3 年了。</p>
 <p>这三年发生了太多太多事情，刻骨铭心的不计其数。我开始以为以前也是有很多很多事情，只是我没有关注。后来想想，或许就是这几年，发生的重大事情比较多。因为疫情和国际局势，中华人民坎坷的这几年。<br>金字塔的每个层级每个人都受到了很大影响，所有影响最终都会归到生活和金钱，质量总归是下降了不少。<br>也有很多人说没有受到影响，甚至蒸蒸日上，有些是身不由己，有些是笃信不疑。差异也都能理解，毕竟各种原因，真的是各种原因，不想再去细究，意义不大。</p>
 <p>简单回忆下三年疫情，因为不知道什么时候才会结束，就当作是对个人疫情的期中总结。</p>
-<p>我应该是最早一批知道武汉有疫情的人，当时只知道有人被感染，还没联想到非典这些传染病。当时有些朦朦胧胧，也有些对未知的恐惧。当时也快过年了，还有不少同学的婚场。<br>再过了几天，听到疫情严重了不少。已经记不清是在李文亮之前还是之后了。<br>我和亲人说过年可能回不去了，这次病毒没有媒体报道的那么简单，感染会很严重。过年人流大，火车站这些场所风险比较大。亲人说就是非典一样吧，开车应该好些。最后我们开车回去，老家过了三天赶着高速封路前回到了居住地。我姥姥说这就是古代的“瘟疫&#x2F;人瘟”吧，好久没有听到这个词了，但很赞同。<br>我大学同学的婚礼是过年前段时间。我之前已经答应了我和老婆都会到场了，但是婚礼前我还是和同学说了抱歉，我说肺炎（那是还不叫 covid 或者疫情，只叫做武汉肺炎）不简单，火车站有风险，到场计划得取消了。</p>
+<p>我应该是最早一批知道武汉有疫情的人，当时只知道有人被感染，还没联想到非典这些传染病。当时有些朦朦胧胧，也有些对未知的恐惧。当时也快过年了，还有不少同学的婚场。<br>再过了几天，听到疫情严重了不少。已经记不清是在李文亮之前还是之后了。<br>我和亲人说过年可能回不去了，这次病毒没有媒体报道的那么简单，感染会很严重。过年人流大，火车站这些场所风险比较大。亲人说就是非典一样吧，开车应该好些。最后我们开车回去，老家过了三天赶着高速封路前回到了居住地。我姥姥说这就是古代的 “瘟疫 / 人瘟” 吧，好久没有听到这个词了，但很赞同。<br>我大学同学的婚礼是过年前段时间。我之前已经答应了我和老婆都会到场了，但是婚礼前我还是和同学说了抱歉，我说肺炎（那是还不叫 covid 或者疫情，只叫做武汉肺炎）不简单，火车站有风险，到场计划得取消了。</p>
           <!--noindex-->
           <!--/noindex-->
         
@@ -881,7 +895,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/shell/" class="post-title-link" itemprop="url">Shell和进程</a>
+          <a href="/2022/shell/" class="post-title-link" itemprop="url">Shell 和进程</a>
         </h2>
 
         <div class="post-meta-container">
@@ -914,7 +928,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>曾经有位老师问过：在 Linux 的 Shell 中运行程序时，操作系统是怎样对程序进行处理的吗？<br>我当时回复是这样的：操作系统对 Shell 的执行，是靠 Shell 解释器完成的。在操作系统运行后，Shell 解释器本身就加载并运行了。其中如 pwd,cd 这些是内部命令，本质是函数调用，可以直接使用。ls 这些是外部命令，需要 fork 一个新进程执行当前命令。一个 Shell 脚本，有很多个这些内外部命令组成，通过 Shell 解释器逐行解释完毕后执行。Shell 解释器也是一个应用程序，本质是一个 C 程序，不过在该程序中，手动模拟了函数调用栈，和 JVM 有相似之处。所以 Shell 解释器，也有静态库&#x2F;动态库&#x2F;静态链接&#x2F;动态链接这些，为 Shell 命令的执行保障护航。<br>现在看起来，当时的回复虽然没有大的问题，但还是不够。只是浅表的认知了 Shell 解释器的用途，但是对 Shell 并没有深刻的理解。<br>最近看到子 Shell(SubShell)，发现 Shell 和进程之间的关系非常密切。可以从进程的角度来理解<strong>操作系统是怎么运行 Shell 的</strong>。<br>这篇文章的目的，是让你只关心 Shell 脚本的语法，而其他细节，都变成顺理成章。其实各个高级语言也都是这样，语言本身其实并不难，像工具一样使用而已。</p>
+          <p>曾经有位老师问过：在 Linux 的 Shell 中运行程序时，操作系统是怎样对程序进行处理的吗？<br>我当时回复是这样的：操作系统对 Shell 的执行，是靠 Shell 解释器完成的。在操作系统运行后，Shell 解释器本身就加载并运行了。其中如 pwd,cd 这些是内部命令，本质是函数调用，可以直接使用。ls 这些是外部命令，需要 fork 一个新进程执行当前命令。一个 Shell 脚本，有很多个这些内外部命令组成，通过 Shell 解释器逐行解释完毕后执行。Shell 解释器也是一个应用程序，本质是一个 C 程序，不过在该程序中，手动模拟了函数调用栈，和 JVM 有相似之处。所以 Shell 解释器，也有静态库 / 动态库 / 静态链接 / 动态链接这些，为 Shell 命令的执行保障护航。<br>现在看起来，当时的回复虽然没有大的问题，但还是不够。只是浅表的认知了 Shell 解释器的用途，但是对 Shell 并没有深刻的理解。<br>最近看到子 Shell (SubShell)，发现 Shell 和进程之间的关系非常密切。可以从进程的角度来理解<strong>操作系统是怎么运行 Shell 的</strong>。<br>这篇文章的目的，是让你只关心 Shell 脚本的语法，而其他细节，都变成顺理成章。其实各个高级语言也都是这样，语言本身其实并不难，像工具一样使用而已。</p>
           <!--noindex-->
           <!--/noindex-->
         
@@ -994,17 +1008,17 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>一年前写了“段页内存管理”的部分章节，后面一直搁置在草稿箱中。最近发现内存相关的知识非常重要，最近几十年科技文明的巅峰，硬件侧就是 CPU，软件侧就围绕着操作系统对内存的控制了。就又整理补齐，形成<strong>内存分段分页</strong>较完整说明。<br>硬件 CPU 的不断革新，从 X86 和 ARM 架构的铺天盖地，到 RISC-V 新星崛起和 MIPS 的消退。还有各种流水线优化、APU-ZPU 的推成出新，以及 Apple M1 的展露头脚。虽然 CPU 本身短时间内看不到跨越式的提升，但 CPU 周边是玩出了花。<br>而已经趋于稳定的操作系统，最近好多年都没有啥惊世骇俗的壮举出现。依托着 CPU 侧的大腿，操作系统躺着进行升级。但换一个角度，也可以认为操作系统已经设计的足够完备，在商业化的时代，有需求就一定会有满足，或许对于当前操作系统来说，目前的设计应对有余。<br>操作系统的很多设计，都摆脱不了内存这尊大神。首先，操作系统本身和上层应用，就是放在内存里运行的。其次，操作系统的基石进程和线程，就贴着内存进行设计。多核心后的 L0-2 级缓存同步也是为内存定制，当然这个算 CPU 对内存的依赖。IO&#x2F;文件系统&#x2F;网络也都离不开内存的影子。<br>内存本身的制作工艺门槛不高，有 N 多厂商做这个事情。但内存在科技长河中的位置，绝对举足轻重。整个计算机的发展史，内存表现不多，但是中流砥柱。<br>本文可以顺带解决如下几个问题：</p>
+          <p>一年前写了 “段页内存管理” 的部分章节，后面一直搁置在草稿箱中。最近发现内存相关的知识非常重要，最近几十年科技文明的巅峰，硬件侧就是 CPU，软件侧就围绕着操作系统对内存的控制了。就又整理补齐，形成<strong>内存分段分页</strong>较完整说明。<br>硬件 CPU 的不断革新，从 X86 和 ARM 架构的铺天盖地，到 RISC-V 新星崛起和 MIPS 的消退。还有各种流水线优化、APU-ZPU 的推成出新，以及 Apple M1 的展露头脚。虽然 CPU 本身短时间内看不到跨越式的提升，但 CPU 周边是玩出了花。<br>而已经趋于稳定的操作系统，最近好多年都没有啥惊世骇俗的壮举出现。依托着 CPU 侧的大腿，操作系统躺着进行升级。但换一个角度，也可以认为操作系统已经设计的足够完备，在商业化的时代，有需求就一定会有满足，或许对于当前操作系统来说，目前的设计应对有余。<br>操作系统的很多设计，都摆脱不了内存这尊大神。首先，操作系统本身和上层应用，就是放在内存里运行的。其次，操作系统的基石进程和线程，就贴着内存进行设计。多核心后的 L0-2 级缓存同步也是为内存定制，当然这个算 CPU 对内存的依赖。IO / 文件系统 / 网络也都离不开内存的影子。<br>内存本身的制作工艺门槛不高，有 N 多厂商做这个事情。但内存在科技长河中的位置，绝对举足轻重。整个计算机的发展史，内存表现不多，但是中流砥柱。<br>本文可以顺带解决如下几个问题：</p>
 <ul>
 <li>地址总线、数据总线、控制总线是什么？CPU 如何通过地址总线找到内存地址？</li>
 <li>CPU 和内存之间的高速缓存引发的缓存一致性问题是怎么回事？<a href="https://www.yigegongjiang.com/2022/lock/">锁 - 共享数据安全指↑</a></li>
-<li>16 位 CPU 是如何操作 1M 内存空间的(2^16&#x3D;64kb)？32 位 CPU 是如何操作 64G 内存空间的(2^32&#x3D;4G)？他们的原理一样吗？</li>
+<li>16 位 CPU 是如何操作 1M 内存空间的 (2^16=64kb)？32 位 CPU 是如何操作 64G 内存空间的 (2^32=4G)？他们的原理一样吗？</li>
 <li>分段内存管理，里面的段指的是什么？</li>
 <li>除了虚拟地址、物理地址，还有线性地址和逻辑地址，它们是什么？</li>
-<li>两个进程的虚拟地址相同，是如何指向不同的物理地址的？虚拟地址的页目录&amp;页偏移均一致，如何通过 <strong>m &#x3D; f(n)</strong> 函数，以相同的 n 输入，返回不同的 m 输出。</li>
+<li>两个进程的虚拟地址相同，是如何指向不同的物理地址的？虚拟地址的页目录 &amp; 页偏移均一致，如何通过 <strong>m = f(n)</strong> 函数，以相同的 n 输入，返回不同的 m 输出。</li>
 </ul>
 <blockquote>
-<p>推荐书：《汇编语言》-王爽、《程序员的自我修养-链接装载与库》-俞甲子<br>推荐网文：《深入浅出计算机组成原理》-徐文浩、《操作系统实战》-LMOS、<br>一定要读的另一篇内存文章：<a href="https://www.yigegongjiang.com/2022/lock/">锁 - 共享数据安全指↑</a><br>内存相关的知识非常重要，需要很大篇幅和示例图来阐述。在<a href="https://www.yigegongjiang.com/2022/lock/">锁 - 共享数据安全指↑</a>中文字数超过了 4W，本文的文字数也超过了 1W，均需要多张配图。重要性和难理解程度，都很高。</p>
+<p>推荐书：《汇编语言》- 王爽、《程序员的自我修养 - 链接装载与库》- 俞甲子<br>推荐网文：《深入浅出计算机组成原理》- 徐文浩、《操作系统实战》-LMOS、<br>一定要读的另一篇内存文章：<a href="https://www.yigegongjiang.com/2022/lock/">锁 - 共享数据安全指↑</a><br>内存相关的知识非常重要，需要很大篇幅和示例图来阐述。在<a href="https://www.yigegongjiang.com/2022/lock/">锁 - 共享数据安全指↑</a>中文字数超过了 4W，本文的文字数也超过了 1W，均需要多张配图。重要性和难理解程度，都很高。</p>
 </blockquote>
           <!--noindex-->
           <!--/noindex-->
@@ -1037,7 +1051,7 @@
     <div class="footer-inner">
 
   <div class="copyright">
-    &copy; 
+    &copy; 2018 – 
     <span itemprop="copyrightYear">2024</span>
     <span class="with-love">
       <i class=""></i>
@@ -1063,7 +1077,6 @@
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.umd.js" integrity="sha256-ytMJGN3toR+a84u7g7NuHm91VIR06Q41kMWDr2pq7Zo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
@@ -1073,7 +1086,6 @@
 
 
 
-  <script src="/js/third-party/fancybox.js"></script>
 
 
 

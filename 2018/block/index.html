@@ -16,16 +16,15 @@
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.css" integrity="sha256-6cQIC71/iBIYXFK+0RHAvwmjwWzkWd+r7v/BX3/vZDc=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.1","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="像Block这种闭包，就是怎么用怎么爽，怎么用怎么喜欢的编码方式了。 闭包很伟大，也是各个语言都实现了的基础语法。我这边对闭包的理解，就是：内部函数持有外部变量。 但是各个语言都有需要注意的点，如iOS里面的循环引用，Swift里面的逃逸闭包，Python里面的闭包变量延迟定义等。">
+    <meta name="description" content="像 Block 这种闭包，就是怎么用怎么爽，怎么用怎么喜欢的编码方式了。 闭包很伟大，也是各个语言都实现了的基础语法。我这边对闭包的理解，就是：内部函数持有外部变量。 但是各个语言都有需要注意的点，如 iOS 里面的循环引用，Swift 里面的逃逸闭包，Python 里面的闭包变量延迟定义等。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Block闭包简查记录">
+<meta property="og:title" content="Block 闭包简查记录">
 <meta property="og:url" content="https://www.yigegongjiang.com/2018/block/index.html">
 <meta property="og:site_name" content="一个工匠">
-<meta property="og:description" content="像Block这种闭包，就是怎么用怎么爽，怎么用怎么喜欢的编码方式了。 闭包很伟大，也是各个语言都实现了的基础语法。我这边对闭包的理解，就是：内部函数持有外部变量。 但是各个语言都有需要注意的点，如iOS里面的循环引用，Swift里面的逃逸闭包，Python里面的闭包变量延迟定义等。">
+<meta property="og:description" content="像 Block 这种闭包，就是怎么用怎么爽，怎么用怎么喜欢的编码方式了。 闭包很伟大，也是各个语言都实现了的基础语法。我这边对闭包的理解，就是：内部函数持有外部变量。 但是各个语言都有需要注意的点，如 iOS 里面的循环引用，Swift 里面的逃逸闭包，Python 里面的闭包变量延迟定义等。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2018-11-24T09:00:08.000Z">
 <meta property="article:author" content="海驴">
@@ -37,11 +36,14 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2018/block/","path":"2018/block/","title":"Block闭包简查记录"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2018/block/","path":"2018/block/","title":"Block 闭包简查记录"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Block闭包简查记录 | 一个工匠</title>
+<title>Block 闭包简查记录 | 一个工匠</title>
   
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CTEWJ02QX"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-8CTEWJ02QX","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
 
 
 
@@ -89,7 +91,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">83</span></a></li><li class="menu-item menu-item-opensource"><a href="/openSource" rel="section">OpenSource</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section">RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">83</span></a></li><li class="menu-item menu-item-opensource"><a href="/openSource" rel="section">OpenSource</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
   </ul>
 </nav>
 
@@ -150,6 +152,18 @@
     </div>
 
     
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          Links
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9oYWlfbHZf" title="https:&#x2F;&#x2F;twitter.com&#x2F;hai_lv_">X(Twitter)</span>
+            </li>
+        </ul>
+      </div>
+    </div>
         <div class="pjax">
         </div>
   </aside>
@@ -181,12 +195,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Block闭包简查记录 | 一个工匠">
+      <meta itemprop="name" content="Block 闭包简查记录 | 一个工匠">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Block闭包简查记录
+          Block 闭包简查记录
         </h1>
 
         <div class="post-meta-container">
@@ -218,12 +232,12 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>像Block这种闭包，就是怎么用怎么爽，怎么用怎么喜欢的编码方式了。</p>
+    <div class="post-body" itemprop="articleBody"><p>像 Block 这种闭包，就是怎么用怎么爽，怎么用怎么喜欢的编码方式了。</p>
 <p>闭包很伟大，也是各个语言都实现了的基础语法。我这边对闭包的理解，就是：<strong>内部函数持有外部变量</strong>。</p>
-<p>但是各个语言都有需要注意的点，如iOS里面的循环引用，Swift里面的逃逸闭包，Python里面的闭包变量延迟定义等。</p>
+<p>但是各个语言都有需要注意的点，如 iOS 里面的循环引用，Swift 里面的逃逸闭包，Python 里面的闭包变量延迟定义等。</p>
 <span id="more"></span>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">As a local variable:</span><br><span class="line">	returnType (^blockName)(parameterTypes) = ^returnType(parameters) &#123;...&#125;;</span><br><span class="line"></span><br><span class="line">As a property:</span><br><span class="line">	@property (nonatomic, copy, nullability) returnType (^blockName)(parameterTypes);</span><br><span class="line"></span><br><span class="line">As a method parameter:</span><br><span class="line">	- (void)someMethodThatTakesABlock:(returnType (^nullability)(parameterTypes))blockName;</span><br><span class="line"></span><br><span class="line">As an argument to a method call:</span><br><span class="line">	[someObject someMethodThatTakesABlock:^returnType (parameters) &#123;...&#125;];</span><br><span class="line"></span><br><span class="line">As a typedef:</span><br><span class="line">	typedef returnType (^TypeName)(parameterTypes);</span><br><span class="line">	TypeName blockName = ^returnType(parameters) &#123;...&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">As a local variable:</span><br><span class="line">	returnType (^blockName)(parameterTypes) = ^returnType(parameters) {...};</span><br><span class="line"></span><br><span class="line">As a property:</span><br><span class="line">	@property (nonatomic, copy, nullability) returnType (^blockName)(parameterTypes);</span><br><span class="line"></span><br><span class="line">As a method parameter:</span><br><span class="line">	- (void)someMethodThatTakesABlock:(returnType (^nullability)(parameterTypes))blockName;</span><br><span class="line"></span><br><span class="line">As an argument to a method call:</span><br><span class="line">	[someObject someMethodThatTakesABlock:^returnType (parameters) {...}];</span><br><span class="line"></span><br><span class="line">As a typedef:</span><br><span class="line">	typedef returnType (^TypeName)(parameterTypes);</span><br><span class="line">	TypeName blockName = ^returnType(parameters) {...};</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 
 
     </div>
@@ -249,7 +263,7 @@
       </div>
 
       <div class="social-item">
-          <a target="_blank" class="social-link" href="https://t.me/gongjiang">
+          <a target="_blank" class="social-link" href="https://t.me/hai_lv_tg">
             <span class="icon">
               <i class="fab fa-telegram"></i>
             </span>
@@ -328,7 +342,7 @@
     <div class="footer-inner">
 
   <div class="copyright">
-    &copy; 
+    &copy; 2018 – 
     <span itemprop="copyrightYear">2024</span>
     <span class="with-love">
       <i class=""></i>
@@ -354,7 +368,6 @@
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.umd.js" integrity="sha256-ytMJGN3toR+a84u7g7NuHm91VIR06Q41kMWDr2pq7Zo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
@@ -364,7 +377,6 @@
 
 
 
-  <script src="/js/third-party/fancybox.js"></script>
 
 
 
