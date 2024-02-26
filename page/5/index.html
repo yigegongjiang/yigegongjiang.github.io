@@ -91,7 +91,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">83</span></a></li><li class="menu-item menu-item-opensource"><a href="/openSource" rel="section">OpenSource</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">84</span></a></li><li class="menu-item menu-item-opensource"><a href="/openSource" rel="section">OpenSource</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
   </ul>
 </nav>
 
@@ -130,7 +130,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">83</span>
+          <span class="site-state-item-count">84</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -172,6 +172,90 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2022/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E6%A0%88%E4%B9%8B%E5%BD%BB%E5%BA%95%E7%90%86%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
+      <meta itemprop="name" content="海驴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个工匠">
+      <meta itemprop="description" content="时间，真的不多了。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 一个工匠">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E6%A0%88%E4%B9%8B%E5%BD%BB%E5%BA%95%E7%90%86%E8%A7%A3/" class="post-title-link" itemprop="url">函数调用栈之彻底理解</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-03-20 23:28:58" itemprop="dateCreated datePublished" datetime="2022-03-20T23:28:58+08:00">2022-03-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>2023.12.24 更：请移步 <a href="https://www.yigegongjiang.com/2023/stackForFunc/">从汇编角度理解 “函数调用栈” 和 “有栈协程”</a>。<br>新增了<strong>有栈协程的汇编实现</strong>章节，为适应爬虫也做了 url 更新。因本文有较多用户访问，担心有收藏会失效，所以新开一文，请做移步。</p>
+</blockquote>
+<p>函数调用栈虽然表面意思很容易理解，但是说到汇编层面，对于 call、ret 等命令的具体表现，还是有一些理解复杂度。<br>尤其在协程大放异彩后，通过函数调用栈来表达协程的逻辑，也尤为重要。<br>本篇文章会从基础汇编的角度理解函数执行过程。这样，对于 Go/Python/Swift 等语言的协程的实现，也会更容易理解。</p>
+<h2 id="Start"><a href="#Start" class="headerlink" title="Start"></a>Start</h2><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202312240542124.png" width="60%">
+          <!--noindex-->
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -904,88 +988,6 @@
 <p>Core Foundation 是被 iOSer <strong>忽略</strong>的一个<strong>重要</strong>框架。说重要，因为 Core Foundation 提供了丰富的组件库，这些组件库可以很好的用于开发工作。<br>但之所以被忽略，因为很多开发工作，可以用更友好的 Foundation 框架替代。<br>Core Foundation 有 Foundation 没有的功能，比如 CFDictionary 的 Key 元素无需实现 NSCoping 协议、CFArray 可以不进行对象引用计数等。反过来，Foundation 也有 Core Foundation 无法胜任的工作，最大的来说就是<strong>自动引用计数</strong>功能。<br>在 iOS 项目开发过程中，我们可以使用基于 C 语言的 Core Foundation 框架写一些业务功能逻辑，甚至有时候非用 Core Foundation 不可，因为它有 Foundation 没有的功能。</p>
 <p>Foundation 是用 Objective-C 语言写的，Core Foundation 使用 C 和 C++ 语言写的。我们都知道 Objective-C 是 C 的<strong>超集</strong>，所以认为 Objective-C 和 C、C++ 混编是正常的。<br>那么，什么是超集？Objective-C 是动态的面向对象的，C 是静态的面向过程的，如何实现这个超集？<br>既然 Objective-C 可以和 C、C++ 一起使用，那么 Golang 呢？我们可不可以用 Go 来做混合开发？</p>
 <p>通过 Core Foundation，可以有更大的认知空间。<br>比如各类高级语言在计算机中是如何运行的？Dart (flutter) 可以做混合开发，原理是什么？Lua 做热更新，它不是 C 语言也不是 Objective-C 语言，是怎么被计算机调用执行的？用 Node.js 写 iOS 代码，到底行不行？<br>各种风马牛不相及的高级编程语言，是否有各自的边界？</p>
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2020/TCPTranslation/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
-      <meta itemprop="name" content="海驴">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一个工匠">
-      <meta itemprop="description" content="时间，真的不多了。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 一个工匠">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/TCPTranslation/" class="post-title-link" itemprop="url">TCP 数据传输过程分析</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-05-13 16:51:05" itemprop="dateCreated datePublished" datetime="2020-05-13T16:51:05+08:00">2020-05-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202305300023093.png" width="30%">
-
-<p>最近在研究发送 / 接收缓冲区对 Socket 性能对影响，朋友发来两篇质量非常高的研究性报告让我看。<br><span class="exturl" data-url="aHR0cHM6Ly96b3Jyb3pvdS5naXRodWIuaW8vZG9jcy9Tb2NrZXQlRTclQkMlOTMlRTUlQUQlOTglRTclQTklQjYlRTclQUIlOUYlRTUlQTYlODIlRTQlQkQlOTUlRTUlQkQlQjElRTUlOTMlOERUQ1AlRTclOUElODQlRTYlODAlQTclRTglODMlQkQuaHRtbA==">Socket 缓存究竟如何影响 TCP 的性能</span><br><span class="exturl" data-url="aHR0cHM6Ly9wbGFudGVnZy5naXRodWIuaW8vMjAxOS8wOS8yOC8lRTUlQjAlQjElRTYlOTglQUYlRTglQTYlODElRTQlQkQlQTAlRTYlODclODJUQ1AtLSVFNiU4MCVBNyVFOCU4MyVCRCVFNSU5MiU4QyVFNSU4RiU5MSVFOSU4MCU4MSVFNiU4RSVBNSVFNiU5NCVCNkJ1ZmZlciVFNyU5QSU4NCVFNSU4NSVCMyVFNyVCMyVCQi8=">TCP 性能和发送接收窗口、Buffer 的关系</span><br>做研究的，都少不了数据。上面文章中 “缓冲区对 Socket 性能分析” 的数据非常严谨，我非常佩服。<br>于是我用 WireShark 分析验证 TCP 的数据传输流程，过程包含三次握手、滑动窗口数据传输、四次挥手，收益很多。</p>
           <!--noindex-->
           <!--/noindex-->
         
