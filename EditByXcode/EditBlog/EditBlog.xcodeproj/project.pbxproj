@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B2A5928B2B98DFC200D61483 /* japan in Resources */ = {isa = PBXBuildFile; fileRef = B2A5928A2B98DFC200D61483 /* japan */; };
 		B2BE32BB2B2C45A5009D8A37 /* EditBlog.h in Headers */ = {isa = PBXBuildFile; fileRef = B2BE32BA2B2C45A5009D8A37 /* EditBlog.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B2A5928A2B98DFC200D61483 /* japan */ = {isa = PBXFileReference; lastKnownFileType = folder; name = japan; path = ../../source/japan; sourceTree = "<group>"; };
 		B2BE32B72B2C45A5009D8A37 /* EditBlog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EditBlog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2BE32BA2B2C45A5009D8A37 /* EditBlog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditBlog.h; sourceTree = "<group>"; };
 		B2BE32C12B2C4610009D8A37 /* _drafts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = _drafts; path = ../../source/_drafts; sourceTree = "<group>"; };
@@ -33,6 +35,7 @@
 		B2BE32AD2B2C45A5009D8A37 = {
 			isa = PBXGroup;
 			children = (
+				B2A5928A2B98DFC200D61483 /* japan */,
 				B2E1FB9A2B54C49E003E4DA1 /* about */,
 				B2E1FB992B54C25C003E4DA1 /* openSource */,
 				B2BE32C12B2C4610009D8A37 /* _drafts */,
@@ -127,6 +130,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2A5928B2B98DFC200D61483 /* japan in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
