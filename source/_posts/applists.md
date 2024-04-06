@@ -18,7 +18,8 @@ tags:
 * vim & neovim & SpaceVim
 * tree 快速查看目录和文件
 * TLDR to long donot reader，命令组合提示好工具
-* ranger 终端文件夹浏览器
+* alias 巧妙的使用，会很方便。
+    * 如 `aliased dirs='dirs | tr " " "\n" | nl -v0'`，输出历史目录。输入编号 1/2/3 可以直接进入(need zsh)。 / 2024.04.06 add
 
 <!-- more -->
 
@@ -27,7 +28,7 @@ tags:
 * Vim (浏览器安装插件，浏览网页也非常棒)
 * VSCode
 * Xcode，写 C & C++ / 2022.10.08 更：配置 Vim 写中文文档非常棒
-* Iterm 2
+* Iterm2 / 2024.04.06 更：已经迁移到 **Warp**，它的 workflow 和 notebook 很好用。
 * Surge 抓包 & 翻X
 * Kaleidoscope 文本Diff，和 Git 配合非常好用
 * MachOView 分析 Mac/iOS ipa 包
@@ -35,12 +36,15 @@ tags:
 
 ### 效率工作
 
-* Magent 快速窗口布局
-* LaunchBar
+* Magent 快速窗口布局 / 2024.04.06 更：已经迁移到 Raycast，有窗口布局功能，少装一个软件。
+* LaunchBar / 2024.04.06 更：已经迁移到 Raycast，包含启动。主要是计算器功能比较友好。
 * Surge（抓包、vpn 也靠它，神器）
 * Bob 文字 OCR + 翻译
 * Google 翻译
 * Reeder rss订阅 / 2023.02.12 更：已经支持 iCloud 同步，可以不用 feedly 了。
+* BLEUnlock 快速对 Mac 锁屏和解锁 / 2024.04.06 add
+* input Source Pro 根据 app 快速切换输入法。可以设置快捷键快速切指定输入法，对于超过两个输入法的人很有用。 / 2024.04.06 add
+* Arc browser 非常好用，但需要适应。尤其它的 Pin 和 Split 功能，可以玩出很多花。 / 2024.04.06 add
 
 ### 写作阅读
 
@@ -52,6 +56,7 @@ tags:
 * Kiddle
 * Pocket
 * keynot 快速制作流程图，图解必备 / 2023.07.17 目前我使用 语雀 画流程图，比 keynot 要方便不少。
+* Snipaste 截屏工具 / 2024.04.06 add
 
 ### 社交媒体
 
@@ -82,6 +87,7 @@ tags:
 * Google 搜索
 * Apple 相机，识别二维码。相机和相册都能够做 OCR 文字识别
 * Google Voice 国外号码，免骚扰短信打扰，无月租，有些注册平台有一定局限性，但很少。
+* 随手记：理财很方便。/ 2024.04.06 add，支持 mac 端，默认无广告。
 
 ---
 
