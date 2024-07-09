@@ -15,11 +15,57 @@
     <atom:link href="https://www.yigegongjiang.com/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>时间，真的不多了。</description>
-    <pubDate>Mon, 26 Feb 2024 05:22:36 GMT</pubDate>
+    <pubDate>Mon, 29 Apr 2024 15:32:42 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
-      <title>船游千岛湖</title>
+      <title>【旅游】富士山</title>
+      <link>https://www.yigegongjiang.com/2024/Fuji/</link>
+      <guid>https://www.yigegongjiang.com/2024/Fuji/</guid>
+      <pubDate>Mon, 29 Apr 2024 15:32:42 GMT</pubDate>
+      
+      <description>&lt;p&gt;忘记更新了，后面补上照片&lt;/p&gt;</description>
+      
+      
+      
+      <content:encoded><![CDATA[<p>忘记更新了，后面补上照片</p><span id="more"></span><hr>]]></content:encoded>
+      
+      
+      <category domain="https://www.yigegongjiang.com/categories/%E8%A7%82%E7%82%B9/">观点</category>
+      
+      
+      <category domain="https://www.yigegongjiang.com/tags/Life/">Life</category>
+      
+      
+      <comments>https://www.yigegongjiang.com/2024/Fuji/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【旅游】sakura（樱花）</title>
+      <link>https://www.yigegongjiang.com/2024/sakura/</link>
+      <guid>https://www.yigegongjiang.com/2024/sakura/</guid>
+      <pubDate>Mon, 29 Apr 2024 15:31:29 GMT</pubDate>
+      
+      <description>&lt;p&gt;忘记更新了，后面补上照片&lt;/p&gt;</description>
+      
+      
+      
+      <content:encoded><![CDATA[<p>忘记更新了，后面补上照片</p><span id="more"></span><hr>]]></content:encoded>
+      
+      
+      <category domain="https://www.yigegongjiang.com/categories/%E8%A7%82%E7%82%B9/">观点</category>
+      
+      
+      <category domain="https://www.yigegongjiang.com/tags/Life/">Life</category>
+      
+      
+      <comments>https://www.yigegongjiang.com/2024/sakura/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【旅游】千岛湖</title>
       <link>https://www.yigegongjiang.com/2024/QiandaoLake/</link>
       <guid>https://www.yigegongjiang.com/2024/QiandaoLake/</guid>
       <pubDate>Mon, 26 Feb 2024 05:22:36 GMT</pubDate>
@@ -332,7 +378,7 @@
     </item>
     
     <item>
-      <title>沿海旅游 (威海、青岛)</title>
+      <title>【旅游】沿海旅游 (威海、青岛)</title>
       <link>https://www.yigegongjiang.com/2023/the_sea/</link>
       <guid>https://www.yigegongjiang.com/2023/the_sea/</guid>
       <pubDate>Mon, 28 Aug 2023 15:56:23 GMT</pubDate>

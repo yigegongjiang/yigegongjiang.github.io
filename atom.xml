@@ -6,7 +6,7 @@
   <link href="https://www.yigegongjiang.com/atom.xml" rel="self"/>
   
   <link href="https://www.yigegongjiang.com/"/>
-  <updated>2024-02-26T05:22:36.000Z</updated>
+  <updated>2024-04-29T15:32:42.000Z</updated>
   <id>https://www.yigegongjiang.com/</id>
   
   <author>
@@ -17,7 +17,49 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>船游千岛湖</title>
+    <title>【旅游】富士山</title>
+    <link href="https://www.yigegongjiang.com/2024/Fuji/"/>
+    <id>https://www.yigegongjiang.com/2024/Fuji/</id>
+    <published>2024-04-29T15:32:42.000Z</published>
+    <updated>2024-04-29T15:32:42.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>忘记更新了，后面补上照片</p><span id="more"></span><hr>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;忘记更新了，后面补上照片&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="观点" scheme="https://www.yigegongjiang.com/categories/%E8%A7%82%E7%82%B9/"/>
+    
+    
+    <category term="Life" scheme="https://www.yigegongjiang.com/tags/Life/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【旅游】sakura（樱花）</title>
+    <link href="https://www.yigegongjiang.com/2024/sakura/"/>
+    <id>https://www.yigegongjiang.com/2024/sakura/</id>
+    <published>2024-04-29T15:31:29.000Z</published>
+    <updated>2024-04-29T15:31:29.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>忘记更新了，后面补上照片</p><span id="more"></span><hr>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;忘记更新了，后面补上照片&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="观点" scheme="https://www.yigegongjiang.com/categories/%E8%A7%82%E7%82%B9/"/>
+    
+    
+    <category term="Life" scheme="https://www.yigegongjiang.com/tags/Life/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【旅游】千岛湖</title>
     <link href="https://www.yigegongjiang.com/2024/QiandaoLake/"/>
     <id>https://www.yigegongjiang.com/2024/QiandaoLake/</id>
     <published>2024-02-26T05:22:36.000Z</published>
@@ -308,7 +350,7 @@
   </entry>
   
   <entry>
-    <title>沿海旅游 (威海、青岛)</title>
+    <title>【旅游】沿海旅游 (威海、青岛)</title>
     <link href="https://www.yigegongjiang.com/2023/the_sea/"/>
     <id>https://www.yigegongjiang.com/2023/the_sea/</id>
     <published>2023-08-28T15:56:23.000Z</published>
