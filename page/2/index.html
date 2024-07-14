@@ -91,7 +91,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">88</span></a></li><li class="menu-item menu-item-日本指北"><a href="/japan/" rel="section">日本指北</a></li><li class="menu-item menu-item-时间舟"><a href="/categories/%E6%97%B6%E9%97%B4%E8%88%9F/" rel="section">时间舟</a></li><li class="menu-item menu-item-source"><a href="/openSource" rel="section">Source</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">89</span></a></li><li class="menu-item menu-item-日本指北"><a href="/japan/" rel="section">日本指北</a></li><li class="menu-item menu-item-时间舟"><a href="/categories/%E6%97%B6%E9%97%B4%E8%88%9F/" rel="section">时间舟</a></li><li class="menu-item menu-item-source"><a href="/openSource" rel="section">Source</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
   </ul>
 </nav>
 
@@ -130,7 +130,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-count">89</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -172,6 +172,88 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2023/swiftPackageFramework/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
+      <meta itemprop="name" content="海驴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个工匠">
+      <meta itemprop="description" content="时间，真的不多了。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 一个工匠">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/swiftPackageFramework/" class="post-title-link" itemprop="url">通过 Swift Package 制作二进制库</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-12-15 16:18:54" itemprop="dateCreated datePublished" datetime="2023-12-15T16:18:54+08:00">2023-12-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Swift Package Manager (SPM) 已经被苹果放置于一个很重要的位置，在<a href="https://www.yigegongjiang.com/2023/SwiftCommandEnv/#Package">历史文章</a>中对其做了一定的分析，Package 目前的定位和 Xcode Project <code>.xcodeproj</code> 同级别。SPM 不仅仅用于替代 Cocoapods，而是 Apple 后期语言研发生态的一部分。<br>鉴于 Xcode 对 Package 的支持，可以很方便的将项目中的代码进行组件化设计，做一定的逻辑分析即可拆分成多个 Package，这在开发过程中非常有利于项目的架构、单测、可持续性。<br>以前若这样做，需要对 Cocoapods 有深入的了解，这是一个比较复杂且细节的过程。通过 SPM 只需要 <code>New - Package</code> 即可，将复杂度从项目级别压缩到文件级别。</p>
+<p>SPM 出现后，很多 Pods 模块通过增加 <code>Package.swift</code> 配置文件可以很方便交由 SPM 管理。但对于直接通过 <code>Package.swift</code> 创建的独立库，并没有方便的方案转为 Pods 管理，还是需要走一遍 Pods 的流程。<br>不过，这里做一个预言，Pods 终将被 SPM 取代，因为 <strong>SPM 是更具有可持续性和生态深度耦合</strong>，在 Xcode 整合 (编辑 / 搜索 / 联调等)、多平台兼容，源码管理、二进制库 / 仓库管理、CI 等方面，都具有得天独厚的优势。<br>相比 Pods 完善的脚本自定义能力 (基于 ruby 的生态)，SPM 是有一定的短板，但不推荐。<br>很多大公司在做统一基建的时候，会深度魔改 Pods。简单的东西越做越复杂的原因，除了增加一些” 又不是不能用” 的功能，还有就是在复杂度提升后打的各种补丁。<br>虽然这么说，Pods 完善的自定义能力，SPM 也一样可以做到，毕竟这些能力很大部分都属于扩展能力，如插件。执行流程中大家都可以在 xcodebuild 等相关命令的任意位置，随时可以写一些定制脚本做插入执行。</p>
+<p>初期，Swift Package 只能做源码 (开源) 共享，后面增加了 <code>binaryTarget</code> 能力，可以在提供了二进制库 (framework/xcframework) 的情况下，直接通过 SPM 做分发。(闭源共享)<br>但二进制库从哪里来，普遍的方案还是通过 <code>.xcodeproj</code> 的形式编译导出 framework/xcframework 库。<br>Swift Package 虽然支持导出动态库和静态库，但流程上还不彻底，并不能直接交付使用，下面对此做一些解释说明。</p>
+          <!--noindex-->
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -925,87 +1007,6 @@
           <!--noindex-->
           <!--/noindex-->
         
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2023/haoel/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
-      <meta itemprop="name" content="海驴">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一个工匠">
-      <meta itemprop="description" content="时间，真的不多了。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 一个工匠">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/haoel/" class="post-title-link" itemprop="url">致敬耗子哥</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2023-05-15 23:23:22" itemprop="dateCreated datePublished" datetime="2023-05-15T23:23:22+08:00">2023-05-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%90%90%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">琐事</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>左耳朵耗子，原名陈浩，很多人称呼耗子哥。<br>互联网布道者，骨灰级程序员。<br>因心梗离开了。</p>
-<p>我受到不少耗子哥的影响，对其博客中的 VIM 教程尤其深刻。<br>他的很多观点，都具有过来人深刻的教诲。</p>
-<p>早上看到消息，本以为是假消息，毕竟这是一个没有真消息的年代。<br>但是没过几分钟，查证了，也沉默了。<br>他生前影响了很多人，他的离开，让整个中文技术圈轰动。</p>
-<p>致敬耗子哥。</p>
-
       
     </div>
 
