@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="manifest" href="/images/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.2","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="对于电子显示屏而言，第一要务是要显示信息。与信息显示直接相关的硬件，是光源。每一个光源称为【物理像素】。 光源 - 像素密度 - 物理像素像素本身是没有大小和尺寸的。同一个显示屏，可以有 100 * 100 个像素（光源），也可以有 10000 * 10000 个像素。但是显示屏的大小并没有改变，改变的是 光源 的多少。如果显示屏有更多的 光源，那么就可以显示更加细腻的画面。这是【像素密度】。 对">
+<meta property="og:type" content="article">
+<meta property="og:title" content="px">
+<meta property="og:url" content="https://www.yigegongjiang.com/2024/px/index.html">
+<meta property="og:site_name" content="一个工匠">
+<meta property="og:description" content="对于电子显示屏而言，第一要务是要显示信息。与信息显示直接相关的硬件，是光源。每一个光源称为【物理像素】。 光源 - 像素密度 - 物理像素像素本身是没有大小和尺寸的。同一个显示屏，可以有 100 * 100 个像素（光源），也可以有 10000 * 10000 个像素。但是显示屏的大小并没有改变，改变的是 光源 的多少。如果显示屏有更多的 光源，那么就可以显示更加细腻的画面。这是【像素密度】。 对">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-10-22T02:54:37.000Z">
+<meta property="article:author" content="海驴">
+<meta property="article:tag" content="计算机基础">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.yigegongjiang.com/2024/px/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2024/px/","path":"2024/px/","title":"px"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>px | 一个工匠</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CTEWJ02QX"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-8CTEWJ02QX","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="一个工匠" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="一个工匠" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">一个工匠</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">92</span></a></li><li class="menu-item menu-item-日本指北"><a href="/japan/" rel="section">日本指北</a></li><li class="menu-item menu-item-时间舟"><a href="/categories/%E6%97%B6%E9%97%B4%E8%88%9F/" rel="section">时间舟</a></li><li class="menu-item menu-item-source"><a href="/openSource" rel="section">Source</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%89%E6%BA%90-%E5%83%8F%E7%B4%A0%E5%AF%86%E5%BA%A6-%E7%89%A9%E7%90%86%E5%83%8F%E7%B4%A0"><span class="nav-number">1.</span> <span class="nav-text">光源 - 像素密度 - 物理像素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E8%BE%A8%E7%8E%87-%E8%99%9A%E6%8B%9F%E5%83%8F%E7%B4%A0"><span class="nav-number">2.</span> <span class="nav-text">分辨率 - 虚拟像素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#px-%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">2.1.</span> <span class="nav-text">px 的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#px-%E6%98%AF%E8%99%9A%E6%8B%9F%E7%9A%84"><span class="nav-number">2.2.</span> <span class="nav-text">px 是虚拟的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%83%8F%E7%B4%A0%E8%BD%AF%E4%BB%B6%E5%8C%96"><span class="nav-number">2.3.</span> <span class="nav-text">像素软件化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%95%E7%BA%AF%E6%8F%90%E9%AB%98%E7%A1%AC%E4%BB%B6%E5%88%B6%E6%88%90"><span class="nav-number">3.</span> <span class="nav-text">单纯提高硬件制成</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HiDPI-Retina"><span class="nav-number">4.</span> <span class="nav-text">HiDPI - Retina</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E6%8F%90%E5%8D%87%E8%A7%86%E8%A7%89%E8%B4%A8%E9%87%8F"><span class="nav-number">5.</span> <span class="nav-text">软件提升视觉质量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#High-Dynamic-Range-from-ai"><span class="nav-number">6.</span> <span class="nav-text">High Dynamic Range - from ai</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Extreme-Dynamic-Range-XDR"><span class="nav-number">6.1.</span> <span class="nav-text">Extreme Dynamic Range (XDR)</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="海驴"
+      src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
+  <p class="site-author-name" itemprop="name">海驴</p>
+  <div class="site-description" itemprop="description">时间，真的不多了。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">92</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          Links
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9oYWlfbHZf" title="https:&#x2F;&#x2F;twitter.com&#x2F;hai_lv_">X(Twitter)</span>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2024/px/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
+      <meta itemprop="name" content="海驴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个工匠">
+      <meta itemprop="description" content="时间，真的不多了。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="px | 一个工匠">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          px
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-10-22 10:54:37" itemprop="dateCreated datePublished" datetime="2024-10-22T10:54:37+08:00">2024-10-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>对于电子显示屏而言，第一要务是要显示信息。与信息显示直接相关的硬件，是光源。每一个光源称为【物理像素】。</p>
+<h1 id="光源-像素密度-物理像素"><a href="#光源-像素密度-物理像素" class="headerlink" title="光源 - 像素密度 - 物理像素"></a>光源 - 像素密度 - 物理像素</h1><p>像素本身是没有大小和尺寸的。同一个显示屏，可以有 100 * 100 个像素（光源），也可以有 10000 * 10000 个像素。但是显示屏的大小并没有改变，改变的是 光源 的多少。如果显示屏有更多的 光源，那么就可以显示更加细腻的画面。这是【像素密度】。</p>
+<p>对于硬件来说，提升【像素密度】，可以在单个面积上，展示更加丰富的色彩。这需要制作工艺的提升，iPhone 4 首次将其商业化，开发出了 Retina （HiDPI）屏幕。当时称为 2 倍屏，和 iPhone 3G 相比，屏幕的物理尺寸没有改变，但是像素密度提升了 4 倍，即 宽、高 的密度提升了 2 倍。</p>
+<p>这是硬件制作工艺上的提升，但如何有效的使用塞了更多光源的屏幕，是软件来工作的。实际上，很多复杂的逻辑，都是软件来规定的。毕竟硬件只提供了【像素密度】更高、更多的【光源】，其他并没有做。比如软件开发中如何实现 0.5px 的宽高、如何调整设置系统的分辨率等等。</p>
+<p>光源，也称为【物理像素】，是真实的提供发光和色彩的源头。</p>
+<span id="more"></span>
+
+<h1 id="分辨率-虚拟像素"><a href="#分辨率-虚拟像素" class="headerlink" title="分辨率 - 虚拟像素"></a>分辨率 - 虚拟像素</h1><h2 id="px-的定义"><a href="#px-的定义" class="headerlink" title="px 的定义"></a>px 的定义</h2><p>随着制作工艺的提升，光源 会趋向于越来越小。所以 光源 是没有尺寸概念的，但是开发人员需要有这个概念，不然怎么设置一个图片的大小或者一个矩形的宽高呢？</p>
+<p>所有的软件都是在操作系统上运行的，而操作系统对像素进行了抽象，即【分辨率】。</p>
+<p>对于同一台电脑，可以在系统设置中调整不同的分辨率，如 100 *100 或者 1000 * 1000。这些分辨率是【虚拟像素】，即把当前屏幕的宽度分割成 100 或者 1000 份，每一份就是 1px。</p>
+<blockquote>
+<p>如果一台笔记本的屏幕光源（物理像素）是 2000<em>2000，系统设置分辨率为 2</em>2，即将整个屏幕的宽度和高度分割成 2 份。那么开发人员设置一个矩形的大小是 1 * 1，这个矩形就占据整个屏幕的 1/4，且使用了 500*500 个光源</p>
+</blockquote>
+<h2 id="px-是虚拟的"><a href="#px-是虚拟的" class="headerlink" title="px 是虚拟的"></a>px 是虚拟的</h2><p>通过上面的定义，可以看出 px 是操作系统层面根据当前屏幕的大小分割成 n 份后虚拟出来的尺寸。同样的分辨率，如果屏幕大小不同，那么 1px 的大小也是不同的。</p>
+<p>px 是和 光源 直接相关的，如果 px 是真实的，那么就和 光源 绑定。而我们可以设置 0.5px，但 1 个光源 是不可能只亮一半的。</p>
+<p>根据上面的例子 (2000*2000 物理像素的例子)，如果设置 0.5px，实际上是使用 250 * 250 个光源。</p>
+<h2 id="像素软件化"><a href="#像素软件化" class="headerlink" title="像素软件化"></a>像素软件化</h2><p>之前提到物理硬件上，只需要提高制作工艺来增加单位面积内的 光源 数量，即【物理像素密度】。除此之外，光源 出了提供不同色彩的亮度之外，并没有更多的变化性。</p>
+<p>而软件，将对 光源 进行复杂的设定，来实现 高清晰度 等不同场景的使用效果。</p>
+<p>准确来说，软件层面对 光源 最根本的对接是：对于需要展示的内容，如何更有效的使用 光源 来展示更加细腻、丰富的色彩。对接的不好，内容会有锯齿。对接的好，内容会很细腻。</p>
+<h1 id="单纯提高硬件制成"><a href="#单纯提高硬件制成" class="headerlink" title="单纯提高硬件制成"></a>单纯提高硬件制成</h1><p>对于同一个尺寸大小的显示器，因为制成的提升，我们来看下渲染的变化，假设现在需要展示 100 * 100 大小的花朵：<br>原始：1000 * 1000 物理像素。设定屏幕分辨率（虚拟像素）为 500 * 500。一个虚拟像素需要 2 个物理像素。此时花朵的视觉效果是：宽度和高度都是屏幕的 1/5，占用 200 * 200 个光源。</p>
+<p>制成提升：10000 * 10000 物理像素。</p>
+<ul>
+<li>如果屏幕分辨率保持 500 * 500 不变，一个虚拟像素需要 20 个物理像素。此时花朵的视觉效果是：宽度和高度都是屏幕的 1/5，占用 2000 * 2000 个光源。此时，在花朵的边缘部分因为有更多的光源，会变得清晰（清晰是加强原始的表现。若花朵像素不佳，这里的清晰会变成锯齿）。</li>
+<li>如果屏幕分辨率调整 1000 * 1000，一个虚拟像素需要 10 个物理像素。此时花朵的视觉效果是：宽度和高度都是屏幕的 1/10，占用 1000 * 1000 个光源。此时，花朵在屏幕上看起来非常小。无法正常浏览。</li>
+<li>在 2 的基础上，把屏幕设置 scale，即 200% 放大。此时花朵的视觉效果是：宽度和高度都是屏幕的 1/5，回到了正常效果。占用 2000 * 2000 个光源。此时，和 1 情况基本没有变化。</li>
+</ul>
+<p>通过上面的观察，可以发现单纯提高硬件制成，并不能有效的带来清晰度的提升。一来无法提高分辨率（导致无法使用），二来无法有效的提高清晰度（本来渲染内容的质量就不佳）。</p>
+<blockquote>
+<p>此时，还会无效的增加 CPU、GPU 的算力。渲染成指数的增加，但没有实际的视觉产出。</p>
+</blockquote>
+<p>这时候就需要软件的配合。在 iPhone 4 的 Retina 屏幕商用前，也有其他厂商提高了物理像素密度，但并没有 Retina 的效果。</p>
+<h1 id="HiDPI-Retina"><a href="#HiDPI-Retina" class="headerlink" title="HiDPI - Retina"></a>HiDPI - Retina</h1><p>我们把具有物理像素高密度的屏幕，称为 HiDPI 屏幕，苹果把它叫做 Retina 屏幕，一样的。</p>
+<p>实际上，并不是说需要单独制作 HiDPI 屏幕，而是只要一个屏幕的像素密度达到了一个标准，那么它就是 HiDPI 屏幕了。HiDPI 并不是一个功能开关，而是对具有高像素密度的屏幕的总称。</p>
+<p>前面说到提高硬件制成并不能有效的带来视觉效果的提升，即 软件 需要参与进来。如果软件不主动的使用高密度，那就像前面（屏幕分辨率保持 500 * 500 不变）的例子中说明的，并不会带来显著的变化。</p>
+<h1 id="软件提升视觉质量"><a href="#软件提升视觉质量" class="headerlink" title="软件提升视觉质量"></a>软件提升视觉质量</h1><p>使用 HiDPI，即创建了一个 N 倍虚拟分辨率来更加高效的使用高密度的光源。<br>假设有原始 10 * 10 图像，需要在 50 * 50 分辨率的显示屏上显示，显示屏的物理光源也是 50 * 50。<br>在这种情况下不开启 HiDPI，前面已经介绍过。下面说下开启 2 倍 HiDPI 的流程:</p>
+<ol>
+<li>原始图像中的 10x10 像素区域首先被放大到 20x20 的渲染像素。软件层面会使用插值算法 (如双线性插值) 来创建新的像素，提供了更多的颜色过渡空间，使过渡更平滑。</li>
+<li>然后这个 20x20 的渲染区域被映射到 50x50 的物理像素区域。</li>
+</ol>
+<p>下面是对比效果：</p>
+<figure class="highlight jsx"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// raw px</span></span><br><span class="line">R G</span><br><span class="line">B W</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不使用 HiDPI 直接进行渲染</span></span><br><span class="line"><span class="variable constant_">RRRRRGGGGG</span></span><br><span class="line"><span class="variable constant_">RRRRRGGGGG</span></span><br><span class="line"><span class="variable constant_">RRRRRGGGGG</span></span><br><span class="line"><span class="variable constant_">RRRRRGGGGG</span></span><br><span class="line"><span class="variable constant_">RRRRRGGGGG</span></span><br><span class="line"><span class="variable constant_">BBBBBWWWWW</span></span><br><span class="line"><span class="variable constant_">BBBBBWWWWW</span></span><br><span class="line"><span class="variable constant_">BBBBBWWWWW</span></span><br><span class="line"><span class="variable constant_">BBBBBWWWWW</span></span><br><span class="line"><span class="variable constant_">BBBBBWWWWW</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 HiDPI 直接进行渲染</span></span><br><span class="line"><span class="comment">// &gt; 使用 2 倍 HiDPI 软件层面放大</span></span><br><span class="line">R  R<span class="string">'  G'</span>  G</span><br><span class="line">R<span class="string">' R'</span><span class="string">' G'</span><span class="string">' G'</span></span><br><span class="line">B<span class="string">' B'</span><span class="string">' W'</span><span class="string">' W'</span></span><br><span class="line">B  B<span class="string">'  W'</span>  W</span><br><span class="line"></span><br><span class="line"><span class="comment">// &gt; 将 2 倍虚拟分辨率通过光源进行渲染</span></span><br><span class="line"><span class="variable constant_">RRRRRGGGGG</span></span><br><span class="line"><span class="variable constant_">RRRRRGGGGG</span></span><br><span class="line"><span class="variable constant_">RR</span><span class="string">''</span><span class="variable constant_">GGGGGG</span></span><br><span class="line">R<span class="string">''</span><span class="variable constant_">GGGGGG</span><span class="string">'</span></span><br><span class="line"><span class="string">R'</span><span class="variable constant_">GGGGG</span><span class="string">''</span>W</span><br><span class="line"><span class="variable constant_">BBBBWWWWWW</span></span><br><span class="line"><span class="variable constant_">BBBBWWWWWW</span></span><br><span class="line"><span class="variable constant_">BB</span><span class="string">''</span><span class="variable constant_">WWWWWW</span></span><br><span class="line">B<span class="string">''</span><span class="variable constant_">WWWWWW</span><span class="string">'</span></span><br><span class="line"><span class="string">BBWWWWWW'</span>W</span><br></pre></td></tr></tbody></table></figure>
+
+<p>在这个例子中:</p>
+<ul>
+<li>原始的单一颜色区域 (如纯红色) 仍然保持清晰。</li>
+<li>颜色过渡区域 (如红色到绿色的边界) 有更多的中间色，使得过渡更加平滑。</li>
+<li>边缘和细节更加平滑，减少了锯齿感。</li>
+</ul>
+<p>这种渲染方法的优势:</p>
+<ol>
+<li>更多的渲染像素允许更精细的颜色渐变。</li>
+<li>插值算法可以创建原始图像中不存在的中间色，使边缘更平滑。</li>
+<li>当这些渲染像素映射到物理像素时，即使不是完全一一对应，也能保留更多细节。</li>
+</ol>
+<h1 id="High-Dynamic-Range-from-ai"><a href="#High-Dynamic-Range-from-ai" class="headerlink" title="High Dynamic Range - from ai"></a>High Dynamic Range - from ai</h1><p><strong>HDR</strong>（高动态范围）技术允许显示器在更宽的亮度范围内展示图像，能够同时提供更深的黑色和更亮的白色。这种技术增强了图像的总体对比度，使得色彩更加丰富和深邃。HDR 显示器可以更精确地展示从暗部到亮部的细节，这在标准动态范围（SDR）显示器中往往无法实现。</p>
+<h2 id="Extreme-Dynamic-Range-XDR"><a href="#Extreme-Dynamic-Range-XDR" class="headerlink" title="Extreme Dynamic Range (XDR)"></a>Extreme Dynamic Range (XDR)</h2><p><strong>XDR</strong>（极致动态范围）是 Apple 公司对 HDR 技术的一种营销称呼，用于其某些显示产品。XDR 旨在提供比传统 HDR 更高的亮度和对比度水平，以达到更加出色的视觉效果。这种技术特别适合专业视频编辑和高端图像处理，其中对色彩准确性和细节展示的需求极高。</p>
+<hr>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>Follow me by other channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/hai_lv_">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/hai_lv_tg">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="mailto:one.gongjiang@gmail.com">
+            <span class="icon">
+              <i class="fa fa-envelope"></i>
+            </span>
+
+            <span class="label">Email</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="tag"># 计算机基础</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/font/" rel="prev" title="Mac 字体">
+                  <i class="fa fa-angle-left"></i> Mac 字体
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">Light Mode (Better for light mode to discuss, base github, cannot commen can email me)</a></li>
+            <li class="tab"><a href="#comment-utterances">Dark Mode</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
+            </div>
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+        </div>
+      </div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2018 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">one.gongjiang艾特gmail.com 所有文章均为原创。我不介意任意形式的转载，但最好不要修改内容。因转载或者修改内容导致的任何问题，我均不负责。如果你真的担心版权，可邮联。评价需要外网，这是枷锁，也是照妖镜。</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.umd.js" integrity="sha256-+2+qOqR8CKoHh/AsVR9k2qaDBKWjYNC2nozhYmv5j9k=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2024/px/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"8a94383bc1cb5fa22dab3dbf7a12bba2"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

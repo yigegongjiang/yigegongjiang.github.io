@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="manifest" href="/images/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.2","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="嵌入式 特定功能：嵌入式是为了完成特定的物理功能，如温度捕捉、机器人。 特定组合：通过小巧的不可修改的硬件、软件，协同后直接发布。后期，不太好修改硬件或者软件（可以修改，但一般不会主动修改）。 一次成型：很难进行二次改造。因为组合比较特定，硬件和软件之间的 api 都是私有的，无法迁移。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ESP32">
+<meta property="og:url" content="https://www.yigegongjiang.com/2024/esp32/index.html">
+<meta property="og:site_name" content="一个工匠">
+<meta property="og:description" content="嵌入式 特定功能：嵌入式是为了完成特定的物理功能，如温度捕捉、机器人。 特定组合：通过小巧的不可修改的硬件、软件，协同后直接发布。后期，不太好修改硬件或者软件（可以修改，但一般不会主动修改）。 一次成型：很难进行二次改造。因为组合比较特定，硬件和软件之间的 api 都是私有的，无法迁移。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-10-22T02:48:01.000Z">
+<meta property="article:author" content="海驴">
+<meta property="article:tag" content="计算机基础">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.yigegongjiang.com/2024/esp32/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2024/esp32/","path":"2024/esp32/","title":"ESP32"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ESP32 | 一个工匠</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CTEWJ02QX"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-8CTEWJ02QX","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="一个工匠" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="一个工匠" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">一个工匠</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">92</span></a></li><li class="menu-item menu-item-日本指北"><a href="/japan/" rel="section">日本指北</a></li><li class="menu-item menu-item-时间舟"><a href="/categories/%E6%97%B6%E9%97%B4%E8%88%9F/" rel="section">时间舟</a></li><li class="menu-item menu-item-source"><a href="/openSource" rel="section">Source</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">嵌入式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ESP32"><span class="nav-number">2.</span> <span class="nav-text">ESP32</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B%EF%BC%9A"><span class="nav-number">2.0.1.</span> <span class="nav-text">开发流程：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%90%86%EF%BC%9A"><span class="nav-number">2.0.2.</span> <span class="nav-text">原理：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%A8%E8%BE%B9%EF%BC%9A"><span class="nav-number">2.0.3.</span> <span class="nav-text">周边：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%80%E9%99%90%E6%80%A7%EF%BC%9A"><span class="nav-number">2.0.4.</span> <span class="nav-text">局限性：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%91%E8%8E%93%E6%B4%BE"><span class="nav-number">3.</span> <span class="nav-text">树莓派</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="海驴"
+      src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
+  <p class="site-author-name" itemprop="name">海驴</p>
+  <div class="site-description" itemprop="description">时间，真的不多了。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">92</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          Links
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9oYWlfbHZf" title="https:&#x2F;&#x2F;twitter.com&#x2F;hai_lv_">X(Twitter)</span>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2024/esp32/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
+      <meta itemprop="name" content="海驴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个工匠">
+      <meta itemprop="description" content="时间，真的不多了。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ESP32 | 一个工匠">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ESP32
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-10-22 10:48:01" itemprop="dateCreated datePublished" datetime="2024-10-22T10:48:01+08:00">2024-10-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="嵌入式"><a href="#嵌入式" class="headerlink" title="嵌入式"></a>嵌入式</h1><ol>
+<li>特定功能：嵌入式是为了完成特定的物理功能，如温度捕捉、机器人。</li>
+<li>特定组合：通过小巧的不可修改的硬件、软件，协同后直接发布。后期，不太好修改硬件或者软件（可以修改，但一般不会主动修改）。</li>
+<li>一次成型：很难进行二次改造。因为组合比较特定，硬件和软件之间的 api 都是私有的，无法迁移。</li>
+</ol>
+<span id="more"></span>
+
+<h1 id="ESP32"><a href="#ESP32" class="headerlink" title="ESP32"></a>ESP32</h1><p>它本身是芯片，台积电加工，40 纳米制程 (中国应该也能造了)。</p>
+<p>官方提供了主板，即芯片 + 板 + 辅助硬件，产品名如 ESP32-devkit-6 等。</p>
+<p>开发人员可以在主板上进行开发工作。</p>
+<h3 id="开发流程："><a href="#开发流程：" class="headerlink" title="开发流程："></a>开发流程：</h3><ol>
+<li>部署环境。官方已经支持 mac、linux、window 下的 IDE 开发。</li>
+<li>SDK。官方提供完善的 SDK 和 Api。Api 可以控制 LED、摄像头等大量硬件。</li>
+<li>开发 &amp; 测试。通过 IDE 编写完代码，可将生成的 二进制 bin 文件上传到 ESP32 中，并完成运行。<ol>
+<li>硬件输出：如果有 LED 等，代码中可以控制针脚，完成高低电平的设定，可以看到效果。</li>
+<li>软件输出：可以在 IDE 中看到 ESP32 print 的 值。</li>
+</ol>
+</li>
+</ol>
+<h3 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h3><ol>
+<li>ESP32 是完全的芯片，无 OS，所以只能无脑的执行指令。因配置较弱，只能执行编译好的非常小巧的二进制 bin 文件。</li>
+<li>在启动后，主动执行 boot 引导的 bin 文件。</li>
+<li>没有很好的内存管理，必要的使用，需要自己进行内存控制。</li>
+</ol>
+<h3 id="周边："><a href="#周边：" class="headerlink" title="周边："></a>周边：</h3><ol>
+<li>通过 ESPHome，可以不用写代码，仅仅使用别人写好的软件，自己增加一些 yaml 配置，即可编译一个完善的 bin 出来。可以控制家里的 小米扫地机 等。</li>
+</ol>
+<h3 id="局限性："><a href="#局限性：" class="headerlink" title="局限性："></a>局限性：</h3><p>一个 ESP32 或者 主板，只能支持一个 bin 文件的执行。启动后，默认加载指定位置的 bin 文件，且只有 1 个。（相当于 pc，启动后 boot 引导操作系统。这里引导烧录的 bin 文件）</p>
+<h1 id="树莓派"><a href="#树莓派" class="headerlink" title="树莓派"></a>树莓派</h1><p>性能强劲的计算机，但尺寸小、耗电低，适用于复杂一些的嵌入式场景。</p>
+<hr>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>Follow me by other channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/hai_lv_">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/hai_lv_tg">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="mailto:one.gongjiang@gmail.com">
+            <span class="icon">
+              <i class="fa fa-envelope"></i>
+            </span>
+
+            <span class="label">Email</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="tag"># 计算机基础</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/trump/" rel="prev" title="trump - 川普">
+                  <i class="fa fa-angle-left"></i> trump - 川普
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/font/" rel="next" title="Mac 字体">
+                  Mac 字体 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">Light Mode (Better for light mode to discuss, base github, cannot commen can email me)</a></li>
+            <li class="tab"><a href="#comment-utterances">Dark Mode</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
+            </div>
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+        </div>
+      </div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2018 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">one.gongjiang艾特gmail.com 所有文章均为原创。我不介意任意形式的转载，但最好不要修改内容。因转载或者修改内容导致的任何问题，我均不负责。如果你真的担心版权，可邮联。评价需要外网，这是枷锁，也是照妖镜。</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.umd.js" integrity="sha256-+2+qOqR8CKoHh/AsVR9k2qaDBKWjYNC2nozhYmv5j9k=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2024/esp32/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"43c884afecbd7258c60c50c32baaaf0b"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
