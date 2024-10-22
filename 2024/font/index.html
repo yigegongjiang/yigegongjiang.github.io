@@ -20,12 +20,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.2","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="很久之前，写过一篇关于 【计算机字符编码与内存编码 - Unicode】 的快照，根据 码位、码表 对字符进行了介绍。这里特别说明一下 Mac 系统上的字体库。  系统自带软件：Font book字体文件夹： &#x2F;System&#x2F;Library&#x2F;Fonts 、&#x2F;Library&#x2F;Fonts、~&#x2F;Library&#x2F;Fonts苹果提供的字体：Applexxx 、Apple xxx 、SFxxx 、Pin">
+    <meta name="description" content="很久之前，写过一篇关于 【计算机字符编码与内存编码 - Unicode】 的快照，根据 码位、码表 对字符进行了介绍。这里特别说明一下 Mac 系统上的字体库。  系统自带软件：Font book字体文件夹： &#x2F;System&#x2F;Library&#x2F;Fonts 、&#x2F;Library&#x2F;Fonts、~&#x2F;Library&#x2F;Fonts苹果提供的字体：Applexxx 、Apple xxx 、SFxxx 、PingF">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mac 字体">
 <meta property="og:url" content="https://www.yigegongjiang.com/2024/font/index.html">
 <meta property="og:site_name" content="一个工匠">
-<meta property="og:description" content="很久之前，写过一篇关于 【计算机字符编码与内存编码 - Unicode】 的快照，根据 码位、码表 对字符进行了介绍。这里特别说明一下 Mac 系统上的字体库。  系统自带软件：Font book字体文件夹： &#x2F;System&#x2F;Library&#x2F;Fonts 、&#x2F;Library&#x2F;Fonts、~&#x2F;Library&#x2F;Fonts苹果提供的字体：Applexxx 、Apple xxx 、SFxxx 、Pin">
+<meta property="og:description" content="很久之前，写过一篇关于 【计算机字符编码与内存编码 - Unicode】 的快照，根据 码位、码表 对字符进行了介绍。这里特别说明一下 Mac 系统上的字体库。  系统自带软件：Font book字体文件夹： &#x2F;System&#x2F;Library&#x2F;Fonts 、&#x2F;Library&#x2F;Fonts、~&#x2F;Library&#x2F;Fonts苹果提供的字体：Applexxx 、Apple xxx 、SFxxx 、PingF">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-10-22T02:51:53.000Z">
 <meta property="article:author" content="海驴">
@@ -234,9 +234,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><span id="more"></span>
-
-<blockquote>
+    <div class="post-body" itemprop="articleBody"><blockquote>
 <p>很久之前，写过一篇关于 【<a href="https://www.yigegongjiang.com/2023/unicode/"><strong>计算机字符编码与内存编码 - Unicode</strong></a>】 的快照，根据 码位、码表 对字符进行了介绍。这里特别说明一下 Mac 系统上的字体库。</p>
 </blockquote>
 <p>系统自带软件：<code>Font book</code><br>字体文件夹： <code>/System/Library/Fonts</code> 、<code>/Library/Fonts</code>、<code>~/Library/Fonts</code><br>苹果提供的字体：<code>Applexxx</code> 、<code>Apple xxx</code> 、<code>SFxxx</code> 、<code>PingFangxxx</code> </p>
@@ -245,6 +243,8 @@
 <li>app、dmg 等软件，可以直接使用 <code>defaultfont:xxx</code> 的形式直接使用系统字体，或者使用 <code>fontname:xxx</code> 的形式自行选择字体。自行选择的时候，可以使用系统提供的字体，也可以将 xx 字体打入 app 中来使用。</li>
 <li>app 提供修改字体的功能，用户可以自行选择需要的字体。</li>
 </ol>
+<span id="more"></span>
+
 <h1 id="图标"><a href="#图标" class="headerlink" title="图标"></a>图标</h1><p>Apple 平台提供了两个图标字体，分别是：**<code>Apple Color Emoji</code> 和 <code>Apple Symbols</code> 。**</p>
 <p>字体库能够包含图标、颜色，在之前阐述 Unicode 的时候已经说明过，因为它们都依靠<code>码位</code> 进行检索。所以在不同的平台上，都会有自己的图标库的系统级别实现，显示效果会不一样。</p>
 <h1 id="Nerd-Font"><a href="#Nerd-Font" class="headerlink" title="Nerd Font"></a>Nerd Font</h1><p>nerd font 是一个项目集合，它将非常多的字体进行扩展，增加了许多 icon，从而让已经非常优秀的字体扩展了更多的功能。</p>
