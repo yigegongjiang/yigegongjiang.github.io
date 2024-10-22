@@ -23,7 +23,7 @@ tags:
 
 # 图标
 
-Apple 平台提供了两个图标字体，分别是：**`Apple Color Emoji` 和`Apple Symbols` 。**
+Apple 平台提供了两个图标字体，分别是：`Apple Color Emoji` 和`Apple Symbols` 。
 
 字体库能够包含图标、颜色，在之前阐述 Unicode 的时候已经说明过，因为它们都依靠`码位` 进行检索。所以在不同的平台上，都会有自己的图标库的系统级别实现，显示效果会不一样。
 
