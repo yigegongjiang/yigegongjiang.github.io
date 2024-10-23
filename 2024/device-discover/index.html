@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="manifest" href="/images/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.2","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Bonjourlocal net 服务发现。核心是两个 api：NSNetService &amp; NSNetServiceBrowser。 Bonjour 的目的，是希望发现局域网中的设备，包括这些设备的 ip、port 等信息，从而进行下一步业务操作。因为有了 ip、port，就可以精确定位一台设备了，就可以做很多事情了，比如打通 socket 等。 NSNetService 用来发布服务，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设备发现">
+<meta property="og:url" content="https://www.yigegongjiang.com/2024/device-discover/index.html">
+<meta property="og:site_name" content="一个工匠">
+<meta property="og:description" content="Bonjourlocal net 服务发现。核心是两个 api：NSNetService &amp; NSNetServiceBrowser。 Bonjour 的目的，是希望发现局域网中的设备，包括这些设备的 ip、port 等信息，从而进行下一步业务操作。因为有了 ip、port，就可以精确定位一台设备了，就可以做很多事情了，比如打通 socket 等。 NSNetService 用来发布服务，">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-10-23T06:08:35.000Z">
+<meta property="article:author" content="海驴">
+<meta property="article:tag" content="网络">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.yigegongjiang.com/2024/device-discover/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2024/device-discover/","path":"2024/device-discover/","title":"设备发现"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>设备发现 | 一个工匠</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CTEWJ02QX"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-8CTEWJ02QX","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="一个工匠" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="一个工匠" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">一个工匠</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">93</span></a></li><li class="menu-item menu-item-日本指北"><a href="/japan/" rel="section">日本指北</a></li><li class="menu-item menu-item-时间舟"><a href="/categories/%E6%97%B6%E9%97%B4%E8%88%9F/" rel="section">时间舟</a></li><li class="menu-item menu-item-source"><a href="/openSource" rel="section">Source</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Bonjour"><span class="nav-number">1.</span> <span class="nav-text">Bonjour</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E7%BA%A6%E5%AE%9A-from-ai"><span class="nav-number">1.0.1.</span> <span class="nav-text">参数约定 - from ai</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MultipeerConnectivity"><span class="nav-number">2.</span> <span class="nav-text">MultipeerConnectivity</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Network-framework"><span class="nav-number">3.</span> <span class="nav-text">Network.framework</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WI-FI-Direct"><span class="nav-number">4.</span> <span class="nav-text">WI-FI Direct</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Wi-Fi-Direct-%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86-from-ai"><span class="nav-number">4.1.</span> <span class="nav-text">Wi-Fi Direct 技术原理 - from ai</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AWDL"><span class="nav-number">5.</span> <span class="nav-text">AWDL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#apple-%E6%9C%8D%E5%8A%A1%E5%88%97%E8%A1%A8-from-ai"><span class="nav-number">5.1.</span> <span class="nav-text">apple 服务列表 - from ai</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Handoff"><span class="nav-number">5.2.</span> <span class="nav-text">Handoff</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Universal-Clipboard"><span class="nav-number">5.3.</span> <span class="nav-text">Universal Clipboard</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NFC"><span class="nav-number">6.</span> <span class="nav-text">NFC</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="海驴"
+      src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
+  <p class="site-author-name" itemprop="name">海驴</p>
+  <div class="site-description" itemprop="description">时间，真的不多了。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">93</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          Links
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9oYWlfbHZf" title="https:&#x2F;&#x2F;twitter.com&#x2F;hai_lv_">X(Twitter)</span>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2024/device-discover/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
+      <meta itemprop="name" content="海驴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个工匠">
+      <meta itemprop="description" content="时间，真的不多了。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="设备发现 | 一个工匠">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          设备发现
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-10-23 14:08:35" itemprop="dateCreated datePublished" datetime="2024-10-23T14:08:35+08:00">2024-10-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="Bonjour"><a href="#Bonjour" class="headerlink" title="Bonjour"></a>Bonjour</h1><p>local net 服务发现。核心是两个 api：NSNetService &amp; NSNetServiceBrowser。</p>
+<p>Bonjour 的目的，是希望发现局域网中的设备，包括这些设备的 ip、port 等信息，从而进行下一步业务操作。因为有了 ip、port，就可以精确定位一台设备了，就可以做很多事情了，比如打通 socket 等。</p>
+<p>NSNetService 用来发布服务，表明 m 提供了哪些能力，如打印机、http 服务等等。</p>
+<span id="more"></span>
+
+<figure class="highlight jsx"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通过指定服务名称、类型和端口号来创建 NSNetService 实例</span></span><br><span class="line">netService = <span class="title class_">NSNetService</span>(<span class="attr">domain</span>: <span class="string">"local."</span>, <span class="attr">type</span>: <span class="string">"_http._tcp."</span>, <span class="attr">name</span>: <span class="string">"MyService"</span>, <span class="attr">port</span>: <span class="number">8080</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>NSNetServiceBrowser 用来检索服务，查找当前 local net 中存在哪些与查询内容相匹配的服务，进而可以获取到 ip 和 port。</p>
+<figure class="highlight jsx"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">netServiceBrowser = <span class="title class_">NSNetServiceBrowser</span>()</span><br><span class="line"><span class="comment">// 查找局域网中所有 _http._tcp. 类型的服务</span></span><br><span class="line">netServiceBrowser?.<span class="title function_">searchForServices</span>(<span class="attr">ofType</span>: <span class="string">"_http._tcp."</span>, <span class="attr">inDomain</span>: <span class="string">"local."</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="参数约定-from-ai"><a href="#参数约定-from-ai" class="headerlink" title="参数约定 - from ai"></a>参数约定 - from ai</h3><figure class="highlight jsx"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`NSNetService`</span> 的参数 <span class="string">`domain`</span> 和 <span class="string">`type`</span> 并不是可以随意设置的，它们有明确的约定和用途，尤其是为了确保服务发现的兼容性和正确性。</span><br><span class="line"></span><br><span class="line">### <span class="number">1.</span> <span class="string">`domain`</span> 参数：</span><br><span class="line">- **约定**：</span><br><span class="line">  - 通常，局域网内使用的域名是 <span class="string">`"local."`</span>，这是 <span class="title class_">Bonjour</span> 标准中定义的默认域，表示当前局域网范围内的服务。</span><br><span class="line">  - <span class="title class_">Bonjour</span> 中一般使用的是 <span class="string">`"local."`</span>，它会自动将服务广播到本地网络。</span><br><span class="line">  - 如果你要在其他特定域中发布服务，也可以指定其他域名，但在局域网服务发现中几乎总是使用 <span class="string">`"local."`</span>。</span><br><span class="line"></span><br><span class="line">- **是否可以随意更改？**：</span><br><span class="line">  - 对于局域网内的服务发现，推荐使用 <span class="string">`"local."`</span>，它是 <span class="title class_">Bonjour</span> 默认的局域网广播域。</span><br><span class="line">  - 如果你有自己的 <span class="variable constant_">DNS</span> 域名或网络环境，你可以指定自定义域名，但这通常涉及更复杂的网络设置，且在局域网内使用可能不兼容。</span><br><span class="line"></span><br><span class="line">### <span class="number">2.</span> <span class="string">`type`</span> 参数：</span><br><span class="line">- **约定**：</span><br><span class="line">  - <span class="string">`type`</span> 定义了服务的协议和传输层信息。它遵循 <span class="variable constant_">IANA</span>（<span class="title class_">Internet</span> <span class="title class_">Assigned</span> <span class="title class_">Numbers</span> <span class="title class_">Authority</span>）发布的服务类型命名标准，并且通常采用如下格式：</span><br><span class="line">    - <span class="string">`_&lt;protocol&gt;._&lt;transport&gt;`</span></span><br><span class="line">    - 例如：</span><br><span class="line">      - <span class="string">`"_http._tcp."`</span>：表示 <span class="variable constant_">HTTP</span> 服务使用 <span class="variable constant_">TCP</span> 传输协议。</span><br><span class="line">      - <span class="string">`"_ftp._tcp."`</span>：表示 <span class="variable constant_">FTP</span> 服务使用 <span class="variable constant_">TCP</span> 传输协议。</span><br><span class="line">      - <span class="string">`"_ipp._tcp."`</span>：表示 <span class="title function_">IPP</span> (<span class="title class_">Internet</span> <span class="title class_">Printing</span> <span class="title class_">Protocol</span>) 使用 <span class="variable constant_">TCP</span> 传输协议。</span><br><span class="line"></span><br><span class="line">  - **标准服务类型**：有许多常见的服务类型，诸如：</span><br><span class="line">    - <span class="string">`"_http._tcp."`</span>：<span class="variable constant_">HTTP</span> 服务</span><br><span class="line">    - <span class="string">`"_ftp._tcp."`</span>：<span class="variable constant_">FTP</span> 服务</span><br><span class="line">    - <span class="string">`"_airplay._tcp."`</span>：<span class="title class_">AirPlay</span> 服务</span><br><span class="line">    - <span class="string">`"_ipp._tcp."`</span>：网络打印协议</span><br><span class="line">    - <span class="string">`"_ssh._tcp."`</span>：<span class="variable constant_">SSH</span> 服务</span><br><span class="line"></span><br><span class="line">- **是否可以随意更改？**：</span><br><span class="line">  - 如果你想发布一个标准协议的服务，必须遵循该协议的命名约定（例如，<span class="string">`"_http._tcp."`</span> 代表 <span class="variable constant_">HTTP</span> 服务）。</span><br><span class="line">  - 如果是自定义服务（非标准服务），你可以创建自定义的类型名称。例如，你可以创建 <span class="string">`"_mycustomservice._tcp."`</span> 这样自定义的服务类型。但是，自定义类型必须以下划线 <span class="string">`_`</span> 开头，以确保与标准服务类型区分。</span><br><span class="line"></span><br><span class="line">### 总结：</span><br><span class="line">- **<span class="string">`domain`</span>**：一般使用 <span class="string">`"local."`</span>，这是 <span class="title class_">Bonjour</span> 的局域网发现默认域。如果你在局域网中进行服务发现，最好不要随意修改这个参数。</span><br><span class="line">- **<span class="string">`type`</span>**：对于标准协议服务，如 <span class="variable constant_">HTTP</span>、<span class="variable constant_">FTP</span> 等，请使用标准的 <span class="variable constant_">IANA</span> 定义的服务类型。如果是自定义服务类型，可以按格式自定义命名，但仍需遵循命名规范（下划线开头）。</span><br><span class="line"></span><br><span class="line">确保遵循这些约定可以提高服务的兼容性，并确保局域网中的其他设备能够正确发现和解析服务。</span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="MultipeerConnectivity"><a href="#MultipeerConnectivity" class="headerlink" title="MultipeerConnectivity"></a>MultipeerConnectivity</h1><p>是 Apple 提供的近场通信，基于蓝牙和局域网实现。</p>
+<p>原理也是服务的发布和发现，和 Bonjour 的不同点是，除了局域网之外，还可以通过 蓝牙 来做服务发现。</p>
+<p>和 Bonjour 的差异：</p>
+<ol>
+<li>Bonjour 是为了发布、发现目标设备的 ip、port。</li>
+<li>MultipeerConnectivity 是为了发布、发现目标设备。注意，这是的设备是一个 peer、一个实体，通过这个 peer，可以直接进行 data 的发送等，即这是一个对等的实体对象，可以直接进行通信。发送图片、文字、视频等。</li>
+</ol>
+<h1 id="Network-framework"><a href="#Network-framework" class="headerlink" title="Network.framework"></a>Network.framework</h1><p>这是 Apple 推出的兼容高层级 API 和 低层级 API 的库，它有高级代码封装部分可供开发人员直接使用，也有底层代码部分可供开发人员拼装各种能力。</p>
+<p>在使用上，Network.framewok 完全可以代替 Bonjour 了，因为它集成了 Bonjour 的能力。</p>
+<p>但还不能代替 MultipeerConnectivity，因为 MultipeerConnectivity 的蓝牙通信能力，Network.framework 并没有。</p>
+<p>MultipeerConnectivity 对于 p2p 场景是高度封装的，使用方便、使用场景范围大，但不支持细粒度的调整优化。比如发送数据，就是调用 api 进行数据 send。具体如何 send 并不能控制。</p>
+<p>但是 Network.framework 提供了细粒度的 api 操作，可以选择 tcp、udp 等不同方案以及细节参数。</p>
+<p>Network.framework 更多用于具有网络能力的设备间通信。当然，如果只有蓝牙场景，那只能使用 MultipeerConnectivity 了。</p>
+<h1 id="WI-FI-Direct"><a href="#WI-FI-Direct" class="headerlink" title="WI-FI Direct"></a>WI-FI Direct</h1><p>上面三种局域网近景通信，都不具有普适性。蓝牙是很有普适性的产物，但是蓝牙发展这么多年，有很大的局限性，如速度、距离等。</p>
+<p>目前，WI-FI Direct 已经基本上进入了所有的电子设备中，通过 WI-FI direct，可以非常方便的在两台设备之间打通 p2p 通信通道，进而实现高速数据传输。</p>
+<p>对于苹果全家桶，基本上所有的跨设备互通能力，都是通过 Wi-Fi Direct 能力来实现的，比如 Handoff、通用剪贴板（Universal Clipboard）等。</p>
+<h2 id="Wi-Fi-Direct-技术原理-from-ai"><a href="#Wi-Fi-Direct-技术原理-from-ai" class="headerlink" title="Wi-Fi Direct 技术原理 - from ai"></a>Wi-Fi Direct 技术原理 - from ai</h2><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">1. **基本概念**</span><br><span class="line">- Wi-Fi Direct(也称 Wi-Fi P2P)是一种无线通信标准</span><br><span class="line">- 允许设备间直接通信，无需传统的无线接入点(如路由器)</span><br><span class="line">- 工作在与普通 Wi-Fi 相同的 2.4GHz 或 5GHz 频段</span><br><span class="line">1. **网络架构**</span><br><span class="line">- **组网模式**: 采用对等(P2P)网络架构</span><br><span class="line">- **角色分配**:</span><br><span class="line">    - 组主(Group Owner, GO): 类似微型接入点，负责管理网络</span><br><span class="line">    - 客户端: 连接到组主形成网络</span><br><span class="line">- **组主职责**:</span><br><span class="line">    - 信道选择与管理</span><br><span class="line">    - 网络参数配置(SSID、安全设置等)</span><br><span class="line">    - 资源分配与网络维护</span><br><span class="line">1. **连接建立流程**</span><br><span class="line">- 设备发现阶段:</span><br><span class="line">    1. 设备相互扫描并发现对方</span><br><span class="line">    2. 通过设备发现协议交换基本信息</span><br><span class="line">- 组建立阶段:</span><br><span class="line">    1. 协商确定组主身份</span><br><span class="line">    2. 组主配置并广播网络</span><br><span class="line">- 连接认证阶段:</span><br><span class="line">    1. 客户端扫描并识别组主网络</span><br><span class="line">    2. 通过 WPS 进行安全认证</span><br><span class="line">    3. 建立加密连接</span><br><span class="line">1. **安全机制**</span><br><span class="line">- 采用 Wi-Fi Protected Setup(WPS)快速配置</span><br><span class="line">- 支持多种连接方式:</span><br><span class="line">    - 按钮配对</span><br><span class="line">    - PIN 码认证</span><br><span class="line">    - NFC 近场通信(如支持)</span><br><span class="line">- 使用 WPA2 等标准 Wi-Fi 安全协议加密通信</span><br><span class="line">1. **服务层功能**</span><br><span class="line">- 服务发现协议:</span><br><span class="line">    - 设备可广播自身提供的服务</span><br><span class="line">    - 其他设备可在连接前发现可用服务</span><br><span class="line">- 支持的服务类型:</span><br><span class="line">    - 文件传输</span><br><span class="line">    - 打印服务</span><br><span class="line">    - 多媒体流传输</span><br><span class="line">    - 屏幕镜像等</span><br><span class="line">1. **数据传输特点**</span><br><span class="line">- 直接设备间传输，无需经过中间节点</span><br><span class="line">- 支持高速数据传输</span><br><span class="line">- 较低的通信延迟</span><br><span class="line">- 不依赖互联网连接</span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="AWDL"><a href="#AWDL" class="headerlink" title="AWDL"></a>AWDL</h1><p>AWDL（Apple Wireless Direct Link）与 Wi-Fi Direct 和蓝牙都是无线通信技术，用于设备之间的直接连接。主要用于 Apple 设备间的通信，支持如 AirDrop、AirPlay 等服务。AWDL 能在 Wi-Fi 频带上动态频道跳跃，优化连接质量和减少干扰，主要优化了点对点的数据传输速度和效率。</p>
+<p>Apple 的跨设备数据同步功能，基本上都是使用的 AWDL。</p>
+<p>相比蓝牙来说，Wifi-Direct 和 AWDL 的缺点就是建立连接慢（服务发现慢）。所以蓝牙更多的时候用来当作 AWDL 的前置条件，即通过 蓝牙 来发现设备建立连接，然后通过 AWDL 的进行数据传输。</p>
+<p>Apple 提供了非常多的跨端通信功能如 Handoff、AirDrop、Universal Clipboard、Continuity Camera 等。苹果建议打开蓝牙，是为了更快的做服务发现和建立通道。但是蓝牙不打开，很多功能也都是可以正常使用的。因为还有很多备选的发现方案，如上面的 Bonjour  可以在局域网 wifi 下工作。甚至没有 wifi 的时候，也能使用 AWDL 自己的服务发现（速度慢）。</p>
+<p>但是蓝牙，依旧是服务发现的第一优先级。</p>
+<h2 id="apple-服务列表-from-ai"><a href="#apple-服务列表-from-ai" class="headerlink" title="apple 服务列表 - from ai"></a>apple 服务列表 - from ai</h2><figure class="highlight jsx"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">### <span class="number">1.</span> 基于<span class="title class_">Wi</span>-<span class="title class_">Fi</span>的直接通信技术：</span><br><span class="line"></span><br><span class="line">- **<span class="title class_">AirDrop</span>**：</span><br><span class="line">  - 使用<span class="title class_">Wi</span>-<span class="title class_">Fi</span>和蓝牙结合的方式，进行设备发现和建立安全的点对点<span class="title class_">Wi</span>-<span class="title class_">Fi</span>网络以传输文件。</span><br><span class="line">  </span><br><span class="line">- **<span class="title class_">AirPlay</span>**：</span><br><span class="line">  - 通过<span class="title class_">Wi</span>-<span class="title class_">Fi</span>网络将音频、视频和图片流式传输到支持<span class="title class_">AirPlay</span>的接收设备上。</span><br><span class="line"></span><br><span class="line">### <span class="number">2.</span> 基于云服务的同步技术：</span><br><span class="line"></span><br><span class="line">- **iCloud <span class="title class_">Drive</span>**：</span><br><span class="line">  - 利用云存储来同步和共享文件和文档。</span><br><span class="line">  </span><br><span class="line">- **<span class="title class_">Messages</span> <span class="keyword">in</span> iCloud**：</span><br><span class="line">  - 通过iCloud同步所有设备上的iMessage，保证消息的一致性。</span><br><span class="line">  </span><br><span class="line">- **iCloud <span class="title class_">Photos</span>**：</span><br><span class="line">  - 照片和视频通过iCloud自动同步到所有设备。</span><br><span class="line"></span><br><span class="line">### <span class="number">3.</span> 基于<span class="title class_">Continuity</span>的互操作功能：</span><br><span class="line"></span><br><span class="line">- **<span class="title class_">Handoff</span>**：</span><br><span class="line">  - 利用蓝牙和<span class="title class_">Wi</span>-<span class="title class_">Fi</span>来实现在设备之间无缝切换正在进行的活动（如邮件撰写、网页浏览）。</span><br><span class="line"></span><br><span class="line">- **<span class="title class_">Universal</span> <span class="title class_">Clipboard</span>**：</span><br><span class="line">  - 使用蓝牙和<span class="title class_">Wi</span>-<span class="title class_">Fi</span>通过<span class="title class_">Continuity</span>功能实现剪贴板内容在设备间的共享。</span><br><span class="line"></span><br><span class="line">- **<span class="title class_">Continuity</span> <span class="title class_">Camera</span>**、**<span class="title class_">Continuity</span> <span class="title class_">Markup</span>** 和 **<span class="title class_">Continuity</span> <span class="title class_">Sketch</span>**：</span><br><span class="line">  - 这些服务通过<span class="title class_">Wi</span>-<span class="title class_">Fi</span>和蓝牙连接，允许用户使用一个设备上的功能来直接影响另一个设备上的内容。</span><br><span class="line"></span><br><span class="line">### <span class="number">4.</span> 扩展显示和图形共享技术：</span><br><span class="line"></span><br><span class="line">- **<span class="title class_">Sidecar</span>**：</span><br><span class="line">  - 将iPad作为外部显示器使用，通过<span class="title class_">Wi</span>-<span class="title class_">Fi</span>或有线连接实现与<span class="title class_">Mac</span>的连接。</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="Handoff"><a href="#Handoff" class="headerlink" title="Handoff"></a>Handoff</h2><p>Apple 全家桶之间，可以通过 Handoff 进行操作转移。</p>
+<ol>
+<li>通过蓝牙做设备发现，蓝牙不可用的时候切换到其他设备发现渠道</li>
+<li>通过 AWDL 做数据传输</li>
+<li> app 通过 Activity api 实现 handoff 功能</li>
+</ol>
+<h2 id="Universal-Clipboard"><a href="#Universal-Clipboard" class="headerlink" title="Universal Clipboard"></a>Universal Clipboard</h2><p>和 Handoff 基本一致，通过  <strong>UIPasteboard</strong> api 实现跨设备 copy-paste 功能</p>
+<h1 id="NFC"><a href="#NFC" class="headerlink" title="NFC"></a>NFC</h1><p>NFC（近场通信），和 以上 通信方式都不同。</p>
+<p>NFC 的技术原理基于无线电频率识别（RFID）技术，使用磁场感应来实现在设备间的通信。NFC 设备在 13.56 MHz 频率上操作，通常用于非接触式数据传输，距离范围非常短，通常在几厘米内，传输速率慢，在 400kbps (50kb/s) 左右。</p>
+<p>NFC 可以在主动模式和被动模式下工作，其中一个设备提供射频场，另一个设备利用这个射频场进行通信。</p>
+<p>使用 NFC，需要两个终端，一个做控制器，用于发射磁场来识别信息。一个做无电源的数据芯片，通过接收到的磁场来感应并传输信息。</p>
+<p>其中，对于 Android 和 iPhone 这些设备，可以同时充当 NFC 的控制器和数据芯片。</p>
+<p>当作为 NFC 控制器的时候，手机可以主动的读取外部 NFC 芯片中的信息，也可以将必要的信息写入到外部 NFC 芯片。</p>
+<p>当作为 NFC 芯片的时候，手机可以模拟一个 NFC 芯片，通过软件将信息提前写入手机中。</p>
+<p>Android 对 NFC 的 API 开放较多，app 可通过 api 来控制 NFC 进行 读取、写入、模拟 的操作，来实现快捷的智能家居、门禁卡等场景。</p>
+<p>iPhone 则比较保守，但是在 iOS 18.1 开放了【开模拟】的能力，已经趋向于和 Android 靠齐。</p>
+<blockquote>
+<p>理想化来说，通过 NFC 方案，app 调用系统 api 可以完成外部 NFC 芯片的读取和自身 NFC 芯片的模拟，可以完成很多有效的快捷链路，如 门禁卡、支付交易等。</p>
+</blockquote>
+<hr>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>Follow me by other channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/hai_lv_">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/hai_lv_tg">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="mailto:one.gongjiang@gmail.com">
+            <span class="icon">
+              <i class="fa fa-envelope"></i>
+            </span>
+
+            <span class="label">Email</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag"># 网络</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/px/" rel="prev" title="px">
+                  <i class="fa fa-angle-left"></i> px
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">Light Mode (Better for light mode to discuss, base github, cannot commen can email me)</a></li>
+            <li class="tab"><a href="#comment-utterances">Dark Mode</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
+            </div>
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+        </div>
+      </div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2018 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">one.gongjiang艾特gmail.com 所有文章均为原创。我不介意任意形式的转载，但最好不要修改内容。因转载或者修改内容导致的任何问题，我均不负责。如果你真的担心版权，可邮联。评价需要外网，这是枷锁，也是照妖镜。</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.umd.js" integrity="sha256-+2+qOqR8CKoHh/AsVR9k2qaDBKWjYNC2nozhYmv5j9k=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2024/device-discover/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"cacb07a9770cd248c014ffc71d3f1e2b"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
