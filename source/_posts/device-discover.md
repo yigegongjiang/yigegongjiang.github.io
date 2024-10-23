@@ -1,0 +1,246 @@
+---
+title: 设备发现
+date: 2024-10-23 14:08:35
+categories:
+- 技术
+tags:
+- 网络
+---
+
+# Bonjour
+
+local net 服务发现。核心是两个 api：NSNetService & NSNetServiceBrowser。
+
+Bonjour 的目的，是希望发现局域网中的设备，包括这些设备的 ip、port 等信息，从而进行下一步业务操作。因为有了 ip、port，就可以精确定位一台设备了，就可以做很多事情了，比如打通 socket 等。
+
+NSNetService 用来发布服务，表明 m 提供了哪些能力，如打印机、http 服务等等。
+
+<!-- more -->
+
+```jsx
+// 通过指定服务名称、类型和端口号来创建 NSNetService 实例
+netService = NSNetService(domain: "local.", type: "_http._tcp.", name: "MyService", port: 8080)
+```
+
+NSNetServiceBrowser 用来检索服务，查找当前 local net 中存在哪些与查询内容相匹配的服务，进而可以获取到 ip 和 port。
+
+```jsx
+netServiceBrowser = NSNetServiceBrowser()
+// 查找局域网中所有 _http._tcp. 类型的服务
+netServiceBrowser?.searchForServices(ofType: "_http._tcp.", inDomain: "local.")
+```
+
+### 参数约定 - from ai
+
+```jsx
+`NSNetService` 的参数 `domain` 和 `type` 并不是可以随意设置的，它们有明确的约定和用途，尤其是为了确保服务发现的兼容性和正确性。
+
+### 1. `domain` 参数：
+- **约定**：
+  - 通常，局域网内使用的域名是 `"local."`，这是 Bonjour 标准中定义的默认域，表示当前局域网范围内的服务。
+  - Bonjour 中一般使用的是 `"local."`，它会自动将服务广播到本地网络。
+  - 如果你要在其他特定域中发布服务，也可以指定其他域名，但在局域网服务发现中几乎总是使用 `"local."`。
+
+- **是否可以随意更改？**：
+  - 对于局域网内的服务发现，推荐使用 `"local."`，它是 Bonjour 默认的局域网广播域。
+  - 如果你有自己的 DNS 域名或网络环境，你可以指定自定义域名，但这通常涉及更复杂的网络设置，且在局域网内使用可能不兼容。
+
+### 2. `type` 参数：
+- **约定**：
+  - `type` 定义了服务的协议和传输层信息。它遵循 IANA（Internet Assigned Numbers Authority）发布的服务类型命名标准，并且通常采用如下格式：
+    - `_<protocol>._<transport>`
+    - 例如：
+      - `"_http._tcp."`：表示 HTTP 服务使用 TCP 传输协议。
+      - `"_ftp._tcp."`：表示 FTP 服务使用 TCP 传输协议。
+      - `"_ipp._tcp."`：表示 IPP (Internet Printing Protocol) 使用 TCP 传输协议。
+
+  - **标准服务类型**：有许多常见的服务类型，诸如：
+    - `"_http._tcp."`：HTTP 服务
+    - `"_ftp._tcp."`：FTP 服务
+    - `"_airplay._tcp."`：AirPlay 服务
+    - `"_ipp._tcp."`：网络打印协议
+    - `"_ssh._tcp."`：SSH 服务
+
+- **是否可以随意更改？**：
+  - 如果你想发布一个标准协议的服务，必须遵循该协议的命名约定（例如，`"_http._tcp."` 代表 HTTP 服务）。
+  - 如果是自定义服务（非标准服务），你可以创建自定义的类型名称。例如，你可以创建 `"_mycustomservice._tcp."` 这样自定义的服务类型。但是，自定义类型必须以下划线 `_` 开头，以确保与标准服务类型区分。
+
+### 总结：
+- **`domain`**：一般使用 `"local."`，这是 Bonjour 的局域网发现默认域。如果你在局域网中进行服务发现，最好不要随意修改这个参数。
+- **`type`**：对于标准协议服务，如 HTTP、FTP 等，请使用标准的 IANA 定义的服务类型。如果是自定义服务类型，可以按格式自定义命名，但仍需遵循命名规范（下划线开头）。
+
+确保遵循这些约定可以提高服务的兼容性，并确保局域网中的其他设备能够正确发现和解析服务。
+```
+
+# MultipeerConnectivity
+
+是 Apple 提供的近场通信，基于蓝牙和局域网实现。
+
+原理也是服务的发布和发现，和 Bonjour 的不同点是，除了局域网之外，还可以通过 蓝牙 来做服务发现。
+
+和 Bonjour 的差异：
+
+1. Bonjour 是为了发布、发现目标设备的 ip、port。
+2. MultipeerConnectivity 是为了发布、发现目标设备。注意，这是的设备是一个 peer、一个实体，通过这个 peer，可以直接进行 data 的发送等，即这是一个对等的实体对象，可以直接进行通信。发送图片、文字、视频等。
+
+# Network.framework
+
+这是 Apple 推出的兼容高层级 API 和 低层级 API 的库，它有高级代码封装部分可供开发人员直接使用，也有底层代码部分可供开发人员拼装各种能力。
+
+在使用上，Network.framewok 完全可以代替 Bonjour 了，因为它集成了 Bonjour 的能力。
+
+但还不能代替 MultipeerConnectivity，因为 MultipeerConnectivity 的蓝牙通信能力，Network.framework 并没有。
+
+MultipeerConnectivity 对于 p2p 场景是高度封装的，使用方便、使用场景范围大，但不支持细粒度的调整优化。比如发送数据，就是调用 api 进行数据 send。具体如何 send 并不能控制。
+
+但是 Network.framework 提供了细粒度的 api 操作，可以选择 tcp、udp 等不同方案以及细节参数。
+
+Network.framework 更多用于具有网络能力的设备间通信。当然，如果只有蓝牙场景，那只能使用 MultipeerConnectivity 了。
+
+# WI-FI Direct
+
+上面三种局域网近景通信，都不具有普适性。蓝牙是很有普适性的产物，但是蓝牙发展这么多年，有很大的局限性，如速度、距离等。
+
+目前，WI-FI Direct 已经基本上进入了所有的电子设备中，通过 WI-FI direct，可以非常方便的在两台设备之间打通 p2p 通信通道，进而实现高速数据传输。
+
+对于苹果全家桶，基本上所有的跨设备互通能力，都是通过 Wi-Fi Direct 能力来实现的，比如 Handoff、通用剪贴板（Universal Clipboard）等。
+
+## Wi-Fi Direct 技术原理 - from ai
+
+```
+1. **基本概念**
+- Wi-Fi Direct(也称 Wi-Fi P2P)是一种无线通信标准
+- 允许设备间直接通信，无需传统的无线接入点(如路由器)
+- 工作在与普通 Wi-Fi 相同的 2.4GHz 或 5GHz 频段
+1. **网络架构**
+- **组网模式**: 采用对等(P2P)网络架构
+- **角色分配**:
+    - 组主(Group Owner, GO): 类似微型接入点，负责管理网络
+    - 客户端: 连接到组主形成网络
+- **组主职责**:
+    - 信道选择与管理
+    - 网络参数配置(SSID、安全设置等)
+    - 资源分配与网络维护
+1. **连接建立流程**
+- 设备发现阶段:
+    1. 设备相互扫描并发现对方
+    2. 通过设备发现协议交换基本信息
+- 组建立阶段:
+    1. 协商确定组主身份
+    2. 组主配置并广播网络
+- 连接认证阶段:
+    1. 客户端扫描并识别组主网络
+    2. 通过 WPS 进行安全认证
+    3. 建立加密连接
+1. **安全机制**
+- 采用 Wi-Fi Protected Setup(WPS)快速配置
+- 支持多种连接方式:
+    - 按钮配对
+    - PIN 码认证
+    - NFC 近场通信(如支持)
+- 使用 WPA2 等标准 Wi-Fi 安全协议加密通信
+1. **服务层功能**
+- 服务发现协议:
+    - 设备可广播自身提供的服务
+    - 其他设备可在连接前发现可用服务
+- 支持的服务类型:
+    - 文件传输
+    - 打印服务
+    - 多媒体流传输
+    - 屏幕镜像等
+1. **数据传输特点**
+- 直接设备间传输，无需经过中间节点
+- 支持高速数据传输
+- 较低的通信延迟
+- 不依赖互联网连接
+```
+
+# AWDL
+
+AWDL（Apple Wireless Direct Link）与Wi-Fi Direct和蓝牙都是无线通信技术，用于设备之间的直接连接。主要用于Apple设备间的通信，支持如AirDrop、AirPlay等服务。AWDL能在Wi-Fi频带上动态频道跳跃，优化连接质量和减少干扰，主要优化了点对点的数据传输速度和效率。
+
+Apple 的跨设备数据同步功能，基本上都是使用的 AWDL。
+
+相比蓝牙来说，Wifi-Direct 和 AWDL 的缺点就是建立连接慢（服务发现慢）。所以蓝牙更多的时候用来当作 AWDL 的前置条件，即通过 蓝牙 来发现设备建立连接，然后通过 AWDL 的进行数据传输。
+
+Apple 提供了非常多的跨端通信功能如 Handoff、AirDrop、Universal Clipboard、Continuity Camera 等。苹果建议打开蓝牙，是为了更快的做服务发现和建立通道。但是蓝牙不打开，很多功能也都是可以正常使用的。因为还有很多备选的发现方案，如上面的 Bonjour  可以在局域网 wifi 下工作。甚至没有 wifi 的时候，也能使用 AWDL 自己的服务发现（速度慢）。
+
+但是蓝牙，依旧是服务发现的第一优先级。
+
+## apple 服务列表 - from ai
+
+```jsx
+### 1. 基于Wi-Fi的直接通信技术：
+
+- **AirDrop**：
+  - 使用Wi-Fi和蓝牙结合的方式，进行设备发现和建立安全的点对点Wi-Fi网络以传输文件。
+  
+- **AirPlay**：
+  - 通过Wi-Fi网络将音频、视频和图片流式传输到支持AirPlay的接收设备上。
+
+### 2. 基于云服务的同步技术：
+
+- **iCloud Drive**：
+  - 利用云存储来同步和共享文件和文档。
+  
+- **Messages in iCloud**：
+  - 通过iCloud同步所有设备上的iMessage，保证消息的一致性。
+  
+- **iCloud Photos**：
+  - 照片和视频通过iCloud自动同步到所有设备。
+
+### 3. 基于Continuity的互操作功能：
+
+- **Handoff**：
+  - 利用蓝牙和Wi-Fi来实现在设备之间无缝切换正在进行的活动（如邮件撰写、网页浏览）。
+
+- **Universal Clipboard**：
+  - 使用蓝牙和Wi-Fi通过Continuity功能实现剪贴板内容在设备间的共享。
+
+- **Continuity Camera**、**Continuity Markup** 和 **Continuity Sketch**：
+  - 这些服务通过Wi-Fi和蓝牙连接，允许用户使用一个设备上的功能来直接影响另一个设备上的内容。
+
+### 4. 扩展显示和图形共享技术：
+
+- **Sidecar**：
+  - 将iPad作为外部显示器使用，通过Wi-Fi或有线连接实现与Mac的连接。
+```
+
+## Handoff
+
+Apple 全家桶之间，可以通过 Handoff 进行操作转移。
+
+1. 通过蓝牙做设备发现，蓝牙不可用的时候切换到其他设备发现渠道
+2. 通过 AWDL 做数据传输
+3. app 通过 Activity api 实现 handoff 功能
+
+## Universal Clipboard
+
+和 Handoff 基本一致，通过  **UIPasteboard** api 实现跨设备 copy-paste 功能
+
+# NFC
+
+NFC（近场通信），和 以上 通信方式都不同。
+
+NFC 的技术原理基于无线电频率识别（RFID）技术，使用磁场感应来实现在设备间的通信。NFC 设备在13.56 MHz频率上操作，通常用于非接触式数据传输，距离范围非常短，通常在几厘米内，传输速率慢，在 400kbps (50kb/s)左右。
+
+NFC 可以在主动模式和被动模式下工作，其中一个设备提供射频场，另一个设备利用这个射频场进行通信。
+
+使用 NFC，需要两个终端，一个做控制器，用于发射磁场来识别信息。一个做无电源的数据芯片，通过接收到的磁场来感应并传输信息。
+
+其中，对于 Android 和 iPhone 这些设备，可以同时充当 NFC 的控制器和数据芯片。
+
+当作为 NFC 控制器的时候，手机可以主动的读取外部 NFC 芯片中的信息，也可以将必要的信息写入到外部 NFC 芯片。
+
+当作为 NFC 芯片的时候，手机可以模拟一个 NFC 芯片，通过软件将信息提前写入手机中。
+
+Android 对 NFC 的 API 开放较多，app 可通过 api 来控制 NFC 进行 读取、写入、模拟 的操作，来实现快捷的智能家居、门禁卡等场景。
+
+iPhone 则比较保守，但是在 iOS 18.1 开放了【开模拟】的能力，已经趋向于和 Android 靠齐。
+
+> 理想化来说，通过 NFC 方案，app 调用系统 api 可以完成外部 NFC 芯片的读取和自身 NFC 芯片的模拟，可以完成很多有效的快捷链路，如 门禁卡、支付交易等。
+
+
+___
+
+
