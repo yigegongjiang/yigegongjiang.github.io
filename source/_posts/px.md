@@ -1,5 +1,5 @@
 ---
-title: px
+title: 分辨率-像素密度-HiDPI
 date: 2024-10-22 10:54:37
 categories:
 - 技术
