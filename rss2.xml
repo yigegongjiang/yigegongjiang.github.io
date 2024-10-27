@@ -15,8 +15,41 @@
     <atom:link href="https://www.yigegongjiang.com/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>时间，真的不多了。</description>
-    <pubDate>Sun, 27 Oct 2024 07:38:17 GMT</pubDate>
+    <pubDate>Sun, 27 Oct 2024 08:29:36 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>1.1.1.1、WARP 和 MASQUE</title>
+      <link>https://www.yigegongjiang.com/2024/warp/</link>
+      <guid>https://www.yigegongjiang.com/2024/warp/</guid>
+      <pubDate>Sun, 27 Oct 2024 08:29:36 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;p&gt;实际测试结果，虽然 Cloudflare 号称服务部署非常多，但使用 Warp 的 【VPN / 代理】功能，会明显增加网络延迟。（location &amp;amp; ip： Japan）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Cloudflare 提供了 1.1.1.1 DNS 服务，以及 WARP VPN + 代理。&lt;/p&gt;
+&lt;h1 id=&quot;公共-DNS&quot;&gt;&lt;a href=&quot;#公共-DNS&quot; class=&quot;headerlink&quot; title=&quot;公共 DNS&quot;&gt;&lt;/a&gt;公共 DNS&lt;/h1&gt;&lt;h2 id=&quot;运营商-DNS-有什么问题？&quot;&gt;&lt;a href=&quot;#运营商-DNS-有什么问题？&quot; class=&quot;headerlink&quot; title=&quot;运营商 DNS 有什么问题？&quot;&gt;&lt;/a&gt;运营商 DNS 有什么问题？&lt;/h2&gt;&lt;p&gt;直接使用运营商的 DNS 服务，有下面两个重要的问题：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;ISP 会通过 DNS 查询的域名，分析用户访问的网站。（DNS 查询是明文的 UDP）&lt;/li&gt;
+&lt;li&gt;ISP DNS 会有劫持、污染、缓存等&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;那么公共 DNS 可以解决上面的问题吗？&lt;strong&gt;不行&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;对于普通用户来说，使用运营商 DNS 没有任何问题，也会加快域名解析的速度。&lt;br&gt;如果想要安全，避免被运营商做【DNS 查询】分析，公共 DNS 无能为力。不管使用的公共 DNS 是 ipv4、ipv6、DoH，都无法解决。&lt;br&gt;DoH 是能用到最安全的级别了，但还是有 SNI 泄漏。&lt;/p&gt;</description>
+      
+      
+      
+      <content:encoded><![CDATA[<blockquote><p>实际测试结果，虽然 Cloudflare 号称服务部署非常多，但使用 Warp 的 【VPN / 代理】功能，会明显增加网络延迟。（location &amp; ip： Japan）</p></blockquote><p>Cloudflare 提供了 1.1.1.1 DNS 服务，以及 WARP VPN + 代理。</p><h1 id="公共-DNS"><a href="#公共-DNS" class="headerlink" title="公共 DNS"></a>公共 DNS</h1><h2 id="运营商-DNS-有什么问题？"><a href="#运营商-DNS-有什么问题？" class="headerlink" title="运营商 DNS 有什么问题？"></a>运营商 DNS 有什么问题？</h2><p>直接使用运营商的 DNS 服务，有下面两个重要的问题：</p><ol><li>ISP 会通过 DNS 查询的域名，分析用户访问的网站。（DNS 查询是明文的 UDP）</li><li>ISP DNS 会有劫持、污染、缓存等</li></ol><p>那么公共 DNS 可以解决上面的问题吗？<strong>不行</strong>。</p><p>对于普通用户来说，使用运营商 DNS 没有任何问题，也会加快域名解析的速度。<br>如果想要安全，避免被运营商做【DNS 查询】分析，公共 DNS 无能为力。不管使用的公共 DNS 是 ipv4、ipv6、DoH，都无法解决。<br>DoH 是能用到最安全的级别了，但还是有 SNI 泄漏。</p><span id="more"></span><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- IPv4 和 IPv6：</span><br><span class="line">  - 1.1.1.1 和 2606:4700:4700::1111</span><br><span class="line">  - 1.0.0.1 和 2606:4700:4700::1001</span><br><span class="line">- DoH：</span><br><span class="line">  - https://cloudflare-dns.com/dns-query</span><br></pre></td></tr></tbody></table></figure><h2 id="公共-DNS-如何实现负载均衡"><a href="#公共-DNS-如何实现负载均衡" class="headerlink" title="公共 DNS 如何实现负载均衡"></a>公共 DNS 如何实现负载均衡</h2><p>通过域名，可以在 DNS 权威服务器上做 IP 的负载均衡。<br>那么，对于只有 IP 地址而没有域名的 DNS 服务，如何实现负载均衡呢？</p><p>每个 IP 能被发现，是通过网络节点之间的 BGP（边界网关协议）进行广播。<br>通过 <strong>Anycast</strong> 技术，可以在不同地理位置的多台主机上部署相同的 IP，从而让客户端就近连接到 IP 服务器。</p><h1 id="WARP"><a href="#WARP" class="headerlink" title="WARP"></a>WARP</h1><p>WARP 是 Cloudflare 提供的一种 VPN 服务，使用了 WireGuard 协议。<br>不同的 VPN 协议分别工作在网络模型的不同层次，其中 WireGuard 工作在第三层（网络层）。<br>因为 iOS 等系统，同一时间只能开启一个 VPN 服务，所以使用 WARP 的时候，数据包流向为：</p><ol><li>WARP app 拦截所有三层数据包并转发到 WARP 的 WireGuard 服务器，服务器向具体的 domain 发起请求。</li></ol><p>在 Mac 系统上，除了 WARP 还可以手动设置网络代理（Thrid Proxys），这些网络代理一般工作在应用层。这个时候数据包流向为：</p><ol><li>数据包转到 Third Proxys 进行封装，目标 domain 变成【代理 服务器】</li><li>WARP app 拦截所有三层数据包转发到【WARP 服务器】</li><li>【WARP 服务器】向【代理 服务器】发起请求</li><li>【代理 服务器】向具体的 domain 发起请求</li></ol><h1 id="MASQUE"><a href="#MASQUE" class="headerlink" title="MASQUE"></a>MASQUE</h1><blockquote><p>通常使用的翻墙工具并不是 VPN，而是网络代理（更准确地说，称为 “正向代理”）。<br>之所以经常将它们称为 VPN，是因为在 iOS 等设备上，需要开启 VPN 服务，这些软件才能拦截数据流量，实现代理转发。<br>但它们与通常所指的 WireGuard、OpenVPN 等 VPN 协议并不一致。</p></blockquote><p>WARP 推出了基于 MASQUE 协议的版本，用于替代 WireGuard。MASQUE 使用了 QUIC 协议，属于应用层的网络数据转发。</p><p>从本质上来说，此时的 WARP 已经不能称为 VPN，而是 “正向代理”。具体来说：</p><ul><li>WARP 在网络分层的底层（第三层网络层）捕获系统流量，这一点与使用 WireGuard 时相同。不同的是后续的处理方式：<ul><li><strong>WireGuard</strong>：使用该协议时，采用的是 VPN 方案。对拦截的数据包进行加密，然后通过隧道发送。</li><li><strong>MASQUE</strong>：使用该协议时，采用的是正向代理方案。对拦截的数据包，通过 QUIC 协议代理到 WARP 服务端节点。</li></ul></li></ul><p>这种技术方案与 macOS 上著名的代理软件 Surge 非常相似。Surge 有一个功能叫 “增强模式”。</p><ul><li>在正常情况下，Surge 通过在系统网络设置中的代理配置设置 localhost 代理，捕获应用层的流量进行转发。</li><li>开启增强模式后，Surge 会通过第三层捕获所有流量包，接管后进行转发。</li></ul><p>WARP 为什么抛弃【WireGuard】使用 【MASQUE】，可以参考官方介绍：<br><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNsb3VkZmxhcmUuY29tL21hc3F1ZS1idWlsZGluZy1hLW5ldy1wcm90b2NvbC1pbnRvLWNsb3VkZmxhcmUtd2FycC8=">https://blog.cloudflare.com/masque-building-a-new-protocol-into-cloudflare-warp/</span></p><hr>]]></content:encoded>
+      
+      
+      <category domain="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+      
+      
+      <category domain="https://www.yigegongjiang.com/tags/%E7%BD%91%E7%BB%9C/">网络</category>
+      
+      
+      <comments>https://www.yigegongjiang.com/2024/warp/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>移动端换端方案与场景还原</title>

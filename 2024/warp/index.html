@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="manifest" href="/images/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.2","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="实际测试结果，虽然 Cloudflare 号称服务部署非常多，但使用 Warp 的 【VPN &#x2F; 代理】功能，会明显增加网络延迟。（location &amp; ip： Japan）  Cloudflare 提供了 1.1.1.1 DNS 服务，以及 WARP VPN + 代理。 公共 DNS运营商 DNS 有什么问题？直接使用运营商的 DNS 服务，有下面两个重要的问题：  ISP 会通过 D">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1.1.1.1、WARP 和 MASQUE">
+<meta property="og:url" content="https://www.yigegongjiang.com/2024/warp/index.html">
+<meta property="og:site_name" content="一个工匠">
+<meta property="og:description" content="实际测试结果，虽然 Cloudflare 号称服务部署非常多，但使用 Warp 的 【VPN &#x2F; 代理】功能，会明显增加网络延迟。（location &amp; ip： Japan）  Cloudflare 提供了 1.1.1.1 DNS 服务，以及 WARP VPN + 代理。 公共 DNS运营商 DNS 有什么问题？直接使用运营商的 DNS 服务，有下面两个重要的问题：  ISP 会通过 D">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-10-27T08:29:36.000Z">
+<meta property="article:author" content="海驴">
+<meta property="article:tag" content="网络">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.yigegongjiang.com/2024/warp/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2024/warp/","path":"2024/warp/","title":"1.1.1.1、WARP 和 MASQUE"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>1.1.1.1、WARP 和 MASQUE | 一个工匠</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CTEWJ02QX"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-8CTEWJ02QX","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="一个工匠" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="一个工匠" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">一个工匠</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">95</span></a></li><li class="menu-item menu-item-日本指北"><a href="/japan/" rel="section">日本指北</a></li><li class="menu-item menu-item-时间舟"><a href="/categories/%E6%97%B6%E9%97%B4%E8%88%9F/" rel="section">时间舟</a></li><li class="menu-item menu-item-source"><a href="/openSource" rel="section">Source</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AC%E5%85%B1-DNS"><span class="nav-number">1.</span> <span class="nav-text">公共 DNS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%90%A5%E5%95%86-DNS-%E6%9C%89%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-number">1.1.</span> <span class="nav-text">运营商 DNS 有什么问题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AC%E5%85%B1-DNS-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="nav-number">1.2.</span> <span class="nav-text">公共 DNS 如何实现负载均衡</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WARP"><span class="nav-number">2.</span> <span class="nav-text">WARP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MASQUE"><span class="nav-number">3.</span> <span class="nav-text">MASQUE</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="海驴"
+      src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
+  <p class="site-author-name" itemprop="name">海驴</p>
+  <div class="site-description" itemprop="description">时间，真的不多了。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">95</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          Links
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9oYWlfbHZf" title="https:&#x2F;&#x2F;twitter.com&#x2F;hai_lv_">X(Twitter)</span>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2024/warp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
+      <meta itemprop="name" content="海驴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个工匠">
+      <meta itemprop="description" content="时间，真的不多了。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="1.1.1.1、WARP 和 MASQUE | 一个工匠">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          1.1.1.1、WARP 和 MASQUE
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-10-27 16:29:36" itemprop="dateCreated datePublished" datetime="2024-10-27T16:29:36+08:00">2024-10-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>实际测试结果，虽然 Cloudflare 号称服务部署非常多，但使用 Warp 的 【VPN / 代理】功能，会明显增加网络延迟。（location &amp; ip： Japan）</p>
+</blockquote>
+<p>Cloudflare 提供了 1.1.1.1 DNS 服务，以及 WARP VPN + 代理。</p>
+<h1 id="公共-DNS"><a href="#公共-DNS" class="headerlink" title="公共 DNS"></a>公共 DNS</h1><h2 id="运营商-DNS-有什么问题？"><a href="#运营商-DNS-有什么问题？" class="headerlink" title="运营商 DNS 有什么问题？"></a>运营商 DNS 有什么问题？</h2><p>直接使用运营商的 DNS 服务，有下面两个重要的问题：</p>
+<ol>
+<li>ISP 会通过 DNS 查询的域名，分析用户访问的网站。（DNS 查询是明文的 UDP）</li>
+<li>ISP DNS 会有劫持、污染、缓存等</li>
+</ol>
+<p>那么公共 DNS 可以解决上面的问题吗？<strong>不行</strong>。</p>
+<p>对于普通用户来说，使用运营商 DNS 没有任何问题，也会加快域名解析的速度。<br>如果想要安全，避免被运营商做【DNS 查询】分析，公共 DNS 无能为力。不管使用的公共 DNS 是 ipv4、ipv6、DoH，都无法解决。<br>DoH 是能用到最安全的级别了，但还是有 SNI 泄漏。</p>
+<span id="more"></span>
+
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- IPv4 和 IPv6：</span><br><span class="line">  - 1.1.1.1 和 2606:4700:4700::1111</span><br><span class="line">  - 1.0.0.1 和 2606:4700:4700::1001</span><br><span class="line">- DoH：</span><br><span class="line">  - https://cloudflare-dns.com/dns-query</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="公共-DNS-如何实现负载均衡"><a href="#公共-DNS-如何实现负载均衡" class="headerlink" title="公共 DNS 如何实现负载均衡"></a>公共 DNS 如何实现负载均衡</h2><p>通过域名，可以在 DNS 权威服务器上做 IP 的负载均衡。<br>那么，对于只有 IP 地址而没有域名的 DNS 服务，如何实现负载均衡呢？</p>
+<p>每个 IP 能被发现，是通过网络节点之间的 BGP（边界网关协议）进行广播。<br>通过 <strong>Anycast</strong> 技术，可以在不同地理位置的多台主机上部署相同的 IP，从而让客户端就近连接到 IP 服务器。</p>
+<h1 id="WARP"><a href="#WARP" class="headerlink" title="WARP"></a>WARP</h1><p>WARP 是 Cloudflare 提供的一种 VPN 服务，使用了 WireGuard 协议。<br>不同的 VPN 协议分别工作在网络模型的不同层次，其中 WireGuard 工作在第三层（网络层）。<br>因为 iOS 等系统，同一时间只能开启一个 VPN 服务，所以使用 WARP 的时候，数据包流向为：</p>
+<ol>
+<li>WARP app 拦截所有三层数据包并转发到 WARP 的 WireGuard 服务器，服务器向具体的 domain 发起请求。</li>
+</ol>
+<p>在 Mac 系统上，除了 WARP 还可以手动设置网络代理（Thrid Proxys），这些网络代理一般工作在应用层。这个时候数据包流向为：</p>
+<ol>
+<li>数据包转到 Third Proxys 进行封装，目标 domain 变成【代理 服务器】</li>
+<li>WARP app 拦截所有三层数据包转发到【WARP 服务器】</li>
+<li>【WARP 服务器】向【代理 服务器】发起请求</li>
+<li>【代理 服务器】向具体的 domain 发起请求</li>
+</ol>
+<h1 id="MASQUE"><a href="#MASQUE" class="headerlink" title="MASQUE"></a>MASQUE</h1><blockquote>
+<p>通常使用的翻墙工具并不是 VPN，而是网络代理（更准确地说，称为 “正向代理”）。<br>之所以经常将它们称为 VPN，是因为在 iOS 等设备上，需要开启 VPN 服务，这些软件才能拦截数据流量，实现代理转发。<br>但它们与通常所指的 WireGuard、OpenVPN 等 VPN 协议并不一致。</p>
+</blockquote>
+<p>WARP 推出了基于 MASQUE 协议的版本，用于替代 WireGuard。MASQUE 使用了 QUIC 协议，属于应用层的网络数据转发。</p>
+<p>从本质上来说，此时的 WARP 已经不能称为 VPN，而是 “正向代理”。具体来说：</p>
+<ul>
+<li>WARP 在网络分层的底层（第三层网络层）捕获系统流量，这一点与使用 WireGuard 时相同。不同的是后续的处理方式：<ul>
+<li><strong>WireGuard</strong>：使用该协议时，采用的是 VPN 方案。对拦截的数据包进行加密，然后通过隧道发送。</li>
+<li><strong>MASQUE</strong>：使用该协议时，采用的是正向代理方案。对拦截的数据包，通过 QUIC 协议代理到 WARP 服务端节点。</li>
+</ul>
+</li>
+</ul>
+<p>这种技术方案与 macOS 上著名的代理软件 Surge 非常相似。Surge 有一个功能叫 “增强模式”。</p>
+<ul>
+<li>在正常情况下，Surge 通过在系统网络设置中的代理配置设置 localhost 代理，捕获应用层的流量进行转发。</li>
+<li>开启增强模式后，Surge 会通过第三层捕获所有流量包，接管后进行转发。</li>
+</ul>
+<p>WARP 为什么抛弃【WireGuard】使用 【MASQUE】，可以参考官方介绍：<br><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNsb3VkZmxhcmUuY29tL21hc3F1ZS1idWlsZGluZy1hLW5ldy1wcm90b2NvbC1pbnRvLWNsb3VkZmxhcmUtd2FycC8=">https://blog.cloudflare.com/masque-building-a-new-protocol-into-cloudflare-warp/</span></p>
+<hr>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>Follow me by other channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/hai_lv_">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/hai_lv_tg">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="mailto:one.gongjiang@gmail.com">
+            <span class="icon">
+              <i class="fa fa-envelope"></i>
+            </span>
+
+            <span class="label">Email</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag"># 网络</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/app-wake/" rel="prev" title="移动端换端方案与场景还原">
+                  <i class="fa fa-angle-left"></i> 移动端换端方案与场景还原
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">Light Mode (Better for light mode to discuss, base github, cannot commen can email me)</a></li>
+            <li class="tab"><a href="#comment-utterances">Dark Mode</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
+            </div>
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+        </div>
+      </div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2018 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">one.gongjiang艾特gmail.com 所有文章均为原创。我不介意任意形式的转载，但最好不要修改内容。因转载或者修改内容导致的任何问题，我均不负责。如果你真的担心版权，可邮联。评价需要外网，这是枷锁，也是照妖镜。</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.umd.js" integrity="sha256-+2+qOqR8CKoHh/AsVR9k2qaDBKWjYNC2nozhYmv5j9k=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2024/warp/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"1f39db0451bad8da8cb2d8839fa2dbe2"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
