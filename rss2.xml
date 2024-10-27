@@ -15,8 +15,38 @@
     <atom:link href="https://www.yigegongjiang.com/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>时间，真的不多了。</description>
-    <pubDate>Wed, 23 Oct 2024 06:08:35 GMT</pubDate>
+    <pubDate>Sun, 27 Oct 2024 07:38:17 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>移动端换端方案与场景还原</title>
+      <link>https://www.yigegongjiang.com/2024/app-wake/</link>
+      <guid>https://www.yigegongjiang.com/2024/app-wake/</guid>
+      <pubDate>Sun, 27 Oct 2024 07:38:17 GMT</pubDate>
+      
+      <description>&lt;h1 id=&quot;换端能力&quot;&gt;&lt;a href=&quot;#换端能力&quot; class=&quot;headerlink&quot; title=&quot;换端能力&quot;&gt;&lt;/a&gt;换端能力&lt;/h1&gt;&lt;p&gt;在移动应用生态中，换端 (App Switching) 是一个常见的需求。同一台设备上，有以下三个端: &lt;code&gt;M(Web网页)&lt;/code&gt;、 &lt;code&gt;A(移动应用 app)&lt;/code&gt;、 &lt;code&gt;B(待唤端的应用 app)&lt;/code&gt;。 当 M 或 A 需要跳转至 B 时，有两种技术方案: URL Scheme 和 Universal Link。&lt;/p&gt;
+&lt;h2 id=&quot;URL-Scheme&quot;&gt;&lt;a href=&quot;#URL-Scheme&quot; class=&quot;headerlink&quot; title=&quot;URL Scheme&quot;&gt;&lt;/a&gt;URL Scheme&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;App 端先行验证能力:&lt;ul&gt;
+&lt;li&gt;A 可以通过 &lt;code&gt;canOpen&lt;/code&gt; 方法预先判断 B 是否已安装，且此操作不会触发跳转</description>
+      
+      
+      
+      <content:encoded><![CDATA[<h1 id="换端能力"><a href="#换端能力" class="headerlink" title="换端能力"></a>换端能力</h1><p>在移动应用生态中，换端 (App Switching) 是一个常见的需求。同一台设备上，有以下三个端: <code>M(Web网页)</code>、 <code>A(移动应用 app)</code>、 <code>B(待唤端的应用 app)</code>。 当 M 或 A 需要跳转至 B 时，有两种技术方案: URL Scheme 和 Universal Link。</p><h2 id="URL-Scheme"><a href="#URL-Scheme" class="headerlink" title="URL Scheme"></a>URL Scheme</h2><ol><li>App 端先行验证能力:<ul><li>A 可以通过 <code>canOpen</code> 方法预先判断 B 是否已安装，且此操作不会触发跳转<span id="more"></span></li></ul></li><li> Web 端无先行验证能力:<ul><li>M (Web) 无法预先判断 B 是否安装</li><li>通常采用延迟判断方案：执行跳转后等待 2 秒，根据页面状态判断跳转是否成功</li></ul></li></ol><p>URL Scheme 存在一个严重的安全问题：不同的应用可以注册相同的 scheme。这意味着当 A 尝试跳转 B 时，可能会被恶意应用 X/Y/Z 截获。正是由于这个安全隐患，URL Scheme 正逐渐被 Universal Link 替代。</p><h2 id="Universal-Link"><a href="#Universal-Link" class="headerlink" title="Universal Link"></a>Universal Link</h2><ol><li>预判限制:<ul><li>M 和 A 都无法预先判断 B 是否安装</li></ul></li><li>跳转控制:<ul><li>A 可以通过跳转参数强制使用 Universal Link 进行跳转</li><li>跳转执行后可以判断目标应用是否安装</li></ul></li></ol><h3 id="原理-挑战"><a href="#原理-挑战" class="headerlink" title="原理 &amp; 挑战"></a>原理 &amp; 挑战</h3><ul><li>应用安装时，操作系统会向配置的 domain 请求资源文件 (开发人员提前配置), 该文件包含应用约定的 Router 信息</li><li>如果 HTTPS 请求失败，应用将暂时无法被 Universal Link 唤醒</li><li> Apple 未明确指定重试机制，仅表示系统会在适当时机重新请求</li></ul><h1 id="微信的二次回跳验证机制"><a href="#微信的二次回跳验证机制" class="headerlink" title="微信的二次回跳验证机制"></a>微信的二次回跳验证机制</h1><h2 id="二次回跳说明"><a href="#二次回跳说明" class="headerlink" title="二次回跳说明"></a>二次回跳说明</h2><p>当应用 A 首次使用微信 SDK 的 Universal Link 功能进行分享时，会出现双重跳转:</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A -&gt; 微信 -&gt; A -&gt; 微信</span><br></pre></td></tr></tbody></table></figure><p>这种情况仅在首次分享时出现，后续分享操作将直接完成。</p><h2 id="双重验证有效性"><a href="#双重验证有效性" class="headerlink" title="双重验证有效性"></a>双重验证有效性</h2><p>Universal Link 在安全的前提下，成功率较高，能保证其他 App 跳转到我的 App 的成功率。只要我的 App 配置了 Universal Link，大概率其他 App 跳转到我的 App 是没有问题的。<br>但是，我的 App 也需要跳转回其他 App，此时我的 App 并不信任其他 App（或者说不信任其他 App 的 Universal Link 配置）。<br>举个分享流程的例子，如果 A 通过 Universal Link 跳转到微信后，微信处理完分享流程。用户点击返回 A，但无法返回，此时就会造成严重的用户体验缺失（Bug）。</p><h2 id="二次回跳处理"><a href="#二次回跳处理" class="headerlink" title="二次回跳处理"></a>二次回跳处理</h2><p>微信采用类似 TCP 三次握手的验证机制，提前打通 A 和微信之间的换端通路。这可能涉及到降级处理，即 Universal Link 降级为 URL Scheme。仍以分享流程为例：</p><ol><li>A（通过微信 SDK API）使用 Universal Link 跳转到微信。<ul><li>SDK API 增加了选项控制，指定使用 Universal Link 方式。如果失败，直接降级到 URL Scheme 进行跳转，此时不会有二次回跳验证。</li></ul></li><li>微信拉取服务端资源，将 A 的 URL Scheme 和 Universal Link 拉取到本地（A 提前在微信的开发者平台进行了配置）。</li><li>微信通过 Universal Link 跳转回 A。<ul><li>指定使用 Universal Link。如果失败，说明 A 的 Universal Link 配置有问题，降级到 URL Scheme 通知 A。后续 A 和微信的操作（分享操作仍需继续）都通过 URL Scheme 完成。</li></ul></li><li>A（通过微信 SDK API）判断微信通过 Universal Link 成功唤起了自己，表明 A 和微信之间的 Universal Link 通路畅通。<ul><li>后续所有的换端操作，全部通过 Universal Link 完成。</li></ul></li><li>A（通过微信 SDK API）发起真正的分享换端，微信被唤醒后执行分享流程（朋友、朋友圈、收藏等），然后回跳到 A。</li><li>…</li><li> 之后，所有换端操作都直接通过 Universal Link 进行，不再需要之前的二次回跳验证。</li></ol><h1 id="Web-向原生-App-发起登录验证"><a href="#Web-向原生-App-发起登录验证" class="headerlink" title="Web 向原生 App 发起登录验证"></a>Web 向原生 App 发起登录验证</h1><p>web 页面在需要登陆的场景，可能需要跳转到 app 中完成登陆，然后回到到网页中。</p><h2 id="处理流程"><a href="#处理流程" class="headerlink" title="处理流程"></a>处理流程</h2><ol><li><p>唤起阶段:</p><ul><li>Web 页面 (url_a) 通过 Universal Link 或 URL Scheme 唤起 App</li><li> 携带必要的身份标识参数</li></ul></li><li><p>登录处理:</p><ul><li><p>方案一：服务端传递 Token</p><ul><li>App 将 token 和身份标识发送至服务端</li><li> App 通过 <code>openURL(url_a)</code> 在 Safari 中刷新网页（不会新开页面）</li><li>Web 根据本地存储的标识参数，从服务器获取 Token。</li></ul></li><li><p>方案二：换端传递 Token</p><ul><li>App 将 Token 拼接到 <code>url_b_{path}</code> 中，通过 openURL 唤醒。</li><li>Safari 会新开页面，新的页面是登录成功后的落地页。</li></ul></li></ul></li></ol><h1 id="Delay-Deep-Link（场景还原-一般用于广告投放）"><a href="#Delay-Deep-Link（场景还原-一般用于广告投放）" class="headerlink" title="Delay Deep Link（场景还原-一般用于广告投放）"></a>Delay Deep Link（场景还原 - 一般用于广告投放）</h1><p>通过 Universal Link，如果目标 App 未安装，此时可以跳转到 Web 中间页并转跳到 App Store。希望用户下载 App 并首次打开后，立即跳转到当初 Universal Link 的承接页。这也叫【场景还原】。<br>核心原理是，全新的 App 在第一次被打开后，需要通过某种途径，找到之前 Universal Link 中标记的落地页信息。</p><ol><li><p>方案一：本地</p><ul><li>在使用 Universal Link 进行换端时，发起换端的一方负责将换端链接存储到用户的剪贴板中。</li><li>当目标 App 打开后，自行读取剪贴板并进行落地页跳转。剪贴板有预探功能，可以先不触发用户的权限弹框，提前知道是否有需要的口令内容。</li></ul></li><li><p>方案二：设备标识（Device ID）</p><ul><li>这里的 Device ID 并不是真正的设备 ID，而是大家共同遵守的一套规则，可近乎唯一地标记一台设备，并保证漂移率很低。可以根据设备的开机时间、升级时间、系统版本等信息，组合成密钥字符。</li><li>在使用 Universal Link 进行换端时，发起换端的一方负责将 Device ID 和落地页信息存储到云端。</li><li>当目标 App 打开后，自行获取 Device ID，然后从云端回拉落地页信息。</li></ul></li></ol><p>一般来说，这些场景都牵涉到资金投放，需要尽可能高的识别精度。所以方案都是混合使用，有一个匹配上就算【场景还原】成功了。</p><hr>]]></content:encoded>
+      
+      
+      <category domain="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+      
+      
+      <category domain="https://www.yigegongjiang.com/tags/iOS/">iOS</category>
+      
+      <category domain="https://www.yigegongjiang.com/tags/Swift/">Swift</category>
+      
+      <category domain="https://www.yigegongjiang.com/tags/Work/">Work</category>
+      
+      
+      <comments>https://www.yigegongjiang.com/2024/app-wake/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>设备发现</title>

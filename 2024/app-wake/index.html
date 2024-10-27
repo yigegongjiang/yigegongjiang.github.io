@@ -20,27 +20,29 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.2","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="做决定还是应该慎重的。有些人很果断，遇到事情会立刻做出选择，不犹豫。这本身是好事，可如果对选择过程不加以分析，那就是概率性问题嘛，选择的恰当性五五分。我老婆就是这样的人，所以我理解的很深刻。每年的开年，朋友圈也都能看到一些 Flag，我认为能列出 3-4 个就已经相当不错了，何况 10+。时间是很可怕的妖魔，一年时间很快就过去了。不求多，但求精吧。 我对改变的总结是，人在每个年龄段，都会有不同的想">
+    <meta name="description" content="换端能力在移动应用生态中，换端 (App Switching) 是一个常见的需求。同一台设备上，有以下三个端: M(Web网页)、 A(移动应用 app)、 B(待唤端的应用 app)。 当 M 或 A 需要跳转至 B 时，有两种技术方案: URL Scheme 和 Universal Link。 URL Scheme App 端先行验证能力: A 可以通过 canOpen 方法预先判断 B 是否">
 <meta property="og:type" content="article">
-<meta property="og:title" content="决定做一些改变">
-<meta property="og:url" content="https://www.yigegongjiang.com/2022/change/index.html">
+<meta property="og:title" content="移动端换端方案与场景还原">
+<meta property="og:url" content="https://www.yigegongjiang.com/2024/app-wake/index.html">
 <meta property="og:site_name" content="一个工匠">
-<meta property="og:description" content="做决定还是应该慎重的。有些人很果断，遇到事情会立刻做出选择，不犹豫。这本身是好事，可如果对选择过程不加以分析，那就是概率性问题嘛，选择的恰当性五五分。我老婆就是这样的人，所以我理解的很深刻。每年的开年，朋友圈也都能看到一些 Flag，我认为能列出 3-4 个就已经相当不错了，何况 10+。时间是很可怕的妖魔，一年时间很快就过去了。不求多，但求精吧。 我对改变的总结是，人在每个年龄段，都会有不同的想">
+<meta property="og:description" content="换端能力在移动应用生态中，换端 (App Switching) 是一个常见的需求。同一台设备上，有以下三个端: M(Web网页)、 A(移动应用 app)、 B(待唤端的应用 app)。 当 M 或 A 需要跳转至 B 时，有两种技术方案: URL Scheme 和 Universal Link。 URL Scheme App 端先行验证能力: A 可以通过 canOpen 方法预先判断 B 是否">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-05-01T04:41:02.000Z">
+<meta property="article:published_time" content="2024-10-27T07:38:17.000Z">
 <meta property="article:author" content="海驴">
-<meta property="article:tag" content="Life">
+<meta property="article:tag" content="iOS">
+<meta property="article:tag" content="Swift">
+<meta property="article:tag" content="Work">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://www.yigegongjiang.com/2022/change/">
+<link rel="canonical" href="https://www.yigegongjiang.com/2024/app-wake/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2022/change/","path":"2022/change/","title":"决定做一些改变"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2024/app-wake/","path":"2024/app-wake/","title":"移动端换端方案与场景还原"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>决定做一些改变 | 一个工匠</title>
+<title>移动端换端方案与场景还原 | 一个工匠</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CTEWJ02QX"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-8CTEWJ02QX","only_pageview":false,"measure_protocol_api_secret":null}</script>
@@ -117,7 +119,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E%E6%94%B9%E5%8F%98"><span class="nav-number">1.</span> <span class="nav-text">新增改变</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B0%E9%97%BB%E6%A6%82%E5%BF%B5"><span class="nav-number">1.0.1.</span> <span class="nav-text">新闻概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E8%A7%82%E5%BF%B5"><span class="nav-number">1.0.2.</span> <span class="nav-text">时间观念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BE%E4%BA%A4"><span class="nav-number">1.0.3.</span> <span class="nav-text">社交</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%A7%E7%BB%AD%E4%BF%9D%E6%8C%81%E4%B8%8D%E5%8A%A8%E6%91%87%E7%9A%84"><span class="nav-number">2.</span> <span class="nav-text">继续保持不动摇的</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A5%E5%B8%B8%E8%AE%B0%E5%BD%95%EF%BC%9A"><span class="nav-number">2.0.1.</span> <span class="nav-text">日常记录：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A2%8E%E7%A2%8E%E5%BF%B5%EF%BC%9A"><span class="nav-number">2.0.2.</span> <span class="nav-text">碎碎念：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E8%A7%82%E5%BF%B5%EF%BC%9A"><span class="nav-number">2.0.3.</span> <span class="nav-text">时间观念：</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8D%A2%E7%AB%AF%E8%83%BD%E5%8A%9B"><span class="nav-number">1.</span> <span class="nav-text">换端能力</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#URL-Scheme"><span class="nav-number">1.1.</span> <span class="nav-text">URL Scheme</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Universal-Link"><span class="nav-number">1.2.</span> <span class="nav-text">Universal Link</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%90%86-%E6%8C%91%E6%88%98"><span class="nav-number">1.2.1.</span> <span class="nav-text">原理 &amp; 挑战</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BE%AE%E4%BF%A1%E7%9A%84%E4%BA%8C%E6%AC%A1%E5%9B%9E%E8%B7%B3%E9%AA%8C%E8%AF%81%E6%9C%BA%E5%88%B6"><span class="nav-number">2.</span> <span class="nav-text">微信的二次回跳验证机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E6%AC%A1%E5%9B%9E%E8%B7%B3%E8%AF%B4%E6%98%8E"><span class="nav-number">2.1.</span> <span class="nav-text">二次回跳说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8C%E9%87%8D%E9%AA%8C%E8%AF%81%E6%9C%89%E6%95%88%E6%80%A7"><span class="nav-number">2.2.</span> <span class="nav-text">双重验证有效性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E6%AC%A1%E5%9B%9E%E8%B7%B3%E5%A4%84%E7%90%86"><span class="nav-number">2.3.</span> <span class="nav-text">二次回跳处理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Web-%E5%90%91%E5%8E%9F%E7%94%9F-App-%E5%8F%91%E8%B5%B7%E7%99%BB%E5%BD%95%E9%AA%8C%E8%AF%81"><span class="nav-number">3.</span> <span class="nav-text">Web 向原生 App 发起登录验证</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B"><span class="nav-number">3.1.</span> <span class="nav-text">处理流程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Delay-Deep-Link%EF%BC%88%E5%9C%BA%E6%99%AF%E8%BF%98%E5%8E%9F-%E4%B8%80%E8%88%AC%E7%94%A8%E4%BA%8E%E5%B9%BF%E5%91%8A%E6%8A%95%E6%94%BE%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">Delay Deep Link（场景还原 - 一般用于广告投放）</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -184,7 +186,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2022/change/">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2024/app-wake/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
@@ -197,12 +199,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="决定做一些改变 | 一个工匠">
+      <meta itemprop="name" content="移动端换端方案与场景还原 | 一个工匠">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          决定做一些改变
+          移动端换端方案与场景还原
         </h1>
 
         <div class="post-meta-container">
@@ -213,7 +215,7 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2022-05-01 12:41:02" itemprop="dateCreated datePublished" datetime="2022-05-01T12:41:02+08:00">2022-05-01</time>
+      <time title="Created: 2024-10-27 15:38:17" itemprop="dateCreated datePublished" datetime="2024-10-27T15:38:17+08:00">2024-10-27</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -221,7 +223,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%A7%82%E7%82%B9/" itemprop="url" rel="index"><span itemprop="name">观点</span></a>
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
         </span>
     </span>
 
@@ -234,25 +236,102 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>做决定还是应该慎重的。<br>有些人很果断，遇到事情会立刻做出选择，不犹豫。这本身是好事，可如果对选择过程不加以分析，那就是概率性问题嘛，选择的恰当性五五分。我老婆就是这样的人，所以我理解的很深刻。<br>每年的开年，朋友圈也都能看到一些 Flag，我认为能列出 3-4 个就已经相当不错了，何况 10+。时间是很可怕的妖魔，一年时间很快就过去了。不求多，但求精吧。</p>
-<p>我对改变的总结是，人在每个年龄段，都会有不同的想法和认知。改变，应该是在自知的前提下作出的决定，千万不能贸然行动。改变不一定说朝着好的方向走，人各不同，已有的行为习惯不一定是坏的，只是说在当前的自我认知下，可以做出更符合当前的自身情况也会带来更大收益的改变。</p>
-<p>鉴于我目前对自己的认知，想列一些 Flag，作为对自己中长期的约束。<br>考虑到一个月或者一年后，可能还会有一些改变。所以本文作为只新增不删除修改的迭代文，每次更新加上时间标记。</p>
-<span id="more"></span>
-
+    <div class="post-body" itemprop="articleBody"><h1 id="换端能力"><a href="#换端能力" class="headerlink" title="换端能力"></a>换端能力</h1><p>在移动应用生态中，换端 (App Switching) 是一个常见的需求。同一台设备上，有以下三个端: <code>M(Web网页)</code>、 <code>A(移动应用 app)</code>、 <code>B(待唤端的应用 app)</code>。 当 M 或 A 需要跳转至 B 时，有两种技术方案: URL Scheme 和 Universal Link。</p>
+<h2 id="URL-Scheme"><a href="#URL-Scheme" class="headerlink" title="URL Scheme"></a>URL Scheme</h2><ol>
+<li>App 端先行验证能力:<ul>
+<li>A 可以通过 <code>canOpen</code> 方法预先判断 B 是否已安装，且此操作不会触发跳转<span id="more"></span></li>
+</ul>
+</li>
+<li> Web 端无先行验证能力:<ul>
+<li>M (Web) 无法预先判断 B 是否安装</li>
+<li>通常采用延迟判断方案：执行跳转后等待 2 秒，根据页面状态判断跳转是否成功</li>
+</ul>
+</li>
+</ol>
+<p>URL Scheme 存在一个严重的安全问题：不同的应用可以注册相同的 scheme。这意味着当 A 尝试跳转 B 时，可能会被恶意应用 X/Y/Z 截获。正是由于这个安全隐患，URL Scheme 正逐渐被 Universal Link 替代。</p>
+<h2 id="Universal-Link"><a href="#Universal-Link" class="headerlink" title="Universal Link"></a>Universal Link</h2><ol>
+<li>预判限制:<ul>
+<li>M 和 A 都无法预先判断 B 是否安装</li>
+</ul>
+</li>
+<li>跳转控制:<ul>
+<li>A 可以通过跳转参数强制使用 Universal Link 进行跳转</li>
+<li>跳转执行后可以判断目标应用是否安装</li>
+</ul>
+</li>
+</ol>
+<h3 id="原理-挑战"><a href="#原理-挑战" class="headerlink" title="原理 &amp; 挑战"></a>原理 &amp; 挑战</h3><ul>
+<li>应用安装时，操作系统会向配置的 domain 请求资源文件 (开发人员提前配置), 该文件包含应用约定的 Router 信息</li>
+<li>如果 HTTPS 请求失败，应用将暂时无法被 Universal Link 唤醒</li>
+<li> Apple 未明确指定重试机制，仅表示系统会在适当时机重新请求</li>
+</ul>
+<h1 id="微信的二次回跳验证机制"><a href="#微信的二次回跳验证机制" class="headerlink" title="微信的二次回跳验证机制"></a>微信的二次回跳验证机制</h1><h2 id="二次回跳说明"><a href="#二次回跳说明" class="headerlink" title="二次回跳说明"></a>二次回跳说明</h2><p>当应用 A 首次使用微信 SDK 的 Universal Link 功能进行分享时，会出现双重跳转:</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A -&gt; 微信 -&gt; A -&gt; 微信</span><br></pre></td></tr></tbody></table></figure>
+<p>这种情况仅在首次分享时出现，后续分享操作将直接完成。</p>
+<h2 id="双重验证有效性"><a href="#双重验证有效性" class="headerlink" title="双重验证有效性"></a>双重验证有效性</h2><p>Universal Link 在安全的前提下，成功率较高，能保证其他 App 跳转到我的 App 的成功率。只要我的 App 配置了 Universal Link，大概率其他 App 跳转到我的 App 是没有问题的。<br>但是，我的 App 也需要跳转回其他 App，此时我的 App 并不信任其他 App（或者说不信任其他 App 的 Universal Link 配置）。<br>举个分享流程的例子，如果 A 通过 Universal Link 跳转到微信后，微信处理完分享流程。用户点击返回 A，但无法返回，此时就会造成严重的用户体验缺失（Bug）。</p>
+<h2 id="二次回跳处理"><a href="#二次回跳处理" class="headerlink" title="二次回跳处理"></a>二次回跳处理</h2><p>微信采用类似 TCP 三次握手的验证机制，提前打通 A 和微信之间的换端通路。这可能涉及到降级处理，即 Universal Link 降级为 URL Scheme。仍以分享流程为例：</p>
+<ol>
+<li>A（通过微信 SDK API）使用 Universal Link 跳转到微信。<ul>
+<li>SDK API 增加了选项控制，指定使用 Universal Link 方式。如果失败，直接降级到 URL Scheme 进行跳转，此时不会有二次回跳验证。</li>
+</ul>
+</li>
+<li>微信拉取服务端资源，将 A 的 URL Scheme 和 Universal Link 拉取到本地（A 提前在微信的开发者平台进行了配置）。</li>
+<li>微信通过 Universal Link 跳转回 A。<ul>
+<li>指定使用 Universal Link。如果失败，说明 A 的 Universal Link 配置有问题，降级到 URL Scheme 通知 A。后续 A 和微信的操作（分享操作仍需继续）都通过 URL Scheme 完成。</li>
+</ul>
+</li>
+<li>A（通过微信 SDK API）判断微信通过 Universal Link 成功唤起了自己，表明 A 和微信之间的 Universal Link 通路畅通。<ul>
+<li>后续所有的换端操作，全部通过 Universal Link 完成。</li>
+</ul>
+</li>
+<li>A（通过微信 SDK API）发起真正的分享换端，微信被唤醒后执行分享流程（朋友、朋友圈、收藏等），然后回跳到 A。</li>
+<li>…</li>
+<li> 之后，所有换端操作都直接通过 Universal Link 进行，不再需要之前的二次回跳验证。</li>
+</ol>
+<h1 id="Web-向原生-App-发起登录验证"><a href="#Web-向原生-App-发起登录验证" class="headerlink" title="Web 向原生 App 发起登录验证"></a>Web 向原生 App 发起登录验证</h1><p>web 页面在需要登陆的场景，可能需要跳转到 app 中完成登陆，然后回到到网页中。</p>
+<h2 id="处理流程"><a href="#处理流程" class="headerlink" title="处理流程"></a>处理流程</h2><ol>
+<li><p>唤起阶段:</p>
+<ul>
+<li>Web 页面 (url_a) 通过 Universal Link 或 URL Scheme 唤起 App</li>
+<li> 携带必要的身份标识参数</li>
+</ul>
+</li>
+<li><p>登录处理:</p>
+<ul>
+<li><p>方案一：服务端传递 Token</p>
+<ul>
+<li>App 将 token 和身份标识发送至服务端</li>
+<li> App 通过 <code>openURL(url_a)</code> 在 Safari 中刷新网页（不会新开页面）</li>
+<li>Web 根据本地存储的标识参数，从服务器获取 Token。</li>
+</ul>
+</li>
+<li><p>方案二：换端传递 Token</p>
+<ul>
+<li>App 将 Token 拼接到 <code>url_b_{path}</code> 中，通过 openURL 唤醒。</li>
+<li>Safari 会新开页面，新的页面是登录成功后的落地页。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h1 id="Delay-Deep-Link（场景还原-一般用于广告投放）"><a href="#Delay-Deep-Link（场景还原-一般用于广告投放）" class="headerlink" title="Delay Deep Link（场景还原-一般用于广告投放）"></a>Delay Deep Link（场景还原 - 一般用于广告投放）</h1><p>通过 Universal Link，如果目标 App 未安装，此时可以跳转到 Web 中间页并转跳到 App Store。希望用户下载 App 并首次打开后，立即跳转到当初 Universal Link 的承接页。这也叫【场景还原】。<br>核心原理是，全新的 App 在第一次被打开后，需要通过某种途径，找到之前 Universal Link 中标记的落地页信息。</p>
+<ol>
+<li><p>方案一：本地</p>
+<ul>
+<li>在使用 Universal Link 进行换端时，发起换端的一方负责将换端链接存储到用户的剪贴板中。</li>
+<li>当目标 App 打开后，自行读取剪贴板并进行落地页跳转。剪贴板有预探功能，可以先不触发用户的权限弹框，提前知道是否有需要的口令内容。</li>
+</ul>
+</li>
+<li><p>方案二：设备标识（Device ID）</p>
+<ul>
+<li>这里的 Device ID 并不是真正的设备 ID，而是大家共同遵守的一套规则，可近乎唯一地标记一台设备，并保证漂移率很低。可以根据设备的开机时间、升级时间、系统版本等信息，组合成密钥字符。</li>
+<li>在使用 Universal Link 进行换端时，发起换端的一方负责将 Device ID 和落地页信息存储到云端。</li>
+<li>当目标 App 打开后，自行获取 Device ID，然后从云端回拉落地页信息。</li>
+</ul>
+</li>
+</ol>
+<p>一般来说，这些场景都牵涉到资金投放，需要尽可能高的识别精度。所以方案都是混合使用，有一个匹配上就算【场景还原】成功了。</p>
 <hr>
-<blockquote>
-<p>2022.05.01 更新于五一劳动节</p>
-</blockquote>
-<h2 id="新增改变"><a href="#新增改变" class="headerlink" title="新增改变"></a>新增改变</h2><h4 id="新闻概念"><a href="#新闻概念" class="headerlink" title="新闻概念"></a>新闻概念</h4><p><strong>减少政治及社会内容的摄取和输出。</strong><br>对社会现状也有了明确的认知，对权力的泛滥和法律的践踏有了底线的触碰。但是自身做不了任何改变，目前没有任何影响力以帮助他人做觉醒。必要的时候，还会让朋友越来越少。<br>决定还是暂停对这些让自身不开心的内容的接收。<br>我知道那些问题一直都在并且时时刻刻都在发生着，我时时刻刻都感觉到痛心。但是我不会主动的去获取了。往深处来说，这也是对我自己的保护。<br>这样还可以有效减少我的时间消耗，也省去了很多内心的不愉快。</p>
-<h4 id="时间观念"><a href="#时间观念" class="headerlink" title="时间观念"></a>时间观念</h4><p><strong>对 Remind app 生成强依赖，通过被动提醒及主动查看来保障时间片分割的有效性。</strong><br>苹果手机自带的 Remind 软件，还是非常好用的，是我这些年筛选了很多提醒类 app 后保留下来的。后面会把更多的和时间有关系的事项，放在 Remind 中，好做到及时提醒。<br>我能够初步做到量化时间了，这些量化的事项也记录到了 Remind 中。后面要做到及时消化，不拖延的消化掉这些事项。这对我来说有些难度，但是一定要这样做。</p>
-<h4 id="社交"><a href="#社交" class="headerlink" title="社交"></a>社交</h4><p><strong>微信仅保留聊天、搜索、订阅号功能</strong><br>微信的时间消耗大头 “朋友圈”，要做关闭处理。朋友圈里面基本没有有价值的信息，但是近乎无限 feeds 流的信息，非常消耗时间。后面做到一周翻看一次，防止有重要信息遗漏。</p>
-<h2 id="继续保持不动摇的"><a href="#继续保持不动摇的" class="headerlink" title="继续保持不动摇的"></a>继续保持不动摇的</h2><h4 id="日常记录："><a href="#日常记录：" class="headerlink" title="日常记录："></a>日常记录：</h4><pre><code>* 工作上记录每日工作事项
-* 生活上记录每日见闻
-</code></pre>
-<h4 id="碎碎念："><a href="#碎碎念：" class="headerlink" title="碎碎念："></a>碎碎念：</h4><pre><code>* 对一些事情的想法，更新到碎碎念目录下
-</code></pre>
-<h4 id="时间观念："><a href="#时间观念：" class="headerlink" title="时间观念："></a>时间观念：</h4><pre><code>* 量化时间，不做时间魔鬼的努力
-</code></pre>
 
     </div>
 
@@ -309,21 +388,20 @@
 </div>
 
           <div class="post-tags">
-              <a href="/tags/Life/" rel="tag"># Life</a>
+              <a href="/tags/iOS/" rel="tag"># iOS</a>
+              <a href="/tags/Swift/" rel="tag"># Swift</a>
+              <a href="/tags/Work/" rel="tag"># Work</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/lowwork/" rel="prev" title="低效率工作沟通">
-                  <i class="fa fa-angle-left"></i> 低效率工作沟通
+                <a href="/2024/device-discover/" rel="prev" title="设备发现">
+                  <i class="fa fa-angle-left"></i> 设备发现
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/applists/" rel="next" title="这些年我的软件清单">
-                  这些年我的软件清单 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -401,11 +479,11 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2022/change/"}</script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2024/app-wake/"}</script>
   <script src="/js/third-party/quicklink.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"e49366ba24a838c12dc540404c8daf2b"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"a9d02f1003c6691061411d7d143e7751"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
 <script src="/js/third-party/comments/utterances.js"></script>

@@ -91,7 +91,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">93</span></a></li><li class="menu-item menu-item-日本指北"><a href="/japan/" rel="section">日本指北</a></li><li class="menu-item menu-item-时间舟"><a href="/categories/%E6%97%B6%E9%97%B4%E8%88%9F/" rel="section">时间舟</a></li><li class="menu-item menu-item-source"><a href="/openSource" rel="section">Source</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">94</span></a></li><li class="menu-item menu-item-日本指北"><a href="/japan/" rel="section">日本指北</a></li><li class="menu-item menu-item-时间舟"><a href="/categories/%E6%97%B6%E9%97%B4%E8%88%9F/" rel="section">时间舟</a></li><li class="menu-item menu-item-source"><a href="/openSource" rel="section">Source</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
   </ul>
 </nav>
 
@@ -130,7 +130,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">93</span>
+          <span class="site-state-item-count">94</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -172,6 +172,88 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2020/TCPTranslation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
+      <meta itemprop="name" content="海驴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个工匠">
+      <meta itemprop="description" content="时间，真的不多了。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 一个工匠">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/TCPTranslation/" class="post-title-link" itemprop="url">TCP 数据传输过程分析</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-05-13 16:51:05" itemprop="dateCreated datePublished" datetime="2020-05-13T16:51:05+08:00">2020-05-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202305300023093.png" width="30%">
+
+<p>最近在研究发送 / 接收缓冲区对 Socket 性能对影响，朋友发来两篇质量非常高的研究性报告让我看。<br><span class="exturl" data-url="aHR0cHM6Ly96b3Jyb3pvdS5naXRodWIuaW8vZG9jcy9Tb2NrZXQlRTclQkMlOTMlRTUlQUQlOTglRTclQTklQjYlRTclQUIlOUYlRTUlQTYlODIlRTQlQkQlOTUlRTUlQkQlQjElRTUlOTMlOERUQ1AlRTclOUElODQlRTYlODAlQTclRTglODMlQkQuaHRtbA==">Socket 缓存究竟如何影响 TCP 的性能</span><br><span class="exturl" data-url="aHR0cHM6Ly9wbGFudGVnZy5naXRodWIuaW8vMjAxOS8wOS8yOC8lRTUlQjAlQjElRTYlOTglQUYlRTglQTYlODElRTQlQkQlQTAlRTYlODclODJUQ1AtLSVFNiU4MCVBNyVFOCU4MyVCRCVFNSU5MiU4QyVFNSU4RiU5MSVFOSU4MCU4MSVFNiU4RSVBNSVFNiU5NCVCNkJ1ZmZlciVFNyU5QSU4NCVFNSU4NSVCMyVFNyVCMyVCQi8=">TCP 性能和发送接收窗口、Buffer 的关系</span><br>做研究的，都少不了数据。上面文章中 “缓冲区对 Socket 性能分析” 的数据非常严谨，我非常佩服。<br>于是我用 WireShark 分析验证 TCP 的数据传输流程，过程包含三次握手、滑动窗口数据传输、四次挥手，收益很多。</p>
+          <!--noindex-->
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -900,91 +982,6 @@
 
 <p>谈数据结构的时候，到底在谈论什么？本质上就是谈论两个东西，分别是 ** 数组 (Array) <strong>和</strong>链表 (Linked List)**。</p>
 <h4 id="数据物理结构和数据逻辑结构"><a href="#数据物理结构和数据逻辑结构" class="headerlink" title="数据物理结构和数据逻辑结构"></a>数据物理结构和数据逻辑结构</h4><p>数组和链表，是数据存储计算机的物理结构，所以叫做数据物理结构。而队列、散列表、堆、树、图等，已经超出了物理结构，是方便我们使用的应用层结构，根据数据的 1-1、1-n、n-1、n-n 逻辑关系，引申出了数据逻辑结构。分别为线性结构和非线性结构，相见下图：</p>
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2020/my2019/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
-      <meta itemprop="name" content="海驴">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一个工匠">
-      <meta itemprop="description" content="时间，真的不多了。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 一个工匠">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/my2019/" class="post-title-link" itemprop="url">我的 2019</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-01-07 00:00:00" itemprop="dateCreated datePublished" datetime="2020-01-07T00:00:00+08:00">2020-01-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%97%B6%E9%97%B4%E8%88%9F/" itemprop="url" rel="index"><span itemprop="name">时间舟</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202305300022403.jpg" width="30%">
-
-<p>参加工作后的这几年，评价哪一年比较平庸或许都不好，毕竟都是自己亲身经历过的时光，每一年都是像孩子一样善待过，不忍心批评。</p>
-<p>但就像每人心里都有一个钟意的水杯，我还是很想投 2019 一票，因为这一年，我的确有不少变化。</p>
-<p>这一年，我在<strong>技能成长、认知提升、工作、家庭生活、业余生活</strong>上都有很大变化。优秀肯定无从谈起，人一定要对自己有自知，但我一定是在向前走的，这让我很高兴。</p>
-<h3 id="技能成长"><a href="#技能成长" class="headerlink" title="技能成长"></a>技能成长</h3><p>先从 2019 年的<strong>技能成长</strong>说起，因为它给我的温差最大，有时候我激动万分，有时候也在半夜垂头懊恼。</p>
           <!--noindex-->
           <!--/noindex-->
         

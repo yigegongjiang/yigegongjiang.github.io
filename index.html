@@ -91,7 +91,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">93</span></a></li><li class="menu-item menu-item-日本指北"><a href="/japan/" rel="section">日本指北</a></li><li class="menu-item menu-item-时间舟"><a href="/categories/%E6%97%B6%E9%97%B4%E8%88%9F/" rel="section">时间舟</a></li><li class="menu-item menu-item-source"><a href="/openSource" rel="section">Source</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">94</span></a></li><li class="menu-item menu-item-日本指北"><a href="/japan/" rel="section">日本指北</a></li><li class="menu-item menu-item-时间舟"><a href="/categories/%E6%97%B6%E9%97%B4%E8%88%9F/" rel="section">时间舟</a></li><li class="menu-item menu-item-source"><a href="/openSource" rel="section">Source</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
   </ul>
 </nav>
 
@@ -130,7 +130,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">93</span>
+          <span class="site-state-item-count">94</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -172,6 +172,89 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2024/app-wake/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
+      <meta itemprop="name" content="海驴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个工匠">
+      <meta itemprop="description" content="时间，真的不多了。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 一个工匠">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/app-wake/" class="post-title-link" itemprop="url">移动端换端方案与场景还原</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-10-27 15:38:17" itemprop="dateCreated datePublished" datetime="2024-10-27T15:38:17+08:00">2024-10-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="换端能力"><a href="#换端能力" class="headerlink" title="换端能力"></a>换端能力</h1><p>在移动应用生态中，换端 (App Switching) 是一个常见的需求。同一台设备上，有以下三个端: <code>M(Web网页)</code>、 <code>A(移动应用 app)</code>、 <code>B(待唤端的应用 app)</code>。 当 M 或 A 需要跳转至 B 时，有两种技术方案: URL Scheme 和 Universal Link。</p>
+<h2 id="URL-Scheme"><a href="#URL-Scheme" class="headerlink" title="URL Scheme"></a>URL Scheme</h2><ol>
+<li>App 端先行验证能力:<ul>
+<li>A 可以通过 <code>canOpen</code> 方法预先判断 B 是否已安装，且此操作不会触发跳转
+          <!--noindex-->
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -898,88 +981,6 @@
 <li>如果对<strong>鱼头</strong>和<strong>坐船</strong>有感情，可以体验下。</li>
 <li>如果想看好风景，以及看群山，请避坑。建议去<a href="https://www.yigegongjiang.com/2023/the_sea/">威海</a>。</li>
 </ol>
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2024/my2023/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
-      <meta itemprop="name" content="海驴">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一个工匠">
-      <meta itemprop="description" content="时间，真的不多了。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 一个工匠">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/my2023/" class="post-title-link" itemprop="url">我的 2023</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2024-02-24 02:29:07" itemprop="dateCreated datePublished" datetime="2024-02-24T02:29:07+08:00">2024-02-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%97%B6%E9%97%B4%E8%88%9F/" itemprop="url" rel="index"><span itemprop="name">时间舟</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>怀着沉重的心情，还是开始落笔写年终了，相比很多人迟了 2 个月。<br>这一年发生了不少事，感觉清晰可见，又像梦一样不知哪里谈起。离职、旅游、待业、润，每一步都在计划之内逐步落地，但每一步都如履薄冰、心有恐惧。<br>人生中已经有很多重大变动，中考、高考、结婚生子、择业、多次工作变更等，现在回头看每一次都是巨大的转折。但当初处于那些时刻的时候，并没感觉到刻骨铭心。<br>而现在，年过三十、拖家带小的我，依旧在努力的尝试着重大的拐点突破，但底气不是很足。</p>
-<p>记得中考时候很清楚历史和政治两门考的非常糟糕 (加起来都没到 100 分)，很清楚弱小的身体没啥体育加分，但考试结束后就在田埂上无忧无虑的瞎转悠。<br>中考能升的高中只有两个，要么 “一中”，要么 “二中”。这两所高中是天壤之别，一个是继续上大学，一个是大专或者打工就业。</p>
-<p>记得高考结束后傻乎乎的二指禅敲键盘，在网吧里通宵玩着飞车和农场。不知道 985/211，也不知道专业、就业、指南。填志愿一把梭哈，只因为里面有 “计算机” 三个字。<br>那时候以为终于离开了地狱，谁成想那是最后一次无忧无虑的天堂。<br>当时，只知道家人、老师、同学一起塑造的氛围，是一场 0 或者 1 的战役。但要说黑灯瞎火的努力是为了什么，不知道！<br>都没坐过电梯与公交，也没坐过马桶。我可不知道 “书中自有黄金屋” 里的 黄金屋 意味着什么，有饭能吃饱不饿，天塌下来有爸妈。</p>
           <!--noindex-->
           <!--/noindex-->
         
