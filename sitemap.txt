@@ -110,7 +110,6 @@ https://www.yigegongjiang.com/tags/C/
 https://www.yigegongjiang.com/tags/Swift/
 https://www.yigegongjiang.com/tags/Swift%E4%B8%89%E6%96%B9%E6%BA%90%E7%A0%81%E7%B3%BB%E5%88%97/
 https://www.yigegongjiang.com/tags/Work/
-https://www.yigegongjiang.com/tags/%E7%BC%96%E7%A0%81/
 https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/
 https://www.yigegongjiang.com/tags/%E9%94%81/
 https://www.yigegongjiang.com/tags/Shell/
