@@ -20,27 +20,27 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.2","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="又一年中秋过去了，时间过的真快！中秋节的几天假，我是算着日子过的。准确来说，近几个月的节假日，我都是计算着过去了几个小时又过去了几天。我艰难的珍惜着时间，算计着时间的流逝，心里压力很大，劳累无穷。因为有件事情需要落地，只有节假日这些非工作的时间才能够静下心来忙碌。最近又拖延症犯了，心里总想着那件没落地的事情，大山越压越重，就非常疲惫。这次的中长期计划和预期差距较大，我也做了复盘，发现有很多需要注意">
+    <meta name="description" content="今天配置 cloudflare 中站点的 dns，遇到一些关于 cname、tls、cloudflare 代理相关的问题，做了下梳理。重点有下：  cname 负责提供目标 ip，在机制上类似【权威域名服务器】 目标 ip 所在的服务如果非自行掌控（比如强行设置一个目标域名），很可能无法工作。 cloudflare 设置 cname 的时候有一个【代理】功能。这个设计非常糟糕，完全脱离了 cnam">
 <meta property="og:type" content="article">
-<meta property="og:title" content="有计划的努力">
-<meta property="og:url" content="https://www.yigegongjiang.com/2022/plan/index.html">
+<meta property="og:title" content="DNS 的 CNAME 是如何工作的">
+<meta property="og:url" content="https://www.yigegongjiang.com/2024/cname/index.html">
 <meta property="og:site_name" content="一个工匠">
-<meta property="og:description" content="又一年中秋过去了，时间过的真快！中秋节的几天假，我是算着日子过的。准确来说，近几个月的节假日，我都是计算着过去了几个小时又过去了几天。我艰难的珍惜着时间，算计着时间的流逝，心里压力很大，劳累无穷。因为有件事情需要落地，只有节假日这些非工作的时间才能够静下心来忙碌。最近又拖延症犯了，心里总想着那件没落地的事情，大山越压越重，就非常疲惫。这次的中长期计划和预期差距较大，我也做了复盘，发现有很多需要注意">
+<meta property="og:description" content="今天配置 cloudflare 中站点的 dns，遇到一些关于 cname、tls、cloudflare 代理相关的问题，做了下梳理。重点有下：  cname 负责提供目标 ip，在机制上类似【权威域名服务器】 目标 ip 所在的服务如果非自行掌控（比如强行设置一个目标域名），很可能无法工作。 cloudflare 设置 cname 的时候有一个【代理】功能。这个设计非常糟糕，完全脱离了 cnam">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-09-12T17:10:32.000Z">
+<meta property="article:published_time" content="2024-11-10T14:54:14.000Z">
 <meta property="article:author" content="海驴">
-<meta property="article:tag" content="Life">
+<meta property="article:tag" content="网络">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://www.yigegongjiang.com/2022/plan/">
+<link rel="canonical" href="https://www.yigegongjiang.com/2024/cname/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2022/plan/","path":"2022/plan/","title":"有计划的努力"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2024/cname/","path":"2024/cname/","title":"DNS 的 CNAME 是如何工作的"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>有计划的努力 | 一个工匠</title>
+<title>DNS 的 CNAME 是如何工作的 | 一个工匠</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CTEWJ02QX"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-8CTEWJ02QX","only_pageview":false,"measure_protocol_api_secret":null}</script>
@@ -117,7 +117,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%81%A5%E5%BA%B7"><span class="nav-number">1.</span> <span class="nav-text">健康</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%83%E6%83%85"><span class="nav-number">2.</span> <span class="nav-text">心情</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%96%E5%BB%B6%E7%97%87"><span class="nav-number">3.</span> <span class="nav-text">拖延症</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%A5%E6%8A%B1%E5%8F%98%E5%8C%96"><span class="nav-number">4.</span> <span class="nav-text">拥抱变化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E8%BD%BB%E9%87%8D"><span class="nav-number">5.</span> <span class="nav-text">分轻重</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%93%E5%BF%83%E5%81%9A%E5%A5%BD%E4%B8%80%E4%BB%B6%E4%BA%8B"><span class="nav-number">6.</span> <span class="nav-text">专心做好一件事</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%86%E8%A7%A3%E8%AE%A1%E5%88%92"><span class="nav-number">7.</span> <span class="nav-text">拆解计划</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A2%AB%E8%AE%A1%E5%88%92%E6%8E%A8%E7%9D%80%E5%89%8D%E8%BF%9B"><span class="nav-number">8.</span> <span class="nav-text">被计划推着前进</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CNAME-%E6%98%AF%E5%81%9A%E4%BB%80%E4%B9%88%E7%94%A8%E7%9A%84"><span class="nav-number">1.</span> <span class="nav-text">CNAME 是做什么用的</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CNAME-%E7%9B%AE%E6%A0%87%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">2.</span> <span class="nav-text">CNAME 目标服务器注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E8%BF%87-%E4%BB%A3%E7%90%86-%E5%AE%9E%E7%8E%B0-koyeb-com-%E4%BA%91%E5%B9%B3%E5%8F%B0%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">通过 代理 实现 koyeb.com 云平台自定义域名？</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -184,7 +184,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2022/plan/">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2024/cname/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
@@ -197,12 +197,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="有计划的努力 | 一个工匠">
+      <meta itemprop="name" content="DNS 的 CNAME 是如何工作的 | 一个工匠">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          有计划的努力
+          DNS 的 CNAME 是如何工作的
         </h1>
 
         <div class="post-meta-container">
@@ -213,7 +213,7 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2022-09-13 01:10:32" itemprop="dateCreated datePublished" datetime="2022-09-13T01:10:32+08:00">2022-09-13</time>
+      <time title="Created: 2024-11-10 22:54:14" itemprop="dateCreated datePublished" datetime="2024-11-10T22:54:14+08:00">2024-11-10</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -221,7 +221,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%A7%82%E7%82%B9/" itemprop="url" rel="index"><span itemprop="name">观点</span></a>
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
         </span>
     </span>
 
@@ -234,23 +234,58 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>又一年中秋过去了，时间过的真快！中秋节的几天假，我是算着日子过的。准确来说，近几个月的节假日，我都是计算着过去了几个小时又过去了几天。我艰难的珍惜着时间，算计着时间的流逝，心里压力很大，劳累无穷。<br>因为有件事情需要落地，只有节假日这些非工作的时间才能够静下心来忙碌。最近又拖延症犯了，心里总想着那件没落地的事情，大山越压越重，就非常疲惫。<br>这次的中长期计划和预期差距较大，我也做了复盘，发现有很多需要注意的点值得记录。可以为大大小小的耗时耗力又重要的计划摆正方向。</p>
-<blockquote>
-<p>健康 / 心情 / 拖延症 / 拥抱变化 / 分轻重 / 专心做好一件事 / 拆解计划 / 被计划推着前进  </p>
-</blockquote>
-<h3 id="健康"><a href="#健康" class="headerlink" title="健康"></a>健康</h3><p>健康非常重要，感觉身体跟不上了，那锻炼的时间就是立刻马上，就不要管那些还没有完成的事项了。<br>因为身体非常重要，而锻炼事项通常耗时较短，这就是第一优先级。那些未完成的事项可能动不动就是几小时或者几天，相比来说可以拖一拖。<br>睡眠时间，一定要分配好。靠脑子吃饭的人，不要吝啬自己的睡眠时间。这里不是说不要熬夜晚睡，是要保障睡眠时间。<br>睡眠不足大脑不在状态，绝对非常耽误事。思考能力下降会带来各种问题，扣着点时间不值得。</p>
+    <div class="post-body" itemprop="articleBody"><p>今天配置 cloudflare 中站点的 dns，遇到一些关于 cname、tls、cloudflare 代理相关的问题，做了下梳理。重点有下：</p>
+<ol>
+<li>cname 负责提供目标 ip，在机制上类似【权威域名服务器】</li>
+<li>目标 ip 所在的服务如果非自行掌控（比如强行设置一个目标域名），很可能无法工作。</li>
+<li>cloudflare 设置 cname 的时候有一个【代理】功能。这个设计非常糟糕，完全脱离了 cname 的本意。</li>
+</ol>
+<p>以下介绍中，使用 cloudflare 配置 <code>test.yigegongjiang.com</code> 的 cname 为 <code>httpbin.org</code>，默认不配置【代理】。</p>
 <span id="more"></span>
 
-<h3 id="心情"><a href="#心情" class="headerlink" title="心情"></a>心情</h3><p>心情很重要，不要为无足轻重的小事乱了心境。也别把自己的坏情绪带给亲人，那样只会越来越糟。<br>当自己的心情不好或者家庭的整体气氛都比较压抑的时候，判断能力跳崖式下降，很多鸡毛蒜皮的小事都会变成大问题，而且还会波及到其他的方方面面。事后来看，非常不值得，极为浪费时间。<br>当心情不好的时候，就想一个问题：<strong>目前状态能不能解决问题？</strong>基本上心情不好是解决不了任何问题的，因为愤怒和问题之间没有啥联系，纯属自嗨。放松有很多种途径，这种途径的代价有些大，有时间、金钱、亲情甚至更多。</p>
-<h3 id="拖延症"><a href="#拖延症" class="headerlink" title="拖延症"></a>拖延症</h3><p>有件事必须要做，就尽快做，越拖代价越大。时间一定可以压出来，但拖下去的危害复利相当大。<br>如果是短时间就能做的，那就尽快找时间来做。如果耗时比较长，那就写到计划列表里面。</p>
-<h3 id="拥抱变化"><a href="#拥抱变化" class="headerlink" title="拥抱变化"></a>拥抱变化</h3><p>变化在所难免，拥抱变化，而不是抵触，因为变化一定会发生。<br>在一个中长期计划的落地过程中，不要想着顺顺利利一路顺风，那是不可能的。不要畏惧变化，它一定会到来，但也一定要解决，这是中长期计划里面的一环，该有的就不会少。<br>当然对于可提前预知或者感知到的变化，也要及时做好准备。这可以提高<strong>应对已经变化</strong>的命中率。迎接变化总归要好过变化突然上门。</p>
-<h3 id="分轻重"><a href="#分轻重" class="headerlink" title="分轻重"></a>分轻重</h3><p>除了当前主线任务，当然会有各种不相关的细索事项比如缴电费修理自行车啥的。要理清细索事项和当前主线任务的占比。如果细索事项评估没有价值，要及时止损，不要去做。<br>不要把时间浪费在无聊的事项上，感动自己没有意义。</p>
-<h3 id="专心做好一件事"><a href="#专心做好一件事" class="headerlink" title="专心做好一件事"></a>专心做好一件事</h3><p>专心做一件事，不要分心。计划是可以并行的，可以一天之内完成多个计划的子事项，但不要一个小时内分摊经历到多个子事项中。做一个事情的时候，就要足够的用心，别浪费了这一刻的大脑周期。</p>
-<h3 id="拆解计划"><a href="#拆解计划" class="headerlink" title="拆解计划"></a>拆解计划</h3><p>每一个中长期的大计划，都要有短期的目标。计划拆解很重要，可以将计划的价值、时间、难度、收益都直观的体现出来。无法拆解的中长期计划，就不值得去做，没有价值。<br>明确制定短期计划列表，让走的每一步路都留下脚印。这样小的子事项能够按期完成，大的计划不再是空中楼阁。</p>
-<h3 id="被计划推着前进"><a href="#被计划推着前进" class="headerlink" title="被计划推着前进"></a>被计划推着前进</h3><p>不要没有计划事项了。那个代办笔记里面，中长期计划空白的周期不要太长。<br>应该让代办计划推着我们往前走，而不是浑噩的度过一个月又一个月。<br>代办计划应该是深思熟虑的，不要做没有价值的不值得的事情。每一个计划的落地应该会带来持久的成就感，而不是自嗨，单纯的自己感动没有意义。</p>
-<p>人生啊，还是走的太快，经不起回首。<br>能够精确的度量掌控会比较放心，这样可以明白去年、今年、明年自己做了啥。付出了什么、得到了什么、又产生了什么价值。<br>这个精确度量的刻度，如果以季或者年来计算，找不到价值点。如果以天来计算又显得繁重和不现实。中长期的计划感觉刚刚好，一个月到半年，平摊了时间成本，也能抹平那些没有价值或者价值小的事项。<br>别瞎努力，人生虽长，但禁不起几次重大的折腾。而这几次重大的折腾，可能就在中长期代办计划里。毕竟几个有连贯性的中长期计划，连起来很可能就对人生起了决定性的作用。</p>
+<h1 id="CNAME-是做什么用的"><a href="#CNAME-是做什么用的" class="headerlink" title="CNAME 是做什么用的"></a>CNAME 是做什么用的</h1><p>DNS 解析中，通过 <code>dig A test.yigegongjiang.com</code>，<code>dig A httpbin.org</code> 会有如下返回（参数 A 表示返回目标域名的 ipv4）：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">   // dig A test.yigegongjiang.com</span><br><span class="line"> </span><br><span class="line">   ;; ANSWER SECTION:</span><br><span class="line">-&gt; test.yigegongjiang.com.  300  IN  CNAME  httpbin.org.</span><br><span class="line">   httpbin.org.    60  IN  A  54.243.34.18</span><br><span class="line">   httpbin.org.    60  IN  A  34.206.181.91</span><br><span class="line">   httpbin.org.    60  IN  A  3.222.34.231</span><br><span class="line">   httpbin.org.    60  IN  A  35.172.59.156</span><br><span class="line">   httpbin.org.    60  IN  A  54.237.204.19</span><br><span class="line">   httpbin.org.    60  IN  A  184.73.239.81</span><br><span class="line"> </span><br><span class="line">   // dig A httpbin.org</span><br><span class="line">   ;; ANSWER SECTION:</span><br><span class="line">   httpbin.org.    60  IN  A  3.222.34.231</span><br><span class="line">   httpbin.org.    60  IN  A  34.206.181.91</span><br><span class="line">   httpbin.org.    60  IN  A  54.243.34.18</span><br><span class="line">   httpbin.org.    60  IN  A  184.73.239.81</span><br><span class="line">   httpbin.org.    60  IN  A  35.172.59.156</span><br><span class="line">   httpbin.org.    60  IN  A  54.237.204.19</span><br></pre></td></tr></tbody></table></figure>
+
+<p>可以发现，如果需要找到 <code>test.yigegongjiang.com</code> 的 A 记录，一定需要先找到 CNAME 记录，再通过 CNAME 指向的域名继续寻找目标 ip。</p>
+<p>所以这里提出 <strong>CNAME</strong> 的第一个作用，就是【设定 IP】。使用 github pages 搭建博客的时候：</p>
+<ol>
+<li>购买了域名 m ，希望将 m 域名映射到 n.github.io Blog 域名上。</li>
+<li>后续直接访问 m，ip 被重定向到 n.github.io，从而完成 Blog 的访问。</li>
+</ol>
+<p>其次，<strong>CNAME</strong> 还有一个作用是【负载均衡】。如使用 xx 云平台部署服务：</p>
+<ol>
+<li>在 xx 云平台上的多个边缘节点部署了服务，并统一使用域名 m 向用户提供服务。</li>
+<li>无需自行搭建【权威域名服务器】，通过 xx 云平台提供的 n.xx.com 做域名 m 的 cname 指向。</li>
+<li>用户请求域名 m 的时候，DNS 解析会进入 n.xx.com，xx 云平台负责根据用户的地理位置通过 n.xx.com 提供动态的 ip，实现【边缘访问】和【负载均衡】。</li>
+</ol>
+<p>Anyway，不管 CNAME 通过中继域名实现【设定 IP】，还是做【负载均衡】，CNAME 本质上都是为初始域名提供 ip。<br>不像 A/AAAA 记录，强制设定了一个固定 ip。CNAME 提供了一个【缓冲层】，可以做更多的事情。</p>
+<p>这里也会出现一些问题，通过缓冲层获取到的 ip 所在的服务器，可能无法很好的处理我们的 m 域名请求。</p>
+<h1 id="CNAME-目标服务器注意事项"><a href="#CNAME-目标服务器注意事项" class="headerlink" title="CNAME 目标服务器注意事项"></a>CNAME 目标服务器注意事项</h1><p>假设我们回到了没有 tls/ssl 安全验证的 http 场景，将 <code>test.yigegongjiang.com</code> 的 cname 指向 <code>www.google.com</code> 或者 <code>www.facebook.com</code>，可以访问 Google 和 facebook 吗？<br>理论上可以，实际并不行。如果把 cname 指向 <code>httpbin.org</code>，却又可以正常访问。<br>进行 http 请求的时候，主机域名 <code>test.yigegongjiang.com</code> 会通过 【host】字段携带到目标服务器，此时目标服务器完全可以主动拒绝服务，因为不是它们自己的域名。<br>而 <code>httpbin.org</code> 能正常访问，是它没有限制请求中的 host。</p>
+<p>回到 https 场景，有了 <a href="https://www.yigegongjiang.com/2023/signature/#%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9ASSL">tls/ssl 安全证书</a>，又变得不一样了。<br>同样进行上面的设定，不管 cname 指向哪个域名，浏览器都会弹窗告诉我们不安全。因为 <code>www.google.com</code> 返回的 tls 证书，验证的域名是 <code>*.google.com</code>，而用户访问的域名是 <code>test.yigeogngjiang.com</code>，不匹配！证书验证不通过！<br>甚至于有些目标域名，连安全弹窗都不会弹起。</p>
+<blockquote>
+<p>服务器如何返回证书，是通过 tls 认证中的【SNI】标记识别具体服务的（一个服务器可以开 n 个服务，有 n 个证书）。<br>如何服务器都不认识 <code>test.yigegongjiang.com</code> 这个 SNI 标记，那么它可能连 tls 证书都不会返回。</p>
+</blockquote>
+<p>上面提到的 google、facebook、httpbin 服务，虽然不认识 <code>test.yigegongjiang.com</code> 这个域名，但还是返回了他们各自默认的 tls 证书。此时，如果用户选择强制信任证书：</p>
+<ol>
+<li>google、facebook 回到了 http 时候一样，因为 host 不匹配，主动拒绝服务了。</li>
+<li>httpbin 也回到了 http 时候一样，可以正常访问。因为 httpbin 默认没有限制 host。</li>
+</ol>
+<p>对于一台 Nginx 配置的目标服务器（假设默认域名是 a.com），如果需要完美兼容 <code>test.yigegongjiang.com</code> 这个域名的 cname 映射，需要做两件事：</p>
+<ol>
+<li>识别到 SNI 是 <code>test.yigegongjiang.com</code> 后，需要返回 <code>yigegongjinag.com</code> 的 tls 证书，供浏览器进行安全链验证。<br>  a. 或者返回一个 tls 证书，该证书同时包含 <code>a.com</code> 和 <code>yigegongjiang.com</code> 的认证。</li>
+<li>将 <code>a.com</code> 和 <code>test.yigegongjiang.com</code> 这两个 host 同时指向同一个内部的 port 服务。<br>  a. 或者不识别 host，所有 host 都指向同一个内部的 port 服务。</li>
+</ol>
+<p>上面的两个方案，如果是特殊的服务场景倒还能实现，如 github page 提供了 static blog 服务，可以根据我们配置的域名来进行设置，从而完成访问。<br>对于 <code>fly.io</code>、<code>koyeb.com</code> 这些云平台，自定义域名就是它们的收费项，那肯定不会放开这个口子。</p>
+<h2 id="通过-代理-实现-koyeb-com-云平台自定义域名？"><a href="#通过-代理-实现-koyeb-com-云平台自定义域名？" class="headerlink" title="通过 代理 实现 koyeb.com 云平台自定义域名？"></a>通过 代理 实现 koyeb.com 云平台自定义域名？</h2><p>如果有一个免费的中间代理，我们访问 <code>test.yigegongjiang.com</code> 的所有请求，这个中间代理帮我们将所有流量正向代理到 koyeb.com 平台上，不就可以既不买 koyeb 的服务，又能实现自定义域名了吗？<br>cloudflare 提供了这个能力，也是它的安全、缓存等一系列功能的起点。<br>cloudflare 配置 dns cname 的时候，有一个【代理】选项。选中后，当前配置虽然看起来是 cname，但完全脱离了 cname 本意。</p>
+<ol>
+<li>此时不是 cname 了，通过 dig 工具会发现此时返回的是 cloudflare 的 ip</li>
+<li> 访问域名的流量，会被 cloudflare 转发到 cname 指向的域名上，这里的 cname 充当【代理】的角色。</li>
+</ol>
+<p>实际上，依旧访问不通。显然 koyeb 这些云平台不会留下这么大的空子给别人钻。<br>因为 cloudflare、aws 这些正规的代理服务，在请求目标服务的时候，都会提供完善的信息已告知目标服务：我是代理。<br>它不仅把原始的域名等信息提供给了 koyeb，还会把自己的信息都提供给 koyeb。所以，koyeb 直接拒绝服务就行了。</p>
+<p>当然，我们可以自己搭建一个【猥琐】的【三级代理】，将 cloudflare 那边的代理流量打过来，然后再去请求 koyeb，此时【猥琐代理】完全装作正常用户的浏览器，那 koyeb 的确是察觉不出来的。<br>此时，cloudflare 又能够捕获到完整的数据，实现缓存、边缘节点、cdn 等等能力。</p>
 <hr>
-<p>说不要虚度了一生，这样的空谈大话真没有意义。<br>每个人需要的东西都是不同的，到了不同的年龄、阶段、环境后，需要的东西才都会改变。<br>所以怎么才算不虚度一生？这除了画了个大饼，什么都没有。<br>每个人都是自己人生的王，觉醒了才知道自己在某个阶段需要什么，奋斗着去争取什么。<br>需要知识，会有很多种途径去获取知识，但前提是我们得知道我们需要知识。<br>细节都会有解决的办法，但大的方向往往很难被察觉，每个人需要的大方向都是只有自己才知道，就是至亲也帮不了。<br>多思考一些，多过滤一些自己的需求项，抓住那些对自己举足轻重的，剩下的就交给自己和时间去落地吧。</p>
+<pre><code>
+</code></pre>
 
     </div>
 
@@ -307,21 +342,18 @@
 </div>
 
           <div class="post-tags">
-              <a href="/tags/Life/" rel="tag"># Life</a>
+              <a href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag"># 网络</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/time/" rel="prev" title="随时间的变化">
-                  <i class="fa fa-angle-left"></i> 随时间的变化
+                <a href="/2024/webrtc/" rel="prev" title="WebRTC 的一些解释">
+                  <i class="fa fa-angle-left"></i> WebRTC 的一些解释
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/memory/" rel="next" title="内存分段与分页">
-                  内存分段与分页 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -399,11 +431,11 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2022/plan/"}</script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2024/cname/"}</script>
   <script src="/js/third-party/quicklink.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"c966a3fd12257023646f4a0d960a2a2d"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"193ccaff02663d2311e855078de3a250"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
 <script src="/js/third-party/comments/utterances.js"></script>
