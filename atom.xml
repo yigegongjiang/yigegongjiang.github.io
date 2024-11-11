@@ -6,7 +6,7 @@
   <link href="https://www.yigegongjiang.com/atom.xml" rel="self"/>
   
   <link href="https://www.yigegongjiang.com/"/>
-  <updated>2024-11-10T14:54:14.000Z</updated>
+  <updated>2024-11-11T03:38:32.000Z</updated>
   <id>https://www.yigegongjiang.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mac - Command Line Tools</title>
+    <link href="https://www.yigegongjiang.com/2024/command-line-tools/"/>
+    <id>https://www.yigegongjiang.com/2024/command-line-tools/</id>
+    <published>2024-11-11T03:38:32.000Z</published>
+    <updated>2024-11-11T03:38:32.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Mac 系统上，默认没有提供 git、xcodebuild 这些开发者命令。所以当一些终端命令 (brew 等) 被触发后，macos 系统会弹窗提醒用户进行【开发者工具】的安装，即【Command Lines Tools】(下面简称 tools)。<br>如果安装了不同版本的 xcode，则每个版本都会携带各自 xcode 版本的【tools】。<br>上面提到的系统弹窗，是不需要安装 xcode 也可以安装【tools】。但这个 tools 版本会比较低，内部的命令数量也会少于 xcode 携带的。即：最新版本的 xcode，携带的 tools 也是最新的。<br>这里就可以发现有多个 tools 目录了，如下：</p><ol><li>非 xcode 携带：<code>/Library/Developer/CommandLineTools</code></li><li>xcode:<code>/Applications/Xcode.app/Contents/Developer</code></li><li>xcode beta: <code>/Applications/Xcode-16.2.0-Beta.2.app/Contents/Developer</code></li></ol><p>在终端执行 <code>git</code> 、<code>xcodebuild</code> 的时候，一定会使用某一个 tools 中的命令，可具体使用哪一个呢？</p><span id="more"></span><h1 id="xcode-select"><a href="#xcode-select" class="headerlink" title="xcode-select"></a>xcode-select</h1><p>通过 <code>xcode-select</code> 可以方便的切换 main tools，默认也只有 main tools 会生效。可以通过 <code>man xcode-select</code> 查看简介。</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xcode-select --install // 安装非 xcode 版本的 tools</span><br><span class="line">xcode-select --switch &lt;path&gt; // 切换不同的 tools 作为 main tools</span><br><span class="line">xcode-select -p // 打印当前 main tools path</span><br></pre></td></tr></tbody></table></figure><p>当 tools 被指定为 <code>xcode-xx-beta.app/xx/Develop</code> 目录的时候：<br>在终端中执行 git 命令，最终就会使用：<code>/Applications/Xcode-16.2.0-Beta.2.app/Contents/Developer/usr/bin/git</code><br>xcode-select 默认只有 1 个 tools 被激活，是操作系统级别的全局有效。<br>如果在 a tools 激活的同时，希望使用 b tools 该怎么办呢？在多版本 xcode 共存的时候，可能需要使用不同的 tools 命令进行开发。<br>这个时候在当前的命令行环境中设置 <code>DEVELOPER_DIR</code> 就可以临时切换 tools 目录：</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 1</span><br><span class="line">&gt; xcrun --find git</span><br><span class="line">/Applications/Xcode-16.2.0-Beta.2.app/Contents/Developer/usr/bin/git</span><br><span class="line">// 2</span><br><span class="line">export DEVELOPER_DIR="/Applications/Xcode.app/Contents/Developer"</span><br><span class="line">// 3</span><br><span class="line">&gt; xcrun --find git</span><br><span class="line">/Applications/Xcode.app/Contents/Developer/usr/bin/git</span><br></pre></td></tr></tbody></table></figure><h1 id="xcrun"><a href="#xcrun" class="headerlink" title="xcrun"></a>xcrun</h1><p>当在终端中执行 <code>git</code> 命令的时候，使用的是 tools 中的 git，这里需要探究一下。</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 1</span><br><span class="line">&gt; where git</span><br><span class="line">/usr/bin/git</span><br><span class="line">// 2</span><br><span class="line">&gt; xcrun --find git</span><br><span class="line">/Applications/Xcode.app/Contents/Developer/usr/bin/git</span><br></pre></td></tr></tbody></table></figure><p>通过 where 发现，<code>/usr/bin</code> 目录下是存在 git 二进制可执行文件的。为什么说执行的是 tools 中的 git 可执行文件呢？<br>这就要说到 xcode-select 维护多个 tools 的意义了。<br><code>/usr/bin</code> 是 path 路径，可以直接找到命令。但是像 git 这些命令依托不同的 tools 环境提供，总不能在切换 main tools 的时候，把这些命令 copy 到 <code>/usr/bin</code> 中。所以对于 <code>/usr/bin</code> 中的 git、xcodebuild 等命令，在具体执行的时候都执行的是 main tools 中的可执行文件。<br>实现这个能力的，就是 【xcrun】。</p><p>xcrun 的目标只有一个，就是根据 xcode-select 设定的 mail tools 目录，在其下面寻找命令。可以通过 <code>man xcrun</code> 查看详细：</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Options:</span><br><span class="line">  -h, --help                  show this help message and exit</span><br><span class="line">  --version                   show the xcrun version</span><br><span class="line">  -v, --verbose               show verbose logging output</span><br><span class="line">  --sdk &lt;sdk name&gt;            find the tool for the given SDK name</span><br><span class="line">  --toolchain &lt;name&gt;          find the tool for the given toolchain</span><br><span class="line">  -l, --log                   show commands to be executed (with --run)</span><br><span class="line">  -f, --find                  only find and print the tool path</span><br><span class="line">  -r, --run                   find and execute the tool (the default behavior)</span><br><span class="line">  -n, --no-cache              do not use the lookup cache</span><br><span class="line">  -k, --kill-cache            invalidate all existing cache entries</span><br><span class="line">  --show-sdk-path             show selected SDK install path</span><br><span class="line">  --show-sdk-version          show selected SDK version</span><br><span class="line">  --show-sdk-build-version    show selected SDK build version</span><br><span class="line">  --show-sdk-platform-path    show selected SDK platform path</span><br><span class="line">  --show-sdk-platform-version show selected SDK platform version</span><br></pre></td></tr></tbody></table></figure><p>上面示例中的 <code>xcrun --find git</code> 就是用来找 git 二进制可执行文件路径的。<br>当 git 在 tools 中的路径找到后，原先执行的 <code>/usr/bin/git</code> 命令，也就通过这个新的执行文件来实现了。</p><hr>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;Mac 系统上，默认没有提供 git、xcodebuild 这些开发者命令。所以当一些终端命令 (brew 等) 被触发后，macos 系统会弹窗提醒用户进行【开发者工具】的安装，即【Command Lines Tools】(下面简称 tools)。&lt;br&gt;如果安装了不同版本的 xcode，则每个版本都会携带各自 xcode 版本的【tools】。&lt;br&gt;上面提到的系统弹窗，是不需要安装 xcode 也可以安装【tools】。但这个 tools 版本会比较低，内部的命令数量也会少于 xcode 携带的。即：最新版本的 xcode，携带的 tools 也是最新的。&lt;br&gt;这里就可以发现有多个 tools 目录了，如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;非 xcode 携带：&lt;code&gt;/Library/Developer/CommandLineTools&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;xcode:&lt;code&gt;/Applications/Xcode.app/Contents/Developer&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;xcode beta: &lt;code&gt;/Applications/Xcode-16.2.0-Beta.2.app/Contents/Developer&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;在终端执行 &lt;code&gt;git&lt;/code&gt; 、&lt;code&gt;xcodebuild&lt;/code&gt; 的时候，一定会使用某一个 tools 中的命令，可具体使用哪一个呢？&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="iOS" scheme="https://www.yigegongjiang.com/tags/iOS/"/>
+    
+    <category term="Swift" scheme="https://www.yigegongjiang.com/tags/Swift/"/>
+    
+  </entry>
   
   <entry>
     <title>DNS 的 CNAME 是如何工作的</title>

@@ -96,6 +96,7 @@ https://www.yigegongjiang.com/2024/warp/
 https://www.yigegongjiang.com/2024/sse/
 https://www.yigegongjiang.com/2024/webrtc/
 https://www.yigegongjiang.com/2024/cname/
+https://www.yigegongjiang.com/2024/command-line-tools/
 https://www.yigegongjiang.com/about/index.html
 https://www.yigegongjiang.com/categories/index.html
 https://www.yigegongjiang.com/japan/index.html
