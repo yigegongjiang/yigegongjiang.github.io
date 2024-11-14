@@ -192,7 +192,21 @@ MyLibrary.xcframework
 `xcodebuild -create-xcframework  -library pathA/N.a -library pathB/N.a -library pathC/N.a -allow-internal-distribution -output N.xcframework`
 即待合并的目标文件使用 -library 标记，这样可以将多个 .a 文件聚合为 xcframework，而不用关心手动将 .a 转为 .framework 的复杂问题。（当然，这里还需要手动/脚本将 swiftmodule 复制到对应 framework 的 modules 文件夹中。）
 
-# 0x05 小结
+# 0x05 Swift Package 输出 xcframework 正确方案
+不要使用 Swift Pakcage 开发 framework。Swift Pakcage 还是应该做源码依赖的分发。
+应该将工程转换成 xcode framework 工程，通过 xcodebuild 命令进行打包输出 xcframework。
+可以自行增加这个 xcode 工程文件，也可以通过下面这个开源项目来实现：
+
+## swift-create-xcframework
+https://github.com/segment-integrations/swift-create-xcframework
+该项目，通过将 SPM 项目转化为 xcode proj 项目，从而实现 framework 的制作。然后通过脚本，将多架构多平台 framework 制作成 xcframework，并提供 zip 服务。
+该项目有些时候会有一些小问题，但总体来说问题不大。
+
+## Carthage 输出 xcframework
+对于非 Swift Package 工程，即 Xcode Project 工程，开发人员可以通过 xcode build lipo 等方案，自行输出 xcframework 包。
+但也有一个比较友好、快捷的方案，即通过 `Carthage` 来实现。这个在 CI 场景下可能不太好用。如果是本地打包，倒是挺方便的。
+
+# 0x06 小结
 
 至此，说明了如何在 Package 环境下，快速输出二进制给到其他项目使用。
 
