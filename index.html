@@ -91,7 +91,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">99</span></a></li><li class="menu-item menu-item-日本指北"><a href="/japan/" rel="section">日本指北</a></li><li class="menu-item menu-item-时间舟"><a href="/categories/%E6%97%B6%E9%97%B4%E8%88%9F/" rel="section">时间舟</a></li><li class="menu-item menu-item-source"><a href="/openSource" rel="section">Source</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">100</span></a></li><li class="menu-item menu-item-日本指北"><a href="/japan/" rel="section">日本指北</a></li><li class="menu-item menu-item-时间舟"><a href="/categories/%E6%97%B6%E9%97%B4%E8%88%9F/" rel="section">时间舟</a></li><li class="menu-item menu-item-source"><a href="/openSource" rel="section">Source</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
   </ul>
 </nav>
 
@@ -130,7 +130,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-count">100</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -172,6 +172,103 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2024/apple-frameworks/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
+      <meta itemprop="name" content="海驴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个工匠">
+      <meta itemprop="description" content="时间，真的不多了。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 一个工匠">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/apple-frameworks/" class="post-title-link" itemprop="url">apple frameworks</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-11-14 13:16:00" itemprop="dateCreated datePublished" datetime="2024-11-14T13:16:00+08:00">2024-11-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>动态库 &amp; 静态库，若单独输出并接入主工程，逻辑倒很清晰。如果牵涉到多个 framework 不同类型并且相互依赖，会增加不少复杂度。<br>以下说明中，动态库使用 DFramework 表示，静态库使用 SFramework 表示。</p>
+<h1 id="1-framework"><a href="#1-framework" class="headerlink" title="1 framework"></a>1 framework</h1><p>仅需要提供 1 个 framework，直接提供 DFramework 即可。DFramework 优先，必要的时候再提供 SFramework</p>
+<h1 id="n-framework"><a href="#n-framework" class="headerlink" title="n framework"></a>n framework</h1><p>因为代码结构分组，可能需要提供多个 framework：</p>
+<ol>
+<li>DFramework 优先，能不提供 SFramework 就不要提供<ul>
+<li>有 n 个 DFramework 就提供 n 个。相互之间做好依赖文档，App 需要根据依赖文档 <strong>flat</strong> 平铺接入所有需要的 DFramework。</li>
+<li>如果 b DFramework 仅仅被 a DFramework 依赖，可以将 b 打入 a DFramework 的 <code>frameworks</code> 文件夹中，通过 <code>embed</code> 实现。<ul>
+<li>这样就可以不再文档中说明 b DFramework 的存在，对外界透明。</li>
+<li>这种方案，最终的 app 中 framework 不是 flat 平铺的，而是具有层级结构，如 ：App - a DFramework - b DFramework</li>
+</ul>
+</li>
+<li> 如果 b DFramework 同时被 m DFramework 和 n DFramework 依赖，不能将 b 隐藏（打入 m 和 n 中）。<ul>
+<li>否则，App 集成 m 和 n 的时候，b 会出现多份。如果 b 的版本不一样，将按照打包顺序只使用其中一个。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+          <!--noindex-->
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -917,90 +1014,6 @@
 <li>操作系统根据语言的不同，会使用默认字体。比如中文系统，会使用 <code>PingFang</code> 字体。英文系统，会使用 <code>SF</code> 字体。</li>
 <li>app、dmg 等软件，可以直接使用 <code>defaultfont:xxx</code> 的形式直接使用系统字体，或者使用 <code>fontname:xxx</code> 的形式自行选择字体。自行选择的时候，可以使用系统提供的字体，也可以将 xx 字体打入 app 中来使用。</li>
 <li>app 提供修改字体的功能，用户可以自行选择需要的字体。</li>
-</ol>
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2024/esp32/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
-      <meta itemprop="name" content="海驴">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一个工匠">
-      <meta itemprop="description" content="时间，真的不多了。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 一个工匠">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/esp32/" class="post-title-link" itemprop="url">ESP32</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2024-10-22 10:48:01" itemprop="dateCreated datePublished" datetime="2024-10-22T10:48:01+08:00">2024-10-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="嵌入式"><a href="#嵌入式" class="headerlink" title="嵌入式"></a>嵌入式</h1><ol>
-<li>特定功能：嵌入式是为了完成特定的物理功能，如温度捕捉、机器人。</li>
-<li>特定组合：通过小巧的不可修改的硬件、软件，协同后直接发布。后期，不太好修改硬件或者软件（可以修改，但一般不会主动修改）。</li>
-<li>一次成型：很难进行二次改造。因为组合比较特定，硬件和软件之间的 api 都是私有的，无法迁移。</li>
 </ol>
           <!--noindex-->
           <!--/noindex-->
