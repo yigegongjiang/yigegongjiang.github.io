@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="manifest" href="/images/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.2","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="All payshttps:&#x2F;&#x2F;stripe.com&#x2F;zh-sg&#x2F;payments&#x2F;payment-methods Stripe 支持了很多支付方式，可以窥见一些。Stripe 主要对接线上支付，对于很多线下支付的渠道如【nanaco】等电子货币，就看不到了。 japan">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to pay">
+<meta property="og:url" content="https://www.yigegongjiang.com/2024/how-to-pay/index.html">
+<meta property="og:site_name" content="一个工匠">
+<meta property="og:description" content="All payshttps:&#x2F;&#x2F;stripe.com&#x2F;zh-sg&#x2F;payments&#x2F;payment-methods Stripe 支持了很多支付方式，可以窥见一些。Stripe 主要对接线上支付，对于很多线下支付的渠道如【nanaco】等电子货币，就看不到了。 japan">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/202412090122548.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/202412090139321.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/202412090124537.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/202412090125351.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/202412090126692.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/202412090127218.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/202412090128277.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/202412090128854.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/202412090129489.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/202412090129298.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/202412090134169.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/202412090137924.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/202412090138969.png">
+<meta property="article:published_time" content="2024-12-08T17:18:03.000Z">
+<meta property="article:author" content="海驴">
+<meta property="article:tag" content="Life">
+<meta property="article:tag" content="Work">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/202412090122548.png">
+
+
+<link rel="canonical" href="https://www.yigegongjiang.com/2024/how-to-pay/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2024/how-to-pay/","path":"2024/how-to-pay/","title":"How to pay"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>How to pay | 一个工匠</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CTEWJ02QX"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-8CTEWJ02QX","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="一个工匠" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="一个工匠" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">一个工匠</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">101</span></a></li><li class="menu-item menu-item-日本指北"><a href="/japan/" rel="section">日本指北</a></li><li class="menu-item menu-item-时间舟"><a href="/categories/%E6%97%B6%E9%97%B4%E8%88%9F/" rel="section">时间舟</a></li><li class="menu-item menu-item-source"><a href="/openSource" rel="section">Source</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#All-pays"><span class="nav-number">1.</span> <span class="nav-text">All pays</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#japan"><span class="nav-number">1.1.</span> <span class="nav-text">japan</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B4%A7%E5%B8%81"><span class="nav-number">2.</span> <span class="nav-text">货币</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%B5%E5%AD%90%E8%B4%A7%E5%B8%81-%E6%94%AF%E4%BB%98%E9%93%BE%E8%B7%AF"><span class="nav-number">3.</span> <span class="nav-text">电子货币 - 支付链路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%92%B1%E5%8C%85-%E6%94%AF%E4%BB%98%E9%93%BE%E8%B7%AF"><span class="nav-number">4.</span> <span class="nav-text">钱包 - 支付链路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E7%94%A8%E5%8D%A1-%E9%A2%84%E4%BB%98%E5%8D%A1-%E5%80%9F%E8%AE%B0%E5%8D%A1"><span class="nav-number">5.</span> <span class="nav-text">信用卡 - 预付卡 - 借记卡</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%A6%81"><span class="nav-number">5.1.</span> <span class="nav-text">概要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%81%E7%89%8C%E8%B4%B4%E7%89%8C"><span class="nav-number">5.2.</span> <span class="nav-text">品牌贴牌</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E7%94%A8%E5%8D%A1%E6%94%AF%E4%BB%98%E7%BD%91%E7%BB%9C"><span class="nav-number">5.3.</span> <span class="nav-text">信用卡支付网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%91%97%E5%90%8D%E7%9A%84%E5%9B%BD%E9%99%85%E6%94%AF%E4%BB%98%E6%9C%8D%E5%8A%A1%E6%8F%90%E4%BE%9B%E5%95%86"><span class="nav-number">5.4.</span> <span class="nav-text">著名的国际支付服务提供商</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Apple-Pay-%E5%A6%82%E4%BD%95%E6%94%AF%E6%8C%81-EMV-FaliCa"><span class="nav-number">5.5.</span> <span class="nav-text">Apple Pay 如何支持 EMV &amp; FaliCa</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E7%94%A8%E5%8D%A1%E7%9A%84%E4%B8%8D%E5%90%8C%E6%94%AF%E4%BB%98%E9%93%BE%E8%B7%AF"><span class="nav-number">5.6.</span> <span class="nav-text">信用卡的不同支付链路</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%89%B9%E5%88%AB%E6%94%AF%E4%BB%98%E5%9C%BA%E6%99%AF%E4%BB%8B%E7%BB%8D"><span class="nav-number">6.</span> <span class="nav-text">特别支付场景介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tap-to-pay"><span class="nav-number">6.1.</span> <span class="nav-text">Tap to pay</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#example"><span class="nav-number">6.1.1.</span> <span class="nav-text">example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#apple-%E4%BE%9B%E5%BA%94%E5%9C%B0%E5%8C%BA%E8%AF%B4%E6%98%8E"><span class="nav-number">6.1.2.</span> <span class="nav-text">apple 供应地区说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Stripe-%E6%94%AF%E6%8C%81%E5%9C%B0%E5%8C%BA%E8%AF%B4%E6%98%8E"><span class="nav-number">6.1.3.</span> <span class="nav-text">Stripe 支持地区说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Alipay-%E7%A2%B0%E4%B8%80%E4%B8%8B"><span class="nav-number">6.2.</span> <span class="nav-text">Alipay 碰一下</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E4%B8%93%E5%8C%BA"><span class="nav-number">7.</span> <span class="nav-text">技术专区</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Visa-%E6%94%AF%E4%BB%98%E7%BD%91%E5%85%B3%E5%92%8C%E6%B8%85%E7%AE%97%E5%B9%B3%E5%8F%B0-%E8%B7%A8%E5%9B%BD%E9%99%85%E4%BA%A4%E6%98%93"><span class="nav-number">7.1.</span> <span class="nav-text">Visa - 支付网关和清算平台 - 跨国际交易</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%9E%E9%93%B6%E8%A1%8C%E5%A6%82%E4%BD%95%E5%AF%B9%E6%8E%A5%E3%80%90%E6%94%AF%E4%BB%98%E7%BD%91%E7%BB%9C%E3%80%91"><span class="nav-number">7.1.1.</span> <span class="nav-text">非银行如何对接【支付网络】</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Apple-Pay"><span class="nav-number">7.2.</span> <span class="nav-text">Apple Pay</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%90%86%E6%A6%82%E8%A6%81"><span class="nav-number">7.2.1.</span> <span class="nav-text">原理概要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%B5%81%E7%A8%8B"><span class="nav-number">7.2.2.</span> <span class="nav-text">技术流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#native-self-server"><span class="nav-number">7.2.3.</span> <span class="nav-text">native - self server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#native-stripe"><span class="nav-number">7.2.4.</span> <span class="nav-text">native - stripe</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-self-server"><span class="nav-number">7.2.5.</span> <span class="nav-text">web - self server</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NFC"><span class="nav-number">7.3.</span> <span class="nav-text">NFC</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86"><span class="nav-number">7.3.1.</span> <span class="nav-text">技术原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%A8%E7%A6%81%E5%8D%A1"><span class="nav-number">7.3.2.</span> <span class="nav-text">门禁卡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%BB%E5%8A%A8%E6%94%AF%E4%BB%98"><span class="nav-number">7.3.3.</span> <span class="nav-text">移动支付</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Apple-iPhone-NFC"><span class="nav-number">7.3.4.</span> <span class="nav-text">Apple iPhone NFC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EMV-vs-FeliCa"><span class="nav-number">7.3.5.</span> <span class="nav-text">EMV vs FeliCa</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Quicpay-iD-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%A7%B0%E4%B8%BA%E3%80%90%E7%94%B5%E5%AD%90%E8%B4%A7%E5%B8%81%E3%80%91"><span class="nav-number">7.4.</span> <span class="nav-text">Quicpay - iD 为什么称为【电子货币】</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="海驴"
+      src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
+  <p class="site-author-name" itemprop="name">海驴</p>
+  <div class="site-description" itemprop="description">时间，真的不多了。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          Links
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9oYWlfbHZf" title="https:&#x2F;&#x2F;twitter.com&#x2F;hai_lv_">X(Twitter)</span>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2024/how-to-pay/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
+      <meta itemprop="name" content="海驴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个工匠">
+      <meta itemprop="description" content="时间，真的不多了。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="How to pay | 一个工匠">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          How to pay
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-12-09 01:18:03" itemprop="dateCreated datePublished" datetime="2024-12-09T01:18:03+08:00">2024-12-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="All-pays"><a href="#All-pays" class="headerlink" title="All pays"></a>All pays</h1><p><span class="exturl" data-url="aHR0cHM6Ly9zdHJpcGUuY29tL3poLXNnL3BheW1lbnRzL3BheW1lbnQtbWV0aG9kcw==">https://stripe.com/zh-sg/payments/payment-methods</span></p>
+<p>Stripe 支持了很多支付方式，可以窥见一些。Stripe 主要对接线上支付，对于很多线下支付的渠道如【nanaco】等电子货币，就看不到了。</p>
+<h2 id="japan"><a href="#japan" class="headerlink" title="japan"></a>japan</h2><img data-src="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/202412090122548.png" width="60%">
+
+<span id="more"></span>
+
+<h1 id="货币"><a href="#货币" class="headerlink" title="货币"></a>货币</h1><img data-src="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/202412090139321.png" width="60%">
+
+<h1 id="电子货币-支付链路"><a href="#电子货币-支付链路" class="headerlink" title="电子货币 - 支付链路"></a>电子货币 - 支付链路</h1><p>Suica、PASMO、nanaco、WAON、Edy（Rakuten Edy）、QUICPay、iD</p>
+<p>如上文【货币】-【电子货币】中所描述，E-money（电子货币）是法定货币的 1:n 等值替换，即电子货币 = 法定货币。</p>
+<p>电子货币无法凭空产生，需要基于预付费模式工作的，这意味着用户需要先充值然后才能消费。</p>
+<p>用户将一定金额的资金存入电子钱包或智能卡中，然后在各种接受 E-money 支付的地点使用这些资金进行消费。</p>
+<p>消费方式：实体卡刷卡、Apple/Google Pay、App 出示识别码等等。</p>
+<img data-src="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/202412090124537.png" width="60%">
+
+<h1 id="钱包-支付链路"><a href="#钱包-支付链路" class="headerlink" title="钱包 - 支付链路"></a>钱包 - 支付链路</h1><p>市场上有各种 X Pay，均为钱包。除了 Apple/Google Pay 这种专门为 信用卡、预付卡、借记卡、电子货币 提供聚合服务的产品外，其他钱包均有实际公司主体。</p>
+<p>比如常见的 Paypay、wechat、alipay 等等，它们提供各式各样的终端消费能力。</p>
+<p>但用户在钱包中的钱并不能凭空产生。</p>
+<p>一种方式是依靠【信用卡】，信用卡 的链路最为复杂，下一章会单独讲诉。</p>
+<p>一种方式是依靠【预充值】，用户将法定货币预先充值到平台侧。形式有：预付卡、借记卡、平台账户余额。</p>
+<p>通过 预充值 的形式，钱包相当于中间平台，为用户的【纸币、硬币】这些法定货币，提供了中间放置平台，以进一步通过该平台向外部商家进行支付。</p>
+<blockquote>
+<p>当用户把钱充值到钱包后，钱包就需要一系列的管理功能。一来确保用户账户数额不能有差错，二来确保用户可以随意把钱花出去。 所以平台需要做一个大管家，提供各种安全保障能力。 甚至与，哪个商户若需要对平台用户进行收款，哪个商户就也要在该平台进行商家注册并绑定收款银行账号。 这样，商户的账户也被平台管控，平台就很容易进行交易清算。</p>
+</blockquote>
+<img data-src="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/202412090125351.png" width="60%">
+
+<h1 id="信用卡-预付卡-借记卡"><a href="#信用卡-预付卡-借记卡" class="headerlink" title="信用卡 - 预付卡 - 借记卡"></a>信用卡 - 预付卡 - 借记卡</h1><h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>信用卡关键的能力有两点：</p>
+<ol>
+<li>提供个人信用背书，个人没有钱，也能够通过信用卡消费。</li>
+<li>有稳定的支付通道，为世界各地的信用卡提供清算能力。</li>
+</ol>
+<p>信用卡普及且应用广泛后，整个体系就非常成熟，商家已经对信用卡支付形成依赖。此时，一些不符合 1 条件的用户就没有信用卡，但自身也有钱 / 能力进行支付，就衍生出了预付卡、借记卡。</p>
+<p>预付卡、借记卡 借用 2 支付通道，不提供信用背书，直接用现金支付，从而完成交易。</p>
+<blockquote>
+<p>预付卡、借记卡 也包括电子货币。只是在信用卡体系里，预付卡、借记卡 一定依赖 visa、mastercard、… 等支付网络，一定属于 visa、mastercard、… 卡。<br>若商户对 个人信用 十分在意，那么只能使用 信用卡 完成交易，预付卡、借记卡 无法支付。</p>
+</blockquote>
+<img data-src="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/202412090126692.png" width="60%">
+
+<h2 id="品牌贴牌"><a href="#品牌贴牌" class="headerlink" title="品牌贴牌"></a>品牌贴牌</h2><p>目前大范围使用的信用卡支付网络，只有 Visa、MasterCard、American Express (AmEx)、Discover、UnionPay、JCB。其中，大部分不发行卡，只提供【支付网络】。支付网络将是下一个章节重点说明的内容。</p>
+<blockquote>
+<p>American Express 和 Discover 提供发卡服务。即提供支付网络，也下场作为发卡行。&lt;这两位，拥有银行执照&gt;</p>
+</blockquote>
+<p>大众最常见的信用卡，是从银行处申请获取。发卡行一定是具有【银行执照】的金融机构，银行天然具有该优势。基本上，所有的信用卡，都是银行发行的。</p>
+<p>但还有一种常见的信用卡，是从【钱包】公司处获取，如 Paypay、MerPay 等。这些公司并不具备银行执照，即没有发卡能力。</p>
+<p>这是另一种常见的【品牌贴牌】信用卡，即 公司 对接发卡行。公司对用户进行信用评估等审核，并提供品牌福利，而发卡行承担用户的消费风险及盈利。</p>
+<img data-src="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/202412090127218.png" width="60%">
+
+<h2 id="信用卡支付网络"><a href="#信用卡支付网络" class="headerlink" title="信用卡支付网络"></a>信用卡支付网络</h2><p>【支付网络】是信用卡交易的核心，也是连接全球所有信用卡的枢纽。</p>
+<p>所有的发卡行、收单行、有能力对接支付网络 的机构、单位、环节，其【资质、技术、安全】等都需要满足【支付网络】提供商的要求。</p>
+<p>【支付网络】决定了整条交易链路的【规则、安全保障、清算、结算】等。</p>
+<p>所有的信用卡，不分地区，通过【支付网络】都可以进行联通、交易。发卡行承担不同币种的汇率、消费额度等工作。</p>
+<blockquote>
+<p>发卡行会在交易前进行验卡，防止卡滥用。如有些卡不允许国际支付，会拒付。</p>
+</blockquote>
+<img data-src="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/202412090128277.png" width="60%">
+
+<h2 id="著名的国际支付服务提供商"><a href="#著名的国际支付服务提供商" class="headerlink" title="著名的国际支付服务提供商"></a>著名的国际支付服务提供商</h2><p>上文中，很多商业产品都会通过【支付服务提供商】来对接【支付网络】最终完成交易。以下是一些有名的提供商列表：</p>
+<p>via <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYXBwbGUuY29tL3RhcC10by1wYXkvcmVnaW9ucy8=">https://developer.apple.com/tap-to-pay/regions/</span></p>
+<img data-src="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/202412090128854.png" width="60%">
+
+<h2 id="Apple-Pay-如何支持-EMV-FaliCa"><a href="#Apple-Pay-如何支持-EMV-FaliCa" class="headerlink" title="Apple Pay 如何支持 EMV &amp; FaliCa"></a>Apple Pay 如何支持 EMV &amp; FaliCa</h2><p>EMV 是 Europay MasterCard Visa 的缩写，是信用卡的协议标准，不同支付网络的信用卡均遵守该协议。</p>
+<p>所以，信用卡在世界各地支持 EMV 读卡器的机子上均能【插卡支付】并消费。</p>
+<p>但是在 Touch (contactless) 方面，日本提前广泛使用了 FaliCa 标准，没能很好的支持 EMV，导致前期不管国内还是国外的信用卡，都不支持【非触控支付】。</p>
+<p>在技术专区里，会重点说明 FaliCa 的这段历史，以及 Quicpay/iD 如何解决这个问题。</p>
+<img data-src="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/202412090129489.png" width="60%">
+
+<h2 id="信用卡的不同支付链路"><a href="#信用卡的不同支付链路" class="headerlink" title="信用卡的不同支付链路"></a>信用卡的不同支付链路</h2><p>信用卡最终需要【发卡行】通过【支付网络】转账到【收单行】。</p>
+<p>发卡行 依靠哪些信息来判定一张信用卡的合法性，是十分关键的。</p>
+<p>在不同的 信用卡 使用场景中，发卡行 从【支付网络】侧获取到的卡信息是不一样的。</p>
+<img data-src="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/202412090129298.png" width="60%">
+
+<h1 id="特别支付场景介绍"><a href="#特别支付场景介绍" class="headerlink" title="特别支付场景介绍"></a>特别支付场景介绍</h1><h2 id="Tap-to-pay"><a href="#Tap-to-pay" class="headerlink" title="Tap to pay"></a>Tap to pay</h2><blockquote>
+<p>基于 NFC 技术，可以【技术专区】中详细了解实现过程。</p>
+</blockquote>
+<p>通过<strong>移动设备终端</strong> (iPhone/Android) 识别 visa 等实体卡或者 apple pay 等<strong>物理硬件</strong>，<strong>获取到卡片的【代理卡号 / 虚拟码】，并完成支付</strong>的方式。</p>
+<ol>
+<li>通过 NFC 协议，完成数据读取</li>
+<li>移动设备会有一个 app，用来对接 nfc api，完成数据读取、服务器交互等工作</li>
+<li> Android 对于 NFC 较开放，可以方便实施。</li>
+<li>iPhone 使用了 Core NFC 中【卡读取】的能力。对个别国家和供应商有开放。</li>
+</ol>
+<h3 id="example"><a href="#example" class="headerlink" title="example"></a>example</h3><p>via <span class="exturl" data-url="aHR0cHM6Ly93d3cuYXBwbGUuY29tL2J1c2luZXNzL3RhcC10by1wYXktb24taXBob25lLw==">https://www.apple.com/business/tap-to-pay-on-iphone/</span></p>
+<h3 id="apple-供应地区说明"><a href="#apple-供应地区说明" class="headerlink" title="apple 供应地区说明"></a><strong>apple 供应地区说明</strong></h3><p>via <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYXBwbGUuY29tL3RhcC10by1wYXkv">https://developer.apple.com/tap-to-pay/</span></p>
+<h3 id="Stripe-支持地区说明"><a href="#Stripe-支持地区说明" class="headerlink" title="Stripe 支持地区说明"></a><strong>Stripe 支持地区说明</strong></h3><p>via <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLnN0cmlwZS5jb20vdGVybWluYWwvcGF5bWVudHMvc2V0dXAtcmVhZGVyL3RhcC10by1wYXk/cGxhdGZvcm09aW9z">https://docs.stripe.com/terminal/payments/setup-reader/tap-to-pay?platform=ios</span></p>
+<h2 id="Alipay-碰一下"><a href="#Alipay-碰一下" class="headerlink" title="Alipay 碰一下"></a>Alipay 碰一下</h2><blockquote>
+<p>基于 NFC 技术，可以【技术专区】中详细了解实现过程。</p>
+</blockquote>
+<ol>
+<li>支付宝给商家提供 NFC 卡模拟芯片。用户侧的支付宝 app 充当读卡器，读取商家的 NFC 芯片信息。app 获取商家信息后，进行网络处理，完成支付。</li>
+<li>以往的支付，读卡器处于商家侧，如 Tap to pay、POS 机等。只要商家具有稳定的网络，就可以完成支付。</li>
+<li>alipay 碰一碰方案，读卡器处于用户侧 app 中。这就需要用户侧具有稳定的网络，以完成支付。</li>
+</ol>
+<h1 id="技术专区"><a href="#技术专区" class="headerlink" title="技术专区"></a>技术专区</h1><h2 id="Visa-支付网关和清算平台-跨国际交易"><a href="#Visa-支付网关和清算平台-跨国际交易" class="headerlink" title="Visa - 支付网关和清算平台 - 跨国际交易"></a>Visa - 支付网关和清算平台 - 跨国际交易</h2><ol>
+<li>Visa 不发行卡，不对接个人用户。它只对接银行、大企业主。</li>
+<li>Visa 负责两个银行之间的资金流动，它会使用一天的固定汇率 (高于实时汇率) 加上自身的手续费进行计价。</li>
+<li>因为 Visa 自身做的比较大、有信任、打广告，所以只要牵涉到跨国之间的终端用户级别的资金流动，都会有 Visa 的影子。</li>
+<li>如果仅仅是本地企业、同一货币，那么不需要使用 Visa，就可以省去手续费。如银联。</li>
+<li>所有的 Visa 信用卡交易，都需要过 Visa 的网关进行清算。最终也不是实时扣款，visa 会在结算时间到来后，统一将所有银行的账单进行清算。</li>
+</ol>
+<blockquote>
+<p>扩展：</p>
+</blockquote>
+<ol>
+<li>Visa 和 SWIFT 是两条赛道。SWIFT 主要处理两个国家之间银行界资金的流动。是直接流动，金额更大、级别更高。SWFIT 处理的金钱要比 Visa 多的多。</li>
+<li>SWIFT 一日处理 5W 亿美元的交易，Visa 一年处理 10W 亿美元的交易。交易量不在一个量级。</li>
+</ol>
+<p>Visa 等一众【支付网络】的具体运转，详见上文中的【信用卡支付网络】章节。</p>
+<h3 id="非银行如何对接【支付网络】"><a href="#非银行如何对接【支付网络】" class="headerlink" title="非银行如何对接【支付网络】"></a>非银行如何对接【支付网络】</h3><p>Stripe 对 Visa 的一些解释：<span class="exturl" data-url="aHR0cHM6Ly9zdHJpcGUuY29tL3poLXNnL3Jlc291cmNlcy9tb3JlL3doYXQtaXMtdmlzYSNzaHVpLXphaS1zaGkteW9uZy12aXNh">https://stripe.com/zh-sg/resources/more/what-is-visa#shui-zai-shi-yong-visa</span></p>
+<p>Stripe 在 2015 年开始直接对接 Visa，不在走【收单行】对接：<span class="exturl" data-url="aHR0cHM6Ly93d3cuYnVzaW5lc3N3aXJlLmNvbS9uZXdzL2hvbWUvMjAxNTA3MjkwMDU4NDEvemgtQ04v">https://www.businesswire.com/news/home/20150729005841/zh-CN/</span></p>
+<img data-src="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/202412090134169.png" width="60%">
+
+<h2 id="Apple-Pay"><a href="#Apple-Pay" class="headerlink" title="Apple Pay"></a>Apple Pay</h2><h3 id="原理概要"><a href="#原理概要" class="headerlink" title="原理概要"></a>原理概要</h3><p>Apple 提供的【apple pay】方案，是将用户的信用卡信息，使用 “令牌化” 方案，通过【代理卡号】的方式存储于 iPhone 设备，后续将 DAN 提供给读取者，读取者使用 DAN 完成后续的支付链路。</p>
+<blockquote>
+<p>代理卡号（Device Account Number, DAN） 不存储卡号、有效期、cvs，是银行侧生成的一个 code。银行会根据这个 code 在结算的时候进行卡账户校验。</p>
+<p>每次进行 apple wallet 录入的时候，都会生成一个新的 DAN。</p>
+</blockquote>
+<p>使用 DAN 的业务方：</p>
+<ol>
+<li>Apple Wallet：iPhone 作为 NFC 卡模拟，供系统级别的 Wallet app 使用。<ol>
+<li>wallet app<ol>
+<li> 将银行卡信息存储到 iPhone 中（录入 DAN）</li>
+<li>有外部 NFC 读卡器的时候，wallet 被激活，完成用户身份认证，并读取 DAN 并提供给外部 NFC 读卡器。</li>
+<li>外部读卡器获取到 DAN 后，对接 Stripe 或者卡服务商。最终在发卡行完成 DAN 的校验，完成扣款和资金转移。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Native app：通过 passkit sdk，swift/oc 对接 sdk 在 app 内部完成【支付信息】的读取<ol>
+<li> native app 绑定 【Merchant ID】出口，未绑定的 id 不允许支付。</li>
+<li>native app 弹出 apple pay 弹窗，获取 pay token（公钥加密）</li>
+<li>将 token 给到 self server 或者 stripe 等平台，这些服务平台需要对 token 进行私钥解密。<ol>
+<li>私钥的来源有一套比较复杂的流程</li>
+</ol>
+</li>
+<li> server 将解密后的信息给到【发卡行】，发卡行完成校验及扣款事宜。</li>
+</ol>
+</li>
+<li>Web app：<ol>
+<li>整体和 native app 一致</li>
+<li>因为不在 app 内部，缺少必要的 Merchant ID 信息。而是在 safari 中唤醒 apple pay 支付，所有多了一个【Identity】认证<ol>
+<li>通过公私钥证书来完成</li>
+<li>该认证，主要用于对服务器进行确认，进而获取商户信息。后续流程和 native app 一致。</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="技术流程"><a href="#技术流程" class="headerlink" title="技术流程"></a>技术流程</h3><h3 id="native-self-server"><a href="#native-self-server" class="headerlink" title="native - self server"></a>native - self server</h3><ol>
+<li>Apple Developer 申请 Merchant ID（id）</li>
+<li>dev 申请 CRS 文件（本机绑定私钥 private key），在 developer 后台绑定 id 生成 cer 证书。<ol>
+<li>dev 将 cer 证书安装到本机后，导出 p12 文件（包含公私钥 public + private key）</li>
+<li>将 p12 给到 self server</li>
+</ol>
+</li>
+<li>native app 在 xcode 中绑定 id<ol>
+<li> 该行为使得 app 可以确定允许的商户，可绑定多个 id</li>
+<li>web app 没有这一步，所以需要 【identity】认证</li>
+</ol>
+</li>
+<li> native app 完成 apple pay 弹窗并获取 payment token</li>
+<li>token 给到 server，server 通过 p12 拿到 private key，对 token 进行解密后，提交发卡行进行验证扣款。</li>
+</ol>
+<h3 id="native-stripe"><a href="#native-stripe" class="headerlink" title="native - stripe"></a>native - stripe</h3><ol>
+<li>Apple Developer 申请 Merchant ID（id）</li>
+<li>在 stripe 后台申请 CRS 文件后，在 developer 绑定 id 生成 cer 证书，再将 cer 证书上传到 stripe 后台。<ol>
+<li>stripe 这里就拥有了 p12 （private key + public key）</li>
+</ol>
+</li>
+<li>native app 调用 stripe api，完成 apple pay 弹窗 等所有操作，直接获取支付结果<ol>
+<li> stripe sdk 将 payment token 给到 stripe server 完成 token 解密</li>
+<li> stripe server 进行发卡行提交</li>
+<li> stripe 处理支付结果并返回给业务</li>
+</ol>
+</li>
+</ol>
+<h3 id="web-self-server"><a href="#web-self-server" class="headerlink" title="web - self server"></a>web - self server</h3><p>和 native 基本流程一致，在 id 绑定证书环节，除了 【Apple Pay Payment Processing Certificate】cer 证书外，还需要以下：</p>
+<ol>
+<li><p>Apple Pay Merchant Identity Certificate</p>
+<ol>
+<li>商户需要通过该证书向 apple 获取 Merchant ID 的详细信息 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">    // example</span><br><span class="line"></span><br><span class="line">const https = require('https');</span><br><span class="line">const fs = require('fs');</span><br><span class="line"></span><br><span class="line">function getApplePaySession(validationURL, callback) {</span><br><span class="line">    const options = {</span><br><span class="line">        url: validationURL,</span><br><span class="line">        method: 'POST',</span><br><span class="line">        cert: fs.readFileSync('path/to/merchant_identity_certificate.pem'),</span><br><span class="line">        key: fs.readFileSync('path/to/merchant_identity_private_key.pem'),</span><br><span class="line">        headers: {</span><br><span class="line">            'Content-Type': 'application/json'</span><br><span class="line">        },</span><br><span class="line">        body: JSON.stringify({</span><br><span class="line">            merchantIdentifier: 'merchant.com.yourdomain.yourmerchantname',</span><br><span class="line">            domainName: 'yourdomain.com',</span><br><span class="line">            displayName: '您的商户名称'</span><br><span class="line">        })</span><br><span class="line">    };</span><br><span class="line"></span><br><span class="line">    const req = https.request(options, (res) =&gt; {</span><br><span class="line">        let data = '';</span><br><span class="line">        res.on('data', (chunk) =&gt; { data += chunk; });</span><br><span class="line">        res.on('end', () =&gt; { callback(null, JSON.parse(data)); });</span><br><span class="line">    });</span><br><span class="line"></span><br><span class="line">    req.on('error', (e) =&gt; { callback(e); });</span><br><span class="line">    req.end();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
+</ol>
+</li>
+<li><p>Merchant Domains</p>
+<ol>
+<li>需要将必要的 apple 文件放置于 domain 服务器上，供 apple 对 domain 进行验证。未验证通过的 domain 无法进行 apple pay 支付。</li>
+</ol>
+</li>
+</ol>
+<h2 id="NFC"><a href="#NFC" class="headerlink" title="NFC"></a>NFC</h2><p>NFC（近场通信）的技术原理基于无线电频率识别（RFID）技术，使用磁场感应来实现在设备间的通信。NFC 设备在 13.56 MHz 频率上操作，通常用于非接触式数据传输，距离范围非常短，通常在几厘米内，传输速率慢，在 400kbps (50kb/s) 左右。</p>
+<h3 id="技术原理"><a href="#技术原理" class="headerlink" title="技术原理"></a>技术原理</h3><p>识卡器发出信号（电磁感应），激活了终端（手机自动点亮），然后进行数据交互，并可能需要机主进行身份验证，最后完成信息的交互（支付、上公交车、开门等）。</p>
+<p>NFC 有三种工作模式：点对点通信模式、读卡器模式、卡模拟模式。又分为【主动模式】和【被动模式】，其中一个设备提供射频场，另一个设备利用这个射频场进行通信。</p>
+<p>使用 NFC，需要两个终端，一个做控制器，用于发射磁场来识别信息。一个做无电源的数据芯片，通过接收到的磁场来感应并传输信息。</p>
+<p>对于 NFC 设备来说：</p>
+<ol>
+<li>点对点通信：两个 NFC 设备相互交换信息。</li>
+<li>读卡器模式：一个 NFC 作为控制器，读取其他 NFC 芯片中的信息。</li>
+<li>卡模拟模式：一个 NFC 作为数据芯片，其他读卡器可以读取其中的信息。</li>
+</ol>
+<p>现代电子产品中，Android 和 iPhone 都支持 NFC 技术，手机作为 NFC 设备，使用读卡器模式和卡模拟模式，已经可以完成很多事情。</p>
+<ol>
+<li>当作为 NFC 控制器的时候，手机可以主动的读取外部 NFC 芯片中的信息，也可以将必要的信息写入到外部 NFC 芯片。（物流中，可以通过手机对商品挂载的 NFC 芯片进行记录）</li>
+<li>当作为 NFC 芯片的时候，手机可以模拟一个 NFC 芯片，通过软件将信息提前写入手机中，其他读卡器就可以直接读取手机中的信息。（可以实现门禁卡等）</li>
+</ol>
+<p>Android 对 NFC 的 API 开放较多，app 可通过 api 来控制 NFC 进行 读取、写入、模拟 的操作，来实现快捷的智能家居、门禁卡等场景。</p>
+<p>iPhone 上则比较保守，在【卡模拟】、【卡读取】方面，都有不少限制。</p>
+<h3 id="门禁卡"><a href="#门禁卡" class="headerlink" title="门禁卡"></a>门禁卡</h3><p>普通门禁卡：</p>
+<ol>
+<li>门禁卡中有 【微芯片】（存储卡片的识别信息和其他数据）和 【天线】（用于接收和发送无线信号）。</li>
+<li>门禁卡靠近门禁系统的读卡器 → 读卡器会发出一个射频信号 → 信号通过天线供电给门禁卡上的微芯片 → 微芯片被激活，通过天线将存储在芯片上的识别信息发送回读卡器 → 读卡器接收到信息后，将数据传输给后端的门禁控制系统。</li>
+</ol>
+<p>NFC 门禁卡：</p>
+<p>原理基本和普通门禁卡一样，不过，NFC 提供了更高的安全性。它支持双向通信，卡和识卡器之间可以通信。它们之间会进行密钥交换，通过对称、非对称加密来完成数据的安全传输。相比普通门禁卡，NFC 门禁卡会更加的安全。</p>
+<blockquote>
+<p>NFC 是一种普适性的技术方案，手机也可以作为 NFC 终端。这里就可以把 NFC 门禁卡的信息保存在 手机中，使得手机可以充当 NFC 门禁卡的功能。</p>
+</blockquote>
+<p>蓝牙门锁：</p>
+<p>有些 app 会通过 蓝牙的方式，和门锁连接。这在智能门锁中非常常见。因为距离很远，就可以连接上。而 NFC 需要非常短的距离 (4cm) 才能通信。</p>
+<h3 id="移动支付"><a href="#移动支付" class="headerlink" title="移动支付"></a>移动支付</h3><p>通过 NFC 进行移动支付，主要有三种方案：</p>
+<ol>
+<li>卡模拟方案。mobile 录入支付卡信息，被外部读取器识别<ol>
+<li>系统级别的支持，如 apple pay。开发人员没有掌控能力。用户只能通过 apple wallet 录入银行卡信息，然后通过 apple pay 进行支付。</li>
+<li>应用级别的支持。Android 支持的较好，iPhone 限制很多。<ol>
+<li>iPhone 在 iOS 18.1 放开了该限制，app 可以将支付卡信息写入 app 中，支付的时候调用 app 完成支付。</li>
+<li>不对普通开发者开放，需要和 apple 签订商务协议，支付费用，一般都是支付中间商如 Stripe。并且只对个别国家开放。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>读卡器方案。mobile 作为读取器识别外部实体卡（信用卡等）。Android 支持的叫好，iPhone 限制很多。<ol>
+<li>Apple Tap to pay。商家可以在自己的手机中，打开 m app，然后用户把信用卡、iWatch 靠近手机，即可完成支付。<ol>
+<li>普通开发人员没有太多的控制能力。也需要签订商务协议，一般都是支付中间商如 Stripe。它们提供 SDK 并和 Apple Api 交互完成支付。</li>
+<li>Apple 和 Stripe 中间商会对地区等有限制。只在少有的地区开放了 Tap To Pay 能力。</li>
+</ol>
+</li>
+<li>alipay 碰一碰。非常聪明的通过 NFC 实现支付的方案。<ol>
+<li>支付宝给商家提供 NFC 卡模拟芯片。用户侧的支付宝 app 充当读卡器，读取商家的 NFC 芯片信息。app 获取商家信息后，进行网络处理，完成支付。</li>
+<li>以往的支付，读卡器处于商家侧，如 Tap to pay、POS 机等。只要商家具有稳定的网络，就可以完成支付。</li>
+<li>alipay 碰一碰方案，读卡器处于用户侧 app 中。这就需要用户侧具有稳定的网络，以完成支付。</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="Apple-iPhone-NFC"><a href="#Apple-iPhone-NFC" class="headerlink" title="Apple iPhone NFC"></a>Apple iPhone NFC</h3><p>简单介绍一下 iPhone 对 NFC 支持的历史：</p>
+<ul>
+<li>WWDC 2017：引入 Core NFC，并具备 NDEF 标签【<strong>读取</strong>】 功能。</li>
+<li>WWDC 2018：在较新设备上对 NDEF 消息进行后台标签读取。</li>
+<li>WWDC 2019：重大扩展，允许 NDEF【<strong>写入</strong>】，支持 ISO 7816、ISO 15693 和 MIFARE 标签，并支持自定义命令。</li>
+<li>WWDC 2020：多标签检测，VAS 协议支持和 ISO 15693 标签的后台读取。</li>
+<li>WWDC 2021-2023：专注于稳定性、性能提升和小幅增强，没有重大 API 更改。</li>
+<li>WWDC 2024：支持【<strong>卡模拟</strong>】。</li>
+</ul>
+<h3 id="EMV-vs-FeliCa"><a href="#EMV-vs-FeliCa" class="headerlink" title="EMV vs FeliCa"></a>EMV vs FeliCa</h3><p>EMV：基于 NFC Type A/B 设计的通信标准。NFC 的【读卡器】和【卡芯片】均使用 EMV 协议。</p>
+<p>FeliCa：Sony 开发，基于 NFC Type F 设计的通信标准，速度快，成本高，仅在日本大范围使用。NFC 的【读卡器】和【卡芯片】均使用 FeliCa 协议。</p>
+<p>这两者，是使用 NFC 实现的两套不兼容的通信协议标准。详细技术解释可参考【Quicpay】章节。</p>
+<h2 id="Quicpay-iD-为什么称为【电子货币】"><a href="#Quicpay-iD-为什么称为【电子货币】" class="headerlink" title="Quicpay - iD 为什么称为【电子货币】"></a>Quicpay - iD 为什么称为【电子货币】</h2><p>Quicpay 官网: <a target="_blank" rel="noopener" href="https://www.quicpay.jp/"><span class="exturl" data-url="aHR0cHM6Ly93d3cucXVpY3BheS5qcC8=">https://www.quicpay.jp</span></a></p>
+<p>日本很早期，地铁等交通就很繁华，对于人流量大的场景，过关卡排队就需要很长时间。</p>
+<p>One day，Sony 基于 NFC Type F 研发了 FeliCa 协议的高频无线通信技术。</p>
+<p>FeliCa 主要用于 Touch/Contactless【非触控】场景，Pasmo、Suica 都是基于 FeliCa 实现的刷卡，特点是：速度快。</p>
+<p>很快，FeliCa 成为日本在【非触控】刷卡领域的事实标准，所有能刷卡的地方，都是基于 FeliCa 实现。</p>
+<p>前面介绍 NFC 的时候，说到 NFC 需要两个终端（读卡器、卡模拟）才能工作，日本所有的读卡器也都是基于 FeliCa 实现的。</p>
+<p>而卡模拟一侧，包括 Visa 信用卡、Pasmo 公交卡、电子货币实体卡 等，都是支持 FeliCa 的。</p>
+<p>前面介绍 Apple Wallet 对接 Quicpay 的时候，流程图中有提到 Quicpay DAN。在 Apple Pay 还没有进入日本之前，Quicpay、iD 就已经发行实体卡进行消费，同时 Visa 等信用卡也都是支持 Quicpay/iD 支付。</p>
+<p>交易的链路和现在相比没有改变，依旧是读卡器通过 FeliCa 读取卡信息后提交到 Quicpay 后台，后台通过 收单行 对接 Visa 支付网络，完成交易。</p>
+<p>只是这个时候没有 DAN，DAN 安全码是 Apple Wallet 特有的产物。</p>
+<p>但是 FeliCa 的硬件成本比普通的 NFC Type A/B 协议高，国际上普遍使用的都是 EMV 协议。EMV 是基于 NFC Type A/B 实现的通信协议。</p>
+<p>在刷卡过程中，数据是需要加密的，而这套加密规则，也是和 FeliCa/EMV 的设计绑定的。</p>
+<p>此时，日本基于 FeliCa 的读卡器，在【非触控】刷卡的时候，就无法读取基于 EMV 协议设计的国际信用卡。</p>
+<blockquote>
+<p>但是对于插卡消费是没有影响的。 Visa、masterCard 等官方平台，制定的通信规则就是【信用卡基于 EMV 协议】。所以日本的信用卡本身绝对是符合 EMV 协议的。 所以日本的信用卡在插卡消费的时候，也同样使用 EMV 协议。因为 FeliCa 协议只在【非触控】场景下使用。 So，这个时期，外国游客在日消费，可以使用信用卡插卡消费，但无法使用 Touch/Contactless【非触控】刷卡消费。</p>
+</blockquote>
+<blockquote>
+<p>对于在日本申请的信用卡实体卡，本身就是支持 EMV 和 FeliCa 两种通信协议。在日本的时候，读卡器可以插卡识别 EMV，也可以【非触控】识别 FeliCa。 当日本人出国在境外刷卡，外国的读卡器都是支持 EMV 插卡 &amp;【非触控】识别，所以日本信用卡在国外使用完全不受影响。</p>
+</blockquote>
+<p>对于国外信用卡在日本不能很好使用【非触控】的体验问题，并没有好的解决办法。FeliCa 历史已久，在速度方面很优秀，Pasmo 等众多卡都使用这个协议，根子是不能替换的。</p>
+<p>所以日本开始升级读卡器，截至目前，很多读卡器也都同时支持 EMV 和 FeliCa 两种协议的 NFC 识别了。</p>
+<img data-src="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/202412090137924.png" width="60%">
+
+<p>同时，随着 Apple/Google Pay 的发展，现在 Apple Wallet 也支持 Quicpay/iD 支付了，在日本称为【电子货币】。</p>
+<p>在 Apple Wallet 中见到 Quicpay/iD 的场景，都是信用卡场景。即 wallet 中，一张卡的右下角，同时具有 Quicpay + Visa 或者 iD + masterCard Logo。</p>
+<p>有些钱包公司发行的卡，仅仅支持 Quicpay 或者 iD，就没有 Visa 或者 masterCard Logo 了，即这个卡就不能在国外使用啦。</p>
+<blockquote>
+<p>但从 Apple Wallet 中 Visa、masterCard 支持 Quicpay/iD，被称为【电子货币】或许有些奇怪。 若从 Quicpay/iD 自身的功能场景出发，它们本身就是提供预充值的实体卡而后刷卡消费，的确属于【电子货币】。 只是 信用卡 虽然走了 Quicpay/iD 的支付通道，又的确和【电子货币】没关联，其实依旧属于【信用卡支付】。 so，Quicpay/iD 被称为【电子支付】，完全是根据其自身的原始功能，下的定义。</p>
+</blockquote>
+<p>最终在说明一点，在日本银行发行的信用卡，基本上都是和 Quicpay 或者 iD 合作的。有些钱包公司借壳发卡行发行的卡，有可能没有 Quicpay/iD。</p>
+<p>这里有一份列表，via <span class="exturl" data-url="aHR0cHM6Ly9hdGFkaXN0YW5jZS5uZXQvYXBwbGUtcGF5LWphcGFuLWNyZWRpdC1jYXJkcy8=">https://atadistance.net/apple-pay-japan-credit-cards/</span></p>
+<img data-src="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/202412090138969.png" width="60%">
+
+<hr>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>Follow me by other channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/hai_lv_">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/hai_lv_tg">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="mailto:one.gongjiang@gmail.com">
+            <span class="icon">
+              <i class="fa fa-envelope"></i>
+            </span>
+
+            <span class="label">Email</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Life/" rel="tag"># Life</a>
+              <a href="/tags/Work/" rel="tag"># Work</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/apple-frameworks/" rel="prev" title="apple frameworks">
+                  <i class="fa fa-angle-left"></i> apple frameworks
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">Light Mode (Better for light mode to discuss, base github, cannot commen can email me)</a></li>
+            <li class="tab"><a href="#comment-utterances">Dark Mode</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
+            </div>
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+        </div>
+      </div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2018 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">one.gongjiang艾特gmail.com 所有文章均为原创。我不介意任意形式的转载，但最好不要修改内容。因转载或者修改内容导致的任何问题，我均不负责。如果你真的担心版权，可邮联。评价需要外网，这是枷锁，也是照妖镜。</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.umd.js" integrity="sha256-+2+qOqR8CKoHh/AsVR9k2qaDBKWjYNC2nozhYmv5j9k=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2024/how-to-pay/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"d2acb89e5e2edc0a2d2b7ea426eb59cf"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
