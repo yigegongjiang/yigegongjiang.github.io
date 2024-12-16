@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="manifest" href="/images/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.2","exturl":true,"sidebar":{"position":"left","width":140,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="在很久以前的 数字签名 文章中，有介绍过 passkey。当时主要是为了说明【公私钥】。目前很多服务商都支持 passkey 作为【登录】和【多重认证】的手段，于是再重点介绍一下 passkey。 FIDOFIDO 是 passkey 技术流程的执行标准，明确了使用公私钥认证的方式来实现用户安全登陆。其中，私钥的存储、获取也进行了安全规定的制定。  FIDO（快速身份在线）是指由 FIDO 联盟开">
+<meta property="og:type" content="article">
+<meta property="og:title" content="passkey">
+<meta property="og:url" content="https://www.yigegongjiang.com/2024/passkey/index.html">
+<meta property="og:site_name" content="一个工匠">
+<meta property="og:description" content="在很久以前的 数字签名 文章中，有介绍过 passkey。当时主要是为了说明【公私钥】。目前很多服务商都支持 passkey 作为【登录】和【多重认证】的手段，于是再重点介绍一下 passkey。 FIDOFIDO 是 passkey 技术流程的执行标准，明确了使用公私钥认证的方式来实现用户安全登陆。其中，私钥的存储、获取也进行了安全规定的制定。  FIDO（快速身份在线）是指由 FIDO 联盟开">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/202412161356392.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/202412161357253.png">
+<meta property="article:published_time" content="2024-12-16T05:49:33.000Z">
+<meta property="article:author" content="海驴">
+<meta property="article:tag" content="网络">
+<meta property="article:tag" content="Work">
+<meta property="article:tag" content="计算机基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/202412161356392.png">
+
+
+<link rel="canonical" href="https://www.yigegongjiang.com/2024/passkey/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2024/passkey/","path":"2024/passkey/","title":"passkey"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>passkey | 一个工匠</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CTEWJ02QX"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-8CTEWJ02QX","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="一个工匠" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="一个工匠" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">一个工匠</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">102</span></a></li><li class="menu-item menu-item-日本指北"><a href="/japan/" rel="section">日本指北</a></li><li class="menu-item menu-item-时间舟"><a href="/categories/%E6%97%B6%E9%97%B4%E8%88%9F/" rel="section">时间舟</a></li><li class="menu-item menu-item-source"><a href="/openSource" rel="section">Source</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#FIDO"><span class="nav-number">1.</span> <span class="nav-text">FIDO</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E7%BB%88%E7%AB%AF%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="nav-number">2.</span> <span class="nav-text">安全终端有哪些</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%93%AA%E4%BA%9B%E4%B8%8D%E6%98%AF-passkey"><span class="nav-number">3.</span> <span class="nav-text">哪些不是 passkey</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#passkey-%E5%8F%AF%E4%BB%A5%E5%81%9A%E4%BB%80%E4%B9%88"><span class="nav-number">4.</span> <span class="nav-text">passkey 可以做什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%B5%81%E7%A8%8B"><span class="nav-number">5.</span> <span class="nav-text">技术流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BD%93%E5%89%8D%E8%AE%BE%E5%A4%87%E4%BD%9C%E4%B8%BA-passkey-%E7%BB%88%E7%AB%AF%EF%BC%8C%E5%A6%82-Mac"><span class="nav-number">5.1.</span> <span class="nav-text">当前设备作为 passkey 终端，如 Mac</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%BB%E5%8A%A8%E8%AE%BE%E5%A4%87%E4%BD%9C%E4%B8%BA-passkey-%E7%BB%88%E7%AB%AF%EF%BC%8C%E5%A6%82-iPhone"><span class="nav-number">5.2.</span> <span class="nav-text">移动设备作为 passkey 终端，如 iPhone</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E8%B4%9F%E6%8B%85"><span class="nav-number">6.</span> <span class="nav-text">用户负担</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="海驴"
+      src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
+  <p class="site-author-name" itemprop="name">海驴</p>
+  <div class="site-description" itemprop="description">时间，真的不多了。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">102</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          Links
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9oYWlfbHZf" title="https:&#x2F;&#x2F;twitter.com&#x2F;hai_lv_">X(Twitter)</span>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2024/passkey/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
+      <meta itemprop="name" content="海驴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个工匠">
+      <meta itemprop="description" content="时间，真的不多了。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="passkey | 一个工匠">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          passkey
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-12-16 13:49:33" itemprop="dateCreated datePublished" datetime="2024-12-16T13:49:33+08:00">2024-12-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>在很久以前的 <a href="https://www.yigegongjiang.com/2023/signature/#%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9APassKey">数字签名</a> 文章中，有介绍过 passkey。当时主要是为了说明【公私钥】。目前很多服务商都支持 passkey 作为【登录】和【多重认证】的手段，于是再重点介绍一下 passkey。</p>
+<h1 id="FIDO"><a href="#FIDO" class="headerlink" title="FIDO"></a>FIDO</h1><p>FIDO 是 passkey 技术流程的执行标准，明确了使用公私钥认证的方式来实现用户安全登陆。其中，私钥的存储、获取也进行了安全规定的制定。</p>
+<blockquote>
+<p>FIDO（快速身份在线）是指由 FIDO 联盟开发的一套开放标准，用于增强在线身份验证的安全性和便捷性。FIDO 标准主要通过公钥密码学替代传统的密码，以减少欺诈风险并提高用户体验。FIDO 2 是该联盟的最新标准，支持 WebAuthn 和 CTAP，允许用户通过生物识别、安全设备或 PIN 进行无密码认证。</p>
+</blockquote>
+<h1 id="安全终端有哪些"><a href="#安全终端有哪些" class="headerlink" title="安全终端有哪些"></a>安全终端有哪些</h1><p>FIDO 约定了私钥的存储和获取。其中，存储必须是对用户不可见、不可导出，即对人类而言，是完全隐秘的黑盒。常见的 passkey 私钥源头是：</p>
+<ol>
+<li>手机，如 iPhone、Android</li>
+<li> 电脑，如 Macos、Windows</li>
+<li>passkey security key device，专用的移动安全设备，具有 USB 等插口，可以插入电脑中。<span id="more"></span></li>
+</ol>
+<h1 id="哪些不是-passkey"><a href="#哪些不是-passkey" class="headerlink" title="哪些不是 passkey"></a>哪些不是 passkey</h1><p>对于用户的安全登陆，web 站点会提供很多【多重认证】的方案，如</p>
+<ol>
+<li>SIM 短信验证码</li>
+<li> email 验证码</li>
+<li> App 短期有效的验证码</li>
+<li>通过 App 对 web 二维码扫码验证</li>
+<li>通过外部安全软件如 mac/iPhone 的 password app 生成 30s 有效的 Verification Code。</li>
+</ol>
+<p>以上这些，有的场景可以直接用于用户注册、登陆，有些场景可以作为用户的【二次安全验证】，但它们都不属于 passkey。</p>
+<p>passkey 的首要条件有：</p>
+<ol>
+<li>基于人类的安全识别，如指纹、面容、眼球</li>
+<li>基于公私钥，不能无密钥，也不能是对称密钥。</li>
+</ol>
+<blockquote>
+<p>如 password app 生成的 Verification Code，是在设置的时候，server 生成对称密钥并把密钥办法给 app。后期 server 和 app 基于同一时间按照同一个密钥生成 Verification Code，并根据该 Code 是否相等来做验证。技术手段属于【对称加密】。</p>
+</blockquote>
+<h1 id="passkey-可以做什么"><a href="#passkey-可以做什么" class="headerlink" title="passkey 可以做什么"></a>passkey 可以做什么</h1><p>诞生的使命就是做用户认证。即可以用于【二次认证】，也可以用于【一次认证】。即：</p>
+<ol>
+<li>可以通过 passkey 直接登陆 server 服务。用户不需要拥有账号密码，只要有 passkey 就可以了。</li>
+<li>用户已经输入账号密码后，通过 passkey 进行二次安全确认。<ul>
+<li>这一步，可以减少互联网诞生以来，各种类型的验证码对用户的影响，甚至上面提到的那些常见的【多重认证】对用户登陆的阻断性干扰。</li>
+</ul>
+</li>
+</ol>
+<h1 id="技术流程"><a href="#技术流程" class="headerlink" title="技术流程"></a>技术流程</h1><h2 id="当前设备作为-passkey-终端，如-Mac"><a href="#当前设备作为-passkey-终端，如-Mac" class="headerlink" title="当前设备作为 passkey 终端，如 Mac"></a>当前设备作为 passkey 终端，如 Mac</h2><img data-src="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/202412161356392.png" width="60%">
+
+<p>用户注册 passkey 或者 绑定 passkey（用户开始阶段有无 web 站点的账号，皆可）：</p>
+<ol>
+<li>web 申请 passkey 并提供【本机认证】入口，如 “创建通行密钥” 入口按钮。点击后进入 Macos 系统认证页面。</li>
+<li>用户确认后，操作系统将在系统安全元件中存储【私钥】，并把【公钥】给到 web。</li>
+<li>web 将公钥上传到 server</li>
+</ol>
+<p>后续，用户登陆或者二次验证的时候：</p>
+<ol>
+<li>web 提供【通信密钥登陆】入口。用户点击后，web 向 server 申请【挑战 (一个复杂的计算)】。<ul>
+<li>server 使用公钥对【挑战】进行加密，并返回 web。</li>
+</ul>
+</li>
+<li>web 唤醒并进入 Macos 认证页面（【挑战】也一并给予），用户进行指纹验证通过后，操作系统用指定的私钥对【挑战】进行解密，返回 web 最终是否解密成功。</li>
+<li>web 根据操作系统返回的结果，来判断私钥是否合法。如合法，则顺利进入 web 站点（登陆成功，或者二次验证成功）。</li>
+</ol>
+<h2 id="移动设备作为-passkey-终端，如-iPhone"><a href="#移动设备作为-passkey-终端，如-iPhone" class="headerlink" title="移动设备作为 passkey 终端，如 iPhone"></a>移动设备作为 passkey 终端，如 iPhone</h2><p>整体流程和 上面 一致，只是多了一个终端：iPhone。在上面创建 passkey 的时候，还有一个【换部设备】的入口，点击后调用系统 api 并展示系统 passkey FIDO 弹窗：</p>
+<img data-src="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/202412161357253.png" width="60%">
+
+<blockquote>
+<p>// 二维码解密后内容</p>
+<p>FIDO:/246202778134775422047073255772941326219821733578350172887457888589614449494332690387759208522109390157096037518904470510056446099681926406642559495045890109321447142660</p>
+</blockquote>
+<p>iPhone 扫码后，会打开 passkey 移动端系统弹窗。iPhone 在设备上生成公私钥，私钥在安全元件中存储，并把公钥通过【一些通信方式】给到 web 站点。</p>
+<ol>
+<li>初期，使用 websocket，即 chrome 等浏览器打开 websocket，iPhone 通过 websocket 把公钥给到 chrome。chrome 进而给到 web 站点。</li>
+<li>现在，已经不用 websocket 来。iPhone 会通过私有协议，把公钥给到 macos，macos 通过 系统 api 返回给 chrome/web 站点。</li>
+</ol>
+<p>除了以上多了一个二维码，供 iPhone 用来识别之外，其他就没有流程上的变化来。</p>
+<p>核心差异点就是：【私钥到底存在哪】。当然，存在哪里，哪里就需要作为后续提供私钥的源头。即：</p>
+<ol>
+<li>用户若使用 iPhone 绑定 passkey。</li>
+<li>后续，用户也需要使用 iPhone 主动扫码，来进行公私钥验证。</li>
+</ol>
+<p>当然，这一块也有很大的优化空间，比如 Apple 可以实现操作系统级别的【私钥同步】，把 iPhone 中的私钥同步到 Macos 中，这样 mac 也可以直接进行公私钥验证，就不需要 iPhone 扫码了。【目前是否有这个能力，还不清楚。】</p>
+<h1 id="用户负担"><a href="#用户负担" class="headerlink" title="用户负担"></a>用户负担</h1><p>如果完全使用 passkey 作为服务商的用户注册（拒绝 账号、密码），可能遇到的问题如下：</p>
+<ol>
+<li>在自己的 apple 全家桶中，passkey 可以无缝同步。但如果哪一天迁移到了 android、window 后，因为没有账号密码、又没有私钥，就无法登陆服务了。</li>
+<li>在自己的设备体系中使用良好。如果哪一天需要在同事的电脑上登陆，就没有 passkey 私钥了。</li>
+</ol>
+<p>最近一些年，可能更常见的方案，还是在已有的账号密码的用户体系下，新增【绑定 passkey】能力。</p>
+<p>若以后有更丝滑的【私钥迁移】能力，那么伴随互联网发展长河的账号密码体系，可能会成为历史。</p>
+<hr>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>Follow me by other channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/hai_lv_">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/hai_lv_tg">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="mailto:one.gongjiang@gmail.com">
+            <span class="icon">
+              <i class="fa fa-envelope"></i>
+            </span>
+
+            <span class="label">Email</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag"># 网络</a>
+              <a href="/tags/Work/" rel="tag"># Work</a>
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="tag"># 计算机基础</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/how-to-pay/" rel="prev" title="How to pay">
+                  <i class="fa fa-angle-left"></i> How to pay
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">Light Mode (Better for light mode to discuss, base github, cannot commen can email me)</a></li>
+            <li class="tab"><a href="#comment-utterances">Dark Mode</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
+            </div>
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+        </div>
+      </div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2018 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">one.gongjiang艾特gmail.com 所有文章均为原创。我不介意任意形式的转载，但最好不要修改内容。因转载或者修改内容导致的任何问题，我均不负责。如果你真的担心版权，可邮联。评价需要外网，这是枷锁，也是照妖镜。</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.umd.js" integrity="sha256-+2+qOqR8CKoHh/AsVR9k2qaDBKWjYNC2nozhYmv5j9k=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2024/passkey/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"08db82fcdc042c38c4b3e21ade9a73ee"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

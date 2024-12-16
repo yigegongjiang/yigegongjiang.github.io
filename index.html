@@ -92,7 +92,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">101</span></a></li><li class="menu-item menu-item-日本指北"><a href="/japan/" rel="section">日本指北</a></li><li class="menu-item menu-item-时间舟"><a href="/categories/%E6%97%B6%E9%97%B4%E8%88%9F/" rel="section">时间舟</a></li><li class="menu-item menu-item-source"><a href="/openSource" rel="section">Source</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">102</span></a></li><li class="menu-item menu-item-日本指北"><a href="/japan/" rel="section">日本指北</a></li><li class="menu-item menu-item-时间舟"><a href="/categories/%E6%97%B6%E9%97%B4%E8%88%9F/" rel="section">时间舟</a></li><li class="menu-item menu-item-source"><a href="/openSource" rel="section">Source</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
   </ul>
 </nav>
 
@@ -131,7 +131,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-count">102</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -173,6 +173,95 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2024/passkey/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
+      <meta itemprop="name" content="海驴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个工匠">
+      <meta itemprop="description" content="时间，真的不多了。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 一个工匠">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/passkey/" class="post-title-link" itemprop="url">passkey</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-12-16 13:49:33" itemprop="dateCreated datePublished" datetime="2024-12-16T13:49:33+08:00">2024-12-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在很久以前的 <a href="https://www.yigegongjiang.com/2023/signature/#%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9APassKey">数字签名</a> 文章中，有介绍过 passkey。当时主要是为了说明【公私钥】。目前很多服务商都支持 passkey 作为【登录】和【多重认证】的手段，于是再重点介绍一下 passkey。</p>
+<h1 id="FIDO"><a href="#FIDO" class="headerlink" title="FIDO"></a>FIDO</h1><p>FIDO 是 passkey 技术流程的执行标准，明确了使用公私钥认证的方式来实现用户安全登陆。其中，私钥的存储、获取也进行了安全规定的制定。</p>
+<blockquote>
+<p>FIDO（快速身份在线）是指由 FIDO 联盟开发的一套开放标准，用于增强在线身份验证的安全性和便捷性。FIDO 标准主要通过公钥密码学替代传统的密码，以减少欺诈风险并提高用户体验。FIDO 2 是该联盟的最新标准，支持 WebAuthn 和 CTAP，允许用户通过生物识别、安全设备或 PIN 进行无密码认证。</p>
+</blockquote>
+<h1 id="安全终端有哪些"><a href="#安全终端有哪些" class="headerlink" title="安全终端有哪些"></a>安全终端有哪些</h1><p>FIDO 约定了私钥的存储和获取。其中，存储必须是对用户不可见、不可导出，即对人类而言，是完全隐秘的黑盒。常见的 passkey 私钥源头是：</p>
+<ol>
+<li>手机，如 iPhone、Android</li>
+<li> 电脑，如 Macos、Windows</li>
+<li>passkey security key device，专用的移动安全设备，具有 USB 等插口，可以插入电脑中。
+          <!--noindex-->
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -926,90 +1015,6 @@
           <h1 id="Bonjour"><a href="#Bonjour" class="headerlink" title="Bonjour"></a>Bonjour</h1><p>local net 服务发现。核心是两个 api：NSNetService &amp; NSNetServiceBrowser。</p>
 <p>Bonjour 的目的，是希望发现局域网中的设备，包括这些设备的 ip、port 等信息，从而进行下一步业务操作。因为有了 ip、port，就可以精确定位一台设备了，就可以做很多事情了，比如打通 socket 等。</p>
 <p>NSNetService 用来发布服务，表明 m 提供了哪些能力，如打印机、http 服务等等。</p>
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2024/px/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
-      <meta itemprop="name" content="海驴">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一个工匠">
-      <meta itemprop="description" content="时间，真的不多了。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 一个工匠">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/px/" class="post-title-link" itemprop="url">分辨率 - 像素密度 - HiDPI</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2024-10-22 10:54:37" itemprop="dateCreated datePublished" datetime="2024-10-22T10:54:37+08:00">2024-10-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>对于电子显示屏而言，第一要务是要显示信息。与信息显示直接相关的硬件，是光源。每一个光源称为【物理像素】。</p>
-<h1 id="光源-像素密度-物理像素"><a href="#光源-像素密度-物理像素" class="headerlink" title="光源 - 像素密度 - 物理像素"></a>光源 - 像素密度 - 物理像素</h1><p>像素本身是没有大小和尺寸的。同一个显示屏，可以有 100 * 100 个像素（光源），也可以有 10000 * 10000 个像素。但是显示屏的大小并没有改变，改变的是 光源 的多少。如果显示屏有更多的 光源，那么就可以显示更加细腻的画面。这是【像素密度】。</p>
-<p>对于硬件来说，提升【像素密度】，可以在单个面积上，展示更加丰富的色彩。这需要制作工艺的提升，iPhone 4 首次将其商业化，开发出了 Retina （HiDPI）屏幕。当时称为 2 倍屏，和 iPhone 3G 相比，屏幕的物理尺寸没有改变，但是像素密度提升了 4 倍，即 宽、高 的密度提升了 2 倍。</p>
-<p>这是硬件制作工艺上的提升，但如何有效的使用塞了更多光源的屏幕，是软件来工作的。实际上，很多复杂的逻辑，都是软件来规定的。毕竟硬件只提供了【像素密度】更高、更多的【光源】，其他并没有做。比如软件开发中如何实现 0.5px 的宽高、如何调整设置系统的分辨率等等。</p>
-<p>光源，也称为【物理像素】，是真实的提供发光和色彩的源头。</p>
           <!--noindex-->
           <!--/noindex-->
         

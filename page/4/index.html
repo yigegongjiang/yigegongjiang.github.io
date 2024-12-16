@@ -92,7 +92,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">101</span></a></li><li class="menu-item menu-item-日本指北"><a href="/japan/" rel="section">日本指北</a></li><li class="menu-item menu-item-时间舟"><a href="/categories/%E6%97%B6%E9%97%B4%E8%88%9F/" rel="section">时间舟</a></li><li class="menu-item menu-item-source"><a href="/openSource" rel="section">Source</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">102</span></a></li><li class="menu-item menu-item-日本指北"><a href="/japan/" rel="section">日本指北</a></li><li class="menu-item menu-item-时间舟"><a href="/categories/%E6%97%B6%E9%97%B4%E8%88%9F/" rel="section">时间舟</a></li><li class="menu-item menu-item-source"><a href="/openSource" rel="section">Source</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
   </ul>
 </nav>
 
@@ -131,7 +131,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-count">102</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -173,6 +173,93 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2023/multiLanguage/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
+      <meta itemprop="name" content="海驴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个工匠">
+      <meta itemprop="description" content="时间，真的不多了。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 一个工匠">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/multiLanguage/" class="post-title-link" itemprop="url">高级语言小记</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-07-02 21:23:06" itemprop="dateCreated datePublished" datetime="2023-07-02T21:23:06+08:00">2023-07-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>最近学习回顾了几门高级语言和周边工具。这里做个小总结，学习暂时告一段落，以后会在需要的时候再捡起来。</p>
+<h1 id="Swift："><a href="#Swift：" class="headerlink" title="Swift："></a>Swift：</h1><p>Swift 这门语言，真的是大杂烩。集合了不知道多少语言的混杂体。<br>Swift 语法都觉得似成相识，比如 范型、异步、多线程、函数编程、闭包、下标、嵌套、元组、虚函数。不过这些能力都是一门高级语言本该支持的，也无可厚非。<br>后起的语言，的确是有后天优势的。很多语言都有历史遗留问题，比如 python 为了解决作用域问题，弄出来 global、local、nolocal 这样反人类的设计。</p>
+<blockquote>
+<p>值类型和引用类型 (struct /class) 借鉴的 C++，详见之前的文章：<a href="https://www.yigegongjiang.com/2019/SwiftStruct/">Swift struct (值类型) 与 class (引用类型) 区别及三种传参机制深刻关系和使用</a></p>
+<p>元组，借鉴的 C++ 的 tuple。这是真好用，尤其在写算法的时候，可以省去不少逻辑复杂度。</p>
+<p>属性包装器 propertyWrapper 借鉴 Java 的注解。</p>
+<p>函数调用中的虚函数，借鉴 C++ 的虚函数设计。不过在函数调用这个问题上，也没有那么多选择，要么静态编译直接派发，要么虚函数存储方法列表派发，要么像 OC 一样动态派发，要么就得和 Java 这类一样靠虚拟机动态解析 (JIT 是直接派发)。本质就是找函数指针的过程。</p>
+</blockquote>
+          <!--noindex-->
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -906,98 +993,6 @@
 <blockquote>
 <p>Vim 作者，Bram 于 2023.08.05 日去世了，享年 62 岁。像我这种只要碰键盘就离不开 vim 的人，对 vim 的感激，是十分强烈的。悼念 Bram。<br>计算机的基石和发展，也就这几十年。那一批有卓越贡献的人，后面二十年会相继离去。C 语言之父丹尼斯十年前走了，70 岁。后面会越来越多。</p>
 </blockquote>
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2023/track/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
-      <meta itemprop="name" content="海驴">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一个工匠">
-      <meta itemprop="description" content="时间，真的不多了。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 一个工匠">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/track/" class="post-title-link" itemprop="url">移动端日志系统怎么搭建</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2023-01-23 02:34:25" itemprop="dateCreated datePublished" datetime="2023-01-23T02:34:25+08:00">2023-01-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>端上日志系统非常重要，对于用户侧的异常、排障、动线、行为等很多重要数据，都可以通过端上日志来做检索。如何搭建一套准确、高性能的完备日志 SDK 就显得尤为重要。 （另一个重要的排障信息源是埋点，通过埋点可以获取更精准的用户动线。后面有时间做一下埋点数据化方面的总结）。<br>移动端日志系统，将承载 Native、h5、动态化等多技术栈环境下的日志收口工作，同时要兼顾日志不丢不乱和高性能，其实还是有不少挑战的。<br>这一方面 <strong>CocoaLumberjack</strong> 其实已经做的很好，很多公司都用它作为自己的日志系统的基础框架。但它还不能作为大型 app 的流量日志收口系统。因为流量大了以后，少量的日志丢失也会带来很大的缺口，而性能方面它也有很多短板。<br><strong>mmap</strong> 可以在 IO 性能方面有显著的提升，也就是后端比较通用的<strong>零拷贝</strong>技术。在移动端上 <strong>FastImageCache</strong> 对 mmap 有较深的应用，但它业务绑定太强，一般无法直接使用，更多的是学习 mmap 的落地。</p>
-<p>本文会对日志系统的一些完备要素做一些说明，并特别讲解下 <strong>CocoaLumberjack</strong>、<strong>FastImageCache</strong> 两个技术库。</p>
-<ul>
-<li>日志是否全量。很多业务开发同学不使用日志 SDK 做日志输出，可能使用系统日志做打印，这一部分日志是否需要做收口，需要权衡一下。</li>
-<li>分等级和模块。分 Level 和 modules 进行记录和检索，可以提供问题排查速度。这方面有专业的 Debug/Info/Error 等标准。技术上比较好实现。</li>
-<li>性能。主要是卡顿和耗电。日志系统会底层基础架构，大流量的打入，会频繁的内存释放、I/O，过多的占用 CPU 会导致卡顿和耗电，也会影响拖延上层业务异步代码的执行时机。</li>
-<li>数据不丢不乱。没有办法做到完全的不丢日志，只能尽可能少的减少。在 crash / CPU 繁忙 / 压缩加密严重耗时拖延队列等异常场景，这方面问题尤其突出。不乱就需要增加串型队列或者锁，这些同步机制都需要保障阻塞和性能。</li>
-<li>实时观测。开发和测试同学需要能够实时看到日志打印情况，这在开发和提测阶段非常有用。</li>
-<li>压缩 + 加密。压缩和加密都是耗时操作，对 CPU 的压力比较大。</li>
-<li>上报。得有回捞机制，得保障数据传输安全。</li>
-<li>后端系统。前置的采集完成后，后端系统的数据化检索、数据可视化等工作都是重中之重。</li>
-<li>隐私安全。这一块国内所有厂商都极度匮乏。大厂的开发同学也可以随意捞取用户日志，异常日志在内部系统可以随意传播。如果有这方面的诉求，那么整套安全体系都需要建立起来。</li>
-</ul>
           <!--noindex-->
           <!--/noindex-->
         
