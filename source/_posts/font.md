@@ -88,9 +88,30 @@ zsh 有 `powerlevel10k` 主题。该主题在字体方面比较丰富，主要�
 1. 通过 brew 安装 nerd 项目中的字体，如 hack。
 2. ITerm、Warp 中选择 nerd 字体。
 
-# 其他
+# 浏览器切换字体
 
 安装 hack 等字体后，很多天天见面的 IDE 或者 app，就可以切换喜欢的字体了。
+其中，浏览器可以设置全局的字体切换，这对爱好某一个字体的同学来说，将非常友好。
+全局 css 内容推荐如下，后面配置的时候会用到：
+
+```css
+body, p, div, span, h1, h2, h3, h4, h5, h6, a, li, button, input, textarea, select, label, pre, code, table, th, td, blockquote {
+    font-family: "Hack Nerd Font", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+```
+> Tips：最好不要使用 `body, * {}` 以及 `!important`，这样会影响到一些网站的显示效果。因为有些字体是图标字体，会紊乱变形。
+
+## safari
+
+safari 浏览器提供了全局样式表：【setting - advanced - style sheet】，这里可以在选择本地一个 **xx.css** 文件，来设置全局的样式。
+文件内容就是上面提供的示例 css。
+
+## chrome 家族
+
+chrome、arc 等，都可以通过插件 `Stylus` 来设置全局样式表，这个插件非常棒，可以定制很多网站的样式，有很多网友制作的样式，可以直接使用。
+这里，我们可以通过该插件设定一个全局样式表，内容就是上面提供的示例 css。
 
 ___
 
