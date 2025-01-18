@@ -131,7 +131,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E7%A7%B0%E5%9C%BA%E6%99%AF%E4%B8%8B%E6%91%98%E8%A6%81%E4%BF%9D%E9%9A%9C%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="nav-number">1.</span> <span class="nav-text">对称场景下摘要保障完整性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%9C%BA%E6%99%AF%E4%B8%8B%E7%9A%84%E6%91%98%E8%A6%81%E5%92%8C%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D"><span class="nav-number">2.</span> <span class="nav-text">非对称场景下的摘要和数字签名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9APassKey"><span class="nav-number">3.</span> <span class="nav-text">数字签名应用场景：PassKey</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9ASSL"><span class="nav-number">4.</span> <span class="nav-text">数字签名应用场景：SSL</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SSL-%E8%AF%81%E4%B9%A6%E6%A0%BC%E5%BC%8F"><span class="nav-number">4.1.</span> <span class="nav-text">SSL 证书格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%81%E4%B9%A6%E9%93%BE"><span class="nav-number">4.2.</span> <span class="nav-text">证书链</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E7%AD%BE%E5%90%8D%E8%AF%81%E4%B9%A6"><span class="nav-number">4.3.</span> <span class="nav-text">自签名证书</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9ASSH"><span class="nav-number">5.</span> <span class="nav-text">数字签名应用场景：SSH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9AiPhone-App"><span class="nav-number">6.</span> <span class="nav-text">数字签名应用场景：iPhone App</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E7%A7%B0%E5%9C%BA%E6%99%AF%E4%B8%8B%E6%91%98%E8%A6%81%E4%BF%9D%E9%9A%9C%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="nav-number">1.</span> <span class="nav-text">对称场景下摘要保障完整性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%9C%BA%E6%99%AF%E4%B8%8B%E7%9A%84%E6%91%98%E8%A6%81%E5%92%8C%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D"><span class="nav-number">2.</span> <span class="nav-text">非对称场景下的摘要和数字签名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9APassKey"><span class="nav-number">3.</span> <span class="nav-text">数字签名应用场景：PassKey</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9ASSL-%EF%BC%882025-01-18-%E6%9B%B4%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">数字签名应用场景：SSL （2025.01.18 更）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SSL-%E8%AF%81%E4%B9%A6%E6%A0%BC%E5%BC%8F"><span class="nav-number">4.1.</span> <span class="nav-text">SSL 证书格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%81%E4%B9%A6%E9%93%BE"><span class="nav-number">4.2.</span> <span class="nav-text">证书链</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AD%A3%E5%90%91%E8%A7%A3%E6%9E%90%E8%AF%81%E4%B9%A6%E9%93%BE"><span class="nav-number">4.2.1.</span> <span class="nav-text">正向解析证书链</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%80%86%E5%90%91%E9%AA%8C%E8%AF%81%E8%AF%81%E4%B9%A6%E9%93%BE"><span class="nav-number">4.2.2.</span> <span class="nav-text">逆向验证证书链</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%89%B9%E5%88%AB%E8%AF%B4%E6%98%8E-%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81"><span class="nav-number">4.2.3.</span> <span class="nav-text">特别说明 - 交叉验证</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E7%AD%BE%E5%90%8D%E8%AF%81%E4%B9%A6"><span class="nav-number">4.3.</span> <span class="nav-text">自签名证书</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9ASSH"><span class="nav-number">5.</span> <span class="nav-text">数字签名应用场景：SSH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9AiPhone-App"><span class="nav-number">6.</span> <span class="nav-text">数字签名应用场景：iPhone App</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -272,21 +272,46 @@
 <img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202307172332616.jpg" width="40%">
 <img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202307172332617.jpg" width="40%">
 
-<h3 id="数字签名应用场景：SSL"><a href="#数字签名应用场景：SSL" class="headerlink" title="数字签名应用场景：SSL"></a>数字签名应用场景：SSL</h3><p>在 7 层网络协议里，SSL 分为握手协议和记录协议，分别处于表示层和会话层，主要负责网络数据的传输安全。<br>从对称场景下的摘要可以知道，对称场景下是没有身份认证的，这样就会使得密钥存疑。如果 A 和 B 通信的密钥被 C 给更换了，那么 C 就可以假冒 B 与 A 通信。所以 HTTP 退出了历史舞台。<br>非对称加密的双向认证是可以解决这个问题，但因为非对称加密耗时厉害，没有被有效的采用。所以就有了通过数字签名来传输公钥，通过单向安全性把临时对称密钥给到对方，而后双方使用对称密钥通信的策略。这就是 HTTPS (SSL/TSL) 使用的方案。<br><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301021647510.jpeg" alt="SSL/TSL 本身还是复杂的，上面只是简化流程，表达数字签名的用途"></p>
+<h3 id="数字签名应用场景：SSL-（2025-01-18-更）"><a href="#数字签名应用场景：SSL-（2025-01-18-更）" class="headerlink" title="数字签名应用场景：SSL （2025.01.18 更）"></a>数字签名应用场景：SSL （2025.01.18 更）</h3><p>在 7 层网络协议里，SSL 分为握手协议和记录协议，分别处于表示层和会话层，主要负责网络数据的传输安全。<br>从对称场景下的摘要可以知道，对称场景下是没有身份认证的，这样就会使得密钥存疑。如果 A 和 B 通信的密钥被 C 给更换了，那么 C 就可以假冒 B 与 A 通信。所以 HTTP 退出了历史舞台。<br>非对称加密的双向认证是可以解决这个问题，但因为非对称加密耗时厉害，没有被有效的采用。所以就有了通过数字签名来传输公钥，通过单向安全性把临时对称密钥给到对方，而后双方使用对称密钥通信的策略。这就是 HTTPS (SSL/TSL) 使用的方案。<br><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301021647510.jpeg" alt="SSL/TSL 本身还是复杂的，上面只是简化流程，表达数字签名的用途"></p>
 <p>HTTPS 的安全核心在于对称密钥 (或者种子) 的安全传输。根据非对称加密单向安全性，只要拥有公钥的一方生成对称密钥并把密钥通过公钥加密给到另一方，拥有私钥的对方才可以解开数据并拿到密钥，这样就安全传输了。<br>而数据签名之所以能传递有效的公钥，就是因为它具有完整性、身份认证、不可否认的特点。拿到的公钥，一定是安全的公钥，如果被动了手脚，一定会被发现。</p>
-<h4 id="SSL-证书格式"><a href="#SSL-证书格式" class="headerlink" title="SSL 证书格式"></a>SSL 证书格式</h4><p>SSL 证书，是一个二进制文件或者 base64 文件，包含源信息（网站名称、有效期等）和数字签名。<br>CA 机构对【源信息】生成【摘要】，将【摘要】通过私钥进行签名，生成【数字签名】。而后，将【源信息】和【数字签名】一起封装成 SSL 证书。</p>
+<h4 id="SSL-证书格式"><a href="#SSL-证书格式" class="headerlink" title="SSL 证书格式"></a>SSL 证书格式</h4><p>SSL 证书，是一个二进制文件或者 base64 文件，包含源信息（公钥、网站名称、有效期等）和数字签名（背书机构通过其私钥对源信息进行的签名）。<br>其中，每个 SSL pem 证书包含的公钥是当前证书管理者的公钥，数字签名是上级证书管理者对当前证书的签名。</p>
+<p>对于用户申请的 SSL 证书（向中间 CA 机构申请）pem 格式，一般包含以下几个部分：</p>
+<ol>
+<li>证书信息：包含证书的有效期、颁发机构、域名、签名算法等</li>
+<li>公钥：当前用户网站 / 域名的公钥（私钥也只有当前用户知晓，保存于用户的服务器，用于后续的 https 对称通信密钥的生成）</li>
+<li>数字签名：中间 CA 机构私钥对当前源信息（证书信息 + 公钥 + Other）进行加签后生成的签名，用于验证当前证书完整性</li>
+</ol>
+<p>SSL 证书是通过证书链来进行验证的，下一级证书（中间 CA）的信息如下：</p>
+<ol>
+<li>证书信息：包含证书的有效期、颁发机构、签名算法等</li>
+<li>公钥：中间 CA 机构的公钥</li>
+<li>数字签名：根 CA 机构私钥对当前源信息 (中间 CA 证书) 进行加签后生成的签名，用于验证当前证书完整性</li>
+</ol>
+<p>根 CA 证书信息如下：</p>
+<ol>
+<li>证书信息：包含证书的有效期、颁发机构、签名算法等</li>
+<li>公钥：根 CA 机构的公钥</li>
+<li>数字签名：根 CA 机构私钥对当前源信息 (根 CA 证书) 进行加签后生成的签名，用于验证当前证书完整性</li>
+</ol>
+<h4 id="证书链"><a href="#证书链" class="headerlink" title="证书链"></a>证书链</h4><p>在具有安全效益的证书中，都是采用【证书链】机制的。即每一个【终端证书】，都是通过【根证书】或者【中间证书】签发的（层层签发）。<br>比如 A 网站，它向 M 中间 CA 机构申请 SSL 证书的时候，机构会提供证书链供下载，包括【A 终端证书】、【M 中间证书】和【根证书】。<br>用户 T 访问 A 访问的时候，服务器返回的 pem 会包含【A 终端证书】、【M 中间证书】，一般不用返回根证书，因为用户的电脑里面有【根证书】，这是信任链的源头。<br>证书链验证流程：</p>
+<h5 id="正向解析证书链"><a href="#正向解析证书链" class="headerlink" title="正向解析证书链"></a>正向解析证书链</h5><p>浏览器根据 A 证书、M 证书，分析出 根证书，从而确定证书链：A -&gt; M -&gt; 本机根证书</p>
+<h5 id="逆向验证证书链"><a href="#逆向验证证书链" class="headerlink" title="逆向验证证书链"></a>逆向验证证书链</h5><ol start="0">
+<li>默认相信本机根证书，这是信任的源头</li>
+<li>浏览器根据本机根证书里面的公钥，验证 M 证书是否有效<br>  a. 浏览器验证 M 证书有效期等信息是否合法<br>  b. 浏览器根据 M 证书的签名算法规则，对【源信息】生成【摘要】<br>  c. 浏览器根据根证书的公钥，对 M 证书里面的签名进行解签，得到【解签后的摘要】<br>  d. 比较【源信息摘要】和【解签后的摘要】是否一致。若一致，则 M 证书有效。提取 M 证书里面的公钥进入下一层使用。</li>
+<li>浏览器根据 M 证书里面的公钥，验证 A 证书是否有效<br>  a. 浏览器验证 A 证书有效期等信息是否合法<br>  b. 浏览器根据 A 证书的签名算法规则，对【源信息】生成【摘要】<br>  c. 浏览器根据上一层验证拿到的 M 证书的公钥，对 A 证书里面的签名进行解签，得到【解签后的摘要】<br>  d. 比较【源信息摘要】和【解签后的摘要】是否一致。若一致，则 A 证书有效。提取 A 证书里面的公钥进入下一层使用。</li>
+<li>验证 A 证书有效后，后续的 HTTPS 通信就可以使用 A 证书里面的公钥来生成对称密钥了。</li>
+</ol>
+<h5 id="特别说明-交叉验证"><a href="#特别说明-交叉验证" class="headerlink" title="特别说明 - 交叉验证"></a>特别说明 - 交叉验证</h5><p>证书链的验证是一个链条过程，只要有一环验证失败，整个链条就会失败。这就需要根 CA 预先存储于本机中。<br>一般来说，操作系统和浏览器，都会主动的更新本机的根 CA 证书，但如果本机真的没有根 CA 证书，就会影响到证书链的验证。<br>比如 Google 在 2017 年也成为根 CA 发行机构，那就有可能出现一些机器本机根本没有 Google 的根证书，那么它发行的中间 CA 证书就无法验证了。</p>
 <blockquote>
-<p>验证：通过证书链，拿到【源信息】和【数字签名】。通过 CA 公钥解出【数字签名】中的摘要，而后根据同样的规则对【源信息】生成摘要，从而匹配验证完整性。</p>
+<p>Google 根证书：GTS Root R4， Google 中间证书：WE1， a.com 证书： A</p>
 </blockquote>
-<h4 id="证书链"><a href="#证书链" class="headerlink" title="证书链"></a>证书链</h4><p>在具有安全效益的证书中，都是采用【证书链】机制的。即每一个【终端证书】，都是通过【根证书】或者【中间证书】签发的。<br>比如 A 网站，它向 M 机构申请 SSL 证书的时候，机构提供的 SSL 证书会包含【M 中间证书】和 【A 终端证书】。<br>用户 T 访问 A 访问的时候，服务器返回的 SSL 证书会包含上面的两个证书，然后用户的电脑里面有【根证书】，会逐级验证。</p>
-<blockquote>
-<p>用户电脑会有很多个【根证书】，这里会根据一个证书的上级名称等，来快速找到具体的【根证书】</p>
-</blockquote>
+<p>有一种交叉验证的方式，即 这里的 WE1 证书，不仅仅可以通过 GTS Root R4 根证书加签，还可能通过其他根证书加签（确保本机已经存在的根证书）。<br>这样，虽然本机没有 GTS Root R4 根证书，但是通过其他根证书，也可以验证 WE1 证书的有效性，进一步验证 A 证书的有效性。</p>
 <h4 id="自签名证书"><a href="#自签名证书" class="headerlink" title="自签名证书"></a>自签名证书</h4><p>对于非 CA 机构签发的用于自行测试的【自签名证书】，有两种方案：</p>
 <ol>
 <li>先生成自签名的【根证书】，而后通过【自签名根证书】来生成所有的【终端证书】</li>
-<li>直接生成【终端证书】<br>采用方案一的话，直接把【自签名根证书】导入用户设备并信任，后续所有的【终端证书】都能够使用了，通常用在企业内部或者测试场景。</li>
+<li>直接生成【终端证书】</li>
 </ol>
+<p>采用方案一的话，直接把【自签名根证书】导入用户设备并信任，后续所有的【终端证书】都能够使用了，通常用在企业内部或者测试场景。</p>
 <h3 id="数字签名应用场景：SSH"><a href="#数字签名应用场景：SSH" class="headerlink" title="数字签名应用场景：SSH"></a>数字签名应用场景：SSH</h3><p>SSH 全称 <code>Secure Shell</code>，即 “安全壳协议 “。SSH 突破安全枷锁的方式和 SSL 是一样的，相比来说少了<code>证书链校验</code>这个环节，即 Client 和 Service 需要自行保障公钥的可靠。<br>具体来说很直接，就是如果 Client 需要登陆 Service，第一次登陆的时候 SSH 工具会提示 Service 的公钥，人们需要看下这个公钥和 Service 那边公开的公钥是否一致。一致后 Client 侧会做公钥缓存，后面就不会再提示了。<br>其他的都和 HTTPS 是一样的了，通过公私钥确认对称密钥，通过对称密钥进行数据安全传输。</p>
 <h3 id="数字签名应用场景：iPhone-App"><a href="#数字签名应用场景：iPhone-App" class="headerlink" title="数字签名应用场景：iPhone App"></a>数字签名应用场景：iPhone App</h3><p>iPhone 的 ipa 包，有非常多的安装限制，都是通过数字签名来控制的。Apple 使用的<strong>双重认证</strong>方案，即开发者和 Apple 公司同时提供公私钥签名，来使得 ipa 包不会被滥用和滥安装。<br><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301021647511.jpeg"></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>数字签名是通过私钥加签，所有公钥都能验签，所以没有机密性可言。数字签名实现了<strong>完整性</strong>、<strong>身份认证</strong>、<strong>不可否认</strong>，而<strong>机密性</strong>则是通过对称加密 / 非对称加密来完成密文保障。<br>数字签名，是数据安全的基石。</p>
@@ -396,7 +421,7 @@
 
   <div class="copyright">
     &copy; 2018 – 
-    <span itemprop="copyrightYear">2024</span>
+    <span itemprop="copyrightYear">2025</span>
     <span class="with-love">
       <i class=""></i>
     </span>
