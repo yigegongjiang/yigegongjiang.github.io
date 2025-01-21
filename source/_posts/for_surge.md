@@ -101,47 +101,133 @@ Mac http 代理的设置如下：
 http proxy python 实现如下，要理解 client_socket 和 server_socket 两个 socket 的生成和处理。
 (From ChatGPT - “用 python 写一个 http 代理，处理 get post delete head 等请求。”)
 ```
+// 2025.01.21 update: using Claude to replace the previous ChatGPT 3.5
+
 import socket
 import threading
 
-def handle_client(client_socket):
-    # 接收客户端请求数据
-    request_data = client_socket.recv(1024)
-    # 解析请求行，获取请求方法、URL 和 HTTP 版本号
-    request_line = request_data.split(b'\r\n')[0]
-    method, url, http_version = request_line.split(b' ')
-    # 构造代理服务器请求地址
-    proxy_url = b'http://' + url
-    # 发送代理服务器请求
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as proxy_socket:
-        # 解析代理服务器地址
-        proxy_host = proxy_url.split(b'//')[1].split(b'/')[0]
-        proxy_port = 80
-        # 建立连接并发送请求数据
-        proxy_socket.connect((proxy_host, proxy_port))
-        proxy_socket.sendall(request_data)
-        # 接收代理服务器响应并发送给客户端
-        while True:
-            response_data = proxy_socket.recv(1024)
-            if not response_data:
-                break
-            client_socket.sendall(response_data)
+class HTTPProxy:
+    """
+    HTTP代理服务器实现
+    
+    注意：这个实现只处理HTTP请求，不处理HTTPS请求
+    
+    HTTP代理请求格式说明：
+    1. 直接访问服务器时的请求格式：
+       GET /index.html HTTP/1.1
+       Host: www.example.com
+    
+    2. 通过代理访问时的请求格式：
+       GET http://www.example.com/index.html HTTP/1.1
+       Host: www.example.com
+    
+    因此代理服务器需要：
+    1. 解析完整URL获取目标服务器信息
+    2. 将代理格式请求转换为直接访问格式
+    3. 转发修改后的请求到目标服务器
+    """
+    def __init__(self, host='127.0.0.1', port=8080):
+        self.host = host
+        self.port = port
 
-def run_server():
-    # 创建套接字并绑定到本地地址和端口
-    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_socket.bind(('localhost', 8888))
-    server_socket.listen(5)
-    print('Proxy server is running on port 8888...')
-    while True:
-        # 接受客户端连接并创建线程处理请求
-        client_socket, address = server_socket.accept()
-        print(f'Request from {address}')
-        t = threading.Thread(target=handle_client, args=(client_socket,))
-        t.start()
+    def start(self):
+        server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        server.bind((self.host, self.port))
+        server.listen(5)
+        print(f"HTTP 代理服务器运行在 {self.host}:{self.port}")
+
+        while True:
+            try:
+                client_socket, client_addr = server.accept()
+                thread = threading.Thread(target=self.handle_client, args=(client_socket,))
+                thread.start()
+            except Exception as e:
+                print(f"接受连接时出错: {e}")
+
+    def handle_client(self, client_socket):
+        try:
+            request = client_socket.recv(8192)
+            if not request:
+                return
+
+            # 解析HTTP请求
+            first_line = request.decode('utf-8').split('\r\n')[0]
+            method, full_path, version = first_line.split(' ')
+
+            # 处理普通HTTP请求
+            if not full_path.startswith('http'):
+                client_socket.close()
+                return
+            
+            # 移除 http://
+            path = full_path.split('://', 1)[1]
+            hostname = path.split('/')[0]
+            port = 80
+            
+            if ':' in hostname:
+                hostname, port = hostname.split(':')
+                port = int(port)
+
+            # 连接目标服务器
+            server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            server_socket.connect((hostname, port))
+
+            # 转发修改后的请求
+            modified_request = self.modify_request(request, hostname)
+            server_socket.send(modified_request)
+
+            # 开始双向转发数据
+            self.forward_data(client_socket, server_socket)
+
+        except Exception as e:
+            print(f"处理客户端请求时出错: {e}")
+        finally:
+            client_socket.close()
+
+    def modify_request(self, request, hostname):
+        # 修改HTTP请求，移除完整URL，只保留路径部分
+        lines = request.decode('utf-8').split('\r\n')
+        method, full_path, version = lines[0].split(' ')
+        path = '/' + full_path.split('://', 1)[1].split('/', 1)[1] if '/' in full_path else '/'
+        lines[0] = f"{method} {path} {version}"
+        
+        # 确保Host头部正确
+        has_host = False
+        for i, line in enumerate(lines[1:], 1):
+            if line.lower().startswith('host:'):
+                lines[i] = f"Host: {hostname}"
+                has_host = True
+                break
+        
+        if not has_host:
+            lines.insert(1, f"Host: {hostname}")
+        
+        return '\r\n'.join(lines).encode('utf-8')
+
+    def forward_data(self, client_socket, server_socket):
+        def forward(source, destination, description):
+            try:
+                while True:
+                    data = source.recv(8192)
+                    if not data:
+                        break
+                    destination.send(data)
+            except:
+                pass
+            finally:
+                try:
+                    source.close()
+                    destination.close()
+                except:
+                    pass
+
+        threading.Thread(target=forward, args=(client_socket, server_socket, "客户端 -> 服务器")).start()
+        threading.Thread(target=forward, args=(server_socket, client_socket, "服务器 -> 客户端")).start()
 
 if __name__ == '__main__':
-    run_server()
+    proxy = HTTPProxy()
+    proxy.start()
 ```
 
 ## https
@@ -164,68 +250,99 @@ https 代理整体流程和 http 没有变化，就是多了一个 http connect 
 https proxy python 实现如下，要注意对 connect 的处理，是返回 client 200 Established，这样 client 才会继续发送后续的数据包。
 (From ChatGPT - “用 python 写一个 https 代理，处理 connect 请求。”)
 ```
+// 2025.01.21 update: using Claude to replace the previous ChatGPT 3.5
+
 import socket
-import ssl
 import threading
 
-def handle_client(client_socket):
-    # 接收客户端请求数据
-    request_data = client_socket.recv(1024)
-    # 解析请求行，获取请求方法、URL 和 HTTP 版本号
-    request_line = request_data.split(b'\r\n')[0]
-    method, url, http_version = request_line.split(b' ')
-    if method == b'CONNECT':
-        # 解析请求行，获取请求方法、目标主机和端口号
-        _, target_host, target_port, _ = url.split(b':') + [b'']
-        target_port = int(target_port)
-        # 建立与目标主机的加密连接
-        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as proxy_socket:
-            proxy_socket.connect((target_host, target_port))
-            proxy_socket = ssl.wrap_socket(proxy_socket, server_side=False)
-            # 响应客户端 CONNECT 请求
-            response_data = b'HTTP/1.1 200 Connection Established\r\n\r\n'
-            client_socket.sendall(response_data)
-            # 交换数据
-            while True:
-                data = client_socket.recv(1024)
-                if not data:
-                    break
-                proxy_socket.sendall(data)
-                response_data = proxy_socket.recv(1024)
-                client_socket.sendall(response_data)
-    else:
-        # 构造代理服务器请求地址
-        proxy_url = b'http://' + url
-        # 发送代理服务器请求
-        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as proxy_socket:
-            # 解析代理服务器地址
-            proxy_host = proxy_url.split(b'//')[1].split(b'/')[0]
-            proxy_port = 80
-            # 建立连接并发送请求数据
-            proxy_socket.connect((proxy_host, proxy_port))
-            proxy_socket.sendall(request_data)
-            # 接收代理服务器响应并发送给客户端
-            while True:
-                response_data = proxy_socket.recv(1024)
-                if not response_data:
-                    break
-                client_socket.sendall(response_data)
+class ProxyServer:
+    def __init__(self, host='127.0.0.1', port=8443):  # 修改默认 host 为 127.0.0.1
+        self.host = host
+        self.port = port
 
-def run_server():
-    # 创建套接字并绑定到本地地址和端口
-    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_socket.bind(('localhost', 8888))
-    server_socket.listen(5)
-    print('Proxy server is running on port 8888...')
-    while True:
-        # 接受客户端连接并创建线程处理请求
-        client_socket, address = server_socket.accept()
-        print(f'Request from {address}')
-        t = threading.Thread(target=handle_client, args=(client_socket,))
-        t.start()
+    def start(self):
+        server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        server.bind((self.host, self.port))
+        server.listen(5)
+        print(f"HTTPS 代理服务器运行在 {self.host}:{self.port}")
+
+        while True:
+            try:
+                client_socket, client_addr = server.accept()
+                thread = threading.Thread(target=self.handle_client, args=(client_socket,))
+                thread.start()
+            except Exception as e:
+                print(f"接受连接时出错: {e}")
+
+    def handle_client(self, client_socket):
+        try:
+            data = client_socket.recv(8192)
+            if not data:
+                return
+
+            first_line = data.decode('utf-8').split('\r\n')[0]
+            method, target_host, _ = first_line.split(' ')
+
+            if method != 'CONNECT':
+                client_socket.close()
+                return
+
+            hostname = target_host.split(':')[0]
+            port = int(target_host.split(':')[1]) if ':' in target_host else 443
+
+            try:
+                server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                server_socket.settimeout(10)  # 添加超时设置
+                server_socket.connect((hostname, port))
+                client_socket.send(b'HTTP/1.1 200 Connection Established\r\n\r\n')
+                self.forward_data(client_socket, server_socket)
+            except socket.timeout:
+                print(f"连接 {hostname}:{port} 超时")
+            except ConnectionRefusedError:
+                print(f"连接 {hostname}:{port} 被拒绝")
+            except Exception as e:
+                print(f"连接目标服务器时出错: {e}")
+
+        except Exception as e:
+            print(f"处理客户端请求时出错: {e}")
+        finally:
+            client_socket.close()
+
+    def forward_data(self, client_socket, server_socket):
+        def forward(source, destination, description):
+            try:
+                while True:
+                    data = source.recv(8192)
+                    if not data:
+                        break
+                    destination.send(data)
+            except (ConnectionResetError, BrokenPipeError) as e:
+                print(f"{description} 连接断开: {e}")
+            except Exception as e:
+                print(f"{description} 转发错误: {e}")
+            finally:
+                try:
+                    source.close()
+                    destination.close()
+                except:
+                    pass
+
+        client_to_server = threading.Thread(
+            target=forward, 
+            args=(client_socket, server_socket, "客户端到服务器")
+        )
+        server_to_client = threading.Thread(
+            target=forward, 
+            args=(server_socket, client_socket, "服务器到客户端")
+        )
+
+        client_to_server.start()
+        server_to_client.start()
 
 if __name__ == '__main__':
-    run_server()
+    proxy = ProxyServer()
+    proxy.start()
 ```
 
 ## socks5
@@ -268,62 +385,127 @@ DST.PORT 网络字节序表示的目的端口
 socks5 proxy python 实现如下，要注意对域名的获取。
 (From ChatGPT - “用 python 写一个 socks5 代理。”)
 ```
+// 2025.01.21 update: using Claude to replace the previous ChatGPT 3.5
+
 import socket
 import threading
+import struct
 
-def handle_client(client_socket):
-    # 接收客户端连接请求
-    data = client_socket.recv(1024)
-    # 发送协商响应，仅支持无认证方式
-    response = b"\x05\x00"
-    client_socket.sendall(response)
-    # 接收客户端连接请求，解析目标主机和端口号
-    data = client_socket.recv(1024)
-    mode = data[1]
-    if mode == 1:  # CONNECT
-        addrtype = data[3]
-        if addrtype == 1:  # IPv4
-            addr = socket.inet_ntoa(data[4:8])
-            port = int.from_bytes(data[8:], byteorder='big')
-        elif addrtype == 3:  # 域名
-            addrlen = data[4]
-            addr = data[5:5+addrlen].decode()
-            port = int.from_bytes(data[5+addrlen:], byteorder='big')
-        else:
+class SOCKS5Proxy:
+    def __init__(self, host='127.0.0.1', port=1080):
+        self.host = host
+        self.port = port
+
+    def start(self):
+        server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        server.bind((self.host, self.port))
+        server.listen(5)
+        print(f"SOCKS5 代理服务器运行在 {self.host}:{self.port}")
+
+        while True:
+            try:
+                client_socket, client_addr = server.accept()
+                thread = threading.Thread(target=self.handle_client, args=(client_socket,))
+                thread.start()
+            except Exception as e:
+                print(f"接受连接时出错: {e}")
+
+    def handle_client(self, client_socket):
+        try:
+            # SOCKS5 认证协商
+            if not self.handle_auth(client_socket):
+                return
+
+            # SOCKS5 请求处理
+            if not self.handle_request(client_socket):
+                return
+
+        except Exception as e:
+            print(f"处理客户端请求时出错: {e}")
+        finally:
             client_socket.close()
-            return
-        # 建立与目标主机的连接，并响应客户端连接请求
-        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as proxy_socket:
-            proxy_socket.connect((addr, port))
-            response = b"\x05\x00\x00\x01"
-            response += socket.inet_aton('0.0.0.0') + (0).to_bytes(2, byteorder='big')
-            client_socket.sendall(response)
-            # 交换数据
-            while True:
-                data = client_socket.recv(1024)
-                if not data:
-                    break
-                proxy_socket.sendall(data)
-                response_data = proxy_socket.recv(1024)
-                client_socket.sendall(response_data)
-    else:
-        client_socket.close()
 
-def run_server():
-    # 创建套接字并绑定到本地地址和端口
-    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_socket.bind(('localhost', 8888))
-    server_socket.listen(5)
-    print('SOCKS5 proxy server is running on port 8888...')
-    while True:
-        # 接受客户端连接并创建线程处理请求
-        client_socket, address = server_socket.accept()
-        print(f'Request from {address}')
-        t = threading.Thread(target=handle_client, args=(client_socket,))
-        t.start()
+    def handle_auth(self, client_socket):
+        # 接收客户端支持的认证方法
+        version, nmethods = struct.unpack('!BB', client_socket.recv(2))
+        methods = client_socket.recv(nmethods)
+
+        # 目前仅支持无认证方式(0x00)
+        client_socket.send(struct.pack('!BB', 0x05, 0x00))
+        return True
+
+    def handle_request(self, client_socket):
+        # 接收请求详情
+        version, cmd, _, addr_type = struct.unpack('!BBBB', client_socket.recv(4))
+        
+        if cmd != 0x01:  # 仅支持 CONNECT 命令
+            self.send_reply(client_socket, 0x07)  # Command not supported
+            return False
+
+        # 解析目标地址
+        if addr_type == 0x01:  # IPv4
+            target_addr = socket.inet_ntoa(client_socket.recv(4))
+        elif addr_type == 0x03:  # Domain name
+            addr_len = ord(client_socket.recv(1))
+            target_addr = client_socket.recv(addr_len).decode('utf-8')
+        elif addr_type == 0x04:  # IPv6
+            target_addr = socket.inet_ntop(socket.AF_INET6, client_socket.recv(16))
+        else:
+            self.send_reply(client_socket, 0x08)  # Address type not supported
+            return False
+
+        # 获取端口号
+        target_port = struct.unpack('!H', client_socket.recv(2))[0]
+
+        try:
+            # 连接目标服务器
+            server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            server_socket.connect((target_addr, target_port))
+            bind_addr = server_socket.getsockname()
+            
+            # 发送成功响应
+            self.send_reply(client_socket, 0x00, bind_addr[0], bind_addr[1])
+            
+            # 开始转发数据
+            self.forward_data(client_socket, server_socket)
+            return True
+
+        except Exception as e:
+            print(f"连接目标服务器失败: {e}")
+            self.send_reply(client_socket, 0x04)  # Host unreachable
+            return False
+
+    def send_reply(self, client_socket, reply_code, bind_addr='0.0.0.0', bind_port=0):
+        # 构造响应包
+        response = struct.pack('!BBBB', 0x05, reply_code, 0x00, 0x01)
+        response += socket.inet_aton(bind_addr)
+        response += struct.pack('!H', bind_port)
+        client_socket.send(response)
+
+    def forward_data(self, client_socket, server_socket):
+        def forward(source, destination, description):
+            try:
+                while True:
+                    data = source.recv(8192)
+                    if not data:
+                        break
+                    destination.send(data)
+            except:
+                pass
+            finally:
+                try:
+                    source.close()
+                    destination.close()
+                except:
+                    pass
+
+        threading.Thread(target=forward, args=(client_socket, server_socket, "客户端 -> 服务器")).start()
+        threading.Thread(target=forward, args=(server_socket, client_socket, "服务器 -> 客户端")).start()
 
 if __name__ == '__main__':
-    run_server()
+    proxy = SOCKS5Proxy()
+    proxy.start()
 ```
 
 ## 终端默认为什么不走代理
