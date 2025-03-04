@@ -693,7 +693,7 @@ candidate: 一个可能的网络连接点的候选项。**网络节点负责最�
 sdpMid/sdpMLineIndex: 用来标记 SDP 中的媒体流索引。即每一个 candidate 候选，都属于某一个媒体流通道，如 音频流、视频流等。
 ```
 {
-  "candidate": "candidate:4109260943 1 udp 8331263 104.30.136.76 36634 typ relay raddr 59.87.240.206 rport 63859 generation 0 ufrag 2D6J network-id 1 network-cost 10",
+  "candidate": "candidate:4109260943 1 udp 8331263 x.x.x.x 36634 typ relay raddr x.x.x.x rport 63859 generation 0 ufrag 2D6J network-id 1 network-cost 10",
   "sdpMLineIndex": 0,
   "sdpMid": "0"
 }
@@ -704,7 +704,7 @@ sdpMid/sdpMLineIndex: 用来标记 SDP 中的媒体流索引。即每一个 cand
 ```
 
 下面示例，是使用 Cloudflare TURN 服务采集到的一个网络发现节点：
-**candidate:4109260943 1 udp 8331263 104.30.136.76 36634 typ relay raddr 59.87.240.206 rport 63859 generation 0 ufrag 2D6J network-id 1 network-cost 10**
+**candidate:4109260943 1 udp 8331263 x.x.x.x 36634 typ relay raddr x.x.x.x rport 63859 generation 0 ufrag 2D6J network-id 1 network-cost 10**
 ![](https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/202411091629139.png)
 tips:
 * TCP or UDP：webrtc 使用 SRTP 来传输音视频流，该应用层协议可同时在 TCP 和 UDP 上工作。其中，默认使用 UDP。只有 UDP 不可用后会回退到 TCP。
@@ -879,42 +879,42 @@ tips:
     "sdpMid": "2"
   },
   {
-    "candidate": "candidate:1410854543 1 udp 25108735 172.71.4.36 53914 typ relay raddr 59.87.240.206 rport 63839 generation 0 ufrag 2D6J network-id 1 network-cost 10",
+    "candidate": "candidate:1410854543 1 udp 25108735 x.x.x.x 53914 typ relay raddr x.x.x.x rport 63839 generation 0 ufrag 2D6J network-id 1 network-cost 10",
     "sdpMLineIndex": 2,
     "sdpMid": "2"
   },
   {
-    "candidate": "candidate:1101771793 1 udp 41886207 104.30.137.41 53010 typ relay raddr 59.87.240.206 rport 49555 generation 0 ufrag 2D6J network-id 1 network-cost 10",
+    "candidate": "candidate:1101771793 1 udp 41886207 x.x.x.x 53010 typ relay raddr x.x.x.x rport 49555 generation 0 ufrag 2D6J network-id 1 network-cost 10",
     "sdpMLineIndex": 1,
     "sdpMid": "1"
   },
   {
-    "candidate": "candidate:1101771793 1 udp 41886207 104.30.137.41 52333 typ relay raddr 59.87.240.206 rport 59309 generation 0 ufrag 2D6J network-id 1 network-cost 10",
+    "candidate": "candidate:1101771793 1 udp 41886207 x.x.x.x 52333 typ relay raddr x.x.x.x rport 59309 generation 0 ufrag 2D6J network-id 1 network-cost 10",
     "sdpMLineIndex": 0,
     "sdpMid": "0"
   },
   {
-    "candidate": "candidate:1541054091 1 udp 25108735 172.71.4.33 52668 typ relay raddr 59.87.240.206 rport 63829 generation 0 ufrag 2D6J network-id 1 network-cost 10",
+    "candidate": "candidate:1541054091 1 udp 25108735 x.x.x.x 52668 typ relay raddr x.x.x.x rport 63829 generation 0 ufrag 2D6J network-id 1 network-cost 10",
     "sdpMLineIndex": 0,
     "sdpMid": "0"
   },
   {
-    "candidate": "candidate:3011387645 1 udp 25108735 104.30.137.121 44090 typ relay raddr 59.87.240.206 rport 63857 generation 0 ufrag 2D6J network-id 1 network-cost 10",
+    "candidate": "candidate:3011387645 1 udp 25108735 x.x.x.x 44090 typ relay raddr x.x.x.x rport 63857 generation 0 ufrag 2D6J network-id 1 network-cost 10",
     "sdpMLineIndex": 1,
     "sdpMid": "1"
   },
   {
-    "candidate": "candidate:351976030 1 udp 8331263 104.30.137.121 46887 typ relay raddr 59.87.240.206 rport 63834 generation 0 ufrag 2D6J network-id 1 network-cost 10",
+    "candidate": "candidate:351976030 1 udp 8331263 x.x.x.x 46887 typ relay raddr x.x.x.x rport 63834 generation 0 ufrag 2D6J network-id 1 network-cost 10",
     "sdpMLineIndex": 1,
     "sdpMid": "1"
   },
   {
-    "candidate": "candidate:4109260943 1 udp 8331263 104.30.136.76 36634 typ relay raddr 59.87.240.206 rport 63859 generation 0 ufrag 2D6J network-id 1 network-cost 10",
+    "candidate": "candidate:4109260943 1 udp 8331263 x.x.x.x 36634 typ relay raddr x.x.x.x rport 63859 generation 0 ufrag 2D6J network-id 1 network-cost 10",
     "sdpMLineIndex": 2,
     "sdpMid": "2"
   },
   {
-    "candidate": "candidate:2106314174 1 udp 8331263 104.30.136.165 23955 typ relay raddr 59.87.240.206 rport 63831 generation 0 ufrag 2D6J network-id 1 network-cost 10",
+    "candidate": "candidate:2106314174 1 udp 8331263 x.x.x.x 23955 typ relay raddr x.x.x.x rport 63831 generation 0 ufrag 2D6J network-id 1 network-cost 10",
     "sdpMLineIndex": 0,
     "sdpMid": "0"
   }
@@ -956,14 +956,14 @@ candidate:3405533754 1 tcp 1518151935 240b:c010:401:2c70:518d:9e8c:aa43:2dc4 638
 candidate:1016428434 1 tcp 1518086399 240b:c010:823:5c21:40a5:9a43:ff0c:906 63880 typ host tcptype passive generation 0 ufrag 2D6J network-id 9 network-cost 900
 candidate:3975092077 1 tcp 1517955327 240b:c010:823:5c21:18b6:b94e:abe4:cec2 63881 typ host tcptype passive generation 0 ufrag 2D6J network-id 3 network-cost 50
 candidate:3975092077 1 tcp 1517889791 240b:c010:823:5c21:18b6:b94e:abe4:cec2 63882 typ host tcptype passive generation 0 ufrag 2D6J network-id 4 network-cost 50
-candidate:1410854543 1 udp 25108735 172.71.4.36 53914 typ relay raddr 59.87.240.206 rport 63839 generation 0 ufrag 2D6J network-id 1 network-cost 10
-candidate:1101771793 1 udp 41886207 104.30.137.41 53010 typ relay raddr 59.87.240.206 rport 49555 generation 0 ufrag 2D6J network-id 1 network-cost 10
-candidate:1101771793 1 udp 41886207 104.30.137.41 52333 typ relay raddr 59.87.240.206 rport 59309 generation 0 ufrag 2D6J network-id 1 network-cost 10
-candidate:1541054091 1 udp 25108735 172.71.4.33 52668 typ relay raddr 59.87.240.206 rport 63829 generation 0 ufrag 2D6J network-id 1 network-cost 10
-candidate:3011387645 1 udp 25108735 104.30.137.121 44090 typ relay raddr 59.87.240.206 rport 63857 generation 0 ufrag 2D6J network-id 1 network-cost 10
-candidate:351976030 1 udp 8331263 104.30.137.121 46887 typ relay raddr 59.87.240.206 rport 63834 generation 0 ufrag 2D6J network-id 1 network-cost 10
-candidate:4109260943 1 udp 8331263 104.30.136.76 36634 typ relay raddr 59.87.240.206 rport 63859 generation 0 ufrag 2D6J network-id 1 network-cost 10
-candidate:2106314174 1 udp 8331263 104.30.136.165 23955 typ relay raddr 59.87.240.206 rport 63831 generation 0 ufrag 2D6J network-id 1 network-cost 10,
+candidate:1410854543 1 udp 25108735 x.x.x.x 53914 typ relay raddr x.x.x.x rport 63839 generation 0 ufrag 2D6J network-id 1 network-cost 10
+candidate:1101771793 1 udp 41886207 x.x.x.x 53010 typ relay raddr x.x.x.x rport 49555 generation 0 ufrag 2D6J network-id 1 network-cost 10
+candidate:1101771793 1 udp 41886207 x.x.x.x 52333 typ relay raddr x.x.x.x rport 59309 generation 0 ufrag 2D6J network-id 1 network-cost 10
+candidate:1541054091 1 udp 25108735 x.x.x.x 52668 typ relay raddr x.x.x.x rport 63829 generation 0 ufrag 2D6J network-id 1 network-cost 10
+candidate:3011387645 1 udp 25108735 x.x.x.x 44090 typ relay raddr x.x.x.x rport 63857 generation 0 ufrag 2D6J network-id 1 network-cost 10
+candidate:351976030 1 udp 8331263 x.x.x.x 46887 typ relay raddr x.x.x.x rport 63834 generation 0 ufrag 2D6J network-id 1 network-cost 10
+candidate:4109260943 1 udp 8331263 x.x.x.x 36634 typ relay raddr x.x.x.x rport 63859 generation 0 ufrag 2D6J network-id 1 network-cost 10
+candidate:2106314174 1 udp 8331263 x.x.x.x 23955 typ relay raddr x.x.x.x rport 63831 generation 0 ufrag 2D6J network-id 1 network-cost 10,
 ```
 
 ## 网络发现 - STUN

@@ -44,6 +44,7 @@ passkey 的首要条件有：
 2.  基于公私钥，不能无密钥，也不能是对称密钥。
 
 > 如 password app 生成的 Verification Code，是在设置的时候，server 生成对称密钥并把密钥办法给 app。后期 server 和 app 基于同一时间按照同一个密钥生成 Verification Code，并根据该 Code 是否相等来做验证。技术手段属于【对称加密】。
+> 示例（参数包含：对称密钥、算法、长度、过期时间）：`otpauth://totp/PeerAuth:M?issuer=PeerAuth&secret=6T7PVVPTZRPWLXXTLZPACRM52QIUAQPE&algorithm=SHA1&digits=6&period=30`
 
 # passkey 可以做什么
 
