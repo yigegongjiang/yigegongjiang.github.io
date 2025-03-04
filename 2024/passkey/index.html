@@ -266,7 +266,7 @@
 <li>基于公私钥，不能无密钥，也不能是对称密钥。</li>
 </ol>
 <blockquote>
-<p>如 password app 生成的 Verification Code，是在设置的时候，server 生成对称密钥并把密钥办法给 app。后期 server 和 app 基于同一时间按照同一个密钥生成 Verification Code，并根据该 Code 是否相等来做验证。技术手段属于【对称加密】。</p>
+<p>如 password app 生成的 Verification Code，是在设置的时候，server 生成对称密钥并把密钥办法给 app。后期 server 和 app 基于同一时间按照同一个密钥生成 Verification Code，并根据该 Code 是否相等来做验证。技术手段属于【对称加密】。<br>示例（参数包含：对称密钥、算法、长度、过期时间）：<code>otpauth://totp/PeerAuth:M?issuer=PeerAuth&amp;secret=6T7PVVPTZRPWLXXTLZPACRM52QIUAQPE&amp;algorithm=SHA1&amp;digits=6&amp;period=30</code></p>
 </blockquote>
 <h1 id="passkey-可以做什么"><a href="#passkey-可以做什么" class="headerlink" title="passkey 可以做什么"></a>passkey 可以做什么</h1><p>诞生的使命就是做用户认证。即可以用于【二次认证】，也可以用于【一次认证】。即：</p>
 <ol>
