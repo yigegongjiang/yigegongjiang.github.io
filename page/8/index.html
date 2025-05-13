@@ -92,7 +92,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">102</span></a></li><li class="menu-item menu-item-日本香烟"><a href="/cigarette/" rel="section">日本香烟</a></li><li class="menu-item menu-item-日本指北"><a href="/japan/" rel="section">日本指北</a></li><li class="menu-item menu-item-时间舟"><a href="/categories/%E6%97%B6%E9%97%B4%E8%88%9F/" rel="section">时间舟</a></li><li class="menu-item menu-item-source"><a href="/openSource" rel="section">Source</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">13</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">103</span></a></li><li class="menu-item menu-item-日本香烟"><a href="/cigarette/" rel="section">日本香烟</a></li><li class="menu-item menu-item-日本指北"><a href="/japan/" rel="section">日本指北</a></li><li class="menu-item menu-item-时间舟"><a href="/categories/%E6%97%B6%E9%97%B4%E8%88%9F/" rel="section">时间舟</a></li><li class="menu-item menu-item-source"><a href="/openSource" rel="section">Source</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
   </ul>
 </nav>
 
@@ -131,7 +131,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">102</span>
+          <span class="site-state-item-count">103</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -173,6 +173,90 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2020/autorelease/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
+      <meta itemprop="name" content="海驴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个工匠">
+      <meta itemprop="description" content="时间，真的不多了。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 一个工匠">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/autorelease/" class="post-title-link" itemprop="url">iOS main 文件中的 @autoreleasepool 的真实用途</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-05-05 16:20:56" itemprop="dateCreated datePublished" datetime="2020-05-05T16:20:56+08:00">2020-05-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>这个问题，在很多年前其实是经历过血腥风雨的。</p>
+<p>就是下面的代码，Xcode 创建项目的时候，会生成下面的 main.mm 文件:</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int main(int argc, char * argv[]) {</span><br><span class="line">    @autoreleasepool {</span><br><span class="line">        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>问题就是，main 里面的 autoreleasepool 是做什么用的？</p>
+          <!--noindex-->
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -902,90 +986,6 @@
 <p>但就像每人心里都有一个钟意的水杯，我还是很想投 2019 一票，因为这一年，我的确有不少变化。</p>
 <p>这一年，我在<strong>技能成长、认知提升、工作、家庭生活、业余生活</strong>上都有很大变化。优秀肯定无从谈起，人一定要对自己有自知，但我一定是在向前走的，这让我很高兴。</p>
 <h3 id="技能成长"><a href="#技能成长" class="headerlink" title="技能成长"></a>技能成长</h3><p>先从 2019 年的<strong>技能成长</strong>说起，因为它给我的温差最大，有时候我激动万分，有时候也在半夜垂头懊恼。</p>
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2019/SwiftStruct/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
-      <meta itemprop="name" content="海驴">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一个工匠">
-      <meta itemprop="description" content="时间，真的不多了。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 一个工匠">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/SwiftStruct/" class="post-title-link" itemprop="url">Swift struct (值类型) 与 class (引用类型) 区别及三种传参机制深刻关系和使用</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2019-12-20 00:00:00" itemprop="dateCreated datePublished" datetime="2019-12-20T00:00:00+08:00">2019-12-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在 Swift 中，struct（值类型）和 class（引用类型）的区别，不仅仅在于对象复制时候表现出来的差异，也不仅仅是构造器和继承的异同，本质上却是数据抽象层级的高低。<br>如果不能把值传参、地址传参和引用传参与类对象联系起来，也无法理解不同传参下对象的使用和 struct、class 的应用场景。</p>
-<p>因为 struct 和 class 表现出来的是语法层面的差异，而项目使用中体现的是语义层级的差异。比如，Objective-C 里面的 NSString，它是引用类型，但是我们却在使用它的值语义。</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">NSMutableString *oldname = @"hello".mutableCopy;</span><br><span class="line">NSMutableString *newname = oldname;</span><br><span class="line">newname = @"word".mutableCopy;</span><br><span class="line">NSLog(@"\n oldName:%@ \n newName:%@", oldname, newname);</span><br><span class="line"> </span><br><span class="line">&gt; oldName:hello </span><br><span class="line">&gt; newName:word</span><br></pre></td></tr></tbody></table></figure>
-<p>我们使用了引用类型的 NSMutableString，但是 newname 并没有引用复制 oldname，仅仅是指针地址复制了 oldname。这样导致了 newname 并不是 oldname 的别名 (alias)。<br>如果 newname 是 oldname 的别名，那么对 newname 的所有 all 操作，都会同步到 oldname。<br>这里，newname 如果改变了对象数据是可以同步到 oldname，但是却不能改变 oldname 变量的值（oldname 的存储值，即 “hello” 的指针地址）。<br>所以，这里的 NSMutableString 虽然是引用类型，却具有值语义。</p>
-<p>因为编程语言概念上的模糊，下面首先介绍 struct 和值类型的关系。<br>然后重点说明值类型和引用类型的区别，这是重点，直接解释了 struct 和 class 的根本区别。<br>最后加一点小彩蛋，介绍 Swift 里面 struct 特性。</p>
           <!--noindex-->
           <!--/noindex-->
         
