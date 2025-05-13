@@ -6,7 +6,7 @@
   <link href="https://www.yigegongjiang.com/atom.xml" rel="self"/>
   
   <link href="https://www.yigegongjiang.com/"/>
-  <updated>2025-05-13T06:20:11.000Z</updated>
+  <updated>2025-05-13T14:44:14.000Z</updated>
   <id>https://www.yigegongjiang.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>AI 指北</title>
+    <link href="https://www.yigegongjiang.com/2025/AI/"/>
+    <id>https://www.yigegongjiang.com/2025/AI/</id>
+    <published>2025-05-13T14:44:14.000Z</published>
+    <updated>2025-05-13T14:44:14.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>在 Notion 上整理了 AI 的知识并做了发布，via：<span class="exturl" data-url="aHR0cHM6Ly95aWdlZ29uZ2ppYW5nLm5vdGlvbi5zaXRlL0FJLTJlNzJmYmRhZDViYzRlZTRiOGYyYzc5Y2ZhZjkyN2QyP3B2cz00">https://yigegongjiang.notion.site/AI</span></p><p><img data-src="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/20250513230627760.png"></p><span id="more"></span><hr>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;在 Notion 上整理了 AI 的知识并做了发布，via：&lt;span class=&quot;exturl&quot; data-url=&quot;aHR0cHM6Ly95aWdlZ29uZ2ppYW5nLm5vdGlvbi5zaXRlL0FJLTJlNzJmYmRhZDViYzRlZTRiOGYyYzc5Y2ZhZjkyN2QyP3B2cz00&quot;&gt;https://yigegongjiang.notion.site/AI&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&quot;https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/20250513230627760.png&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="AI" scheme="https://www.yigegongjiang.com/tags/AI/"/>
+    
+  </entry>
   
   <entry>
     <title>Git Record</title>

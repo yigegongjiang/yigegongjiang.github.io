@@ -15,8 +15,32 @@
     <atom:link href="https://www.yigegongjiang.com/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>时间，真的不多了。</description>
-    <pubDate>Tue, 13 May 2025 06:20:11 GMT</pubDate>
+    <pubDate>Tue, 13 May 2025 14:44:14 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>AI 指北</title>
+      <link>https://www.yigegongjiang.com/2025/AI/</link>
+      <guid>https://www.yigegongjiang.com/2025/AI/</guid>
+      <pubDate>Tue, 13 May 2025 14:44:14 GMT</pubDate>
+      
+      <description>&lt;p&gt;在 Notion 上整理了 AI 的知识并做了发布，via：&lt;span class=&quot;exturl&quot; data-url=&quot;aHR0cHM6Ly95aWdlZ29uZ2ppYW5nLm5vdGlvbi5zaXRlL0FJLTJlNzJmYmRhZDViYzRlZTRiOGYyYzc5Y2ZhZjkyN2QyP3B2cz00&quot;&gt;https://yigegongjiang.notion.site/AI&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&quot;https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/20250513230627760.png&quot;&gt;&lt;/p&gt;</description>
+      
+      
+      
+      <content:encoded><![CDATA[<p>在 Notion 上整理了 AI 的知识并做了发布，via：<span class="exturl" data-url="aHR0cHM6Ly95aWdlZ29uZ2ppYW5nLm5vdGlvbi5zaXRlL0FJLTJlNzJmYmRhZDViYzRlZTRiOGYyYzc5Y2ZhZjkyN2QyP3B2cz00">https://yigegongjiang.notion.site/AI</span></p><p><img data-src="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/20250513230627760.png"></p><span id="more"></span><hr>]]></content:encoded>
+      
+      
+      <category domain="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+      
+      
+      <category domain="https://www.yigegongjiang.com/tags/AI/">AI</category>
+      
+      
+      <comments>https://www.yigegongjiang.com/2025/AI/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>Git Record</title>
