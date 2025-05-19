@@ -15,8 +15,37 @@
     <atom:link href="https://www.yigegongjiang.com/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>时间，真的不多了。</description>
-    <pubDate>Tue, 13 May 2025 14:44:14 GMT</pubDate>
+    <pubDate>Mon, 19 May 2025 06:14:27 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Mac 快速修改系统快捷键</title>
+      <link>https://www.yigegongjiang.com/2025/mac-shortcut-keys/</link>
+      <guid>https://www.yigegongjiang.com/2025/mac-shortcut-keys/</guid>
+      <pubDate>Mon, 19 May 2025 06:14:27 GMT</pubDate>
+      
+      <description>&lt;p&gt;Macos 系统快速调整快捷键方案：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在 &lt;code&gt;system settings&lt;/code&gt; 中清理不需要的快捷键，把核心快捷键用来自定义&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Raycast&lt;/code&gt; - 最方便的快速创建自定义快捷键解决方案&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Hammerspoon&lt;/code&gt; - 复杂疑难病症的解决方案&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;详细说明参考：&lt;/p&gt;</description>
+      
+      
+      
+      <content:encoded><![CDATA[<p>Macos 系统快速调整快捷键方案：</p><ol><li>在 <code>system settings</code> 中清理不需要的快捷键，把核心快捷键用来自定义</li><li><code>Raycast</code> - 最方便的快速创建自定义快捷键解决方案</li><li><code>Hammerspoon</code> - 复杂疑难病症的解决方案</li></ol><p>详细说明参考：</p><span id="more"></span><h2 id="系统快捷键设置"><a href="#系统快捷键设置" class="headerlink" title="系统快捷键设置"></a>系统快捷键设置</h2><p>入口：<code>system settings</code> - <code>keyboard</code></p><ul><li><code>Press 地球 key to</code> 调整为 nothing<ul><li> 候选项有 <code>Change Input Source</code>、<code>Show Emoji &amp; Symbols</code>、<code>Start Dictation</code></li><li>Input Source 通过 <code>Input Source Pro</code> app 可以快速设置（支持快捷键）</li><li>Emoji &amp; Symbols 通过系统全局 <code>Control + CMD + Space</code> 呼出，不需要快捷键</li><li> Start Dictation 如果不需要这个功能，不用开启</li></ul></li><li><code>Dictation</code> - <code>Shortcut</code>: 改成不需要常用快捷键的方式</li><li><code>Keyboard Shortcuts</code> - 这里面是系统提供的很多没必要的快捷键，不需要的都可以取消掉</li></ul><p>上面三个步骤设置完成后，核心的快捷键都可以留给我们自己来分配了。</p><h2 id="通过-Raycast-修改"><a href="#通过-Raycast-修改" class="headerlink" title="通过 Raycast 修改"></a>通过 Raycast 修改</h2><p>Raycast 非常好用，通过 <code>Hotkey</code> 可以快速设置系统级快捷键，非常方便。</p><ol><li>打开 app：一般不需要，通过 Raycast 启动入口打开 app 已经很快了</li><li> Script Command：这个非常好用，很多系统级别的能力，可以通过 sh/applescript 的形式执行，分配一个快捷键后非常方便。<ul><li>e.g. 写一个【当前最前置 window】移动到下一个屏幕上（多屏幕场景），增加 [Double Click CMD] 快捷键。</li></ul></li></ol><h2 id="通过-Hammerspoon-修改"><a href="#通过-Hammerspoon-修改" class="headerlink" title="通过 Hammerspoon 修改"></a>通过 Hammerspoon 修改</h2><p>Hammerspoon 是非常强大的快捷键执行器，解决 any 疑难杂症。</p><p>在多屏幕场景下，很难实现【移动鼠标到指定屏幕】，Hammerspoon 可以实现。</p><h2 id="快捷键建议"><a href="#快捷键建议" class="headerlink" title="快捷键建议"></a>快捷键建议</h2><ul><li>1 只手能操作的快捷键，绝不留给 2 只手</li><li><code>Ctrl</code>、<code>Option</code>、<code>Cmd</code> 和 <code>q/w/e/r/a/s/d/f/z/x/c/v</code> 组合<ul><li>尽量少用 <code>Shift</code></li></ul></li><li><code>Double Click Ctrl</code>、<code>Double Click Option</code>、<code>Double Click Cmd</code> 这三个最方便，要留给最常用的操作</li><li>很多时候快捷键操作的都是【文件 / 文件夹】，Mac Finder 支持太弱了，上 <code>QSpace Pro</code> 就非常方便（使用 Raycast Script Cammand 也很方便）。</li><li>快捷键的脚本怎么写，别自己写，让 AI 写。</li></ul><hr>]]></content:encoded>
+      
+      
+      <category domain="https://www.yigegongjiang.com/categories/%E5%B7%A5%E5%85%B7/">工具</category>
+      
+      
+      <category domain="https://www.yigegongjiang.com/tags/Work/">Work</category>
+      
+      
+      <comments>https://www.yigegongjiang.com/2025/mac-shortcut-keys/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>AI 指北</title>
