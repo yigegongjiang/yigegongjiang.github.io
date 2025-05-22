@@ -302,4 +302,20 @@ SYNOPSIS
 
 Git 对文件夹和文件的大小写，是不敏感的。有些 IDE 会默认做很多事情，让用户无感知。当不通过 IDE 操作 Git 的时候，开发过程中有可能遇到【修改文件夹/文件名】无效的场景。
 
+# orphan branch
+
+孤儿分支，是指没有父分支的分支。场景：
+
+- 希望从当前 git 工程独立一份完全没有 git 记录的 new-branch，又需要保留当前 git old-branch 所有的 git 状态
+- 还希望 new-branch 在当前 git 仓库中被管理。
+
+```bash
+git switch --orphan new-branch
+git checkout old-branch -- .
+
+```
+
+new-branch 将成为独立 commit 节点，没有任何父节点，并且 git 状态和 old-branch 一致。
+后面可以新增 remote url，将 new-branch 推送到远程仓库。
+
 ---
