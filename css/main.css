@@ -2632,7 +2632,7 @@ header.header {
 .main-inner {
   border-radius: initial;
   box-sizing: border-box;
-  width: calc(100% - 152px);
+  width: calc(100% - 154px);
 }
 @media (max-width: 991px) {
   .main-inner {
@@ -2641,7 +2641,7 @@ header.header {
   }
 }
 .footer-inner {
-  padding-left: 152px;
+  padding-left: 154px;
 }
 @media (max-width: 991px) {
   .footer-inner {
@@ -2651,7 +2651,7 @@ header.header {
   }
 }
 .column {
-  width: 140px;
+  width: 142px;
 }
 @media (max-width: 991px) {
   .column {
