@@ -105,7 +105,7 @@ c. 铁盒款 Peace 是最【天花板】的，也是最贵的。
 
 预约流程极简：
 
-1. 通过 Email 预约（无定金），Email：[one.gongjiang@gmail.com](mailto:one.gongjiang@gmail.com)
+1. 通过 Email 预约（无定金），Email：<strong><em>one.gongjiang&#64;gmail.com</em></strong>
    a. 回复：当前是否有车位，或者下一趟时间
    b. 如确认预定，请告知收件地址
 2. 回国后顺丰发货，大部分地区都是次日或者次次日抵达
