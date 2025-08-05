@@ -9,9 +9,9 @@ tags:
 
 > 很久之前，写过一篇关于 【[**计算机字符编码与内存编码 - Unicode**](https://www.yigegongjiang.com/2023/unicode/)】 的快照，根据 码位、码表 对字符进行了介绍。这里特别说明一下 Mac 系统上的字体库。
 
-系统自带软件：`Font book` 
+系统自带软件：`Font book`
 字体文件夹： `/System/Library/Fonts` 、`/Library/Fonts`、`~/Library/Fonts`
-苹果提供的字体：`Applexxx` 、`Apple xxx` 、`SFxxx` 、`PingFangxxx` 
+苹果提供的字体：`Applexxx` 、`Apple xxx` 、`SFxxx` 、`PingFangxxx`
 
 # 如何使用字体
 
@@ -26,6 +26,15 @@ tags:
 Apple 平台提供了两个图标字体，分别是：`Apple Color Emoji` 和`Apple Symbols` 。
 
 字体库能够包含图标、颜色，在之前阐述 Unicode 的时候已经说明过，因为它们都依靠`码位` 进行检索。所以在不同的平台上，都会有自己的图标库的系统级别实现，显示效果会不一样。
+
+# 字体回退
+
+每个字体可以适配多种语言，但没有一个字体是全能的。即【一定需要**字体回退**】来对当前字体无法渲染的文字进行兜底。
+在 mac font app 中，打开一个 font，会列出其 support 的文字集合。
+
+1. 部分 app 支持设置 1 个字体：回退到系统字体。
+2. 部分 app 支持设置 n 个字体，按照优先级进行回退，最后回退到系统字体。如 browser 等
+3. css：通过设置 `font-family` 属性来实现字体回退。例如：`font-family: "MyFont", "FallbackFont", sans-serif;`
 
 # Nerd Font
 
@@ -114,5 +123,3 @@ chrome、arc 等，都可以通过插件 `Stylus` 来设置全局样式表，这
 这里，我们可以通过该插件设定一个全局样式表，内容就是上面提供的示例 css。
 
 ___
-
-
