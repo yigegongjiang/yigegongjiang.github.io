@@ -84,7 +84,9 @@ font-intone-mono-nerd-font
 
 通过 `brew install --cask font-hack-nerd-font` 安装的字体，会被安装到 `~/Library/Fonts` 文件夹中。
 
-终端中建议使用 `hack` 字体。
+## 等宽字体
+
+有 `Fira Code`、`hack` 等，在英文场景非常舒服，IDE 场景经常使用。
 
 # zsh
 
@@ -103,13 +105,16 @@ zsh 有 `powerlevel10k` 主题。该主题在字体方面比较丰富，主要�
 其中，浏览器可以设置全局的字体切换，这对爱好某一个字体的同学来说，将非常友好。
 全局 css 内容推荐如下，后面配置的时候会用到：
 
-```css
-body, p, div, span, h1, h2, h3, h4, h5, h6, a, li, button, input, textarea, select, label, pre, code, table, th, td, blockquote {
-    font-family: "Hack Nerd Font", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+```CSS
+span:not(.material-symbols-outlined, .material-icons, .google-material-icons, .fa, .fas, .far, .fal, .fab, .fad, [class*="icon"], svg, [class*="DP"], [class*="hd"]),
+i:not(.material-symbols-outlined, .material-icons, .google-material-icons, .fa, .fas, .far, .fal, .fab, .fad, [class*="icon"], svg, [class*="DP"], [class*="hd"]),
+body, li, p, div, h1, h2, h3, h4, h5, h6, a, ul, ol, dl, dt, dd, button, input, textarea, select, option, optgroup, label, pre, code, kbd, samp, var, table, th, td, tr, thead, tbody, tfoot, caption, blockquote, cite, q, strong, em, b, small, sub, sup, mark, del, ins, abbr, acronym, address, time, form, fieldset, legend, nav, header, footer, section, article, aside, main, details,
+summary {
+    font-family: "FiraCode Nerd Font Mono", sans-serif !important;
+    -webkit-font-smoothing: antialiased !important;
 }
 ```
+
 > Tips：最好不要使用 `body, * {}` 以及 `!important`，这样会影响到一些网站的显示效果。因为有些字体是图标字体，会紊乱变形。
 
 ## safari
