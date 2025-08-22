@@ -10,7 +10,7 @@ date: 2025-06-24 12:06:05
 1. 七星 SevenStars 日税（480 rmb/条），日免（370 rmb/条）
 2. 和平 Peace 纸盒款（370 rmb/条），雪茄款（500 rmb/条），铁盒款（700 rmb/条）
 
-<img src="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/20250804134351329.jpg" width="50%">
+<img src="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/20250821123307892.jpg" width="50%">
 
 ### 焦油量
 
@@ -90,7 +90,7 @@ c. 大部分订单，快递公司及小哥帮忙增加了【准时宝】活动�
 
 ## 图资料
 
-![](https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/20250804134351329.jpg)
+![](https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/20250821123307892.jpg)
 
 ---
 
