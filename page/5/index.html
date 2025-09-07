@@ -92,7 +92,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">14</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">107</span></a></li><li class="menu-item menu-item-日本香烟"><a href="/cigarette/" rel="section">日本香烟</a></li><li class="menu-item menu-item-日本指北"><a href="/japan/" rel="section">日本指北</a></li><li class="menu-item menu-item-时间舟"><a href="/categories/%E6%97%B6%E9%97%B4%E8%88%9F/" rel="section">时间舟</a></li><li class="menu-item menu-item-source"><a href="/openSource" rel="section">Source</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">14</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">108</span></a></li><li class="menu-item menu-item-日本香烟"><a href="/cigarette/" rel="section">日本香烟</a></li><li class="menu-item menu-item-日本指北"><a href="/japan/" rel="section">日本指北</a></li><li class="menu-item menu-item-时间舟"><a href="/categories/%E6%97%B6%E9%97%B4%E8%88%9F/" rel="section">时间舟</a></li><li class="menu-item menu-item-source"><a href="/openSource" rel="section">Source</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
   </ul>
 </nav>
 
@@ -131,7 +131,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">107</span>
+          <span class="site-state-item-count">108</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -173,6 +173,91 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2023/socket/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
+      <meta itemprop="name" content="海驴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个工匠">
+      <meta itemprop="description" content="时间，真的不多了。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 一个工匠">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/socket/" class="post-title-link" itemprop="url">Socket 与 ICMP</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-05-13 22:07:57" itemprop="dateCreated datePublished" datetime="2023-05-13T22:07:57+08:00">2023-05-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>关于网络相关的历史文章中，很多次提到 Socket 套接字的重要性。最近看到 ICMP 的一些知识，发现和 Socket 有非常强的依赖。于是对 Socket 和周边，再做一次逻辑的梳理。<br>本文会对 <strong>ICMP 查询 / 差错报文</strong> 如何 <strong>NAT 网关</strong> 和<strong>写入 Socket 接收缓冲区</strong>进行具体阐释。</p>
+<h3 id="Socket、文件描述符、API、套接字"><a href="#Socket、文件描述符、API、套接字" class="headerlink" title="Socket、文件描述符、API、套接字"></a>Socket、文件描述符、API、套接字</h3><p>Socket 在系统内部创建后是唯一的。和 源 ip (本机 ip)、目标 ip (服务端 ip)、源端口、目标端口 有一定的绑定关系，根据具体协议而定。<br>通过这种绑定关系，可以将对应的数据包写入到对应的 Socket 接收缓冲区中供上层读取。<br>如果绑定关系出现 1-N，即一个数据包找到了多个 Socket，那么数据包就会往多个 Socket 中都写入一份，在后面 ICMP 中做分析。</p>
+<p>Socket api，各个语言都有上层实现，底层都是对 Socket C Api 的封装。就是大家知道的 <code>gethostbyname</code>、<code>bind/connect/write/sendto</code> 这些。</p>
+<p>Socket 文件描述符，不是真的文件。在 Unix 下习惯对资源进行抽象，即一切接文件，包括内存数据。Socket 文件描述符是内核内存区域的指针。</p>
+<p>套接字，就是指 Socket。一般也就是指 api 或者 文件描述符 其中的一种，看具体场景。</p>
+<p>Socket api 可以直接操作传输层 (TCP/UDP) 或者网络层 (ICMP)，从 Socket 往下 (传输层 / 网络层…) 开始，都属于操作系统管辖。<br>所以 HTTP 经历很多版本的优化，依旧差强人意，就是因为核心层 TCP 不好改动，需要系统升级。最后通过 UDP 做上层改造来实现 QUIC。</p>
+          <!--noindex-->
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -899,101 +984,6 @@
     <div class="post-body" itemprop="articleBody">
           <p>在两个月前写《三年疫情五味杂陈》的时候，就是要放开了，所以当时想着写一篇，对疫情三年稍作记录，毕竟是一个时代的拐点。<br>那片文章过后半个月，就开始有放开的动作了，部分城市已经松动，我还给被隔离的小伙伴留言，说赶上了最后一波封控。</p>
 <p>只是没想到，这个国家干啥都是一根筋。我以为这么大的人口，怎么也是省级别的逐步放开，没想到是全国一下子放开。赌气呢吧，一下子就放开了。</p>
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2022/browser/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
-      <meta itemprop="name" content="海驴">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一个工匠">
-      <meta itemprop="description" content="时间，真的不多了。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 一个工匠">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/browser/" class="post-title-link" itemprop="url">老梗 - 浏览器按回车后发生了什么</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-10-23 02:05:14" itemprop="dateCreated datePublished" datetime="2022-10-23T02:05:14+08:00">2022-10-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>想起了一个老问题：浏览器按下回车的时候，后续流程是怎么变化的。<br>这个问题非常精妙，基本上把网络问题一次打包了。<br>对相关知识面了解越多的人，能说的内容也越多。越资深的人，能说的时间也越长。<br>我对网络也一直感兴趣，索性这次就做了大图，越做就盘子越大耗时越多，每个点都可以延伸一个举足轻重的行业。</p>
-<p>浏览器按下回车键后，发生了太多太多事情，我文字理下图中写不下的重点，详细看下面大图。<span class="exturl" data-url="aHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL3lpZ2Vnb25namlhbmcvaW1hZ2Vfc3BhY2VAbWFpbi9ibG9nX2ltZy8lRTYlQjUlOEYlRTglQTclODglRTUlOTklQTglRTUlOUIlOUUlRTglQkQlQTYlRTUlOTAlOEUucG5n">大图下载地址</span></p>
-<h2 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h2><ol>
-<li>重点是时机。DNS 查询是为了域名和 IP 映射，所以它的时机非常非常靠前，是所有网络活动的第一步。</li>
-<li>发挥大作用的是负载均衡。</li>
-<li>误解最大的是根 DNS。有镜像 DNS 在，不要拿封锁大陆域名后会怎么怎么样来做文章，技术同学说这话是要丢人的。如果这么做，我能想到的最大影响就是：大陆主动拒绝外界网络，外界都不愿意打开大陆访问，其实都是自由的选择。</li>
-<li>httpDNS 可以解决 DNS 污染和劫持问题，还有运营商偷懒导致的跨网非最近节点不准确问题，加快域名和 ip 的映射。<strong>一般只用在移动端，技术方案是 hook gethostbyname api 这个环节</strong>。别想着请求前把域名换成 ip，坑很多，尤其是 TLS 证书验证的时候。</li>
-</ol>
-<h2 id="Socket-套接字"><a href="#Socket-套接字" class="headerlink" title="Socket 套接字"></a>Socket 套接字</h2><ol>
-<li>网络通信的基石，只要是网络通信，这就是绕不开的大山，这就是中流砥柱。</li>
-<li>socket 的核心在于 socket 描述符和发送接收缓冲区。发送接收缓冲区不是 socket 特有的，是计算机基础的一部分，我们使用终端的时候，输入指令和参数的时候都在使用这套缓冲区。</li>
-<li>大名鼎鼎的<strong>三次握手</strong>就在 socket 建联的时候发生的。<strong>成也萧何败也萧何</strong>，因为 socket 是内嵌计算机的底层服务，也包括 TCP。所以即使三次握手已经拖慢了互联网这么多年，但依旧无法做升级。Quic 的出现就是忍不了 socket tcp 的<strong>队头阻塞</strong>而破釜沉舟的东西。</li>
-<li>socket tcp 的详细过程，可查阅之前文章：<a href="https://www.yigegongjiang.com/2020/TCPTranslation/">TCP 数据传输过程分析</a></li>
-<li>谈 socket 离不开端口，谈端口离不开进程。可查阅之前文章：<a href="https://www.yigegongjiang.com/2022/shell/#%E4%B8%A4%E7%A7%8D%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F-By-fork-amp-exec">Shell 和进程 - 两种进程创建方式</a></li>
-<li> socket 本身可查阅之前文章：<a href="https://www.yigegongjiang.com/2020/im/">IM 和 Socket 的关系及 Heart 的必要性</a></li>
-</ol>
           <!--noindex-->
           <!--/noindex-->
         

@@ -21,27 +21,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.2","exturl":true,"sidebar":{"position":"left","width":142,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="像 Block 这种闭包，就是怎么用怎么爽，怎么用怎么喜欢的编码方式了。 闭包很伟大，也是各个语言都实现了的基础语法。我这边对闭包的理解，就是：内部函数持有外部变量。 但是各个语言都有需要注意的点，如 iOS 里面的循环引用，Swift 里面的逃逸闭包，Python 里面的闭包变量延迟定义等。">
+    <meta name="description" content="iPhone 上安装一个非 App Store 的 app 太难了，Apple 生态基于【公私钥】非对称检测，使得专业的行内人员也无法很好的在开发机上随意安装三方 app。这里有一些对普通人来说也比较方便的实施方案。安全性上，除了被安装的 ipa 包本身可能有风险，其他链路很安全。   非 App Store 版本的 app，来源有 github、三方分享平台等。 app 安装需要 ipa 包。A">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Block 闭包简查记录">
-<meta property="og:url" content="https://www.yigegongjiang.com/2018/block/index.html">
+<meta property="og:title" content="iPhone 侧载安装">
+<meta property="og:url" content="https://www.yigegongjiang.com/2025/iphone-side-load/index.html">
 <meta property="og:site_name" content="一个工匠">
-<meta property="og:description" content="像 Block 这种闭包，就是怎么用怎么爽，怎么用怎么喜欢的编码方式了。 闭包很伟大，也是各个语言都实现了的基础语法。我这边对闭包的理解，就是：内部函数持有外部变量。 但是各个语言都有需要注意的点，如 iOS 里面的循环引用，Swift 里面的逃逸闭包，Python 里面的闭包变量延迟定义等。">
+<meta property="og:description" content="iPhone 上安装一个非 App Store 的 app 太难了，Apple 生态基于【公私钥】非对称检测，使得专业的行内人员也无法很好的在开发机上随意安装三方 app。这里有一些对普通人来说也比较方便的实施方案。安全性上，除了被安装的 ipa 包本身可能有风险，其他链路很安全。   非 App Store 版本的 app，来源有 github、三方分享平台等。 app 安装需要 ipa 包。A">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2018-11-24T09:00:08.000Z">
+<meta property="article:published_time" content="2025-09-07T14:35:07.000Z">
 <meta property="article:author" content="海驴">
+<meta property="article:tag" content="Life">
 <meta property="article:tag" content="iOS">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://www.yigegongjiang.com/2018/block/">
+<link rel="canonical" href="https://www.yigegongjiang.com/2025/iphone-side-load/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2018/block/","path":"2018/block/","title":"Block 闭包简查记录"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2025/iphone-side-load/","path":"2025/iphone-side-load/","title":"iPhone 侧载安装"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Block 闭包简查记录 | 一个工匠</title>
+<title>iPhone 侧载安装 | 一个工匠</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CTEWJ02QX"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-8CTEWJ02QX","only_pageview":false,"measure_protocol_api_secret":null}</script>
@@ -105,7 +106,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -118,6 +119,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%99%AE%E9%80%9A%E3%80%81%E5%B0%8F%E7%99%BD%E3%80%81%E9%9D%9E%E4%B8%93%E4%B8%9A%E3%80%81%E9%9D%9E-IT-%E7%94%A8%E6%88%B7"><span class="nav-number">1.</span> <span class="nav-text">普通、小白、非专业、非 IT 用户</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E8%BF%9B%E4%B8%80%E6%AD%A5"><span class="nav-number">1.1.</span> <span class="nav-text">更进一步</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Apple-%E5%BC%80%E5%8F%91%E4%BA%BA%E5%91%98"><span class="nav-number">2.</span> <span class="nav-text">Apple 开发人员</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95-Apple-Account"><span class="nav-number">2.1.</span> <span class="nav-text">单点登录 Apple Account</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">3.</span> <span class="nav-text">其他</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -184,7 +186,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2018/block/">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2025/iphone-side-load/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
@@ -197,12 +199,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Block 闭包简查记录 | 一个工匠">
+      <meta itemprop="name" content="iPhone 侧载安装 | 一个工匠">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Block 闭包简查记录
+          iPhone 侧载安装
         </h1>
 
         <div class="post-meta-container">
@@ -213,7 +215,7 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2018-11-24 17:00:08" itemprop="dateCreated datePublished" datetime="2018-11-24T17:00:08+08:00">2018-11-24</time>
+      <time title="Created: 2025-09-07 22:35:07" itemprop="dateCreated datePublished" datetime="2025-09-07T22:35:07+08:00">2025-09-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -221,7 +223,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+          <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
         </span>
     </span>
 
@@ -234,13 +236,40 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>像 Block 这种闭包，就是怎么用怎么爽，怎么用怎么喜欢的编码方式了。</p>
-<p>闭包很伟大，也是各个语言都实现了的基础语法。我这边对闭包的理解，就是：<strong>内部函数持有外部变量</strong>。</p>
-<p>但是各个语言都有需要注意的点，如 iOS 里面的循环引用，Swift 里面的逃逸闭包，Python 里面的闭包变量延迟定义等。</p>
+    <div class="post-body" itemprop="articleBody"><p>iPhone 上安装一个非 App Store 的 app 太难了，Apple 生态基于【公私钥】非对称检测，使得专业的行内人员也无法很好的在开发机上随意安装三方 app。<br>这里有一些对普通人来说也比较方便的实施方案。安全性上，除了被安装的 ipa 包本身可能有风险，其他链路很安全。</p>
+<blockquote>
+<ol>
+<li>非 App Store 版本的 app，来源有 github、三方分享平台等。</li>
+<li>app 安装需要 ipa 包。App Store 上下载的就是 ipa 包，这里需要通过 github、telegram 等渠道获取。</li>
+</ol>
+</blockquote>
+<h1 id="普通、小白、非专业、非-IT-用户"><a href="#普通、小白、非专业、非-IT-用户" class="headerlink" title="普通、小白、非专业、非 IT 用户"></a>普通、小白、非专业、非 IT 用户</h1><p>通过 <span class="exturl" data-url="aHR0cHM6Ly9hbHRzdG9yZS5pby8=">AltStore</span>，就可以非常方便的安装 ipa 包了，具体流程需要查看下文档。<br>需要 Mac / Window 电脑 + 个人的 AppleId。安全性上，非常安全，技术方案是：</p>
 <span id="more"></span>
 
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">As a local variable:</span><br><span class="line">	returnType (^blockName)(parameterTypes) = ^returnType(parameters) {...};</span><br><span class="line"></span><br><span class="line">As a property:</span><br><span class="line">	@property (nonatomic, copy, nullability) returnType (^blockName)(parameterTypes);</span><br><span class="line"></span><br><span class="line">As a method parameter:</span><br><span class="line">	- (void)someMethodThatTakesABlock:(returnType (^nullability)(parameterTypes))blockName;</span><br><span class="line"></span><br><span class="line">As an argument to a method call:</span><br><span class="line">	[someObject someMethodThatTakesABlock:^returnType (parameters) {...}];</span><br><span class="line"></span><br><span class="line">As a typedef:</span><br><span class="line">	typedef returnType (^TypeName)(parameterTypes);</span><br><span class="line">	TypeName blockName = ^returnType(parameters) {...};</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
-
+<ol>
+<li>Apple 开发人员需要 Apple Account 才能开发 / 发布 app 到 App Store。前些年 Apple 开放了门槛，使用个人 Apple Id（free account） 也能够进入开发流程，但是 app 不能上架 App Store。</li>
+<li>free account 有限制：一个 iPhone 同一时间最多只能安装 3 个 app + 一周只能激活 10 个 app（每个 app 都有唯一 id，一周最多 10 个 id）</li>
+<li>通过对三方渠道获取的 ipa 使用 free account 进行重签名（骗过 iPhone 公私钥检测），假装自己是 app 的开发人员，就可以安装到自己的 iPhone 上。</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>每个 app 安装 7 天后就打不开了，需要通过 AltStore 将 iPhone 连接上 Mac/Window 后重新安装下（free account 限制）。</li>
+<li>同一时间最多安装 2 个 app（free account 合计 3 个，有一个是 AltStore app）。</li>
+</ol>
+<h2 id="更进一步"><a href="#更进一步" class="headerlink" title="更进一步"></a>更进一步</h2><p>上面列出的 2 个缺点，一般人用用也够了。如果想方便一些，通过 <span class="exturl" data-url="aHR0cHM6Ly9zaWRlc3RvcmUuaW8v">SideStore</span> 可以更进一步的解决一个小痛点 (其他缺点均无法解决)：<br>SideStore 的重签流程放到了 iPhone 上，可以脱离 AltStore Mac/Window 了。<br>这样，可以很方便的在 iPhone 上完成 7 天失效的【续重签名】，不用打开电脑了。</p>
+<h1 id="Apple-开发人员"><a href="#Apple-开发人员" class="headerlink" title="Apple 开发人员"></a>Apple 开发人员</h1><p>Apple 开发者都有 Apple Account，AltSotre 除了支持个人 AppleId，也支持开发者账号。上面的两个缺点就都解决了。<br>开发者证书签名的 app 有 1 年有效期，足够用了。</p>
+<h2 id="单点登录-Apple-Account"><a href="#单点登录-Apple-Account" class="headerlink" title="单点登录 Apple Account"></a>单点登录 Apple Account</h2><p>有些开发者账号是公司提供的，管理员关闭了账号密码直接登录，就无法在 AltStore 使用了。这个时候要进行深度探索了。</p>
+<p>有一个 app/ipa，叫【全能签】。主动设置开发证书后，全能签通过证书来完成 ipa 重签名并安装到 iPhone。原理也是和 AltStore 一样，都是 ipa 重签名，骗过 iPhone 公私钥检测。</p>
+<p>这个流程的具体操作是：</p>
+<ol>
+<li>通过 AltStore 安装 全能签（全能签 a，7 天有效期）</li>
+<li>设置 全能签（开发证书等）</li>
+<li>通过 全能签 安装 全能签（全能签 b，1 年有效期）</li>
+</ol>
+<p>第三步通过全能签 a 自举 安装的 全能签 b，有 1 年有效期。<br>这个时候，就可以把 AltStore、全能签 a 等全部卸载了，仅保留 全能签 b。<br>后续所有的 ipa 包，都可以通过 全能签 b 来安装，有 1 年有效期，够用了。</p>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>之前越狱很有名，现在基本灭绝了。不过衍生出来一个新的分支，叫【巨魔】，又称【半越狱】。<br>巨魔 可以方便的安装 ipa 包，因为走的系统漏洞，app 不会过期，长久有效。<br>巨魔 技术上需要使用系统漏洞，而 Apple 会更新补丁，所以最新系统基本都无法使用 巨魔。<br>而巨魔之所以存在，因为非 App Store app 依旧有一批市场。</p>
+<p>So，如果想了解上面介绍的【侧载】安装的应用场景，还是需要先进入这片字面意义上，不正规 / 灰色的领域。</p>
+<hr>
 
     </div>
 
@@ -297,6 +326,7 @@
 </div>
 
           <div class="post-tags">
+              <a href="/tags/Life/" rel="tag"># Life</a>
               <a href="/tags/iOS/" rel="tag"># iOS</a>
           </div>
 
@@ -304,14 +334,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2018/Journey%20Under%20the%20Midnight%20Sun/" rel="prev" title="《白夜行》">
-                  <i class="fa fa-angle-left"></i> 《白夜行》
+                <a href="/2025/xcode-symbolic-debug/" rel="prev" title="Xcode Symbolic Debug">
+                  <i class="fa fa-angle-left"></i> Xcode Symbolic Debug
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2018/gamelife/" rel="next" title="游戏人生">
-                  游戏人生 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -389,11 +416,11 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2018/block/"}</script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2025/iphone-side-load/"}</script>
   <script src="/js/third-party/quicklink.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"4367db15f40ad45f0c50096b083089e0"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"5dd79eb46b546420d4eaf62406c396d4"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
 <script src="/js/third-party/comments/utterances.js"></script>
