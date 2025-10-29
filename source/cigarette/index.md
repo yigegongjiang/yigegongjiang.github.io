@@ -63,9 +63,9 @@ c. 可在多平台 (alipay、wechat、顺丰 app、淘宝 app...) 收到快件�
 
 预定流程说明：
 
-1. 通过 Email 预定（无定金），Email：<strong><em>one.gongjiang&#64;gmail.com</em></strong>
-   a. 回复：当前是否有车位，或者下一趟时间
-   b. 如确认预定，请告知收件地址
+1. 通过 Email 预定产品和数量（无定金），Email：<strong><em>one.gongjiang&#64;gmail.com</em></strong>
+   a. 回复：商品清单和总价，并告知当前是否有车位，或者下一趟时间
+   b. 如发货时间排挡合适，请告知收件信息。完成预定。
 2. 回国后顺丰发货，大部分地区都是 T + {1、2} 即可送达
 3. 回日本后，再联系收取尾款事宜(alipay)，大约在收货后 2-5 天。
 
