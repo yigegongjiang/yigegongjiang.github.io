@@ -247,11 +247,20 @@
 <h3 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h3><ol>
 <li><p>使用 iterm2 创建一个 profile，设置为 default (即 app 启动后默认打开当前 profile）。</p>
 </li>
-<li><p>General - Command 选择 <code>Command</code>，命令配置：<code>/bin/zsh -c "/opt/homebrew/bin/tmux attach -t dev || /opt/homebrew/bin/tmux new -s dev \; split-window -h \; split-window -v \;"</code>。</p>
+<li><p>General - Command 选择 <code>Command</code>，命令配置：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/env zsh -c <span class="string">"/opt/homebrew/bin/tmux has-session -t dev 2&gt;/dev/null &amp;&amp; /opt/homebrew/bin/tmux attach -t dev || zsh -lic '/opt/homebrew/bin/tmux new -s dev \; split-window -h \; split-window -v \;'"</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>命令细节说明</strong>：</p>
 <ul>
-<li>也可使用简化板：<code>/bin/zsh -c "/opt/homebrew/bin/tmux attach -t dev || /opt/homebrew/bin/tmux new -s dev"</code>。</li>
-<li>tmux 使用非常简单，了解下就可以熟练操作。</li>
+<li>使用 <code>has-session</code> 检测会话是否已存在，选择不同的启动方式</li>
+<li><strong>会话已存在</strong>：直接 <code>attach</code>，外层使用 <code>zsh -c</code>（不加载 login shell 配置，0ms 启动）</li>
+<li><strong>会话不存在</strong>：使用 <code>zsh -lic</code> 创建（加载完整 login shell <code>.zshrc</code> 配置，确保 PATH 正确）</li>
+<li><strong>为什么创建时必须加载配置</strong>：tmux server 启动时会继承外层 shell 的环境变量（特别是 PATH），<code>.tmux.conf</code> 和 tpm 插件在初始化阶段需要正确的 PATH 来执行 <code>git</code>、<code>bash</code> 等命令，否则会出现 127（command not found）错误</li>
 </ul>
+<p>也可使用简化版（不分割窗口）：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/env zsh -c <span class="string">"/opt/homebrew/bin/tmux has-session -t dev 2&gt;/dev/null &amp;&amp; /opt/homebrew/bin/tmux attach -t dev || zsh -lic '/opt/homebrew/bin/tmux new -s dev'"</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>tmux 使用非常简单，了解下就可以熟练操作。</p>
 </li>
 <li><p>后续工作中需要快速执行命令，通过 Raycast 打开 iterm2 即可，0ms 延迟启动。</p>
 </li>
@@ -415,12 +424,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
   <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2025/flash-terminal/"}</script>
   <script src="/js/third-party/quicklink.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
 <script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"1f020368d003654f8c16f7a93bc3bf0b"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
-<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
-<script src="/js/third-party/comments/utterances.js"></script>
 
 </body>
 </html>

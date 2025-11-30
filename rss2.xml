@@ -29,7 +29,7 @@
       
       
       
-      <content:encoded><![CDATA[<p>问题 (TLDR)：zsh 已经成为标配，但每次启动它都需要等待 1-2s，很烦。<br>问题 (Detail)：<code>.zshrc</code> 配置中有很多耗时插件和功能，如 nvm、jenv 等等，打开终端很慢。所有 lazy load 等方案都会在各个旮旯里影响原有的启动逻辑，且维护成本高。</p><p>解决方案：ITerm2 &amp; Tmux。</p><span id="more"></span><h3 id="场景还原："><a href="#场景还原：" class="headerlink" title="场景还原："></a>场景还原：</h3><ol><li><code>.zshrc</code> 有很多功能需求配置，已经影响到了 terminal 启动速度。</li><li>工作期间需要开启 n 个 app 画面，非常乱。而对于 ternimal 总是习惯性使用完 kill。每次打开都会 waiting 很久。</li><li>终端使用 Warp 和 Iterm2，app launch 使用 Raycast。</li></ol><h3 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h3><ol><li><p>使用 iterm2 创建一个 profile，设置为 default (即 app 启动后默认打开当前 profile）。</p></li><li><p>General - Command 选择 <code>Command</code>，命令配置：<code>/bin/zsh -c "/opt/homebrew/bin/tmux attach -t dev || /opt/homebrew/bin/tmux new -s dev \; split-window -h \; split-window -v \;"</code>。</p><ul><li>也可使用简化板：<code>/bin/zsh -c "/opt/homebrew/bin/tmux attach -t dev || /opt/homebrew/bin/tmux new -s dev"</code>。</li><li>tmux 使用非常简单，了解下就可以熟练操作。</li></ul></li><li><p>后续工作中需要快速执行命令，通过 Raycast 打开 iterm2 即可，0ms 延迟启动。</p></li><li><p>使用完可直接 kill iterm2 窗口，依靠 tmux 做会话保持。</p></li><li><p>其他场景，按个人喜好使用 Warp 即可。</p></li></ol><h3 id="结果："><a href="#结果：" class="headerlink" title="结果："></a>结果：</h3><ol><li><p>Iterm2 自身启动耗时 0ms，tmux attach sesstion 0ms。 配合一下，终端秒开，快速执行工作生活中的小命令，再也不用处理 <code>.zshrc</code> 多配置启动慢问题。</p><ul><li>耗时 0ms 是夸张描述。</li></ul></li></ol><hr>]]></content:encoded>
+      <content:encoded><![CDATA[<p>问题 (TLDR)：zsh 已经成为标配，但每次启动它都需要等待 1-2s，很烦。<br>问题 (Detail)：<code>.zshrc</code> 配置中有很多耗时插件和功能，如 nvm、jenv 等等，打开终端很慢。所有 lazy load 等方案都会在各个旮旯里影响原有的启动逻辑，且维护成本高。</p><p>解决方案：ITerm2 &amp; Tmux。</p><span id="more"></span><h3 id="场景还原："><a href="#场景还原：" class="headerlink" title="场景还原："></a>场景还原：</h3><ol><li><code>.zshrc</code> 有很多功能需求配置，已经影响到了 terminal 启动速度。</li><li>工作期间需要开启 n 个 app 画面，非常乱。而对于 ternimal 总是习惯性使用完 kill。每次打开都会 waiting 很久。</li><li>终端使用 Warp 和 Iterm2，app launch 使用 Raycast。</li></ol><h3 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h3><ol><li><p>使用 iterm2 创建一个 profile，设置为 default (即 app 启动后默认打开当前 profile）。</p></li><li><p>General - Command 选择 <code>Command</code>，命令配置：</p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/env zsh -c <span class="string">"/opt/homebrew/bin/tmux has-session -t dev 2&gt;/dev/null &amp;&amp; /opt/homebrew/bin/tmux attach -t dev || zsh -lic '/opt/homebrew/bin/tmux new -s dev \; split-window -h \; split-window -v \;'"</span></span><br></pre></td></tr></tbody></table></figure><p><strong>命令细节说明</strong>：</p><ul><li>使用 <code>has-session</code> 检测会话是否已存在，选择不同的启动方式</li><li><strong>会话已存在</strong>：直接 <code>attach</code>，外层使用 <code>zsh -c</code>（不加载 login shell 配置，0ms 启动）</li><li><strong>会话不存在</strong>：使用 <code>zsh -lic</code> 创建（加载完整 login shell <code>.zshrc</code> 配置，确保 PATH 正确）</li><li><strong>为什么创建时必须加载配置</strong>：tmux server 启动时会继承外层 shell 的环境变量（特别是 PATH），<code>.tmux.conf</code> 和 tpm 插件在初始化阶段需要正确的 PATH 来执行 <code>git</code>、<code>bash</code> 等命令，否则会出现 127（command not found）错误</li></ul><p>也可使用简化版（不分割窗口）：</p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/env zsh -c <span class="string">"/opt/homebrew/bin/tmux has-session -t dev 2&gt;/dev/null &amp;&amp; /opt/homebrew/bin/tmux attach -t dev || zsh -lic '/opt/homebrew/bin/tmux new -s dev'"</span></span><br></pre></td></tr></tbody></table></figure></li><li><p>tmux 使用非常简单，了解下就可以熟练操作。</p></li><li><p>后续工作中需要快速执行命令，通过 Raycast 打开 iterm2 即可，0ms 延迟启动。</p></li><li><p>使用完可直接 kill iterm2 窗口，依靠 tmux 做会话保持。</p></li><li><p>其他场景，按个人喜好使用 Warp 即可。</p></li></ol><h3 id="结果："><a href="#结果：" class="headerlink" title="结果："></a>结果：</h3><ol><li><p>Iterm2 自身启动耗时 0ms，tmux attach sesstion 0ms。 配合一下，终端秒开，快速执行工作生活中的小命令，再也不用处理 <code>.zshrc</code> 多配置启动慢问题。</p><ul><li>耗时 0ms 是夸张描述。</li></ul></li></ol><hr>]]></content:encoded>
       
       
       <category domain="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/">技术</category>
@@ -1123,9 +1123,9 @@
       
       <category domain="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/">计算机原理</category>
       
-      <category domain="https://www.yigegongjiang.com/tags/C/">C</category>
-      
       <category domain="https://www.yigegongjiang.com/tags/Swift/">Swift</category>
+      
+      <category domain="https://www.yigegongjiang.com/tags/C/">C</category>
       
       <category domain="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</category>
       
@@ -1438,9 +1438,9 @@
       <category domain="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/">技术</category>
       
       
-      <category domain="https://www.yigegongjiang.com/tags/%E7%BD%91%E7%BB%9C/">网络</category>
-      
       <category domain="https://www.yigegongjiang.com/tags/iOS/">iOS</category>
+      
+      <category domain="https://www.yigegongjiang.com/tags/%E7%BD%91%E7%BB%9C/">网络</category>
       
       <category domain="https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</category>
       
@@ -2184,9 +2184,9 @@
       
       <category domain="https://www.yigegongjiang.com/tags/%E5%86%85%E5%AD%98/">内存</category>
       
-      <category domain="https://www.yigegongjiang.com/tags/%E7%BD%91%E7%BB%9C/">网络</category>
-      
       <category domain="https://www.yigegongjiang.com/tags/iOS/">iOS</category>
+      
+      <category domain="https://www.yigegongjiang.com/tags/%E7%BD%91%E7%BB%9C/">网络</category>
       
       <category domain="https://www.yigegongjiang.com/tags/C/">C</category>
       
