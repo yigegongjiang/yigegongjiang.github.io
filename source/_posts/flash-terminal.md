@@ -23,14 +23,30 @@ tags:
 ### 解决方案：
 
 1. 使用 iterm2 创建一个 profile，设置为 default(即 app 启动后默认打开当前 profile）。
-2. General - Command 选择 `Command`，命令配置：`/bin/zsh -c "/opt/homebrew/bin/tmux attach -t dev || /opt/homebrew/bin/tmux new -s dev \; split-window -h \; split-window -v \;"`。
 
-   - 也可使用简化板：`/bin/zsh -c "/opt/homebrew/bin/tmux attach -t dev || /opt/homebrew/bin/tmux new -s dev"`。
-   - tmux 使用非常简单，了解下就可以熟练操作。
+2. General - Command 选择 `Command`，命令配置：
 
-3. 后续工作中需要快速执行命令，通过 Raycast 打开 iterm2 即可，0ms 延迟启动。
-4. 使用完可直接 kill iterm2 窗口，依靠 tmux 做会话保持。
-5. 其他场景，按个人喜好使用 Warp 即可。
+   ```bash
+   /usr/bin/env zsh -c "/opt/homebrew/bin/tmux has-session -t dev 2>/dev/null && /opt/homebrew/bin/tmux attach -t dev || zsh -lic '/opt/homebrew/bin/tmux new -s dev \; split-window -h \; split-window -v \;'"
+   ```
+
+   **命令细节说明**：
+
+   - 使用 `has-session` 检测会话是否已存在，选择不同的启动方式
+   - **会话已存在**：直接 `attach`，外层使用 `zsh -c`（不加载 login shell 配置，0ms 启动）
+   - **会话不存在**：使用 `zsh -lic` 创建（加载完整 login shell `.zshrc` 配置，确保 PATH 正确）
+   - **为什么创建时必须加载配置**：tmux server 启动时会继承外层 shell 的环境变量（特别是 PATH），`.tmux.conf` 和 tpm 插件在初始化阶段需要正确的 PATH 来执行 `git`、`bash` 等命令，否则会出现 127（command not found）错误
+
+   也可使用简化版（不分割窗口）：
+
+   ```bash
+   /usr/bin/env zsh -c "/opt/homebrew/bin/tmux has-session -t dev 2>/dev/null && /opt/homebrew/bin/tmux attach -t dev || zsh -lic '/opt/homebrew/bin/tmux new -s dev'"
+   ```
+
+3. tmux 使用非常简单，了解下就可以熟练操作。
+4. 后续工作中需要快速执行命令，通过 Raycast 打开 iterm2 即可，0ms 延迟启动。
+5. 使用完可直接 kill iterm2 窗口，依靠 tmux 做会话保持。
+6. 其他场景，按个人喜好使用 Warp 即可。
 
 ### 结果：
 
