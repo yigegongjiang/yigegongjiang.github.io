@@ -31,7 +31,6 @@ tags:
    ```
 
    **命令细节说明**：
-
    - 使用 `has-session` 检测会话是否已存在，选择不同的启动方式
    - **会话已存在**：直接 `attach`，外层使用 `zsh -c`（不加载 login shell 配置，0ms 启动）
    - **会话不存在**：使用 `zsh -lic` 创建（加载完整 login shell `.zshrc` 配置，确保 PATH 正确）
@@ -50,8 +49,6 @@ tags:
 
 ### 结果：
 
-1. Iterm2 自身启动耗时 0ms，tmux attach sesstion 0ms。 配合一下，终端秒开，快速执行工作生活中的小命令，再也不用处理 `.zshrc` 多配置启动慢问题。
-
-   - 耗时 0ms 是夸张描述。
+Iterm2 自身启动耗时 0ms，tmux attach sesstion 0ms。 配合一下，终端秒开，快速执行工作生活中的小命令，再也不用处理 `.zshrc` 多配置启动慢问题。
 
 ---
