@@ -2,15 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.yigegongjiang.com/2019/4gMemory/</loc>
-    
-    <lastmod>2019-02-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.yigegongjiang.com/2020/8hour/</loc>
     
     <lastmod>2020-01-31</lastmod>
@@ -47,6 +38,15 @@
   </url>
   
   <url>
+    <loc>https://www.yigegongjiang.com/2019/4gMemory/</loc>
+    
+    <lastmod>2019-02-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.yigegongjiang.com/2019/HKong/</loc>
     
     <lastmod>2019-08-15</lastmod>
@@ -74,9 +74,9 @@
   </url>
   
   <url>
-    <loc>https://www.yigegongjiang.com/2019/RAC-Api-Summer/</loc>
+    <loc>https://www.yigegongjiang.com/2023/SwiftDependXcode/</loc>
     
-    <lastmod>2019-01-15</lastmod>
+    <lastmod>2023-12-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -92,9 +92,9 @@
   </url>
   
   <url>
-    <loc>https://www.yigegongjiang.com/2023/SwiftDependXcode/</loc>
+    <loc>https://www.yigegongjiang.com/2019/RAC-Api-Summer/</loc>
     
-    <lastmod>2023-12-15</lastmod>
+    <lastmod>2019-01-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -137,18 +137,18 @@
   </url>
   
   <url>
-    <loc>https://www.yigegongjiang.com/2023/Vim/</loc>
+    <loc>https://www.yigegongjiang.com/2020/TCPTranslation/</loc>
     
-    <lastmod>2023-01-26</lastmod>
+    <lastmod>2020-05-13</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.yigegongjiang.com/2020/TCPTranslation/</loc>
+    <loc>https://www.yigegongjiang.com/2023/Vim/</loc>
     
-    <lastmod>2020-05-13</lastmod>
+    <lastmod>2023-01-26</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -209,15 +209,6 @@
   </url>
   
   <url>
-    <loc>https://www.yigegongjiang.com/2020/autorelease/</loc>
-    
-    <lastmod>2020-05-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.yigegongjiang.com/2018/block/</loc>
     
     <lastmod>2018-11-24</lastmod>
@@ -227,18 +218,27 @@
   </url>
   
   <url>
-    <loc>https://www.yigegongjiang.com/2018/blog/</loc>
+    <loc>https://www.yigegongjiang.com/2022/browser/</loc>
     
-    <lastmod>2018-10-15</lastmod>
+    <lastmod>2022-10-22</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.yigegongjiang.com/2022/browser/</loc>
+    <loc>https://www.yigegongjiang.com/2020/autorelease/</loc>
     
-    <lastmod>2022-10-22</lastmod>
+    <lastmod>2020-05-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yigegongjiang.com/2018/blog/</loc>
+    
+    <lastmod>2018-10-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -263,18 +263,18 @@
   </url>
   
   <url>
-    <loc>https://www.yigegongjiang.com/2024/cname/</loc>
+    <loc>https://www.yigegongjiang.com/2024/command-line-tools/</loc>
     
-    <lastmod>2024-11-10</lastmod>
+    <lastmod>2024-11-11</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.yigegongjiang.com/2024/command-line-tools/</loc>
+    <loc>https://www.yigegongjiang.com/2024/cname/</loc>
     
-    <lastmod>2024-11-11</lastmod>
+    <lastmod>2024-11-10</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -371,15 +371,6 @@
   </url>
   
   <url>
-    <loc>https://www.yigegongjiang.com/2018/gamelife/</loc>
-    
-    <lastmod>2018-12-31</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.yigegongjiang.com/2023/for_surge/</loc>
     
     <lastmod>2023-04-16</lastmod>
@@ -389,9 +380,9 @@
   </url>
   
   <url>
-    <loc>https://www.yigegongjiang.com/2019/greentrain/</loc>
+    <loc>https://www.yigegongjiang.com/2018/gamelife/</loc>
     
-    <lastmod>2019-11-01</lastmod>
+    <lastmod>2018-12-31</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -407,9 +398,9 @@
   </url>
   
   <url>
-    <loc>https://www.yigegongjiang.com/2023/haoel/</loc>
+    <loc>https://www.yigegongjiang.com/2019/greentrain/</loc>
     
-    <lastmod>2023-05-15</lastmod>
+    <lastmod>2019-11-01</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -425,9 +416,27 @@
   </url>
   
   <url>
+    <loc>https://www.yigegongjiang.com/2023/haoel/</loc>
+    
+    <lastmod>2023-05-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.yigegongjiang.com/2019/hope/</loc>
     
     <lastmod>2019-03-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yigegongjiang.com/2024/how-to-pay/</loc>
+    
+    <lastmod>2024-12-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -443,9 +452,9 @@
   </url>
   
   <url>
-    <loc>https://www.yigegongjiang.com/2024/how-to-pay/</loc>
+    <loc>https://www.yigegongjiang.com/2022/inner/</loc>
     
-    <lastmod>2024-12-08</lastmod>
+    <lastmod>2022-06-29</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -470,27 +479,9 @@
   </url>
   
   <url>
-    <loc>https://www.yigegongjiang.com/2022/inner/</loc>
-    
-    <lastmod>2022-06-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.yigegongjiang.com/2022/lifelists/</loc>
     
     <lastmod>2022-10-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yigegongjiang.com/2022/lowwork/</loc>
-    
-    <lastmod>2022-04-28</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -506,15 +497,6 @@
   </url>
   
   <url>
-    <loc>https://www.yigegongjiang.com/2022/lock/</loc>
-    
-    <lastmod>2022-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.yigegongjiang.com/2022/math/</loc>
     
     <lastmod>2022-05-04</lastmod>
@@ -524,9 +506,9 @@
   </url>
   
   <url>
-    <loc>https://www.yigegongjiang.com/2022/memory/</loc>
+    <loc>https://www.yigegongjiang.com/2022/lowwork/</loc>
     
-    <lastmod>2022-09-24</lastmod>
+    <lastmod>2022-04-28</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -542,9 +524,9 @@
   </url>
   
   <url>
-    <loc>https://www.yigegongjiang.com/2022/mess2022/</loc>
+    <loc>https://www.yigegongjiang.com/2022/memory/</loc>
     
-    <lastmod>2022-02-01</lastmod>
+    <lastmod>2022-09-24</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -560,27 +542,9 @@
   </url>
   
   <url>
-    <loc>https://www.yigegongjiang.com/2020/my2019/</loc>
+    <loc>https://www.yigegongjiang.com/2022/mess2022/</loc>
     
-    <lastmod>2020-01-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yigegongjiang.com/2020/multiplePersonalities/</loc>
-    
-    <lastmod>2020-06-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yigegongjiang.com/2022/my2021/</loc>
-    
-    <lastmod>2022-02-02</lastmod>
+    <lastmod>2022-02-01</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -596,18 +560,36 @@
   </url>
   
   <url>
-    <loc>https://www.yigegongjiang.com/2024/my2023/</loc>
+    <loc>https://www.yigegongjiang.com/2020/multiplePersonalities/</loc>
     
-    <lastmod>2024-02-23</lastmod>
+    <lastmod>2020-06-13</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.yigegongjiang.com/2023/network_privacy/</loc>
+    <loc>https://www.yigegongjiang.com/2022/lock/</loc>
     
-    <lastmod>2023-04-25</lastmod>
+    <lastmod>2022-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yigegongjiang.com/2020/my2019/</loc>
+    
+    <lastmod>2020-01-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yigegongjiang.com/2024/my2023/</loc>
+    
+    <lastmod>2024-02-23</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -623,9 +605,18 @@
   </url>
   
   <url>
-    <loc>https://www.yigegongjiang.com/2024/passkey/</loc>
+    <loc>https://www.yigegongjiang.com/2022/my2021/</loc>
     
-    <lastmod>2024-12-16</lastmod>
+    <lastmod>2022-02-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yigegongjiang.com/2023/network_privacy/</loc>
+    
+    <lastmod>2023-04-25</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -635,6 +626,15 @@
     <loc>https://www.yigegongjiang.com/2023/notion/</loc>
     
     <lastmod>2023-07-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yigegongjiang.com/2024/passkey/</loc>
+    
+    <lastmod>2024-12-16</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -713,27 +713,9 @@
   </url>
   
   <url>
-    <loc>https://www.yigegongjiang.com/2024/sse/</loc>
-    
-    <lastmod>2024-11-01</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.yigegongjiang.com/2023/stackForFunc/</loc>
     
     <lastmod>2023-12-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yigegongjiang.com/2023/swiftPackageFramework/</loc>
-    
-    <lastmod>2023-12-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -749,6 +731,15 @@
   </url>
   
   <url>
+    <loc>https://www.yigegongjiang.com/2023/swiftPackageFramework/</loc>
+    
+    <lastmod>2023-12-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.yigegongjiang.com/2023/the_sea/</loc>
     
     <lastmod>2023-08-28</lastmod>
@@ -758,9 +749,9 @@
   </url>
   
   <url>
-    <loc>https://www.yigegongjiang.com/2020/threads/</loc>
+    <loc>https://www.yigegongjiang.com/2024/sse/</loc>
     
-    <lastmod>2020-05-03</lastmod>
+    <lastmod>2024-11-01</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -776,9 +767,9 @@
   </url>
   
   <url>
-    <loc>https://www.yigegongjiang.com/2023/track/</loc>
+    <loc>https://www.yigegongjiang.com/2020/threads/</loc>
     
-    <lastmod>2023-01-22</lastmod>
+    <lastmod>2020-05-03</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -794,9 +785,9 @@
   </url>
   
   <url>
-    <loc>https://www.yigegongjiang.com/2023/unicode/</loc>
+    <loc>https://www.yigegongjiang.com/2023/track/</loc>
     
-    <lastmod>2023-12-24</lastmod>
+    <lastmod>2023-01-22</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -821,27 +812,18 @@
   </url>
   
   <url>
+    <loc>https://www.yigegongjiang.com/2023/unicode/</loc>
+    
+    <lastmod>2023-12-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.yigegongjiang.com/2022/virus/</loc>
     
     <lastmod>2022-10-15</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yigegongjiang.com/2022/virusafter/</loc>
-    
-    <lastmod>2022-12-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yigegongjiang.com/2024/warp/</loc>
-    
-    <lastmod>2024-10-27</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -857,18 +839,27 @@
   </url>
   
   <url>
-    <loc>https://www.yigegongjiang.com/2019/workhard/</loc>
+    <loc>https://www.yigegongjiang.com/2024/webrtc/</loc>
     
-    <lastmod>2019-02-24</lastmod>
+    <lastmod>2024-11-09</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.yigegongjiang.com/2024/webrtc/</loc>
+    <loc>https://www.yigegongjiang.com/2024/warp/</loc>
     
-    <lastmod>2024-11-09</lastmod>
+    <lastmod>2024-10-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yigegongjiang.com/2022/virusafter/</loc>
+    
+    <lastmod>2022-12-23</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -893,6 +884,15 @@
   </url>
   
   <url>
+    <loc>https://www.yigegongjiang.com/2019/workhard/</loc>
+    
+    <lastmod>2019-02-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.yigegongjiang.com/2019/%E4%BA%92%E8%81%94%E7%BD%91%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE%E7%90%86%E8%A7%A3%E5%9D%91%E7%82%B9/</loc>
     
     <lastmod>2019-05-25</lastmod>
@@ -911,27 +911,9 @@
   </url>
   
   <url>
-    <loc>https://www.yigegongjiang.com/2022/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E6%A0%88%E4%B9%8B%E5%BD%BB%E5%BA%95%E7%90%86%E8%A7%A3/</loc>
-    
-    <lastmod>2022-03-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.yigegongjiang.com/2021/%E6%89%93%E7%AE%97%E8%AE%B0%E5%BD%95%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/</loc>
     
     <lastmod>2021-07-25</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yigegongjiang.com/2018/%E6%8A%98%E8%85%BE/</loc>
-    
-    <lastmod>2018-10-31</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -947,6 +929,24 @@
   </url>
   
   <url>
+    <loc>https://www.yigegongjiang.com/2022/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E6%A0%88%E4%B9%8B%E5%BD%BB%E5%BA%95%E7%90%86%E8%A7%A3/</loc>
+    
+    <lastmod>2022-03-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yigegongjiang.com/2018/%E6%8A%98%E8%85%BE/</loc>
+    
+    <lastmod>2018-10-31</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.yigegongjiang.com/2022/%E6%B1%9F%E8%8B%8F%E5%A5%B3%E6%9C%89%E6%84%9F/</loc>
     
     <lastmod>2022-02-20</lastmod>
@@ -956,18 +956,18 @@
   </url>
   
   <url>
-    <loc>https://www.yigegongjiang.com/2019/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E5%8D%8F%E8%AE%AE/</loc>
+    <loc>https://www.yigegongjiang.com/2019/%E8%83%A1%E8%AF%B4%E5%85%AB%E9%81%93%E4%B9%8B%E4%BA%91%E6%9C%8D%E5%8A%A1/</loc>
     
-    <lastmod>2019-03-01</lastmod>
+    <lastmod>2019-08-05</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.yigegongjiang.com/2019/%E8%83%A1%E8%AF%B4%E5%85%AB%E9%81%93%E4%B9%8B%E4%BA%91%E6%9C%8D%E5%8A%A1/</loc>
+    <loc>https://www.yigegongjiang.com/2019/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E5%8D%8F%E8%AE%AE/</loc>
     
-    <lastmod>2019-08-05</lastmod>
+    <lastmod>2019-03-01</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1001,6 +1001,15 @@
   </url>
   
   <url>
+    <loc>https://www.yigegongjiang.com/japan/index.html</loc>
+    
+    <lastmod>2024-03-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.yigegongjiang.com/cigarette/index.html</loc>
     
     <lastmod>2025-06-24</lastmod>
@@ -1019,27 +1028,18 @@
   </url>
   
   <url>
-    <loc>https://www.yigegongjiang.com/openSource/index.html</loc>
-    
-    <lastmod>2024-01-14</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yigegongjiang.com/japan/index.html</loc>
-    
-    <lastmod>2024-03-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.yigegongjiang.com/tags/index.html</loc>
     
     <lastmod>2018-10-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yigegongjiang.com/openSource/index.html</loc>
+    
+    <lastmod>2024-01-14</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1053,20 +1053,6 @@
     <priority>1.0</priority>
   </url>
 
-  
-  <url>
-    <loc>https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/</loc>
-    <lastmod>2025-12-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yigegongjiang.com/tags/%E5%86%85%E5%AD%98/</loc>
-    <lastmod>2025-12-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
   
   <url>
     <loc>https://www.yigegongjiang.com/tags/Life/</loc>
@@ -1083,7 +1069,21 @@
   </url>
   
   <url>
+    <loc>https://www.yigegongjiang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/</loc>
+    <lastmod>2025-12-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.yigegongjiang.com/tags/%E7%BD%91%E7%BB%9C/</loc>
+    <lastmod>2025-12-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yigegongjiang.com/tags/%E5%86%85%E5%AD%98/</loc>
     <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1155,14 +1155,14 @@
 
   
   <url>
-    <loc>https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/</loc>
+    <loc>https://www.yigegongjiang.com/categories/%E8%A7%82%E7%82%B9/</loc>
     <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.yigegongjiang.com/categories/%E8%A7%82%E7%82%B9/</loc>
+    <loc>https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/</loc>
     <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
