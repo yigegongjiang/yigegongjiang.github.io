@@ -118,7 +118,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF%E8%BF%98%E5%8E%9F%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">场景还原：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">解决方案：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%9C%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">结果：</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF%E8%BF%98%E5%8E%9F%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">场景还原：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">解决方案：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%9C%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">结果：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A9%E5%B1%95%EF%BC%9A"><span class="nav-number">4.</span> <span class="nav-text">扩展：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#shell-%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0"><span class="nav-number">4.1.</span> <span class="nav-text">shell 启动参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9B%B4%E5%A4%9A-Command-%E9%85%8D%E7%BD%AE%E7%A4%BA%E4%BE%8B"><span class="nav-number">4.2.</span> <span class="nav-text">更多 Command 配置示例</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -248,19 +248,9 @@
 <li><p>使用 iterm2 创建一个 profile，设置为 default (即 app 启动后默认打开当前 profile）。</p>
 </li>
 <li><p>General - Command 选择 <code>Command</code>，命令配置：</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/env zsh -c <span class="string">"/opt/homebrew/bin/tmux has-session -t dev 2&gt;/dev/null &amp;&amp; /opt/homebrew/bin/tmux attach -t dev || zsh -lic '/opt/homebrew/bin/tmux new -s dev \; split-window -h \; split-window -v \;'"</span></span><br></pre></td></tr></tbody></table></figure>
-
-<p><strong>命令细节说明</strong>：</p>
-<ul>
-<li>使用 <code>has-session</code> 检测会话是否已存在，选择不同的启动方式</li>
-<li><strong>会话已存在</strong>：直接 <code>attach</code>，外层使用 <code>zsh -c</code>（不加载 login shell 配置，0ms 启动）</li>
-<li><strong>会话不存在</strong>：使用 <code>zsh -lic</code> 创建（加载完整 login shell <code>.zshrc</code> 配置，确保 PATH 正确）</li>
-<li><strong>为什么创建时必须加载配置</strong>：tmux server 启动时会继承外层 shell 的环境变量（特别是 PATH），<code>.tmux.conf</code> 和 tpm 插件在初始化阶段需要正确的 PATH 来执行 <code>git</code>、<code>bash</code> 等命令，否则会出现 127（command not found）错误</li>
-</ul>
-<p>也可使用简化版（不分割窗口）：</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/env zsh -c <span class="string">"/opt/homebrew/bin/tmux has-session -t dev 2&gt;/dev/null &amp;&amp; /opt/homebrew/bin/tmux attach -t dev || zsh -lic '/opt/homebrew/bin/tmux new -s dev'"</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/env zsh -c <span class="string">'/opt/homebrew/bin/tmux new -As dev'</span></span><br></pre></td></tr></tbody></table></figure>
 </li>
-<li><p>tmux 使用非常简单，了解下就可以熟练操作。</p>
+<li><p>tmux 使用较简单，了解下就可以熟练操作。</p>
 </li>
 <li><p>后续工作中需要快速执行命令，通过 Raycast 打开 iterm2 即可，0ms 延迟启动。</p>
 </li>
@@ -270,6 +260,24 @@
 </li>
 </ol>
 <h3 id="结果："><a href="#结果：" class="headerlink" title="结果："></a>结果：</h3><p>Iterm2 自身启动耗时 0ms，tmux attach sesstion 0ms。 配合一下，终端秒开，快速执行工作生活中的小命令，再也不用处理 <code>.zshrc</code> 多配置启动慢问题。</p>
+<h3 id="扩展："><a href="#扩展：" class="headerlink" title="扩展："></a>扩展：</h3><h4 id="shell-启动参数"><a href="#shell-启动参数" class="headerlink" title="shell 启动参数"></a>shell 启动参数</h4><ul>
+<li><code>-l</code>：以登录 shell 启动，读取登录相关配置（如 <code>~/.zprofile</code>），保证 PATH、环境变量齐全。</li>
+<li><code>-i</code>：以交互式 shell 启动，启用提示符、job control，并读取交互配置（如 <code>~/.zshrc</code>）。</li>
+<li><code>-c</code>：执行后面的一条命令字符串并退出，常与 <code>-l</code>、<code>-i</code> 组合，用来在「完整环境」里执行单条命令。</li>
+</ul>
+<p>配置了 <code>-lic</code>，就会走完整的模拟器登录交互环境，保证各种环境变量、插件都能正常加载。这也是文档开头说到的问题根源。即 <code>.zshrc</code> 等配置启动太耗时了。<br>配置 <code>-c</code>，就在裸环境执行 shell 命令，非常快。但这种场景下是裸环境，各种 shell 配置都没有。只应该在必要的场景使用。</p>
+<h4 id="更多-Command-配置示例"><a href="#更多-Command-配置示例" class="headerlink" title="更多 Command 配置示例"></a>更多 Command 配置示例</h4><ul>
+<li><p><code>-lic</code> 示例：</p>
+<p><code>/usr/bin/env zsh -c "/opt/homebrew/bin/tmux has-session -t dev 2&gt;/dev/null &amp;&amp; /opt/homebrew/bin/tmux attach -t dev || zsh -lic '/opt/homebrew/bin/tmux new -s dev'"</code></p>
+<p>完全等价于:</p>
+<p><code>/usr/bin/env zsh -c '/opt/homebrew/bin/tmux new -As dev'</code></p>
+<p>解析：tmux Check 和 Attach 的时候使用的 <code>-c</code>，new 的时候，tmux 会在 session 内部通过 <code>-lic</code> 启动 shell (tmux 默认行为）。</p>
+</li>
+<li><p>tmux 跟随待执行命令：</p>
+<p><code>/usr/bin/env zsh -c '/opt/homebrew/bin/tmux new -As xxx "zsh -lic \"exec npx xxx@latest\""'</code></p>
+<p>解析：tmux new session 的时候，如果跟随了待执行命令，就不在走上面提供的默认行为 (<code>-lic</code>），即 tmux 默认在裸环境下执行待执行命令。需要手动补齐登录交互环境，即 <code>zsh -lic "exec npx xxx@latest"</code>。</p>
+</li>
+</ul>
 <hr>
 
     </div>
