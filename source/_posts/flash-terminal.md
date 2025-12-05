@@ -27,19 +27,7 @@ tags:
 2. General - Command 选择 `Command`，命令配置：
 
    ```bash
-   /usr/bin/env zsh -c "/opt/homebrew/bin/tmux has-session -t dev 2>/dev/null && /opt/homebrew/bin/tmux attach -t dev || zsh -lic '/opt/homebrew/bin/tmux new -s dev \; split-window -h \; split-window -v \;'"
-   ```
-
-   **命令细节说明**：
-   - 使用 `has-session` 检测会话是否已存在，选择不同的启动方式
-   - **会话已存在**：直接 `attach`，外层使用 `zsh -c`（不加载 login shell 配置，0ms 启动）
-   - **会话不存在**：使用 `zsh -lic` 创建（加载完整 login shell `.zshrc` 配置，确保 PATH 正确）
-   - **为什么创建时必须加载配置**：tmux server 启动时会继承外层 shell 的环境变量（特别是 PATH），`.tmux.conf` 和 tpm 插件在初始化阶段需要正确的 PATH 来执行 `git`、`bash` 等命令，否则会出现 127（command not found）错误
-
-   也可使用简化版（不分割窗口）：
-
-   ```bash
-   /usr/bin/env zsh -c "/opt/homebrew/bin/tmux has-session -t dev 2>/dev/null && /opt/homebrew/bin/tmux attach -t dev || zsh -lic '/opt/homebrew/bin/tmux new -s dev'"
+   /usr/bin/env zsh -c '/opt/homebrew/bin/tmux new -As dev'
    ```
 
 3. tmux 使用非常简单，了解下就可以熟练操作。
@@ -50,5 +38,24 @@ tags:
 ### 结果：
 
 Iterm2 自身启动耗时 0ms，tmux attach sesstion 0ms。 配合一下，终端秒开，快速执行工作生活中的小命令，再也不用处理 `.zshrc` 多配置启动慢问题。
+
+### 扩展：
+
+#### 更多 Command 配置示例
+
+`/usr/bin/env zsh -c "/opt/homebrew/bin/tmux has-session -t dev 2>/dev/null && /opt/homebrew/bin/tmux attach -t dev || zsh -lic '/opt/homebrew/bin/tmux new -s dev'"`
+
+`/usr/bin/env zsh -c '/opt/homebrew/bin/tmux new -As xxx "zsh -lic \"exec npx xxx@latest \""'`
+
+#### shell 启动参数
+
+- `-l`:
+- `-i`:
+- `-c`:
+
+### tmux 创建 session 的默认行为
+
+a. tmux 创建 session 后，默认会使用 `-l`、`-i` 启动完成的 shell 窗口
+b. 如果 tmux 后面紧跟着待执行命令，就不会启动 a 中的 shell 环境，这个时候需要主动的进行 `-lic` 的环境启动
 
 ---
