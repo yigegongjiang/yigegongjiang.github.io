@@ -92,7 +92,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">14</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">109</span></a></li><li class="menu-item menu-item-日本带货"><a href="/cigarette/" rel="section">日本带货</a></li><li class="menu-item menu-item-日本指北"><a href="/japan/" rel="section">日本指北</a></li><li class="menu-item menu-item-时间舟"><a href="/categories/%E6%97%B6%E9%97%B4%E8%88%9F/" rel="section">时间舟</a></li><li class="menu-item menu-item-source"><a href="/openSource" rel="section">Source</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">14</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">110</span></a></li><li class="menu-item menu-item-日本带货"><a href="/cigarette/" rel="section">日本带货</a></li><li class="menu-item menu-item-日本指北"><a href="/japan/" rel="section">日本指北</a></li><li class="menu-item menu-item-时间舟"><a href="/categories/%E6%97%B6%E9%97%B4%E8%88%9F/" rel="section">时间舟</a></li><li class="menu-item menu-item-source"><a href="/openSource" rel="section">Source</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
   </ul>
 </nav>
 
@@ -131,7 +131,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">109</span>
+          <span class="site-state-item-count">110</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -173,6 +173,88 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2023/SwiftDependXcode/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
+      <meta itemprop="name" content="海驴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个工匠">
+      <meta itemprop="description" content="时间，真的不多了。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 一个工匠">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/SwiftDependXcode/" class="post-title-link" itemprop="url">在 Xcode 中更好的使用 Swift</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-12-15 18:48:42" itemprop="dateCreated datePublished" datetime="2023-12-15T18:48:42+08:00">2023-12-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在 OC 时代，通过 .h 头文件以及 include 标记，还有那长长的 api 名称，可以很方便的意会和找到某个类。使用 Xcode 十年，在 Vim 的加持下，基本没用过啥快捷键。<br>最近在 Swift 里面一顿拾掇，理解源码也太复杂了。<br>1 个 class 在 3 个文件中增加了 5 个扩展并实现了 4 个协议，1 个文件中包含 400 行注释 500 行代码 10 多个杂七杂八的 enum/struct/class/extension/protocol，去他妈的。</p>
+<p>一直都是夸奖 Swift 的，作为后现代语言，集百家长补百家短。<br>但不好的编程习惯对 Swift 来说会是灾难，文件名不在作为当前文件内容的强约束、无需 import 后的 extension 可以写在任意位置、enum/struct/class 是值类型值语义引用类型引用语义搞不愣清后的混用，等等，这些都会骤然增加 Swift 源码的理解。</p>
+<p>不得已对 Xcode 进行一些调教。<br>目标是快速<strong>查阅继承、搜索、实现协议方、三方库文档</strong>等代码阅读操作。</p>
+          <!--noindex-->
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -915,99 +997,6 @@
     <div class="post-body" itemprop="articleBody">
           <p>2023 高考过去了，这两天老家也开始农忙了。体验过农忙的学生，一般都想着靠读书改变命运，不愿面对面朝黄土背朝天的广袤天地。<br>农村，是一片复杂的土地，无数的人想要离开，最后还是回到了那里。高考，就是一个敲门砖，离开农村的那块垫脚的砖。</p>
 <p>在这片困乏饥饿的神州大地上，学历不一定代表未来，但没学历，是真的没有未来。<br>有学历，依旧会承受疲劳工作、生儿育女、职场危机、生活一地鸡毛、老年浑噩。<br>没有学历，对有学历所要承受的一个都少不了，只会更刻骨和铭记。还要承受低能、工作学历卡口等歧视。<br>所以，还是考的好一点吧。很多人都能上大学，但 985/211 和普通本科，是完全不一样的，本科和学院也是不一样的。<br>如果考的不好，请复习 1 年甚至 2 年，不要失去耐心。<br>多年之后，会发现上学是好轻松的活儿。上学也是上班，工作的好点，省去了以后多少的精神崩溃。</p>
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2023/Vision/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
-      <meta itemprop="name" content="海驴">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一个工匠">
-      <meta itemprop="description" content="时间，真的不多了。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 一个工匠">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/Vision/" class="post-title-link" itemprop="url">Vision 未来已来</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2023-06-08 07:20:46" itemprop="dateCreated datePublished" datetime="2023-06-08T07:20:46+08:00">2023-06-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%A7%82%E7%82%B9/" itemprop="url" rel="index"><span itemprop="name">观点</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>2024.01.03 更：Vision Pro 已经在美国发售，很多国内的人也通过代购等方式拿到的设备。<br>2024.02.26 更：到目前为止，没看到 vision pro 爆出来亮眼的消息，这一个版本是完了，挺失落，科技滑铁卢。游戏和办公，都没亮点出来。比如游戏没有双人合作通关，办公也么看到啥惊喜。想着至少健身环大冒险、神庙或者网页浏览，都能出一些不一样的体验。目前看完全没有。</p>
-</blockquote>
-<p>Apple WWDC 大会上，发布了 Vision 设备，24 年初向美国售卖，3499 美元。预计不久也会在国内市场透出，加上税应该在 2.5W 左右。<br>在大会没有开始前，有不少人已经从不少渠道了解到了这款设备的一些信息。在正式宣传和媒体体验后，其实大家都是很吃惊。<br>一来功能非常实用刚需，<br>二来完成度非常高，不是卖残缺品 PPT 的。</p>
-<p>简要总结几个点：</p>
-<ol>
-<li>视前屏幕是不透明的。即戴上 Vision 后，眼前就是一片黑。</li>
-<li>内置的 M2&amp;R1 芯片和 12 枚摄像头，可以将内外部的画面，在视前屏幕的内外屏上 10ms 延迟内实时展示。即内部看到的是外部建模后的投影，外部也能看到内部的眼睛区域，也是投影建模后的。</li>
-<li>Vision 能绘出非常大的视觉区域和 3D 视觉效果，突破了显示器等外接设备的物理限制。</li>
-<li>Vision 的摄像头和传感器，通过对眼部、手部、身体的感知，可以比用户更早一步的知道用户想要干嘛。已经能够通过 虚拟键盘 / 手势 / 眼势 做到输出和输出。</li>
-<li>Vision 有自己的操作系统，和 Apple 生态可以互通。即可以在 Vision 上自行开发应用，现有的 Mac/iOS 应用也可以在 Vision 上使用。</li>
-<li>Vision 覆盖了 游戏、办公、生活娱乐、出行 等多个方面，即年龄段、时间段，不受限制。</li>
-</ol>
-<p>我对 Vision 非常满意的地方，在于它从另一个维度，实现了我的一个渴望。<br>我一直都希望有一个非常大的屏幕，可以用来浏览网络信息、办公。<br>但是这样的屏幕因为像素和空间尺寸等原因，对我来说其实无法满足。我还一直很有遗憾。<br>真没想到，Vision 在虚拟现实里面做到了。</p>
           <!--noindex-->
           <!--/noindex-->
         
