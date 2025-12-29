@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="manifest" href="/images/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.2","exturl":true,"sidebar":{"position":"left","width":142,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="主要通过 web fetch api 的 ReadableStream 能力，解释 HTTP 通道中的流式响应。流式关键在于 HTTP 协议层解析 Body 体，和 TCP 粘包和拆包的处理类似。各种编程语言都具有 body 二进制数据流的拦截和解析能力。  0. Fetch API 速览 await fetch(url) → 返回 Response 对象：这时浏览器通常已经从底层连接（TCP&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="流式响应（Chat）：HTTP 响应体字节流的读取与解析">
+<meta property="og:url" content="https://www.yigegongjiang.com/2025/body-stream/index.html">
+<meta property="og:site_name" content="一个工匠">
+<meta property="og:description" content="主要通过 web fetch api 的 ReadableStream 能力，解释 HTTP 通道中的流式响应。流式关键在于 HTTP 协议层解析 Body 体，和 TCP 粘包和拆包的处理类似。各种编程语言都具有 body 二进制数据流的拦截和解析能力。  0. Fetch API 速览 await fetch(url) → 返回 Response 对象：这时浏览器通常已经从底层连接（TCP&#x2F;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-12-29T12:02:01.000Z">
+<meta property="article:author" content="海驴">
+<meta property="article:tag" content="网络">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.yigegongjiang.com/2025/body-stream/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2025/body-stream/","path":"2025/body-stream/","title":"流式响应（Chat）：HTTP 响应体字节流的读取与解析"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>流式响应（Chat）：HTTP 响应体字节流的读取与解析 | 一个工匠</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CTEWJ02QX"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-8CTEWJ02QX","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="一个工匠" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="一个工匠" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">一个工匠</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">Tags<span class="badge">14</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">Categories<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">Archives<span class="badge">111</span></a></li><li class="menu-item menu-item-日本带货"><a href="/cigarette/" rel="section">日本带货</a></li><li class="menu-item menu-item-日本指北"><a href="/japan/" rel="section">日本指北</a></li><li class="menu-item menu-item-时间舟"><a href="/categories/%E6%97%B6%E9%97%B4%E8%88%9F/" rel="section">时间舟</a></li><li class="menu-item menu-item-source"><a href="/openSource" rel="section">Source</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">About</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section">RSS</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-Fetch-API-%E9%80%9F%E8%A7%88"><span class="nav-number">1.</span> <span class="nav-text">0. Fetch API 速览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-SSE-%E4%B8%8E-Fetch"><span class="nav-number">2.</span> <span class="nav-text">1. SSE 与 Fetch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E9%93%BE%E8%B7%AF%E4%BC%A0%E8%BE%93%EF%BC%88%E4%BB%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF-write-%E5%88%B0%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%8B%BF%E5%88%B0-chunk%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">2. 链路传输（从服务端 write 到客户端拿到 chunk）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Fetch-%E6%B5%81%E5%BC%8F%E8%AF%BB%E5%8F%96%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">3. Fetch 流式读取的基本模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E7%A4%BA%E4%BE%8B%EF%BC%9A%E8%A7%A3%E6%9E%90%E6%B6%88%E6%81%AF%E6%B5%81"><span class="nav-number">5.</span> <span class="nav-text">4. 示例：解析消息流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E5%AD%97%E8%8A%82%E8%A7%A3%E7%A0%81%EF%BC%9A%E5%A4%84%E7%90%86%E5%A2%9E%E9%87%8F-UTF-8"><span class="nav-number">5.1.</span> <span class="nav-text">4.1 字节解码：处理增量 UTF-8</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E5%88%86%E5%B8%A7%E7%AD%96%E7%95%A5%EF%BC%9A%E5%AE%9A%E4%B9%89%E6%B6%88%E6%81%AF%E8%BE%B9%E7%95%8C"><span class="nav-number">5.2.</span> <span class="nav-text">4.2 分帧策略：定义消息边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-Fetch-NDJSON"><span class="nav-number">5.3.</span> <span class="nav-text">4.3 Fetch + NDJSON</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="海驴"
+      src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
+  <p class="site-author-name" itemprop="name">海驴</p>
+  <div class="site-description" itemprop="description">时间，真的不多了。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          Links
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9oYWlfbHZf" title="https:&#x2F;&#x2F;twitter.com&#x2F;hai_lv_">X(Twitter)</span>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.yigegongjiang.com/2025/body-stream/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202309220309178.webp">
+      <meta itemprop="name" content="海驴">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个工匠">
+      <meta itemprop="description" content="时间，真的不多了。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="流式响应（Chat）：HTTP 响应体字节流的读取与解析 | 一个工匠">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          流式响应（Chat）：HTTP 响应体字节流的读取与解析
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2025-12-29 20:02:01" itemprop="dateCreated datePublished" datetime="2025-12-29T20:02:01+08:00">2025-12-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>主要通过 web fetch api 的 <code>ReadableStream</code> 能力，解释 HTTP 通道中的流式响应。<br>流式关键在于 HTTP 协议层解析 Body 体，和 TCP 粘包和拆包的处理类似。各种编程语言都具有 body 二进制数据流的拦截和解析能力。</p>
+</blockquote>
+<h2 id="0-Fetch-API-速览"><a href="#0-Fetch-API-速览" class="headerlink" title="0. Fetch API 速览"></a>0. Fetch API 速览</h2><ul>
+<li><code>await fetch(url)</code> → 返回 <code>Response</code> 对象：这时浏览器通常已经从底层连接（TCP/QUIC）里拿到并解析完 <strong>HTTP 响应行（status）+ 响应头（headers）</strong>；但 <strong>响应体（body）</strong> 还没被消费 / 解析（它会通过单独的流式接口暴露出来，供上层代码增量读取）。</li>
+<li><code>await res.json()</code> / <code>await res.text()</code> → <strong>一次性读取并解析完整 Body</strong>，适用于非流式场景。</li>
+<li><code>res.body</code> → <code>ReadableStream&lt;Uint8Array&gt;</code>，<strong>字节流接口</strong>，可增量消费。</li>
+<li><code>res.body.getReader().read()</code> → 手动 Pull 模式，每次返回 <code>{ value: Uint8Array, done: boolean }</code>。</li>
+</ul>
+<p>可以这样理解：<code>fetch()</code> 先把 <strong>status/headers</strong> 拿到手并封装成 <code>Response</code>；至于 <strong>body 字节</strong> 怎么读、怎么解析，由调用方选择：</p>
+<ul>
+<li>通过 <code>ReadableStream</code> 增量读取（适合 AI token、NDJSON、SSE 等流式场景）。</li>
+<li>或调用 <code>json()</code> / <code>text()</code> 这类封装好的方法，让它们内部把 body 全部读完后再一次性解析。</li>
+</ul>
+<p><strong>核心区别</strong>：<code>res.json()</code> 等 “便捷方法” 会等待整个响应体下载完毕后一次性解析；<code>reader.read()</code> 则支持<strong>边接收边处理</strong>，是流式读取的基础。</p>
+<span id="more"></span>
+
+<figure class="highlight ts"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 非流式：等 Body 全部接收完再解析</span></span><br><span class="line"><span class="keyword">const</span> full = <span class="title function_">await</span>(<span class="keyword">await</span> <span class="title function_">fetch</span>(url)).<span class="title function_">json</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 流式：边接收边处理（Chunk 边界不等于消息边界）</span></span><br><span class="line"><span class="keyword">const</span> res = <span class="keyword">await</span> <span class="title function_">fetch</span>(url);</span><br><span class="line"><span class="keyword">const</span> reader = res.<span class="property">body</span>!.<span class="title function_">getReader</span>();</span><br><span class="line"><span class="keyword">const</span> decoder = <span class="keyword">new</span> <span class="title class_">TextDecoder</span>(<span class="string">"utf-8"</span>);</span><br><span class="line"><span class="keyword">for</span> (;;) {</span><br><span class="line">  <span class="keyword">const</span> { value, done } = <span class="keyword">await</span> reader.<span class="title function_">read</span>();</span><br><span class="line">  <span class="keyword">if</span> (done) <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">const</span> chunkText = decoder.<span class="title function_">decode</span>(value, { <span class="attr">stream</span>: <span class="literal">true</span> });</span><br><span class="line">  <span class="comment">// handle(chunkText)</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="1-SSE-与-Fetch"><a href="#1-SSE-与-Fetch" class="headerlink" title="1. SSE 与 Fetch"></a>1. SSE 与 Fetch</h2><p>很多 “Chat 流式输出” 看起来像 Server-Sent Events (SSE)，但底层实现常见就两类：</p>
+<ul>
+<li><strong>SSE（协议 + API）</strong>：<code>text/event-stream</code> + <code>EventSource</code>（浏览器负责按协议分帧并提供重连等语义）。参考 <a href="https://www.yigegongjiang.com/2024/sse/">SSE 指南</a>。</li>
+<li><strong>Fetch 响应体流式读取（传输能力 + 自定义分帧）</strong>：<code>fetch()</code> + <code>Response.body</code>（拿到的是 <code>ReadableStream&lt;Uint8Array&gt;</code>，需要自己定义消息边界与语义，如 NDJSON / 长度前缀等）。</li>
+<li>顺带一提：很多实现也在从 SSE/<code>EventSource</code> 转向 <code>fetch</code> stream，因为 SSE 本身有不少限制（比如只能 GET、Header / 鉴权不够灵活等）。</li>
+</ul>
+<p>共同点：两者都依赖 “长连接 + 增量写入 + 及时 Flush”，最后在客户端看起来都是 <strong>HTTP 响应体字节流</strong>。</p>
+<p>一句话区别：<strong>SSE 把 “怎么切消息 + 事件语义” 都标准化了；Fetch 流式读取只把字节暴露给应用层，剩下由应用协议来定。</strong></p>
+<ul>
+<li><strong>分帧</strong>：SSE 固定是 <code>data:</code> 行 + 空行；Fetch Stream 的边界完全自定义（NDJSON、长度前缀、分隔符等）。</li>
+<li><strong>语义</strong>：SSE 浏览器内建重连、<code>Last-Event-ID</code>；Fetch Stream 想要重连 / 断点续传 / 错误语义，需要在应用层设计。</li>
+<li><strong>适用场景</strong>：SSE 更像 “标准事件流”；而 Chat 经常需要 POST、鉴权 Header、以及自定义协议时，Fetch Stream 会更顺手。</li>
+</ul>
+<h2 id="2-链路传输（从服务端-write-到客户端拿到-chunk）"><a href="#2-链路传输（从服务端-write-到客户端拿到-chunk）" class="headerlink" title="2. 链路传输（从服务端 write 到客户端拿到 chunk）"></a>2. 链路传输（从服务端 write 到客户端拿到 chunk）</h2><p>想要真的 “边推边显示”，关键往往不是 HTTP 语法本身，而是：<strong>字节在链路的哪一段被缓冲住了</strong>。</p>
+<ol>
+<li><strong>服务端应用写出</strong>：应用调用 <code>write()</code>/<code>send()</code> 将字节写入 Socket。若仅写入用户态缓冲而未执行 <code>flush</code>（或被框架 / 中间件缓冲），客户端将无法接收增量数据。</li>
+<li><strong>TCP Socket 缓冲区（发送 / 接收）</strong>：<code>send()</code> 通常只是把数据拷贝进 <strong>TCP 发送缓冲区</strong>，真正 “发出去” 要看 TCP 栈怎么分段、流控 / 拥塞控制允不允许。结果就是：<strong>应用 write 的粒度</strong>，基本不等于 <strong>对端 read 到的粒度</strong>（还会受 Nagle / 延迟 ACK/cwnd/rwnd 等影响）。</li>
+<li><strong>HTTP 承载方式</strong>：<ul>
+<li><strong>HTTP/1.1</strong>：通常使用分块传输编码（Chunked Transfer Encoding）或在未知 <code>Content-Length</code> 时持续写入。</li>
+<li><strong>HTTP/2 / HTTP/3</strong>：基于 DATA Frame 或 QUIC Stream 持续传输，受多路复用与流控机制影响。</li>
+</ul>
+</li>
+<li><strong>浏览器网络栈 → ReadableStream</strong>：浏览器将 “已到达且可用” 的字节推入 <code>ReadableStream</code> 内部队列，JavaScript 通过 <code>reader.read()</code> 或 <code>pipeThrough()</code> 以 Pull 模式消费。</li>
+</ol>
+<ul>
+<li><strong>Chunk 边界 ≠ 消息边界</strong>：一次 <code>read()</code> 获取的 <code>Uint8Array</code> 仅是当前可用的字节片段，可能截断在任意位置（如 UTF-8 字符中间、JSON 结构中间或自定义帧头中间）。</li>
+<li><strong>全链路缓冲会 “假装不流式”</strong>：应用层 Flush、反向代理 Buffering、压缩器缓冲、CDN 策略、浏览器内部队列…… 任何一段在攒数据，都会让 Token 看起来变成 “凑一批才到”。</li>
+</ul>
+<h2 id="3-Fetch-流式读取的基本模型"><a href="#3-Fetch-流式读取的基本模型" class="headerlink" title="3. Fetch 流式读取的基本模型"></a>3. Fetch 流式读取的基本模型</h2><p><code>fetch()</code> 返回的 <code>Response</code> 对象包含 <code>body</code> 属性，其类型为 <code>ReadableStream&lt;Uint8Array&gt;</code>。消费方式主要有两种：</p>
+<ol>
+<li><strong>手动读取</strong>：获取 <code>reader</code> 并循环调用 <code>read()</code>。</li>
+<li><strong>管道处理</strong>：使用 <code>pipeThrough()</code> 构建解码、分帧、解析的流水线（推荐）。</li>
+</ol>
+<p>整体可以当成 <strong>pull 模式</strong>：每次 <code>read()</code> 拿到的是 “目前已经到手的那点字节”。如果处理速度慢于网络进入速度，队列就会堆起来，进而触发 <strong>背压（Backpressure）</strong>（后续传输会被放慢）。</p>
+<h2 id="4-示例：解析消息流"><a href="#4-示例：解析消息流" class="headerlink" title="4. 示例：解析消息流"></a>4. 示例：解析消息流</h2><h3 id="4-1-字节解码：处理增量-UTF-8"><a href="#4-1-字节解码：处理增量-UTF-8" class="headerlink" title="4.1 字节解码：处理增量 UTF-8"></a>4.1 字节解码：处理增量 UTF-8</h3><p>网络传输交付的是 <code>Uint8Array</code>，而 Chat 最终要的是文本 Token。注意 UTF-8 是变长编码，一个字符可能被拆到两个 Chunk 里；如果直接 <code>decoder.decode(chunk)</code>（默认非流式），边界处就可能乱码 / 丢字。这里要用增量解码：</p>
+<ul>
+<li>使用 <code>TextDecoder</code> 的 <code>{ stream: true }</code> 选项。</li>
+<li>或使用 <code>TextDecoderStream</code> 管道：<code>response.body.pipeThrough(new TextDecoderStream())</code>，直接获得 <code>ReadableStream&lt;string&gt;</code>。</li>
+</ul>
+<h3 id="4-2-分帧策略：定义消息边界"><a href="#4-2-分帧策略：定义消息边界" class="headerlink" title="4.2 分帧策略：定义消息边界"></a>4.2 分帧策略：定义消息边界</h3><p>想做到 “边接收边渲染”，需要先定一个能增量解析的分帧（Framing）规则：到底每条消息怎么切出来？</p>
+<ol>
+<li><p><strong>NDJSON / JSON Lines（推荐）</strong></p>
+<ul>
+<li>格式：每条消息占一行，如 <code>{"type":"delta","text":"..."}\n</code>。</li>
+<li>优点：解析简单，调试友好，兼容 <code>JSON.parse</code>。</li>
+<li>注意：需确保 Payload 内无未转义的换行符（标准 JSON 字符串会将换行编码为 <code>\n</code>，通常安全）。</li>
+</ul>
+</li>
+<li><p><strong>分隔符协议</strong></p>
+<ul>
+<li>格式：使用自定义分隔符（如 <code>\n\n</code> 或特定 Boundary）切分消息。</li>
+<li>风险：若 Payload 包含分隔符，需进行转义或设计复杂的 Boundary 机制。</li>
+</ul>
+</li>
+<li><p><strong>长度前缀（二进制 Framing）</strong></p>
+<ul>
+<li>格式：<code>[Length][Payload]...</code>。</li>
+<li>优点：对任意二进制或文本内容安全，不受内容字符影响。</li>
+<li>缺点：实现复杂度较高，需维护字节级状态机。</li>
+</ul>
+</li>
+</ol>
+<p>一般优先选 <strong>NDJSON</strong> 或 <strong>长度前缀</strong>；千万别指望 Chunk 边界刚好对齐业务消息边界。</p>
+<h3 id="4-3-Fetch-NDJSON"><a href="#4-3-Fetch-NDJSON" class="headerlink" title="4.3 Fetch + NDJSON"></a>4.3 Fetch + NDJSON</h3><p><strong>字节读取 → 文本解码 → 行分帧 → JSON 解析 → UI 更新</strong> 的完整流程：</p>
+<figure class="highlight typescript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">ChatChunk</span> =</span><br><span class="line">  | { <span class="attr">type</span>: <span class="string">"delta"</span>; <span class="attr">text</span>: <span class="built_in">string</span> }</span><br><span class="line">  | { <span class="attr">type</span>: <span class="string">"done"</span> }</span><br><span class="line">  | { <span class="attr">type</span>: <span class="string">"error"</span>; <span class="attr">message</span>: <span class="built_in">string</span> };</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">streamChat</span>(<span class="params"></span></span><br><span class="line"><span class="params">  <span class="attr">input</span>: { prompt: <span class="built_in">string</span> },</span></span><br><span class="line"><span class="params">  <span class="attr">onChunk</span>: (c: ChatChunk) =&gt; <span class="built_in">void</span>,</span></span><br><span class="line"><span class="params">  signal?: <span class="title class_">AbortSignal</span></span></span><br><span class="line"><span class="params"></span>) {</span><br><span class="line">  <span class="keyword">const</span> res = <span class="keyword">await</span> <span class="title function_">fetch</span>(<span class="string">"/api/chat"</span>, {</span><br><span class="line">    <span class="attr">method</span>: <span class="string">"POST"</span>,</span><br><span class="line">    <span class="attr">headers</span>: { <span class="string">"Content-Type"</span>: <span class="string">"application/json"</span> },</span><br><span class="line">    <span class="attr">body</span>: <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(input),</span><br><span class="line">    signal,</span><br><span class="line">  });</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (!res.<span class="property">ok</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">`HTTP <span class="subst">${res.status}</span>`</span>);</span><br><span class="line">  <span class="keyword">if</span> (!res.<span class="property">body</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">"ReadableStream not supported"</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 1. 字节读取层：获取 ReadableStream reader</span></span><br><span class="line">  <span class="keyword">const</span> reader = res.<span class="property">body</span>.<span class="title function_">getReader</span>();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 2. 文本解码层：处理 UTF-8 边界</span></span><br><span class="line">  <span class="keyword">const</span> decoder = <span class="keyword">new</span> <span class="title class_">TextDecoder</span>(<span class="string">"utf-8"</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 3. 行分帧层：缓冲未闭合的行</span></span><br><span class="line">  <span class="keyword">let</span> lineBuffer = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> {</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) {</span><br><span class="line">      <span class="comment">// 读取下一批字节（Chunk 边界随机）</span></span><br><span class="line">      <span class="keyword">const</span> { value, done } = <span class="keyword">await</span> reader.<span class="title function_">read</span>();</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (done) {</span><br><span class="line">        <span class="comment">// 流结束，处理缓冲区剩余内容</span></span><br><span class="line">        <span class="keyword">if</span> (lineBuffer.<span class="title function_">trim</span>()) {</span><br><span class="line">          <span class="keyword">const</span> msg = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(lineBuffer.<span class="title function_">trim</span>()) <span class="keyword">as</span> <span class="title class_">ChatChunk</span>;</span><br><span class="line">          <span class="title function_">onChunk</span>(msg);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      }</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 增量解码：stream: true 保留不完整字节序列</span></span><br><span class="line">      <span class="keyword">const</span> text = decoder.<span class="title function_">decode</span>(value, { <span class="attr">stream</span>: <span class="literal">true</span> });</span><br><span class="line">      lineBuffer += text;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 按换行符切分</span></span><br><span class="line">      <span class="keyword">const</span> lines = lineBuffer.<span class="title function_">split</span>(<span class="string">"\n"</span>);</span><br><span class="line">      <span class="comment">// 最后一个元素可能是不完整行，留待下轮处理</span></span><br><span class="line">      lineBuffer = lines.<span class="title function_">pop</span>() ?? <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 4. JSON 解析层：逐行解析</span></span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">const</span> line <span class="keyword">of</span> lines) {</span><br><span class="line">        <span class="keyword">const</span> trimmed = line.<span class="title function_">trim</span>();</span><br><span class="line">        <span class="keyword">if</span> (!trimmed) <span class="keyword">continue</span>; <span class="comment">// 跳过空行</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> msg = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(trimmed) <span class="keyword">as</span> <span class="title class_">ChatChunk</span>;</span><br><span class="line">        <span class="title function_">onChunk</span>(msg);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 5. 业务终止：显式结束信号</span></span><br><span class="line">        <span class="keyword">if</span> (msg.<span class="property">type</span> === <span class="string">"done"</span>) <span class="keyword">return</span>;</span><br><span class="line">      }</span><br><span class="line">    }</span><br><span class="line">  } <span class="keyword">catch</span> (e) {</span><br><span class="line">    <span class="keyword">throw</span> e;</span><br><span class="line">  } <span class="keyword">finally</span> {</span><br><span class="line">    reader.<span class="title function_">releaseLock</span>();</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>服务端 send</strong>：</p>
+<blockquote>
+<p><strong>将增量 Token 封装为可切分的消息单元（行），确保客户端始终解析完整的 JSON 对象。</strong></p>
+</blockquote>
+<ul>
+<li>增量 Token：<code>{"type":"delta","text":"..."}\n</code> + Flush</li>
+<li> 结束信号：<code>{"type":"done"}\n</code> + End Response</li>
+</ul>
+<hr>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>Follow me by other channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/hai_lv_">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/hai_lv_tg">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="mailto:one.gongjiang@gmail.com">
+            <span class="icon">
+              <i class="fa fa-envelope"></i>
+            </span>
+
+            <span class="label">Email</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag"># 网络</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/iphone-translate/" rel="prev" title="iPhone 截屏高效翻译">
+                  <i class="fa fa-angle-left"></i> iPhone 截屏高效翻译
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">Light Mode (Better for light mode to discuss, base github, cannot commen can email me)</a></li>
+            <li class="tab"><a href="#comment-utterances">Dark Mode</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
+            </div>
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+        </div>
+      </div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2018 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">one.gongjiang艾特gmail.com 所有文章均为原创。我不介意任意形式的转载，但最好不要修改内容。因转载或者修改内容导致的任何问题，我均不负责。如果你真的担心版权，可邮联。评价需要外网，这是枷锁，也是照妖镜。</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.umd.js" integrity="sha256-+2+qOqR8CKoHh/AsVR9k2qaDBKWjYNC2nozhYmv5j9k=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2025/body-stream/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"93d4eeab80e5fbbe2246d8e426c5986f"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
