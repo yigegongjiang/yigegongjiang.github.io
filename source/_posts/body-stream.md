@@ -10,7 +10,7 @@ tags:
 > 主要通过 web fetch api 的 `ReadableStream` 能力，解释 HTTP 通道中的流式响应。
 > 流式关键在于 HTTP 协议层解析 Body 体，和 TCP 粘包和拆包的处理类似。各种编程语言都具有 body 二进制数据流的拦截和解析能力。
 
-## 0. Fetch API 速览
+## Fetch API 速览
 
 - `await fetch(url)` → 返回 `Response` 对象：这时浏览器通常已经从底层连接（TCP/QUIC）里拿到并解析完 **HTTP 响应行（status）+ 响应头（headers）**；但 **响应体（body）** 还没被消费/解析（它会通过单独的流式接口暴露出来，供上层代码增量读取）。
 - `await res.json()` / `await res.text()` → **一次性读取并解析完整 Body**，适用于非流式场景。
@@ -28,7 +28,7 @@ tags:
 
 ```ts
 // 非流式：等 Body 全部接收完再解析
-const full = await(await fetch(url)).json();
+const full = await (await fetch(url)).json();
 
 // 流式：边接收边处理（Chunk 边界不等于消息边界）
 const res = await fetch(url);
@@ -42,7 +42,7 @@ for (;;) {
 }
 ```
 
-## 1. SSE 与 Fetch
+## SSE 与 Fetch
 
 很多“Chat 流式输出”看起来像 Server-Sent Events (SSE)，但底层实现常见就两类：
 
@@ -58,7 +58,7 @@ for (;;) {
 - **语义**：SSE 浏览器内建重连、`Last-Event-ID`；Fetch Stream 想要重连/断点续传/错误语义，需要在应用层设计。
 - **适用场景**：SSE 更像“标准事件流”；而 Chat 经常需要 POST、鉴权 Header、以及自定义协议时，Fetch Stream 会更顺手。
 
-## 2. 链路传输（从服务端 write 到客户端拿到 chunk）
+## 链路传输（从服务端 write 到客户端拿到 chunk）
 
 想要真的“边推边显示”，关键往往不是 HTTP 语法本身，而是：**字节在链路的哪一段被缓冲住了**。
 
@@ -72,7 +72,7 @@ for (;;) {
 - **Chunk 边界 ≠ 消息边界**：一次 `read()` 获取的 `Uint8Array` 仅是当前可用的字节片段，可能截断在任意位置（如 UTF-8 字符中间、JSON 结构中间或自定义帧头中间）。
 - **全链路缓冲会“假装不流式”**：应用层 Flush、反向代理 Buffering、压缩器缓冲、CDN 策略、浏览器内部队列……任何一段在攒数据，都会让 Token 看起来变成“凑一批才到”。
 
-## 3. Fetch 流式读取的基本模型
+## Fetch 流式读取的基本模型
 
 `fetch()` 返回的 `Response` 对象包含 `body` 属性，其类型为 `ReadableStream<Uint8Array>`。消费方式主要有两种：
 
@@ -81,27 +81,25 @@ for (;;) {
 
 整体可以当成 **pull 模式**：每次 `read()` 拿到的是“目前已经到手的那点字节”。如果处理速度慢于网络进入速度，队列就会堆起来，进而触发 **背压（Backpressure）**（后续传输会被放慢）。
 
-## 4. 示例：解析消息流
+## 示例：解析消息流
 
-### 4.1 字节解码：处理增量 UTF-8
+### 字节解码：处理增量 UTF-8
 
 网络传输交付的是 `Uint8Array`，而 Chat 最终要的是文本 Token。注意 UTF-8 是变长编码，一个字符可能被拆到两个 Chunk 里；如果直接 `decoder.decode(chunk)`（默认非流式），边界处就可能乱码/丢字。这里要用增量解码：
 
 - 使用 `TextDecoder` 的 `{ stream: true }` 选项。
 - 或使用 `TextDecoderStream` 管道：`response.body.pipeThrough(new TextDecoderStream())`，直接获得 `ReadableStream<string>`。
 
-### 4.2 分帧策略：定义消息边界
+### 分帧策略：定义消息边界
 
 想做到“边接收边渲染”，需要先定一个能增量解析的分帧（Framing）规则：到底每条消息怎么切出来？
 
 1. **NDJSON / JSON Lines（推荐）**
-
    - 格式：每条消息占一行，如 `{"type":"delta","text":"..."}\n`。
    - 优点：解析简单，调试友好，兼容 `JSON.parse`。
    - 注意：需确保 Payload 内无未转义的换行符（标准 JSON 字符串会将换行编码为 `\n`，通常安全）。
 
 2. **分隔符协议**
-
    - 格式：使用自定义分隔符（如 `\n\n` 或特定 Boundary）切分消息。
    - 风险：若 Payload 包含分隔符，需进行转义或设计复杂的 Boundary 机制。
 
@@ -112,20 +110,17 @@ for (;;) {
 
 一般优先选 **NDJSON** 或 **长度前缀**；千万别指望 Chunk 边界刚好对齐业务消息边界。
 
-### 4.3 Fetch + NDJSON
+### Fetch + NDJSON
 
 **字节读取 → 文本解码 → 行分帧 → JSON 解析 → UI 更新** 的完整流程：
 
 ```typescript
-type ChatChunk =
-  | { type: "delta"; text: string }
-  | { type: "done" }
-  | { type: "error"; message: string };
+type ChatChunk = { type: "delta"; text: string } | { type: "done" } | { type: "error"; message: string };
 
 export async function streamChat(
   input: { prompt: string },
   onChunk: (c: ChatChunk) => void,
-  signal?: AbortSignal
+  signal?: AbortSignal,
 ) {
   const res = await fetch("/api/chat", {
     method: "POST",
