@@ -62,8 +62,7 @@ c. 期望尝试 SevenStars/Peace 等香烟
 
 快递情况说明：
 a. 快递费用需要客户承担（顺丰到付 **12、14、18 rmb**）。
-b. 有时候快递员会帮忙增加【准时宝】优惠活动，整体价格会降低一些，并非加价。
-c. 可在多平台 (alipay、wechat、顺丰 app、淘宝 app...) 收到快件发出及行程推送。
+b. 可在多平台 (alipay、wechat、顺丰 app、淘宝 app...) 收到快件发出及行程推送。
 
 预定流程说明：
 
@@ -90,7 +89,7 @@ c. 可在多平台 (alipay、wechat、顺丰 app、淘宝 app...) 收到快件�
 - Q：怎么判断是正品？A：有小票能用小票。小概率没小票只能靠我自己背书（即：如您疑虑，则不要预约，我证明不了正品）。
 - Q：帮我宣传一下？A：谢谢，但请不要帮我宣传。我被薅一单羊毛，一趟就白干了。
 - Q：七星的日税、日免是什么？A：Peace 和 七星 生产地都在日本，但 七星 在不同海关使用不同的外包装，就有了不同的名称。
-- Q：推荐哪款烟？A：相比七星，Peace 在国内没有声音。但在复购上，Peace 远远超过七星。因人而异，都支持退货退款的。
+- Q：推荐哪款烟？A：相比七星，Peace 在国内没有声音。但在复购上，Peace 超过七星。因人而异，都支持退货退款的。
 - Q：香烟成分表（无用小知识）A：日本烟草公司（JTI）官网：[烟草配料](https://www.jti.co.jp/tobacco/responsibilities/guidelines/additive/tobacco/index.html)、[材料说明](https://www.jti.co.jp/tobacco/responsibilities/guidelines/additive/material/index.html)、[材料表](https://www.jti.co.jp/tobacco/responsibilities/guidelines/additive/material/list.html)。（有害健康、尽早戒烟、享受生活）
 
 ## 香烟说明
