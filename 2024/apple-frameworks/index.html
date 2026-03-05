@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -14,12 +14,12 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.2","exturl":true,"sidebar":{"position":"left","width":142,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.27.0","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":142,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js" defer></script>
 
     <meta name="description" content="动态库 &amp; 静态库，若单独输出并接入主工程，逻辑倒很清晰。如果牵涉到多个 framework 不同类型并且相互依赖，会增加不少复杂度。以下说明中，动态库使用 DFramework 表示，静态库使用 SFramework 表示。 1 framework仅需要提供 1 个 framework，直接提供 DFramework 即可。DFramework 优先，必要的时候再提供 SFramewor">
 <meta property="og:type" content="article">
@@ -30,13 +30,12 @@
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-11-14T05:16:00.000Z">
 <meta property="article:author" content="海驴">
-<meta property="article:tag" content="iOS">
 <meta property="article:tag" content="Swift">
+<meta property="article:tag" content="iOS">
 <meta name="twitter:card" content="summary">
 
 
 <link rel="canonical" href="https://www.yigegongjiang.com/2024/apple-frameworks/">
-
 
 
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2024/apple-frameworks/","path":"2024/apple-frameworks/","title":"apple frameworks"}</script>
@@ -46,7 +45,7 @@
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CTEWJ02QX"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-8CTEWJ02QX","only_pageview":false,"measure_protocol_api_secret":null}</script>
-  <script src="/js/third-party/analytics/google-analytics.js"></script>
+  <script src="/js/third-party/analytics/google-analytics.js" defer></script>
 
 
 
@@ -54,6 +53,31 @@
 
 
 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/7.2.0/pangu.umd.js" integrity="sha256-JnmRRnJK7DC6RQJbAJb6AXOM9OmWzS6z8eYultk/48Y=" crossorigin="anonymous" defer></script>
+<script src="/js/comments.js" defer></script><script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/3.0.1/quicklink.umd.js" integrity="sha256-44BednzIpUeQJcY8qtLyarFu0UCCTbgmWOvaoehiFQQ=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2024/apple-frameworks/"}</script>
+  <script src="/js/third-party/quicklink.js" defer></script>
 
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
@@ -242,12 +266,12 @@
 <ol>
 <li>DFramework 优先，能不提供 SFramework 就不要提供<ul>
 <li>有 n 个 DFramework 就提供 n 个。相互之间做好依赖文档，App 需要根据依赖文档 <strong>flat</strong> 平铺接入所有需要的 DFramework。</li>
-<li>如果 b DFramework 仅仅被 a DFramework 依赖，可以将 b 打入 a DFramework 的 <code>frameworks</code> 文件夹中，通过 <code>embed</code> 实现。<ul>
+<li>如果 b DFramework 仅仅被 a DFramework 依赖，可以将 b 打入 a DFramework 的 <code>frameworks</code>文件夹中，通过 <code>embed</code> 实现。<ul>
 <li>这样就可以不再文档中说明 b DFramework 的存在，对外界透明。</li>
 <li>这种方案，最终的 app 中 framework 不是 flat 平铺的，而是具有层级结构，如 ：App - a DFramework - b DFramework</li>
 </ul>
 </li>
-<li> 如果 b DFramework 同时被 m DFramework 和 n DFramework 依赖，不能将 b 隐藏（打入 m 和 n 中）。<ul>
+<li>如果 b DFramework 同时被 m DFramework 和 n DFramework 依赖，不能将 b 隐藏（打入 m 和 n 中）。<ul>
 <li>否则，App 集成 m 和 n 的时候，b 会出现多份。如果 b 的版本不一样，将按照打包顺序只使用其中一个。</li>
 </ul>
 </li>
@@ -263,12 +287,12 @@
 </ol>
 <h1 id="依赖开源库"><a href="#依赖开源库" class="headerlink" title="依赖开源库"></a>依赖开源库</h1><p>一般这种场景是因为开发 framework 的同时，又使用了开源的库。这个时候如何处理开源库是个问题（开源库一般都是 源码 提供的，不讨论 闭源包 提供方式，这个和上面的场景一致）。<br>由于 apple 的 Swift Package Manager 三方库管理的介入，一个 module 在最终的 app 中到底是 dymanic 还是 static，已经不可控了。SPM 会自行管理，不像 cocoapods 的时候我们可以自行控制。</p>
 <blockquote>
-<p>如果是源码提供者，可以增加 dymanic /static 约束。但很多源码都不会提供这个选项，而是让 SPM 自行管理采用哪一个。</p>
+<p>如果是源码提供者，可以增加 dymanic / static 约束。但很多源码都不会提供这个选项，而是让 SPM 自行管理采用哪一个。</p>
 </blockquote>
 <p>在这种场景下，开发的 framework 如果对开源库有依赖，就必须考虑是否【去开源】事宜了。<br>另外，除了自己使用开源库，App 主工程开发者，可能也需要使用同一个开源库，这时候还会出现【版本不一致问题】。<br>以下场景，假设有 T 开源代码需要使用：</p>
 <h2 id="不封装，让外界接入"><a href="#不封装，让外界接入" class="headerlink" title="不封装，让外界接入"></a>不封装，让外界接入</h2><p>framework 需要依赖 T</p>
 <ul>
-<li>如果不是强依赖，在 xcode 中使用 <code>-weak_framework</code> 进行标记，这样业务也可以不接入，相当于默认不使用这个功能。</li>
+<li>如果不是强依赖，在 xcode 中使用 <code>-weak_framework</code>进行标记，这样业务也可以不接入，相当于默认不使用这个功能。</li>
 <li>如果是强依赖，并且在 文档 中说明业务需要接入 x 的具体版本范围。不接入无法编译或者 app 启动闪退。</li>
 </ul>
 <h2 id="封装，外界无感"><a href="#封装，外界无感" class="headerlink" title="封装，外界无感"></a>封装，外界无感</h2><p>第一步就是需要对 T 进行【模块隔离】，否则外界也接入 T 的时候，App 主工程和我们提供的 framework 同时有 T 代码，会有问题。<br>虽然 xcode 在编译连接的时候，会处理好这个问题，使得同一份代码尽量在 app 中仅保留一份。<br>但如果开发人员使用不恰当或者配置错误，很可能导致出现两份 T 源码在项目中。<br>这个时候如果版本还不兼容，就会有非常大的调试和异常隐患。<br>模块隔离方案：<strong>修改 Product Name，将 T 变成 TT 模块</strong><br>然后，还需要考虑将 TT 变成静态库还是动态库：</p>
@@ -402,6 +426,12 @@
   </footer>
 
   
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
   <div class="back-to-top" role="button" aria-label="Back to top">
     <i class="fa fa-arrow-up fa-lg"></i>
     <span>0%</span>
@@ -411,38 +441,12 @@
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
 </noscript>
-
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.umd.js" integrity="sha256-+2+qOqR8CKoHh/AsVR9k2qaDBKWjYNC2nozhYmv5j9k=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
-
-  
-
-
-
-  <script src="/js/third-party/fancybox.js"></script>
-
-
-
-  
-
-
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2024/apple-frameworks/"}</script>
-  <script src="/js/third-party/quicklink.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"49546ae7161cf4eda595ecd9eb0b68cb"}</script>
-<script src="/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","body":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"49546ae7161cf4eda595ecd9eb0b68cb"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
-<script src="/js/third-party/comments/utterances.js"></script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
 
 </body>
 </html>

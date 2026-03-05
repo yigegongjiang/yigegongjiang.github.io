@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -14,12 +14,12 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.2","exturl":true,"sidebar":{"position":"left","width":142,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.27.0","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":142,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js" defer></script>
 
     <meta name="description" content="在 Swift 中，struct（值类型）和 class（引用类型）的区别，不仅仅在于对象复制时候表现出来的差异，也不仅仅是构造器和继承的异同，本质上却是数据抽象层级的高低。如果不能把值传参、地址传参和引用传参与类对象联系起来，也无法理解不同传参下对象的使用和 struct、class 的应用场景。 因为 struct 和 class 表现出来的是语法层面的差异，而项目使用中体现的是语义层级的差异">
 <meta property="og:type" content="article">
@@ -41,16 +41,15 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061815976.png">
 <meta property="article:published_time" content="2019-12-19T16:00:00.000Z">
 <meta property="article:author" content="海驴">
-<meta property="article:tag" content="计算机原理">
-<meta property="article:tag" content="内存">
-<meta property="article:tag" content="iOS">
 <meta property="article:tag" content="Swift">
+<meta property="article:tag" content="iOS">
+<meta property="article:tag" content="内存">
+<meta property="article:tag" content="计算机原理">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061808341.png">
 
 
 <link rel="canonical" href="https://www.yigegongjiang.com/2019/SwiftStruct/">
-
 
 
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2019/SwiftStruct/","path":"2019/SwiftStruct/","title":"Swift struct (值类型) 与 class (引用类型) 区别及三种传参机制深刻关系和使用"}</script>
@@ -60,7 +59,7 @@
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CTEWJ02QX"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-8CTEWJ02QX","only_pageview":false,"measure_protocol_api_secret":null}</script>
-  <script src="/js/third-party/analytics/google-analytics.js"></script>
+  <script src="/js/third-party/analytics/google-analytics.js" defer></script>
 
 
 
@@ -68,6 +67,31 @@
 
 
 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/7.2.0/pangu.umd.js" integrity="sha256-JnmRRnJK7DC6RQJbAJb6AXOM9OmWzS6z8eYultk/48Y=" crossorigin="anonymous" defer></script>
+<script src="/js/comments.js" defer></script><script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/3.0.1/quicklink.umd.js" integrity="sha256-44BednzIpUeQJcY8qtLyarFu0UCCTbgmWOvaoehiFQQ=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2019/SwiftStruct/"}</script>
+  <script src="/js/third-party/quicklink.js" defer></script>
 
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
@@ -259,9 +283,9 @@
 
 <h3 id="0X00-struct是什么？好像在哪里见过！struct和值类型是什么关系？"><a href="#0X00-struct是什么？好像在哪里见过！struct和值类型是什么关系？" class="headerlink" title="0X00 struct是什么？好像在哪里见过！struct和值类型是什么关系？"></a>0X00 struct 是什么？好像在哪里见过！struct 和值类型是什么关系？</h3><p>好久好久之前，是没有 class 什么事的。那时候 C 语言活跃于各种应用场景，在上层抽象了汇编的实现，C 语言可以用于嵌入式、服务器、驱动等。为什么没有 class 什么事情？class 是类，是 OOP（面向对象编程 / 对象导向编程）的专属。而 C 语言是过程式语言，没有对象概念，也就没有 class 什么事情。<br>那时候，都用结构体，也就是 struct。如下：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// C语言版本</span><br><span class="line">// 人员结构体，具有姓名和年龄</span><br><span class="line">struct Person {</span><br><span class="line">    char *name;</span><br><span class="line">    int age;</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
-<p>那时候，这些数据都叫做<strong>值类型</strong>，而 struct 就是值类型的。值类型是<strong>变量直接包含值</strong>统称，其他的还有基础数据类型，如 Int，long，char，bool，以及自定义 struct（如上面的 Person）。<br>后面大家就知道了，出现了 C++/Java/C# 等 OOP 语言，class 开始活跃于千万家。更甚之，在某些语言上，值类型已经被淡化了。</p>
+<p>那时候，这些数据都叫做<strong>值类型</strong>，而 struct 就是值类型的。值类型是<strong>变量直接包含值</strong>统称，其他的还有基础数据类型，如 Int，long，char，bool，以及自定义 struct（如上面的 Person）。<br>后面大家就知道了，出现了 C++/Java/C#等 OOP 语言，class 开始活跃于千万家。更甚之，在某些语言上，值类型已经被淡化了。</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// Objective-C版本 .h</span><br><span class="line">@interface Person : NSObject</span><br><span class="line">@property(nonatomic,copy) NSString *name;</span><br><span class="line">@property(nonatomic,assign) NSInteger age;</span><br><span class="line">@end</span><br></pre></td></tr></tbody></table></figure>
-<p>以上为 OC 的版本，我们会这么描述它：我们创建了一个 Person 类。他具有名称属性和年龄属性。<br>而且，我们也确定，如果我们新建一个 Person 对象，如 <code>Person *p = Person.new;</code>，那么这个对象一定存放在堆内存。那我们为什么不能把对象创建在栈内存呢？<br>我们可以知道，上面 OC 创建的是 Class，对象存在于堆中。那我们可不可以把对象放在栈上？至少在 Objective-C 开发过程中，肯定不会想到这个，因为 struct / 结构体 / 值类型被淡化了。（Java 也是一样，号称纯 OOP 语言）<br>其实我们可以创建栈上的数据的，如局部变量中的 Int、long 等，都是在栈上的。说一个少见的，CGRect、CGSize 也是在栈上的。源码实现如下：</p>
+<p>以上为 OC 的版本，我们会这么描述它：我们创建了一个 Person 类。他具有名称属性和年龄属性。<br>而且，我们也确定，如果我们新建一个 Person 对象, 如<code>Person *p = Person.new;</code>，那么这个对象一定存放在堆内存。那我们为什么不能把对象创建在栈内存呢？<br>我们可以知道，上面 OC 创建的是 Class，对象存在于堆中。那我们可不可以把对象放在栈上？至少在 Objective-C 开发过程中，肯定不会想到这个，因为 struct/结构体/值类型被淡化了。（Java 也是一样，号称纯 OOP 语言）<br>其实我们可以创建栈上的数据的，如局部变量中的 Int、long 等，都是在栈上的。说一个少见的，CGRect、CGSize 也是在栈上的。源码实现如下：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">/* Points. */</span><br><span class="line">struct</span><br><span class="line">CGPoint {</span><br><span class="line">    CGFloat x;</span><br><span class="line">    CGFloat y;</span><br><span class="line">};</span><br><span class="line">typedef struct CG_BOXABLE CGPoint CGPoint;</span><br><span class="line"></span><br><span class="line">/* Sizes. */</span><br><span class="line"></span><br><span class="line">struct CGSize {</span><br><span class="line">    CGFloat width;</span><br><span class="line">    CGFloat height;</span><br><span class="line">};</span><br><span class="line">typedef struct CG_BOXABLE CGSize CGSize;</span><br><span class="line"></span><br><span class="line">/* Rectangles. */</span><br><span class="line"></span><br><span class="line">struct CGRect {</span><br><span class="line">    CGPoint origin;</span><br><span class="line">    CGSize size;</span><br><span class="line">};</span><br><span class="line">typedef struct CG_BOXABLE CGRect CGRect;</span><br></pre></td></tr></tbody></table></figure>
 <p>其实 OC 中使用的 CGRect 等，也就是 struct 值类型数据。只是我们很少顾及值类型，虽然一直用，但是感知不到他们的存在。<br>直到有一天，Swift 也成了苹果开发的官方语言，引入了 struct，一大堆开发人员开始迷惑，发生了什么事？我该怎么办？</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// Swift struct版本</span><br><span class="line">struct Person {</span><br><span class="line">	var name: String</span><br><span class="line">	var age: UInt8</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">// Swift class版本</span><br><span class="line">class Person {</span><br><span class="line">	var name: String</span><br><span class="line">	var age: UInt8</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
@@ -279,7 +303,7 @@
 <p>上面操作完成后，person 和 someOne 的 name 都变成 Robot 了，这是合情合理的，我们都司空见惯了，不做多描述。</p>
 <h4 id="值类型内存图"><a href="#值类型内存图" class="headerlink" title="值类型内存图"></a>值类型内存图</h4><p>下面看看值类型，</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// Swift struct版本</span><br><span class="line">struct Person {</span><br><span class="line">    var name: String</span><br><span class="line">    var age: UInt8</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">var person = Person(name: "Gongjiang", age: 20)</span><br><span class="line">person.name = "Hello"</span><br><span class="line"> </span><br><span class="line">var someOne = person</span><br><span class="line">someOne.name = "Robot"</span><br><span class="line"></span><br><span class="line">&gt; person.name:Hello</span><br><span class="line">&gt; someOne.name:Robot</span><br></pre></td></tr></tbody></table></figure>
-<p>内存分布如下图：<br><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061809607.png" width="50%"><br>我们可以发现，值类型相比引用类型，person 和 someOne 这两个值变量，<strong>指向</strong>特征不那么明显了，更多的是复制。我们的 someOne 并没有指向 person，而是把 person 的数据完全复制了一份成为自己的。<br>更重要的，person 和 someOne 存储的，<strong>不再是对象的指针，而是真真实实的数据了</strong>。其实对象依旧还是对象，变量依旧是变量，如上面说的那样。但是，<strong>值变量，直接包含数据 (值类型的定义) <strong>了，不再通过指针指向数据了。<br>当然，我们从图上看到的，值对象是在栈里面。当然值对象也会在堆里面，场景不一样，存储位置也会不一样。但是和引用对象不同的一点，</strong>值对象是可以存储在栈里面的</strong>。</p>
+<p>内存分布如下图：<br><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061809607.png" width="50%"><br>我们可以发现，值类型相比引用类型，person 和 someOne 这两个值变量，<strong>指向</strong>特征不那么明显了，更多的是复制。我们的 someOne 并没有指向 person，而是把 person 的数据完全复制了一份成为自己的。<br>更重要的，person 和 someOne 存储的，<strong>不再是对象的指针，而是真真实实的数据了</strong>。其实对象依旧还是对象，变量依旧是变量，如上面说的那样。但是，** 值变量，直接包含数据 (值类型的定义)** 了，不再通过指针指向数据了。<br>当然，我们从图上看到的，值对象是在栈里面。当然值对象也会在堆里面，场景不一样，存储位置也会不一样。但是和引用对象不同的一点，<strong>值对象是可以存储在栈里面的</strong>。</p>
 <blockquote>
 <p>我们经常使用的 Int 等，其实很多时候都是存储在栈里面的。上面 Person 引用类，其实也有 age 属性，这个 age 属性就是值对象存储在堆上，因为 person 对象是在堆上的。后面说到 struct 和 class 联动内嵌的时候，会详细说明</p>
 </blockquote>
@@ -296,7 +320,7 @@
 <h3 id="0X03-值类型和引用类型在花式传参过程中的异同"><a href="#0X03-值类型和引用类型在花式传参过程中的异同" class="headerlink" title="0X03 值类型和引用类型在花式传参过程中的异同"></a>0X03 值类型和引用类型在花式传参过程中的异同</h3><blockquote>
 <p>如果不能把值传参、地址传参和引用传参与类对象联系起来，也无法理解不同传参下对象的使用和 struct、class 的应用场景。</p>
 </blockquote>
-<p>为什么三种传参方式对 struct 和 class 的理解如此重要？其实他们本不重要，只是附带品。但是因为很多很多人对他们认知是错误的，所以才变得重要起来。<br>毕竟，错误的理论，总不能推导出来正确的知识。<br>首先，我们需要确定一个知识点，<strong>值传参</strong>、<strong>引用传参</strong>、<strong>地址传参</strong>和<strong>值类型</strong>、<strong>引用类型</strong>相比，虽然也有<strong>值</strong>和<strong>引用</strong>的区分，但他们不一一对应的关系，即不是值类型对应值传参。<br>值类型和引用类型是数据存在的方式，三种传参方式，是数据传递的方式。他们是对数据两个层面的操作控制。<br>所以，我们总共有 6 种情况需要分析：值类型下的值传参、引用传参、地址传参，引用类型下的值传参、引用传参、地址传参。<br>说明：因为引用传参很多语言默认都没有实现，如 Java、Objective-C、Swift 等等，所以需要通过 C++ 模拟。</p>
+<p>为什么三种传参方式对 struct 和 class 的理解如此重要？其实他们本不重要，只是附带品。但是因为很多很多人对他们认知是错误的，所以才变得重要起来。<br>毕竟，错误的理论，总不能推导出来正确的知识。<br>首先，我们需要确定一个知识点，<strong>值传参</strong>、<strong>引用传参</strong>、<strong>地址传参</strong>和<strong>值类型</strong>、<strong>引用类型</strong>相比，虽然也有<strong>值</strong>和<strong>引用</strong>的区分，但他们不一一对应的关系，即不是值类型对应值传参。<br>值类型和引用类型是数据存在的方式，三种传参方式，是数据传递的方式。他们是对数据两个层面的操作控制。<br>所以，我们总共有 6 种情况需要分析：值类型下的值传参、引用传参、地址传参，引用类型下的值传参、引用传参、地址传参。<br>说明：因为引用传参很多语言默认都没有实现，如 Java、Objective-C、Swift 等等, 所以需要通过 C++ 模拟。</p>
 <h4 id="值类型下的值传参、引用传参、地址传参"><a href="#值类型下的值传参、引用传参、地址传参" class="headerlink" title="值类型下的值传参、引用传参、地址传参"></a>值类型下的值传参、引用传参、地址传参</h4><p>示例代码如下：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 值类型的值传参</span><br><span class="line">// Swift struct版本</span><br><span class="line">struct Person: Equatable {</span><br><span class="line">    var name: String</span><br><span class="line">    var age: UInt8</span><br><span class="line">} </span><br><span class="line"> </span><br><span class="line">var person = Person(name: "Gongjiang", age: 20)</span><br><span class="line">person.name = "Hello"</span><br><span class="line"> </span><br><span class="line">var someOne = person</span><br><span class="line">someOne.name = "Robot"</span><br><span class="line">someOne = Person(name: "SomeOne", age: 18)</span><br></pre></td></tr></tbody></table></figure>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// 值类型的地址传参</span><br><span class="line">// Swift struct版本</span><br><span class="line">struct Person {</span><br><span class="line">    var name: String</span><br><span class="line">    var age: UInt8</span><br><span class="line">}</span><br><span class="line"> </span><br><span class="line">var person = Person(name: "Gongjiang", age: 20)</span><br><span class="line">person.name = "Hello"</span><br><span class="line"> </span><br><span class="line">func change(someOne: inout Person) {</span><br><span class="line">    someOne.name = "Robot"</span><br><span class="line">    someOne = Person(name: "SomeOne", age: 18)</span><br><span class="line">}</span><br><span class="line"> </span><br><span class="line">change(someOne: &amp;person)</span><br></pre></td></tr></tbody></table></figure>
@@ -326,7 +350,7 @@
 <li>根据我们使用的场景，我们可以通过将值传参和引用传参作用于值类型对象上。</li>
 <li>根据我们使用的场景，我们也可以通过将值传参和引用传参作用于引用类型对象上。</li>
 <li>如果我们需要改变实参，则我们需要引用传参。(很多语言不支持)</li>
-<li> 如果我们不需要改变实参，则我们需要值传参。如果想进一步改变原对象的部分值，则需要地址传参通过指针来实现。</li>
+<li>如果我们不需要改变实参，则我们需要值传参。如果想进一步改变原对象的部分值，则需要地址传参通过指针来实现。</li>
 </ol>
 <h3 id="0X04-值语义和引用语义的联动性"><a href="#0X04-值语义和引用语义的联动性" class="headerlink" title="0X04 值语义和引用语义的联动性"></a>0X04 值语义和引用语义的联动性</h3><p>直观来说，值类型语法上是静态的，变量直接包含并操作数据。引用类型语法上是动态的，通过对象的引用操作数据。从值类型和引用类型的内存结构图可以分析出来。<br>所以，我们引申出<strong>值语义</strong>，即数据是静态的，也就是值传参的逻辑，是数据拷贝，是一份全新的数据。<br>我们也引申出<strong>引用语义</strong>，即数据是动态的，也就是引用传参的逻辑，数据可以通过别名操作，数据本身没有进行任何复制。<br>所以我们可以这样理解，值类型默认应该是值语义的，引用类型默认应该是引用语义的。<br>如下所示：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 值变量v1与v2互相独立</span><br><span class="line">ValueType v1 = someValue;</span><br><span class="line">ValueType v2 = v1;</span><br><span class="line"></span><br><span class="line">// 引用变量r1与r2互相关联</span><br><span class="line">ReferenceType r1 = someObject;</span><br><span class="line">ReferenceType r2 = r1;</span><br></pre></td></tr></tbody></table></figure>
@@ -341,8 +365,8 @@
 <p>所以，<br>语法上的值类型可能是语义上的引用类型，<br>语法上的引用类型可能是语义上的值类型。</p>
 <h3 id="0X05-值类型和引用类型的抽象层级差异"><a href="#0X05-值类型和引用类型的抽象层级差异" class="headerlink" title="0X05 值类型和引用类型的抽象层级差异"></a>0X05 值类型和引用类型的抽象层级差异</h3><p>在文章开头提到的值类型和引用类型的内存模型中，已经明确值类型是直接包含数据，而引用类型是通过内存地址间接操作数据。<br>从内存分布上，我们可以模糊的发现：</p>
 <ol>
-<li><strong>值类型，重在数据，是静态的。</strong>如果一个数据是通过值类型来展示，那么这个数据重在数据的价值。这个数据一定非常重要，而我们可以通过值变量直接获取。</li>
-<li><strong>引用类型，重在如何使用，是动态的。</strong>如果一个数据是通过引用类型来展示，那么这个数据重在如何被使用。这个数据当然也重要，但是我们可以通过指针和引用 (别名 / 间接寻址) 变相获取，而指针可以赋值给其他变量，最后可以通过各个变量来获取。</li>
+<li>** 值类型，重在数据，是静态的。** 如果一个数据是通过值类型来展示，那么这个数据重在数据的价值。这个数据一定非常重要，而我们可以通过值变量直接获取。</li>
+<li>** 引用类型，重在如何使用，是动态的。** 如果一个数据是通过引用类型来展示，那么这个数据重在如何被使用。这个数据当然也重要，但是我们可以通过指针和引用 (别名 / 间接寻址) 变相获取，而指针可以赋值给其他变量，最后可以通过各个变量来获取。</li>
 </ol>
 <p>我们可以创建各种面向对象的引用类型 (class)，然后实现继承和多态，这是引用类型带来的益处。因为我们可以通过指针和引用轻松的实现多态特征。<br>而对于值类型 (struct)，Swift 文档里直接说明，struct 不允许继承和重载。值类型在编译期间具体类型就已经确定，多态绑定也是不可能，因为其空间大小已经确定，没有空余空间容纳子类型。<br>所以从抽象层级上来观看，引用类型相比值类型，抽象层级更高。</p>
 <p>因为值类型在编译期间空间大小和具体类型已经确定，所以值类型完全就是不依赖内存地址的，这也是为什么值变量直接包含值对象的原因，所以值类型是具有<strong>空间无关性</strong>的。而引用类型存储于堆中，必须通过指针进行访问，显然引用类型和空间是强关联的。<br>而且，值类型的数据在值对象生命周期内是固定的，体现了不可变性，具有<strong>时间无关性</strong>。即使通过地址传参和引用传参，我们可以改变值对象的数据，那也是在原来的存储空间中，用新数据覆盖旧数据，使用了旧数据的存储空间而已。引用类型的改变是一种自我更新，对象上发生状态迁移和属性改变。<br>因为值类型的时间无关性和空间无关性，所以值类型天然具有重数据，对象意识淡薄，更多的体现在属性而非实体。比如我们描述一个 Person 的 struct，更多的体现在用 age，sex 等抽象属性来描述 “20”“男” 这样的具体数据（“20”、“男” 本身是具体的，age、sex 属性则是面向对象层级的抽象描述）。<br>而引用类型与值类型相比是对立面的抽象表达，更多的体现一个实体对象。比如我们描述一个 Person 的 class，更多的体现在男人、女人、好人、坏人这样的实体对象。</p>
@@ -494,6 +518,12 @@
   </footer>
 
   
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
   <div class="back-to-top" role="button" aria-label="Back to top">
     <i class="fa fa-arrow-up fa-lg"></i>
     <span>0%</span>
@@ -503,38 +533,12 @@
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
 </noscript>
-
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.umd.js" integrity="sha256-+2+qOqR8CKoHh/AsVR9k2qaDBKWjYNC2nozhYmv5j9k=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
-
-  
-
-
-
-  <script src="/js/third-party/fancybox.js"></script>
-
-
-
-  
-
-
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2019/SwiftStruct/"}</script>
-  <script src="/js/third-party/quicklink.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"986980c619b9a362aa8062e811374702"}</script>
-<script src="/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","body":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"986980c619b9a362aa8062e811374702"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
-<script src="/js/third-party/comments/utterances.js"></script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
 
 </body>
 </html>

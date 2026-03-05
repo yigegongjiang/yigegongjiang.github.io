@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -14,19 +14,19 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.2","exturl":true,"sidebar":{"position":"left","width":142,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.27.0","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":142,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="谈数据结构的时候，到底在谈论什么？本质上就是谈论两个东西，分别是 ** 数组 (Array) 和链表 (Linked List)**。 数据物理结构和数据逻辑结构数组和链表，是数据存储计算机的物理结构，所以叫做数据物理结构。而队列、散列表、堆、树、图等，已经超出了物理结构，是方便我们使用的应用层结构，根据数据的 1-1、1-n、n-1、n-n 逻辑关系，引申出了数据逻辑结构。分别为线性结构和非">
+    <meta name="description" content="谈数据结构的时候，到底在谈论什么？本质上就是谈论两个东西，分别是数组 (Array) 和链表 (Linked List)。 数据物理结构和数据逻辑结构数组和链表，是数据存储计算机的物理结构，所以叫做数据物理结构。而队列、散列表、堆、树、图等，已经超出了物理结构，是方便我们使用的应用层结构，根据数据的 1-1、1-n、n-1、n-n 逻辑关系，引申出了数据逻辑结构。分别为线性结构和非线性结构，相">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Array 和 LinkedList 的深刻认知">
 <meta property="og:url" content="https://www.yigegongjiang.com/2020/array/index.html">
 <meta property="og:site_name" content="一个工匠">
-<meta property="og:description" content="谈数据结构的时候，到底在谈论什么？本质上就是谈论两个东西，分别是 ** 数组 (Array) 和链表 (Linked List)**。 数据物理结构和数据逻辑结构数组和链表，是数据存储计算机的物理结构，所以叫做数据物理结构。而队列、散列表、堆、树、图等，已经超出了物理结构，是方便我们使用的应用层结构，根据数据的 1-1、1-n、n-1、n-n 逻辑关系，引申出了数据逻辑结构。分别为线性结构和非">
+<meta property="og:description" content="谈数据结构的时候，到底在谈论什么？本质上就是谈论两个东西，分别是数组 (Array) 和链表 (Linked List)。 数据物理结构和数据逻辑结构数组和链表，是数据存储计算机的物理结构，所以叫做数据物理结构。而队列、散列表、堆、树、图等，已经超出了物理结构，是方便我们使用的应用层结构，根据数据的 1-1、1-n、n-1、n-n 逻辑关系，引申出了数据逻辑结构。分别为线性结构和非线性结构，相">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061752405.jpg">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061749169.jpeg">
@@ -40,7 +40,6 @@
 <link rel="canonical" href="https://www.yigegongjiang.com/2020/array/">
 
 
-
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2020/array/","path":"2020/array/","title":"Array 和 LinkedList 的深刻认知"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
@@ -48,7 +47,7 @@
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CTEWJ02QX"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-8CTEWJ02QX","only_pageview":false,"measure_protocol_api_secret":null}</script>
-  <script src="/js/third-party/analytics/google-analytics.js"></script>
+  <script src="/js/third-party/analytics/google-analytics.js" defer></script>
 
 
 
@@ -56,6 +55,31 @@
 
 
 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/7.2.0/pangu.umd.js" integrity="sha256-JnmRRnJK7DC6RQJbAJb6AXOM9OmWzS6z8eYultk/48Y=" crossorigin="anonymous" defer></script>
+<script src="/js/comments.js" defer></script><script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/3.0.1/quicklink.umd.js" integrity="sha256-44BednzIpUeQJcY8qtLyarFu0UCCTbgmWOvaoehiFQQ=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2020/array/"}</script>
+  <script src="/js/third-party/quicklink.js" defer></script>
 
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
@@ -240,7 +264,7 @@
     
     <div class="post-body" itemprop="articleBody"><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061752405.jpg" width="30%">
 
-<p>谈数据结构的时候，到底在谈论什么？本质上就是谈论两个东西，分别是 ** 数组 (Array) <strong>和</strong>链表 (Linked List)**。</p>
+<p>谈数据结构的时候，到底在谈论什么？本质上就是谈论两个东西，分别是<strong>数组 (Array)<strong> 和</strong>链表 (Linked List)</strong>。</p>
 <h4 id="数据物理结构和数据逻辑结构"><a href="#数据物理结构和数据逻辑结构" class="headerlink" title="数据物理结构和数据逻辑结构"></a>数据物理结构和数据逻辑结构</h4><p>数组和链表，是数据存储计算机的物理结构，所以叫做数据物理结构。而队列、散列表、堆、树、图等，已经超出了物理结构，是方便我们使用的应用层结构，根据数据的 1-1、1-n、n-1、n-n 逻辑关系，引申出了数据逻辑结构。分别为线性结构和非线性结构，相见下图：</p>
 <span id="more"></span>
 
@@ -249,17 +273,17 @@
 <p>因为我们要使用数据了，所以数据的逻辑形态非常多，这就像应用层协议一样，为了方便我们使用互联网进行数据传输，会有非常多的协议准则。但是数据传输最终只能形成二进制携带 ip 和 port 通过信号传输，所以我们最终处理数据逻辑结构的物理结构只有两个，那就是数组和链表，而很多逻辑结构如完全二叉树、队列等，也都可以同时用数组和链表同时表示。</p>
 <h4 id="花开两朵，各表一枝"><a href="#花开两朵，各表一枝" class="headerlink" title="花开两朵，各表一枝"></a>花开两朵，各表一枝</h4><p>数组和链表的千差万别又独宠万千的根本原因是什么呢？<br>其实说到头就和 TCP 和 UDP 的关系一样，他们有各自的优缺点。TCP 和 UDP 磨磨杀杀几十年，谁也没有打败谁，反而都成了互联网传输层协议的中梁砥柱。<br>数组和链表的关系，也的确成为了<strong>花开两朵，各表一枝</strong>的比翼鸟。</p>
 <h4 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h4><p>数组和链表，如果从直观上来说明不同，那从时间复杂度上来说明再形象不过了。对于数据的<strong>增删改查</strong>（CRUD），数组和链表的表现是不同的。<br>因为数据进行增删之前，都需要查找，所以<strong>查</strong>和<strong>增删</strong>一定要分开讨论，避免查的时间复杂度影响到增删。<br>而查到数据后的修改操作，本身不牵涉到时间复杂度，所以<strong>改</strong>我们可以不用考虑。</p>
-<p>我们先看<strong>增删</strong>两种情况下数组和链表的区别：<br><strong>数组 -&gt; 增 -&gt; O (n)<strong>：每次增加一个元素到某个位置，都需要调整其他元素在数组中的位置，进行整体向</strong>后</strong> 偏移。<br><strong>数组 -&gt; 删 -&gt; O (n)<strong>：每次删除某个位置的一个元素，都需要调整其他元素在数组中的位置，进行整体向</strong>前</strong> 偏移。<br>** 链表 -&gt; 增 -&gt; O (1)**：加入一个节点，直接更新前后连续 3 个节点的前后驱指针就好。<br>** 链表 -&gt; 删 -&gt; O (1)**：删除一个节点，直接更新前后连续 3 个节点的前后驱指针就好。</p>
+<p>我们先看<strong>增删</strong>两种情况下数组和链表的区别：<br><strong>数组 -&gt; 增 -&gt; O (n)</strong>：每次增加一个元素到某个位置，都需要调整其他元素在数组中的位置，进行整体向<strong>后</strong>偏移。<br><strong>数组 -&gt; 删 -&gt; O (n)</strong>：每次删除某个位置的一个元素，都需要调整其他元素在数组中的位置，进行整体向<strong>前</strong>偏移。<br><strong>链表 -&gt; 增 -&gt; O (1)</strong>：加入一个节点，直接更新前后连续 3 个节点的前后驱指针就好。<br><strong>链表 -&gt; 删 -&gt; O (1)</strong>：删除一个节点，直接更新前后连续 3 个节点的前后驱指针就好。</p>
 <p>从数据的增删来看，链表是可以秒杀数组的。即使数组对于删的操作进行优化，如假删除，可整体依旧没有链表快。</p>
 <p>我们再看<strong>查</strong>情况下数组和链表的表现：<br>先说链表，因为链表所有节点的内存地址是不固定的，所以都需要进行一次查找操作。链表的查找只能通过一个节点的前后驱指针遍历查找，所以时间复杂度为 O (n)。<br>数组数据我们在不生成新数据逻辑结构的前提下，也只能逐个匹配查询，时间复杂度也是 O (n)。</p>
 <blockquote>
 <ol>
 <li>如果数据本身是有序的，直接二分查找，时间复杂度为 O (logn)</li>
-<li> 因为我们要获取数据在数组里面的位置以进行增删操作，如果换成二叉搜索树等结构，查询到了数据也没有意义，因为拿不到相对于原数组的位置偏移。</li>
+<li>因为我们要获取数据在数组里面的位置以进行增删操作，如果换成二叉搜索树等结构，查询到了数据也没有意义，因为拿不到相对于原数组的位置偏移。</li>
 </ol>
 </blockquote>
 <p>从这里看，查方面，链表和数组打成平手。总体来看，数组是已经输给链表了，毕竟链表的增删复杂度只有 1。</p>
-<p>But，这里有个但是，因为数组内存地址连续，所以天然支持<strong>随机访问</strong>，也就是 <code>array[1]</code> 这样的操作。<br>我们只要给予数组第一个数据内存地址的相对偏移，就可以根据这个偏移，通过随机访问获取到数据。相比来说，链表的则是<strong>顺序访问</strong>。<br>这个大杀器，使得数组的查时间复杂度变成 O (1)。</p>
+<p>But，这里有个但是，因为数组内存地址连续，所以天然支持<strong>随机访问</strong>，也就是<code>array[1]</code>这样的操作。<br>我们只要给予数组第一个数据内存地址的相对偏移，就可以根据这个偏移，通过随机访问获取到数据。相比来说，链表的则是<strong>顺序访问</strong>。<br>这个大杀器，使得数组的查时间复杂度变成 O (1)。</p>
 <p>从这里看，从时间复杂度上面分析，数组和链接各有优势。</p>
 <h4 id="内存结构"><a href="#内存结构" class="headerlink" title="内存结构"></a>内存结构</h4><p>从上面分析，数组本身已经败落，最后力挽狂澜的优势就是<strong>内存地址连续</strong>带来的<strong>随机访问</strong>。<br>这里就要先说一下数组和链表在内存存储上的差异。这是他们诸多不同的导火索。</p>
 <p>数组的内存大小是连续且固定的。不管高级语言怎么做动态数组的优化，这个计算机硬件层面的约束总是跨不过去的。<strong>所有数组，都是固定大小的</strong>。<br>也就是我们在申明一个数组空间的时候，内部的元素个数和每个元素的 Size，都已经确定了，那么总大小也是确定的了。<br>而且，这个空间是<strong>连续的空间</strong>，即内存地址开始到结束这段区间，都属于该数组，也只能该数组使用。这段区间，可能有 10KB，也可能 100M，根据使用者申请的大小而定。</p>
@@ -409,6 +433,12 @@
   </footer>
 
   
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
   <div class="back-to-top" role="button" aria-label="Back to top">
     <i class="fa fa-arrow-up fa-lg"></i>
     <span>0%</span>
@@ -418,38 +448,12 @@
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
 </noscript>
-
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.umd.js" integrity="sha256-+2+qOqR8CKoHh/AsVR9k2qaDBKWjYNC2nozhYmv5j9k=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
-
-  
-
-
-
-  <script src="/js/third-party/fancybox.js"></script>
-
-
-
-  
-
-
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2020/array/"}</script>
-  <script src="/js/third-party/quicklink.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"c7525ea07223a3a4559791fe5839a5ab"}</script>
-<script src="/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","body":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"c7525ea07223a3a4559791fe5839a5ab"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
-<script src="/js/third-party/comments/utterances.js"></script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
 
 </body>
 </html>

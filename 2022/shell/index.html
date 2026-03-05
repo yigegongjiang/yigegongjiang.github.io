@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -14,12 +14,12 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.2","exturl":true,"sidebar":{"position":"left","width":142,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.27.0","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":142,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js" defer></script>
 
     <meta name="description" content="曾经有位老师问过：在 Linux 的 Shell 中运行程序时，操作系统是怎样对程序进行处理的吗？我当时回复是这样的：操作系统对 Shell 的执行，是靠 Shell 解释器完成的。在操作系统运行后，Shell 解释器本身就加载并运行了。其中如 pwd,cd 这些是内部命令，本质是函数调用，可以直接使用。ls 这些是外部命令，需要 fork 一个新进程执行当前命令。一个 Shell 脚本，有很多个">
 <meta property="og:type" content="article">
@@ -30,15 +30,14 @@
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-10-04T03:29:29.000Z">
 <meta property="article:author" content="海驴">
-<meta property="article:tag" content="计算机原理">
-<meta property="article:tag" content="内存">
 <meta property="article:tag" content="C">
 <meta property="article:tag" content="Shell">
+<meta property="article:tag" content="内存">
+<meta property="article:tag" content="计算机原理">
 <meta name="twitter:card" content="summary">
 
 
 <link rel="canonical" href="https://www.yigegongjiang.com/2022/shell/">
-
 
 
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2022/shell/","path":"2022/shell/","title":"Shell 和进程"}</script>
@@ -48,7 +47,7 @@
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CTEWJ02QX"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-8CTEWJ02QX","only_pageview":false,"measure_protocol_api_secret":null}</script>
-  <script src="/js/third-party/analytics/google-analytics.js"></script>
+  <script src="/js/third-party/analytics/google-analytics.js" defer></script>
 
 
 
@@ -56,6 +55,31 @@
 
 
 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/7.2.0/pangu.umd.js" integrity="sha256-JnmRRnJK7DC6RQJbAJb6AXOM9OmWzS6z8eYultk/48Y=" crossorigin="anonymous" defer></script>
+<script src="/js/comments.js" defer></script><script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/3.0.1/quicklink.umd.js" integrity="sha256-44BednzIpUeQJcY8qtLyarFu0UCCTbgmWOvaoehiFQQ=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2022/shell/"}</script>
+  <script src="/js/third-party/quicklink.js" defer></script>
 
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
@@ -238,7 +262,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>曾经有位老师问过：在 Linux 的 Shell 中运行程序时，操作系统是怎样对程序进行处理的吗？<br>我当时回复是这样的：操作系统对 Shell 的执行，是靠 Shell 解释器完成的。在操作系统运行后，Shell 解释器本身就加载并运行了。其中如 pwd,cd 这些是内部命令，本质是函数调用，可以直接使用。ls 这些是外部命令，需要 fork 一个新进程执行当前命令。一个 Shell 脚本，有很多个这些内外部命令组成，通过 Shell 解释器逐行解释完毕后执行。Shell 解释器也是一个应用程序，本质是一个 C 程序，不过在该程序中，手动模拟了函数调用栈，和 JVM 有相似之处。所以 Shell 解释器，也有静态库 / 动态库 / 静态链接 / 动态链接这些，为 Shell 命令的执行保障护航。<br>现在看起来，当时的回复虽然没有大的问题，但还是不够。只是浅表的认知了 Shell 解释器的用途，但是对 Shell 并没有深刻的理解。<br>最近看到子 Shell (SubShell)，发现 Shell 和进程之间的关系非常密切。可以从进程的角度来理解<strong>操作系统是怎么运行 Shell 的</strong>。<br>这篇文章的目的，是让你只关心 Shell 脚本的语法，而其他细节，都变成顺理成章。其实各个高级语言也都是这样，语言本身其实并不难，像工具一样使用而已。</p>
+    <div class="post-body" itemprop="articleBody"><p>曾经有位老师问过：在 Linux 的 Shell 中运行程序时，操作系统是怎样对程序进行处理的吗？<br>我当时回复是这样的：操作系统对 Shell 的执行，是靠 Shell 解释器完成的。在操作系统运行后，Shell 解释器本身就加载并运行了。其中如 pwd,cd 这些是内部命令，本质是函数调用，可以直接使用。ls 这些是外部命令，需要 fork 一个新进程执行当前命令。一个 Shell 脚本，有很多个这些内外部命令组成，通过 Shell 解释器逐行解释完毕后执行。Shell 解释器也是一个应用程序，本质是一个 C 程序，不过在该程序中，手动模拟了函数调用栈，和 JVM 有相似之处。所以 Shell 解释器，也有静态库/动态库/静态链接/动态链接这些，为 Shell 命令的执行保障护航。<br>现在看起来，当时的回复虽然没有大的问题，但还是不够。只是浅表的认知了 Shell 解释器的用途，但是对 Shell 并没有深刻的理解。<br>最近看到子 Shell (SubShell)，发现 Shell 和进程之间的关系非常密切。可以从进程的角度来理解<strong>操作系统是怎么运行 Shell 的</strong>。<br>这篇文章的目的，是让你只关心 Shell 脚本的语法，而其他细节，都变成顺理成章。其实各个高级语言也都是这样，语言本身其实并不难，像工具一样使用而已。</p>
 <span id="more"></span>
 
 <h2 id="0x00-温故知新"><a href="#0x00-温故知新" class="headerlink" title="0x00 温故知新"></a>0x00 温故知新</h2><p>对于 Shell 的运行，有一些前置知识需要粗略的描述一下。这些前置知识非常重要但也可以不写 (属于基础范畴)，因为它对理解 Shell 非常重要，所以这里还是加以补充说明。<br>没办法，计算机的知识都是一层套一层垒起来的，一个已经定型的知识点会不断的被重复使用，如果不能直接使用了，就再加一个中间层去使用它。<br>如果已经对这些内容比较熟悉，还是建议快速的过一下，也许会有新的发现。</p>
@@ -249,15 +273,15 @@
 <li>可以用 C 写一套编程代码，但针对 Mac、Linux、iOS、Android 这些平台，是需要针对不同平台，用不同的编译方式打不同的可执行文件后，才能运行。这就是编译型语言的另一个特点，就是<strong>不能跨平台</strong>。</li>
 <li>编译型语言的最大优点是<strong>超高效率</strong>，编译型语言是经过前后端编译后形成的二进制可执行文件，CPU 的运行指令直接存储在二进制可执行文件中。编译器还会对指令做进一步优化，优化幅度非常大，以使得可执行文件运行的更快。<br>这里说的高效率，仅仅是说 CPU 可以直接从内存中对可执行文件进行取指、译码、运行，这一套流程非常快。而不是说语言本身高效率，因为不同语言侧重对方向不一样，有些 CPU 密集型，有些 IO 密集型，从这个维度来说高效则更侧重业务本身。</li>
 </ul>
-<h4 id="解释型"><a href="#解释型" class="headerlink" title="解释型"></a>解释型</h4><p>像 Python、Java、Javascript、Shell 都属于解释型。典型的特征就是：项目代码无序被处理成可执行文件，就可以执行。解释型语言和编译型的特征都是相反的。<br>编译型需要经过前后端编译后，生成可执行文件。而解释型只需要经过前端编译，即词法分析、语法分析、语义分析三个步骤。如果精简一下，语义分析还可以不要，靠开发人员维护语义的正确性。<br>通过词法分析将代码转化成 N 个 <strong>Token</strong>，通过语法分析将 <strong>Token</strong> 转化成<strong>抽象语法树 (AST)<strong>，而后通过</strong>解释器</strong> 深度遍历 AST 即可将项目代码执行完成。</p>
+<h4 id="解释型"><a href="#解释型" class="headerlink" title="解释型"></a>解释型</h4><p>像 Python、Java、Javascript、Shell 都属于解释型。典型的特征就是：项目代码无序被处理成可执行文件，就可以执行。解释型语言和编译型的特征都是相反的。<br>编译型需要经过前后端编译后，生成可执行文件。而解释型只需要经过前端编译，即词法分析、语法分析、语义分析三个步骤。如果精简一下，语义分析还可以不要，靠开发人员维护语义的正确性。<br>通过词法分析将代码转化成 N 个 <strong>Token</strong>，通过语法分析将 <strong>Token</strong> 转化成<strong>抽象语法树 (AST)</strong>，而后通过<strong>解释器</strong>深度遍历 AST 即可将项目代码执行完成。</p>
 <p>下面先针对最简化版本的解释型语言运行过程进行说明。<br>解释型语言的<strong>开发效率非常高</strong>，因为可以做到逐行翻译代码，所以修改了 N 行代码，就把修改的部分重新词法、语法分析一下，整合到 AST 中去。(编译型语言也非常渴望这个能力，有一种 hot reload 技术实现方案)。</p>
 <p>解释型语言有一个核心，就是解释器。每个语言都会有不同公司做不同的解释器，刚才提到的解释型语言，就有 Phthon 解释器 (PVM)、JVM 虚拟机、V8 引擎、bash 解释器、zsh 解释器等等。<br>解释器承载了一个很大的技术地盘，就是<strong>跨平台</strong>。同样一套 js 编程代码，只要有解释器，就能够运行且等同运行环境一致。因为解释器抹平了端的差异，使得<strong>一致的代码按照一致的运行逻辑被解释器执行</strong>。<br>而解释器本身一般都是用 C 写的二进制可执行文件，所以解释型语言的运行，离不开编译型语言做基础。这一点很重要，解释型的代码之所以能够被逐行执行，是编译型语言先打包成可执行文件，当文件执行后，不断的逐行读取解释型代码并解释执行。而解释器的二进制可执行文件本身，也会有代码区和函数，这些函数也可以执行并且和解释型代码逐行翻译执行是不同的，这些函数就是 Shell 里面的<strong>内部命令</strong>，比如 pwd 命令，其实就是执行解释器本身的一个 pwd 函数。Shell 的<strong>外部命令</strong>就比如 ls，在解释器内部并没有一个 ls 函数与之对应，ls 实际上是另一个可执行文件，后面说到 Shell 内部 &amp; 外部命令的时候再详细说明。</p>
 <p>开发效率高和跨平台都是解释型语言的优点，而缺点也就是编译型语言的优点，就是<strong>低效率</strong>。<br>最简单的例子，对于 <strong>1 + 2*3</strong> 这个加乘运算，在编译型可执行文件里面就是几个寄存器调用 (几个时钟周期) 的事情，但是在解释型逐行翻译的过程中，需要先被翻译成 5 个 Token 并生成 AST 树，这里的每一个 Token 还有读取操作和加法 &amp; 乘法两个运算，至少需要 7 个函数的调用。而每个函数的内部还有一些额外函数调用，整体下来没有 20 个函数调用是下不来的。这和编译型语言来说速度上就是天壤之别。</p>
-<h4 id="解释编译混合型"><a href="#解释编译混合型" class="headerlink" title="解释编译混合型"></a>解释编译混合型</h4><p>上面最简化版本的解释型语言描述，其实就是解释器初期版本，是纯粹的解释型语言执行流程。这个时候应用在执行效率没有那么高但是重视开发效率和跨平台要求的场景。后来，解释器做了极大的升级，主攻执行效率问题，引出了虚拟机的概念。<br>虚拟机对于执行效率问题的解决方案核心在两个方面，一个是通过<strong>栈机 / 寄存器机</strong>来模拟编译型语言的函数调用栈，一个是增加 JIT 实时编译的能力使得代码在运行时被编译成二进制执行，此时执行效率等同于编译型语言。<br>从这个角度来看，虚拟机可以称作解释器的升级版本，或者把虚拟机叫做解释器也没有问题。但是把这个中间层叫做虚拟机这么一个大的名字，显然能力不限于此。<br>实际上虚拟机在设计之初，就是模拟了一个物理机器，有自己的指令集和内存管理，还有并发 / IO / 线程调度能力，就是一个虚拟化的硬件 + 操作系统。从这个角度来看，虚拟机已经远远超出解释器范围了，毕竟最纯粹的解释器，就是对 AST 进行一次深度遍历。</p>
+<h4 id="解释编译混合型"><a href="#解释编译混合型" class="headerlink" title="解释编译混合型"></a>解释编译混合型</h4><p>上面最简化版本的解释型语言描述，其实就是解释器初期版本，是纯粹的解释型语言执行流程。这个时候应用在执行效率没有那么高但是重视开发效率和跨平台要求的场景。后来，解释器做了极大的升级，主攻执行效率问题，引出了虚拟机的概念。<br>虚拟机对于执行效率问题的解决方案核心在两个方面，一个是通过<strong>栈机 / 寄存器机</strong>来模拟编译型语言的函数调用栈，一个是增加 JIT 实时编译的能力使得代码在运行时被编译成二进制执行，此时执行效率等同于编译型语言。<br>从这个角度来看，虚拟机可以称作解释器的升级版本，或者把虚拟机叫做解释器也没有问题。但是把这个中间层叫做虚拟机这么一个大的名字，显然能力不限于此。<br>实际上虚拟机在设计之初，就是模拟了一个物理机器，有自己的指令集和内存管理，还有并发/IO/线程调度能力，就是一个虚拟化的硬件 + 操作系统。从这个角度来看，虚拟机已经远远超出解释器范围了，毕竟最纯粹的解释器，就是对 AST 进行一次深度遍历。</p>
 <p>虚拟机做的第一步，就是<strong>不再进行 AST 深度遍历</strong>。<br>代码执行的宏观表现，就是函数的调用。大多语言都是从 main 函数开始，不停的在子函数里面执行下去。所以无规则深度遍历可以切换成子函数的调用维度，通过对每个子函数的优化来提升整个代码的执行效率。<br>在编译型语言里面，函数栈帧是通过 CPU 执行可执行文件的指令在内存栈区维护的函数调用栈。虚拟机就需要在代码层面模拟这套栈帧。这里就需要定义一套栈和栈帧的数据结构，在虚拟机这里做入栈和出栈操作。<br>对函数调用栈有更深了解的，可以查阅：<a href="https://www.yigegongjiang.com/2023/stackForFunc/">从汇编角度理解 “函数调用栈” 和 “有栈协程”</a></p>
 <p>虚拟机做的第二步，是将<strong>复杂的逻辑前置</strong>。<br>AST 这棵树还是非常复杂，如果依旧在这个树上做深度遍历，执行效率难以有质的提升，不做深度遍历用其他的方式遍历也没有质的提升。概括就是<strong>底层数据结构不良好，上层算法难以用上力</strong>。<br>这里虚拟机自己定义了一套私有指令集，比如 <strong>iadd</strong> 指令，用来做加法运算。这套私有指令是和 CPU 的指令集完全不一样的，因为解析这套私有指令的是虚拟机本身，而不是 CPU。<br>有了这套私有指令集后，虚拟机只要认这套符合自己规则的私有指令集并执行就可以了，再也不用管 AST 这棵树了。<br>这里中间层又会发挥作用了。首先 AST 上面说了是语法分析的产物，这一个环节必不可少。而虚拟机需要的又是私有指令集代码，不在关心 AST 了。所以这里需要有个工具把 AST 转化成私有指令集。<br>这个工具就是<strong>字节码编译</strong>。虚拟机把自己的私有指令集定义为 8 位长度，即一个字节，最多有 255 个指令。因为每个指令都是一个字节，所以虚拟机把它叫做字节码。而<strong>字节码编译</strong>要做的事情，就是把 AST 转化成字节码。</p>
-<p>虚拟机做的第三步，是<strong>指令优化</strong>。<br>AST 这棵抽象语法树结构现在已经变成了字节码指令结构。对于 <strong>1+10</strong> 这样的运算，数据结构上就不再是 AST 树，而是 <strong>load x, y</strong> 这样的指令了。<br>是指令就需要操作数据，对于数据的存取，虚拟机有两种不同的实现，分别是<strong>栈机</strong>和<strong>寄存器机</strong>。<br>栈机是通过栈这个数据结构来对数据进行存取。对于 <em>1+10</em> 这个运算，转化成的字节码是这样子：<strong>iconst_1;bipush 10;iadd; <strong>，首先将数字 1 放入栈，然后将数字 10 放入栈，最后做加法运算就是把栈连续 pop 两次，把两次拿到的 1 和 10 做加法运算，运算结果再 push 到栈里面供其他消费。<br>寄存器机对于数据的存取主要依靠寄存器。对于 <em>1+10</em> 这个运算，转化成字节码是这样子：</strong>Ldasmi 1; Star r0; Ldasmi 10; Star r1; Add r0 r1; Star r2; <strong>，首先将数字 1 读取写入寄存器 r0，然后将数字 10 读取写入寄存器 r1。最后将 r0 和 r1 寄存器的值做加法后再写入寄存器 r2 供其他消费。<br>显而易见，</strong>寄存器机是要比栈机快很多的</strong>。从 AST 转换成寄存器机要比转换成栈机困难很多，主要是虚拟机的寄存器也是映射的 CPU 的寄存器，数据是有限的。如何有效的处理这几十个寄存器显得非常重要了，而栈机依靠栈这种数据结构，只要内存够用，栈机的数据读取就不是问题。<br>目前，Java 虚拟机 JVM 使用的栈机，V8 引擎、PVM 使用的寄存器机。</p>
-<p>虚拟机做的第四步，是 <strong>JIT 即时编译</strong>。<br>虚拟机发现某块代码经常被执行，那么虚拟机就会做一件事情，把这块代码编译成 CPU 指令集的二进制。然后把编译好的二进制放到内存的一块区域，并调用系统调用接口赋予这块内存可执行权限。<br>后续再次调用这块代码的时候，就直接转到内存处直接执行编译后的 CPU 指令。这里就和编译型的执行效率一样高了，都是直接跑在 CPU 上。<br>到这一步，解释型其实已经过渡到编译型了，只是编译的时机不同。编译型是必须做了后端编译，打成可执行文件后才能运行。<strong>JIT 是某块代码经常被运行后再做后端编译，并把产物放到具有可执行权限的内存区域后运行</strong>。<br>从这个角度来看，就不能再说 Java 是解释型语言，所以不够高效了。很多人抨击 Java 是解释型、和编译型相比中间有个 JVM 耗时层等等，最终指向 Java 慢或者效率不高。这就是对技术这个产业认知不到位。<strong>技术这个产业是只要有利益，需求都能满足，只要利益够大，需求就会被超出预期的解决</strong>。更多的摇摆因素是时间周期不固定，但需求一定会被解决。Java 在有了 JIT 之后，就是满负荷的编译型语言，哪还有什么效率差？即使说 GCC 或者 LLVM 耕耘多年后端能力底子深厚，Java 这些年的 JIT 能力相比也不会有太多出入了。至于 Python 的 PVM 虚拟机也有 JIT 能力但效率还是不如其他语言，那还有语言本身的限制在，比如 Python 的 GIL 锁、Python 动态语言特性等。</p>
+<p>虚拟机做的第三步，是<strong>指令优化</strong>。<br>AST 这棵抽象语法树结构现在已经变成了字节码指令结构。对于 <strong>1+10</strong> 这样的运算，数据结构上就不再是 AST 树，而是 <strong>load x, y</strong> 这样的指令了。<br>是指令就需要操作数据，对于数据的存取，虚拟机有两种不同的实现，分别是<strong>栈机</strong>和<strong>寄存器机</strong>。<br>栈机是通过栈这个数据结构来对数据进行存取。对于 <em>1+10</em> 这个运算，转化成的字节码是这样子：<strong>iconst_1;bipush 10;iadd;</strong>，首先将数字 1 放入栈，然后将数字 10 放入栈，最后做加法运算就是把栈连续 pop 两次，把两次拿到的 1 和 10 做加法运算，运算结果再 push 到栈里面供其他消费。<br>寄存器机对于数据的存取主要依靠寄存器。对于 <em>1+10</em> 这个运算，转化成字节码是这样子：<strong>Ldasmi 1; Star r0; Ldasmi 10; Star r1; Add r0 r1; Star r2;</strong>，首先将数字 1 读取写入寄存器 r0，然后将数字 10 读取写入寄存器 r1。最后将 r0 和 r1 寄存器的值做加法后再写入寄存器 r2 供其他消费。<br>显而易见，<strong>寄存器机是要比栈机快很多的</strong>。从 AST 转换成寄存器机要比转换成栈机困难很多，主要是虚拟机的寄存器也是映射的 CPU 的寄存器，数据是有限的。如何有效的处理这几十个寄存器显得非常重要了，而栈机依靠栈这种数据结构，只要内存够用，栈机的数据读取就不是问题。<br>目前，Java 虚拟机 JVM 使用的栈机，V8 引擎、PVM 使用的寄存器机。</p>
+<p>虚拟机做的第四步，是<strong> JIT 即时编译</strong>。<br>虚拟机发现某块代码经常被执行，那么虚拟机就会做一件事情，把这块代码编译成 CPU 指令集的二进制。然后把编译好的二进制放到内存的一块区域，并调用系统调用接口赋予这块内存可执行权限。<br>后续再次调用这块代码的时候，就直接转到内存处直接执行编译后的 CPU 指令。这里就和编译型的执行效率一样高了，都是直接跑在 CPU 上。<br>到这一步，解释型其实已经过渡到编译型了，只是编译的时机不同。编译型是必须做了后端编译，打成可执行文件后才能运行。<strong>JIT 是某块代码经常被运行后再做后端编译，并把产物放到具有可执行权限的内存区域后运行</strong>。<br>从这个角度来看，就不能再说 Java 是解释型语言，所以不够高效了。很多人抨击 Java 是解释型、和编译型相比中间有个 JVM 耗时层等等，最终指向 Java 慢或者效率不高。这就是对技术这个产业认知不到位。<strong>技术这个产业是只要有利益，需求都能满足，只要利益够大，需求就会被超出预期的解决</strong>。更多的摇摆因素是时间周期不固定，但需求一定会被解决。Java 在有了 JIT 之后，就是满负荷的编译型语言，哪还有什么效率差？即使说 GCC 或者 LLVM 耕耘多年后端能力底子深厚，Java 这些年的 JIT 能力相比也不会有太多出入了。至于 Python 的 PVM 虚拟机也有 JIT 能力但效率还是不如其他语言，那还有语言本身的限制在，比如 Python 的 GIL 锁、Python 动态语言特性等。</p>
 <h3 id="两种进程创建方式-By-fork-exec"><a href="#两种进程创建方式-By-fork-exec" class="headerlink" title="两种进程创建方式 By fork &amp; exec"></a>两种进程创建方式 By fork &amp; exec</h3><p>在 Linux 系统下，进程创建只有一个方案，就是 fork 系统调用。<br>如果要创建一个新的进程，那么就得找到一个已经存在的进程，在这个进程里面调用 fork api，然后生成一个一模一样的新进程（可以认为一模一样，肯定会有差异）。新进程和已经存在的进程是父子关系。<br>从这个角度来看，整个 Linux 操作系统的进程图谱就是一个多叉树。操作系统启动的时候会创建 1 号进程 init。后续所有的进程的祖先，都是这个 1 号 init 进程。<br>对于 fork 有两个返回值，理解起来其实并不难：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">int cal() {</span><br><span class="line">  // 这里是非常复杂的计算，耗时严重</span><br><span class="line">  int i = xxx;</span><br><span class="line">  return i;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">int main() {</span><br><span class="line"></span><br><span class="line">  int index = 0;</span><br><span class="line">  pid_t pid;</span><br><span class="line">  pid = fork();</span><br><span class="line">  if (pid == 0) {// 子进程</span><br><span class="line">    printf("This is sub process, and pid is: %d\n", getpid());</span><br><span class="line">    </span><br><span class="line">    printf("the index is: %d, address is: %p\n", index, index);</span><br><span class="line">    index = 10;</span><br><span class="line">    printf("the index is: %d, address is: %p\n", index, index);</span><br><span class="line">    </span><br><span class="line">    int ret = cal();</span><br><span class="line">    // 和父进程通过进程间通信将 ret 值给到父进程</span><br><span class="line">  } else {// 父进程</span><br><span class="line">    printf("This is origin process, and sub process pid is: %d\n", pid);</span><br><span class="line">    </span><br><span class="line">    printf("the index is: %d, address is: %p\n", index, index);</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
@@ -281,12 +305,12 @@
 <h2 id="0x03-Shell-和-SubShell"><a href="#0x03-Shell-和-SubShell" class="headerlink" title="0x03 Shell 和 SubShell"></a>0x03 Shell 和 SubShell</h2><p>Shell 里面有一个很重要的概念，是子进程和子 shell。其实子进程就是 fork + exec，子 shell 就是 fork。<br>那子进程和子 shell 有什么不同呢？看这里：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">~ ❯ name=wanger                                                                    02:45:08</span><br><span class="line"></span><br><span class="line">~ ❯ echo "current process - the name is ${name}."                                  02:49:32</span><br><span class="line">current process - the name is wanger.</span><br><span class="line"></span><br><span class="line">~ ❯ { echo "current process - the name is ${name}." }                              02:49:53</span><br><span class="line">current process - the name is wanger.</span><br><span class="line"></span><br><span class="line">~ ❯ (echo "fork process - the name is ${name}.")                                   02:51:03</span><br><span class="line">fork process - the name is wanger.</span><br><span class="line"></span><br><span class="line">~ ❯ cat d.txt                                                                      02:51:44</span><br><span class="line">#!/bin/zsh</span><br><span class="line">echo "fork&amp;exec process - the name is ${name}."</span><br><span class="line">~ ❯ bash d.txt                                                                     02:51:48</span><br><span class="line">fork&amp;exec process - the name is .</span><br></pre></td></tr></tbody></table></figure>
 
-<p>对于全局变量 name，在当前进程和 fork 进程均能正确读取，但是在子 shell (fork&amp;exec) 里面就读取不到了。<br>这个现象，就是前面<strong>两种进程创建方式 By fork &amp; exec</strong> 里面说到的，前面的理解了，这里就搬一下场景。<br>对于 <em>bash x.sh 和 ./x.sh</em> 执行方式，默认都是使用的 <em>fork + exec</em> 进程创建方式。当然也包括 ls 这些外部命令。<br>对于小括号组合命令、命令替换、管道，默认都是使用的 <em>fork</em> 进程创建方式。<br>对于大括号组合命令，则不创建进程，在当前进程执行。</p>
+<p>对于全局变量 name，在当前进程和 fork 进程均能正确读取，但是在子 shell (fork &amp; exec) 里面就读取不到了。<br>这个现象，就是前面<strong>两种进程创建方式 By fork &amp; exec</strong> 里面说到的，前面的理解了，这里就搬一下场景。<br>对于 <em>bash x.sh 和 ./x.sh</em> 执行方式，默认都是使用的 <em>fork + exec</em> 进程创建方式。当然也包括 ls 这些外部命令。<br>对于小括号组合命令、命令替换、管道，默认都是使用的 <em>fork</em> 进程创建方式。<br>对于大括号组合命令，则不创建进程，在当前进程执行。</p>
 <p>验证当前是子进程还是 subShell，有两个环境变量：SHLVL (子进程) 和 BASH_SUBSHELL (子 shell)(zsh 使用 ZSH_SUBSHELL)。打印如下：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">~ ❯ echo "SHLVL-${SHLVL}, ZSH_SUBSHELL-${ZSH_SUBSHELL}"                            03:00:34</span><br><span class="line">SHLVL-1, ZSH_SUBSHELL-0</span><br><span class="line"></span><br><span class="line">~ ❯ { echo "SHLVL-${SHLVL}, ZSH_SUBSHELL-${ZSH_SUBSHELL}" }                        03:06:16</span><br><span class="line">SHLVL-1, ZSH_SUBSHELL-0</span><br><span class="line"></span><br><span class="line">~ ❯ (echo "SHLVL-${SHLVL}, ZSH_SUBSHELL-${ZSH_SUBSHELL}")                          03:06:28</span><br><span class="line">SHLVL-1, ZSH_SUBSHELL-1</span><br><span class="line"></span><br><span class="line">~ ❯ cat d.txt                                                                      03:07:12</span><br><span class="line">#!/bin/zsh</span><br><span class="line">echo "SHLVL-${SHLVL}, ZSH_SUBSHELL-${ZSH_SUBSHELL}"</span><br><span class="line">~ ❯ zsh d.txt                                                                      03:07:23</span><br><span class="line">SHLVL-2, ZSH_SUBSHELL-0</span><br></pre></td></tr></tbody></table></figure>
 
 <p>因为打开终端后，当前 Shell 环境就是一个子进程，所以 SHLVL 默认是 1。从上面可以看到，子 shell 场景 ZSH_SUBSHELL 会 +1，在进程场景 SHLVL 会 +1。</p>
-<h2 id="0x04-Shell-变量作用域（全局变量-环境变量）"><a href="#0x04-Shell-变量作用域（全局变量-环境变量）" class="headerlink" title="0x04 Shell 变量作用域（全局变量 &amp; 环境变量）"></a>0x04 Shell 变量作用域（全局变量 &amp; 环境变量）</h2><p>对于 Shell 的变量作用域，从上面的 name 全局变量和 fork&amp;exec 的分析，其实就可以有大概结果，那就是<strong>全局变量在当前进程和子 shell 都是有效的，在 fork&amp;exec 子进程中是无效的</strong>。<br>但是环境变量有一个特殊的地方，就是在子进程中也有效，这是怎么做到的呢？</p>
+<h2 id="0x04-Shell-变量作用域（全局变量-环境变量）"><a href="#0x04-Shell-变量作用域（全局变量-环境变量）" class="headerlink" title="0x04 Shell 变量作用域（全局变量 &amp; 环境变量）"></a>0x04 Shell 变量作用域（全局变量 &amp; 环境变量）</h2><p>对于 Shell 的变量作用域，从上面的 name 全局变量和 fork &amp; exec 的分析，其实就可以有大概结果，那就是<strong>全局变量在当前进程和子 shell 都是有效的，在 fork &amp; exec 子进程中是无效的</strong>。<br>但是环境变量有一个特殊的地方，就是在子进程中也有效，这是怎么做到的呢？</p>
 <p>其实并不复杂，首先子进程的 fork 和 exec 肯定都是执行的，那么数据就一定会被清掉，环境变量能够在子进程中有效，肯定是父进程传参给子进程的，子进程在 exec 之后还原了入参，仅此而已。<br>如果一个外部命令使用 C 语言写的，那么 main 函数会是这样：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int main(int argc, char *argv[]) {</span><br><span class="line">  // 入参就是 argv</span><br><span class="line">  return 0;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
@@ -413,6 +437,12 @@
   </footer>
 
   
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
   <div class="back-to-top" role="button" aria-label="Back to top">
     <i class="fa fa-arrow-up fa-lg"></i>
     <span>0%</span>
@@ -422,38 +452,12 @@
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
 </noscript>
-
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.umd.js" integrity="sha256-+2+qOqR8CKoHh/AsVR9k2qaDBKWjYNC2nozhYmv5j9k=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
-
-  
-
-
-
-  <script src="/js/third-party/fancybox.js"></script>
-
-
-
-  
-
-
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2022/shell/"}</script>
-  <script src="/js/third-party/quicklink.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"29f6b0f9f7b98df241733b29a125e7ae"}</script>
-<script src="/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","body":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"29f6b0f9f7b98df241733b29a125e7ae"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
-<script src="/js/third-party/comments/utterances.js"></script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
 
 </body>
 </html>

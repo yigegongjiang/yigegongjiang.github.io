@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -14,12 +14,12 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.2","exturl":true,"sidebar":{"position":"left","width":142,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.27.0","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":142,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js" defer></script>
 
     <meta name="description" content="对 CPU 的一点简要说明。如果你是对 CPU 的制作有一些模糊，或者希望通过其他博文来验证你的想法，那么下面一些认知或许对你有一些帮助。大到宇宙飞船，小到 PC、手机、冰箱，无一没有芯片的影子。各位一定都对芯片有很多认知了，我们不需要多做说明，没有芯片，就没有新时代。从真空三极管到锗晶体管到硅晶体管，每一步都是一次跃迁。 集成电路的制作硅 &#x3D;&gt; 晶圆原材料首当其冲的是高纯度硅。通过把高">
 <meta property="og:type" content="article">
@@ -39,7 +39,6 @@
 <link rel="canonical" href="https://www.yigegongjiang.com/2019/cpu/">
 
 
-
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2019/cpu/","path":"2019/cpu/","title":"CPU 的制作"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
@@ -47,7 +46,7 @@
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CTEWJ02QX"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-8CTEWJ02QX","only_pageview":false,"measure_protocol_api_secret":null}</script>
-  <script src="/js/third-party/analytics/google-analytics.js"></script>
+  <script src="/js/third-party/analytics/google-analytics.js" defer></script>
 
 
 
@@ -55,6 +54,31 @@
 
 
 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/7.2.0/pangu.umd.js" integrity="sha256-JnmRRnJK7DC6RQJbAJb6AXOM9OmWzS6z8eYultk/48Y=" crossorigin="anonymous" defer></script>
+<script src="/js/comments.js" defer></script><script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/3.0.1/quicklink.umd.js" integrity="sha256-44BednzIpUeQJcY8qtLyarFu0UCCTbgmWOvaoehiFQQ=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2019/cpu/"}</script>
+  <script src="/js/third-party/quicklink.js" defer></script>
 
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
@@ -244,7 +268,7 @@
 <span id="more"></span>
 
 <h4 id="晶圆光刻腐蚀"><a href="#晶圆光刻腐蚀" class="headerlink" title="晶圆光刻腐蚀"></a>晶圆光刻腐蚀</h4><p>这个比较复杂，网上都有详细的说明。Intel 和 AMD 也有公开视频说到一系列的复杂过程。<br>我不懂，我不做更多说明。大家可以自行查看。网上都是图，还是很方便理解和查看的。<br>不过这里也是技术难度最大的一环，是技术的巅峰。光刻机，不是一个国家自主创新能够完成的。有时候还是应该想着合作共赢，而不是喊口号和战狼外交。</p>
-<h4 id="晶体管数量"><a href="#晶体管数量" class="headerlink" title="晶体管数量"></a>晶体管数量</h4><p>很多人看了光刻腐蚀的图文甚至视频，认同 CPU 里面真的好复杂。为什么呢？很多人想，这样的操作，里面有好多好多个晶体管了吧。<br>其实，很多人都不敢放大自己的想象。那不是好多好多个，也不是几百万或者几千万甚至几亿个，而是几百亿个。<br>现在的技术，已经达到 <strong>300 亿个晶体管</strong>，在一个<strong>指甲盖大小的 CPU</strong> 里面了。<br>这些晶体管，就组合成了集成电路，不同数量的晶体管，组合成不同用途的寄存器等。</p>
+<h4 id="晶体管数量"><a href="#晶体管数量" class="headerlink" title="晶体管数量"></a>晶体管数量</h4><p>很多人看了光刻腐蚀的图文甚至视频，认同 CPU 里面真的好复杂。为什么呢？很多人想，这样的操作，里面有好多好多个晶体管了吧。<br>其实，很多人都不敢放大自己的想象。那不是好多好多个，也不是几百万或者几千万甚至几亿个，而是几百亿个。<br>现在的技术，已经达到<strong> 300 亿个晶体管</strong>，在一个<strong>指甲盖大小的 CPU</strong> 里面了。<br>这些晶体管，就组合成了集成电路，不同数量的晶体管，组合成不同用途的寄存器等。</p>
 <h4 id="晶圆良率"><a href="#晶圆良率" class="headerlink" title="晶圆良率"></a>晶圆良率</h4><p>请大家一定理解，一个晶圆，可不仅仅只能光刻腐蚀出来一个 Die，而是很多个 Die。不然这个芯片得多大啊。<br>我有个同事有次和我说，一个晶圆只能制作一个芯片，这个晶圆利用率为什么不能提高？<br>其实，我同事就没有理解晶圆的大小。一个比脸还大的盘子，怎么可能只能做一个指甲盖大小的芯片啊！<br>所以，一个芯片，可以做很多个 Die，每个 Die，经过测试包装后，就成了 CPU。<br>所以，这里有一个良率的问题。为什么会有良率？因为几百亿个晶体管里面，有一部分的晶体管是不能使用的，而不是全部能正常工作。<br>很少有晶圆，上面光刻腐蚀的几十个 Die 都是完好的。<br>良率有一个现象，越靠近中心的位置，Die 的良率越高。同时，越偏离中心，Die 的良率越低。（中心，即晶圆的中心）<br>那每个晶圆里面，肯定有一些 Die 里面的晶体管是损坏的。是不是这些 Die 就不能用了呢？<br>不是的。<strong>同一批次的 Die，那些晶体管损坏的产品，就相应的把这些损坏晶体管封死，变成低配的 CPU。</strong><br>比如，同一批次的 I7 处理器，可能有些 Die 里面有两个 Core（核心）损坏了。那么在后面测试的时候，就封死这两个核，变成 I5 处理器。<br>商人都是无利不起早的，他们为什么要这么做？因为这样做一来商家可以赚更多钱，不然那么多 Die 不都是扔了嘛。二来降低了用户的价格，东西多一些价格总归会将一些的。<br>网上有人提到过，那么有没有一个晶圆只做一个 Die 的呢？<br>有的。只是这个成本太高的。因为良率的问题，这个 Die 得多么精密的仪器才能够保障其晶体管不受损坏。因为这个 Die 占据一整个晶圆，面积大了，坏点几率也相应增加了无数倍。几乎 100%。<br>哪些情况下会使用这样的超大 Die？宇宙飞船啊。高级东西当然需要高级的配件。</p>
 <h4 id="晶体管数量为什么目前保持300亿多一些，再也上不去了"><a href="#晶体管数量为什么目前保持300亿多一些，再也上不去了" class="headerlink" title="晶体管数量为什么目前保持300亿多一些，再也上不去了"></a>晶体管数量为什么目前保持 300 亿多一些，再也上不去了</h4><p>晶体管数量越多，计算能力也就越强，电脑的处理速度也就越快。那晶体管还能不能提升到上千亿？<br>不是技术上上不去了，技术上一直在突破。<br>而是<strong>散热上不去了</strong>。晶体管需要通电才能工作，能量总归是守恒的。CPU 内部几百亿个晶体管，总归要散热的。<br>因为散热真的不能那么有效，晶体管数量再多下去，就不能工作了。晶体管的工作环境温度太高了。<br>散热有很多计算方式，比如降低电压等方案都可以有效的降低散热量。但是目前的确已经到瓶颈了，好多年没有前进了。都在往多核、超流水线等方向发力。</p>
 <h4 id="内存是不是也有很多晶体管？"><a href="#内存是不是也有很多晶体管？" class="headerlink" title="内存是不是也有很多晶体管？"></a>内存是不是也有很多晶体管？</h4><p>不仅仅内存有，显卡啥的都有。<br>一个高速缓存芯片的一比特需要 6-8 个晶体管，而内存容量比较大，一个比特只需要 1 个晶体管，但是还需要外部元件来支持，比如需要一个电容，因为晶体管会持续放电，数据会丢失，需要电容来补电。<br>显卡里面有 GPU。GPU 和 CPU 本质上都是一样的，就是里面的运算处理单元因为工作模式不同，量级不同而已。<br>所以，他们里面都是有晶体管存在。</p>
@@ -366,6 +390,12 @@
   </footer>
 
   
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
   <div class="back-to-top" role="button" aria-label="Back to top">
     <i class="fa fa-arrow-up fa-lg"></i>
     <span>0%</span>
@@ -375,38 +405,12 @@
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
 </noscript>
-
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.umd.js" integrity="sha256-+2+qOqR8CKoHh/AsVR9k2qaDBKWjYNC2nozhYmv5j9k=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
-
-  
-
-
-
-  <script src="/js/third-party/fancybox.js"></script>
-
-
-
-  
-
-
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2019/cpu/"}</script>
-  <script src="/js/third-party/quicklink.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"9a1efdc8d58c159b09dcf7c381fd97ed"}</script>
-<script src="/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","body":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"9a1efdc8d58c159b09dcf7c381fd97ed"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
-<script src="/js/third-party/comments/utterances.js"></script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
 
 </body>
 </html>

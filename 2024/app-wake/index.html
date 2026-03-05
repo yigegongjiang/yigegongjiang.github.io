@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -14,30 +14,29 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.2","exturl":true,"sidebar":{"position":"left","width":142,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.27.0","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":142,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="换端能力在移动应用生态中，换端 (App Switching) 是一个常见的需求。同一台设备上，有以下三个端: M(Web网页)、 A(移动应用 app)、 B(待唤端的应用 app)。 当 M 或 A 需要跳转至 B 时，有两种技术方案: URL Scheme 和 Universal Link。 URL Scheme App 端先行验证能力: A 可以通过 canOpen 方法预先判断 B 是否">
+    <meta name="description" content="换端能力在移动应用生态中, 换端 (App Switching) 是一个常见的需求。同一台设备上，有以下三个端: M(Web网页)、 A(移动应用 app)、 B(待唤端的应用 app)。 当 M 或 A 需要跳转至 B 时, 有两种技术方案: URL Scheme 和 Universal Link。 URL Scheme App 端先行验证能力: A 可以通过canOpen方法预先判断 B 是否">
 <meta property="og:type" content="article">
 <meta property="og:title" content="移动端换端方案与场景还原">
 <meta property="og:url" content="https://www.yigegongjiang.com/2024/app-wake/index.html">
 <meta property="og:site_name" content="一个工匠">
-<meta property="og:description" content="换端能力在移动应用生态中，换端 (App Switching) 是一个常见的需求。同一台设备上，有以下三个端: M(Web网页)、 A(移动应用 app)、 B(待唤端的应用 app)。 当 M 或 A 需要跳转至 B 时，有两种技术方案: URL Scheme 和 Universal Link。 URL Scheme App 端先行验证能力: A 可以通过 canOpen 方法预先判断 B 是否">
+<meta property="og:description" content="换端能力在移动应用生态中, 换端 (App Switching) 是一个常见的需求。同一台设备上，有以下三个端: M(Web网页)、 A(移动应用 app)、 B(待唤端的应用 app)。 当 M 或 A 需要跳转至 B 时, 有两种技术方案: URL Scheme 和 Universal Link。 URL Scheme App 端先行验证能力: A 可以通过canOpen方法预先判断 B 是否">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-10-27T07:38:17.000Z">
 <meta property="article:author" content="海驴">
-<meta property="article:tag" content="iOS">
 <meta property="article:tag" content="Swift">
 <meta property="article:tag" content="Work">
+<meta property="article:tag" content="iOS">
 <meta name="twitter:card" content="summary">
 
 
 <link rel="canonical" href="https://www.yigegongjiang.com/2024/app-wake/">
-
 
 
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2024/app-wake/","path":"2024/app-wake/","title":"移动端换端方案与场景还原"}</script>
@@ -47,7 +46,7 @@
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CTEWJ02QX"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-8CTEWJ02QX","only_pageview":false,"measure_protocol_api_secret":null}</script>
-  <script src="/js/third-party/analytics/google-analytics.js"></script>
+  <script src="/js/third-party/analytics/google-analytics.js" defer></script>
 
 
 
@@ -55,6 +54,31 @@
 
 
 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/7.2.0/pangu.umd.js" integrity="sha256-JnmRRnJK7DC6RQJbAJb6AXOM9OmWzS6z8eYultk/48Y=" crossorigin="anonymous" defer></script>
+<script src="/js/comments.js" defer></script><script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/3.0.1/quicklink.umd.js" integrity="sha256-44BednzIpUeQJcY8qtLyarFu0UCCTbgmWOvaoehiFQQ=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2024/app-wake/"}</script>
+  <script src="/js/third-party/quicklink.js" defer></script>
 
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
@@ -237,19 +261,22 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="换端能力"><a href="#换端能力" class="headerlink" title="换端能力"></a>换端能力</h1><p>在移动应用生态中，换端 (App Switching) 是一个常见的需求。同一台设备上，有以下三个端: <code>M(Web网页)</code>、 <code>A(移动应用 app)</code>、 <code>B(待唤端的应用 app)</code>。 当 M 或 A 需要跳转至 B 时，有两种技术方案: URL Scheme 和 Universal Link。</p>
+    <div class="post-body" itemprop="articleBody"><h1 id="换端能力"><a href="#换端能力" class="headerlink" title="换端能力"></a>换端能力</h1><p>在移动应用生态中, 换端 (App Switching) 是一个常见的需求。同一台设备上，有以下三个端: <code>M(Web网页)</code>、 <code>A(移动应用 app)</code>、 <code>B(待唤端的应用 app)</code>。 当 M 或 A 需要跳转至 B 时, 有两种技术方案: URL Scheme 和 Universal Link。</p>
 <h2 id="URL-Scheme"><a href="#URL-Scheme" class="headerlink" title="URL Scheme"></a>URL Scheme</h2><ol>
 <li>App 端先行验证能力:<ul>
-<li>A 可以通过 <code>canOpen</code> 方法预先判断 B 是否已安装，且此操作不会触发跳转<span id="more"></span></li>
-</ul>
-</li>
-<li> Web 端无先行验证能力:<ul>
-<li>M (Web) 无法预先判断 B 是否安装</li>
-<li>通常采用延迟判断方案：执行跳转后等待 2 秒，根据页面状态判断跳转是否成功</li>
+<li>A 可以通过<code>canOpen</code>方法预先判断 B 是否已安装, 且此操作不会触发跳转</li>
 </ul>
 </li>
 </ol>
-<p>URL Scheme 存在一个严重的安全问题：不同的应用可以注册相同的 scheme。这意味着当 A 尝试跳转 B 时，可能会被恶意应用 X/Y/Z 截获。正是由于这个安全隐患，URL Scheme 正逐渐被 Universal Link 替代。</p>
+<span id="more"></span>
+<ol start="2">
+<li>Web 端无先行验证能力:<ul>
+<li>M (Web) 无法预先判断 B 是否安装</li>
+<li>通常采用延迟判断方案: 执行跳转后等待 2 秒, 根据页面状态判断跳转是否成功</li>
+</ul>
+</li>
+</ol>
+<p>URL Scheme 存在一个严重的安全问题: 不同的应用可以注册相同的 scheme。这意味着当 A 尝试跳转 B 时, 可能会被恶意应用 X/Y/Z 截获。正是由于这个安全隐患, URL Scheme 正逐渐被 Universal Link 替代。</p>
 <h2 id="Universal-Link"><a href="#Universal-Link" class="headerlink" title="Universal Link"></a>Universal Link</h2><ol>
 <li>预判限制:<ul>
 <li>M 和 A 都无法预先判断 B 是否安装</li>
@@ -262,13 +289,13 @@
 </li>
 </ol>
 <h3 id="原理-挑战"><a href="#原理-挑战" class="headerlink" title="原理 &amp; 挑战"></a>原理 &amp; 挑战</h3><ul>
-<li>应用安装时，操作系统会向配置的 domain 请求资源文件 (开发人员提前配置), 该文件包含应用约定的 Router 信息</li>
-<li>如果 HTTPS 请求失败，应用将暂时无法被 Universal Link 唤醒</li>
-<li> Apple 未明确指定重试机制，仅表示系统会在适当时机重新请求</li>
+<li>应用安装时, 操作系统会向配置的 domain 请求资源文件 (开发人员提前配置),该文件包含应用约定的 Router 信息</li>
+<li>如果 HTTPS 请求失败, 应用将暂时无法被 Universal Link 唤醒</li>
+<li>Apple 未明确指定重试机制, 仅表示系统会在适当时机重新请求</li>
 </ul>
-<h1 id="微信的二次回跳验证机制"><a href="#微信的二次回跳验证机制" class="headerlink" title="微信的二次回跳验证机制"></a>微信的二次回跳验证机制</h1><h2 id="二次回跳说明"><a href="#二次回跳说明" class="headerlink" title="二次回跳说明"></a>二次回跳说明</h2><p>当应用 A 首次使用微信 SDK 的 Universal Link 功能进行分享时，会出现双重跳转:</p>
+<h1 id="微信的二次回跳验证机制"><a href="#微信的二次回跳验证机制" class="headerlink" title="微信的二次回跳验证机制"></a>微信的二次回跳验证机制</h1><h2 id="二次回跳说明"><a href="#二次回跳说明" class="headerlink" title="二次回跳说明"></a>二次回跳说明</h2><p>当应用 A 首次使用微信 SDK 的 Universal Link 功能进行分享时, 会出现双重跳转:</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A -&gt; 微信 -&gt; A -&gt; 微信</span><br></pre></td></tr></tbody></table></figure>
-<p>这种情况仅在首次分享时出现，后续分享操作将直接完成。</p>
+<p>这种情况仅在首次分享时出现, 后续分享操作将直接完成。</p>
 <h2 id="双重验证有效性"><a href="#双重验证有效性" class="headerlink" title="双重验证有效性"></a>双重验证有效性</h2><p>Universal Link 在安全的前提下，成功率较高，能保证其他 App 跳转到我的 App 的成功率。只要我的 App 配置了 Universal Link，大概率其他 App 跳转到我的 App 是没有问题的。<br>但是，我的 App 也需要跳转回其他 App，此时我的 App 并不信任其他 App（或者说不信任其他 App 的 Universal Link 配置）。<br>举个分享流程的例子，如果 A 通过 Universal Link 跳转到微信后，微信处理完分享流程。用户点击返回 A，但无法返回，此时就会造成严重的用户体验缺失（Bug）。</p>
 <h2 id="二次回跳处理"><a href="#二次回跳处理" class="headerlink" title="二次回跳处理"></a>二次回跳处理</h2><p>微信采用类似 TCP 三次握手的验证机制，提前打通 A 和微信之间的换端通路。这可能涉及到降级处理，即 Universal Link 降级为 URL Scheme。仍以分享流程为例：</p>
 <ol>
@@ -287,26 +314,26 @@
 </li>
 <li>A（通过微信 SDK API）发起真正的分享换端，微信被唤醒后执行分享流程（朋友、朋友圈、收藏等），然后回跳到 A。</li>
 <li>…</li>
-<li> 之后，所有换端操作都直接通过 Universal Link 进行，不再需要之前的二次回跳验证。</li>
+<li>之后，所有换端操作都直接通过 Universal Link 进行，不再需要之前的二次回跳验证。</li>
 </ol>
 <h1 id="Web-向原生-App-发起登录验证"><a href="#Web-向原生-App-发起登录验证" class="headerlink" title="Web 向原生 App 发起登录验证"></a>Web 向原生 App 发起登录验证</h1><p>web 页面在需要登陆的场景，可能需要跳转到 app 中完成登陆，然后回到到网页中。</p>
 <h2 id="处理流程"><a href="#处理流程" class="headerlink" title="处理流程"></a>处理流程</h2><ol>
 <li><p>唤起阶段:</p>
 <ul>
 <li>Web 页面 (url_a) 通过 Universal Link 或 URL Scheme 唤起 App</li>
-<li> 携带必要的身份标识参数</li>
+<li>携带必要的身份标识参数</li>
 </ul>
 </li>
 <li><p>登录处理:</p>
 <ul>
-<li><p>方案一：服务端传递 Token</p>
+<li><p>方案一: 服务端传递 Token</p>
 <ul>
 <li>App 将 token 和身份标识发送至服务端</li>
-<li> App 通过 <code>openURL(url_a)</code> 在 Safari 中刷新网页（不会新开页面）</li>
+<li>App 通过 <code>openURL(url_a)</code> 在 Safari 中刷新网页（不会新开页面）</li>
 <li>Web 根据本地存储的标识参数，从服务器获取 Token。</li>
 </ul>
 </li>
-<li><p>方案二：换端传递 Token</p>
+<li><p>方案二: 换端传递 Token</p>
 <ul>
 <li>App 将 Token 拼接到 <code>url_b_{path}</code> 中，通过 openURL 唤醒。</li>
 <li>Safari 会新开页面，新的页面是登录成功后的落地页。</li>
@@ -450,6 +477,12 @@
   </footer>
 
   
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
   <div class="back-to-top" role="button" aria-label="Back to top">
     <i class="fa fa-arrow-up fa-lg"></i>
     <span>0%</span>
@@ -459,38 +492,12 @@
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
 </noscript>
-
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.umd.js" integrity="sha256-+2+qOqR8CKoHh/AsVR9k2qaDBKWjYNC2nozhYmv5j9k=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
-
-  
-
-
-
-  <script src="/js/third-party/fancybox.js"></script>
-
-
-
-  
-
-
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2024/app-wake/"}</script>
-  <script src="/js/third-party/quicklink.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"a9d02f1003c6691061411d7d143e7751"}</script>
-<script src="/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","body":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"a9d02f1003c6691061411d7d143e7751"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
-<script src="/js/third-party/comments/utterances.js"></script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
 
 </body>
 </html>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -14,12 +14,12 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.2","exturl":true,"sidebar":{"position":"left","width":142,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.27.0","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":142,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js" defer></script>
 
     <meta name="description" content="锁，是并发 &amp; 并行编程下的万能钥匙，也是最容易产生性能瓶颈的源头。在锁的前面有软硬件在协同铺路，在锁的后面还有数据结构和算法在帮忙黄袍加身。提前说明，本篇涵盖内容非常多，达到 4W 字。可分多餐多时间段食用，每个章节可独立阅读，问题不大。一定不要一口气阅读完，选章节阅读确认对自己有用，再细看不迟。内存相关的知识非常重要，需要很大篇幅和示例图来阐述。另一篇文章内存分段与分页对 CPU 和">
 <meta property="og:type" content="article">
@@ -66,16 +66,15 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061939659.png">
 <meta property="article:published_time" content="2022-03-10T15:37:11.000Z">
 <meta property="article:author" content="海驴">
-<meta property="article:tag" content="计算机原理">
-<meta property="article:tag" content="内存">
 <meta property="article:tag" content="C">
+<meta property="article:tag" content="内存">
+<meta property="article:tag" content="计算机原理">
 <meta property="article:tag" content="锁">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061912807.png">
 
 
 <link rel="canonical" href="https://www.yigegongjiang.com/2022/lock/">
-
 
 
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2022/lock/","path":"2022/lock/","title":"锁 - 共享数据安全指↑"}</script>
@@ -85,7 +84,7 @@
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CTEWJ02QX"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-8CTEWJ02QX","only_pageview":false,"measure_protocol_api_secret":null}</script>
-  <script src="/js/third-party/analytics/google-analytics.js"></script>
+  <script src="/js/third-party/analytics/google-analytics.js" defer></script>
 
 
 
@@ -93,6 +92,31 @@
 
 
 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/7.2.0/pangu.umd.js" integrity="sha256-JnmRRnJK7DC6RQJbAJb6AXOM9OmWzS6z8eYultk/48Y=" crossorigin="anonymous" defer></script>
+<script src="/js/comments.js" defer></script><script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/3.0.1/quicklink.umd.js" integrity="sha256-44BednzIpUeQJcY8qtLyarFu0UCCTbgmWOvaoehiFQQ=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2022/lock/"}</script>
+  <script src="/js/third-party/quicklink.js" defer></script>
 
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
@@ -290,7 +314,7 @@
 <h4 id="非原子操作-并发"><a href="#非原子操作-并发" class="headerlink" title="非原子操作 - 并发"></a>非原子操作 - 并发</h4><p>就是大家都知道的，我们写的代码如果在多线程场景下，如果有共享数据，那么共享数据会不安全，会产生数据紊乱。</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> flag = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">threads</span><span class="params">(<span class="type">void</span>)</span> </span>{</span><br><span class="line">  flag++;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
-<p>上面代码，flag 是共享数据，threads 被并发执行。当 threads 函数被 1000 个线程并发执行的时候，最后 flag 的值 &lt; 1000，极小概率 = 1000。因为 <code>flag++</code> 需要最少三条指令才能运行完毕，分别是读内存、寄存器赋值、写内存。这里就会出现 a 线程执行了读内存指令后，时间片切到了 b 线程，b 线程完成了读、赋值、写指令，又切回到 a 线程，a 继续完成赋值和写指令。因为 a、b 读到的内存值是一样的，最后写入的也就是一样的，所以 flag 相当于少了一次 + 1 操作。时间片轮转对于指令执行流程来说是随机的，所以 a 和 b 的三个指令完全有可能任意交叉执行。详见下表：<br><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061913921.png" width="50%"></p>
+<p>上面代码，flag 是共享数据，threads 被并发执行。当 threads 函数被 1000 个线程并发执行的时候，最后 flag 的值 &lt; 1000，极小概率 = 1000。因为<code>flag++</code>需要最少三条指令才能运行完毕，分别是读内存、寄存器赋值、写内存。这里就会出现 a 线程执行了读内存指令后，时间片切到了 b 线程，b 线程完成了读、赋值、写指令，又切回到 a 线程，a 继续完成赋值和写指令。因为 a、b 读到的内存值是一样的，最后写入的也就是一样的，所以 flag 相当于少了一次 + 1 操作。时间片轮转对于指令执行流程来说是随机的，所以 a 和 b 的三个指令完全有可能任意交叉执行。详见下表：<br><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061913921.png" width="50%"></p>
 <h4 id="非原子操作-中断"><a href="#非原子操作-中断" class="headerlink" title="非原子操作 - 中断"></a>非原子操作 - 中断</h4><p>上面也说到，并发是根据晶振中断实现的。除了晶振中断，还有其他的软硬件中断会改变 CPU 的执行流程。如果改写了中断向量表的中断指向或者我们在监控到中断到来时执行特定函数，一样会遇到和上面的并发一样的数据安全问题，代码如下：</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> flag = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">interrupt_run</span><span class="params">()</span> </span>{</span><br><span class="line">  flag++;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">thread_run</span><span class="params">(<span class="type">void</span>)</span> </span>{</span><br><span class="line">  flag++;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
@@ -301,32 +325,32 @@
 <h4 id="原子操作-并发-中断"><a href="#原子操作-并发-中断" class="headerlink" title="原子操作 - 并发 &amp; 中断"></a>原子操作 - 并发 &amp; 中断</h4><p>对于原子操作，即执行周期内不会被打断的指令。该指令可能需要多个时钟周期才能运行完毕，因为有取址、译码、执行一套动作，最少也需要 1 个时钟周期，全过程称为执行周期。在执行周期内，该指令一定有头有尾的被执行完毕，即要么不执行，要么全执行。<br>所以可以猜想和非原子操作的不同，因为没有产生执行中断，那么共享数据或许是安全的。下面举几个特别的原子操作来说明共享数据的安全性。</p>
 <h5 id="内存原子操作"><a href="#内存原子操作" class="headerlink" title="内存原子操作"></a>内存原子操作</h5><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 内存原子操作指令。</span></span><br><span class="line">mov *lock, <span class="number">0</span>; <span class="comment">// 初始化</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">threads</span><span class="params">(<span class="type">void</span>)</span> </span>{</span><br><span class="line">  addl &amp;lock, <span class="number">1</span>;<span class="comment">// lock 内存地址值 + 1</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
-<p>上面代码中，lock 初始值为 0，完成了上面 <code>flag++</code> 同样的工作。threads 不管在并发场景还是中断场景，lock 内存地址里面的值都是安全的。即 1000 个线程并发执行完成后，lock 值一定是 1000。</p>
-<p>addl 内部是需要多个操作完成的，首先，需要取 lock 内存地址里面的值到中间寄存器 ax，然后，需要将 ax 寄存器中的值加 1，最后，再将 ax 寄存器中的值写入 lock 内存地址中，所以 addl 和上面高级语言中的 <code>flag++</code> 是一样的内存操作流程。上面的 <code>flag++</code> 大家已经知道不是数据安全的，因为他的执行流程会因为时间片轮转的原因被打断导致共享数据被其他任务修改，那么 addl 在时间片轮转下如何表现呢？<br>比如 addl 已经取了 lock 内存地址里面的值，还没进行 ax 寄存器加 1 操作，这个时候有没有可能因为时间片轮转导致 <code>*lock = 100;</code> 这个其他任务里面的命令被执行呢？不会的，因为 addl 是原子操作，addl 没有执行完，时间片轮转不会发生，这个时候共享数据不会被其他任务更改。</p>
+<p>上面代码中，lock 初始值为 0，完成了上面<code>flag++</code>同样的工作。threads 不管在并发场景还是中断场景，lock 内存地址里面的值都是安全的。即 1000 个线程并发执行完成后，lock 值一定是 1000。</p>
+<p>addl 内部是需要多个操作完成的，首先，需要取 lock 内存地址里面的值到中间寄存器 ax，然后，需要将 ax 寄存器中的值加 1，最后，再将 ax 寄存器中的值写入 lock 内存地址中，所以 addl 和上面高级语言中的<code>flag++</code>是一样的内存操作流程。上面的<code>flag++</code>大家已经知道不是数据安全的，因为他的执行流程会因为时间片轮转的原因被打断导致共享数据被其他任务修改，那么 addl 在时间片轮转下如何表现呢？<br>比如 addl 已经取了 lock 内存地址里面的值，还没进行 ax 寄存器加 1 操作，这个时候有没有可能因为时间片轮转导致<code>*lock = 100;</code>这个其他任务里面的命令被执行呢？不会的，因为 addl 是原子操作，addl 没有执行完，时间片轮转不会发生，这个时候共享数据不会被其他任务更改。</p>
 <img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061915154.png" width="50%">
 
-<p>通过上面的分析，即使 addl 指令需要很多个时钟周期才能完成一次寄存器和内存数据的交换操作，和 <code>flag++</code> 有一样的内存操作流程，但 lock 是共享数据安全的。即内存原子操作，在并发 / 中断场景下，共享数据是安全的。</p>
+<p>通过上面的分析，即使 addl 指令需要很多个时钟周期才能完成一次寄存器和内存数据的交换操作，和<code>flag++</code>有一样的内存操作流程，但 lock 是共享数据安全的。即内存原子操作，在并发 / 中断场景下，共享数据是安全的。</p>
 <h5 id="寄存器原子操作"><a href="#寄存器原子操作" class="headerlink" title="寄存器原子操作"></a>寄存器原子操作</h5><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 寄存器原子操作指令。</span></span><br><span class="line">mov ax, <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">threads</span><span class="params">(<span class="type">void</span>)</span> </span>{</span><br><span class="line">  add ax, <span class="number">1</span>;</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 
-<p>因为我们这里讨论的是共享数据安全问题，这种问题一般都不出现在寄存器中，而是出现在高速缓存或者内存中。比如前面的 <code>flag++</code> 和 <code>addl &amp;lock, 1</code> 以及后面要说的 <code>xchg</code> 和 <code>cmpxchg</code> 这些，指令中都可以操作内存地址。但是这里还是提一下，对于示例中 ax 寄存器的原子操作，没法说安全不安全，因为寄存器不能当作一个共享变量来看待，即 <code>add ax, 0;</code> 这里的 ax，根本不可能是两个线程里面的共享寄存器。所以上面的示例代码其实是不存在的。并发场景下，从 a 线程切到 b 线程，会对 a 线程里面的 ax 寄存器值保存到内存，然后到 b 线程重新配置使用 ax 寄存器。后面回到 a 线程后，ax 寄存器会从 内存中重新拿到上一次保存到值。所以在并发场景下，ax 寄存器是独立存在的，不存在数据共享问题。</p>
+<p>因为我们这里讨论的是共享数据安全问题，这种问题一般都不出现在寄存器中，而是出现在高速缓存或者内存中。比如前面的<code>flag++</code>和<code>addl &amp;lock, 1</code>以及后面要说的<code>xchg</code>和<code>cmpxchg</code>这些，指令中都可以操作内存地址。但是这里还是提一下，对于示例中 ax 寄存器的原子操作，没法说安全不安全，因为寄存器不能当作一个共享变量来看待，即<code>add ax, 0;</code>这里的 ax，根本不可能是两个线程里面的共享寄存器。所以上面的示例代码其实是不存在的。并发场景下，从 a 线程切到 b 线程，会对 a 线程里面的 ax 寄存器值保存到内存，然后到 b 线程重新配置使用 ax 寄存器。后面回到 a 线程后，ax 寄存器会从 内存中重新拿到上一次保存到值。所以在并发场景下，ax 寄存器是独立存在的，不存在数据共享问题。</p>
 <img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061916516.png" width="50%">
 
 <h5 id="xchg-原子操作"><a href="#xchg-原子操作" class="headerlink" title="xchg 原子操作"></a>xchg 原子操作</h5><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// xchg 内存交换指令</span></span><br><span class="line"></span><br><span class="line">*lock = <span class="number">0</span>;</span><br><span class="line">mov ax, <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">threads</span><span class="params">(<span class="type">void</span>)</span> </span>{</span><br><span class="line">  xchg ax, &amp;lock;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <p>上面代码中，xchg 是 x86 提供的内存交换指令，即将一个寄存器值和一个内存地址中的值进行原子操作交换。比如上面例子，lock 内存地址默认值为 0，ax 寄存器默认值为 1。在 threads 执行一次后，lock 内存地址中的值会变成 1，ax 寄存器中值会变成 0。再执行一次，则因为 ax 寄存器中值为 0，所以再次互换后，就回到了初始的默认状态，即 lock 为 0，ax 为 1。</p>
 <p>可以得到一个规律，执行奇数次 “并发 / 中断” 操作，则 lock 内存地址值为 1，ax 寄存器值为 0。执行偶数次 “并发 / 中断” 操作，则 lock 内存地址值为 0，ax 寄存器值为 1。这个时候，不管我们怎么执行，只要控制住次数，那么结果就是确定的。我们可以以此理解 xchg 原子操作在并发 / 中断场景下是安全的，但不准确，xchg 原子操作的安全，就和上面的内存原子操作是安全的一样。</p>
-<p>xchg 和上面的 <code>addl &amp;lock, 1;</code> 指令相比，xchg 内部只是多了一个 ax 寄存器，其他都是一样的。首先，需要取 lock 内存地址里面的值到中间寄存器 bx，然后，需要将 ax 寄存器中的值写入 lock 内存地址，最后，再将 bx 寄存器中的值写入 ax 寄存器中。所以可以和内存原子操作一样理解。</p>
+<p>xchg 和上面的<code>addl &amp;lock, 1;</code>指令相比，xchg 内部只是多了一个 ax 寄存器，其他都是一样的。首先，需要取 lock 内存地址里面的值到中间寄存器 bx，然后，需要将 ax 寄存器中的值写入 lock 内存地址，最后，再将 bx 寄存器中的值写入 ax 寄存器中。所以可以和内存原子操作一样理解。</p>
 <img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061917699.png" width="50%">
 
 <p>xchg 原子操作很重要，是<strong>自旋锁</strong>的底层实现。下面锁的篇章会再次说到。</p>
 <h5 id="cmpxchg-原子操作"><a href="#cmpxchg-原子操作" class="headerlink" title="cmpxchg 原子操作"></a>cmpxchg 原子操作</h5><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// cmpxchg 比较交换指令</span></span><br><span class="line"></span><br><span class="line">*lock = <span class="number">0</span>;<span class="comment">// 或者初始化为 1，代表 cmpxchg 指令的首操作数</span></span><br><span class="line">mov ax, <span class="number">1</span>;<span class="comment">// 代表 cmpxchg 指令的比较值</span></span><br><span class="line">mov bx, <span class="number">0</span>; <span class="comment">// 或者初始化为 1，代表 cmpxchg 指令的首操作数</span></span><br><span class="line">mov cx, <span class="number">2</span>;<span class="comment">// 代表 cmpxchg 指令的源操作数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">threads</span><span class="params">(<span class="type">void</span>)</span> </span>{</span><br><span class="line">  cmpxchg &amp;lock, cx;</span><br><span class="line">  <span class="comment">// 或 cmpxchg bx, cx;</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <p>上面代码中，cmpxchg 是 x86 提供的比较交换指令，共需要 2 个寄存器和 1 个寄存器或者内存地址。<br>首先需要有一个用于比较的值，这个值需要在寄存器中，上面我们用 ax 存储。<br>还需要一个 “首操作数”，即 cmpxchg 指令后面的第一个操作数，这个操作数可以是寄存器或者内存地址，上面我们用 bx 或者 &amp;lock 表示。<br>最后还需要 “源操作数”，即  cmpxchg 指令后面的第二个操作数，这个操作数需要在寄存器中，上面我们用 cx 存储。<br>cmpxchg 就是让比较值和首操作数比大小，如果相等，则首操作数赋值为源操作数。如果不想等，则比较值赋值为源操作数。</p>
-<p>我们分析 <code>cmpxchg &amp;lock, cx;&nbsp;</code>这种场景，因为 ax 为 1，lock 内存地址值为 0，两者不想等，所以 cmpxchg 指令执行完成后，lock 没有变化，ax 寄存器变成了 2。如果按照上面注释里面 lock 初始化为 1，则 ax 和 lock 内存地址值都是 1，两者想等，这个时候 lock 内存地址值会变成 2。</p>
+<p>我们分析<code>cmpxchg &amp;lock, cx;&nbsp;</code>这种场景，因为 ax 为 1，lock 内存地址值为 0，两者不想等，所以 cmpxchg 指令执行完成后，lock 没有变化，ax 寄存器变成了 2。如果按照上面注释里面 lock 初始化为 1，则 ax 和 lock 内存地址值都是 1，两者想等，这个时候 lock 内存地址值会变成 2。</p>
 <img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061917722.png" width="50%">
 
 <p>cmpxchg 也是数据安全的，和上面 xchg 的分析一样，即使 cmpxchg 的执行需要很多个时钟周期，包含内存写、寄存器读等多个操作，但是 cmpxchg 的执行流程不会被时间片轮转所打算，从开头到结尾一鼓作气执行完毕，也是数据安全的原子操作。</p>
-<p>cmpxchg 原子操作很重要，是 <strong>CAS 无锁</strong>的底层实现。下面锁的篇章会再次说到。</p>
+<p>cmpxchg 原子操作很重要，是<strong> CAS 无锁</strong>的底层实现。下面锁的篇章会再次说到。</p>
 <h4 id="原子操作阐述"><a href="#原子操作阐述" class="headerlink" title="原子操作阐述"></a>原子操作阐述</h4><p>当一个任务不会被时间片轮转后中途暂停执行，那么这个任务在单核场景下就是安全的。</p>
 <p>其实 CPU 提供的指令集基本都是原子操作的，比如读写内存的 “load xxx” 和 “store xxx”，这些指令在单核下都是安全的。如果我们都写汇编并且实际任务运算都可以通过原子操作完成，那么在单核分时机制下就不会有数据安全问题。但实际上，即使我们都写汇编，但我们真实执行的任务都不是原子操作可以完成的，即我们需要解决的任务需要 N 个原子操作配合才能够完成。只要 &gt;= 2 个原子操作配合的任务流，都有可能在时间片轮转的情况下被中断执行，中断过程中共享数据就有可能被其他任务修改，不在数据安全。</p>
 <h3 id="多核-高速缓存场景数据安全问题（并行-时间片）"><a href="#多核-高速缓存场景数据安全问题（并行-时间片）" class="headerlink" title="多核-高速缓存场景数据安全问题（并行 &amp; 时间片）"></a>多核 - 高速缓存场景数据安全问题（并行 &amp; 时间片）</h3><p>在单核心的时候，硬件产生的共享数据安全问题就上面提到的时间片问题，因为并发和中断都会产生时间片轮转，所以可以把单核问题归于并发和中断两个方面。<br>在多核的时候，问题就一下子变复杂了，不仅仅单核时候的问题一个没少，甚至单核原子操作也不在安全，而且更增加了非常多难以解决的其他问题。多核的硬件问题，就源于两个场景：<strong>并行</strong> 和 <strong>高速缓存</strong>。</p>
@@ -343,7 +367,7 @@
 <img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061919945.png" width="50%">
 
 <p>这种打时间差插边球的操作会使得最终的数据不符合任务流程的预期，所以上面提到的 addl、xchg、cmpxchg 在多核下都不是数据安全的。</p>
-<h4 id="高速缓存"><a href="#高速缓存" class="headerlink" title="高速缓存"></a>高速缓存</h4><p>高速缓存对数据完整性简直就是摧枯拉朽的摧残。为了应对各个信息存储器件之间的速度不一致，高速缓存的存在是必要的。在 CPU 和内存之间加入高速缓存，通过对程序局部性原理的评估，可以有效增加缓存命中率，即 CPU 绝大部分时间都不用和内存打招呼，只要从高速缓存里面读取和写入相关数据即可。这可以极大的提高 CPU 的生产力。下面先分析一下单核时期的高速缓存以及它的重要意义。<br>高速缓存存在的意义是为了弥补各类存储器件之间速度的巨大差异性。如下图所示，容量越大，造价越低，速度越慢。<br>我们最常见的是网络资源，浏览器无时无刻不在使用网络资源，存储大小接近无限。其次常见的是本地磁盘，一般 250G-2T 的都有。常见的内存一般只有 1G-16G，容量远远小于本地磁盘。而容量更小的寄存器和 L1/L2/L3 高速缓存基本就见不到了，他们被封装在了芯片中。L3 能达到 32M，L2 能达到 256kb，L1 能达到 16kb，寄存器甚至只能有 1-8 个字节大小。</p>
+<h4 id="高速缓存"><a href="#高速缓存" class="headerlink" title="高速缓存"></a>高速缓存</h4><p>高速缓存对数据完整性简直就是摧枯拉朽的摧残。为了应对各个信息存储器件之间的速度不一致，高速缓存的存在是必要的。在 CPU 和内存之间加入高速缓存，通过对程序局部性原理的评估，可以有效增加缓存命中率，即 CPU 绝大部分时间都不用和内存打招呼，只要从高速缓存里面读取和写入相关数据即可。这可以极大的提高 CPU 的生产力。下面先分析一下单核时期的高速缓存以及它的重要意义。<br>高速缓存存在的意义是为了弥补各类存储器件之间速度的巨大差异性。如下图所示，容量越大，造价越低，速度越慢。<br>我们最常见的是网络资源，浏览器无时无刻不在使用网络资源，存储大小接近无限。其次常见的是本地磁盘，一般 250G - 2T 的都有。常见的内存一般只有 1G - 16G，容量远远小于本地磁盘。而容量更小的寄存器和 L1/L2/L3 高速缓存基本就见不到了，他们被封装在了芯片中。L3 能达到 32M，L2 能达到 256kb，L1 能达到 16kb，寄存器甚至只能有 1-8 个字节大小。</p>
 <img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061919584.png" width="50%">
 
 <p>CPU 由晶振驱动，晶振的周期越快，CPU 跑的也就越快。虽然因为散热问题，CPU 的速度近十年没有提升了，但依旧达到了 4GHZ，大约每秒可以跑 40 亿次时钟周期，如果是简单指令，每秒可以执行 40 亿次。但是内存的速度在 50-100ns 之间，即每秒最多只有 2 千万次读取，这之间的速度鸿沟就使得 CPU 一直处于空等状态。所以银弹就是<strong>高速缓存</strong>，没有中间层解决不了的事情，基于时间和空间局部性原理，只要缓存的命中率达到预期，那么 CPU 就可以不和内存打交道，转而和高速缓存进行通信。目前高速缓存的命中率能达到 90%，可以说极大的提高了生产力。</p>
@@ -390,7 +414,7 @@
 <h4 id="冒险-数据"><a href="#冒险-数据" class="headerlink" title="冒险-数据"></a>冒险 - 数据</h4><p>数据冒险就是数据依赖问题，如下：</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 场景1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">  <span class="type">int</span> a = <span class="number">1</span>;<span class="comment">// 指令1</span></span><br><span class="line">  <span class="type">int</span> b = <span class="number">2</span>;<span class="comment">// 指令2</span></span><br><span class="line">  a = a + <span class="number">2</span>;<span class="comment">// 指令3</span></span><br><span class="line">  b = a + <span class="number">3</span>;<span class="comment">// 指令4</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// 场景2</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">  <span class="type">int</span> a = <span class="number">1</span>;<span class="comment">// 指令1</span></span><br><span class="line">  a = <span class="number">2</span>;<span class="comment">// 指令2</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// 场景3</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> a = <span class="number">10</span> + <span class="number">5</span>; <span class="comment">// 指令1</span></span><br><span class="line"><span class="type">int</span> b = a * <span class="number">2</span>; <span class="comment">// 指令2</span></span><br><span class="line"><span class="type">float</span> c = b * <span class="number">1.0f</span>; <span class="comment">// 指令3</span></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 
-<p>前面我们说了，乱序也有一个乱的保障，即保障单线程场景下的数据准确性。<br>所以场景 1 中，指令 3/4 必须等待指令 1 写入完成。场景 2 中，指令 2 必须等待指令 1 写入完成。场景 3 中，指令 3 依赖指令 2，指令 2 又依赖 指令 1。<br>前面说了多级流水线，上一个指令取指完毕，下一个指令就开始取值了。很有可能会出现有一个指令的 ALU 执行完毕，还没有写入高速缓存或者内存，下一个指令的 ALU 就已经开始执行了。这个时候就会出现上面的依赖问题，比如场景 1，如果指令 1 的高速缓存操作还没有完成，即高速缓存里面 a 还是 0，还不是 1，这个时候指令 3 开始进行 ALU 运算了，那么拿到的 a 就是 0，计算结果就是 a = 2。这显然不符合单线程场景下的数据准确性了。<br>为了解决这个问题，就提出了插入无效指令即 NOP 停顿的解决方案，如下图所示：</p>
+<p>前面我们说了，乱序也有一个乱的保障，即保障单线程场景下的数据准确性。<br>所以场景 1 中，指令 3 / 4 必须等待指令 1 写入完成。场景 2 中，指令 2 必须等待指令 1 写入完成。场景 3 中，指令 3 依赖指令 2，指令 2 又依赖 指令 1。<br>前面说了多级流水线，上一个指令取指完毕，下一个指令就开始取值了。很有可能会出现有一个指令的 ALU 执行完毕，还没有写入高速缓存或者内存，下一个指令的 ALU 就已经开始执行了。这个时候就会出现上面的依赖问题，比如场景 1，如果指令 1 的高速缓存操作还没有完成，即高速缓存里面 a 还是 0，还不是 1，这个时候指令 3 开始进行 ALU 运算了，那么拿到的 a 就是 0，计算结果就是 a = 2。这显然不符合单线程场景下的数据准确性了。<br>为了解决这个问题，就提出了插入无效指令即 NOP 停顿的解决方案，如下图所示：</p>
 <img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061927347.png" width="50%">
 
 <p>可以看到，就是单纯的让该指令的某个阶段无操作，空等。等上一个指令的某个操作必须完成，才开始继续执行。比如刚才说的场景 1，指令 3 就是要等到指令 1 的写高速缓存执行完成后，才能继续执行，否则就会出错。<br>其实上面说到的结构冒险，虽然 L1 高速缓存解决了内存同时读取的问题，但是如果同时写回到主内存，也一样会冲突。在上面高速缓存的图解里，大家可以看到 L3 高速缓存的数据可以写入主内存。如果两个指令要同时执行这个操作，还是会冲突。解决方案也和这里一样，把某个指令加入一个 NOP 停顿，空等上一个指令写入完毕，下一个指令再写入。</p>
@@ -418,7 +442,7 @@
 <p>CPU 乱序不会导致有序性，真正的 “有序性” 是下文中要说的编译器和解释器导致的。</p>
 <h4 id="冒险-控制"><a href="#冒险-控制" class="headerlink" title="冒险-控制"></a>冒险 - 控制</h4><p>和本文主题无关，不说了。</p>
 <h4 id="预测-静态分支预测-动态分支预测"><a href="#预测-静态分支预测-动态分支预测" class="headerlink" title="预测-静态分支预测 &amp; 动态分支预测"></a>预测 - 静态分支预测 &amp; 动态分支预测</h4><p>和本文主题无关，不说了。</p>
-<h2 id="数据安全产生的编译器-解释器原因"><a href="#数据安全产生的编译器-解释器原因" class="headerlink" title="数据安全产生的编译器 &amp; 解释器原因"></a>数据安全产生的编译器 &amp; 解释器原因</h2><p>有序性指的是程序按照代码的先后顺序执行。编译器为了优化性能，有时候会改变程序中语句的先后顺序，例如程序中：“a=1；b=2；” 编译器优化后可能变成 “b=2；a=1；”，在这个例子中，编译器调整了语句的顺序，但是不影响单线程程序的最终结果。但是在多线程情况下，就会有问题了。</p>
+<h2 id="数据安全产生的编译器-解释器原因"><a href="#数据安全产生的编译器-解释器原因" class="headerlink" title="数据安全产生的编译器 &amp; 解释器原因"></a>数据安全产生的编译器 &amp; 解释器原因</h2><p>有序性指的是程序按照代码的先后顺序执行。编译器为了优化性能，有时候会改变程序中语句的先后顺序，例如程序中：“a = 1；b = 2；” 编译器优化后可能变成 “b = 2；a = 1；”，在这个例子中，编译器调整了语句的顺序，但是不影响单线程程序的最终结果。但是在多线程情况下，就会有问题了。</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 文本代码</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> a = <span class="number">0</span>;</span><br><span class="line"><span class="type">int</span> b = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">thread1</span><span class="params">()</span> </span>{</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  b = <span class="number">2</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">thread2</span><span class="params">()</span> </span>{</span><br><span class="line">  <span class="keyword">while</span>(b=<span class="number">2</span>) <span class="keyword">continue</span>;</span><br><span class="line">  <span class="built_in">asset</span>(a=<span class="number">1</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <p>上面代码如果在单核多线程中，按照预期，thread2 的 asset 一定能够通过。但是偏偏编译器或者解释器在处理的时候，因为种种原因将 thread1 修改成了下面这样：</p>
@@ -427,11 +451,11 @@
 <h2 id="共享数据不一致原因总结"><a href="#共享数据不一致原因总结" class="headerlink" title="共享数据不一致原因总结"></a>共享数据不一致原因总结</h2><p>上面分别通过单核讨论了<strong>原子性</strong>、多核讨论了<strong>可见性</strong>、编译器 / 解释器优化讨论了<strong>有序性</strong>三个重要的问题，其实这就是共享数据安全的三大核心。<br>这三个原因都会导致共享数据不再安全，使得我们写的代码稍不注意就会有错误风险。<br>如果要解决共享数据安全问题，就可以从这三个方面找切入点。而且这三个核心因素之间还有一层间接的联系，即三大核心的包含关系。</p>
 <img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061932504.png" width="50%">
 
-<p>为什么有包含关系，后面会再说。数据安全的处理方式随着范围的增加，效率也递减。所以数据安全处理第一步，就是不要跨范围处理，即能通过有序性解决，则不要通过可见性 / 原子性解决。能通过可见性解决，也不要通过原子性解决。<br>但是一般事与愿违，基本开发人员都是<strong>锁走天下</strong>，通过汇编或者不常用的描述符解决可见性、原子性等情况，还不利于团队协同。<br>但有些语言对这些汇编做了一层高级语言对封装，如 volatile，C/CPP 和 Java 都有不同程度的包装，如果遇到了非原子性问题，那么我们可以通过 volatile 来方便的解决可见性或者有序性问题。在下面的解决方案一趴也会说到。</p>
+<p>为什么有包含关系，后面会再说。数据安全的处理方式随着范围的增加，效率也递减。所以数据安全处理第一步，就是不要跨范围处理，即能通过有序性解决，则不要通过可见性 / 原子性解决。能通过可见性解决，也不要通过原子性解决。<br>但是一般事与愿违，基本开发人员都是<strong>锁走天下</strong>，通过汇编或者不常用的描述符解决可见性、原子性等情况，还不利于团队协同。<br>但有些语言对这些汇编做了一层高级语言对封装，如 volatile，C / CPP 和 Java 都有不同程度的包装，如果遇到了非原子性问题，那么我们可以通过 volatile 来方便的解决可见性或者有序性问题。在下面的解决方案一趴也会说到。</p>
 <h2 id="数据安全阶梯式解决方案"><a href="#数据安全阶梯式解决方案" class="headerlink" title="数据安全阶梯式解决方案"></a>数据安全阶梯式解决方案</h2><p>为什么是阶梯式解决方案呢，也就是上图中的包含关系。但是这个包含关系并不是它们之间真的有包含，而是他们的解决方案有包含。即如果要解决可见性问题，那么有序性问题就一定要先解决。如果要解决原子性问题，那么可见性也要先解决。所以就从最小范围的解决方案开始说起。</p>
-<h3 id="有序性解决方案"><a href="#有序性解决方案" class="headerlink" title="有序性解决方案"></a>有序性解决方案</h3><p>也没啥特效药。编译器或者解释器，都会提供一些前缀给开发人员。开发人员只要觉得一个问题能够单纯通过有序性来解决，那就可以这么做。<br>比如 C/CPP 中，可以通过下面禁用：</p>
+<h3 id="有序性解决方案"><a href="#有序性解决方案" class="headerlink" title="有序性解决方案"></a>有序性解决方案</h3><p>也没啥特效药。编译器或者解释器，都会提供一些前缀给开发人员。开发人员只要觉得一个问题能够单纯通过有序性来解决，那就可以这么做。<br>比如 C / CPP 中，可以通过下面禁用：</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">pragma</span> GCC push_options</span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> GCC optimize(<span class="string">"O0"</span>)</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span> </span>{</span><br><span class="line">}</span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> GCC pop_options</span></span><br></pre></td></tr></tbody></table></figure>
-<p>C/CPP 中还提供了 volatile 描述符，该描述符可以停止编译器优化，也可以直接用。Java 中也提供了 volatile，比 C 的 volatile 含义要丰富很多，也可以停止编译器优化。</p>
+<p>C / CPP 中还提供了 volatile 描述符，该描述符可以停止编译器优化，也可以直接用。Java 中也提供了 volatile，比 C 的 volatile 含义要丰富很多，也可以停止编译器优化。</p>
 <h3 id="可见性解决方案"><a href="#可见性解决方案" class="headerlink" title="可见性解决方案"></a>可见性解决方案</h3><p>这一趴真是一个大工程。共享数据安全性很难弄清楚，就是因为前置知识细节太多了，而且很多细节还是硬件基础性的。<br>在多核那一趴，说到了可见性，也没过多描述，当时看图解的执行流程，就能知道数据不安全了。</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 高速缓存导致的内存不可见</span></span><br><span class="line"></span><br><span class="line">mov &amp;lock, <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// CPU0</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">core0</span><span class="params">()</span> </span>{</span><br><span class="line">    mov &amp;lock, <span class="number">1</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// CPU1</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">core1</span><span class="params">()</span> </span>{</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">"the flag is %d"</span>, *lock);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>描述不多，实则问题就越大。为了解决可见性问题，硬件和高级语言都引出了各自的内存模型，这可真是一个大工程。</p>
@@ -441,9 +465,9 @@
 <p>如上图所示，这就是 “写传播” 方案。方案名词如下：</p>
 <ol>
 <li>PrRd：Processor request read action，处理器发起读请求，向高速缓存读数据</li>
-<li> PrWr：Processor request write action，处理器发起写请求，向高速缓存写数据</li>
-<li> BusWr：总线的写通知。如果一个高速缓存有写操作，可以产生 BusWr 事件，其他核心会收到 BusWr 事件并作相应处理</li>
-<li> Valid：状态机里面的准确态。即一个高速缓存的缓存块数据，是和主内存一致的。这个时候读高速缓存的数据，等同于读主内存。</li>
+<li>PrWr：Processor request write action，处理器发起写请求，向高速缓存写数据</li>
+<li>BusWr：总线的写通知。如果一个高速缓存有写操作，可以产生 BusWr 事件，其他核心会收到 BusWr 事件并作相应处理</li>
+<li>Valid：状态机里面的准确态。即一个高速缓存的缓存块数据，是和主内存一致的。这个时候读高速缓存的数据，等同于读主内存。</li>
 <li>Invalid：状态机里面的实效态。即一个高速缓存的缓存块数据，是和主内存不一致的。这个时候不能读高速缓存数据，因为不准确。<br>这个方案有下面几个约束条件：</li>
 <li>所有缓存写操作直接 写到 主内存，即 “写直达” 策略</li>
 <li>缓存操作是否 读 主内存根据当前状态是否失效判断<br>上面图示中的 a、b、c、d、e 5 个状态就是缓存块的所有生命周期。状态有 2 个，外部事件有 3 个，本来应该有 6 种情况。上图中少的一种就是 I 状态下收到 BusWr 事件。这个状态下无需处理，因为当前状态是失效状态，需要 PrRd 的时候会触发 d 生命周期，直接读取主内存，所以这个时候完全不需要触发啥动作，前 5 个状态已经能够保障数据安全了。对应上面代码的流程描述如图：</li>
@@ -507,11 +531,11 @@
 <p>上面示例中，write_barrier 读屏障就是将 store buffer 立刻全部写入，写完成后才能继续后面的操作。而 read_barrier 写屏障就是将 Invalid queue 全部执行，执行完成后才能继续后面的操作。full_barrier 就是全屏障了。<br>有了上面的屏障，大家就可以发现，屏障就是使得 MESI 的优化失效，达到 MESI 未优化的状态。这个未优化状态我们前面说过，是共享数据安全的。但是会牺牲性能<br>这个内存读写屏障呢，就是硬件工程师手把手教会软件工程师的，然后往后的岁月里，软件工程师都得不断的注意要不要写屏障，哪里写屏障，写什么类型的屏障。硬件工程师教会了后，就不管了。。。<br>大家不要觉得夸张，现在所有的语言中，都离不开内存屏障。因为这是硬件层面的共享数据不安全，而语言需要适应多核处理器以需求更快的性能，所以没有一个能避开内存屏障。</p>
 <p>但是我们其实很少写内存屏障的。就是上面说的，MESI 已经非常复杂了，如果还要让所有开发人员理解这套硬件知识来写屏障，那门槛太高了。屏障一般都通过语义化的形式在高级语言中实现了，比如 C/CPP/Java 里面的 volatile。我们只要理解并使用 volatile 的内存语义，即使不理解上面的 MESI 模型，也能写出具有可见性和有序性的代码。</p>
 <p>大家注意上一句的结尾，只要使用 volatile，就可以解决可见性和有序性。前一趴在说有序性解决方案的时候，也提到了 volatile。其实这就是高级语言的好处，全包了。</p>
-<h4 id="高级语言递出的可见性解决方案"><a href="#高级语言递出的可见性解决方案" class="headerlink" title="高级语言递出的可见性解决方案"></a>高级语言递出的可见性解决方案</h4><p>volatile 在 C/Cpp 和 Java 中分别代表那些含义<br>loadLoad /loadStore/storeStore /storeLoad 并不真实存在，只是 JVM 的一个概念。针对不同硬件架构，会有不同的指令集实现。</p>
+<h4 id="高级语言递出的可见性解决方案"><a href="#高级语言递出的可见性解决方案" class="headerlink" title="高级语言递出的可见性解决方案"></a>高级语言递出的可见性解决方案</h4><p>volatile 在 C / Cpp 和 Java 中分别代表那些含义<br>loadLoad / loadStore / storeStore / storeLoad 并不真实存在，只是 JVM 的一个概念。针对不同硬件架构，会有不同的指令集实现。</p>
 <p>在物理原因那一趴，我们说明了高速缓存的不可或缺的重要性。在可见性这一趴，我们尝试通过 MESI 解决高速缓存带来的可见性问题。MESI 虽然能解决，但是性能遇到威胁，硬件上只能开启 MESI 的 Store Buffer 和 Invalid queue 优化。优化过后呢，可见性被延迟了，而且带来了严重的顺序一致性问题。引入内存屏障之后呢，将部分代码强制关闭优化，使的 MESI 仍旧可以解决可见性问题。<br>但是显而易见，内存屏障是关闭 MESI 优化，即内存屏障是有损耗的。我们只应该在需要的地方加，即共享数据不安全的地方加，如果哪里都加，那么就使得 MESI 性能遇到威胁。</p>
-<p>这一大趴是数据安全的阶梯式解决方案，前面也说过，有序性、可见性、原子性是递进的包含关系。其实这里引入内存屏障后，编译器或者解释器就会默认关闭优化，即不会出现有序性问题了。比如上面的例子，可见性上我们用内存屏障做了那么多努力，结果编译器就是把 b=1 编译到了 a=1 的前面，那么我们用内存屏障解决什么问题呢？什么都解决不了了。<br>所以可见性的解决方案 - 内存屏障，默认已经解决了有序性问题，编译器或者解释器帮我们做了这一步。</p>
+<p>这一大趴是数据安全的阶梯式解决方案，前面也说过，有序性、可见性、原子性是递进的包含关系。其实这里引入内存屏障后，编译器或者解释器就会默认关闭优化，即不会出现有序性问题了。比如上面的例子，可见性上我们用内存屏障做了那么多努力，结果编译器就是把 b = 1 编译到了 a = 1 的前面，那么我们用内存屏障解决什么问题呢？什么都解决不了了。<br>所以可见性的解决方案 - 内存屏障，默认已经解决了有序性问题，编译器或者解释器帮我们做了这一步。</p>
 <p>volatile 可以解决有序性问题，即告知编译器不要优化，同时也会加读写屏障，保障可见性问题。</p>
-<p>volatile 在 C/CPP 和 Java 中语义不同。因为两门语言对于各自的内存模型有不同的定义。<br>在 C/CPP 中，volatile 就是刚才说的，比较直接，就是告知编译器不要优化，同时对修饰的变量或者函数增加读写屏障。如下，注释做了说明：</p>
+<p>volatile 在 C / CPP 和 Java 中语义不同。因为两门语言对于各自的内存模型有不同的定义。<br>在 C / CPP 中，volatile 就是刚才说的，比较直接，就是告知编译器不要优化，同时对修饰的变量或者函数增加读写屏障。如下，注释做了说明：</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">s_ATOMIC</span> {    </span><br><span class="line">	<span class="comment">//在变量前加上volatile，</span></span><br><span class="line">	<span class="comment">// 1. 是为了禁止编译器优化</span></span><br><span class="line">	<span class="comment">// 2. 是在调用变量代码的前后增加屏障以清空 store buffer 和 invalid queue，使其每次获取的值都是和内存同步的</span></span><br><span class="line">	<span class="keyword">volatile</span> <span class="type">s32_t</span> a_count; </span><br><span class="line">}<span class="type">atomic_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//原子读</span></span><br><span class="line"><span class="function"><span class="type">static</span> <span class="keyword">inline</span> <span class="type">s32_t</span> <span class="title">atomic_read</span><span class="params">(<span class="type">const</span> <span class="type">atomic_t</span> *v)</span></span>{</span><br><span class="line">	<span class="comment">//x86平台取地址处是原子        </span></span><br><span class="line">	<span class="keyword">return</span> (*(<span class="keyword">volatile</span> <span class="type">u32_t</span>*)&amp;(v)-&gt;a_count);<span class="comment">// a_count 已经加了 volatile，本身是可见性安全的。这里再次加 volatile 是为了防止编译器对当前这一行做优化。</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <p>Java 中 volatile 更加复杂，JMM 的内存语义增加了 LoadLoad、LoadStore、StoreStore、StoreLoad 四种内存屏障。一开始我不理解，现在我也不完全理解，就把我理解的先阐释出来，希望八九不离十。<br>JMM 是定义了一套内存语义，但不是实现。即 JMM 是一套标准，但具体怎么实现，得看实现方。<br>JMM 中定义了一套 <strong>Happens-before</strong> 语义，该语义定义了一套准则，使得要想保证操作 B 可以看到操作 A 的结果，A 和 B 就必须满足 Happens-Before 关系。<br>那么现在的问题就是 JMM 的这套 Happens-before 语义如何在 JVM 中实现，JMM 是理念，JVM 才是落地的产品。<br>在 JVM 的实现手册中，<span class="exturl" data-url="aHR0cDovL2dlZS5jcy5vc3dlZ28uZWR1L2RsL2ptbS9jb29rYm9vay5odG1s">链接</span>，明确说明了刚才说到的四种 load 和 store 的组合关系，如下：</p>
@@ -525,14 +549,14 @@
 <h3 id="原子性解决方案"><a href="#原子性解决方案" class="headerlink" title="原子性解决方案"></a>原子性解决方案</h3><p><strong>终于要说到锁了，这里是分界岭。前面那么多内容都不是说锁，后面所有的内容基本都围绕锁转了。</strong><br>本来这篇文章就是说锁的，为什么前面要说那么多铺垫？就是因为需要锁的物理因素太多了。如果物理因素不明了，那么业务中的那么多锁，该怎么用？哪个锁性能更高或者更贴合业务？<br>而且，如果我们的多线程代码本身没有原子性问题，但数据就是产生了紊乱，这个原因也不好分析。只好在注释里面加一句：</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 下面的代码会多线程访问。我分析过，没有原子性问题。不知道怎么回事线上就数据紊乱了。</span></span><br><span class="line"><span class="comment">// 我加了锁，上线后看好了。我不知道它怎么好的，但锁解决了我的问题。</span></span><br><span class="line"><span class="type">void</span> threads {</span><br><span class="line">	<span class="built_in">lock</span>();</span><br><span class="line"> 	<span class="function">xxxxxx</span></span><br><span class="line"><span class="function">	<span class="title">unlock</span><span class="params">()</span></span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
-<h4 id="硬件层面支持指令原子性安全"><a href="#硬件层面支持指令原子性安全" class="headerlink" title="硬件层面支持指令原子性安全"></a>硬件层面支持指令原子性安全</h4><p>在单核的时候，我们提到的原子性指令都是安全的，但是在多核并行的时候，就不再安全了。在并行 - 原子操作那节，我们用 <code>cmpxchg</code> 做为示例说明了原子指令的不安全。<br>所以原子性解决方案里面，第一步就是如何把那些 CPU 的原子性指令变得安全。因为这些指令不安全，那到底是用不是不用呢？不用感觉可惜，他们是很强大的指令，用吧就不安全。所以这个问题必须要解决。</p>
+<h4 id="硬件层面支持指令原子性安全"><a href="#硬件层面支持指令原子性安全" class="headerlink" title="硬件层面支持指令原子性安全"></a>硬件层面支持指令原子性安全</h4><p>在单核的时候，我们提到的原子性指令都是安全的，但是在多核并行的时候，就不再安全了。在并行 - 原子操作那节，我们用<code>cmpxchg</code>做为示例说明了原子指令的不安全。<br>所以原子性解决方案里面，第一步就是如何把那些 CPU 的原子性指令变得安全。因为这些指令不安全，那到底是用不是不用呢？不用感觉可惜，他们是很强大的指令，用吧就不安全。所以这个问题必须要解决。</p>
 <p>解决原子性问题的方案有两种，一种是 Bus 总线锁，一种是高速缓存行锁。但具体使用那个锁，是由硬件决定的，我们要做的仅仅是加锁：</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// xchg 内存交换指令</span></span><br><span class="line"></span><br><span class="line">*lock = <span class="number">0</span>;</span><br><span class="line">mov ax, <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">threads</span><span class="params">(<span class="type">void</span>)</span> </span>{</span><br><span class="line">  __asm__ __volatile__  <span class="string">"lock; xchg ax, &amp;lock"</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>上面的 volatile 是为了防止编译器优化，为了防止有序性和可见性问题。lock 则是 xchg 的锁。<br>如果是总线锁，则 core0 开始执行 xchg 的时候，会将整个 bus 总线锁住，其他的任何总线操作都不允许执行。这样的性能开销非常大，所以出现了缓存锁。<br>缓存锁即对于 &amp;lock 的缓存行加锁。如果 core0 加了缓存锁，那么其他核在访问 &amp;lock 的时候，因为不同的高速缓存的 &amp;lock 缓存行均被锁住，所以其他核心无法执行。只有当 core0 的 xchg 指令执行完毕，解开了缓存锁，其他指令才会继续执行下去。<br>所以通过总线锁或者缓存锁，就可以使得 xchg 和 cmpxchg 这些原子指令在多核并行场景下也能够正常执行。</p>
 <p>其实还有一个中断问题，我们只要在 xchg 执行前关闭中断，在 xchg 执行完毕后打开中断，就可以解决。这个比较好解决，不在说明。</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 关闭中断</span></span><br><span class="line">__asm__ __volatile__(<span class="string">"cli"</span>: : :<span class="string">"memory"</span>);</span><br><span class="line"><span class="comment">// 打开中断</span></span><br><span class="line">__asm__ __volatile__(<span class="string">"sti"</span>: : :<span class="string">"memory"</span>);</span><br></pre></td></tr></tbody></table></figure>
 
-<h4 id="操作系统-高级语言支持任务原子性安全"><a href="#操作系统-高级语言支持任务原子性安全" class="headerlink" title="操作系统 &amp; 高级语言支持任务原子性安全"></a>操作系统 &amp; 高级语言支持任务原子性安全</h4><p>在说到 xchg 的时候，我们说到它是自旋锁的实现，而 cmpxchg 则是 CAS 无锁的实现。其实在硬件的上一层，根本无法解决原子性安全问题。因为问题出在硬件，软件再怎么解决，也解决不了。<br>上面说的指令原子性安全，是硬件提供了 lock 指令实现了多核并行安全。而文章开头写到的 <code>flag++</code> 任务是由多个指令组合而成，单纯从软件层面是无法使得这多个指令完成原子性操作的，因为硬件都无法保障。目前看，其实硬件层面实现的原子性安全操作也寥寥无几，就那么一些，比如原子增、原子减等。但就是这些个少有的原子性安全指令，被操作系统和高级语言玩出了花。</p>
+<h4 id="操作系统-高级语言支持任务原子性安全"><a href="#操作系统-高级语言支持任务原子性安全" class="headerlink" title="操作系统 &amp; 高级语言支持任务原子性安全"></a>操作系统 &amp; 高级语言支持任务原子性安全</h4><p>在说到 xchg 的时候，我们说到它是自旋锁的实现，而 cmpxchg 则是 CAS 无锁的实现。其实在硬件的上一层，根本无法解决原子性安全问题。因为问题出在硬件，软件再怎么解决，也解决不了。<br>上面说的指令原子性安全，是硬件提供了 lock 指令实现了多核并行安全。而文章开头写到的 <code>flag++</code>任务是由多个指令组合而成，单纯从软件层面是无法使得这多个指令完成原子性操作的，因为硬件都无法保障。目前看，其实硬件层面实现的原子性安全操作也寥寥无几，就那么一些，比如原子增、原子减等。但就是这些个少有的原子性安全指令，被操作系统和高级语言玩出了花。</p>
 <h5 id="自旋锁"><a href="#自旋锁" class="headerlink" title="自旋锁"></a>自旋锁</h5><p>自旋锁是其他锁的基石，基于内存交换指令的 CPU 原子性安全指令 lock; xchg 实现。xchg 和 lock 已经在 “单核 - xchg 原子操作” 和 “原子性解决方案 - 硬件支持” 两趴说明过了。下面看看自旋锁如何实现。<br>自旋锁的原理是首先读取锁变量，判断其值是否已经加锁，如果未加锁则执行加锁，然后返回，表示加锁成功；如果已经加锁了，就要返回第一步继续判断其值是否已经加锁不断循环，因而得名自旋锁。</p>
 <img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061939659.png" width="50%">
 
@@ -577,13 +601,14 @@
 <ol>
 <li>创建内存</li>
 <li>初始化内存（初始化变量等）</li>
-<li>给 uniqueSingleton  赋值创建内存的内存地址<br>但是因为有序性问题，前面的 2、3 有可能被颠倒，就会导致 A 线程给 uniqueSingleton 赋值了内存地址，但是还没初始化。这个时候 B 线程就会发现 uniqueSingleton 不为 null，那么在 B 正常使用 uniqueSingleton 的时候，就可能因为变量还未初始化导致 crash 等异常。<br>所以呢，volatile 来帮忙：<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">volatile</span> <span class="type">static</span> Singleton uniqueSingleton;</span><br></pre></td></tr></tbody></table></figure>
-将 uniqueSingleton 被 volatile 修饰后，就可以防止有序性问题，上面的 2 和 3 操作就不会颠倒了。<br>这样，“双重检测锁” 下的单例，就非常高效了。</li>
+<li>给 uniqueSingleton  赋值创建内存的内存地址<br>但是因为有序性问题，前面的 2、3 有可能被颠倒，就会导致 A 线程给 uniqueSingleton 赋值了内存地址，但是还没初始化。这个时候 B 线程就会发现 uniqueSingleton 不为 null，那么在 B 正常使用 uniqueSingleton 的时候，就可能因为变量还未初始化导致 crash 等异常。<br>所以呢，volatile 来帮忙：</li>
 </ol>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">volatile</span> <span class="type">static</span> Singleton uniqueSingleton;</span><br></pre></td></tr></tbody></table></figure>
+<p>将 uniqueSingleton 被 volatile 修饰后，就可以防止有序性问题，上面的 2 和 3 操作就不会颠倒了。<br>这样，“双重检测锁” 下的单例，就非常高效了。</p>
 <p>iOS 的单例比 Java 的好用一些：</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+ (id)sharedInstance {</span><br><span class="line">    <span class="type">static</span> TestClass *sharedInstance;</span><br><span class="line">    <span class="type">static</span> <span class="type">dispatch_once_t</span> onceToken; </span><br><span class="line">    <span class="built_in">dispatch_once</span>(&amp;onceToken, ^{</span><br><span class="line">        sharedInstance = [[self alloc] init];</span><br><span class="line">    });</span><br><span class="line">    <span class="keyword">return</span> sharedInstance;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
-<p><code>dispatch_once</code> 直接做到了 “双重检测锁” 级别，开发人员直接用就好了。锁、有序性，都已经默认处理好了。<br><code>dispatch_once</code> 不和 Java 一样使用的 synchronized 锁，而是使用了上面提到的无锁方案。使用了 <code>os_atomic_cmpxchg</code> 和 <code>os_atomic_xchg</code>，所以 iOS 的单例和 Java 有一点不同，就是等待队列。synchronized 是有等待队列的，所以没抢到锁的线程应该会睡眠等待。<code>dispatch_once</code> 使用的原子指令，好像是没有做等待队列，和自旋锁有点相似，没抢到锁的线程会不断的重试。当然，前面说自旋锁的时候也说过，这种方式是最高效的，就是有点费 CPU。所以 <code>dispatch_once</code> 里面不要做复杂操作。</p>
+<p><code>dispatch_once</code> 直接做到了 “双重检测锁” 级别，开发人员直接用就好了。锁、有序性，都已经默认处理好了。<br><code>dispatch_once</code>不和 Java 一样使用的 synchronized 锁，而是使用了上面提到的无锁方案。使用了 <code>os_atomic_cmpxchg</code>和<code>os_atomic_xchg</code>，所以 iOS 的单例和 Java 有一点不同，就是等待队列。synchronized 是有等待队列的，所以没抢到锁的线程应该会睡眠等待。<code>dispatch_once</code>使用的原子指令，好像是没有做等待队列，和自旋锁有点相似，没抢到锁的线程会不断的重试。当然，前面说自旋锁的时候也说过，这种方式是最高效的，就是有点费 CPU。所以 <code>dispatch_once</code>里面不要做复杂操作。</p>
 <h2 id="锁与数据结构的必要性"><a href="#锁与数据结构的必要性" class="headerlink" title="锁与数据结构的必要性"></a>锁与数据结构的必要性</h2><p>现实场景下，有序性和可见性都是顺带被解决的，大家都是用锁。因为锁在解决原子性的同时，都强制处理了加锁前和解锁后的有序性与可见性。所以锁是并发 &amp; 并行编程下的万能钥匙，但也很容易产生性能瓶颈。</p>
 <p>高级语言提供的锁的种类很多，选择一个业务场景大致需要的锁，然后搜一下这个锁的坑，基本上就可以避免很多意外了。把刚才的话再反过来说一下好加强记忆：要搜一下需要的锁有哪些坑，否则就会掉到很多坑里面。</p>
 <p>通过严格控制原子性的粒度，不需要加锁的任务不要放进锁里。还可以用不同的锁对受保护资源进行精细化管理，能够提升性能，叫细粒度锁。<br>毕竟锁的性能真的不高，单线程完全没办法享受到近十年时间的 CPU 快速迭代的红利。</p>
@@ -710,6 +735,12 @@
   </footer>
 
   
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
   <div class="back-to-top" role="button" aria-label="Back to top">
     <i class="fa fa-arrow-up fa-lg"></i>
     <span>0%</span>
@@ -719,38 +750,12 @@
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
 </noscript>
-
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.umd.js" integrity="sha256-+2+qOqR8CKoHh/AsVR9k2qaDBKWjYNC2nozhYmv5j9k=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
-
-  
-
-
-
-  <script src="/js/third-party/fancybox.js"></script>
-
-
-
-  
-
-
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2022/lock/"}</script>
-  <script src="/js/third-party/quicklink.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"f74858043ba26f9acf4999956e1899b6"}</script>
-<script src="/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","body":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"f74858043ba26f9acf4999956e1899b6"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
-<script src="/js/third-party/comments/utterances.js"></script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
 
 </body>
 </html>

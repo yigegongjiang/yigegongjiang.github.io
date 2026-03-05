@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -14,19 +14,19 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.2","exturl":true,"sidebar":{"position":"left","width":142,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.27.0","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":142,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="只要使用电子产品，每时每刻都在和字符打交道。目之所及的字符，在存储、显示、执行等环节都离不开编码的支持。但对于字符编码，也会有一些误区，比如：Unicode 和 UTF 是否都是编码、字节和编码的关系、āáǎà 的音标字符表达、内存字符编码 等等。 本文将循序渐进的，从 ASCII&#x2F; Unicode 介绍到 UTF8&#x2F;16&#x2F;32，以及文本二进制存储和 URL 编码 &#x2F; 多次编码等场景，最后解释内存">
+    <meta name="description" content="只要使用电子产品，每时每刻都在和字符打交道。目之所及的字符，在存储、显示、执行等环节都离不开编码的支持。但对于字符编码，也会有一些误区，比如：Unicode 和 UTF 是否都是编码、字节和编码的关系、āáǎà 的音标字符表达、内存字符编码 等等。 本文将循序渐进的，从 ASCII&#x2F; Unicode 介绍到 UTF8&#x2F;16&#x2F;32，以及文本二进制存储和 URL 编码&#x2F;多次编码等场景，最后解释内存中字">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机字符编码与内存编码 - Unicode、UTF8、String">
 <meta property="og:url" content="https://www.yigegongjiang.com/2023/unicode/index.html">
 <meta property="og:site_name" content="一个工匠">
-<meta property="og:description" content="只要使用电子产品，每时每刻都在和字符打交道。目之所及的字符，在存储、显示、执行等环节都离不开编码的支持。但对于字符编码，也会有一些误区，比如：Unicode 和 UTF 是否都是编码、字节和编码的关系、āáǎà 的音标字符表达、内存字符编码 等等。 本文将循序渐进的，从 ASCII&#x2F; Unicode 介绍到 UTF8&#x2F;16&#x2F;32，以及文本二进制存储和 URL 编码 &#x2F; 多次编码等场景，最后解释内存">
+<meta property="og:description" content="只要使用电子产品，每时每刻都在和字符打交道。目之所及的字符，在存储、显示、执行等环节都离不开编码的支持。但对于字符编码，也会有一些误区，比如：Unicode 和 UTF 是否都是编码、字节和编码的关系、āáǎà 的音标字符表达、内存字符编码 等等。 本文将循序渐进的，从 ASCII&#x2F; Unicode 介绍到 UTF8&#x2F;16&#x2F;32，以及文本二进制存储和 URL 编码&#x2F;多次编码等场景，最后解释内存中字">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202312241510727.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202312241530132.png">
@@ -41,7 +41,6 @@
 <link rel="canonical" href="https://www.yigegongjiang.com/2023/unicode/">
 
 
-
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2023/unicode/","path":"2023/unicode/","title":"计算机字符编码与内存编码 - Unicode、UTF8、String"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
@@ -49,7 +48,7 @@
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CTEWJ02QX"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-8CTEWJ02QX","only_pageview":false,"measure_protocol_api_secret":null}</script>
-  <script src="/js/third-party/analytics/google-analytics.js"></script>
+  <script src="/js/third-party/analytics/google-analytics.js" defer></script>
 
 
 
@@ -57,6 +56,31 @@
 
 
 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/7.2.0/pangu.umd.js" integrity="sha256-JnmRRnJK7DC6RQJbAJb6AXOM9OmWzS6z8eYultk/48Y=" crossorigin="anonymous" defer></script>
+<script src="/js/comments.js" defer></script><script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/3.0.1/quicklink.umd.js" integrity="sha256-44BednzIpUeQJcY8qtLyarFu0UCCTbgmWOvaoehiFQQ=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2023/unicode/"}</script>
+  <script src="/js/third-party/quicklink.js" defer></script>
 
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
@@ -240,7 +264,7 @@
     
     
     <div class="post-body" itemprop="articleBody"><p>只要使用电子产品，每时每刻都在和字符打交道。目之所及的字符，在存储、显示、执行等环节都离不开编码的支持。<br>但对于字符编码，也会有一些误区，比如：Unicode 和 UTF 是否都是编码、字节和编码的关系、āáǎà 的音标字符表达、内存字符编码 等等。</p>
-<p>本文将循序渐进的，从 ASCII/ Unicode 介绍到 UTF8/16/32，以及文本二进制存储和 URL 编码 / 多次编码等场景，最后解释内存中字符串的编码格式。<br>每个环节都通过二进制调试的方式给予实际的场景输出，争取一遍将编码吃透。</p>
+<p>本文将循序渐进的，从 ASCII/ Unicode 介绍到 UTF8/16/32，以及文本二进制存储和 URL 编码/多次编码等场景，最后解释内存中字符串的编码格式。<br>每个环节都通过二进制调试的方式给予实际的场景输出，争取一遍将编码吃透。</p>
 <span id="more"></span>
 
 <style>
@@ -273,7 +297,7 @@
 <h2 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h2><p>ASCII 是大学计算机教科书入门知识点，如果不联系上码位和 Unicode ，还是不好理解的。知道有这个东西在，但是怎么玩的却不是很清楚。<br>比如，C 语言是古老的伟大语言，印象中 C 语言教程都使用的 ASCII 字符，没有出现中文。那么 C 语言可以通过 printf 输出中文吗？</p>
 <p><strong>ASCII 和 Unicode 都是字符集，又称码表</strong>，字符集可以看做一个数组，里面的每个元素称为 <strong>码位 / 码点 /Code Point</strong>。<br>字符集是约定俗成的一套全世界都默认遵守的规则矩阵，这套规则矩阵里面的每个元素（码位），都<strong>表示一个特定的符号含义且不可改变</strong>。</p>
 <p>ASCII 并不是表示 0-9 或者 a-z 这些我们肉眼看到的符号。这些符号是对于人类友好的视觉表达。</p>
-<p>比如 <code>@</code> 字符，可以脑海里回忆一下，这些年是不是见过很多样式的 @ 符号。但这些不同的视觉表达并不是 ASCII。<br><code>@</code> 字母的 ASCII 码位是 <code>0x40 (64)</code>，这个才是 ASCII 的含义。即 ASCII 定义了 <code>0x40</code> 这个码位只能用来表达 <code>@</code> 这个字母的含义，不能表示 a/b 或其他。</p>
+<p>比如 <code>@</code> 字符，可以脑海里回忆一下，这些年是不是见过很多样式的 @ 符号。但这些不同的视觉表达并不是 ASCII。<br><code>@</code> 字母的 ASCII 码位是 <code>0x40 (64)</code>，这个才是 ASCII 的含义。即 ASCII 定义了 <code>0x40</code> 这个码位只能用来表达 <code>@</code> 这个字母的含义，不能表示 a / b 或其他。</p>
 <p>从 ASCII 进化到 Unicode，就是增加了很多码位，以建立全世界的规则矩阵，大家都得遵守。<br>emoji 等各种表情符号就是 Unicode 里面的特定码位。应用层识别到具体的表情码位后，做的符号映射和视觉显示。<br>切换字体，也同样是对同一个码位，做不同的视觉表达。<br>所以，这里很重要的一点，是对 <strong>码位</strong> 的理解。<strong>码位才是每一个字符的互联网流通语言</strong>。后面介绍的文本文件存储、二进制文件存储等，都离不开<strong>码位</strong>。</p>
 <p>对于字符来说，计算机也只对码位做存储，在没有 Unicode 的时候，计算机存储的就是 ASCII 里面的共计 256 个码位 (00000000 - 11111111)。<br>下面例子中，将 <code>abcde</code> 存储到文件中，共计 5 个字节。通过 <code>xxd</code> 命令确认每个字节的存储内容都是这些字母的 ASCII 码位。(后面统一使用十六进制 hexdump 查看)。</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; cat test.txt                                                                </span><br><span class="line">abcde</span><br><span class="line"></span><br><span class="line">&gt; wc -c test.txt                                                                  </span><br><span class="line">5 test.txt</span><br><span class="line"></span><br><span class="line">&gt; xxd -b test.txt</span><br><span class="line">00000000: 01100001 01100010 01100011 01100100 01100101           abcde</span><br><span class="line"></span><br><span class="line">&gt; hexdump -C test.txt</span><br><span class="line">61 62 63 64 65    |abcde|</span><br></pre></td></tr></tbody></table></figure>
@@ -286,18 +310,18 @@
 <thead>
 <tr>
 <th align="center">字符</th>
-<th> Unicode 码位 十六进制</th>
-<th> Unicode 码位 二进制</th>
+<th>Unicode 码位 十六进制</th>
+<th>Unicode 码位 二进制</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="center"> a</td>
+<td align="center">a</td>
 <td>0x61</td>
 <td>00000 00000000 01100001</td>
 </tr>
 <tr>
-<td align="center"> 中</td>
-<td> 0x4e2d</td>
+<td align="center">中</td>
+<td>0x4e2d</td>
 <td>00000 01001110 00101101</td>
 </tr>
 <tr>
@@ -313,13 +337,13 @@
 <thead>
 <tr>
 <th align="center">字节数</th>
-<th> Unicode 码位</th>
+<th>Unicode 码位</th>
 <th>十进制</th>
-<th> UTF-8 编码</th>
+<th>UTF-8 编码</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="center"> 1</td>
+<td align="center">1</td>
 <td>000000-00007F</td>
 <td>0-127</td>
 <td>0xxxxxxx</td>
@@ -350,20 +374,20 @@
 <th align="center">符号</th>
 <th>码位</th>
 <th align="center">字节</th>
-<th> UTF-8 编码</th>
+<th>UTF-8 编码</th>
 <th>十六进制</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="center"> a</td>
+<td align="center">a</td>
 <td>00000000 00000000 01100001(0x61)</td>
 <td align="center">1</td>
 <td>01100001</td>
 <td>0x61</td>
 </tr>
 <tr>
-<td align="center"> 中</td>
-<td> 00000000 01001110 00101101(0x4E2D)</td>
+<td align="center">中</td>
+<td>00000000 01001110 00101101(0x4E2D)</td>
 <td align="center">3</td>
 <td>&lt;1110&gt;0100 &lt;10&gt;111000 &lt;10&gt;101101</td>
 <td>0xE4B8AD</td>
@@ -386,20 +410,20 @@
 <th align="center">符号</th>
 <th>码位</th>
 <th align="center">字节</th>
-<th> UTF-8 编码</th>
+<th>UTF-8 编码</th>
 <th>十六进制</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="center"> a</td>
+<td align="center">a</td>
 <td>00000000 00000000 01100001(0x61)</td>
 <td align="center">2</td>
 <td>00000000 01100001</td>
 <td>0x0061</td>
 </tr>
 <tr>
-<td align="center"> 中</td>
-<td> 00000000 01001110 00101101(0x4E2D)</td>
+<td align="center">中</td>
+<td>00000000 01001110 00101101(0x4E2D)</td>
 <td align="center">2</td>
 <td>01001110 00101101</td>
 <td>0x4E2D</td>
@@ -451,12 +475,12 @@
 <th align="center">符号</th>
 <th>码位</th>
 <th align="center">字节</th>
-<th> UTF-8 编码</th>
+<th>UTF-8 编码</th>
 <th>十六进制</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="center"> a</td>
+<td align="center">a</td>
 <td>00000000 00000000 01100001(0x61)</td>
 <td align="center">1</td>
 <td>01100001</td>
@@ -486,7 +510,7 @@
 <p>也没更多选项了，要么 UTF-8，要么 UTF-16。因为 UTF-32 是 4 字节，那还不如直接存储码位了。</p>
 <p>实际上，在内存中对于字符使用 UTF 的那个存储，不是由操作系统决定的，而是由编程语言决定的。对于高级语言一般都使用 UTF-16，但 C 语言使用 UTF-8。</p>
 <p>在介绍内存编码之前，还是先简单说明一下二进制文件吧。文本文件属于二进制文件，但二进制文件具有更多的表现能力。<br>理解了它们，除了方便理解后面的内存字符编码，也对文件中的字节有更好的认识 (对于本文而言，这属于番外内容)。</p>
-<h3 id="二进制文件"><a href="#二进制文件" class="headerlink" title="二进制文件"></a>二进制文件</h3><p>所有文件都是二进制文件。<br>高级语言对文件进行读写的时候，需要通过内核塌陷的模式，调用操作系统 api 拿到文件句柄然后操作 read/write api。<br>这里 read 和 write 的数据，都是 Data 二进制。即文件、文件系统、操作系统、计算机，只理解二进制，不理解具体的字符。</p>
+<h3 id="二进制文件"><a href="#二进制文件" class="headerlink" title="二进制文件"></a>二进制文件</h3><p>所有文件都是二进制文件。<br>高级语言对文件进行读写的时候，需要通过内核塌陷的模式，调用操作系统 api 拿到文件句柄然后操作 read / write api。<br>这里 read 和 write 的数据，都是 Data 二进制。即文件、文件系统、操作系统、计算机，只理解二进制，不理解具体的字符。</p>
 <p>对于二进制文件，也有很多种用途。比如：<br>文本文件，主要用来记录文字，将文字编码后写入，解码后还原。每个字节都是一致的含义，即都表示文字 (也可以认为没有含义)。<br>图片 / 视频文件，主要用来存储特定格式的数据。它的每个字节所表达的含义可能都不一样，比如 m-n 字节的数据表示地理位置，i-j 字节的数据表示拍摄机器的型号等。<br>可执行文件，如 Twitter，主要用来严丝合缝的存储自身需要的数据。它不需要被外部读取，它本身可运行读取自己。比如 ELF 文件，每个 section、每个段、符号表等，都需要存储在特定的区域。</p>
 <p>这样看下来，从文件的角度来看，都是二进制数据，没有差别。但是对文件使用者来说，二进制文件的含义千差万别。</p>
 <p>在很多年前，我希望同事将 jpg 图片改成 png 图片。拿到 png 图片后程序的 bug 依旧没有解决。最后排查发现同事把 .jpg 的后缀改成了 .png :(<br>程序走 .png 的逻辑，但内部数据是 .jpg 的格式，这就会导致无法解析。</p>
@@ -507,12 +531,12 @@
 <p>显然，内存中各种高级语言也是使用了 UTF 编码，这没得选择，Unicode 和 UTF 是绝配。</p>
 <ol>
 <li>C 语言统一使用 UTF8 编码</li>
-<li> Objective-C 同时使用了 UTF8 和 UTF16</li>
+<li>Objective-C 同时使用了 UTF8 和 UTF16</li>
 <li>Swift 使用了 UTF8（查阅资料说 Swift 也会在某些场景下使用 UTF16，没能复现）</li>
 </ol>
 <p>但各类语言的内存编码使用情况并不是一边倒的偏向某一方。<br>比如 Java/Python/JS 使用的是 UTF16，Go/Swift 使用的是 UTF8。还有些是两者同时使用如 Objective-C。</p>
 <p>在内存中使用 UTF8 或者 UTF16，主要考虑的并不是存储和编解码性能。<br>因为在程序运行过程中操作的字符频率并不会很多，远远不如一个 .txt 或者 .png 里面动不动几十 K 或者几十 M。</p>
-<p>内存中在乎的是<strong>字节操作性能</strong>。在算法执行过程中，对字符的 比较 / 截取 / 复制 等操作，那是越快越好。<br>在配置相同的情况下，哪个编码的字节小，哪个就会快一些。<br>比如对 <code>a</code>、<code>b</code> 两个字符进行比较，若使用 UTF8，则只需要比较 1 个字节。若使用 UTF16，则需要比较 2 个字节。<br>对于 <code>中</code>、<code>文</code> 两个字符比较，UTF8 需要比较 3 个字节，UTF16 需要比较 2 个字节。</p>
+<p>内存中在乎的是<strong>字节操作性能</strong>。在算法执行过程中，对字符的 比较/截取/复制 等操作，那是越快越好。<br>在配置相同的情况下，哪个编码的字节小，哪个就会快一些。<br>比如对 <code>a</code>、<code>b</code> 两个字符进行比较，若使用 UTF8，则只需要比较 1 个字节。若使用 UTF16，则需要比较 2 个字节。<br>对于 <code>中</code>、<code>文</code> 两个字符比较，UTF8 需要比较 3 个字节，UTF16 需要比较 2 个字节。</p>
 <p>因为 Unicode 码位的不同位置区块，是偏向不同国家语言的。比如英文主要集中在前面的 ASCII 部分，中文就比较靠后。<br>在 UTF8 场景，英文肯定占有优势，字符串操作的字节数直接比中文少了一大半。<br>但大家又集中处于 零平面 区块，在 UTF16 里面基本所有国家的字符都是 2 字节，从上帝视角来看这又比较公平。</p>
 <p>最好的办法当然是根据文本内容的不同，选择不同的编码。<br>目前 Objective-C 的做法是：若字符中全是 ASCII，则使用 UTF8。只要有不是 ASCII 的字符，则使用 UTF16。这是一定程度上的优化。<br>听说 Swift 可以根据内容，智能的选择哪一个更合适 (若英文偏多则使用 UTF8 这样子)，但本地没能复现。但显然这是最优解。</p>
 <hr>
@@ -632,6 +656,12 @@
   </footer>
 
   
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
   <div class="back-to-top" role="button" aria-label="Back to top">
     <i class="fa fa-arrow-up fa-lg"></i>
     <span>0%</span>
@@ -641,38 +671,12 @@
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
 </noscript>
-
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.umd.js" integrity="sha256-+2+qOqR8CKoHh/AsVR9k2qaDBKWjYNC2nozhYmv5j9k=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
-
-  
-
-
-
-  <script src="/js/third-party/fancybox.js"></script>
-
-
-
-  
-
-
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2023/unicode/"}</script>
-  <script src="/js/third-party/quicklink.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"5f255e81bdff27027693123daacd8b43"}</script>
-<script src="/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","body":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"5f255e81bdff27027693123daacd8b43"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
-<script src="/js/third-party/comments/utterances.js"></script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
 
 </body>
 </html>

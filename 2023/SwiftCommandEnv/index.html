@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -14,12 +14,12 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.2","exturl":true,"sidebar":{"position":"left","width":142,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.27.0","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":142,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js" defer></script>
 
     <meta name="description" content="2024.01.06 更：欢迎查阅 Swift 开发的文本纠错命令行工具。  不推荐使用 Swift 写脚本，和 Python 比起来，该生态链相对匮乏，开发耗时会增加很多。但对于偏 Swift 的同学来说，这也的确是更可控和方便维护的方式之一。尤其对于公司内部工具，有问题可以更快的找到原因并处理，不至于手忙脚乱。 相对于 Python 环境丰富的基建资源，使用 Swift 做脚本开发的优点在于">
 <meta property="og:type" content="article">
@@ -43,7 +43,6 @@
 <link rel="canonical" href="https://www.yigegongjiang.com/2023/SwiftCommandEnv/">
 
 
-
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2023/SwiftCommandEnv/","path":"2023/SwiftCommandEnv/","title":"Swift 脚本开发环境搭建"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
@@ -51,7 +50,7 @@
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CTEWJ02QX"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-8CTEWJ02QX","only_pageview":false,"measure_protocol_api_secret":null}</script>
-  <script src="/js/third-party/analytics/google-analytics.js"></script>
+  <script src="/js/third-party/analytics/google-analytics.js" defer></script>
 
 
 
@@ -59,6 +58,31 @@
 
 
 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/7.2.0/pangu.umd.js" integrity="sha256-JnmRRnJK7DC6RQJbAJb6AXOM9OmWzS6z8eYultk/48Y=" crossorigin="anonymous" defer></script>
+<script src="/js/comments.js" defer></script><script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/3.0.1/quicklink.umd.js" integrity="sha256-44BednzIpUeQJcY8qtLyarFu0UCCTbgmWOvaoehiFQQ=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2023/SwiftCommandEnv/"}</script>
+  <script src="/js/third-party/quicklink.js" defer></script>
 
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
@@ -250,7 +274,7 @@
 
 <h1 id="0x01-Swift-生态"><a href="#0x01-Swift-生态" class="headerlink" title="0x01 Swift 生态"></a>0x01 Swift 生态</h1><p>一言两语，先概要描述下 Swift 目前的生态，以明确脚本开发所处的位置。</p>
 <p>Swift 做为苹果大力推出的 iOS/Mac 多平台应用开发语言，目前广泛用于开发 app (ipa/dmg)。做为古老的 Objective-C 替代者，基本上对接了 OC 里面所有的 Api，可以直接调用。这对新语言的铺广有很大好处，使用成本有非常大的降低。<br>但 Swift 也抛弃了 OC 的消息传递机制，使得 patch 等能力很难实现。这也是大公司不愿意迁移的原因，在苹果不允许热更新之后，它们都耗费大精力维护一套不公开的 patch 能力，以在紧急时刻做补救。</p>
-<p>Swift 做为后浪，完全集百家之长，也躲过了这些年高级语言已知的不完美，这是相当优秀的点。<br>至目前 (23 年底)，已经对范型、协程、并发等高级场景做了完备的支持。<br>尤其值得关注的是发源地 app 开发，Swift 提供了 SwiftUI 做为原始 UIkit/AppKit 的替代，这是目前非常跟随潮流的 UI 基础建设。</p>
+<p>Swift 做为后浪，完全集百家之长，也躲过了这些年高级语言已知的不完美，这是相当优秀的点。<br>至目前 (23 年底)，已经对范型、协程、并发等高级场景做了完备的支持。<br>尤其值得关注的是发源地 app 开发，Swift 提供了 SwiftUI 做为原始 UIkit / AppKit 的替代，这是目前非常跟随潮流的 UI 基础建设。</p>
 <p>Swift 以跨平台为前提，也同样可以做服务端开发、输出命令行可执行文件等。但刚才提到的 UI 能力并不能服务于此，毕竟这是不需要 UI 能力的。</p>
 <h2 id="playground-repl"><a href="#playground-repl" class="headerlink" title="playground &amp; repl"></a>playground &amp; repl</h2><p>对于学习 Swift 来说，playground 是一个不错的学习乐园。<br>playground 有两种，一种是 iPad 和 Mac 上都适配的 app，名字叫 <span class="exturl" data-url="aHR0cHM6Ly9hcHBzLmFwcGxlLmNvbS91cy9hcHAvc3dpZnQtcGxheWdyb3VuZHMvaWQxNDk2ODMzMTU2P210PTEy">Swift Playground</span>，通过 SwiftUI 开发项目，可以直接上 App Store。<br>还有一种是通过 xcode - new - playground 生成的后缀名为 <strong>.playground</strong> 的项目，主要用于测试一些代码。</p>
 <p>第一种完全是鸡肋，我是这么认为。第二种，也倾向于鸡肋，用处不大（更多用于调试，可 xcode 里创建一个项目已经足够方便）。<br>这里建议，<strong>对于 Swift 研发同学来说，可以不用看 playground 了</strong>，这样可以避免理解不少概念，如 <code>PlaygroundSupport</code>、<code>Sources</code>、<code>Resources</code>、<code>多target分隔</code>等。<br>这些概念和实践，在研发历程上，基本是无用的。凭空增加了 Swift 的知识点复杂度。</p>
@@ -275,11 +299,11 @@
 <h2 id="生态小结"><a href="#生态小结" class="headerlink" title="生态小结"></a>生态小结</h2><p>至此，Swift 的开发生态介绍的差不多了，整体和 Xcode IDE 依旧有非常深的绑定。<br>当然也可以通过 <code>swift xxx</code> 等命令行进行开发和调试，但对于 Mac 平台的开发人员来说，这完全是多此一举。</p>
 <p>除此之外，前面也说到 Swift 是一门非常新也非常优秀的高级语言，其中的 协程、并发、多线程 等能力，也都是需要单独学习和掌握的。这属于语言本身，在环境篇就不再过多介绍。</p>
 <h1 id="命令行开发"><a href="#命令行开发" class="headerlink" title="命令行开发"></a>命令行开发</h1><p>这里进入核心环节，即通过 Swift 进行命令行开发的环境。<br>其实上面的环境篇，已经介绍了大部分命令行开发所需要的前期准备，如工程的搭建、项目依赖的设定等。</p>
-<p>在 Objective-C 时期，也可以通过 Xcode 进行 <code>Command line</code> 的开发，通过 <code>new - project - macOS - Command Line Tool</code> 既可以建立一个工程，Archive 后即可输出可执行文件。<br>但 OC 终究不是为命令行而生的，有很多局限性和短板。这也导致十几年来一直都有的这个功能，更多被用于 C/C++ 的调试入口。</p>
+<p>在 Objective-C 时期，也可以通过 Xcode 进行 <code>Command line</code> 的开发，通过 <code>new - project - macOS - Command Line Tool</code> 既可以建立一个工程，Archive 后即可输出可执行文件。<br>但 OC 终究不是为命令行而生的，有很多局限性和短板。这也导致十几年来一直都有的这个功能，更多被用于 C / C++ 的调试入口。</p>
 <p>目前 Swift 做命令行开发，依旧可以走之前的流程建立一个 <code>.xcodeproj</code> 工程进行开发，区别点是语言选项上，勾选 Swift 即可。<br>同时，上面的流程也显得有些落伍，毕竟如上面介绍，Package 具有和 <code>.xcodeproj</code> 同样的层级定义，我们可以通过 Package 来创建可执行程序。<br>这样的一个明显的好处，是不用理解 AppleId / Build Setting 等复杂的配置。显然，做为一个通用的命令行工具，我们可以提交到 brew 或者随意分发给有需要的朋友，哪里还需要 AppleId 开发者账号呢？</p>
-<p>Swift Package 命令行的项目创建 / 编译 / 调试 / 运行，可以通过 <code>swift xx</code> 命令行操作。有了 Xcode 这个高度集成的工具，显然不用如此费力。<br>创建项目的流程为：new - Package - macOS - Command Line Tool / Executable。<br>这样创建的工程就是 Package 工程，而不再是 <code>.xcodeproj</code> 工程。<code>Command Line Tool</code> 和 <code>Executable</code> 基本没有区别，前者多了一个 <code>ArgumentParser</code> 这个 apple 自带的库依赖。也正因为这个依赖，推荐使用前者，这在命令行开发的过程中会方便很多。</p>
+<p>Swift Package 命令行的项目创建/编译/调试/运行，可以通过 <code>swift xx</code> 命令行操作。有了 Xcode 这个高度集成的工具，显然不用如此费力。<br>创建项目的流程为：new - Package - macOS - Command Line Tool / Executable。<br>这样创建的工程就是 Package 工程，而不再是 <code>.xcodeproj</code> 工程。<code>Command Line Tool</code> 和 <code>Executable</code> 基本没有区别，前者多了一个 <code>ArgumentParser</code> 这个 apple 自带的库依赖。也正因为这个依赖，推荐使用前者，这在命令行开发的过程中会方便很多。</p>
 <h2 id="命令行输入参数解析自动化"><a href="#命令行输入参数解析自动化" class="headerlink" title="命令行输入参数解析自动化"></a>命令行输入参数解析自动化</h2><p>可以通过 CommandLine 模块做参数解析，提供了 argc 和 arguments 等 api，可以获取用户在执行命令的时候携带的参数。</p>
-<p>不过后面，Apple 提供了 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FwcGxlL3N3aWZ0LWFyZ3VtZW50LXBhcnNlcg==">ArgumentParser</span> 模块，这是可以快速搭建 命令行参数定义 的框架，比如命令中需要用户携带文件路径，通过 <code>@Argument(help: "Please Input File Path.") var path: String</code> 这样的定义，就可以指定用户一定要传文件路径并会被赋值到 path 变量中。如果用户输入错误或者使用 <code>xx --help</code>，<code>Please Input File Path.</code> 这个注释也会输出到命令行中以提醒用户。<br>当然，<code>ArgumentParser</code> 模块的能力远远不止这些。但可以看出来，<code>ArgumentParser</code> 定义了一套命令行参数的标准，开发人员不用再通过 <code>CommandLine</code> 模块调用 api 进行解析。<br>更重要的是，<code>ArgumentParser</code> 提供了一套命令行开发的流程框架，这可以通过阅读官方的示例文档进行学习。</p>
+<p>不过后面，Apple 提供了 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FwcGxlL3N3aWZ0LWFyZ3VtZW50LXBhcnNlcg==">ArgumentParser</span> 模块，这是可以快速搭建 命令行参数定义 的框架，比如命令中需要用户携带文件路径，通过<code>@Argument(help: "Please Input File Path.") var path: String</code> 这样的定义，就可以指定用户一定要传文件路径并会被赋值到 path 变量中。如果用户输入错误或者使用 <code>xx --help</code>，<code>Please Input File Path.</code> 这个注释也会输出到命令行中以提醒用户。<br>当然，<code>ArgumentParser</code> 模块的能力远远不止这些。但可以看出来，<code>ArgumentParser</code> 定义了一套命令行参数的标准，开发人员不用再通过 <code>CommandLine</code> 模块调用 api 进行解析。<br>更重要的是，<code>ArgumentParser</code> 提供了一套命令行开发的流程框架，这可以通过阅读官方的示例文档进行学习。</p>
 <p>前面说到 <code>Command Line Tool</code> 和 <code>Executable</code> 两种方式创建的项目相比，前者多了 <code>ArgumentParser</code> 引入。这也是推荐使用前者的原因。</p>
 <p>当然，对于 <code>ArgumentParser</code> 的使用，可以参考官方的示例 (Examples 文件夹)。也可以查阅更多相关资料。</p>
 <h2 id="善用-Xcode-IDE-的调试技巧"><a href="#善用-Xcode-IDE-的调试技巧" class="headerlink" title="善用 Xcode IDE 的调试技巧"></a>善用 Xcode IDE 的调试技巧</h2><p>命令行开发过程中，一样需要断点调试，同时也需要真实环境下调试。这两者往往是同时进行的。<br>这里有一个小技巧，即通过在 Xcode Build 过程中插入脚本，和 Xcode Run 过程中插入参数，来完成快速的开发调试。</p>
@@ -433,6 +457,12 @@
   </footer>
 
   
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
   <div class="back-to-top" role="button" aria-label="Back to top">
     <i class="fa fa-arrow-up fa-lg"></i>
     <span>0%</span>
@@ -442,38 +472,12 @@
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
 </noscript>
-
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.umd.js" integrity="sha256-+2+qOqR8CKoHh/AsVR9k2qaDBKWjYNC2nozhYmv5j9k=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
-
-  
-
-
-
-  <script src="/js/third-party/fancybox.js"></script>
-
-
-
-  
-
-
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2023/SwiftCommandEnv/"}</script>
-  <script src="/js/third-party/quicklink.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"0e890d650bc84c0d13e8cccd6ae758ed"}</script>
-<script src="/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","body":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"0e890d650bc84c0d13e8cccd6ae758ed"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
-<script src="/js/third-party/comments/utterances.js"></script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
 
 </body>
 </html>

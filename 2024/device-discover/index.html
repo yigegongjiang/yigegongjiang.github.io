@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -14,12 +14,12 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.2","exturl":true,"sidebar":{"position":"left","width":142,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.27.0","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":142,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js" defer></script>
 
     <meta name="description" content="Bonjourlocal net 服务发现。核心是两个 api：NSNetService &amp; NSNetServiceBrowser。 Bonjour 的目的，是希望发现局域网中的设备，包括这些设备的 ip、port 等信息，从而进行下一步业务操作。因为有了 ip、port，就可以精确定位一台设备了，就可以做很多事情了，比如打通 socket 等。 NSNetService 用来发布服务，">
 <meta property="og:type" content="article">
@@ -37,7 +37,6 @@
 <link rel="canonical" href="https://www.yigegongjiang.com/2024/device-discover/">
 
 
-
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2024/device-discover/","path":"2024/device-discover/","title":"设备发现"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
@@ -45,7 +44,7 @@
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CTEWJ02QX"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-8CTEWJ02QX","only_pageview":false,"measure_protocol_api_secret":null}</script>
-  <script src="/js/third-party/analytics/google-analytics.js"></script>
+  <script src="/js/third-party/analytics/google-analytics.js" defer></script>
 
 
 
@@ -53,6 +52,31 @@
 
 
 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/7.2.0/pangu.umd.js" integrity="sha256-JnmRRnJK7DC6RQJbAJb6AXOM9OmWzS6z8eYultk/48Y=" crossorigin="anonymous" defer></script>
+<script src="/js/comments.js" defer></script><script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/3.0.1/quicklink.umd.js" integrity="sha256-44BednzIpUeQJcY8qtLyarFu0UCCTbgmWOvaoehiFQQ=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2024/device-discover/"}</script>
+  <script src="/js/third-party/quicklink.js" defer></script>
 
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
@@ -118,7 +142,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Bonjour"><span class="nav-number">1.</span> <span class="nav-text">Bonjour</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E7%BA%A6%E5%AE%9A-from-ai"><span class="nav-number">1.0.1.</span> <span class="nav-text">参数约定 - from ai</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MultipeerConnectivity"><span class="nav-number">2.</span> <span class="nav-text">MultipeerConnectivity</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Network-framework"><span class="nav-number">3.</span> <span class="nav-text">Network.framework</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WI-FI-Direct"><span class="nav-number">4.</span> <span class="nav-text">WI-FI Direct</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Wi-Fi-Direct-%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86-from-ai"><span class="nav-number">4.1.</span> <span class="nav-text">Wi-Fi Direct 技术原理 - from ai</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AWDL"><span class="nav-number">5.</span> <span class="nav-text">AWDL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#apple-%E6%9C%8D%E5%8A%A1%E5%88%97%E8%A1%A8-from-ai"><span class="nav-number">5.1.</span> <span class="nav-text">apple 服务列表 - from ai</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Handoff"><span class="nav-number">5.2.</span> <span class="nav-text">Handoff</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Universal-Clipboard"><span class="nav-number">5.3.</span> <span class="nav-text">Universal Clipboard</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NFC"><span class="nav-number">6.</span> <span class="nav-text">NFC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%A8%E7%A6%81%E5%8D%A1"><span class="nav-number">6.1.</span> <span class="nav-text">门禁卡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%BB%E5%8A%A8%E6%94%AF%E4%BB%98"><span class="nav-number">6.2.</span> <span class="nav-text">移动支付</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Apple-iPhone-NFC"><span class="nav-number">6.3.</span> <span class="nav-text">Apple iPhone NFC</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Bonjour"><span class="nav-number">1.</span> <span class="nav-text">Bonjour</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E7%BA%A6%E5%AE%9A-from-ai"><span class="nav-number">1.1.</span> <span class="nav-text">参数约定 - from ai</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MultipeerConnectivity"><span class="nav-number">2.</span> <span class="nav-text">MultipeerConnectivity</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Network-framework"><span class="nav-number">3.</span> <span class="nav-text">Network.framework</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WI-FI-Direct"><span class="nav-number">4.</span> <span class="nav-text">WI-FI Direct</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Wi-Fi-Direct-%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86-from-ai"><span class="nav-number">4.1.</span> <span class="nav-text">Wi-Fi Direct 技术原理 - from ai</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AWDL"><span class="nav-number">5.</span> <span class="nav-text">AWDL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#apple-%E6%9C%8D%E5%8A%A1%E5%88%97%E8%A1%A8-from-ai"><span class="nav-number">5.1.</span> <span class="nav-text">apple 服务列表 - from ai</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Handoff"><span class="nav-number">5.2.</span> <span class="nav-text">Handoff</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Universal-Clipboard"><span class="nav-number">5.3.</span> <span class="nav-text">Universal Clipboard</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NFC"><span class="nav-number">6.</span> <span class="nav-text">NFC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%A8%E7%A6%81%E5%8D%A1"><span class="nav-number">6.1.</span> <span class="nav-text">门禁卡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%BB%E5%8A%A8%E6%94%AF%E4%BB%98"><span class="nav-number">6.2.</span> <span class="nav-text">移动支付</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Apple-iPhone-NFC"><span class="nav-number">6.3.</span> <span class="nav-text">Apple iPhone NFC</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -261,7 +285,7 @@
 <p>但是 Network.framework 提供了细粒度的 api 操作，可以选择 tcp、udp 等不同方案以及细节参数。</p>
 <p>Network.framework 更多用于具有网络能力的设备间通信。当然，如果只有蓝牙场景，那只能使用 MultipeerConnectivity 了。</p>
 <h1 id="WI-FI-Direct"><a href="#WI-FI-Direct" class="headerlink" title="WI-FI Direct"></a>WI-FI Direct</h1><p>上面三种局域网近景通信，都不具有普适性。蓝牙是很有普适性的产物，但是蓝牙发展这么多年，有很大的局限性，如速度、距离等。</p>
-<p>目前，WI-FI Direct 已经基本上进入了所有的电子设备中，通过 WI-FI direct，可以非常方便的在两台设备之间打通 p2p 通信通道，进而实现高速数据传输。</p>
+<p>目前，WI - FI Direct 已经基本上进入了所有的电子设备中，通过 WI - FI direct，可以非常方便的在两台设备之间打通 p2p 通信通道，进而实现高速数据传输。</p>
 <p>对于苹果全家桶，基本上所有的跨设备互通能力，都是通过 Wi-Fi Direct 能力来实现的，比如 Handoff、通用剪贴板（Universal Clipboard）等。</p>
 <h2 id="Wi-Fi-Direct-技术原理-from-ai"><a href="#Wi-Fi-Direct-技术原理-from-ai" class="headerlink" title="Wi-Fi Direct 技术原理 - from ai"></a>Wi-Fi Direct 技术原理 - from ai</h2><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">1. **基本概念**</span><br><span class="line">- Wi-Fi Direct(也称 Wi-Fi P2P)是一种无线通信标准</span><br><span class="line">- 允许设备间直接通信，无需传统的无线接入点(如路由器)</span><br><span class="line">- 工作在与普通 Wi-Fi 相同的 2.4GHz 或 5GHz 频段</span><br><span class="line">1. **网络架构**</span><br><span class="line">- **组网模式**: 采用对等(P2P)网络架构</span><br><span class="line">- **角色分配**:</span><br><span class="line">    - 组主(Group Owner, GO): 类似微型接入点，负责管理网络</span><br><span class="line">    - 客户端: 连接到组主形成网络</span><br><span class="line">- **组主职责**:</span><br><span class="line">    - 信道选择与管理</span><br><span class="line">    - 网络参数配置(SSID、安全设置等)</span><br><span class="line">    - 资源分配与网络维护</span><br><span class="line">1. **连接建立流程**</span><br><span class="line">- 设备发现阶段:</span><br><span class="line">    1. 设备相互扫描并发现对方</span><br><span class="line">    2. 通过设备发现协议交换基本信息</span><br><span class="line">- 组建立阶段:</span><br><span class="line">    1. 协商确定组主身份</span><br><span class="line">    2. 组主配置并广播网络</span><br><span class="line">- 连接认证阶段:</span><br><span class="line">    1. 客户端扫描并识别组主网络</span><br><span class="line">    2. 通过 WPS 进行安全认证</span><br><span class="line">    3. 建立加密连接</span><br><span class="line">1. **安全机制**</span><br><span class="line">- 采用 Wi-Fi Protected Setup(WPS)快速配置</span><br><span class="line">- 支持多种连接方式:</span><br><span class="line">    - 按钮配对</span><br><span class="line">    - PIN 码认证</span><br><span class="line">    - NFC 近场通信(如支持)</span><br><span class="line">- 使用 WPA2 等标准 Wi-Fi 安全协议加密通信</span><br><span class="line">1. **服务层功能**</span><br><span class="line">- 服务发现协议:</span><br><span class="line">    - 设备可广播自身提供的服务</span><br><span class="line">    - 其他设备可在连接前发现可用服务</span><br><span class="line">- 支持的服务类型:</span><br><span class="line">    - 文件传输</span><br><span class="line">    - 打印服务</span><br><span class="line">    - 多媒体流传输</span><br><span class="line">    - 屏幕镜像等</span><br><span class="line">1. **数据传输特点**</span><br><span class="line">- 直接设备间传输，无需经过中间节点</span><br><span class="line">- 支持高速数据传输</span><br><span class="line">- 较低的通信延迟</span><br><span class="line">- 不依赖互联网连接</span><br></pre></td></tr></tbody></table></figure>
 
@@ -276,11 +300,11 @@
 <ol>
 <li>通过蓝牙做设备发现，蓝牙不可用的时候切换到其他设备发现渠道</li>
 <li>通过 AWDL 做数据传输</li>
-<li> app 通过 Activity api 实现 handoff 功能</li>
+<li>app 通过 Activity api 实现 handoff 功能</li>
 </ol>
 <h2 id="Universal-Clipboard"><a href="#Universal-Clipboard" class="headerlink" title="Universal Clipboard"></a>Universal Clipboard</h2><p>和 Handoff 基本一致，通过  <strong>UIPasteboard</strong> api 实现跨设备 copy-paste 功能</p>
 <h1 id="NFC"><a href="#NFC" class="headerlink" title="NFC"></a>NFC</h1><p>NFC（近场通信），和 以上 通信方式都不同。</p>
-<p>NFC 的技术原理基于无线电频率识别（RFID）技术，使用磁场感应来实现在设备间的通信。NFC 设备在 13.56 MHz 频率上操作，通常用于非接触式数据传输，距离范围非常短，通常在几厘米内，传输速率慢，在 400kbps (50kb/s) 左右。<br>技术原理就是：识卡器发出信号（电磁感应），激活了终端（手机自动点亮），然后进行数据交互，并可能需要机主进行身份验证，最后完成信息的交互（支付、上公交车、开门等）。</p>
+<p>NFC 的技术原理基于无线电频率识别（RFID）技术，使用磁场感应来实现在设备间的通信。NFC 设备在 13.56 MHz 频率上操作，通常用于非接触式数据传输，距离范围非常短，通常在几厘米内，传输速率慢，在 400kbps (50kb / s) 左右。<br>技术原理就是：识卡器发出信号（电磁感应），激活了终端（手机自动点亮），然后进行数据交互，并可能需要机主进行身份验证，最后完成信息的交互（支付、上公交车、开门等）。</p>
 <p>NFC 有三种工作模式：点对点通信模式、读卡器模式、卡模拟模式。又分为【主动模式】和【被动模式】，其中一个设备提供射频场，另一个设备利用这个射频场进行通信。<br>使用 NFC，需要两个终端，一个做控制器，用于发射磁场来识别信息。一个做无电源的数据芯片，通过接收到的磁场来感应并传输信息。<br>对于 NFC 设备来说：</p>
 <ol>
 <li>点对点通信：两个 NFC 设备相互交换信息。</li>
@@ -296,7 +320,7 @@
 <h2 id="门禁卡"><a href="#门禁卡" class="headerlink" title="门禁卡"></a>门禁卡</h2><p>普通门禁卡：</p>
 <ol>
 <li>门禁卡中有 【微芯片】（存储卡片的识别信息和其他数据）和 【天线】（用于接收和发送无线信号）。</li>
-<li>门禁卡靠近门禁系统的读卡器 → 读卡器会发出一个射频信号 → 信号通过天线供电给门禁卡上的微芯片 → 微芯片被激活，通过天线将存储在芯片上的识别信息发送回读卡器 → 读卡器接收到信息后，将数据传输给后端的门禁控制系统。</li>
+<li>门禁卡靠近门禁系统的读卡器 → 读卡器会发出一个射频信号 → 信号通过天线供电给门禁卡上的微芯片 → 微芯片被激活, 通过天线将存储在芯片上的识别信息发送回读卡器 → 读卡器接收到信息后，将数据传输给后端的门禁控制系统。</li>
 </ol>
 <p>NFC 门禁卡：<br>原理基本和普通门禁卡一样，不过，NFC 提供了更高的安全性。它支持双向通信，卡和识卡器之间可以通信。它们之间会进行密钥交换，通过对称、非对称加密来完成数据的安全传输。相比普通门禁卡，NFC 门禁卡会更加的安全。</p>
 <blockquote>
@@ -449,6 +473,12 @@
   </footer>
 
   
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
   <div class="back-to-top" role="button" aria-label="Back to top">
     <i class="fa fa-arrow-up fa-lg"></i>
     <span>0%</span>
@@ -458,38 +488,12 @@
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
 </noscript>
-
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.umd.js" integrity="sha256-+2+qOqR8CKoHh/AsVR9k2qaDBKWjYNC2nozhYmv5j9k=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
-
-  
-
-
-
-  <script src="/js/third-party/fancybox.js"></script>
-
-
-
-  
-
-
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://www.yigegongjiang.com/2024/device-discover/"}</script>
-  <script src="/js/third-party/quicklink.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"cacb07a9770cd248c014ffc71d3f1e2b"}</script>
-<script src="/js/third-party/comments/gitalk.js"></script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"yigegongjiang","repo":"yigegongjiang_discuss","client_id":"65bebc0a049450012bda","client_secret":"06004e7143dc59f263a8d1bd1893dcf66d6bb7ee","admin_user":"yigegongjiang","distraction_free_mode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"en","body":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"cacb07a9770cd248c014ffc71d3f1e2b"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yigegongjiang/yigegongjiang_discuss","issue_term":"title","theme":"photon-dark"}</script>
-<script src="/js/third-party/comments/utterances.js"></script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
 
 </body>
 </html>
