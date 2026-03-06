@@ -6,7 +6,7 @@
     <description>时间，真的不多了。</description>
     <language>en</language>
     <copyright>All rights reserved 2026, 海驴</copyright>
-    <lastBuildDate>Mon, 29 Dec 2025 12:02:01 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 08 Feb 2026 05:32:32 GMT</lastBuildDate>
     <generator>Hexo</generator>
     <image>
       <url>https://www.yigegongjiang.com/favicon.ico</url>
@@ -14,6 +14,50 @@
       <link>https://www.yigegongjiang.com/</link>
     </image>
     <atom:link href="https://www.yigegongjiang.com/rss2.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>AI 发展临界点 - 快上车</title>
+      <link>https://www.yigegongjiang.com/2026/code-copilot/</link>
+      <description>
+        <![CDATA[<p>最近做了 Coding Copilot 的一些分享，这里脱敏 + 剪裁后做下分享。核心内容：</p>
+<ol>
+<li>当前这一刻是进入 AI 的最后时间<ul>
+<li>AI Transformers 基建能力已经被榨干，当前这一刻 AI 能力达到巅峰，且将持续很久。</li>
+<li>之前进入的，与现在进入的，没有差距 (AI 内核基建快速迭代、AI ABI 不稳定、没有现象级产品）。</li>
+<li>现在进入的，与往后进入的，存在代沟 (应用层推进、协议层被 AI 重塑、时代变化飞跃)。</li>
+</ul>
+</li>
+<li>Vibe 辅助协作式 已经非常成熟， 完全托管方式也已经成型。</li>
+<li>所有 AI CLI / App 的工作方式都是一致的 (普适性)，通过 Prompts 做任务编排。</li>
+<li>人类和 AI 的交互目前已经被限制在 Prompts 里，这有可能限制 AI 多年的发展。<ul>
+<li>Thinking 可以提升质量，无法规避用户原始 prompts 的输入。</li>
+<li>Prompt 提示词在往后相当长的时间里，都是 AI 与人交互的唯一方式。</li>
+</ul>
+</li>
+</ol>
+<h2 id="ToC"><a href="#ToC" class="headerlink" title="ToC"></a>ToC</h2><!-- prettier-ignore -->
+<table>
+<thead>
+<tr>
+<th>1. 为什么现在是拥抱 AI 的最好时刻</th>
+<th>2. Anthropic 产品矩阵</th>
+<th>3. Vibe Coding: Copilot &amp; Autopilot</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>4. AI CLI 工作方式：任务编排 (Prompts)</td>
+<td>5. Prompts e.g.：Legal Skill</td>
+<td>6. Prompts e.g.：One Prompt, One App</td>
+</tr>
+</tbody></table>]]>
+      </description>
+      <author>海驴</author>
+      <category domain="https://www.yigegongjiang.com/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+      <category domain="https://www.yigegongjiang.com/tags/AI/">AI</category>
+      <pubDate>Sun, 08 Feb 2026 05:32:32 GMT</pubDate>
+      <content:encoded>
+        <![CDATA[<p>最近做了 Coding Copilot 的一些分享，这里脱敏 + 剪裁后做下分享。核心内容：</p><ol><li>当前这一刻是进入 AI 的最后时间<ul><li>AI Transformers 基建能力已经被榨干，当前这一刻 AI 能力达到巅峰，且将持续很久。</li><li>之前进入的，与现在进入的，没有差距 (AI 内核基建快速迭代、AI ABI 不稳定、没有现象级产品）。</li><li>现在进入的，与往后进入的，存在代沟 (应用层推进、协议层被 AI 重塑、时代变化飞跃)。</li></ul></li><li>Vibe 辅助协作式 已经非常成熟， 完全托管方式也已经成型。</li><li>所有 AI CLI / App 的工作方式都是一致的 (普适性)，通过 Prompts 做任务编排。</li><li>人类和 AI 的交互目前已经被限制在 Prompts 里，这有可能限制 AI 多年的发展。<ul><li>Thinking 可以提升质量，无法规避用户原始 prompts 的输入。</li><li>Prompt 提示词在往后相当长的时间里，都是 AI 与人交互的唯一方式。</li></ul></li></ol><h2 id="ToC"><a href="#ToC" class="headerlink" title="ToC"></a>ToC</h2><!-- prettier-ignore --><table><thead><tr><th>1. 为什么现在是拥抱 AI 的最好时刻</th><th>2. Anthropic 产品矩阵</th><th>3. Vibe Coding: Copilot &amp; Autopilot</th></tr></thead><tbody><tr><td>4. AI CLI 工作方式：任务编排 (Prompts)</td><td>5. Prompts e.g.：Legal Skill</td><td>6. Prompts e.g.：One Prompt, One App</td></tr></tbody></table><span id="more"></span><h2 id="缩略图预览"><a href="#缩略图预览" class="headerlink" title="缩略图预览"></a>缩略图预览</h2><!-- prettier-ignore --><table><thead><tr><th><img data-src="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/20260306140357438.png" alt="拥抱 AI 最好的时刻"></th><th><img data-src="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/20260306140500166.png" alt="Anthropic 产品矩阵"></th><th><img data-src="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/20260306140618965.png" alt="Vibe Coding 的两种方式"></th></tr></thead><tbody><tr><td><img data-src="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/20260306140720340.png" alt="C-C 工作方式（普适性）"></td><td><img data-src="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/20260306140745216.png" alt="Prompts 与 AI 沟通：Legal Skill"></td><td><img data-src="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/20260306140819771.png" alt="Prompts 与 AI 沟通：One Prompt, One App"></td></tr></tbody></table><h2 id="大图预览"><a href="#大图预览" class="headerlink" title="大图预览"></a>大图预览</h2><p><img data-src="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/20260306140357438.png" alt="拥抱 AI 最好的时刻"></p><p><img data-src="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/20260306140500166.png" alt="Anthropic 产品矩阵"></p><p><img data-src="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/20260306140618965.png" alt="Vibe Coding: Copilot &amp; Autopilot"></p><p><img data-src="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/20260306140720340.png" alt="AI CLI 工作方式：任务编排(Prompts)"></p><p><img data-src="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/20260306140745216.png" alt="Prompts e.g.：Legal Skill"></p><p><img data-src="https://raw.githubusercontent.com/yigegongjiang/image_space/main/blog_img/20260306140819771.png" alt="Prompts e.g.：One Prompt, One App"></p>]]>
+      </content:encoded>
+    </item>
     <item>
       <title>流式响应（Chat）：HTTP 响应体字节流的读取与解析</title>
       <link>https://www.yigegongjiang.com/2025/body-stream/</link>
@@ -57,8 +101,8 @@
       </description>
       <author>海驴</author>
       <category domain="https://www.yigegongjiang.com/categories/%E5%B7%A5%E5%85%B7/">工具</category>
-      <category domain="https://www.yigegongjiang.com/tags/AI/">AI</category>
       <category domain="https://www.yigegongjiang.com/tags/Life/">Life</category>
+      <category domain="https://www.yigegongjiang.com/tags/AI/">AI</category>
       <category domain="https://www.yigegongjiang.com/tags/Work/">Work</category>
       <pubDate>Sun, 14 Dec 2025 15:48:37 GMT</pubDate>
       <content:encoded>
