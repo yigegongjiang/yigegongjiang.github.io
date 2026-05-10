@@ -8,7 +8,9 @@ tags:
   - Work
 ---
 
-> 2025.05.18 更新：Dia browser、Hopper Disassembler（分析二进制文件）、Obsidian、语雀（画流程图）、飞书 Lark（多维表格）、Longshot（截图）、EasyFind（快速搜索文件）、PopClip、Cursor、Zed、ChatWise、MacUpdater、QSpace
+> 2026.05.10 更新：CLI（bat / eza / fd / ripgrep / fzf / zoxide / yazi / mise / topgrade）、OrbStack、Karabiner-Elements、Hammerspoon、Finicky、BetterDisplay；新增 AI 工具单列分类（Claude / Claude Code、Codex、ChatGPT Atlas、Cherry Studio、LM Studio、Immersive Translate 等）；MacUpdater 死亡，迁移到 topgrade；Raindrop.io 替代浏览器收藏夹。
+>
+> 2025.05.18 更新：Hopper Disassembler（分析二进制文件）、Obsidian、语雀（画流程图）、Longshot（截图）、PopClip、Zed、ChatWise、MacUpdater、QSpace
 
 这里是工作中的软件清单，可以使得工作愉悦和提效。
 还有一份生活清单可以点[这里](https://www.yigegongjiang.com/2022/lifelists/)
@@ -16,11 +18,16 @@ tags:
 ### 终端命令工具
 
 - brew 神器，mac 必备。90% 的软件都靠它。
-- zsh & autojump & zsh-autosuggestions & zsh-syntax-highlighting
-- vim & neovim & SpaceVim
+- zsh & zsh-autosuggestions & zsh-syntax-highlighting
+- vim & neovim & SpaceVim(死了)
 - tree 快速查看目录和文件
 - TLDR to long donot reader，命令组合提示好工具
 - alias 巧妙的使用，会很方便。
+- zoxide 替代 autojump，更快更准的目录跳转 / 2026.05.10 add
+- bat / eza / fd / ripgrep / fzf 现代化 cat / ls / find / grep / 模糊搜索 / 2026.05.10 add
+- yazi 终端文件管理器，预览和操作都比 nnn 顺手 / 2026.05.10 add
+- mise 版本管理（替代 asdf / nvm / rbenv），统一 node / python / ruby 等运行时 / 2026.05.10 add
+- topgrade 一键升级所有包管理器（brew / npm / pip / mise...）/ 2026.05.10 add
 
 <!-- more -->
 
@@ -28,42 +35,54 @@ tags:
 
 - Vim (浏览器安装插件，浏览网页也非常棒)
 - VSCode
-- Xcode，写 C & C++ / 2022.10.08 更：配置 Vim 写中文文档非常棒
+- Xcode，写 C & C++ / 2022.10.08 更：配置 Vim 写中文文档非常棒 / 2026.05.10 更：写中文文档已经使用 Zed，对 Vim 兼容极好
 - Iterm2
 - Surge 抓包 & 翻 X，神器
 - Kaleidoscope 文本 Diff，和 Git 配合非常好用
 - MachOView 分析 Mac/iOS ipa 包
 - Hopper Disassembler 分析二进制文件 / 2025.05.18 add
-- SourceTree
-- Cursor - 需要付费 / 2025.05.18 add
 - Zed IDE，Vim 支持非常棒 / 2025.05.18 add
+- OrbStack 替代 Docker Desktop，启动快、占用低，原生支持 Linux 容器和 K8s / 2026.05.10 add
+- Karabiner-Elements 改键神器，Caps Lock 改 Hyper Key 必备 / 2026.05.10 add
+- Hammerspoon Lua 驱动的 macOS 自动化，自定义快捷键和窗口逻辑 / 2026.05.10 add
+- Finicky 按规则路由 URL 到不同浏览器（工作 / 个人分流）/ 2026.05.10 add
+- SwitchHosts hosts 文件多 profile 切换 / 2026.05.10 add
 
 ### 效率工作
 
 - Raycast 窗口管理、快速启动 app、Scripe Command 执行
 - Bob 文字 OCR + 翻译，配合 AI 翻译非常棒
-- Reeder rss 订阅 / 2023.02.12 更：已经支持 iCloud 同步，可以不用 feedly 了。
 - input Source Pro 根据 app 快速切换输入法。可以设置快捷键快速切指定输入法，对于超过两个输入法的人很有用。 / 2024.04.06 add
-- Arc browser 非常好用，但需要适应。尤其它的 Pin 和 Split 功能，可以玩出很多花。 / 2024.04.06 add
-- Dia browser / 2025.05.18 add
+- ungoogled-chromium / 2026.05.10 add
 - Longshot 截图非常方便-需付费 / 2025.05.18 add
-- EasyFind 快速搜索文件 / 2025.05.18 add
 - PopClip / 2025.05.18 add
-- ChatWise - 需要付费 / 2025.05.18 add
-- MacUpdater - 需要付费 / 2025.05.18 add
+- MacUpdater - 需要付费 / 2025.05.18 add / 2026.05.10 已经死亡，迁移到了 topgrade
 - QSpace - 需要付费 / 2025.05.18 add
 - Obsidian / 2025.05.18 add - 已经从 Notion 迁移到 Obsidian
-- 语雀，画流程图非常棒 / 2025.05.18 add
-- 飞书 Lark，多维表格非常棒 / 2025.05.18 add
+- YuQue 语雀，画流程图非常棒 / 2025.05.18 add
+- wechat 输入法 / 2026.05.10 add
+- BetterDisplay 外接显示器分辨率 / HiDPI 调教 / 2026.05.10 add
+- Permute 3 媒体格式转换 / 2026.05.10 add
+- Downie 4 网页视频下载 / 2026.05.10 add
+- PortKiller 端口占用排查 / 2026.05.10 add
 
 ### 写作阅读
 
 - PicGo + Github 图床
-- Kiddle
+- Raindrop.io 网页书签 + 跨端收藏，替代浏览器原生收藏夹 / 2026.05.10 add
+- Anki 间隔重复记忆，长期学习神器 / 2026.05.10 add
 
-### 社交媒体
+### AI 工具 / 2026.05.10 add
 
-- Telegram
+> 2024-2026 最大的变化在这里：本地端 + 云端 LLM 都已成为日常工具链。
+
+- Claude / Claude Code 主力 AI Coding Agent，写代码 + 工程级任务都靠它
+- ChatGPT / ChatGPT Atlas 备用，Atlas 是 OpenAI 出的 AI 浏览器
+- Codex / OpenCode 命令行 / 桌面端 Coding Agent
+- Cherry Studio / Chatbox / OpenCat 多模型聚合客户端
+- LM Studio 本地跑开源 LLM (Qwen / Llama / DeepSeek 等)
+- ChatWise 极简 AI Chat 客户端 / 2025.05.18 add
+- Immersive Translate 沉浸式双语翻译，看英日文档必备
 
 ### 日常生活
 
@@ -73,7 +92,8 @@ tags:
 - Apple 快捷指令 shortcuts
 - 拼多多 - 百亿补贴
 - 高铁管家 - 买火车票。抢票啥的非常方便，车次、余票，展示的非常清晰。
-- 随手记：理财很方便。/ 2024.04.06 add，支持 mac 端，默认无广告。
+- moomoo 美/港股交易和行情 / 2026.05.10 add
+- TradingView 看盘画线 / 2026.05.10 add
 
 ---
 
