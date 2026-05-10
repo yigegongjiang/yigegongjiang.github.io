@@ -21,23 +21,17 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.27.0","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":142,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="小工具 JapanMemory - 日本语速记： Mac app 刚开始学习日语，五十音图总是记不住。于是想到了把记不住的音定时循环随机展示，以加强记忆，效果良好。   Next… 【ok】通过配置文件，可外部动态配置待记忆内容 【ok】增加单词记忆          HLVPaste - 轻量级文本输入框： Mac app 通过 LaunchBar 等启动工具，可快速打开 app HLVPast">
+    <meta name="description" content="jj-plan（CLI + Cloudflare Worker）：个人 Spec &#x2F; Task 追踪，数据落 Cloudflare D1，CLI 与浏览器双端访问。 cli-prompt-launcher（CLI &#x2F; Bun）：jj 命令以预设 scene prompt 启动 Claude Code 或 Codex，支持交互 &#x2F; 文本 &#x2F; 流式模式。 jj-skills（npx skills 源">
 <meta property="og:type" content="website">
 <meta property="og:title" content="开源清单">
 <meta property="og:url" content="https://www.yigegongjiang.com/openSource/index.html">
 <meta property="og:site_name" content="一个工匠">
-<meta property="og:description" content="小工具 JapanMemory - 日本语速记： Mac app 刚开始学习日语，五十音图总是记不住。于是想到了把记不住的音定时循环随机展示，以加强记忆，效果良好。   Next… 【ok】通过配置文件，可外部动态配置待记忆内容 【ok】增加单词记忆          HLVPaste - 轻量级文本输入框： Mac app 通过 LaunchBar 等启动工具，可快速打开 app HLVPast">
+<meta property="og:description" content="jj-plan（CLI + Cloudflare Worker）：个人 Spec &#x2F; Task 追踪，数据落 Cloudflare D1，CLI 与浏览器双端访问。 cli-prompt-launcher（CLI &#x2F; Bun）：jj 命令以预设 scene prompt 启动 Claude Code 或 Codex，支持交互 &#x2F; 文本 &#x2F; 流式模式。 jj-skills（npx skills 源">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202401170028580.jpg">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202401170029036.jpg">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202401150818590.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202401061607920.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202401061607769.png">
 <meta property="article:published_time" content="2024-01-14T19:32:11.000Z">
 <meta property="article:author" content="海驴">
 <meta property="article:tag" content="IT,互联网,网络,开发,硬件,生活,移动互联网,程序员,工程师,计算机">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202401170028580.jpg">
 
 
 <link rel="canonical" href="https://www.yigegongjiang.com/openSource/">
@@ -149,7 +143,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8F%E5%B7%A5%E5%85%B7"><span class="nav-number">1.</span> <span class="nav-text">小工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%9A%E5%AE%A2-Local"><span class="nav-number">2.</span> <span class="nav-text">博客 Local</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%9A%E5%AE%A2-Local"><span class="nav-number">1.</span> <span class="nav-text">博客 Local</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -225,52 +219,17 @@
       
       
       <div class="post-body">
-          <h1 id="小工具"><a href="#小工具" class="headerlink" title="小工具"></a>小工具</h1><ul>
-<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvSmFwYW5NZW1vcnk=">JapanMemory - 日本语速记</span>： <strong>Mac app</strong><blockquote>
-<p>刚开始学习日语，五十音图总是记不住。于是想到了把记不住的音定时循环随机展示，以加强记忆，效果良好。</p>
-</blockquote>
-<ul>
-<li>Next…<ul>
-<li>【ok】通过配置文件，可外部动态配置待记忆内容</li>
-<li>【ok】增加单词记忆</li>
+          <ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvamotcGxhbg==">jj-plan</span>（CLI + Cloudflare Worker）：个人 Spec / Task 追踪，数据落 Cloudflare D1，CLI 与浏览器双端访问。</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvY2xpLXByb21wdC1sYXVuY2hlcg==">cli-prompt-launcher</span>（CLI / Bun）：<code>jj</code> 命令以预设 scene prompt 启动 Claude Code 或 Codex，支持交互 / 文本 / 流式模式。</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvamotc2tpbGxz">jj-skills</span>（npx skills 源）：个人多技能仓库，自定义 skills 供 <code>npx skills</code> 一键安装到 Claude Code / Codex 等。</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvU3BlZWRv">Speedo</span>（iOS app）：通过画中画浮窗实时显示设备上下行网速。</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvZXhwb3J0LWNocm9taXVtLWhpc3Rvcnk=">export-chromium-history</span>（CLI / Python）：读取 Chromium 系浏览器 History SQLite 库，导出为 Safari 可导入的 JSON，做跨浏览器迁移。</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvSmFwYW5NZW1vcnk=">JapanMemory</span>（Mac app）：日语五十音 / 单词速记，定时循环随机展示加强记忆。</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvSExWUGFzdGU=">HLVPaste</span>（Mac app）：轻量级文本输入框，配合 LaunchBar 唤起，自动写入粘贴板并支持 iPhone 同步读取。</li>
+<li>中文词语纠错（<a href="https://www.yigegongjiang.com/2024/SwiftZhTextCorrect/">说明</a>）：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvSExWU2VudGVuY2U=">HLVSentence</span>（CLI） + <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvSExWWmhDb3JyZWN0">HLVZhCorrect</span>（Mac app）。</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvSExWRmlsZUR1bXA=">HLVFileDump</span>（CLI）：文件类型识别，通过多位置截取解码以低开销判断文本文件。</li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202401170028580.jpg" width="30%">
-<img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202401170029036.jpg" width="30%">
-
-<ul>
-<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvSExWUGFzdGU=">HLVPaste - 轻量级文本输入框</span>： <strong>Mac app</strong><blockquote>
-<p>通过 LaunchBar 等启动工具，可快速打开 app HLVPaste 并获得焦点（如已经打开，上一次的内容会自动清空）。<br>HLVPaste 有非常小巧的界面，输入文本后即可移动到其他窗口。文本会自动 copy 到 Mac 粘贴版。<br>在 iPhone 设备上可 Paste，获取到 Mac 的粘贴版内容。</p>
-</blockquote>
-</li>
-</ul>
-<img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202401150818590.png" width="30%">
-
-<ul>
-<li><strong>中文分词</strong>： <strong>Mac app &amp; CLI</strong><blockquote>
-<p>一直有一个写字痛点，就是错别字。尤其在发帖子和写文章这样的正式场合，错别字会引起很大的误解，而每次检查都会很吃力。<br>试用了人气较高的 “写作猫” 和 “火龙果” 两个纠错平台，都有很大的局限性，并不适合我这样的人使用。</p>
-</blockquote>
-<ul>
-<li><a href="https://www.yigegongjiang.com/2024/SwiftZhTextCorrect/">中文词语纠错说明</a></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvSExWU2VudGVuY2U="> HLVSentence CLI</span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvSExWWmhDb3JyZWN0">HLVZhCorrect Mac app</span></li>
-</ul>
-</li>
-</ul>
-<img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202401061607920.png" width="30%">
-<img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202401061607769.png" width="30%">
-
-<ul>
-<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcvSExWRmlsZUR1bXA=">HLVFileDump - 文件类型识别</span>： <strong>CLI</strong><blockquote>
-<p>对于一个文件是否是文本文件，并没有完全行之有效的识别方案。只能通过尝试去理解内容，这是有一定误差的。<br>可行的方案有：文件名后缀匹配、magic number 过滤等，虽然会有一定误差，但在比较稳定的环境下，这也是有效的。<br>对文本内容全量解码，这在文本较小的时候非常行之有效。若环境中出现图片、压缩文件等，这会有极大的性能损耗。<br>这里提供一种思路，即对文本内容主动进行多个位置的截取解码，以较小的性能开销来对文本文件进行识别。</p>
-</blockquote>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">hlvdump istext xxx.md</span><br><span class="line"></span><br><span class="line">&gt; YES, This Is Text File.(or "NO, This Not Text File.")</span><br><span class="line"></span><br><span class="line">hlvdump MyI.zip</span><br><span class="line">&gt; type: zip, alias: jar zipx</span><br><span class="line"></span><br><span class="line">hlvdump test.log</span><br><span class="line">&gt; type: text</span><br></pre></td></tr></tbody></table></figure>
-
 <h1 id="博客-Local"><a href="#博客-Local" class="headerlink" title="博客 Local"></a>博客 Local</h1><p>当前 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lpZ2Vnb25namlhbmcveWlnZWdvbmdqaWFuZy5naXRodWIuaW8=">博客</span> 可在 <code>Github - master</code> 中下载，可在本地进行 html 查阅。</p>
 <hr>
 <p>枯萎的野草 怎配得上栀子花<br>在冬夜的我 留不住你的初夏<br>祝你以后过得比我好啊</p>
