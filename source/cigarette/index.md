@@ -3,7 +3,7 @@ title: 日本带货，携带回国
 date: 2025-06-24 12:06:05
 ---
 
-> 「每月回国，人肉带货，长期有效」(6 月中有空位。)。
+> 「每月回国，人肉带货，长期有效」(7 月中有空位。)。
 > TLDR - A: i) 优先免税店物品（免税便宜、拿货方便）。j) 优先 体积小、重量小 物品。
 > TLDR - B: i) 汇率：1 人民币 = 20 日元。j) 最低预定要求：代购费用 >= 40 rmb。
 > TLDR - C: 代购费用：普通商品 0.15、电子 & 轻奢 0.08（单件）、奢侈品 & 贵重商品无法携带。
@@ -96,7 +96,6 @@ b. 可在多平台 (alipay、wechat、顺丰 app、淘宝 app...) 收到快件�
 
 > 当前国内余量（2026.06.10）：
 > 【9 包】SevenStars 10mg 中国海关免税版：34 rmb/包 [via](https://drive.google.com/file/d/1qk29URHqdt2NmnbZhd-Y2FdIAq_uhABW/view?usp=sharing)
-> 【5 包】Peace 10mg 日本免税版：37 rmb/包
 > 【1 条】Peace 小雪茄：500 rmb
 
 ### 焦油量
