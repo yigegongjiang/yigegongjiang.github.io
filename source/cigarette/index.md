@@ -95,7 +95,7 @@ b. 可在多平台 (alipay、wechat、顺丰 app、淘宝 app...) 收到快件�
 ## 香烟说明
 
 > 当前国内余量（2026.06.10）：
-> 【9 包】SevenStars 10mg 中国海关免税版：34 rmb/包 [via](https://drive.google.com/file/d/1qk29URHqdt2NmnbZhd-Y2FdIAq_uhABW/view?usp=sharing)
+> 【2 条】SevenStars 10mg 中国海关免税版：34 rmb/包 [via](https://drive.google.com/file/d/1qk29URHqdt2NmnbZhd-Y2FdIAq_uhABW/view?usp=sharing)
 > 【1 条】Peace 小雪茄：500 rmb
 
 ### 焦油量
