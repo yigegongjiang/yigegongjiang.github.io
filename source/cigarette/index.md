@@ -1,6 +1,8 @@
 ---
 title: 日本带货，携带回国
 date: 2025-06-24 12:06:05
+noindex: true
+sitemap: false
 ---
 
 > 「每月回国，人肉带货，长期有效」(7 月中有空位。7 月份回国同事多，可以带 Peace 铁盒-长期紧缺款)。
@@ -94,8 +96,8 @@ b. 可在多平台 (alipay、wechat、顺丰 app、淘宝 app...) 收到快件�
 
 ## 香烟说明
 
-> 当前国内余量（2026.06.27）：
-> 【2 条】SevenStars 10mg 中国海关免税版：34 rmb/包 [via](https://drive.google.com/file/d/1qk29URHqdt2NmnbZhd-Y2FdIAq_uhABW/view?usp=sharing)
+> 当前国内余量（2026.07.07）：
+> 【8 包】Peace 10mg：37 rmb/包
 
 ### 焦油量
 
