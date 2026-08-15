@@ -89,7 +89,7 @@ b. 可在多平台 (alipay、wechat、顺丰 app、淘宝 app...) 收到快件�
 - Q：不支付会咋样？A：很不 nice。
 - Q：酒/药 能带吗？A：虽然免税店的清酒非常便宜，但体积过大、质量过重，无法携带。【非处方药】可以购买和携带。
 - Q：怎么判断是正品？A：有小票能用小票。小概率没小票只能靠我自己背书（即：如您疑虑，则不要预约，我证明不了正品）。
-- Q：帮我宣传一下？A：谢谢，但请不要帮我宣传。我被薅一单羊毛，一趟就白干了。
+- Q：帮我宣传一下？A：谢谢，但请不要帮我宣传。我是先垫付，被薅一单羊毛，一趟就白干了。
 - Q：七星的日税、日免是什么？A：Peace 和 七星 生产地都在日本，但 七星 在不同海关使用不同的外包装，就有了不同的名称。
 - Q：推荐哪款烟？A：相比七星，Peace 在国内没有声音。但在复购上，Peace 超过七星。因人而异，都支持退货退款的。
 - Q：香烟成分表（无用小知识）A：日本烟草公司（JTI）官网：[烟草配料](https://www.jti.co.jp/tobacco/responsibilities/guidelines/additive/tobacco/index.html)、[材料说明](https://www.jti.co.jp/tobacco/responsibilities/guidelines/additive/material/index.html)、[材料表](https://www.jti.co.jp/tobacco/responsibilities/guidelines/additive/material/list.html)。（有害健康、尽早戒烟、享受生活）
