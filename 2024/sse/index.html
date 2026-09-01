@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.yigegongjiang.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.27.0","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":142,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"text":"Light Mode (Better for light mode to discuss, base github, cannot commen can email me)","order":-2},"utterances":{"text":"Dark Mode","order":-1}},"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="Server-Sent Events（SSE）是一种允许服务器通过 HTTP 连接主动向客户端发送数据的技术。它主要被用于创建实时应用，如消息推送和实时通知。SSE 使用简单的文本格式发送消息，这种格式使得其易于在浏览器中实现和使用。 SSE 注意事项：  通过 HTTP 协议通道 建立单向长连接，即 Client 连接 Server 后，Server 不断开连接，并持续的通过 socket 套接">
+    <meta name="description" content="SSE（Server-Sent Events）是 Server → Client 的 HTTP 事件流格式，MIME 为 text&#x2F;event-stream。Server 保持响应打开并持续写入事件；浏览器可用 EventSource 完成解析、派发与重连。Client → Server 仍使用普通 HTTP 请求。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SSE 指南">
+<meta property="og:title" content="Server-Sent Events（SSE）">
 <meta property="og:url" content="https://www.yigegongjiang.com/2024/sse/index.html">
 <meta property="og:site_name" content="一个工匠">
-<meta property="og:description" content="Server-Sent Events（SSE）是一种允许服务器通过 HTTP 连接主动向客户端发送数据的技术。它主要被用于创建实时应用，如消息推送和实时通知。SSE 使用简单的文本格式发送消息，这种格式使得其易于在浏览器中实现和使用。 SSE 注意事项：  通过 HTTP 协议通道 建立单向长连接，即 Client 连接 Server 后，Server 不断开连接，并持续的通过 socket 套接">
+<meta property="og:description" content="SSE（Server-Sent Events）是 Server → Client 的 HTTP 事件流格式，MIME 为 text&#x2F;event-stream。Server 保持响应打开并持续写入事件；浏览器可用 EventSource 完成解析、派发与重连。Client → Server 仍使用普通 HTTP 请求。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-11-01T04:16:30.000Z">
 <meta property="article:author" content="海驴">
@@ -37,10 +37,10 @@
 <link rel="canonical" href="https://www.yigegongjiang.com/2024/sse/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2024/sse/","path":"2024/sse/","title":"SSE 指南"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.yigegongjiang.com/2024/sse/","path":"2024/sse/","title":"Server-Sent Events（SSE）"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>SSE 指南 | 一个工匠</title>
+<title>Server-Sent Events（SSE） | 一个工匠</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CTEWJ02QX"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-8CTEWJ02QX","only_pageview":false,"measure_protocol_api_secret":null}</script>
@@ -142,7 +142,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">数据格式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">消息类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8D%E8%BF%9E"><span class="nav-number">3.</span> <span class="nav-text">重连</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%83%E8%B7%B3"><span class="nav-number">4.</span> <span class="nav-text">心跳</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">数据格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%94%9F%E6%88%90%E4%BA%8B%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">服务端生成事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">消息类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%83%E8%B7%B3"><span class="nav-number">4.</span> <span class="nav-text">心跳</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%AD%E7%BA%BF%E9%87%8D%E8%BF%9E"><span class="nav-number">5.</span> <span class="nav-text">断线重连</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EventSource-API"><span class="nav-number">6.</span> <span class="nav-text">EventSource API</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -222,12 +222,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="SSE 指南 | 一个工匠">
+      <meta itemprop="name" content="Server-Sent Events（SSE） | 一个工匠">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          SSE 指南
+          Server-Sent Events（SSE）
         </h1>
 
         <div class="post-meta-container">
@@ -259,40 +259,69 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>Server-Sent Events（SSE）是一种允许服务器通过 HTTP 连接主动向客户端发送数据的技术。它主要被用于创建实时应用，如消息推送和实时通知。SSE 使用简单的文本格式发送消息，这种格式使得其易于在浏览器中实现和使用。</p>
-<p>SSE 注意事项：</p>
-<ol>
-<li>通过 HTTP 协议通道 建立单向长连接，即 Client 连接 Server 后，Server 不断开连接，并持续的通过 socket 套接字发送 data 给 Client。</li>
-<li>网关等设备会主动关闭 tcp 通道，需要 SSE Server 端增加心跳。很多种场景都会导致 tcp 连接中断，和 IM 心跳一致。这里需要 SSE Server 增加应用层心跳，非 TCP 层心跳。</li>
-</ol>
+    <div class="post-body" itemprop="articleBody"><p>SSE（Server-Sent Events）是 Server → Client 的 HTTP 事件流格式，MIME 为 <code>text/event-stream</code>。Server 保持响应打开并持续写入事件；浏览器可用 <code>EventSource</code> 完成解析、派发与重连。Client → Server 仍使用普通 HTTP 请求。</p>
 <span id="more"></span>
 
-<h1 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h1><p>通过具有明显分割线的消息体，来分割数据字段：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 以下文本消息体，最终通过编译成二进制的形式被传递和解析，通过 \n 等标记符号进行【行】分割。</span><br><span class="line"></span><br><span class="line">event: message/userupdate/custom...\n</span><br><span class="line">data: {xxx}\n</span><br><span class="line">id: 98769879675\n</span><br><span class="line">retry: 10000\n</span><br><span class="line">\n</span><br><span class="line"></span><br><span class="line">// 一个完整的消息体如下，通过 \n 分割行，末尾通过 \n\n 分割单个消息体</span><br><span class="line">id: event-id-1\ndata:event-data-first\n\n</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h2><p>用 <code>\n</code> 表示换行。事件由若干字段行组成，以空行结束：</p>
+<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">event: userupdate\ndata: {"uid":1}\nid: 98769879675\nretry: 10000\n\n</span><br></pre></td></tr></tbody></table></figure>
 
-<p>以上 event/data/id/retry 四个字段中，data 是必须字段，其他三个是可选字段。每个消息体，必须以 \n\n 作为末尾标记。</p>
-<p>在 ts 中，可行的生成消息体的 code 如下：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">private encodeMessage(message: ChatMessage) {</span><br><span class="line">  const data = {</span><br><span class="line">    type: message.type,</span><br><span class="line">    payload: message.data,</span><br><span class="line">  };</span><br><span class="line">  const content = [</span><br><span class="line">    `id: ${message.id}`,</span><br><span class="line">    `data: ${JSON.stringify(data)}`,</span><br><span class="line">    '',</span><br><span class="line">    '',</span><br><span class="line">  ].join('\n'); // 这里，通过空行分割，在消息体的末尾增加 `\n\n` 标记</span><br><span class="line">  return this.encoder.encode(content);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>规范允许 <code>\r\n</code>、<code>\n</code>、<code>\r</code> 三种行尾。服务端通常统一输出 <code>\n</code>；客户端解析器应兼容三种形式。</p>
+<p>每一行按第一个 <code>:</code> 分成 field 与 value：</p>
+<ul>
+<li>value 开头的一个空格会被移除；更多空格保留</li>
+<li><code>:</code> 开头的行是注释，解析器直接忽略</li>
+<li>没有 <code>:</code> 的行，整行作为 field，value 为空串</li>
+<li>未知 field 直接忽略</li>
+<li>整个流使用 UTF-8；开头允许一个 BOM</li>
+</ul>
+<p>标准字段：</p>
+<ul>
+<li><code>data</code>：事件数据；多行 <code>data</code> 用 <code>\n</code> 合并</li>
+<li><code>event</code>：事件类型；缺省时为 <code>message</code></li>
+<li><code>id</code>：更新 last event ID，供断线重连使用</li>
+<li><code>retry</code>：建议浏览器下一次重连前等待的毫秒数</li>
+</ul>
+<p><code>data:</code> 这一行可以没有内容。只要出现过 <code>data</code> field，空行到来时仍会派发事件；完全没有 <code>data</code> field 的块不会派发事件。</p>
+<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data: first line\n</span><br><span class="line">data: second line\n</span><br><span class="line">\n</span><br></pre></td></tr></tbody></table></figure>
 
-<p>对消息体的解析，也同样遵循固定的规律，即对二进制中的 \n 和 \n\n 进行解析。</p>
-<p>解析流程：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 通过 \n\n 对消息体进行分割，获得一个消息体的二进制内容并开始解析</span><br><span class="line">2. 通过 \n 对行进行解析，获得 xxx:xxx 这样的一行内容</span><br><span class="line">3. 通过 : 符号，对行进行解析，获得 key:xxx 和 value:xxx 两个内容</span><br><span class="line">4. 整合获得的所有内容，聚合成 {id:xxx,event:xxx,data:xxx,retry:xxx} 这样的消息体</span><br></pre></td></tr></tbody></table></figure>
+<p>对应的 <code>data</code> 为 <code>first line\nsecond line</code>。</p>
+<p>流关闭时，末尾没有空行的半个事件会被丢弃。Server 必须为最后一个事件补上空行。</p>
+<h2 id="服务端生成事件"><a href="#服务端生成事件" class="headerlink" title="服务端生成事件"></a>服务端生成事件</h2><figure class="highlight ts"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">SSEMessage</span> = {</span><br><span class="line">  <span class="attr">event</span>?: <span class="built_in">string</span>;</span><br><span class="line">  <span class="attr">data</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="attr">id</span>?: <span class="built_in">string</span>;</span><br><span class="line">  <span class="attr">retry</span>?: <span class="built_in">number</span>;</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">encodeSSE</span>(<span class="params"><span class="attr">message</span>: <span class="title class_">SSEMessage</span></span>): <span class="title class_">Uint8Array</span> {</span><br><span class="line">  <span class="keyword">const</span> <span class="attr">lines</span>: <span class="built_in">string</span>[] = [];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (message.<span class="property">event</span> !== <span class="literal">undefined</span>) lines.<span class="title function_">push</span>(<span class="string">`event: <span class="subst">${message.event}</span>`</span>);</span><br><span class="line">  <span class="keyword">if</span> (message.<span class="property">id</span> !== <span class="literal">undefined</span>) lines.<span class="title function_">push</span>(<span class="string">`id: <span class="subst">${message.id}</span>`</span>);</span><br><span class="line">  <span class="keyword">if</span> (message.<span class="property">retry</span> !== <span class="literal">undefined</span>) lines.<span class="title function_">push</span>(<span class="string">`retry: <span class="subst">${message.retry}</span>`</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// data 内的换行必须拆成多行；客户端会用 \n 合并。</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> line <span class="keyword">of</span> message.<span class="property">data</span>.<span class="title function_">split</span>(<span class="regexp">/\r\n|\r|\n/</span>)) {</span><br><span class="line">    lines.<span class="title function_">push</span>(<span class="string">`data: <span class="subst">${line}</span>`</span>);</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">  lines.<span class="title function_">push</span>(<span class="string">""</span>, <span class="string">""</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">TextEncoder</span>().<span class="title function_">encode</span>(lines.<span class="title function_">join</span>(<span class="string">"\n"</span>));</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
-<h1 id="消息类型"><a href="#消息类型" class="headerlink" title="消息类型"></a>消息类型</h1><p>SSE 通过 event 字段，可以自定义各种消息体。约定通用的消息体是 message。有如下两种消息体：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">id: xxx\ndata:xxx\nevent:message\n\n</span><br><span class="line">id:xxx\ndata:xxx\nevent:{custom-name}\n\n</span><br></pre></td></tr></tbody></table></figure>
+<p>写入响应后需要及时 flush。应用框架、压缩中间件、反向代理或 CDN 任意一段缓冲，都可能让多个事件积累后一起到达。</p>
+<h2 id="消息类型"><a href="#消息类型" class="headerlink" title="消息类型"></a>消息类型</h2><p>省略 <code>event</code> 时，浏览器触发 <code>message</code>：</p>
+<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data: {"status":"ready"}\n\n</span><br></pre></td></tr></tbody></table></figure>
 
-<p>如果 event 为空，默认当作且应该当作 message 消息来解析和处理。</p>
-<h1 id="重连"><a href="#重连" class="headerlink" title="重连"></a>重连</h1><p>http 通道可能发生中断，每条消息题都可以携带一个 retry 字段，用来告知 client 在断开后多久应该重连。</p>
-<p>而重连的逻辑就是重新发起 http 连接。这里为了保持和之前的通道一致，应该在重连的时候在 header 中携带最后一次收到的消息的 id，可以让 server 侧知道从哪里中断的，以保持连续的服务。</p>
-<h1 id="心跳"><a href="#心跳" class="headerlink" title="心跳"></a>心跳</h1><p>SSE 应该使用应用层心跳，即发送一条空消息体，以保持 http tcp 套接字不被网关、nat 等场景强制关闭。格式如下：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:\n\n</span><br><span class="line">:heartbeat\n\n</span><br></pre></td></tr></tbody></table></figure>
+<p>指定 <code>event</code> 后，可按事件类型注册处理器：</p>
+<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">event: userupdate\n</span><br><span class="line">data: {"uid":1}\n</span><br><span class="line">\n</span><br></pre></td></tr></tbody></table></figure>
 
-<p>这里，心跳可以不遵循消息体的约定。</p>
-<p>之前提到消息体一定需要有 data 字段，因为每一条消息都是需要传递信息，如果没有 data 字段，那么这条消息就无法被解析，也就没有传递的必要。</p>
-<p>但是这套约定，并不是说没有 data 字段，消息的发送、接收、解析 整套流程就会失败，因为对于 TCP/UDP/HTTP 这套协议来说，它并不关心消息体的内容是什么。</p>
-<p>而 Client 端，对消息体的解析应该是包容的，即消息体如果不符合约定，那么就应该抛弃。</p>
-<p>这里的应用层心跳，就会走到这套逻辑里面。IM 是双向通信，为了保障心跳的到达，Client 端需要解析完整的心跳并回执。在 SSE 单向通道里面，只需要保障有一条消息从 Server 发往 Client 即可（没有成功率保障，因为是单向通信）。</p>
-<hr>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> source = <span class="keyword">new</span> <span class="title class_">EventSource</span>(<span class="string">"/events"</span>);</span><br><span class="line"></span><br><span class="line">source.<span class="property">onmessage</span> = <span class="function">(<span class="params">event</span>) =&gt;</span> {</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(event.<span class="property">data</span>);</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line">source.<span class="title function_">addEventListener</span>(<span class="string">"userupdate"</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> {</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">JSON</span>.<span class="title function_">parse</span>(event.<span class="property">data</span>));</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="心跳"><a href="#心跳" class="headerlink" title="心跳"></a>心跳</h2><p>HTTP 连接可能被反向代理、负载均衡器或 NAT 按空闲时间关闭。SSE 使用注释行发送应用层心跳：</p>
+<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:\n\n</span><br><span class="line">: keep-alive\n\n</span><br></pre></td></tr></tbody></table></figure>
+
+<p>注释不会触发事件，只会让链路持续出现字节。心跳间隔应短于整条链路中最短的 idle timeout；它与 TCP keepalive 解决的层级不同。</p>
+<p>SSE 是单向通道，心跳没有回执。需要确认 Client 在线时，应另行设计双向通信或确认请求。</p>
+<h2 id="断线重连"><a href="#断线重连" class="headerlink" title="断线重连"></a>断线重连</h2><p><code>EventSource</code> 内置重连流程：</p>
+<ol>
+<li>连接中断后进入 <code>CONNECTING</code>。</li>
+<li>等待重连时间；Server 可用 <code>retry: &lt;ms&gt;</code> 更新这个值。</li>
+<li>last event ID 非空时，新请求自动携带 <code>Last-Event-ID</code>。</li>
+<li>Server 根据该 ID 从断点继续发送。</li>
+</ol>
+<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">id: 42\n</span><br><span class="line">data: {"status":"processing"}\n</span><br><span class="line">retry: 3000\n</span><br><span class="line">\n</span><br></pre></td></tr></tbody></table></figure>
+
+<p>Server 必须保存事件 ID 与可重放数据，<code>Last-Event-ID</code> 才能形成真正的断点续传。只发送 <code>id:</code>、没有 <code>data:</code> 的块不会触发事件，但会推进 last event ID。</p>
+<h2 id="EventSource-API"><a href="#EventSource-API" class="headerlink" title="EventSource API"></a>EventSource API</h2><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> source = <span class="keyword">new</span> <span class="title class_">EventSource</span>(<span class="string">"/events"</span>, { <span class="attr">withCredentials</span>: <span class="literal">true</span> });</span><br><span class="line"></span><br><span class="line">source.<span class="property">onopen</span> = <span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">"connected"</span>);</span><br><span class="line">source.<span class="property">onerror</span> = <span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(source.<span class="property">readyState</span>);</span><br><span class="line">source.<span class="property">onmessage</span> = <span class="function">(<span class="params">event</span>) =&gt;</span> {</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(event.<span class="property">lastEventId</span>, event.<span class="property">data</span>);</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line">source.<span class="title function_">close</span>();</span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>EventSource</code> 负责解析 SSE、派发事件和自动重连。限制：</p>
+<ul>
+<li>请求方法固定为 GET</li>
+<li>构造参数只能控制 URL 与 <code>withCredentials</code></li>
+<li>无法添加 <code>Authorization</code> 等自定义请求头</li>
+<li>响应必须是 HTTP 200 + <code>text/event-stream</code></li>
+</ul>
+<p>需要 POST、请求体或自定义 Header 时，可用 <code>fetch()</code> 发起请求，从 <code>response.body</code> 读取字节并解析 SSE。事件格式保持不变；重连与 <code>Last-Event-ID</code> 由应用实现。</p>
 
     </div>
 
