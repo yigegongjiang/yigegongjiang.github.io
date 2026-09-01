@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -274,7 +274,7 @@
 
 <h1 id="0x01-Swift-生态"><a href="#0x01-Swift-生态" class="headerlink" title="0x01 Swift 生态"></a>0x01 Swift 生态</h1><p>一言两语，先概要描述下 Swift 目前的生态，以明确脚本开发所处的位置。</p>
 <p>Swift 做为苹果大力推出的 iOS/Mac 多平台应用开发语言，目前广泛用于开发 app (ipa/dmg)。做为古老的 Objective-C 替代者，基本上对接了 OC 里面所有的 Api，可以直接调用。这对新语言的铺广有很大好处，使用成本有非常大的降低。<br>但 Swift 也抛弃了 OC 的消息传递机制，使得 patch 等能力很难实现。这也是大公司不愿意迁移的原因，在苹果不允许热更新之后，它们都耗费大精力维护一套不公开的 patch 能力，以在紧急时刻做补救。</p>
-<p>Swift 做为后浪，完全集百家之长，也躲过了这些年高级语言已知的不完美，这是相当优秀的点。<br>至目前 (23 年底)，已经对范型、协程、并发等高级场景做了完备的支持。<br>尤其值得关注的是发源地 app 开发，Swift 提供了 SwiftUI 做为原始 UIkit / AppKit 的替代，这是目前非常跟随潮流的 UI 基础建设。</p>
+<p>Swift 做为后浪，完全集百家之长，也躲过了这些年高级语言已知的不完美，这是相当优秀的点。<br>至目前 (23 年底)，已经对范型、协程、并发等高级场景做了完备的支持。<br>尤其值得关注的是发源地 app 开发，Swift 提供了 SwiftUI 做为原始 UIkit/AppKit 的替代，这是目前非常跟随潮流的 UI 基础建设。</p>
 <p>Swift 以跨平台为前提，也同样可以做服务端开发、输出命令行可执行文件等。但刚才提到的 UI 能力并不能服务于此，毕竟这是不需要 UI 能力的。</p>
 <h2 id="playground-repl"><a href="#playground-repl" class="headerlink" title="playground &amp; repl"></a>playground &amp; repl</h2><p>对于学习 Swift 来说，playground 是一个不错的学习乐园。<br>playground 有两种，一种是 iPad 和 Mac 上都适配的 app，名字叫 <span class="exturl" data-url="aHR0cHM6Ly9hcHBzLmFwcGxlLmNvbS91cy9hcHAvc3dpZnQtcGxheWdyb3VuZHMvaWQxNDk2ODMzMTU2P210PTEy">Swift Playground</span>，通过 SwiftUI 开发项目，可以直接上 App Store。<br>还有一种是通过 xcode - new - playground 生成的后缀名为 <strong>.playground</strong> 的项目，主要用于测试一些代码。</p>
 <p>第一种完全是鸡肋，我是这么认为。第二种，也倾向于鸡肋，用处不大（更多用于调试，可 xcode 里创建一个项目已经足够方便）。<br>这里建议，<strong>对于 Swift 研发同学来说，可以不用看 playground 了</strong>，这样可以避免理解不少概念，如 <code>PlaygroundSupport</code>、<code>Sources</code>、<code>Resources</code>、<code>多target分隔</code>等。<br>这些概念和实践，在研发历程上，基本是无用的。凭空增加了 Swift 的知识点复杂度。</p>
@@ -299,7 +299,7 @@
 <h2 id="生态小结"><a href="#生态小结" class="headerlink" title="生态小结"></a>生态小结</h2><p>至此，Swift 的开发生态介绍的差不多了，整体和 Xcode IDE 依旧有非常深的绑定。<br>当然也可以通过 <code>swift xxx</code> 等命令行进行开发和调试，但对于 Mac 平台的开发人员来说，这完全是多此一举。</p>
 <p>除此之外，前面也说到 Swift 是一门非常新也非常优秀的高级语言，其中的 协程、并发、多线程 等能力，也都是需要单独学习和掌握的。这属于语言本身，在环境篇就不再过多介绍。</p>
 <h1 id="命令行开发"><a href="#命令行开发" class="headerlink" title="命令行开发"></a>命令行开发</h1><p>这里进入核心环节，即通过 Swift 进行命令行开发的环境。<br>其实上面的环境篇，已经介绍了大部分命令行开发所需要的前期准备，如工程的搭建、项目依赖的设定等。</p>
-<p>在 Objective-C 时期，也可以通过 Xcode 进行 <code>Command line</code> 的开发，通过 <code>new - project - macOS - Command Line Tool</code> 既可以建立一个工程，Archive 后即可输出可执行文件。<br>但 OC 终究不是为命令行而生的，有很多局限性和短板。这也导致十几年来一直都有的这个功能，更多被用于 C / C++ 的调试入口。</p>
+<p>在 Objective-C 时期，也可以通过 Xcode 进行 <code>Command line</code> 的开发，通过 <code>new - project - macOS - Command Line Tool</code> 既可以建立一个工程，Archive 后即可输出可执行文件。<br>但 OC 终究不是为命令行而生的，有很多局限性和短板。这也导致十几年来一直都有的这个功能，更多被用于 C/C++ 的调试入口。</p>
 <p>目前 Swift 做命令行开发，依旧可以走之前的流程建立一个 <code>.xcodeproj</code> 工程进行开发，区别点是语言选项上，勾选 Swift 即可。<br>同时，上面的流程也显得有些落伍，毕竟如上面介绍，Package 具有和 <code>.xcodeproj</code> 同样的层级定义，我们可以通过 Package 来创建可执行程序。<br>这样的一个明显的好处，是不用理解 AppleId / Build Setting 等复杂的配置。显然，做为一个通用的命令行工具，我们可以提交到 brew 或者随意分发给有需要的朋友，哪里还需要 AppleId 开发者账号呢？</p>
 <p>Swift Package 命令行的项目创建/编译/调试/运行，可以通过 <code>swift xx</code> 命令行操作。有了 Xcode 这个高度集成的工具，显然不用如此费力。<br>创建项目的流程为：new - Package - macOS - Command Line Tool / Executable。<br>这样创建的工程就是 Package 工程，而不再是 <code>.xcodeproj</code> 工程。<code>Command Line Tool</code> 和 <code>Executable</code> 基本没有区别，前者多了一个 <code>ArgumentParser</code> 这个 apple 自带的库依赖。也正因为这个依赖，推荐使用前者，这在命令行开发的过程中会方便很多。</p>
 <h2 id="命令行输入参数解析自动化"><a href="#命令行输入参数解析自动化" class="headerlink" title="命令行输入参数解析自动化"></a>命令行输入参数解析自动化</h2><p>可以通过 CommandLine 模块做参数解析，提供了 argc 和 arguments 等 api，可以获取用户在执行命令的时候携带的参数。</p>

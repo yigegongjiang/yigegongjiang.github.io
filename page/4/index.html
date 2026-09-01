@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -501,8 +501,8 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>Swift Package Manager (SPM) 已经被苹果放置于一个很重要的位置，在<a href="https://www.yigegongjiang.com/2023/SwiftCommandEnv/#Package">历史文章</a>中对其做了一定的分析，Package 目前的定位和 Xcode Project <code>.xcodeproj</code> 同级别。SPM 不仅仅用于替代 Cocoapods，而是 Apple 后期语言研发生态的一部分。<br>鉴于 Xcode 对 Package 的支持，可以很方便的将项目中的代码进行组件化设计，做一定的逻辑分析即可拆分成多个 Package，这在开发过程中非常有利于项目的架构、单测、可持续性。<br>以前若这样做，需要对 Cocoapods 有深入的了解，这是一个比较复杂且细节的过程。通过 SPM 只需要 <code>New - Package</code> 即可，将复杂度从项目级别压缩到文件级别。</p>
-<p>SPM 出现后，很多 Pods 模块通过增加 <code>Package.swift</code> 配置文件可以很方便交由 SPM 管理。但对于直接通过 <code>Package.swift</code> 创建的独立库，并没有方便的方案转为 Pods 管理，还是需要走一遍 Pods 的流程。<br>不过，这里做一个预言，Pods 终将被 SPM 取代，因为 <strong>SPM 是更具有可持续性和生态深度耦合</strong>，在 Xcode 整合 (编辑/搜索/联调等)、多平台兼容，源码管理、二进制库/仓库管理、CI 等方面，都具有得天独厚的优势。<br>相比 Pods 完善的脚本自定义能力 (基于 ruby 的生态)，SPM 是有一定的短板，但不推荐。<br>很多大公司在做统一基建的时候，会深度魔改 Pods。简单的东西越做越复杂的原因，除了增加一些” 又不是不能用” 的功能，还有就是在复杂度提升后打的各种补丁。<br>虽然这么说，Pods 完善的自定义能力，SPM 也一样可以做到，毕竟这些能力很大部分都属于扩展能力，如插件。执行流程中大家都可以在 xcodebuild 等相关命令的任意位置，随时可以写一些定制脚本做插入执行。</p>
-<p>初期，Swift Package 只能做源码 (开源) 共享，后面增加了 <code>binaryTarget</code> 能力，可以在提供了二进制库 (framework / xcframework) 的情况下，直接通过 SPM 做分发。(闭源共享)<br>但二进制库从哪里来，普遍的方案还是通过 <code>.xcodeproj</code> 的形式编译导出 framework / xcframework 库。<br>Swift Package 虽然支持导出动态库和静态库，但流程上还不彻底，并不能直接交付使用，下面对此做一些解释说明。</p>
+<p>SPM 出现后，很多 Pods 模块通过增加 <code>Package.swift</code> 配置文件可以很方便交由 SPM 管理。但对于直接通过 <code>Package.swift</code> 创建的独立库，并没有方便的方案转为 Pods 管理，还是需要走一遍 Pods 的流程。<br>不过，这里做一个预言，Pods 终将被 SPM 取代，因为 <strong>SPM 是更具有可持续性和生态深度耦合</strong>，在 Xcode 整合 (编辑/搜索/联调等)、多平台兼容，源码管理、二进制库/仓库管理、CI 等方面，都具有得天独厚的优势。<br>相比 Pods 完善的脚本自定义能力 (基于 ruby 的生态)，SPM 是有一定的短板，但不推荐。<br>很多大公司在做统一基建的时候，会深度魔改 Pods。简单的东西越做越复杂的原因，除了增加一些 ”又不是不能用” 的功能，还有就是在复杂度提升后打的各种补丁。<br>虽然这么说，Pods 完善的自定义能力，SPM 也一样可以做到，毕竟这些能力很大部分都属于扩展能力，如插件。执行流程中大家都可以在 xcodebuild 等相关命令的任意位置，随时可以写一些定制脚本做插入执行。</p>
+<p>初期，Swift Package 只能做源码 (开源) 共享，后面增加了 <code>binaryTarget</code> 能力，可以在提供了二进制库 (framework/xcframework) 的情况下，直接通过 SPM 做分发。(闭源共享)<br>但二进制库从哪里来，普遍的方案还是通过 <code>.xcodeproj</code> 的形式编译导出 framework/xcframework 库。<br>Swift Package 虽然支持导出动态库和静态库，但流程上还不彻底，并不能直接交付使用，下面对此做一些解释说明。</p>
           <!--noindex-->
           <!--/noindex-->
         
@@ -588,7 +588,7 @@
 <blockquote>
 <p>2025.05.18 更新：<br>时至今日，Arc 已经停止功能更新很久了，但还是我的主力浏览器。同时，Dia 也已经成为我的默认浏览器长达 1 个月了。<br>Dia 的体验很特别。Arc 的标签管理非常棒，Dia 主要用于已经熟悉的 url web 网页浏览。<br>实际上 Dia 每日的使用时间非常长，因为每日浏览的网页 url 都是固定和熟悉的。</p>
 </blockquote>
-<p>每个人都有自己喜欢的浏览器，但每个人都不满意自己喜欢的浏览器。这是当今 Browser 之乱现象。<br>归根结底，在于浏览器内核太过复杂，没有推倒革新的可能。只能依托 webkit / blink 内核之上做层层补补的体感优化。<br>但千人千面，一个浏览器能够适配多个人的使用习惯已经很困难，更何况兼容上亿用户的心情。</p>
+<p>每个人都有自己喜欢的浏览器，但每个人都不满意自己喜欢的浏览器。这是当今 Browser 之乱现象。<br>归根结底，在于浏览器内核太过复杂，没有推倒革新的可能。只能依托 webkit/blink 内核之上做层层补补的体感优化。<br>但千人千面，一个浏览器能够适配多个人的使用习惯已经很困难，更何况兼容上亿用户的心情。</p>
 <p>也属实没想到，在早已过了 Browser 大拼杀的今天，还有 <span class="exturl" data-url="aHR0cHM6Ly9hcmMubmV0Lw==">Arc</span> 这样的黑马闯了出来。<br>已经重度使用两月有余，忍不住做一下使用过程中的体验和分享。</p>
 <p>Arc 使用的还是 Chrome-Blink 内核，重在用户使用体感上的创新。<br>早期通过会员邀请制预约排号（目前已经完全开放），当时体验了半小时有余，放弃了，感觉不到又什么亮点。重新尝试后，发现了很多亮点。<br>应该还是使用的多了，就发现了很多早期没有注意到的功能。也侧面反映一个点，一开始使用有可能劝退。<br>希望分享可以降低初次使用的劝退门槛。<br>但也如开头所言，可能您最后并不喜欢也不选择 Arc，概率或许还很大。</p>
           <!--noindex-->

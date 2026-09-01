@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -352,7 +352,7 @@
 <ol>
 <li>OSSpinLock 自旋锁（特别说明，虽然性能非常高，但是已经被废弃）。本质是互斥锁，ABC 同时访问对时候，C 先进去并加锁，然后 AB 不断循环访问是否解锁，如果解锁，立刻进入并加锁。所以被挡在锁外面对线程没有休息，而是不停对查询。<ol>
 <li>CPU 消耗很大，因为挡在锁外面对线程一直在不停查询。</li>
-<li>因为优先级反转原因，该锁已经被苹果弃用。比如优先级为：A &gt; B&gt;C。这个时候 C 提前进入加锁并执行代码，但是 A 优先级太高，导致 A 不停查询并占用了非常多对时间片，最后 C 用了很久才执行完并解锁。这个过程中，有太多时间片都浪费在了查询上。</li>
+<li>因为优先级反转原因，该锁已经被苹果弃用。比如优先级为：A&gt;B&gt;C。这个时候 C 提前进入加锁并执行代码，但是 A 优先级太高，导致 A 不停查询并占用了非常多对时间片，最后 C 用了很久才执行完并解锁。这个过程中，有太多时间片都浪费在了查询上。</li>
 </ol>
 </li>
 <li>os_unfair_lock 互斥锁的一种，OSSpinLock 的替代品。自旋锁会不停的查询并忙等，os_unfair_lock 会在加锁的情况下，对线程进行休眠。当解锁后继续执行。<ol>

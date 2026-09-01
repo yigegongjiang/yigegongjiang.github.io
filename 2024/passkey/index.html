@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -283,7 +283,7 @@
 <li>email 验证码</li>
 <li>App 短期有效的验证码</li>
 <li>通过 App 对 web 二维码扫码验证</li>
-<li>通过外部安全软件如 mac / iPhone 的 password app 生成 30s 有效的 Verification Code。</li>
+<li>通过外部安全软件如 mac/iPhone 的 password app 生成 30s 有效的 Verification Code。</li>
 </ol>
 <p>以上这些，有的场景可以直接用于用户注册、登陆，有些场景可以作为用户的【二次安全验证】，但它们都不属于 passkey。</p>
 <p>passkey 的首要条件有：</p>
@@ -329,7 +329,7 @@
 <p>iPhone 扫码后，会打开 passkey 移动端系统弹窗。iPhone 在设备上生成公私钥，私钥在安全元件中存储，并把公钥通过【一些通信方式】给到 web 站点。</p>
 <ol>
 <li>初期，使用 websocket，即 chrome 等浏览器打开 websocket，iPhone 通过 websocket 把公钥给到 chrome。chrome 进而给到 web 站点。</li>
-<li>现在，已经不用 websocket 来。iPhone 会通过私有协议，把公钥给到 macos，macos 通过 系统 api 返回给 chrome / web 站点。</li>
+<li>现在，已经不用 websocket 来。iPhone 会通过私有协议，把公钥给到 macos，macos 通过 系统 api 返回给 chrome/web 站点。</li>
 </ol>
 <p>除了以上多了一个二维码，供 iPhone 用来识别之外，其他就没有流程上的变化来。</p>
 <p>核心差异点就是：【私钥到底存在哪】。当然，存在哪里，哪里就需要作为后续提供私钥的源头。即：</p>

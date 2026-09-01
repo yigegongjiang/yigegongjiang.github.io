@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -281,12 +281,12 @@
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Person p = Person.new;</span><br><span class="line">[p realAge];</span><br></pre></td></tr></tbody></table></figure>
 <p>这里，[p realAge] 这个函数的调用，p 有自己的虚拟地址，realAge 函数也有自己的虚拟地址，但是在汇编之前，该函数已经被编译成了这样：<br>objc_msgsend(p, realAge)。<br>如此，Objective-C 通过 objc_msgsend 这个完全汇编写成的中间函数，在函数内部通过<strong>运行时库</strong>对 p 进行 superclass 和 isa 的访问，乃至最后实现三次动态函数转发操作。<br>所以 Objective-C 实现消息传递，就是依靠 objc_msgsend 这个中间函数来实现，如果 objc_msgsend 的虚拟地址为 0x87654321，那么 [p realAge] 函数被执行的时候，实际汇编为：call 0x87654321。</p>
 <p>上面说完了 objc_msgsend 这个中间函数完成动态解析的操作，那它是如何进行 superclass 和 isa 的访问，又是如何访问属性和方法列表的呢？</p>
-<h4 id="Objective-C面向对象的本质：C的struct（结构体）"><a href="#Objective-C面向对象的本质：C的struct（结构体）" class="headerlink" title="Objective-C面向对象的本质：C的struct（结构体）"></a>Objective-C 面向对象的本质：C 的 struct（结构体）</h4><p>通过 Runtime 源码，我们可以发现，Objective-C 里面一切皆对象，乃至 UILabel、NSTimer 等。而这些对象是以什么样的数据结构存在呢？<br>都是 struct（结构体）!我们的成员变量，成员属性，方法等，都保存在结构体里面。<br>所以这里我们可以深刻理解一下，为什么说 Objective-C 是 C 的超集，<strong>因为面向对象的 Objective-C 语言完全就是依靠面向过程的 C 语言发展起来的，乃至于我们写的面向对象的代码，最后都会变成面向过程的执行流程</strong>。<br>我们可以查看苹果公开的 runtime.h 文件，都是面向过程的函数调用。如：</p>
+<h4 id="Objective-C面向对象的本质：C的struct（结构体）"><a href="#Objective-C面向对象的本质：C的struct（结构体）" class="headerlink" title="Objective-C面向对象的本质：C的struct（结构体）"></a>Objective-C 面向对象的本质：C 的 struct（结构体）</h4><p>通过 Runtime 源码，我们可以发现，Objective-C 里面一切皆对象，乃至 UILabel、NSTimer 等。而这些对象是以什么样的数据结构存在呢？<br>都是 struct（结构体）! 我们的成员变量，成员属性，方法等，都保存在结构体里面。<br>所以这里我们可以深刻理解一下，为什么说 Objective-C 是 C 的超集，<strong>因为面向对象的 Objective-C 语言完全就是依靠面向过程的 C 语言发展起来的，乃至于我们写的面向对象的代码，最后都会变成面向过程的执行流程</strong>。<br>我们可以查看苹果公开的 runtime.h 文件，都是面向过程的函数调用。如：</p>
 <blockquote>
 <p>objc_setAssObjective-CiatedObject(id _Nonnull object, const void * _Nonnull key, id _Nullable value, objc_AssObjective-CiationPolicy policy)</p>
 </blockquote>
 <p>你看，这完全就是面向过程的编程。</p>
-<p>因为 struct 是我们对象的存储结构，所以我们可以通过 * class_getProperty (Class _Nullable cls, const char * _Nonnull name)* 等库函数直接对 struct 内部保存的数据进行访问。<br>比如我们要访问 a_object 的 a_object_method 方法，那么就要通过 a_object_struct，根据 superclass 找到类 A_struct，然后遍历 A_struct 里面的 methods 数组，找到 a_object_method 方法并执行。</p>
+<p>因为 struct 是我们对象的存储结构，所以我们可以通过 * class_getProperty (Class _Nullable cls, const char * _Nonnull name) * 等库函数直接对 struct 内部保存的数据进行访问。<br>比如我们要访问 a_object 的 a_object_method 方法，那么就要通过 a_object_struct，根据 superclass 找到类 A_struct，然后遍历 A_struct 里面的 methods 数组，找到 a_object_method 方法并执行。</p>
 <p>struct 结构体在编译后就已经确定，那如何做到动态性如增加方法呢？struct 的实现是 C 和 C++ 混编的，但大体逻辑不变，都是通过指针实现的。<br>比如说，struct 里面有一个方法的数组指针，那么我们动态添加方法的时候，只要通过这个数组指针就可以添加到对应的方法数组中，这样就完全不会改变 struct 的结构 (甚至如果数组需要扩容，也和 struct 没有任何关系)。</p>
 <p>因为 struct 在编译后就已经确定，所以能做动态性的方案不外乎这几点：</p>
 <ol>
@@ -301,7 +301,7 @@
 <p>iOS 和 Mac 使用的可执行文件是 Mach-o，与 Linux 的 ELF 和 Window 的 PE 一样，都是基于 COFF 格式扩展的。<br>所以 Mach-o 可执行文件的运行流程和 ELF 等都大差不差，当然具体到细节有一些差异。但总体都是差不多的，比如 segment 和 section、section head、内存分区等，都一样。</p>
 <p>应用启动后，首先操作系统通过 fork 开辟进程，开启用户态后，然后加载 Mach-o head。head 里面有很多重要信息，如 Magic Number (Mach-o 通过 0xfeedface/0xfeedfacf 表示 32/64 位，ELF 则有’E’’L’’F’标记、32/64 位、版本、大小端等)、版本、支持 CPU、文件类型等。</p>
 <p>然后找到 Load Commands 区，这里面有几个重要的信息，其中有三个为<strong> Segment (通过 Segment 将相同读取及可执行权限的 section 汇总到一起)</strong>，<strong>Dyld</strong>，<strong>Dylib</strong>。<br>通过 Segment 可以找到具体执行的指令和数据的 Section，和 ELF 里面的 section head (段表) 类似。应用启动的时候还没有到执行 Segment 那一步，还有一些重要的信息没有完成，其中一个就是动态库的符号解析和重定位。<br>PC 指令寄存器首先指向了 Dyld (动态链接器)，将 Dyld 运行起来后，开始将所有动态库复制到内存（已经在内存的无需重复加入，如系统库）。<br>所有项目里面所有用到的动态库，都会在这个时候拷贝到内存里面，一个都不会少。像一般项目，系统库都会有 200-500 个动态库要添加，因为已经在内存，所以不会耗费时间（手机重启后打开的第一个应用，会比较耗时，就是因为很多系统库都不在内存中）。<br>Dyld 将所有需要的动态库拷贝到内存后，Runtime 库也就拷贝好了。所以<strong>这是 Runtime 第一次展示的时机</strong>。而它第二次展示，就要等很多准备操作之后了。</p>
-<p>因为 iOS 在 4.3 系统之后，升级了虚拟地址方案，采用了动态虚拟地址，就是每个应用程序启动后，起始地址都是动态的。那么已经编译好的 Mach-0 就需要重新修正指令地址了。<br>这里的指令地址修复，分为两个环节，一个是本身 Mach-0 内部的地址修复，如函数调用、数据使用。这个就是 Rebase 阶段，总体是 I / O 耗时，但没有太多复杂的。</p>
+<p>因为 iOS 在 4.3 系统之后，升级了虚拟地址方案，采用了动态虚拟地址，就是每个应用程序启动后，起始地址都是动态的。那么已经编译好的 Mach-0 就需要重新修正指令地址了。<br>这里的指令地址修复，分为两个环节，一个是本身 Mach-0 内部的地址修复，如函数调用、数据使用。这个就是 Rebase 阶段，总体是 I/O 耗时，但没有太多复杂的。</p>
 <p>第二个环节是对动态库对引用修正。因为对动态库的使用本身就是地址为 0，需要在应用启动后重定位的，所以动态虚拟地址和动态库重定位在第二个环节就一套带走了。<br>这里有个特殊点，就是动态库也是程序，同样包含指令和数据。所有应用程序对动态库的指令都是共享的，如函数调用，但是对数据都是私有的，需要应用程序自己处理。<br>第二个环节里面，会把所有需要修正的数据全部修正掉，而函数调用，则是真正运行到这行指令的时候，才能修正。没有运行之前，仅仅做了一层映射，并没有真正处理。<br>这个映射就是动态库的数据和指令的映射，是一个 section 保存在 Data 区，因为这个区的数据可读写。这个映射就是 got section。<br>而第二个环节，也就是 Bind 阶段，更多的是 CPU 操作。</p>
 <p>Rebase 和 Bind 过后，<strong>又到了 Runtime 大显身手的时候了</strong>，PC 指令寄存器指向了 Runtime 的指令位置，开始进行 class 的遍历、method 的遍历、load 的执行等等操作。</p>
 <p>过后，才是项目的 main 函数的执行，然后是 application 的执行。当然，项目运行起来后的所有 objc_msgsend，都是要走一遍 Runtime 的。也就是 struct 那一套了。</p>

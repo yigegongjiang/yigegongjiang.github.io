@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -259,14 +259,14 @@
     <div class="post-body" itemprop="articleBody">
           <h3 id="互联网规则"><a href="#互联网规则" class="headerlink" title="互联网规则"></a>互联网规则</h3><ol>
 <li>互联网本质，就是数据在一定的协议基础上，在多台主机之间，进行数据的流动共享。</li>
-<li>网络传输协议非常多，不是简简单单的 HTTP / HTTPS 协议，我们 App 看的直播就有 RTMP、私有 UDP 协议、DNS (+CDN 加速) 等等。</li>
-<li>数据在网络上基于二进制包进行传输，传输规则基于 7 层网络协议，4 / 5 层网络协议便于理解</li>
+<li>网络传输协议非常多，不是简简单单的 HTTP/HTTPS 协议，我们 App 看的直播就有 RTMP、私有 UDP 协议、DNS (+CDN 加速) 等等。</li>
+<li>数据在网络上基于二进制包进行传输，传输规则基于 7 层网络协议，4/5 层网络协议便于理解</li>
 <li>数据包在传输过程中几个关键不可缺少的字段：端口、MAC 地址、IP 地址。可以没有应用层的 HTTP 等协议，但是绝对不可能没有网络层、Mac 层和物理层。没有这三层，数据是不可能找到对应接收方的，甚至这个数据包都出不了你的电脑端口。可以没有应用层等，如 ping 一个主机使用的 ICMP 就是网络层协议，就没有应用层。</li>
 </ol>
-<h3 id="HTTP-HTTPS规则"><a href="#HTTP-HTTPS规则" class="headerlink" title="HTTP/HTTPS规则"></a>HTTP / HTTPS 规则</h3><ol>
+<h3 id="HTTP-HTTPS规则"><a href="#HTTP-HTTPS规则" class="headerlink" title="HTTP/HTTPS规则"></a>HTTP/HTTPS 规则</h3><ol>
 <li>HTTP 协议是无状态的协议，所以需要 Session、Cookie</li>
-<li>HTTP 没有三次握手，握手的是 TCP。应用层只要通过 TCP 必定会有三次握手。握手并不是 C - S 之间有一条网络管道进行连接，而是两端各自维护相应的状态，当双方状态都处于 runing 的时候 (双方套接字处于完成状态，本质是 Socket 套接字，UDP 也适用该规则)，代表双方连接建立</li>
-<li>HTTPS 的公私钥认证，很多情况下只发生一次，公私钥认证的用途仅仅是为 C - S 之间的后续通讯建立对称密钥。后续的网络请求不出问题是不会重新公私钥认证的。因为服务器会在第一次公私钥认证的时候，生成 Session ID，该 Session ID 指向对称密钥并保存。客户端一般也会保存这个 Session ID 和对称密钥，后面客户端提交 Session ID 到服务器就可以建立起来安全通信。HTTP1.0 就可以支持 keep alive，多个网络请求可以复用建立的连接，这个时候更加不需要公私钥认证了。</li>
+<li>HTTP 没有三次握手，握手的是 TCP。应用层只要通过 TCP 必定会有三次握手。握手并不是 C-S 之间有一条网络管道进行连接，而是两端各自维护相应的状态，当双方状态都处于 runing 的时候 (双方套接字处于完成状态，本质是 Socket 套接字，UDP 也适用该规则)，代表双方连接建立</li>
+<li>HTTPS 的公私钥认证，很多情况下只发生一次，公私钥认证的用途仅仅是为 C-S 之间的后续通讯建立对称密钥。后续的网络请求不出问题是不会重新公私钥认证的。因为服务器会在第一次公私钥认证的时候，生成 Session ID，该 Session ID 指向对称密钥并保存。客户端一般也会保存这个 Session ID 和对称密钥，后面客户端提交 Session ID 到服务器就可以建立起来安全通信。HTTP1.0 就可以支持 keep alive，多个网络请求可以复用建立的连接，这个时候更加不需要公私钥认证了。</li>
 <li>HTTPS 的公私钥认证，生成的对称密钥是由 C 生成一个随机数、S 生成一个随机数、C 再生成一个随机数这三个数完成的。公私钥认证的开始，是没有加密的，因为客户端还没有拿到公钥。所以前两个随机数是可以抓包拿到的，但是第三个随机数是 C 通过公钥加密传输的，所以第三个随机数的安全传输才是整个安全机制的重点。（前两个随机数被串改了也没关系，因为 C 和 S 的随机数不一样了，生成的对称密钥也不一样，后面的数据传输加解密过程中，就无法完成校验了）有个重点是，为什么需要 3 个随机数？而不能直接传输上面的第三次随机数？因为随机数为了确保随机性，而随机性不能完全依靠一方来确定，因为很可能不随机。而 3 个随机数，已经可以很好的保障最后生成的对称密钥的随机性了。</li>
 </ol>
           <!--noindex-->
@@ -1006,7 +1006,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><code>事件驱动</code>这个技术方案，可以说实实在在影响了这些年编程界的技术方向。最实际的受用者应该就是<code>异步编程</code>了，如 I / O。</p>
+          <p><code>事件驱动</code>这个技术方案，可以说实实在在影响了这些年编程界的技术方向。最实际的受用者应该就是<code>异步编程</code>了，如 I/O。</p>
 <p>我所认知到的语言，都是事件驱动的使用者，受益者，推动者。</p>
           <!--noindex-->
           <!--/noindex-->

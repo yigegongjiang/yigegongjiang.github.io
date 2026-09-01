@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -262,7 +262,7 @@
 <ul>
 <li>日志是否全量。很多业务开发同学不使用日志 SDK 做日志输出，可能使用系统日志做打印，这一部分日志是否需要做收口，需要权衡一下。</li>
 <li>分等级和模块。分 Level 和 modules 进行记录和检索，可以提供问题排查速度。这方面有专业的 Debug/Info/Error 等标准。技术上比较好实现。</li>
-<li>性能。主要是卡顿和耗电。日志系统会底层基础架构，大流量的打入，会频繁的内存释放、I / O，过多的占用 CPU 会导致卡顿和耗电，也会影响拖延上层业务异步代码的执行时机。</li>
+<li>性能。主要是卡顿和耗电。日志系统会底层基础架构，大流量的打入，会频繁的内存释放、I/O，过多的占用 CPU 会导致卡顿和耗电，也会影响拖延上层业务异步代码的执行时机。</li>
 <li>数据不丢不乱。没有办法做到完全的不丢日志，只能尽可能少的减少。在 crash / CPU 繁忙 / 压缩加密严重耗时拖延队列等异常场景，这方面问题尤其突出。不乱就需要增加串型队列或者锁，这些同步机制都需要保障阻塞和性能。</li>
 <li>实时观测。开发和测试同学需要能够实时看到日志打印情况，这在开发和提测阶段非常有用。</li>
 <li>压缩 + 加密。压缩和加密都是耗时操作，对 CPU 的压力比较大。</li>
@@ -604,7 +604,7 @@
 <li>大名鼎鼎的<strong>三次握手</strong>就在 socket 建联的时候发生的。<strong>成也萧何败也萧何</strong>，因为 socket 是内嵌计算机的底层服务，也包括 TCP。所以即使三次握手已经拖慢了互联网这么多年，但依旧无法做升级。Quic 的出现就是忍不了 socket tcp 的<strong>队头阻塞</strong>而破釜沉舟的东西。</li>
 <li>socket tcp 的详细过程，可查阅之前文章：<a href="https://www.yigegongjiang.com/2020/TCPTranslation/">TCP 数据传输过程分析</a></li>
 <li>谈 socket 离不开端口，谈端口离不开进程。可查阅之前文章：<a href="https://www.yigegongjiang.com/2022/shell/#%E4%B8%A4%E7%A7%8D%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F-By-fork-amp-exec">Shell 和进程 - 两种进程创建方式</a></li>
-<li> socket 本身可查阅之前文章：<a href="https://www.yigegongjiang.com/2020/im/">IM 和 Socket 的关系及 Heart 的必要性</a></li>
+<li>socket 本身可查阅之前文章：<a href="https://www.yigegongjiang.com/2020/im/">IM 和 Socket 的关系及 Heart 的必要性</a></li>
 </ol>
           <!--noindex-->
           <!--/noindex-->
@@ -783,7 +783,7 @@
 </ul>
 <h2 id="洗漱"><a href="#洗漱" class="headerlink" title="洗漱"></a>洗漱</h2><ul>
 <li>男士洗面奶 - UNO（拼多多海淘 ¥15 一支，130g）</li>
-<li>牙膏 - 狮王 white &amp; white，不要买国产那款，买产地日本的（拼多多海淘 ¥8-11 一个，天猫海淘 ¥15，150g）</li>
+<li>牙膏 - 狮王 white&amp;white，不要买国产那款，买产地日本的（拼多多海淘 ¥8-11 一个，天猫海淘 ¥15，150g）</li>
 <li>儿童洗手液 - 日本狮王泡沫式（拼多多海淘 ¥20-25，500ml）</li>
 <li>护发素 - Fino（又称红宝石，拼多多海淘 ¥30-40 一罐，230g）</li>
 <li>牙线 - 刚需，一定要用。不用一下都不会知道牙缝有多脏。</li>
@@ -951,11 +951,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>一年前写了 “段页内存管理” 的部分章节，后面一直搁置在草稿箱中。最近发现内存相关的知识非常重要，最近几十年科技文明的巅峰，硬件侧就是 CPU，软件侧就围绕着操作系统对内存的控制了。就又整理补齐，形成<strong>内存分段分页</strong>较完整说明。<br>硬件 CPU 的不断革新，从 X86 和 ARM 架构的铺天盖地，到 RISC - V 新星崛起和 MIPS 的消退。还有各种流水线优化、APU - ZPU 的推成出新，以及 Apple M1 的展露头脚。虽然 CPU 本身短时间内看不到跨越式的提升，但 CPU 周边是玩出了花。<br>而已经趋于稳定的操作系统，最近好多年都没有啥惊世骇俗的壮举出现。依托着 CPU 侧的大腿，操作系统躺着进行升级。但换一个角度，也可以认为操作系统已经设计的足够完备，在商业化的时代，有需求就一定会有满足，或许对于当前操作系统来说，目前的设计应对有余。<br>操作系统的很多设计，都摆脱不了内存这尊大神。首先，操作系统本身和上层应用，就是放在内存里运行的。其次，操作系统的基石进程和线程，就贴着内存进行设计。多核心后的 L0-2 级缓存同步也是为内存定制，当然这个算 CPU 对内存的依赖。IO/文件系统/网络也都离不开内存的影子。<br>内存本身的制作工艺门槛不高，有 N 多厂商做这个事情。但内存在科技长河中的位置，绝对举足轻重。整个计算机的发展史，内存表现不多，但是中流砥柱。<br>本文可以顺带解决如下几个问题：</p>
+          <p>一年前写了 “段页内存管理” 的部分章节，后面一直搁置在草稿箱中。最近发现内存相关的知识非常重要，最近几十年科技文明的巅峰，硬件侧就是 CPU，软件侧就围绕着操作系统对内存的控制了。就又整理补齐，形成<strong>内存分段分页</strong>较完整说明。<br>硬件 CPU 的不断革新，从 X86 和 ARM 架构的铺天盖地，到 RISC-V 新星崛起和 MIPS 的消退。还有各种流水线优化、APU-ZPU 的推成出新，以及 Apple M1 的展露头脚。虽然 CPU 本身短时间内看不到跨越式的提升，但 CPU 周边是玩出了花。<br>而已经趋于稳定的操作系统，最近好多年都没有啥惊世骇俗的壮举出现。依托着 CPU 侧的大腿，操作系统躺着进行升级。但换一个角度，也可以认为操作系统已经设计的足够完备，在商业化的时代，有需求就一定会有满足，或许对于当前操作系统来说，目前的设计应对有余。<br>操作系统的很多设计，都摆脱不了内存这尊大神。首先，操作系统本身和上层应用，就是放在内存里运行的。其次，操作系统的基石进程和线程，就贴着内存进行设计。多核心后的 L0-2 级缓存同步也是为内存定制，当然这个算 CPU 对内存的依赖。IO/文件系统/网络也都离不开内存的影子。<br>内存本身的制作工艺门槛不高，有 N 多厂商做这个事情。但内存在科技长河中的位置，绝对举足轻重。整个计算机的发展史，内存表现不多，但是中流砥柱。<br>本文可以顺带解决如下几个问题：</p>
 <ul>
 <li>地址总线、数据总线、控制总线是什么？CPU 如何通过地址总线找到内存地址？</li>
 <li>CPU 和内存之间的高速缓存引发的缓存一致性问题是怎么回事？<a href="https://www.yigegongjiang.com/2022/lock/">锁 - 共享数据安全指↑</a></li>
-<li>16 位 CPU 是如何操作 1M 内存空间的 (2^16 = 64kb)？32 位 CPU 是如何操作 64G 内存空间的 (2^32 = 4G)？他们的原理一样吗？</li>
+<li>16 位 CPU 是如何操作 1M 内存空间的 (2^16=64kb)？32 位 CPU 是如何操作 64G 内存空间的 (2^32=4G)？他们的原理一样吗？</li>
 <li>分段内存管理，里面的段指的是什么？</li>
 <li>除了虚拟地址、物理地址，还有线性地址和逻辑地址，它们是什么？</li>
 <li>两个进程的虚拟地址相同，是如何指向不同的物理地址的？虚拟地址的页目录 &amp; 页偏移均一致，如何通过 <strong>m = f(n)</strong> 函数，以相同的 n 输入，返回不同的 m 输出。</li>

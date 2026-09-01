@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -298,9 +298,9 @@
 <h3 id="需要-PAT-的场景"><a href="#需要-PAT-的场景" class="headerlink" title="需要 PAT 的场景"></a>需要 PAT 的场景</h3><ol>
 <li>调用 GitHub REST API</li>
 <li>使用 GitHub CLI (<code>gh</code>) 操作敏感资源</li>
-<li>访问 GitHub Packages 服务（npm / Docker 等）</li>
+<li>访问 GitHub Packages 服务（npm/Docker 等）</li>
 <li>操作其他 HTTPS 协议的仓库时</li>
-<li>第三方 CI / CD 工具集成</li>
+<li>第三方 CI/CD 工具集成</li>
 <li>使用 GitHub Actions 需要访问仓库时</li>
 <li>使用双重认证 (2FA) 的账户通过 HTTPS 协议操作仓库</li>
 </ol>
@@ -314,7 +314,7 @@
 <blockquote>
 <p>不推荐，简单实用一下还是可以的。</p>
 </blockquote>
-<h1 id="Signing-Key"><a href="#Signing-Key" class="headerlink" title="Signing Key"></a>Signing Key</h1><p>github 推出的 commit / tag 等操作的签名认证。被签名的 commit 会在历史记录中显示一个绿色的 <code>verified</code> 标记。<br>GPG Keys 是专门做这个事情的，其中，github 也推出了自己的 Signing Key，可以复用 SSH Keys 的设置（操作入口在同一个地方）。</p>
+<h1 id="Signing-Key"><a href="#Signing-Key" class="headerlink" title="Signing Key"></a>Signing Key</h1><p>github 推出的 commit/tag 等操作的签名认证。被签名的 commit 会在历史记录中显示一个绿色的 <code>verified</code> 标记。<br>GPG Keys 是专门做这个事情的，其中，github 也推出了自己的 Signing Key，可以复用 SSH Keys 的设置（操作入口在同一个地方）。</p>
 <p>具体配置如下，通过在 <code>~/.gitconfig</code> 中增加 url 分流配置，可以为不同的 host 组设置不同的 signing 规则。</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// ~/.gitconfig-github-personal</span><br><span class="line"></span><br><span class="line">[user]</span><br><span class="line">  signingkey = ~/.ssh/id_ed25519_personal</span><br><span class="line">[commit]</span><br><span class="line">	gpgsign = true</span><br><span class="line">[gpg]</span><br><span class="line">	format = ssh</span><br><span class="line">[tag]</span><br><span class="line">	gpgsign = true</span><br></pre></td></tr></tbody></table></figure>
 

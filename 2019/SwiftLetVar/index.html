@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -294,9 +294,9 @@
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">（4）</span><br><span class="line">int temp = 24;</span><br><span class="line">const int * const age4 = &amp;temp;</span><br></pre></td></tr></tbody></table></figure>
 
 <p>这四个常量 age 的存储，如下图所示：<br><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202308061817238.png" width="50%"></p>
-<p>对于 age1，我们就不能通过<strong> age1 = 0;<strong>这样的语句修改值了。<br>对于 age2，因为 const 标记的是值，所以</strong> *age2 = 0;<strong>是不行的，会报错。但是我们可以通过</strong> age2 = &amp;other;<strong>这样的语句修改 age2 对应的指针值。<br>对于 age3，因为 const 标记的是指针，所以</strong> age3 = &amp;other;*<em> 是不行的，会报错。但是我们可以通过</em></strong> age3 = 0;** 这样的语句修改 age3 对应的数值。<br>对于 age4，因为数值和指针都是只读的，都是常量，什么也修改不了。</p>
+<p>对于 age1，我们就不能通过<strong> age1 = 0;<strong> 这样的语句修改值了。<br>对于 age2，因为 const 标记的是值，所以</strong> *age2 = 0;<strong> 是不行的，会报错。但是我们可以通过</strong> age2 = &amp;other;<strong> 这样的语句修改 age2 对应的指针值。<br>对于 age3，因为 const 标记的是指针，所以</strong> age3 = &amp;other;*<em> 是不行的，会报错。但是我们可以通过</em></strong> age3 = 0;** 这样的语句修改 age3 对应的数值。<br>对于 age4，因为数值和指针都是只读的，都是常量，什么也修改不了。</p>
 <p>我们发现，其实 Swift 里的 let，就是 C 里的 const。** 但是在 struct 和 class 中表现是不一致的。<strong>struct 类型的 let 变量就是</strong>“（4）int temp = 24;const int * const age4 = &amp;temp;”<strong>类型，什么都修改不了。而 class 类型的 let 变量，就是</strong>“（3）int temp = 23;int * const age3 = &amp;temp;”** 类型，本身对象指针无法修改，但是内部属性在修饰符允许的情况下是可以修改的。</p>
-<p>我们通过上面的报错信息验证一下刚才的观点。<br>在代码的第 15 行，<strong>test1.name2 = “t”<strong>报错为</strong> Cannot assign to property: ‘test1’ is a ‘let’ constant</strong>，代码的第 16 行，<strong>test1 = Person1()<strong> 报错为</strong> Cannot assign to value: ‘test1’ is a ‘let’ constant</strong>。他们的报错原因完全相同，而<strong> name2</strong> 本身是 var 属性。所以 15 行和 16 行的报错不是 struct 内部决定的，而是由<strong> let test1</strong> 这个<strong> let</strong> 属性决定的。<br>同样的，我们看到代码第 25 行，<strong>test3.name2 = “t”<strong>没有报错，和第 15 行出现报错对比，可以确定同样的</strong> let</strong> 类型的对象变量，在修饰 struct 和 class 的时候，他们的行为却是不一致的。</p>
+<p>我们通过上面的报错信息验证一下刚才的观点。<br>在代码的第 15 行，<strong>test1.name2 = “t”<strong>报错为</strong> Cannot assign to property: ‘test1’ is a ‘let’ constant</strong>，代码的第 16 行，<strong>test1 = Person1 ()<strong> 报错为</strong> Cannot assign to value: ‘test1’ is a ‘let’ constant</strong>。他们的报错原因完全相同，而<strong> name2</strong> 本身是 var 属性。所以 15 行和 16 行的报错不是 struct 内部决定的，而是由<strong> let test1</strong> 这个<strong> let</strong> 属性决定的。<br>同样的，我们看到代码第 25 行，<strong>test3.name2 = “t”<strong>没有报错，和第 15 行出现报错对比，可以确定同样的</strong> let</strong> 类型的对象变量，在修饰 struct 和 class 的时候，他们的行为却是不一致的。</p>
 <p>（我相信有不少朋友，这里会饶进入一个洞里，那就是 C 里面的 const 修饰的是 Int 基础类型，而这里 let 修饰的是 struct 对象，struct 可不是 Int 或者 String，struct 可是对象啊！他们是否有可比性？如果没有可比性，那么上面的结论是否还能成立？这里做说明：Int、Char 是啥？在内存里面就是一块存储区域。struct 呢？也是一块存储区域。对象是啥？是方便我们开发所汇总出来的一套编程思想，即面向对象编程。过了 IDE，解析器和编译器还会管你是 Int 基础类型或者对象类型？不会管的。<code>在广东人面前，什么都是肉，即使你是福建人。</code>退一万步来说，Swift 里面，Int、String 也是通过 struct 来实现的）</p>
 <p>那我们在看看<strong> var</strong>。test2 和 test4 两个 var 变量，虽然一个是 struct 对象，一个是 class 对象，但是他们的表现却是一致的。其实 var 就是<strong>非 let</strong> 修饰符。let 修饰符和 const 类似，那么 var 其实就是省略了 const 的修饰符。我们举下面例子</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(1)</span><br><span class="line">const int age = 10;</span><br></pre></td></tr></tbody></table></figure>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -297,7 +297,7 @@
 <h2 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h2><p>ASCII 是大学计算机教科书入门知识点，如果不联系上码位和 Unicode ，还是不好理解的。知道有这个东西在，但是怎么玩的却不是很清楚。<br>比如，C 语言是古老的伟大语言，印象中 C 语言教程都使用的 ASCII 字符，没有出现中文。那么 C 语言可以通过 printf 输出中文吗？</p>
 <p><strong>ASCII 和 Unicode 都是字符集，又称码表</strong>，字符集可以看做一个数组，里面的每个元素称为 <strong>码位 / 码点 /Code Point</strong>。<br>字符集是约定俗成的一套全世界都默认遵守的规则矩阵，这套规则矩阵里面的每个元素（码位），都<strong>表示一个特定的符号含义且不可改变</strong>。</p>
 <p>ASCII 并不是表示 0-9 或者 a-z 这些我们肉眼看到的符号。这些符号是对于人类友好的视觉表达。</p>
-<p>比如 <code>@</code> 字符，可以脑海里回忆一下，这些年是不是见过很多样式的 @ 符号。但这些不同的视觉表达并不是 ASCII。<br><code>@</code> 字母的 ASCII 码位是 <code>0x40 (64)</code>，这个才是 ASCII 的含义。即 ASCII 定义了 <code>0x40</code> 这个码位只能用来表达 <code>@</code> 这个字母的含义，不能表示 a / b 或其他。</p>
+<p>比如 <code>@</code> 字符，可以脑海里回忆一下，这些年是不是见过很多样式的 @ 符号。但这些不同的视觉表达并不是 ASCII。<br><code>@</code> 字母的 ASCII 码位是 <code>0x40 (64)</code>，这个才是 ASCII 的含义。即 ASCII 定义了 <code>0x40</code> 这个码位只能用来表达 <code>@</code> 这个字母的含义，不能表示 a/b 或其他。</p>
 <p>从 ASCII 进化到 Unicode，就是增加了很多码位，以建立全世界的规则矩阵，大家都得遵守。<br>emoji 等各种表情符号就是 Unicode 里面的特定码位。应用层识别到具体的表情码位后，做的符号映射和视觉显示。<br>切换字体，也同样是对同一个码位，做不同的视觉表达。<br>所以，这里很重要的一点，是对 <strong>码位</strong> 的理解。<strong>码位才是每一个字符的互联网流通语言</strong>。后面介绍的文本文件存储、二进制文件存储等，都离不开<strong>码位</strong>。</p>
 <p>对于字符来说，计算机也只对码位做存储，在没有 Unicode 的时候，计算机存储的就是 ASCII 里面的共计 256 个码位 (00000000 - 11111111)。<br>下面例子中，将 <code>abcde</code> 存储到文件中，共计 5 个字节。通过 <code>xxd</code> 命令确认每个字节的存储内容都是这些字母的 ASCII 码位。(后面统一使用十六进制 hexdump 查看)。</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; cat test.txt                                                                </span><br><span class="line">abcde</span><br><span class="line"></span><br><span class="line">&gt; wc -c test.txt                                                                  </span><br><span class="line">5 test.txt</span><br><span class="line"></span><br><span class="line">&gt; xxd -b test.txt</span><br><span class="line">00000000: 01100001 01100010 01100011 01100100 01100101           abcde</span><br><span class="line"></span><br><span class="line">&gt; hexdump -C test.txt</span><br><span class="line">61 62 63 64 65    |abcde|</span><br></pre></td></tr></tbody></table></figure>
@@ -510,7 +510,7 @@
 <p>也没更多选项了，要么 UTF-8，要么 UTF-16。因为 UTF-32 是 4 字节，那还不如直接存储码位了。</p>
 <p>实际上，在内存中对于字符使用 UTF 的那个存储，不是由操作系统决定的，而是由编程语言决定的。对于高级语言一般都使用 UTF-16，但 C 语言使用 UTF-8。</p>
 <p>在介绍内存编码之前，还是先简单说明一下二进制文件吧。文本文件属于二进制文件，但二进制文件具有更多的表现能力。<br>理解了它们，除了方便理解后面的内存字符编码，也对文件中的字节有更好的认识 (对于本文而言，这属于番外内容)。</p>
-<h3 id="二进制文件"><a href="#二进制文件" class="headerlink" title="二进制文件"></a>二进制文件</h3><p>所有文件都是二进制文件。<br>高级语言对文件进行读写的时候，需要通过内核塌陷的模式，调用操作系统 api 拿到文件句柄然后操作 read / write api。<br>这里 read 和 write 的数据，都是 Data 二进制。即文件、文件系统、操作系统、计算机，只理解二进制，不理解具体的字符。</p>
+<h3 id="二进制文件"><a href="#二进制文件" class="headerlink" title="二进制文件"></a>二进制文件</h3><p>所有文件都是二进制文件。<br>高级语言对文件进行读写的时候，需要通过内核塌陷的模式，调用操作系统 api 拿到文件句柄然后操作 read/write api。<br>这里 read 和 write 的数据，都是 Data 二进制。即文件、文件系统、操作系统、计算机，只理解二进制，不理解具体的字符。</p>
 <p>对于二进制文件，也有很多种用途。比如：<br>文本文件，主要用来记录文字，将文字编码后写入，解码后还原。每个字节都是一致的含义，即都表示文字 (也可以认为没有含义)。<br>图片 / 视频文件，主要用来存储特定格式的数据。它的每个字节所表达的含义可能都不一样，比如 m-n 字节的数据表示地理位置，i-j 字节的数据表示拍摄机器的型号等。<br>可执行文件，如 Twitter，主要用来严丝合缝的存储自身需要的数据。它不需要被外部读取，它本身可运行读取自己。比如 ELF 文件，每个 section、每个段、符号表等，都需要存储在特定的区域。</p>
 <p>这样看下来，从文件的角度来看，都是二进制数据，没有差别。但是对文件使用者来说，二进制文件的含义千差万别。</p>
 <p>在很多年前，我希望同事将 jpg 图片改成 png 图片。拿到 png 图片后程序的 bug 依旧没有解决。最后排查发现同事把 .jpg 的后缀改成了 .png :(<br>程序走 .png 的逻辑，但内部数据是 .jpg 的格式，这就会导致无法解析。</p>

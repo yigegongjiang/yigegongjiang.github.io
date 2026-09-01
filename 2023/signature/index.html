@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -296,7 +296,7 @@
 <img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202307172332616.jpg" width="40%">
 <img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202307172332617.jpg" width="40%">
 
-<h3 id="数字签名应用场景：SSL-（2025-01-18-更）"><a href="#数字签名应用场景：SSL-（2025-01-18-更）" class="headerlink" title="数字签名应用场景：SSL （2025.01.18 更）"></a>数字签名应用场景：SSL （2025.01.18 更）</h3><p>在 7 层网络协议里，SSL 分为握手协议和记录协议，分别处于表示层和会话层，主要负责网络数据的传输安全。<br>从对称场景下的摘要可以知道，对称场景下是没有身份认证的，这样就会使得密钥存疑。如果 A 和 B 通信的密钥被 C 给更换了，那么 C 就可以假冒 B 与 A 通信。所以 HTTP 退出了历史舞台。<br>非对称加密的双向认证是可以解决这个问题，但因为非对称加密耗时厉害，没有被有效的采用。所以就有了通过数字签名来传输公钥，通过单向安全性把临时对称密钥给到对方，而后双方使用对称密钥通信的策略。这就是 HTTPS (SSL / TSL) 使用的方案。<br><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301021647510.jpeg" alt="SSL/TSL 本身还是复杂的，上面只是简化流程，表达数字签名的用途"></p>
+<h3 id="数字签名应用场景：SSL-（2025-01-18-更）"><a href="#数字签名应用场景：SSL-（2025-01-18-更）" class="headerlink" title="数字签名应用场景：SSL （2025.01.18 更）"></a>数字签名应用场景：SSL （2025.01.18 更）</h3><p>在 7 层网络协议里，SSL 分为握手协议和记录协议，分别处于表示层和会话层，主要负责网络数据的传输安全。<br>从对称场景下的摘要可以知道，对称场景下是没有身份认证的，这样就会使得密钥存疑。如果 A 和 B 通信的密钥被 C 给更换了，那么 C 就可以假冒 B 与 A 通信。所以 HTTP 退出了历史舞台。<br>非对称加密的双向认证是可以解决这个问题，但因为非对称加密耗时厉害，没有被有效的采用。所以就有了通过数字签名来传输公钥，通过单向安全性把临时对称密钥给到对方，而后双方使用对称密钥通信的策略。这就是 HTTPS (SSL/TSL) 使用的方案。<br><img data-src="https://cdn.jsdelivr.net/gh/yigegongjiang/image_space@main/blog_img/202301021647510.jpeg" alt="SSL/TSL 本身还是复杂的，上面只是简化流程，表达数字签名的用途"></p>
 <p>HTTPS 的安全核心在于对称密钥 (或者种子) 的安全传输。根据非对称加密单向安全性，只要拥有公钥的一方生成对称密钥并把密钥通过公钥加密给到另一方，拥有私钥的对方才可以解开数据并拿到密钥，这样就安全传输了。<br>而数据签名之所以能传递有效的公钥，就是因为它具有完整性、身份认证、不可否认的特点。拿到的公钥，一定是安全的公钥，如果被动了手脚，一定会被发现。</p>
 <h4 id="SSL-证书格式"><a href="#SSL-证书格式" class="headerlink" title="SSL 证书格式"></a>SSL 证书格式</h4><p>SSL 证书，是一个二进制文件或者 base64 文件，包含源信息（公钥、网站名称、有效期等）和数字签名（背书机构通过其私钥对源信息进行的签名）。<br>其中，每个 SSL pem 证书包含的公钥是当前证书管理者的公钥，数字签名是上级证书管理者对当前证书的签名。</p>
 <p>对于用户申请的 SSL 证书（向中间 CA 机构申请）pem 格式，一般包含以下几个部分：</p>

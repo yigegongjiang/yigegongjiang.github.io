@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -266,7 +266,7 @@
 </ul>
 </li>
 <li>Vibe 辅助协作式 已经非常成熟， 完全托管方式也已经成型。</li>
-<li>所有 AI CLI / App 的工作方式都是一致的 (普适性)，通过 Prompts 做任务编排。</li>
+<li>所有 AI CLI/App 的工作方式都是一致的 (普适性)，通过 Prompts 做任务编排。</li>
 <li>人类和 AI 的交互目前已经被限制在 Prompts 里，这有可能限制 AI 多年的发展。<ul>
 <li>Thinking 可以提升质量，无法规避用户原始 prompts 的输入。</li>
 <li>Prompt 提示词在往后相当长的时间里，都是 AI 与人交互的唯一方式。</li>
@@ -371,7 +371,7 @@
 <p>主要通过 web fetch api 的 <code>ReadableStream</code> 能力，解释 HTTP 通道中的流式响应。<br>流式关键在于 HTTP 协议层解析 Body 体，和 TCP 粘包和拆包的处理类似。各种编程语言都具有 body 二进制数据流的拦截和解析能力。</p>
 </blockquote>
 <h2 id="Fetch-API-速览"><a href="#Fetch-API-速览" class="headerlink" title="Fetch API 速览"></a>Fetch API 速览</h2><ul>
-<li><code>await fetch(url)</code> → 返回 <code>Response</code> 对象：这时浏览器通常已经从底层连接（TCP / QUIC）里拿到并解析完 <strong>HTTP 响应行（status）+ 响应头（headers）</strong>；但 <strong>响应体（body）</strong> 还没被消费 / 解析（它会通过单独的流式接口暴露出来，供上层代码增量读取）。</li>
+<li><code>await fetch(url)</code> → 返回 <code>Response</code> 对象：这时浏览器通常已经从底层连接（TCP/QUIC）里拿到并解析完 <strong>HTTP 响应行（status）+ 响应头（headers）</strong>；但 <strong>响应体（body）</strong> 还没被消费 / 解析（它会通过单独的流式接口暴露出来，供上层代码增量读取）。</li>
 <li><code>await res.json()</code> / <code>await res.text()</code> → <strong>一次性读取并解析完整 Body</strong>，适用于非流式场景。</li>
 <li><code>res.body</code> → <code>ReadableStream&lt;Uint8Array&gt;</code>，<strong>字节流接口</strong>，可增量消费。</li>
 <li><code>res.body.getReader().read()</code> → 手动 Pull 模式，每次返回 <code>{ value: Uint8Array, done: boolean }</code>。</li>
