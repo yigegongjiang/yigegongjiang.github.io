@@ -110,8 +110,6 @@ b. 可在多平台 (alipay、wechat、顺丰 app、淘宝 app...) 收到快件�
 ## 香烟说明
 
 > 当前国内余量现货（2026.08.27）：
-> 【2.1 条】Peace 纸盒 10mg（37）
-> 【0.4 条】Peace 铁盒 10mg（70）
 > 【1 条】SevenStars 10mg（37）
 > 【0.8 条】Mevius 蓝莓 日税 1mg（35rmb/包，日税<零售店>购买，焦油量 1mg。此为客户退单，所以 7 折。）[link](https://www.fasola-shop.com/zh-CN/goodsDetail.aspx?sCD=5302030255)
 
