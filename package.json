@@ -7,10 +7,10 @@
     "d": "hexo clean && hexo generate && hexo deploy"
   },
   "hexo": {
-    "version": "8.1.1"
+    "version": "8.1.2"
   },
   "dependencies": {
-    "hexo": "^8.1.1",
+    "hexo": "^8.1.2",
     "hexo-deployer-git": "^4.0.0",
     "hexo-generator-archive": "^2.0.0",
     "hexo-generator-category": "^2.0.0",
@@ -18,11 +18,15 @@
     "hexo-generator-index": "^4.0.0",
     "hexo-generator-sitemap": "^3.0.1",
     "hexo-generator-tag": "^2.0.0",
-    "hexo-pangu": "^0.4.1",
+    "hexo-pangu": "^0.6.0",
     "hexo-renderer-ejs": "^2.0.0",
     "hexo-renderer-marked": "^7.0.1",
     "hexo-renderer-stylus": "^3.0.1",
     "hexo-server": "^3.0.0",
     "hexo-theme-landscape": "^1.1.0"
+  },
+  "//": "overrides.pangu: hexo-pangu@0.6.0 把 pangu 硬锁在 9.1.0，该版本会把中文后的 - 当成负号，导致 '碎碎念 - 2026' 排成 '碎碎念 -2026'（实测 30 处）；9.1.1 已修复。待 hexo-pangu 自身的 pin 升到 >=9.1.1 后删除此 overrides，否则会把 pangu 卡在 9.x。",
+  "overrides": {
+    "pangu": "^9.1.1"
   }
 }
