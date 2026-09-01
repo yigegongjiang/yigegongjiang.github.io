@@ -1,5 +1,5 @@
 ---
-title: 流式响应（Chat）：HTTP 响应体字节流的读取与解析
+title: HTTP 流式响应：fetch、ReadableStream 与 SSE
 date: 2025-12-29 20:02:01
 categories:
   - 技术
@@ -7,188 +7,212 @@ tags:
   - 网络
 ---
 
-> 主要通过 web fetch api 的 `ReadableStream` 能力，解释 HTTP 通道中的流式响应。
-> 流式关键在于 HTTP 协议层解析 Body 体，和 TCP 粘包和拆包的处理类似。各种编程语言都具有 body 二进制数据流的拦截和解析能力。
-
-## Fetch API 速览
-
-- `await fetch(url)` → 返回 `Response` 对象：这时浏览器通常已经从底层连接（TCP/QUIC）里拿到并解析完 **HTTP 响应行（status）+ 响应头（headers）**；但 **响应体（body）** 还没被消费/解析（它会通过单独的流式接口暴露出来，供上层代码增量读取）。
-- `await res.json()` / `await res.text()` → **一次性读取并解析完整 Body**，适用于非流式场景。
-- `res.body` → `ReadableStream<Uint8Array>`，**字节流接口**，可增量消费。
-- `res.body.getReader().read()` → 手动 Pull 模式，每次返回 `{ value: Uint8Array, done: boolean }`。
-
-可以这样理解：`fetch()` 先把 **status/headers** 拿到手并封装成 `Response`；至于 **body 字节** 怎么读、怎么解析，由调用方选择：
-
-- 通过 `ReadableStream` 增量读取（适合 AI token、NDJSON、SSE 等流式场景）。
-- 或调用 `json()` / `text()` 这类封装好的方法，让它们内部把 body 全部读完后再一次性解析。
-
-**核心区别**：`res.json()` 等“便捷方法”会等待整个响应体下载完毕后一次性解析；`reader.read()` 则支持**边接收边处理**，是流式读取的基础。
+`fetch()` 收到响应头后返回 `Response`，此时响应体可能仍在传输。`response.body` 将响应体暴露为 `ReadableStream<Uint8Array>`，供 JavaScript 增量读取。
 
 <!-- more -->
 
-```ts
-// 非流式：等 Body 全部接收完再解析
-const full = await (await fetch(url)).json();
+## 分层
 
-// 流式：边接收边处理（Chunk 边界不等于消息边界）
-const res = await fetch(url);
-const reader = res.body!.getReader();
+```text
+TCP / QUIC
+  ↓
+HTTP/1.1 chunked encoding / HTTP/2 DATA frame / HTTP/3 stream
+  ↓
+SSE / NDJSON / 长度前缀等消息分帧
+  ↓
+fetch + ReadableStream / EventSource / 其他客户端 API
+```
+
+SSE / NDJSON / 长度前缀负责消息分帧；`fetch + ReadableStream` / `EventSource` / OkHttp / curl 负责读取。`EventSource` 固定处理 SSE，`fetch()` 可读取任意分帧格式。
+
+## Fetch API
+
+- `await response.json()`：读取完整 Body，再解析 JSON
+- `await response.text()`：读取完整 Body，再解码文本
+- `response.body`：获得 `ReadableStream<Uint8Array>`，增量读取字节
+
+```ts
+const response = await fetch("/stream");
+if (!response.ok) throw new Error(`HTTP ${response.status}`);
+if (!response.body) throw new Error("ReadableStream is unavailable");
+
+const reader = response.body.getReader();
 const decoder = new TextDecoder("utf-8");
+
 for (;;) {
   const { value, done } = await reader.read();
   if (done) break;
-  const chunkText = decoder.decode(value, { stream: true });
-  // handle(chunkText)
+
+  const text = decoder.decode(value, { stream: true });
+  console.log(text);
 }
+
+const tail = decoder.decode();
+if (tail) console.log(tail);
+reader.releaseLock();
 ```
 
-## SSE 与 Fetch
+`read()` 返回当前可用的字节 chunk，大小由网络栈、HTTP 实现与缓冲状态共同决定。
 
-很多“Chat 流式输出”看起来像 Server-Sent Events (SSE)，但底层实现常见就两类：
+## chunk 与消息边界
 
-- **SSE（协议 + API）**：`text/event-stream` + `EventSource`（浏览器负责按协议分帧并提供重连等语义）。参考 [SSE 指南](https://www.yigegongjiang.com/2024/sse/)。
-- **Fetch 响应体流式读取（传输能力 + 自定义分帧）**：`fetch()` + `Response.body`（拿到的是 `ReadableStream<Uint8Array>`，需要自己定义消息边界与语义，如 NDJSON/长度前缀等）。
-- 顺带一提：很多实现也在从 SSE/`EventSource` 转向 `fetch` stream，因为 SSE 本身有不少限制（比如只能 GET、Header/鉴权不够灵活等）。
+一次服务端 `write()`、一个 HTTP DATA frame、一次客户端 `read()`，三者通常不会对齐。一个 chunk 可能包含：
 
-共同点：两者都依赖“长连接 + 增量写入 + 及时 Flush”，最后在客户端看起来都是 **HTTP 响应体字节流**。
+- 半个 UTF-8 字符
+- 半个 JSON 对象
+- 多条完整消息
+- 一条消息的结尾和下一条消息的开头
 
-一句话区别：**SSE 把“怎么切消息 + 事件语义”都标准化了；Fetch 流式读取只把字节暴露给应用层，剩下由应用协议来定。**
+客户端必须维护跨 chunk 缓冲：
 
-- **分帧**：SSE 固定是 `data:` 行 + 空行；Fetch Stream 的边界完全自定义（NDJSON、长度前缀、分隔符等）。
-- **语义**：SSE 浏览器内建重连、`Last-Event-ID`；Fetch Stream 想要重连/断点续传/错误语义，需要在应用层设计。
-- **适用场景**：SSE 更像“标准事件流”；而 Chat 经常需要 POST、鉴权 Header、以及自定义协议时，Fetch Stream 会更顺手。
+```text
+读取字节 → 增量解码 → 按协议分帧 → 解析消息 → 更新业务状态
+```
 
-## 链路传输（从服务端 write 到客户端拿到 chunk）
+UTF-8 是变长编码。`decoder.decode(value, { stream: true })` 会保留末尾未完成的字节序列，等待下一个 chunk；流结束后调用一次无参 `decode()` 冲刷解码器。也可以使用：
 
-想要真的“边推边显示”，关键往往不是 HTTP 语法本身，而是：**字节在链路的哪一段被缓冲住了**。
+```ts
+const textStream = response.body.pipeThrough(new TextDecoderStream());
+```
 
-1. **服务端应用写出**：应用调用 `write()`/`send()` 将字节写入 Socket。若仅写入用户态缓冲而未执行 `flush`（或被框架/中间件缓冲），客户端将无法接收增量数据。
-2. **TCP Socket 缓冲区（发送/接收）**：`send()` 通常只是把数据拷贝进 **TCP 发送缓冲区**，真正“发出去”要看 TCP 栈怎么分段、流控/拥塞控制允不允许。结果就是：**应用 write 的粒度**，基本不等于 **对端 read 到的粒度**（还会受 Nagle/延迟 ACK/cwnd/rwnd 等影响）。
-3. **HTTP 承载方式**：
-   - **HTTP/1.1**：通常使用分块传输编码（Chunked Transfer Encoding）或在未知 `Content-Length` 时持续写入。
-   - **HTTP/2 / HTTP/3**：基于 DATA Frame 或 QUIC Stream 持续传输，受多路复用与流控机制影响。
-4. **浏览器网络栈 → ReadableStream**：浏览器将“已到达且可用”的字节推入 `ReadableStream` 内部队列，JavaScript 通过 `reader.read()` 或 `pipeThrough()` 以 Pull 模式消费。
+## SSE 与 fetch 的关系
 
-- **Chunk 边界 ≠ 消息边界**：一次 `read()` 获取的 `Uint8Array` 仅是当前可用的字节片段，可能截断在任意位置（如 UTF-8 字符中间、JSON 结构中间或自定义帧头中间）。
-- **全链路缓冲会“假装不流式”**：应用层 Flush、反向代理 Buffering、压缩器缓冲、CDN 策略、浏览器内部队列……任何一段在攒数据，都会让 Token 看起来变成“凑一批才到”。
+[SSE](https://www.yigegongjiang.com/2024/sse/) 规定事件格式与空行分帧；`fetch()` 负责发起 HTTP 请求，并把响应体暴露为 `ReadableStream`。
 
-## Fetch 流式读取的基本模型
+同一份 SSE 响应有两种读取方式：
 
-`fetch()` 返回的 `Response` 对象包含 `body` 属性，其类型为 `ReadableStream<Uint8Array>`。消费方式主要有两种：
+- `EventSource('/events')`：浏览器解析事件，并提供自动重连与 `Last-Event-ID`
+- `fetch('/events')`：应用读取字节，自行实现 SSE 解析、终止判断、重连与断点续传
 
-1. **手动读取**：获取 `reader` 并循环调用 `read()`。
-2. **管道处理**：使用 `pipeThrough()` 构建解码、分帧、解析的流水线（推荐）。
+需要 POST、请求体或 `Authorization` Header 时，可使用 `fetch + ReadableStream + SSE framing`。MIME 与线格式仍为 `text/event-stream`；解析、终止判断、重连和断点续传由应用处理。
 
-整体可以当成 **pull 模式**：每次 `read()` 拿到的是“目前已经到手的那点字节”。如果处理速度慢于网络进入速度，队列就会堆起来，进而触发 **背压（Backpressure）**（后续传输会被放慢）。
+## 其他分帧格式
 
-## 示例：解析消息流
+### NDJSON
 
-### 字节解码：处理增量 UTF-8
+```text
+{"type":"progress","percent":40}\n
+{"type":"done"}\n
+```
 
-网络传输交付的是 `Uint8Array`，而 Chat 最终要的是文本 Token。注意 UTF-8 是变长编码，一个字符可能被拆到两个 Chunk 里；如果直接 `decoder.decode(chunk)`（默认非流式），边界处就可能乱码/丢字。这里要用增量解码：
+- 每行一个完整 JSON
+- 按 `\n` 切行后直接 `JSON.parse`
+- `application/x-ndjson`
+- JSON 文本内部的换行必须转义
 
-- 使用 `TextDecoder` 的 `{ stream: true }` 选项。
-- 或使用 `TextDecoderStream` 管道：`response.body.pipeThrough(new TextDecoderStream())`，直接获得 `ReadableStream<string>`。
+NDJSON 解析器应接受 `\n` 与 `\r\n`。标准 JSON 序列化会把字符串内的换行编码为 `\n`，不会破坏行边界。
 
-### 分帧策略：定义消息边界
+### 长度前缀
 
-想做到“边接收边渲染”，需要先定一个能增量解析的分帧（Framing）规则：到底每条消息怎么切出来？
+```text
+[length][payload][length][payload]
+```
 
-1. **NDJSON / JSON Lines（推荐）**
-   - 格式：每条消息占一行，如 `{"type":"delta","text":"..."}\n`。
-   - 优点：解析简单，调试友好，兼容 `JSON.parse`。
-   - 注意：需确保 Payload 内无未转义的换行符（标准 JSON 字符串会将换行编码为 `\n`，通常安全）。
+长度前缀适合二进制内容或不可控 payload。客户端需要按字节维护状态机，实现成本高于 SSE 与 NDJSON。
 
-2. **分隔符协议**
-   - 格式：使用自定义分隔符（如 `\n\n` 或特定 Boundary）切分消息。
-   - 风险：若 Payload 包含分隔符，需进行转义或设计复杂的 Boundary 机制。
+## NDJSON 读取器
 
-3. **长度前缀（二进制 Framing）**
-   - 格式：`[Length][Payload]...`。
-   - 优点：对任意二进制或文本内容安全，不受内容字符影响。
-   - 缺点：实现复杂度较高，需维护字节级状态机。
+```ts
+type StreamMessage =
+  | { type: "progress"; percent: number }
+  | { type: "done" }
+  | { type: "error"; message: string };
 
-一般优先选 **NDJSON** 或 **长度前缀**；千万别指望 Chunk 边界刚好对齐业务消息边界。
-
-### Fetch + NDJSON
-
-**字节读取 → 文本解码 → 行分帧 → JSON 解析 → UI 更新** 的完整流程：
-
-```typescript
-type ChatChunk = { type: "delta"; text: string } | { type: "done" } | { type: "error"; message: string };
-
-export async function streamChat(
-  input: { prompt: string },
-  onChunk: (c: ChatChunk) => void,
+export async function readProgress(
+  input: { taskId: string },
+  onMessage: (message: StreamMessage) => void,
   signal?: AbortSignal,
 ) {
-  const res = await fetch("/api/chat", {
+  const response = await fetch("/api/progress", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(input),
     signal,
   });
 
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  if (!res.body) throw new Error("ReadableStream not supported");
+  if (!response.ok) throw new Error(`HTTP ${response.status}`);
+  if (!response.body) throw new Error("ReadableStream is unavailable");
 
-  // 1. 字节读取层：获取 ReadableStream reader
-  const reader = res.body.getReader();
-
-  // 2. 文本解码层：处理 UTF-8 边界
+  const reader = response.body.getReader();
   const decoder = new TextDecoder("utf-8");
+  let buffer = "";
 
-  // 3. 行分帧层：缓冲未闭合的行
-  let lineBuffer = "";
+  const emit = (line: string) => {
+    if (!line) return false;
+    const message = JSON.parse(line) as StreamMessage;
+    onMessage(message);
+    return message.type === "done";
+  };
 
   try {
-    while (true) {
-      // 读取下一批字节（Chunk 边界随机）
+    for (;;) {
       const { value, done } = await reader.read();
 
       if (done) {
-        // 流结束，处理缓冲区剩余内容
-        if (lineBuffer.trim()) {
-          const msg = JSON.parse(lineBuffer.trim()) as ChatChunk;
-          onChunk(msg);
-        }
-        break;
+        buffer += decoder.decode();
+        if (buffer.endsWith("\r")) buffer = buffer.slice(0, -1);
+        if (buffer) emit(buffer);
+        return;
       }
 
-      // 增量解码：stream: true 保留不完整字节序列
-      const text = decoder.decode(value, { stream: true });
-      lineBuffer += text;
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split("\n");
+      buffer = lines.pop() ?? "";
 
-      // 按换行符切分
-      const lines = lineBuffer.split("\n");
-      // 最后一个元素可能是不完整行，留待下轮处理
-      lineBuffer = lines.pop() ?? "";
-
-      // 4. JSON 解析层：逐行解析
-      for (const line of lines) {
-        const trimmed = line.trim();
-        if (!trimmed) continue; // 跳过空行
-
-        const msg = JSON.parse(trimmed) as ChatChunk;
-        onChunk(msg);
-
-        // 5. 业务终止：显式结束信号
-        if (msg.type === "done") return;
+      for (const rawLine of lines) {
+        const line = rawLine.endsWith("\r") ? rawLine.slice(0, -1) : rawLine;
+        if (emit(line)) {
+          await reader.cancel();
+          return;
+        }
       }
     }
-  } catch (e) {
-    throw e;
   } finally {
     reader.releaseLock();
   }
 }
 ```
 
-**服务端 send**：
+`buffer` 保留未闭合的半行，`TextDecoder` 保留未完成的 UTF-8 字节。解析 SSE 时，读取与解码部分不变，分帧器改为按空行聚合 field lines。
 
-> **将增量 Token 封装为可切分的消息单元（行），确保客户端始终解析完整的 JSON 对象。**
+## 链路缓冲
 
-- 增量 Token：`{"type":"delta","text":"..."}\n` + Flush
-- 结束信号：`{"type":"done"}\n` + End Response
+流式响应要求整条链路持续放行：
 
----
+1. Server 每次写入后及时 flush。
+2. 框架与压缩中间件不聚合小块输出。
+3. 反向代理关闭响应缓冲。
+4. Client 增量读取 `response.body`，避免调用 `json()` 或 `text()`。
+
+nginx 的 `proxy_buffering` 默认开启。流式路由可以显式配置：
+
+```nginx
+location /stream {
+  proxy_pass http://app;
+  proxy_buffering off;
+  proxy_read_timeout 5m;
+}
+```
+
+后端也可以返回：
+
+```http
+X-Accel-Buffering: no
+```
+
+心跳间隔需要短于代理的 idle timeout。修改 MIME 无法替代 flush 与 buffering 配置。
+
+## 背压与取消
+
+`ReadableStream` 通过内部队列与 `desiredSize` 传播背压信号。这个机制可以约束浏览器中的 pipe chain；信号能否继续影响远端 Server，取决于底层网络与服务端实现。
+
+页面离开或收到终止事件时，应取消读取：
+
+```ts
+const controller = new AbortController();
+
+fetch("/stream", { signal: controller.signal });
+controller.abort();
+```
+
+仅停止 UI 更新，连接仍会占用网络与服务端资源。
