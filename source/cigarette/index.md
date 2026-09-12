@@ -109,10 +109,9 @@ b. 可在多平台 (alipay、wechat、顺丰 app、淘宝 app...) 收到快件�
 
 ## 香烟说明
 
-> 当前国内余量现货（2026.09.07）：
-> 【1 条】【日免】SevenStars 10mg（350）
-> 【1 条】【日免】Mevius 5mg 赤玉（355） [via](https://www.fasola-shop.com/zh-CN/goodsDetail.aspx?sCD=5302030203)
-> 【0.8 条】【日税】Mevius 蓝莓 日税 1mg（35rmb/包，日税<零售店>购买，焦油量 1mg。此为客户退单，所以 7 折。）[link](https://www.fasola-shop.com/zh-CN/goodsDetail.aspx?sCD=5302030255)
+> 当前国内余量现货（2026.09.13）：
+> 【1 条】【日免】Peace 10mg（370）
+> 【1 条】【日免】SevenStars 10mg（370）
 
 > 日税 & 日免 散包/整条购买说明：
 > 日税从【711/罗森/全家】零售店拿，只能散包购买。（零售店都没有整条库存，和国内进货差异很大）。
