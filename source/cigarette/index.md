@@ -70,6 +70,8 @@ c. 期望尝试 SevenStars/Peace 等香烟
    c-1. 180g 无法过安检，我会使用旅行包装瓶分装并发货<购于[日本 DAISO（大創）百元店](https://jp.daisonet.com/products/4984343347090)>，并提供分装一镜录屏(拆快递至分装完毕)。
    c-2. 分装过程中，会有大约 5-10g 粘于原包装无法倒出(分装瓶也已填满)。
    c-3. 走液体海关额度(100ml/g * 3)，如临时有其他重要液体占据额度，有可能顺延下一趟带回(会提前告知)。
+4. 马里奥闹钟：`Nintendo Alarmo`（630 rmb），via [Official](https://www.nintendo.com/jp/hardware/alarmo/index.html)
+   a. 很神奇的闹钟，国内电商可购且便宜。这里挂出来仅仅为完全需要代购的朋友。
 
 ## 下单流程
 
