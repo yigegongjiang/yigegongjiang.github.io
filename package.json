@@ -25,8 +25,9 @@
     "hexo-server": "^3.0.0",
     "hexo-theme-landscape": "^1.1.0"
   },
-  "//": "overrides.pangu: hexo-pangu@0.6.0 把 pangu 硬锁在 9.1.0，该版本会把中文后的 - 当成负号，导致 '碎碎念 - 2026' 排成 '碎碎念 -2026'（实测 30 处）；9.1.1 已修复。待 hexo-pangu 自身的 pin 升到 >=9.1.1 后删除此 overrides，否则会把 pangu 卡在 9.x。",
+  "//": "overrides.pangu: hexo-pangu@0.6.0 把 pangu 硬锁在 9.1.0，该版本会把中文后的 - 当成负号，导致 '碎碎念 - 2026' 排成 '碎碎念 -2026'（实测 30 处）；9.1.1 已修复。待 hexo-pangu 自身的 pin 升到 >=9.1.1 后删除此 overrides，否则会把 pangu 卡在 9.x。pangu 10 把 spacingXxx() 改名为 spaceXxx()，hexo-pangu@0.6.0 不兼容（next-theme/hexo-pangu#39 CI 失败），暂不能升。overrides.happy-dom: hexo-pangu 声明 ^20，21.x 实测生成结果一致（上游 next-theme/hexo-pangu#40 CI 通过），hexo-pangu 发版跟进后删除。",
   "overrides": {
-    "pangu": "^9.1.1"
+    "pangu": "^9.1.1",
+    "happy-dom": "^21.0.4"
   }
 }
