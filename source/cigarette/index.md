@@ -5,7 +5,7 @@ noindex: true
 sitemap: false
 ---
 
-> 「每月回国，人肉带货，长期有效」(10 月底有空位)。
+> 「每月回国，人肉带货，长期有效」(11 月中有空位)。
 > TLDR - A: i) 优先免税店物品（免税便宜、拿货方便）。j) 优先 体积小、重量小 物品。
 > TLDR - B: i) 汇率：1 人民币 = 20 日元。j) 最低预定要求：代购费用 >= 40 rmb。
 > TLDR - C: 代购费用：普通商品 0.15、电子 & 轻奢 0.08（单件）、奢侈品 & 贵重商品无法携带。
@@ -110,9 +110,6 @@ b. 可在多平台 (alipay、wechat、顺丰 app、淘宝 app...) 收到快件�
 - Q：香烟成分表（无用小知识）A：日本烟草公司（JTI）官网：[烟草配料](https://www.jti.co.jp/tobacco/responsibilities/guidelines/additive/tobacco/index.html)、[材料说明](https://www.jti.co.jp/tobacco/responsibilities/guidelines/additive/material/index.html)、[材料表](https://www.jti.co.jp/tobacco/responsibilities/guidelines/additive/material/list.html)。（有害健康、尽早戒烟、享受生活）
 
 ## 香烟说明
-
-> 当前国内余量现货（2026.10.23）：
-> 无
 
 > 日税 & 日免 散包/整条购买说明：
 > 日税从【711/罗森/全家】零售店拿，只能散包购买。（零售店都没有整条库存，和国内进货差异很大）。
